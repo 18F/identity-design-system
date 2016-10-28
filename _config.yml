@@ -1,0 +1,38 @@
+title: login.gov Style Guide
+description: Frontend style guide for login.gov
+
+# add any site-wide meta tags here
+meta:
+  og:type: site
+
+# this should *not* include the trailing slash
+url: ''
+
+# for more on 18F analytics standards, see:
+# https://github.com/18F/analytics-standards#18f-team-standards-for-analytics
+analytics:
+  # set this to your Google Analytics UA code
+  google: false
+  # set this to true when you're ready to include the Digital Analytics Project
+  # snippet
+  dap: false
+
+markdown: redcarpet
+highlighter: rouge
+
+sass:
+  sass_dir: assets/stylesheets
+
+stylesheets:
+  - assets/stylesheets/main.css
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE.md
+  - CONTRIBUTING.md
+  - '.sass-cache'
+  - '.ruby-version'
+  - vendor
+  - node_modules

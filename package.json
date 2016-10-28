@@ -1,0 +1,17 @@
+{
+  "name": "identity-style-guide",
+  "description": "login.gov Style Guide: Frontend style guide for login.gov",
+  "version": "0.0.0",
+  "scripts": {
+    "postinstall": "bundle",
+    "build": "bundle exec jekyll build",
+    "start": "bundle exec jekyll serve"
+  },
+  "repository": "github:18F/identity-style-guide",
+  "dependencies": {
+    "basscss-sass": "^4.0.0",
+    "normalize-scss": "^6.0.0"
+  },
+  "author": "18F",
+  "license": "SEE LICENSE IN LICENSE.md"
+}
