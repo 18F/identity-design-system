@@ -21,10 +21,14 @@ markdown: redcarpet
 highlighter: rouge
 
 sass:
-  sass_dir: assets/stylesheets
+  load_paths:
+      - assets/sass
+      - node_modules
+  sass_dir: assets/sass
+  style: compressed
 
 stylesheets:
-  - assets/stylesheets/main.css
+  - assets/css/main.css
 
 exclude:
   - Gemfile
@@ -34,5 +38,7 @@ exclude:
   - CONTRIBUTING.md
   - '.sass-cache'
   - '.ruby-version'
+  - package.json
   - vendor
   - node_modules
+  - assets/sass
