@@ -1,8 +1,6 @@
-**DISCLAIMER: This repository is an experimental and not ready for project use.**
-
 # identity-style-guide
 
-Frontend style guide for login.gov
+The global style of login.gov
 
 ## Running locally
 
