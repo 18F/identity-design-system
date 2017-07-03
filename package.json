@@ -1,12 +1,41 @@
 {
   "name": "identity-style-guide",
   "version": "0.1.0",
+  "description": "Style guide for login.gov websites",
+  "main": "src/js/main.js",
   "scripts": {
-    "federalist": "fractal build"
+    "federalist": "fractal build",
+    "build-js": "webpack --progress --colors",
+    "build-js-watch": "webpack -w --progress --colors",
+    "build-css": "node-sass --include-path node_modules --include-path src/_sass --output-style compressed src/assets/stylesheets/main.scss src/assets/stylesheets/build/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "dependencies": {
-    "@frctl/fractal": "^1.1.4"
+    "@frctl/fractal": "^1.1.4",
+    "npm-bump": "0.0.20"
   },
   "author": "18F",
-  "license": "SEE LICENSE IN LICENSE.md"
+  "engines": {
+    "node": "6.x.x",
+    "npm": "3.x.x"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/18F/identity-style-guide/issues"
+  },
+  "homepage": "https://github.com/18F/identity-style-guide#readme",
+  "devDependencies": {
+    "aria-accordion": "^1.1.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-es2015": "^6.14.0",
+    "basscss-sass": "^3.0.0",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.9.2",
+    "normalize.css": "^4.2.0",
+    "webpack": "^1.13.2"
+  }
 }
