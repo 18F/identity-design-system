@@ -1,13 +1,15 @@
 {
   "name": "identity-style-guide",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Style guide for login.gov websites",
   "main": "src/js/main.js",
   "scripts": {
     "federalist": "fractal build",
+    "build": "npm run build-css && npm run build-js && fractal build",
     "build-js": "webpack --progress --colors",
     "build-js-watch": "webpack -w --progress --colors",
     "build-css": "node-sass --include-path node_modules --include-path src/_sass --output-style compressed src/assets/stylesheets/main.scss src/assets/stylesheets/build/main.css",
+    "start": "fractal start --sync",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "dependencies": {
@@ -25,7 +27,6 @@
   },
   "homepage": "https://github.com/18F/identity-style-guide#readme",
   "devDependencies": {
-    "aria-accordion": "^1.1.0",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
