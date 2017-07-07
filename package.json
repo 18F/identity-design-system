@@ -50,7 +50,9 @@
   },
   "homepage": "https://github.com/18F/cg-style#readme",
   "dependencies": {
+    "basscss-sass": "^3.0.0",
     "lodash.debounce": "^4.0.8",
+    "normalize.css": "^4.2.0",
     "politespace": "^0.1.20",
     "uswds": "~0.12.1"
   },
@@ -60,7 +62,6 @@
     "@frctl/mandelbrot": "^1.0.7",
     "@frctl/nunjucks": "^1.0.2",
     "autoprefixer": "^6.6.1",
-    "basscss-sass": "^3.0.0",
     "browserify": "^13.3.0",
     "clean-css": "^3.4.23",
     "cross-spawn": "^4.0.0",
@@ -70,7 +71,6 @@
     "gulp-sass": "^2.3.1",
     "gulp-svg-sprite": "^1.2.19",
     "node-sass": "^3.13.1",
-    "normalize.css": "^4.2.0",
     "npm-run-all": "^3.1.2",
     "postcss": "^5.2.10",
     "postcss-cli": "^2.3.3",
