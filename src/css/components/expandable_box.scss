@@ -1,0 +1,26 @@
+
+@import '../../../node_modules/uswds/src/stylesheets/core/defaults.scss';
+@import '../override_vars.scss';
+@import '../core.scss';
+
+$box-padding: $grid-3;
+
+.expandable_box {
+  background-color: white;
+  border: 1px solid $color-textblack;
+  border-radius: 2px;
+  margin-bottom: $grid-2;
+  padding: $box-padding;
+}
+
+.expandable_box-click {
+  cursor: pointer;
+  margin: -$box-padding;
+  padding: $box-padding;
+}
+
+.expandable_box-is_expanded {
+  & > .expandable_box-click {
+    margin-bottom: $grid-2;
+  }
+}

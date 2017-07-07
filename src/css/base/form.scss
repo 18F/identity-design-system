@@ -1,0 +1,150 @@
+
+@import '../../../node_modules/uswds/src/stylesheets/core/defaults.scss';
+@import '../override_vars.scss';
+@import '../core.scss';
+
+form {
+  max-width: none;
+  margin-bottom: 0;
+}
+
+legend {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: .5rem;
+}
+
+label {
+  margin-top: 0;
+  font-weight: 400;
+}
+
+input, select {
+  & + label {
+    margin-top: $grid-2;
+  }
+}
+
+[type='email'] {
+  font-size: 1rem;
+  padding: 0.7rem 0.7rem;
+}
+
+form [type='submit'] {
+  margin-top: $grid-1;
+}
+
+// TODO remove extra specificity when WDS fixes theirs.
+/* stylelint-disable selector-no-qualifying-type */
+input,
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='url'],
+input[type='tel'],
+input[type='number'],
+input[type='search'],
+input[type='file'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='time'],
+input[type='week'],
+textarea,
+select {
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 400;
+  height: auto;
+  line-height: 1.2;
+  padding: .5rem 0.7em;
+
+  &:focus {
+    box-shadow: none;
+    outline: 2px solid $color-primary;
+  }
+}
+/* stylelint-enable */
+
+textarea {
+  line-height: 1.45;
+}
+
+select {
+  background-size: 1rem;
+}
+
+fieldset div {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.form_text-inline {
+  input,
+  label {
+    display: inline;
+  }
+}
+
+.error_input {
+  outline: 2px solid $color-error;
+}
+
+.error_message {
+  @extend .usa-input-error-message;
+  color: $color-error;
+  font-size: initial;
+
+  a {
+    color: $color-error;
+    text-decoration: underline;
+  }
+}
+
+.error-inline {
+  display: inline-block;
+  font-size: 0.875rem;
+  margin: 0 0.25rem;
+  width: 40%;
+  vertical-align: middle;
+}
+
+.error {
+  input {
+    @extend .error_input;
+
+    &:focus,
+    &:active {
+      @extend .error_input;
+    }
+  }
+}
+
+.button-cancel {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px $color-base;
+  color: $color-base;
+
+  &:hover {
+    background-color: $color-base;
+    color: white;
+  }
+
+  &:active {
+    background-color: #000;
+    box-shadow: none;
+    color: white;
+  }
+
+  &:active:focus {
+    background-color: #000;
+    box-shadow: none;
+    color: white;
+  }
+
+  &:focus {
+    background-color: $color-base;
+    box-shadow: 0 0 0 4px rgba(255, 221, 0, 0.55);
+    color: white;
+  }
+}

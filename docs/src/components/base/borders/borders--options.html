@@ -1,0 +1,11 @@
+{% for option in options %}
+<div class="clearfix">
+  {% for border in borders %}
+    <div class="float-left m1 w20 h15 mb4">
+      <div class="h10 mb1 bg-cream {{ option.optionCode }}{{ border.borderCode }}"></div>
+      <div class="sans-s5 fw700">{{ option.optionName }}</div>
+      <div class="mono-s3 fw300">.{{ option.optionCode }}{{ border.borderCode }}</div>
+    </div>
+  {% endfor %}
+</div>
+{% endfor %}

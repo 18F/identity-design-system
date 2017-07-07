@@ -1,0 +1,107 @@
+
+@import '../override_vars.scss';
+@import '../core.scss';
+@import '../../../node_modules/uswds/src/stylesheets/core/utilities.scss';
+
+.nav {
+  @include unstyled-list;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: .6rem;
+
+  @include media($medium-screen) {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .action {
+    &.action-outline,
+    &.usa-button-outline {
+      margin: -.25rem 0 0 0;
+      padding: .55rem 1rem;
+    }
+  }
+}
+
+.nav-link {
+  color: $color-textblack;
+  font-size: $sans-s5;
+  font-weight: 400;
+  padding-bottom: .2rem;
+  padding-left: 0;
+  padding-top: .2rem;
+  a {
+    color: $color-textblack;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  & + .nav-link {
+    padding-left: 0;
+
+    @include media($medium-screen) { padding-left: $grid-4; }
+  }
+
+  @include media($medium-screen) {
+    font-size: inherit;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+}
+
+// triage tab treatment
+
+$border-highlight: 3px;
+$padding-highlight: 4px;
+$size-xsmall: .8rem;
+
+.nav-tabs {
+  color: $color-lightgray;
+  display: flex;
+  flex-direction: row;
+  font-size: $sans-s2;
+  letter-spacing: .1em;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.nav-tabs li {
+  flex: 1;
+  &:before {
+    display: none;
+  }
+}
+
+// gettin deep
+.nav-tabs a {
+  border-bottom: 1px solid $color-lightgray;
+  color: $color-textblack;
+  display: block;
+  font-weight: 600;
+  padding-bottom: ($padding-highlight + $border-highlight - 1);
+  text-align: center;
+  width: auto;
+}
+
+.nav-tabs .active a,
+.nav-tabs a:hover {
+  border-bottom: $border-highlight solid $color-primary;
+  color: $color-primary;
+  padding-bottom: $padding-highlight;
+  text-decoration: none;
+}
+
+// secondary tabs
+
+.nav-tabs + div .nav-tabs {
+  .active a,
+  a:hover {
+    border-color: $color-secondary;
+    color: $color-secondary;
+  }
+}

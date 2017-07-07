@@ -1,0 +1,1830 @@
+@import '../core.scss';
+
+// base utility classes, primarily for documentation and prototyping
+
+$u-percentages: '5', '10', '20', '25', '30', '33', '40', '50', '60', '66', '70', '75', '80', '90', '100';
+$u-percentage-suffix: 'ct';
+$u-percentages-s: '5%', '10%', '20%', '25%', '30%', '33.3333333333%', '40%', '50%', '60%', '66.6666666666', '70%', '75%', '80%', '90%', '100%';
+$u-pixels: '1px', '2px';
+$u-gridscale: '05', '1', '105', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20', '25', '30', '40', '50';
+$grid-s: $grid-05, $grid-1, $grid-105, $grid-2, $grid-3, $grid-4, $grid-5, $grid-6, $grid-7, $grid-8, $grid-9, $grid-10, $grid-15, $grid-20, $grid-25, $grid-30, $grid-40, $grid-50;
+$grid-n-multipliers: '05', '1', '105', '2', '3', '4', '5';
+$grid-n-s: $grid-n05, $grid-n1, $grid-n105, $grid-n2, $grid-n3, $grid-n4, $grid-n5;
+
+/* stylelint-disable declaration-no-important  */
+
+/*
+
+  COLORS
+
+  Base:
+    ---
+
+  Modifiers:
+    ---
+
+  Values:
+    {$color}
+
+*/
+
+$color-s: 'blue', 'brightmint', 'cream', 'gold', 'green', 'red', 'trueblack', 'textblack', 'darkgray', 'mediumgray', 'mediumgray-trans', 'lightgray', 'lightestgray', 'white';
+$colorvar-s: $color-blue, $color-brightmint, $color-cream, $color-gold, $color-green, $color-red, $color-trueblack, $color-textblack, $color-darkgray, $color-mediumgray, $color-mediumgray-trans, $color-lightgray, $color-lightestgray, $color-white;
+
+@for $i from 1 through length($color-s) {
+  %#{nth($color-s, $i)} { color: nth($colorvar-s, $i); }
+  .#{nth($color-s, $i)} { color: nth($colorvar-s, $i) !important; }
+}
+
+/*
+
+  BACKGROUND
+
+  Base:
+    bg
+
+  Modifiers:
+    ---
+
+  Values:
+    -{$color}
+
+  Reset:
+    transparent
+
+*/
+
+@for $i from 1 through length($color-s) {
+  %bg-#{nth($color-s, $i)} { background-color: nth($colorvar-s, $i); }
+  .bg-#{nth($color-s, $i)} { background-color: nth($colorvar-s, $i) !important; }
+}
+
+%bg-- { background-color: transparent; }
+.bg-- { background-color: transparent !important; }
+
+/*
+
+  FONT SIZE
+
+  Base:
+    ---
+
+  Modifiers:
+    sans
+    serif
+    mono
+
+  Values:
+    -s1
+    -s2
+    -s3
+    -s4
+    -s5
+    -s6
+    -s7
+    -s8
+    -s9
+    -s10
+
+  Reset:
+    -s6
+
+*/
+
+$u-typescale: '-s1', '-s2', '-s3', '-s4', '-s5', '-s6', '-s7', '-s8', '-s9', '-s10';
+
+@for $i from 1 through length($u-typescale) {
+  %sans-s#{$i} {
+    font-family: $font-sans;
+    font-size: nth($sans-s, $i);
+  }
+  .sans-s#{$i} {
+    font-family: $font-sans !important;
+    font-size: nth($sans-s, $i) !important;
+  }
+  %serif-s#{$i} {
+    font-family: $font-serif;
+    font-size: nth($sans-s, $i);
+  }
+  .serif-s#{$i} {
+    font-family: $font-serif !important;
+    font-size: nth($sans-s, $i) !important;
+  }
+  %mono-s#{$i} {
+    font-family: $font-mono;
+    font-size: nth($sans-s, $i);
+  }
+  .mono-s#{$i} {
+    font-family: $font-mono !important;
+    font-size: nth($sans-s, $i) !important;
+  }
+}
+
+%sans-- { font-size: $sans-s6; }
+.sans-- { font-size: $sans-s6 !important; }
+
+%serif-- { font-size: $serif-s6; }
+.serif-- { font-size: $serif-s6 !important; }
+
+%mono-- { font-size: $mono-s6; }
+.mono-- { font-size: $mono-s6 !important; }
+
+/*
+
+  FONT FACE
+
+  Base:
+    font
+
+  Modifiers:
+    ---
+
+  Values:
+    -sans
+    -serif
+    -mono
+
+  Reset:
+    -sans
+
+*/
+
+%font-sans { font-family: $font-sans; }
+.font-sans { font-family: $font-sans !important; }
+
+%font-serif { font-family: $font-serif; }
+.font-serif { font-family: $font-serif !important; }
+
+%font-mono { font-family: $font-mono; }
+.font-mono { font-family: $font-mono !important; }
+
+%font-- { font-family: $font-sans; }
+.font-- { font-family: $font-sans !important; }
+
+/*
+
+  OPENTYPE
+
+  Base:
+    ot
+
+  Modifiers:
+    ---
+
+  Values:
+    -alt
+    -tnum
+
+  Reset:
+    kern
+
+*/
+
+%ot-tnum { font-feature-settings: 'tnum' 1, 'kern' 1; }
+.ot-tnum { font-feature-settings: 'tnum' 1, 'kern' 1 !important; }
+
+%ot-alt { font-feature-settings: 'ss01' 1, 'kern' 1; }
+.ot-alt { font-feature-settings: 'ss01' 1, 'kern' 1 !important; }
+
+%ot-- { font-feature-settings: 'kern' 1; }
+.ot-- { font-feature-settings: 'kern' 1 !important; }
+
+/*
+
+  FONT WEIGHT
+
+  Base:
+    fw
+
+  Modifiers:
+    ---
+
+  Values:
+    100
+    200
+    300
+    400
+    500
+    600
+    700
+    800
+    900
+
+  Reset:
+    500
+
+*/
+
+$fw-s: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+@for $i from 1 through length($fw-s) {
+  %fw#{nth($fw-s, $i)} { font-weight: nth($fw-s, $i); }
+  .fw#{nth($fw-s, $i)} { font-weight: nth($fw-s, $i) !important; }
+}
+
+%fw-- { font-weight: 500; }
+.fw-- { font-weight: 500 !important; }
+
+/*
+
+  TYPE STYLE
+
+  Base:
+    ---
+
+  Modifiers:
+    ---
+
+  Values:
+    italic
+    strike
+    underline
+
+  Reset:
+    ---
+
+*/
+
+%italic { font-style: italic; }
+.italic { font-style: italic !important; }
+
+%underline { text-decoration: underline; }
+.underline { text-decoration: underline !important; }
+
+%strike { text-decoration: line-through; }
+.strike { text-decoration: line-through !important; }
+
+%uppercase { text-transform: uppercase; }
+.uppercase { text-transform: uppercase !important; }
+
+%lowercase { text-transform: lowercase; }
+.lowercase { text-transform: lowercase !important; }
+
+%capitalize { text-transform: capitalize; }
+.capitalize { text-transform: capitalize !important; }
+
+/*
+
+  LETTER-SPACING
+
+  Base:
+    ls
+
+  Modifiers:
+    ---
+
+  Values:
+    -loose
+    -vloose
+
+  Reset:
+    ---
+
+*/
+
+%ls-loose { letter-spacing: .1em; }
+.ls-loose { letter-spacing: .1em !important; }
+
+%ls-xloose { letter-spacing: .15em; }
+.ls-xloose { letter-spacing: .15em !important; }
+
+/*
+
+  LINE LENGTH
+
+  Base:
+    ll
+
+  Modifiers:
+    ---
+
+  Values:
+    -reading
+    -narrow
+
+  Reset:
+    none
+
+*/
+
+%ll-reading { max-width: $text-max-width; }
+.ll-reading { max-width: $text-max-width !important; }
+
+%ll-narrow { max-width: $text-narrow-width; }
+.ll-narrow { max-width: $text-narrow-width !important; }
+
+%ll-- { max-width: none; }
+.ll-- { max-width: none !important; }
+
+/*
+
+  LINE HEIGHT
+
+  Base:
+    lh
+
+  Modifiers:
+    ---
+
+  Values:
+    -single
+    -hed
+    -cap
+    -body
+    -display
+
+  Reset:
+    -body
+
+*/
+
+%lh-single { line-height: $lh-single; }
+.lh-single { line-height: $lh-single !important; }
+
+%lh-hed { line-height: $lh-hed; }
+.lh-hed { line-height: $lh-hed !important; }
+
+%lh-cap { line-height: $lh-cap; }
+.lh-cap { line-height: $lh-cap !important; }
+
+%lh-body { line-height: $lh-body; }
+.lh-body { line-height: $lh-body !important; }
+
+%lh-display { line-height: $lh-display; }
+.lh-display { line-height: $lh-display !important; }
+
+%lh-- { line-height: $lh-body; }
+.lh-- { line-height: $lh-body !important; }
+
+/*
+
+  BORDER RADIUS
+
+  Base:
+    rd
+
+  Modifiers:
+    ---
+
+    no modifier applies project $rounded to each corner
+
+  Values:
+    -rounded
+    -pill
+
+  Reset:
+    none
+
+*/
+
+%rd-rounded { border-radius: $rounded; }
+.rd-rounded { border-radius: $rounded !important; }
+
+%rd-pill { border-radius: 10em; }
+.rd-pill { border-radius: 10em !important; }
+
+%rd-- { border-radius: none; }
+.rd-- { border-radius: none !important; }
+
+/*
+
+  FLEX ORDER
+
+  Base:
+    order-
+
+  Modifiers:
+    ---
+
+  Values:
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    first
+    last
+
+  Reset:
+    auto
+
+*/
+
+@for $i from 0 through 11 {
+  %order-#{$i} { order: $i; }
+  .order-#{$i} { order: $i !important; }
+}
+
+%order-first { order: -1; }
+.order-first { order: -1 !important; }
+
+%order-last { order: 99; }
+.order-last { order: 99 !important; }
+
+%order-- { order: auto; }
+.order-- { order: auto !important; }
+
+/*
+
+  WIDTH
+
+  Base:
+    w
+
+  Modifiers:
+    ---
+
+  Values:
+    Percentages:
+      5ct
+      10ct
+      20ct
+      25ct
+      30ct
+      33ct
+      40ct
+      50ct
+      60ct
+      66ct
+      70ct
+      75ct
+      80ct
+      90ct
+      100ct
+    Grid:
+      05
+      1
+      105
+      2
+      3
+      4
+      5
+      6
+      7
+      8
+      9
+      10
+      15
+      20
+      30
+      40
+      50
+    Pixel:
+      1px
+      2px
+
+  Reset:
+    auto
+
+*/
+
+@for $i from 1 through length($u-percentages) {
+  %w#{nth($u-percentages, $i)}#{$u-percentage-suffix} {
+    width: #{nth($u-percentages-s, $i)};
+  }
+  .w#{nth($u-percentages, $i)}#{$u-percentage-suffix} {
+    width: #{nth($u-percentages-s, $i)} !important;
+  }
+}
+
+@for $i from 1 through length($u-gridscale) {
+  %w#{nth($u-gridscale, $i)} {
+    width: nth($grid-s, $i);
+  }
+  .w#{nth($u-gridscale, $i)} {
+    width: nth($grid-s, $i) !important;
+  }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %w#{nth($u-pixels, $i)} {
+    width: #{nth($u-pixels, $i)};
+  }
+  .w#{nth($u-pixels, $i)} {
+    width: #{nth($u-pixels, $i)} !important;
+  }
+}
+
+%w-- { width: auto; }
+.w-- { width: auto !important; }
+
+/*
+
+  HEIGHT
+
+  Base:
+    h
+
+  Modifiers:
+    ---
+
+  Values:
+    Percentages:
+      5ct
+      10ct
+      20ct
+      25ct
+      30ct
+      33ct
+      40ct
+      50ct
+      60ct
+      66ct
+      70ct
+      75ct
+      80ct
+      90ct
+      100ct
+    Grid:
+      05
+      1
+      105
+      2
+      3
+      4
+      5
+      6
+      7
+      8
+      9
+      10
+      15
+      20
+      30
+      40
+      50
+    Pixel:
+      1px
+      2px
+
+  Reset:
+    auto
+
+*/
+
+@for $i from 1 through length($u-percentages) {
+  %h#{nth($u-percentages, $i)}#{$u-percentage-suffix} {
+    height: #{nth($u-percentages-s, $i)};
+  }
+  .h#{nth($u-percentages, $i)}#{$u-percentage-suffix} {
+    height: #{nth($u-percentages-s, $i)} !important;
+  }
+}
+
+@for $i from 1 through length($u-gridscale) {
+  %h#{nth($u-gridscale, $i)} {
+    height: nth($grid-s, $i);
+  }
+  .h#{nth($u-gridscale, $i)} {
+    height: nth($grid-s, $i) !important;
+  }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %h#{nth($u-pixels, $i)} {
+    height: #{nth($u-pixels, $i)};
+  }
+  .h#{nth($u-pixels, $i)} {
+    height: #{nth($u-pixels, $i)} !important;
+  }
+}
+
+%h-- { height: auto; }
+.h-- { height: auto !important; }
+
+/*
+
+  SQUARE
+
+  Base:
+    sq
+
+  Modifiers:
+    v   vertical (top and bottom)
+    h   horizontal (left and right)
+    t   top
+    r   right
+    b   bottom
+    l   left
+
+    if no modifier, value applies to all sides
+
+  Values:
+    Percentages:
+      5ct
+      10ct
+      20ct
+      25ct
+      30ct
+      33ct
+      40ct
+      50ct
+      60ct
+      66ct
+      70ct
+      75ct
+      80ct
+      90ct
+      100ct
+    Grid:
+      05
+      1
+      105
+      2
+      3
+      4
+      5
+      6
+      7
+      8
+      9
+      10
+      15
+      20
+      30
+      40
+      50
+    Pixel:
+      1px
+      2px
+
+  Reset:
+    auto
+
+*/
+
+@for $i from 1 through length($u-percentages) {
+  %sq#{nth($u-percentages, $i)}#{$u-percentage-suffix} {
+    height: #{nth($u-percentages-s, $i)};
+    width: #{nth($u-percentages-s, $i)};
+  }
+  .sq#{nth($u-percentages, $i)}#{$u-percentage-suffix} {
+    height: #{nth($u-percentages-s, $i)} !important;
+    width: #{nth($u-percentages-s, $i)} !important;
+  }
+}
+
+@for $i from 1 through length($u-gridscale) {
+  %sq#{nth($u-gridscale, $i)} {
+    height: nth($grid-s, $i);
+    width: nth($grid-s, $i);
+  }
+  .sq#{nth($u-gridscale, $i)} {
+    height: nth($grid-s, $i) !important;
+    width: nth($grid-s, $i) !important;
+  }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %sq#{nth($u-pixels, $i)} {
+    height: #{nth($u-pixels, $i)};
+    width: #{nth($u-pixels, $i)};
+  }
+  .sq#{nth($u-pixels, $i)} {
+    height: #{nth($u-pixels, $i)} !important;
+    width: #{nth($u-pixels, $i)} !important;
+  }
+}
+
+%sq-- {
+  height: auto;
+  width: auto;
+}
+
+.sq-- {
+  height: auto !important;
+  width: auto !important;
+}
+
+/*
+
+  PADDING
+
+  Base:
+    sq
+
+  Modifiers:
+    x   horizontal (left and right)
+    y   vertical (top and bottom)
+    t   top
+    r   right
+    b   bottom
+    l   left
+
+    if no modifier, value applies to all sides
+
+  Values:
+    Grid:
+      05
+      1
+      105
+      2
+      3
+      4
+      5
+      6
+      7
+      8
+      9
+      10
+      15
+      20
+      30
+      40
+      50
+    Pixel:
+      1px
+      2px
+
+  Reset:
+    0
+
+*/
+
+@for $i from 1 through length($u-gridscale) {
+  %p#{nth($u-gridscale, $i)} { padding: nth($grid-s, $i); }
+  .p#{nth($u-gridscale, $i)} { padding: nth($grid-s, $i) !important; }
+
+  %py#{nth($u-gridscale, $i)} {
+    padding-bottom: nth($grid-s, $i);
+    padding-top: nth($grid-s, $i);
+  }
+
+  .py#{nth($u-gridscale, $i)} {
+    padding-bottom: nth($grid-s, $i) !important;
+    padding-top: nth($grid-s, $i) !important;
+  }
+
+  %px#{nth($u-gridscale, $i)} {
+    padding-left: nth($grid-s, $i);
+    padding-right: nth($grid-s, $i);
+  }
+
+  .px#{nth($u-gridscale, $i)} {
+    padding-left: nth($grid-s, $i) !important;
+    padding-right: nth($grid-s, $i) !important;
+  }
+
+  %pt#{nth($u-gridscale, $i)} { padding-top: nth($grid-s, $i); }
+  .pt#{nth($u-gridscale, $i)} { padding-top: nth($grid-s, $i) !important; }
+
+  %pr#{nth($u-gridscale, $i)} { padding-right: nth($grid-s, $i); }
+  .pr#{nth($u-gridscale, $i)} { padding-right: nth($grid-s, $i) !important; }
+
+  %pb#{nth($u-gridscale, $i)} { padding-bottom: nth($grid-s, $i); }
+  .pb#{nth($u-gridscale, $i)} { padding-bottom: nth($grid-s, $i) !important; }
+
+  %pl#{nth($u-gridscale, $i)} { padding-left: nth($grid-s, $i); }
+  .pl#{nth($u-gridscale, $i)} { padding-left: nth($grid-s, $i) !important; }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %p#{nth($u-pixels, $i)} { padding: #{nth($u-pixels, $i)}; }
+  .p#{nth($u-pixels, $i)} { padding: #{nth($u-pixels, $i)} !important; }
+
+  %py#{nth($u-pixels, $i)} {
+    padding-bottom: #{nth($u-pixels, $i)};
+    padding-top: #{nth($u-pixels, $i)};
+  }
+
+  .py#{nth($u-pixels, $i)} {
+    padding-bottom: #{nth($u-pixels, $i)} !important;
+    padding-top: #{nth($u-pixels, $i)} !important;
+  }
+
+  %px#{nth($u-pixels, $i)} {
+    padding-left: #{nth($u-pixels, $i)};
+    padding-right: #{nth($u-pixels, $i)};
+  }
+
+  .px#{nth($u-pixels, $i)} {
+    padding-left: #{nth($u-pixels, $i)} !important;
+    padding-right: #{nth($u-pixels, $i)} !important;
+  }
+
+  %pt#{nth($u-pixels, $i)} { padding-top: #{nth($u-pixels, $i)}; }
+  .pt#{nth($u-pixels, $i)} { padding-top: #{nth($u-pixels, $i)} !important; }
+
+  %pr#{nth($u-pixels, $i)} { padding-right: #{nth($u-pixels, $i)}; }
+  .pr#{nth($u-pixels, $i)} { padding-right: #{nth($u-pixels, $i)} !important; }
+
+  %pb#{nth($u-pixels, $i)} { padding-bottom: #{nth($u-pixels, $i)}; }
+  .pb#{nth($u-pixels, $i)} { padding-bottom: #{nth($u-pixels, $i)} !important; }
+
+  %pl#{nth($u-pixels, $i)} { padding-left: #{nth($u-pixels, $i)}; }
+  .pl#{nth($u-pixels, $i)} { padding-left: #{nth($u-pixels, $i)} !important; }
+}
+
+%p0 { padding: 0; }
+.p0 { padding: 0 !important; }
+
+%px0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.px0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+%py0 {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.py0 {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+%pt0 { padding-top: 0; }
+.pt0 { padding-top: 0 !important; }
+
+%pr0 { padding-right: 0; }
+.pr0 { padding-right: 0 !important; }
+
+%pb0 { padding-bottom: 0; }
+.pb0 { padding-bottom: 0 !important; }
+
+%pl0 { padding-left: 0; }
+.pl0 { padding-left: 0 !important; }
+
+%p0 { padding: 0; }
+.p0 { padding: 0 !important; }
+
+%px0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.px0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+%py0 {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.py0 {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+%pt0 { padding-top: 0; }
+.pt0 { padding-top: 0 !important; }
+
+%pr0 { padding-right: 0; }
+.pr0 { padding-right: 0 !important; }
+
+%pb0 { padding-bottom: 0; }
+.pb0 { padding-bottom: 0 !important; }
+
+%pl0 { padding-left: 0; }
+.pl0 { padding-left: 0 !important; }
+
+/*
+
+  MARGIN
+
+  Base:
+    m
+
+  Modifiers:
+    x   horizontal (left and right)
+    y   vertical (top and bottom)
+    t   top
+    r   right
+    b   bottom
+    l   left
+
+    if no modifier, value applies to all sides
+
+  Values:
+    Grid:
+      05
+      1
+      105
+      2
+      3
+      4
+      5
+      6
+      7
+      8
+      9
+      10
+      15
+      20
+      30
+      40
+      50
+    Pixel:
+      1px
+      2px
+    Negative Grid:
+      n05
+      n1
+      n105
+      n2
+      n3
+      n4
+      n5
+    Negative Pixel:
+      n1px
+      n2px
+
+  Reset:
+    0
+
+*/
+
+@for $i from 1 through length($u-gridscale) {
+  %m#{nth($u-gridscale, $i)} { margin: nth($grid-s, $i); }
+  .m#{nth($u-gridscale, $i)} { margin: nth($grid-s, $i) !important; }
+
+  %my#{nth($u-gridscale, $i)} {
+    margin-bottom: nth($grid-s, $i);
+    margin-top: nth($grid-s, $i);
+  }
+
+  .my#{nth($u-gridscale, $i)} {
+    margin-bottom: nth($grid-s, $i) !important;
+    margin-top: nth($grid-s, $i) !important;
+  }
+
+  %mx#{nth($u-gridscale, $i)} {
+    margin-left: nth($grid-s, $i);
+    margin-right: nth($grid-s, $i);
+  }
+
+  .mx#{nth($u-gridscale, $i)} {
+    margin-left: nth($grid-s, $i) !important;
+    margin-right: nth($grid-s, $i) !important;
+  }
+
+  %mt#{nth($u-gridscale, $i)} { margin-top: nth($grid-s, $i); }
+  .mt#{nth($u-gridscale, $i)} {
+    margin-top: nth($grid-s, $i) !important;
+  }
+  %mr#{nth($u-gridscale, $i)} { margin-right: nth($grid-s, $i); }
+  .mr#{nth($u-gridscale, $i)} { margin-right: nth($grid-s, $i) !important; }
+
+  %mb#{nth($u-gridscale, $i)} { margin-bottom: nth($grid-s, $i); }
+  .mb#{nth($u-gridscale, $i)} { margin-bottom: nth($grid-s, $i) !important; }
+
+  %ml#{nth($u-gridscale, $i)} { margin-left: nth($grid-s, $i); }
+  .ml#{nth($u-gridscale, $i)} { margin-left: nth($grid-s, $i) !important; }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %m#{nth($u-pixels, $i)} { margin: #{nth($u-pixels, $i)}; }
+  .m#{nth($u-pixels, $i)} { margin: #{nth($u-pixels, $i)} !important; }
+
+  %my#{nth($u-pixels, $i)} {
+    margin-bottom: #{nth($u-pixels, $i)};
+    margin-top: #{nth($u-pixels, $i)};
+  }
+
+  .my#{nth($u-pixels, $i)} {
+    margin-bottom: #{nth($u-pixels, $i)} !important;
+    margin-top: #{nth($u-pixels, $i)} !important;
+  }
+
+  %mx#{nth($u-pixels, $i)} {
+    margin-left: #{nth($u-pixels, $i)};
+    margin-right: #{nth($u-pixels, $i)};
+  }
+
+  .mx#{nth($u-pixels, $i)} {
+    margin-left: #{nth($u-pixels, $i)} !important;
+    margin-right: #{nth($u-pixels, $i)} !important;
+  }
+
+  %mt#{nth($u-pixels, $i)} { margin-top: #{nth($u-pixels, $i)}; }
+  .mt#{nth($u-pixels, $i)} { margin-top: #{nth($u-pixels, $i)} !important; }
+
+  %mr#{nth($u-pixels, $i)} { margin-right: #{nth($u-pixels, $i)}; }
+  .mr#{nth($u-pixels, $i)} { margin-right: #{nth($u-pixels, $i)} !important; }
+
+  %mb#{nth($u-pixels, $i)} { margin-bottom: #{nth($u-pixels, $i)}; }
+  .mb#{nth($u-pixels, $i)} { margin-bottom: #{nth($u-pixels, $i)} !important; }
+
+  %ml#{nth($u-pixels, $i)} { margin-left: #{nth($u-pixels, $i)}; }
+  .ml#{nth($u-pixels, $i)} { margin-left: #{nth($u-pixels, $i)} !important; }
+}
+
+@for $i from 1 through 7 {
+  %mn#{nth($u-gridscale, $i)} { margin: nth($grid-n-s, $i); }
+  .mn#{nth($u-gridscale, $i)} { margin: nth($grid-n-s, $i) !important; }
+
+  %myn#{nth($u-gridscale, $i)} {
+    margin-bottom: nth($grid-n-s, $i);
+    margin-top: nth($grid-n-s, $i);
+  }
+
+  .myn#{nth($u-gridscale, $i)} {
+    margin-bottom: nth($grid-n-s, $i) !important;
+    margin-top: nth($grid-n-s, $i) !important;
+  }
+
+  %mxn#{nth($u-gridscale, $i)} {
+    margin-left: nth($grid-n-s, $i);
+    margin-right: nth($grid-n-s, $i);
+  }
+
+  .mxn#{nth($u-gridscale, $i)} {
+    margin-left: nth($grid-n-s, $i) !important;
+    margin-right: nth($grid-n-s, $i) !important;
+  }
+
+  %mtn#{nth($u-gridscale, $i)} { margin-top: nth($grid-n-s, $i); }
+  .mtn#{nth($u-gridscale, $i)} { margin-top: nth($grid-n-s, $i) !important; }
+
+  %mrn#{nth($u-gridscale, $i)} { margin-right: nth($grid-n-s, $i); }
+  .mrn#{nth($u-gridscale, $i)} { margin-right: nth($grid-n-s, $i) !important; }
+
+  %mbn#{nth($u-gridscale, $i)} { margin-bottom: nth($grid-n-s, $i); }
+  .mbn#{nth($u-gridscale, $i)} { margin-bottom: nth($grid-n-s, $i) !important; }
+
+  %mln#{nth($u-gridscale, $i)} { margin-left: nth($grid-n-s, $i); }
+  .mln#{nth($u-gridscale, $i)} { margin-left: nth($grid-n-s, $i) !important; }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %myn#{nth($u-pixels, $i)} {
+    margin-bottom: -#{nth($u-pixels, $i)};
+    margin-top: -#{nth($u-pixels, $i)};
+  }
+
+  .myn#{nth($u-pixels, $i)} {
+    margin-bottom: -#{nth($u-pixels, $i)} !important;
+    margin-top: -#{nth($u-pixels, $i)} !important;
+  }
+
+  %mxn#{nth($u-pixels, $i)} {
+    margin-left: -#{nth($u-pixels, $i)};
+    margin-right: -#{nth($u-pixels, $i)};
+  }
+
+  .mxn#{nth($u-pixels, $i)} {
+    margin-left: -#{nth($u-pixels, $i)} !important;
+    margin-right: -#{nth($u-pixels, $i)} !important;
+  }
+
+  %mtn#{nth($u-pixels, $i)} { margin-top: -#{nth($u-pixels, $i)}; }
+  .mtn#{nth($u-pixels, $i)} { margin-top: -#{nth($u-pixels, $i)} !important; }
+
+  %mrn#{nth($u-pixels, $i)} { margin-right: -#{nth($u-pixels, $i)}; }
+  .mrn#{nth($u-pixels, $i)} { margin-right: -#{nth($u-pixels, $i)} !important; }
+
+  %mbn#{nth($u-pixels, $i)} { margin-bottom: -#{nth($u-pixels, $i)}; }
+  .mbn#{nth($u-pixels, $i)} { margin-bottom: -#{nth($u-pixels, $i)} !important; }
+  %mln#{nth($u-pixels, $i)} { margin-left: -#{nth($u-pixels, $i)}; }
+  .mln#{nth($u-pixels, $i)} { margin-left: -#{nth($u-pixels, $i)} !important; }
+}
+
+%m0 { margin: 0; }
+.m0 { margin: 0 !important; }
+
+%mx0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.mx0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+%my0 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.my0 {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+%mt0 { margin-top: 0; }
+.mt0 { margin-top: 0 !important; }
+
+%mr0 { margin-right: 0; }
+.mr0 { margin-right: 0 !important; }
+
+%mb0 { margin-bottom: 0; }
+.mb0 { margin-bottom: 0 !important; }
+
+%ml0 { margin-left: 0; }
+.ml0 { margin-left: 0 !important; }
+
+%m0 { margin: 0; }
+.m0 { margin: 0 !important; }
+
+%mx0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.mx0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+%my0 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.my0 {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+%mt0 { margin-top: 0; }
+.mt0 { margin-top: 0 !important; }
+
+%mr0 { margin-right: 0; }
+.mr0 { margin-right: 0 !important; }
+
+%mb0 { margin-bottom: 0; }
+.mb0 { margin-bottom: 0 !important; }
+
+%ml0 { margin-left: 0; }
+.ml0 { margin-left: 0 !important; }
+
+/*
+
+  FLOAT
+
+  Base:
+    float
+
+  Modifiers:
+    ---
+
+  Values:
+    -left
+    -right
+
+  Reset:
+    `none`
+
+*/
+
+%float-left { float: left; }
+.float-left { float: left !important; }
+
+%float-right { float: right; }
+.float-right { float: right !important; }
+
+%float-- { float: none; }
+.float-- { float: none !important; }
+
+/*
+
+  CLEAR
+
+  Base:
+    clear
+
+  Modifiers:
+    ---
+
+  Values:
+    -left
+    -right
+
+    no value clears both
+
+  Reset:
+    `none`
+
+*/
+
+%clear { clear: both; }
+.clear { clear: both !important; }
+
+%clear-right { clear: right; }
+.clear-right { clear: right !important; }
+
+%clear-left { clear: left; }
+.clear-left { clear: left !important; }
+
+%clear-- { clear: none; }
+.clear-- { clear: none !important; }
+
+/*
+
+  BORDER WIDTH
+
+  Base:
+    b
+
+  Modifiers:
+    x   horizontal (left and right)
+    y   vertical (top and bottom)
+    t   top
+    r   right
+    b   bottom
+    l   left
+
+    if no modifier, value applies to all sides
+
+  Values:
+    Grid:
+      05
+      1
+      105
+      2
+      3
+      4
+      5
+      6
+      7
+      8
+      9
+      10
+      15
+      20
+      30
+      40
+      50
+    Pixel:
+      1px
+      2px
+
+  Reset:
+    `none`
+
+*/
+
+@for $i from 1 through length($u-pixels) {
+  %b#{nth($u-pixels, $i)} { border: #{nth($u-pixels, $i)} solid; }
+  .b#{nth($u-pixels, $i)} { border: #{nth($u-pixels, $i)} solid !important; }
+
+  %bx#{nth($u-pixels, $i)} {
+    border-left: #{nth($u-pixels, $i)} solid;
+    border-right: #{nth($u-pixels, $i)} solid;
+  }
+
+  .bx#{nth($u-pixels, $i)} {
+    border-left: #{nth($u-pixels, $i)} solid !important;
+    border-right: #{nth($u-pixels, $i)} solid !important;
+  }
+
+  %by#{nth($u-pixels, $i)} {
+    border-bottom: #{nth($u-pixels, $i)} solid;
+    border-top: #{nth($u-pixels, $i)} solid;
+  }
+
+  .by#{nth($u-pixels, $i)} {
+    border-bottom: #{nth($u-pixels, $i)} solid !important;
+    border-top: #{nth($u-pixels, $i)} solid !important;
+  }
+
+  %bt#{nth($u-pixels, $i)} { border-top: #{nth($u-pixels, $i)} solid; }
+  .bt#{nth($u-pixels, $i)} { border-top: #{nth($u-pixels, $i)} solid !important; }
+
+  %br#{nth($u-pixels, $i)} { border-right: #{nth($u-pixels, $i)} solid; }
+  .br#{nth($u-pixels, $i)} { border-right: #{nth($u-pixels, $i)} solid !important; }
+
+  %bb#{nth($u-pixels, $i)} { border-bottom: #{nth($u-pixels, $i)} solid; }
+  .bb#{nth($u-pixels, $i)} { border-bottom: #{nth($u-pixels, $i)} solid !important; }
+
+  %bl#{nth($u-pixels, $i)} { border-left: #{nth($u-pixels, $i)} solid; }
+  .bl#{nth($u-pixels, $i)} { border-left: #{nth($u-pixels, $i)} solid !important; }
+}
+
+@for $i from 1 through 2 {
+  %b#{nth($u-gridscale, $i)} { border: nth($grid-s, $i) solid; }
+  .b#{nth($u-gridscale, $i)} { border: nth($grid-s, $i) solid !important; }
+
+  %bx#{nth($u-gridscale, $i)} {
+    border-left: nth($grid-s, $i) solid;
+    border-right: nth($grid-s, $i) solid;
+  }
+
+  .bx#{nth($u-gridscale, $i)} {
+    border-left: nth($grid-s, $i) solid !important;
+    border-right: nth($grid-s, $i) solid !important;
+  }
+
+  %by#{nth($u-gridscale, $i)} {
+    border-bottom: nth($grid-s, $i) solid;
+    border-top: nth($grid-s, $i) solid;
+  }
+
+  .by#{nth($u-gridscale, $i)} {
+    border-bottom: nth($grid-s, $i) solid !important;
+    border-top: nth($grid-s, $i) solid !important;
+  }
+
+  %bt#{nth($u-gridscale, $i)} { border-top: nth($grid-s, $i) solid; }
+  .bt#{nth($u-gridscale, $i)} { border-top: nth($grid-s, $i) solid !important; }
+
+  %br#{nth($u-gridscale, $i)} { border-right: nth($grid-s, $i) solid; }
+  .br#{nth($u-gridscale, $i)} { border-right: nth($grid-s, $i) solid !important; }
+
+  %bb#{nth($u-gridscale, $i)} { border-bottom: nth($grid-s, $i) solid; }
+  .bb#{nth($u-gridscale, $i)} { border-bottom: nth($grid-s, $i) solid !important; }
+
+  %bl#{nth($u-gridscale, $i)} { border-left: nth($grid-s, $i) solid; }
+  .bl#{nth($u-gridscale, $i)} { border-left: nth($grid-s, $i) solid !important; }
+}
+
+%b0 { border: none; }
+.b0 { border: none !important; }
+
+%bx0 {
+  border-left: none;
+  border-right: none;
+}
+
+.bx0 {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+%by0 {
+  border-bottom: none;
+  border-top: none;
+}
+
+.by0 {
+  border-bottom: none !important;
+  border-top: none !important;
+}
+
+%bt0 { border-top: none; }
+.bt0 { border-top: none !important; }
+
+%br0 { border-right: none; }
+.br0 { border-right: none !important; }
+
+%bb0 { border-bottom: none; }
+.bb0 { border-bottom: none !important; }
+
+%bl0 { border-left: none; }
+.bl0 { border-left: none !important; }
+
+/*
+
+  BORDER COLOR
+
+  Base:
+    b
+
+  Modifiers:
+    t   top
+    r   right
+    b   bottom
+    l   left
+
+    if no modifier, value applies to all sides
+
+  Values:
+    -$colors
+    -transparent
+
+  Reset:
+    ---
+
+*/
+
+@for $i from 1 through length($color-s) {
+  %b-#{nth($color-s, $i)} { border-color: nth($colorvar-s, $i); }
+  .b-#{nth($color-s, $i)} { border-color: nth($colorvar-s, $i) !important; }
+
+  %bt-#{nth($color-s, $i)} { border-top-color: nth($colorvar-s, $i); }
+  .bt-#{nth($color-s, $i)} { border-top-color: nth($colorvar-s, $i) !important; }
+
+  %br-#{nth($color-s, $i)} { border-right-color: nth($colorvar-s, $i); }
+  .br-#{nth($color-s, $i)} { border-right-color: nth($colorvar-s, $i) !important; }
+
+  %bb-#{nth($color-s, $i)} { border-bottom-color: nth($colorvar-s, $i); }
+  .bb-#{nth($color-s, $i)} { border-bottom-color: nth($colorvar-s, $i) !important; }
+
+  %bl-#{nth($color-s, $i)} { border-left-color: nth($colorvar-s, $i); }
+  .bl-#{nth($color-s, $i)} { border-left-color: nth($colorvar-s, $i) !important; }
+}
+
+/*
+
+  BORDER STYLE
+
+  Base:
+    b
+
+  Modifiers:
+    t   top
+    r   right
+    b   bottom
+    l   left
+
+    if no modifier, value applies to all sides
+
+  Values:
+    -solid
+    -dashed
+    -dotted
+
+  Reset:
+    ---
+
+*/
+
+$bs-s: 'solid', 'dashed', 'dotted';
+
+@for $i from 1 through length($bs-s) {
+  %b-#{nth($bs-s, $i)} { border-style: nth($bs-s, $i); }
+  .b-#{nth($bs-s, $i)} { border-color: nth($bs-s, $i) !important; }
+
+  %bt-#{nth($bs-s, $i)} { border-top-color: nth($bs-s, $i); }
+  .bt-#{nth($bs-s, $i)} { border-top-color: nth($bs-s, $i) !important; }
+
+  %br-#{nth($bs-s, $i)} { border-right-color: nth($bs-s, $i); }
+  .br-#{nth($bs-s, $i)} { border-right-color: nth($bs-s, $i) !important; }
+
+  %bb-#{nth($bs-s, $i)} { border-bottom-color: nth($bs-s, $i); }
+  .bb-#{nth($bs-s, $i)} { border-bottom-color: nth($bs-s, $i) !important; }
+
+  %bl-#{nth($bs-s, $i)} { border-left-color: nth($bs-s, $i); }
+  .bl-#{nth($bs-s, $i)} { border-left-color: nth($bs-s, $i) !important; }
+}
+
+/*
+
+  DISPLAY
+
+  Base:
+    ---
+
+  Modifiers:
+    ---
+
+  Values:
+    block
+    inline
+    inline-block
+    hide
+
+  Reset:
+    ---
+
+*/
+
+%block { display: block; }
+.block { display: block !important; }
+
+%inline { display: inline; }
+.inline { display: inline !important; }
+
+%inline-block { display: inline-block; }
+.inline-block { display: inline-block !important; }
+
+%hide { display: none; }
+.hide { display: none !important; }
+
+/*
+
+  VERTICAL ALIGN
+
+  Base:
+    va
+
+  Modifiers:
+    ---
+
+  Values:
+    -baseline
+    -bottom
+    -middle
+    -sub
+    -super
+    -text-bottom
+    -text-top
+    -top
+
+  Reset:
+    ---
+
+*/
+
+$va-s: baseline, bottom, middle, sub, super, text-bottom, text-top, top;
+
+@for $i from 1 through length($va-s) {
+  %va-#{nth($va-s, $i)} { vertical-align: nth($va-s, $i); }
+  .va-#{nth($va-s, $i)} { vertical-align: nth($va-s, $i) !important; }
+}
+
+/*
+
+  POSITION
+
+  Base:
+    pos
+
+  Modifiers:
+    ---
+
+  Values:
+    -absolute
+    -fixed
+    -relative
+    -static
+    -sticky
+
+  Reset:
+    inherit
+
+*/
+
+$pos-s: absolute, fixed, relative, static, sticky;
+
+@for $i from 1 through length($pos-s) {
+  %pos-#{nth($pos-s, $i)} { position: nth($pos-s, $i); }
+  .pos-#{nth($pos-s, $i)} { position: nth($pos-s, $i) !important; }
+}
+
+/*
+
+  MANUAL POSITION
+
+  Base:
+    top
+    right
+    bottom
+    left
+
+  Modifiers:
+    ---
+
+  Values:
+    Percentages:
+      5ct
+      10ct
+      20ct
+      25ct
+      30ct
+      33ct
+      40ct
+      50ct
+      60ct
+      66ct
+      70ct
+      75ct
+      80ct
+      90ct
+      100ct
+    Grid:
+      05
+      1
+      105
+      2
+      3
+      4
+      5
+      6
+      7
+      8
+      9
+      10
+      15
+      20
+      30
+      40
+      50
+    Pixel:
+      1px
+      2px
+    Negative Grid:
+      n05
+      n1
+      n105
+      n2
+      n3
+      n4
+      n5
+    Negative Pixel:
+      n1px
+      n2px
+
+  Reset:
+    auto
+
+*/
+
+@for $i from 1 through length($u-gridscale) {
+  %top-#{nth($u-gridscale, $i)} { top: nth($grid-s, $i); }
+  %right-#{nth($u-gridscale, $i)} { right: nth($grid-s, $i); }
+  %bottom-#{nth($u-gridscale, $i)} { bottom: nth($grid-s, $i); }
+  %left-#{nth($u-gridscale, $i)} { left: nth($grid-s, $i); }
+  .top-#{nth($u-gridscale, $i)} { top: nth($grid-s, $i) !important; }
+  .right-#{nth($u-gridscale, $i)} { right: nth($grid-s, $i) !important; }
+  .bottom-#{nth($u-gridscale, $i)} { bottom: nth($grid-s, $i) !important; }
+  .left-#{nth($u-gridscale, $i)} { left: nth($grid-s, $i) !important; }
+}
+
+@for $i from 1 through 7 {
+  %top-n#{nth($u-gridscale, $i)} { top: nth($grid-n-s, $i); }
+  %right-n#{nth($u-gridscale, $i)} { right: nth($grid-n-s, $i); }
+  %bottom-n#{nth($u-gridscale, $i)} { bottom: nth($grid-n-s, $i); }
+  %left-n#{nth($u-gridscale, $i)} { left: nth($grid-n-s, $i); }
+  .top-n#{nth($u-gridscale, $i)} { top: nth($grid-n-s, $i) !important; }
+  .right-n#{nth($u-gridscale, $i)} { right: nth($grid-n-s, $i) !important; }
+  .bottom-n#{nth($u-gridscale, $i)} { bottom: nth($grid-n-s, $i) !important; }
+  .left-n#{nth($u-gridscale, $i)} { left: nth($grid-n-s, $i) !important; }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %top-#{nth($u-pixels, $i)} { top: #{nth($u-pixels, $i)}; }
+  %right-#{nth($u-pixels, $i)} { right: #{nth($u-pixels, $i)}; }
+  %bottom-#{nth($u-pixels, $i)} { bottom: #{nth($u-pixels, $i)}; }
+  %left-#{nth($u-pixels, $i)} { left: #{nth($u-pixels, $i)}; }
+  .top-#{nth($u-pixels, $i)} { top: #{nth($u-pixels, $i)} !important; }
+  .right-#{nth($u-pixels, $i)} { right: #{nth($u-pixels, $i)} !important; }
+  .bottom-#{nth($u-pixels, $i)} { bottom: #{nth($u-pixels, $i)} !important; }
+  .left-#{nth($u-pixels, $i)} { left: #{nth($u-pixels, $i)} !important; }
+}
+
+@for $i from 1 through length($u-pixels) {
+  %top-n#{nth($u-pixels, $i)} { top: -#{nth($u-pixels, $i)}; }
+  %right-n#{nth($u-pixels, $i)} { right: -#{nth($u-pixels, $i)}; }
+  %bottom-n#{nth($u-pixels, $i)} { bottom: -#{nth($u-pixels, $i)}; }
+  %left-n#{nth($u-pixels, $i)} { left: -#{nth($u-pixels, $i)}; }
+  .top-n#{nth($u-pixels, $i)} { top: -#{nth($u-pixels, $i)} !important; }
+  .right-n#{nth($u-pixels, $i)} { right: -#{nth($u-pixels, $i)} !important; }
+  .bottom-n#{nth($u-pixels, $i)} { bottom: -#{nth($u-pixels, $i)} !important; }
+  .left-n#{nth($u-pixels, $i)} { left: -#{nth($u-pixels, $i)} !important; }
+}
+
+@for $i from 1 through length($u-percentages) {
+  %top-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { top: #{nth($u-percentages-s, $i)}; }
+  %right-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { right: #{nth($u-percentages-s, $i)}; }
+  %bottom-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { bottom: #{nth($u-percentages-s, $i)}; }
+  %left-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { left: #{nth($u-percentages-s, $i)}; }
+  .top-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { top: #{nth($u-percentages-s, $i)} !important; }
+  .right-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { right: #{nth($u-percentages-s, $i)} !important; }
+  .bottom-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { bottom: #{nth($u-percentages-s, $i)} !important; }
+  .left-#{nth($u-percentages, $i)}#{$u-percentage-suffix} { left: #{nth($u-percentages-s, $i)} !important; }
+}
+
+%top-0 { top: 0; }
+%right-0 { right: 0; }
+%bottom-0 { bottom: 0; }
+%left-0 { left: 0; }
+.top-0 { top: 0 !important; }
+.right-0 { right: 0 !important; }
+.bottom-0 { bottom: 0 !important; }
+.left-0 { left: 0 !important; }
+
+%top-- { top: auto; }
+%right-- { right: auto; }
+%bottom-- { bottom: auto; }
+%left-- { left: auto; }
+.top-- { top: auto !important; }
+.right-- { right: auto !important; }
+.bottom-- { bottom: auto !important; }
+.left-- { left: auto !important; }
+
+/*
+
+  WHITESPACE
+
+  Base:
+    ws
+
+  Modifiers:
+    ---
+
+  Values:
+    -normal
+    -nowrap
+    -pre
+    -pre-line
+    -pre-wrap
+
+  Reset:
+    normal
+
+*/
+
+$ws-s: normal, nowrap, pre, pre-line, pre-wrap;
+
+@for $i from 1 through length($ws-s) {
+  %ws-#{nth($ws-s, $i)} { white-space: nth($ws-s, $i); }
+  .ws-#{nth($ws-s, $i)} { white-space: nth($ws-s, $i) !important; }
+}
+
+%ws-- { white-space: normal; }
+.ws-- { white-space: normal !important; }
+
+/*
+
+  FLEX GRID
+
+  Base:
+    ---
+
+  Modifiers:
+    ---
+
+  Values:
+    ---
+
+  Reset:
+    ---
+
+  See documentation for usage.
+
+*/
+
+%row {
+  display: flex;
+}
+
+.row {
+  display: flex !important;
+}
+
+//align across the x-axis
+%row-center-x {
+  @extend %row;
+  align-items: center;
+}
+
+.row-center-x {
+  @extend .row;
+  align-items: center !important;
+}
+
+//align bottom (end of cross-axis)
+%row-end {
+  @extend %row;
+  align-items: flex-end;
+}
+
+.row-end {
+  @extend .row;
+  align-items: flex-end !important;
+}
+
+//align top (start of cross-axis)
+%row-start {
+  @extend %row;
+  align-items: flex-start !important;
+}
+
+.row-start {
+  @extend .row;
+  align-items: flex-start;
+}
+
+//align centered on the y-axis
+%row-center-y {
+  @extend %row;
+  justify-content: center;
+}
+
+.row-center-y {
+  @extend .row;
+  justify-content: center !important;
+}
+
+@for $i from 1 through 12 {
+  %col-f#{$i} {
+    flex: #{$i} 0 0;
+  }
+  .col-f#{$i} {
+    flex: #{$i} 0 0 !important;
+  }
+}
+
+%col-fill {
+  flex: 1;
+}
+
+.col-fill {
+  flex: 1 !important;
+}
+
+%col-fit {
+  flex: none;
+}
+
+.col-fit {
+  flex: none !important;
+}
+
+/* stylelint-enable  */

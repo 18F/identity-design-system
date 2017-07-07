@@ -1,0 +1,7 @@
+
+// Override vars have to override uswds defaults so must be imported before it.
+@import './override_vars.scss';
+@import '../../node_modules/uswds/src/stylesheets/all.scss';
+@import 'base/all.scss';
+@import 'components/all.scss';
+@import 'override_components.scss';

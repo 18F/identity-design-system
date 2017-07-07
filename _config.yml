@@ -1,3 +1,42 @@
-# when publishing on Federalist, build only the files in ./build
-# (where Fractal puts everything)
-source: build
+# Markdown config
+markdown: redcarpet
+highlighter: rouge
+
+name: Cloud.gov style
+
+source: documentation
+
+version: 0.4.0
+
+include:
+-  _theme
+
+exclude:
+- Gemfile
+- Gemfile.lock
+- README.md
+- LICENSE.md
+- CONTRIBUTING.md
+- ".sass-cache"
+- ".ruby-version"
+- src
+- fractal.js
+
+permalink: pretty
+
+repos:
+- name: Cloud.gov style
+  description: The global style of cloud.gov.
+  url: https://github.com/18F/cg-style
+
+sass:
+  sass_dir: documentation/assets/css
+#  style: :compressed
+
+collections:
+  base:
+    output: true
+    permalink: /:path/
+  components:
+    output: true
+    permalink: /:path/

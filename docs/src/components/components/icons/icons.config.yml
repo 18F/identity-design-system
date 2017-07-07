@@ -1,0 +1,117 @@
+title: Icons
+status: beta
+collated: true
+
+variants:
+    - name: default
+      context:
+        iconName: agreement
+        isAlt: false
+    - name: checked
+      context:
+        iconName: checked
+        isAlt: false
+    - name: compass
+      context:
+        iconName: compass
+        isAlt: false
+    - name: court
+      context:
+        iconName: court
+        isAlt: false
+    - name: double_arrow
+      context:
+        iconName: double_arrow
+        isAlt: false
+    - name: download
+      context:
+        iconName: download
+        isAlt: false
+    - name: export
+      context:
+        iconName: export
+        isAlt: false
+    - name: locked
+      context:
+        iconName: locked
+        isAlt: false
+    - name: paperwork
+      context:
+        iconName: paperwork
+        isAlt: false
+    - name: plan
+      context:
+        iconName: plan
+        isAlt: false
+    - name: power
+      context:
+        iconName: power
+        isAlt: false
+    - name: shipping
+      context:
+        iconName: shipping
+        isAlt: false
+    - name: user
+      context:
+        iconName: user
+        isAlt: false
+    - name: user_researched
+      context:
+        iconName: user_researched
+        isAlt: false
+    - name: agreement
+      context:
+        iconName: agreement
+        isAlt: true
+    - name: checked
+      context:
+        iconName: checked
+        isAlt: true
+    - name: compass
+      context:
+        iconName: compass
+        isAlt: true
+    - name: court
+      context:
+        iconName: court
+        isAlt: true
+    - name: double_arrow
+      context:
+        iconName: double_arrow
+        isAlt: true
+    - name: download
+      context:
+        iconName: download
+        isAlt: true
+    - name: export
+      context:
+        iconName: export
+        isAlt: true
+    - name: locked
+      context:
+        iconName: locked
+        isAlt: true
+    - name: paperwork
+      context:
+        iconName: paperwork
+        isAlt: true
+    - name: plan
+      context:
+        iconName: plan
+        isAlt: true
+    - name: power
+      context:
+        iconName: power
+        isAlt: true
+    - name: shipping
+      context:
+        iconName: shipping
+        isAlt: true
+    - name: user
+      context:
+        iconName: user
+        isAlt: true
+    - name: user_researched
+      context:
+        iconName: user_researched
+        isAlt: true

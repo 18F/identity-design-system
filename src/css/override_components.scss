@@ -1,0 +1,203 @@
+
+@import 'override_vars.scss';
+
+.usa-footer-primary-section {
+  background-color: $color-background-light;
+}
+
+.usa-nav-secondary {
+  @include media($medium-screen) {
+    position: static;
+  }
+  .usa-search {
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    @include media($medium-screen) {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.usa-grid {
+  padding-left: $grid-2;
+  padding-right: $grid-2;
+}
+
+.usa-disclaimer {
+  // Requires being overridden because uswds sets a different root font-size on
+  // <html> which effects all rem units.
+  background-color: $color-textblack;
+  color: $color-white;
+  font-size: $sans-s2;
+  font-weight: 600;
+  padding-left: $grid-05;
+  padding-top: 9px;
+
+  .usa-disclaimer-stage {
+    margin-top: 0;
+  }
+
+  a,
+  a:active,
+  a:hover,
+  a:visited {
+    color: $color-lightgray;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+}
+
+.usa-disclaimer-official {
+  padding-left: $grid-05;
+
+  img {
+    margin-top: 3px;
+    width: 1rem;
+  }
+}
+
+.disclaimer-no_sidebar {
+  .grid {
+    max-width: $no-sidebar-max-width;
+    padding: 0 $grid-2;
+  }
+}
+
+.usa-sidenav-list {
+  margin-left: -$grid-1;
+
+  a {
+    padding: $grid-1;
+    /* stylelint-disable selector-no-qualifying-type */
+    &:hover,
+    &.usa-current,
+    &:active {
+      padding: $grid-1;
+    }
+  }
+}
+
+.usa-sidenav-sub_list {
+  a {
+    padding: $grid-105 $grid-1 $grid-105 $grid-2;
+
+    &:hover,
+    &.usa-current,
+    &:active {
+      padding: $grid-105 $grid-1 $grid-105 $grid-2;
+    }
+    /* stylelint-enable */
+  }
+}
+
+.usa-alert {
+  background-image: url('#{$static-img-path}/alert-info.svg');
+  background-position: 1rem 1rem;
+  background-size: 2.3rem;
+  margin-top: 0;
+}
+
+// TODO remove once usa-button deprecated
+.usa-button,
+.usa-button-primary,
+.usa-button:visited,
+.usa-button-primary:visited,
+button,
+[type='button'],
+[type='submit'],
+[type='reset'],
+[type='image'] {
+  border-radius: $rounded;
+  display: inline-block;
+  font-size: $sans-s3;
+  font-weight: 500;
+  height: auto;
+  margin: $grid-1 $grid-1 $grid-1 0;
+  min-height: $grid-4;
+  min-width: 6rem;
+  padding: 0 $grid-2;
+  text-decoration: none;
+  vertical-align: middle;
+
+  /* stylelint-disable selector-no-qualifying-type */
+  &.usa-button-outline {
+    box-shadow: inset 0 0 0 1px;
+  }
+  /* stylelint-enable */
+}
+
+.usa-button-disabled {
+  color: $color-white;
+  background: $color-lightgray;
+}
+
+a:focus,
+input:focus {
+  box-shadow: 0 0 0 4px rgba(255, 221, 0, 0.55);
+  outline: none;
+}
+
+.usa-label {
+  font-size: $sans-s1;
+  padding: $grid-05 $grid-1;
+  vertical-align: middle;
+}
+
+.usa-search {
+  background-color: #ffffff;
+  border-bottom: 1px solid $color-primary;
+  height: 36px;
+  max-width: 40em;
+  overflow: auto;
+  padding: 0;
+  position: static;
+  width: 100%;
+  z-index: 1;
+
+  @include media($medium-screen) {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  @include media($nav-width) {
+    position: absolute;
+    top: 0;
+  }
+
+  [type='search'] {
+    border: none;
+    color: $color-gray;
+    font-size: $sans-s5;
+    font-weight: 400;
+    height: (43rem / $grid-type);
+    padding: 0;
+    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+      color: $color-primary;
+      outline: unset;
+    }
+  }
+
+  [type='submit'] {
+    background-color: #ffffff;
+    background-image: url('#{$static-img-path}/search.png');
+    background-image: url('#{$static-img-path}/search.svg');
+    height: $grid-4;
+    min-width: 0;
+    position: absolute;
+    right: 0;
+    top: $grid-05;
+    width: $grid-4;
+  }
+}
+
+.usa-disclaimer-stage {
+  @include media($medium-screen) {
+    display: block;
+  }
+}

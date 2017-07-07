@@ -1,0 +1,31 @@
+title: Overview Page
+status: draft
+preview: '@preview-bg'
+context:
+
+  organizations:
+    - org:
+      name: 'abacus'
+      isOpen: false
+      spaces:
+        - space:
+          name: 'foo/foo'
+        - space:
+          name: 'foo/bar'
+      apps:
+        - app:
+          name: 'foo/foo'
+        - app:
+          name: 'foo/bar'
+    - org:
+      name: 'epa-journeyman'
+      isOpen: true
+      spaces:
+        - space:
+          name: 'bar/foo'
+    - org:
+      name: 'sandbox'
+      isOpen: false
+      spaces:
+        - space:
+          name: 'sandbox/user.name'

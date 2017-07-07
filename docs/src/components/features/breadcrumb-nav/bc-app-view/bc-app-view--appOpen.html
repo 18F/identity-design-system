@@ -1,0 +1,251 @@
+{# breadcrumbNav#}
+<nav class="bg-white p4 mn2">
+  <div class="row">
+
+    {# bcHome #}
+    <div class="col-fit">
+      <div class="col-fit h8 row-end">
+        <div class="h6 row-center-x">
+          {% render '@fill-icons--home-active-large'%}
+        </div>
+      </div>
+    </div>
+    {# /bcHome #}
+
+    {# bcSlash #}
+    <div class="col-fit">
+      <div class="col-fit h8 row-end">
+        <div class="h6 row-center-x sans-s6 fw-300 lightgray lh-single mx105">
+          /
+        </div>
+      </div>
+    </div>
+    {# /bcSlash #}
+
+    {# bcEntry #}
+    <div class="col-fit">
+
+      {# bcEntryTop #}
+      <div class="h8">
+
+        {# bcEntryLabel--off #}
+        <div class="h2 sans-s1 fw500 lightgray uppercase ls-loose">
+          Organization
+        </div>
+        {# /bcEntryLabel--off #}
+
+        {# bcEntryTrigger--closed #}
+        <div class="h6 row-center-x">
+          {% render '@trigger--base-outline', {buttonText: 'epa-journeyman'}, true %}
+        </div>
+        {# /bcEntryTrigger #}
+
+      </div>
+      {# /bcEntryTop #}
+
+      {# bcContentDrawer--closed #}
+      <div class="item-open w1 mt05 pl1 hide">
+
+        {# bcContextRow #}
+        {# /bcContextRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--org-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">abacus</span>
+        </div>
+        {# /bcRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--org-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">epa-journeyman</span>
+        </div>
+        {# /bcRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--org-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">epa-fisheries-explorer</span>
+        </div>
+        {# /bcRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--org-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">sandbox</span>
+        </div>
+        {# /bcRow #}
+
+      </div>
+      {# /bcContentDrawer #}
+
+    </div>
+    {# /bcEntry #}
+
+    {# bcSlash #}
+    <div class="col-fit">
+      <div class="col-fit h8 row-end">
+        <div class="h6 row-center-x sans-s6 fw-300 lightgray lh-single mx105">
+          /
+        </div>
+      </div>
+    </div>
+    {# /bcSlash #}
+
+    {# bcEntry #}
+    <div class="col-fit">
+
+      {# bcEntryTop #}
+      <div class="h8">
+
+        {# bcEntryLabel--off #}
+        <div class="h2 sans-s1 fw500 lightgray uppercase ls-loose">
+          Space
+        </div>
+        {# /bcEntryLabel--off #}
+
+        {# bcEntryTrigger--closed #}
+        <div class="h6 row-center-x">
+          {% render '@trigger--base-outline', {buttonText: 'dev'}, true %}
+        </div>
+        {# /bcEntryTrigger #}
+
+      </div>
+      {# /bcEntryTop #}
+
+      {# bcContentDrawer--closed #}
+      <div class="item-open w1 mt05 pl1 hide">
+
+        {# bcContextRow #}
+        <div class="mt105 ws-nowrap row-center-x">
+          <span class="lh-single sans-s2 fw500 col-fit ws-nowrap">All spaces in</span>
+          <span class="inline-block col-fit mx1">
+            {% render '@fill-icons--org-small'%}
+          </span>
+          <span class="lh-single sans-s2 fw700 underline col-fit ws-nowrap">epa-journeyman</span>
+        </div>
+        {# /bcContextRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--space-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">dev</span>
+        </div>
+        {# /bcRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--space-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">prod</span>
+        </div>
+        {# /bcRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--space-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">stage</span>
+        </div>
+        {# /bcRow #}
+
+      </div>
+      {# /bcContentDrawer #}
+
+    </div>
+    {# /bcEntry #}
+
+    {# bcSlash #}
+    <div class="col-fit">
+      <div class="col-fit h8 row-end">
+        <div class="h6 row-center-x sans-s6 fw-300 lightgray lh-single mx105">
+          /
+        </div>
+      </div>
+    </div>
+    {# /bcSlash #}
+
+    {# bcEntryPrimary #}
+    <div class="col-fit">
+
+      {# bcEntryPrimaryTop #}
+      <div class="col-fit h8 row-end">
+        <div class="item-closed">
+
+          {# bcEntryLabel #}
+          <div class="h2 sans-s1 fw500 uppercase blue ls-loose">
+            App
+          </div>
+          {# /bcEntryLabel #}
+
+          {# bcEntryPrimaryText--open #}
+          <div class="row-center-x">
+            <div class="col-fit mr2 h6 row-center-x">
+              {% render '@fill-icons--app-active-large-reverse'%}
+            </div>
+            <div class="mr105 col-fit sans-s9 fw300 lh-single h6 row-center-x">
+              journeyman-dev
+            </div>
+            <div class="col-fit h6 row-center-x">
+              {% render '@icon-ui--chevron-up'%}
+            </div>
+          </div>
+          {# /bcEntryPrimaryText #}
+
+        </div>
+      </div>
+      {# /bcEntryPrimaryTop #}
+
+      {# bcContentDrawer--open #}
+      <div class="item-open w1 mt05 pl1">
+
+        {# bcContextRow #}
+        <div class="mt105 ws-nowrap row-center-x">
+          <span class="lh-single sans-s2 fw500 col-fit ws-nowrap">All apps in</span>
+          <span class="inline-block col-fit mx1">
+            {% render '@fill-icons--space-small'%}
+          </span>
+          <span class="lh-single sans-s2 fw700 underline col-fit ws-nowrap">dev</span>
+        </div>
+        {# /bcContextRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--app-active-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">jman-mfa</span>
+        </div>
+        {# /bcRow #}
+
+        {# bcRow #}
+        <div class="mt1 ws-nowrap row-center-x">
+          <span class="inline-block col-fit">
+            {% render '@fill-icons--app-active-small'%}
+          </span>
+          <span class="lh-single blue sans-s8 underline pl1 col-fill ws-nowrap">journeyman-dev</span>
+        </div>
+        {# /bcRow #}
+
+      </div>
+      {# /bcContentDrawer #}
+
+    </div>
+    {# /bcEntryPrimary #}
+
+  </div>
+</nav>
+{# /breadcrumbNav#}

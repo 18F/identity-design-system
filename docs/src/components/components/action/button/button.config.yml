@@ -1,0 +1,40 @@
+title: Button
+status: beta
+collated: true
+default: primary
+variants:
+  - name: primary
+    context:
+      isDefault: true
+      isOutline: false
+      isLink: false
+      buttonStatus: primary
+      buttonText: primary
+  - name: base
+    context:
+      isDefault: true
+      isOutline: false
+      isLink: false
+      buttonStatus: base
+      buttonText: base
+  - name: disabled
+    context:
+      isDefault: true
+      isOutline: false
+      isLink: false
+      buttonStatus: cautious
+      buttonText: disabled
+  - name: warning
+    context:
+      isDefault: true
+      isOutline: false
+      isLink: false
+      buttonStatus: warning
+      buttonText: warning
+  - name: finish
+    context:
+      isDefault: true
+      isOutline: false
+      isLink: false
+      buttonStatus: finish
+      buttonText: finish

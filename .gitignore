@@ -1,2 +1,13 @@
+
+/docs/build/
+/docs/assets/
+/node_modules/
+
+/img/
+/fonts/
+/js/
+/css/
+/_site/
+
 .DS_Store
-node_modules
+.stylelintrc

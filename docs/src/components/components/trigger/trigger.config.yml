@@ -1,0 +1,125 @@
+title: Trigger
+status: prototype
+collated: true
+default: base
+variants:
+  - name: base
+    context:
+      isDefault: true
+      buttonStatus: base
+      buttonText: base
+  - name: warning
+    context:
+      isDefault: true
+      buttonStatus: warning
+      buttonText: warning
+  - name: active
+    context:
+      isDefault: true
+      buttonStatus: primary
+      buttonText: active
+  - name: disabled
+    context:
+      isDefault: true
+      buttonStatus: cautious
+      buttonText: disabled
+  - name: finish
+    context:
+      isDefault: true
+      buttonStatus: finish
+      buttonText: finish
+  - name: base-outline
+    context:
+      isOutline: true
+      buttonStatus: base
+      buttonStyle: outline
+      buttonText: base-outline
+  - name: warning-outline
+    context:
+      isOutline: true
+      buttonStatus: warning
+      buttonStyle: outline
+      buttonText: warning-outline
+  - name: active-outline
+    context:
+      isOutline: true
+      buttonStatus: primary
+      buttonStyle: outline
+      buttonText: active-outline
+  - name: disabled-outline
+    context:
+      isOutline: true
+      buttonStatus: cautious
+      buttonStyle: outline
+      buttonText: disabled-outline
+  - name: finish-outline
+    context:
+      isOutline: true
+      buttonStatus: finish
+      buttonStyle: outline
+      buttonText: finish-outline
+  - name: base-open
+    context:
+      isDefault: true
+      isOpen: true
+      buttonStatus: base
+      buttonText: base
+  - name: warning-open
+    context:
+      isDefault: true
+      isOpen: true
+      buttonStatus: warning
+      buttonText: warning
+  - name: active-open
+    context:
+      isDefault: true
+      isOpen: true
+      buttonStatus: primary
+      buttonText: active
+  - name: disabled-open
+    context:
+      isDefault: true
+      isOpen: true
+      buttonStatus: cautious
+      buttonText: disabled
+  - name: finish-open
+    context:
+      isDefault: true
+      isOpen: true
+      buttonStatus: finish
+      buttonText: finish-outline
+  - name: base-outline-open
+    context:
+      isOutline: true
+      isOpen: true
+      buttonStatus: base
+      buttonStyle: outline
+      buttonText: base-outline
+  - name: warning-outline-open
+    context:
+      isOutline: true
+      isOpen: true
+      buttonStatus: warning
+      buttonStyle: outline
+      buttonText: warning-outline
+  - name: active-outline-open
+    context:
+      isOutline: true
+      isOpen: true
+      buttonStatus: primary
+      buttonStyle: outline
+      buttonText: active-outline
+  - name: disabled-outline-open
+    context:
+      isOutline: true
+      isOpen: true
+      buttonStatus: cautious
+      buttonStyle: outline
+      buttonText: disabled-outline
+  - name: finish-outline-open
+    context:
+      isOutline: true
+      isOpen: true
+      buttonStatus: finish
+      buttonStyle: outline
+      buttonText: finish-outline

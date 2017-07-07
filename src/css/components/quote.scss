@@ -1,0 +1,24 @@
+
+.quote-big {
+  padding-top: $grid-2;
+
+  p {
+    font-family: $font-sans;
+    font-weight: 400;
+    line-height: $lh-display;
+  }
+}
+
+.quote-attrib {
+  color: $color-red;
+  display: block;
+  font-weight: 400;
+  margin-bottom: $grid-2;
+  margin-top: $grid-05;
+}
+
+.quote-attrib-name {
+  font-weight: 600;
+  color: $color-textblack;
+}
+

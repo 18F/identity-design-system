@@ -1,0 +1,69 @@
+
+@import '../../../node_modules/uswds/src/stylesheets/core/defaults.scss';
+@import '../override_vars.scss';
+@import '../core.scss';
+
+.count_status {
+  align-items: center;
+  display: flex;
+  margin-left: $grid-3;
+  position: relative;
+  width: 7.5rem;
+
+  &::after {
+    background: $color-cream;
+    content: '';
+    display: block;
+    height: $grid-1;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: calc(100% + #{$grid-2});
+    width: 100%;
+  }
+}
+
+.count_status-ok,
+.count_status-started,
+.count_status-running {
+  &::after {
+    background: $color-ok;
+  }
+}
+
+.count-status-inactive,
+.count_status-stopped {
+  &::after {
+    background: $color-inactive;
+  }
+}
+
+.count_status-error,
+.count_status-crashed {
+  &::after {
+    background: $color-error;
+  }
+}
+
+.count_status-none {
+  &::after {
+    background: $color-cream;
+  }
+}
+
+.count_status-icon {
+  flex: none;
+}
+
+.count_status-text {
+  flex: 1;
+  font-family: $font-sans;
+  font-size: $sans-s4;
+  line-height: $lh-single;
+  text-align: right;
+}
+
+.count_status_container {
+  display: flex;
+  float: right;
+}

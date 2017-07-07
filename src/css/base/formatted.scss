@@ -1,0 +1,38 @@
+
+@import '../core.scss';
+@import '../override_vars.scss';
+@import '../vars.scss';
+
+pre {
+  background-color: $color-cream;
+  border-radius: $rounded;
+  color: $color-base;
+  font-family: $font-mono;
+  overflow: auto;
+  padding: 0.7rem;
+  word-wrap: break-word;
+
+  code {
+    background-color: transparent;
+    padding: 0;
+    line-height: $lh-body;
+    display: inline;
+    overflow: auto;
+    word-wrap: normal;
+  }
+}
+
+code {
+  background-color: $color-cream;
+  border-radius: $rounded;
+  display: inline-block;
+  font-family: $font-mono;
+  line-height: $lh-cap;
+  padding: 2px 6px;
+}
+
+// TODO docs-class
+.usa-content.content code {
+  font-size: $mono-s4;
+}
+

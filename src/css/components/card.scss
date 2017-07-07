@@ -1,0 +1,37 @@
+@import '../../../node_modules/uswds/src/stylesheets/core/defaults.scss';
+@import '../override_vars.scss';
+@import '../core.scss';
+
+.card {
+  background-color: $color-white;
+  border: 1px solid $color-textblack;
+  border-radius: $rounded;
+  margin-bottom: $grid-2;
+  padding: 0;
+}
+
+.card-title {
+  font-size: $sans-s8;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.card-header {
+  height: $grid-9;
+  overflow: hidden;
+  padding: 0 $grid-2;
+}
+
+.card-items {
+  padding: $grid-4 $grid-2;
+}
+
+.card-title-primary {
+  font-size: $sans-s8;
+  font-weight: 400;
+  line-height: $lh-single;
+
+  .icon-medium {
+    margin-right: $grid-05;
+  }
+}

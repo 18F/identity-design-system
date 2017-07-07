@@ -1,0 +1,29 @@
+
+@import '../../../node_modules/uswds/src/stylesheets/core/defaults.scss';
+@import '../override_vars.scss';
+@import '../core.scss';
+
+.status {
+  text-transform: capitalize;
+}
+
+.status-started,
+.status-running,
+.status-ok {
+  color: $color-textok;
+}
+
+.status-stopped,
+.status-inactive {
+  color: $color-inactive;
+}
+
+.status-warning {
+  color: $color-gold;
+}
+
+.status-unknown,
+.status-crashed,
+.status-error {
+  color: $color-error;
+}

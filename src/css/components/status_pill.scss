@@ -1,0 +1,12 @@
+
+@import '../override_vars.scss';
+@import '../core.scss';
+
+.status-pill {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 2px;
+  content: '';
+  left: 0;
+  position: absolute;
+}

@@ -1,0 +1,16 @@
+
+@import '../core.scss';
+
+.logo {
+  display: inline-block;
+  height: auto;
+  margin-left: -$grid-1;
+  margin-top: -$grid-1;
+  padding: $grid-1;
+  width: auto;
+}
+
+.logo-img {
+  height: 41px;
+  width: 201px;
+}

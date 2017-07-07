@@ -1,0 +1,144 @@
+
+@import '../core.scss';
+@import '../override_vars.scss';
+@import '../vars.scss';
+
+$input-font-size: $sans-s2;
+
+.stat {
+  @include clearfix;
+  border-left-color: transparent;
+  border-left-style: solid;
+  border-left-width: 0;
+  margin-right: $grid-1;
+  margin-top: 0.625rem;
+  min-height: 2.5rem; // Leave some space for input + error element when editing a stat
+  position: relative;
+  width: 13.5rem;
+
+  .error_message {
+    font-size: $input-font-size;
+    position: absolute; // Avoid error message shifting the height of the element
+  }
+}
+
+h5 + .stat {
+  margin-top: $grid-1;
+}
+
+.stat-header {
+  font-size: $sans-s3;
+  font-weight: 900;
+  margin-bottom: $grid-105;
+}
+
+.stat-group {
+  display: flex;
+
+  & + .stat-group {
+    margin-top: 1.75rem;
+  }
+}
+
+.stat-error,
+.stat-warning,
+.stat-success {
+  padding-left: $grid-2;
+
+  &::before {
+    @extend .status-pill;
+    height: 2.5rem;
+    top: 1.25rem;
+  }
+
+  .stat-header {
+    margin-left: -$grid-1;
+  }
+}
+
+.stat-error {
+  &::before {
+    border-color: $color-error;
+  }
+}
+
+.stat-warning {
+  &::before {
+    border-color: $color-gold;
+  }
+}
+
+.stat-success {
+  &::before {
+    border-color: $color-finish;
+  }
+}
+
+.stat-info {
+  float: right;
+  font-size: $sans-s2;
+  font-weight: 600;
+  margin-right: $grid-1;
+  margin-top: 0.2rem;
+  text-align: right;
+  width: 8rem;
+}
+
+.stat-primary {
+  float: left;
+  font-size: $sans-s6;
+  min-height: 2rem;
+  white-space: nowrap;
+  width: 4rem;
+}
+
+.stat-single_box {
+  $v-space: $grid-2;
+  background-color: $color-lightestgray;
+  margin: -0.4rem 1.8rem;
+  min-height: 10rem;
+  padding: $v-space 0;
+  position: relative;
+  text-align: center;
+  width: auto;
+
+  .stat-info,
+  .stat-primary {
+    float: none;
+  }
+
+  .error_message {
+    width: 100%; // full width so text appears centered with everything else
+  }
+}
+
+.stat-bottom {
+  bottom: 1rem;
+  left: 2%;
+  position: absolute;
+}
+
+// Double classes to compete with specificity over input elements
+.stat-input {
+  &.stat-input-text {
+    // stylelint-disable declaration-block-no-ignored-properties
+    display: inline;
+    font-size: $input-font-size;
+    margin: 0;
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
+    width: 5rem;
+    vertical-align: middle;
+    // stylelint-enable
+  }
+
+  &.stat-input-text-scale {
+    margin-bottom: $grid-1;
+    margin-top: -$grid-1;
+  }
+
+  &.stat-input-label {
+    display: inline;
+    margin-left: $grid-1;
+  }
+}

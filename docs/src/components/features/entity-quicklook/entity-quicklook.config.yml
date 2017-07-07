@@ -1,0 +1,10 @@
+title: Entity quicklook
+status: prototype
+context:
+  organizations:
+    - org:
+      name: 'abacus'
+    - org:
+      name: 'epa-journeyman'
+    - org:
+      name: 'sandbox'

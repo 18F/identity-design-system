@@ -1,0 +1,42 @@
+title: icon-ui
+status: beta
+collated: true
+default: chevron-left
+
+variants:
+  - name: chevron-left
+    context:
+      iconKind: chevron
+      iconOrientation: left
+  - name: chevron-right
+    context:
+      iconKind: chevron
+      iconOrientation: right
+  - name: chevron-down
+    context:
+      iconKind: chevron
+      iconOrientation: down
+  - name: chevron-up
+    context:
+      iconKind: chevron
+      iconOrientation: up
+  - name: chevron-left-white
+    context:
+      iconKind: chevron
+      iconOrientation: left
+      iconWhite: true
+  - name: chevron-right-white
+    context:
+      iconKind: chevron
+      iconOrientation: right
+      iconWhite: true
+  - name: chevron-down-white
+    context:
+      iconKind: chevron
+      iconOrientation: down
+      iconWhite: true
+  - name: chevron-up-white
+    context:
+      iconKind: chevron
+      iconOrientation: up
+      iconWhite: true

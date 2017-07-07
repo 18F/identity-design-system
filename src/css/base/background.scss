@@ -1,0 +1,12 @@
+
+@import '../override_vars.scss';
+@import '../vars.scss';
+
+body {
+  background-color: $color-background-light;
+}
+
+main {
+  background-color: transparent;
+  position: relative;
+}

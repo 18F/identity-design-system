@@ -1,0 +1,17 @@
+title: Status
+status: beta
+collated: true
+default: inactive
+variants:
+  - name: inactive
+    context:
+      modifier: inactive
+  - name: ok
+    context:
+      modifier: ok
+  - name: warning
+    context:
+      modifier: warning
+  - name: error
+    context:
+      modifier: error

@@ -1,0 +1,33 @@
+<div class="sans-s4 lh-single w15 ml3 col-fit row-center-x pos-relative">
+  <div class="col-fit">
+    {% if entityType == 'space' or entityCount === 0 %}
+      {% set iconVariant = entityType + '-medium' %}
+    {% else %}
+      {% if errors === 0 %}
+        {% set status = 'ok' %}
+      {% else %}
+        {% set status = 'error' %}
+      {% endif %}
+      {% set iconVariant = entityType + '-' + status + '-medium' %}
+    {% endif %}
+    {% render '@fill-icons--' + iconVariant %}
+  </div>
+  <div class="count_status-text col-fill">
+    <strong>{{ entityCount }}</strong>
+    {{ entityType }}{% if entityCount != '1' %}s{% endif %}
+  </div>
+  <div class="statusbar pos-absolute bottom-n3 h1 left-0 right-0 mrn1px row bg-cream">
+    {% if entityType === 'space' %}
+      {% for i in range(0, entityCount) %}
+        <span class="bar col-f1 br1px b-white h1 bg-textblack"></span>
+      {% endfor %}
+    {% else %}
+      {% for i in range(0, errors) %}
+        <span class="bar col-f1 br1px b-white h1 bg-red"></span>
+      {% endfor %}
+      {% for i in range(0, entityCount - errors) %}
+        <span class="bar col-f1 br1px b-white h1 bg-green"></span>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,43 @@
+
+@import '../../../node_modules/uswds/src/stylesheets/core/defaults.scss';
+@import '../override_vars.scss';
+@import '../core.scss';
+
+.confirm {
+  width: 100%;
+}
+
+.confirm-nexto {
+  background-color: white;
+  border: 2px solid $color-gray-light;
+  clear: left;
+  display: block;
+  float: left;
+  padding: $grid-2;
+}
+
+.confirm-over {
+  align-items: center;
+  background-color: $color-lightestgray;
+  border: 0;
+  justify-content: space-between;
+  padding: $grid-2;
+}
+
+.confirm-block {
+  background: none;
+  border: none;
+  float: none;
+  padding: 0;
+}
+
+.confirm-message {
+  color: $color-warning;
+  font-weight: 600;
+  margin-right: 1rem;
+
+  a {
+    color: $color-warning;
+    text-decoration: underline;
+  }
+}

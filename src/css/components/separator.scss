@@ -1,0 +1,49 @@
+
+@import '../core.scss';
+
+$primary-color: $color-blue;
+$alt-color: $color-red;
+$center-piece-size: 12px;
+
+.separator {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $grid-3;
+  margin-top: $grid-3;
+  width: 100%;
+
+  &:before,
+  &:after {
+    background: linear-gradient(to top, $primary-color 0%,
+      lighten($primary-color, 75%) 100%);
+    content: '';
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 2;
+    height: 2px;
+    order: 1;
+  }
+
+  &:after {
+    order: 3;
+  }
+}
+
+.separator-alt {
+  &:before,
+  &:after {
+    background: linear-gradient(to top, $alt-color 5%,
+      rgba($alt-color, 0.1) 90%);
+  }
+}
+
+.separator-center_piece {
+  flex-grow: 0;
+  flex-shrink: 1;
+  font-size: $center-piece-size;
+  margin-left: $grid-2;
+  margin-right: $grid-2;
+  order: 2;
+  width: $center-piece-size;
+}

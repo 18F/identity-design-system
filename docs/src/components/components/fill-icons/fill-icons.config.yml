@@ -1,0 +1,770 @@
+title: Fill Icons
+status: beta
+collated: true
+default: org-small
+variants:
+  - name: org-small
+    context:
+      iconKind: org
+      iconSize: small
+      isBorder: false
+  - name: org-medium
+    context:
+      iconKind: org
+      iconSize: medium
+      isBorder: false
+  - name: org-large
+    context:
+      iconKind: org
+      iconSize: large
+      isBorder: false
+  - name: org-white-small
+    context:
+      iconStatus: white
+      iconKind: org
+      iconSize: small
+      isBorder: false
+  - name: org-white-medium
+    context:
+      iconStatus: white
+      iconKind: org
+      iconSize: medium
+      isBorder: false
+  - name: org-white-large
+    context:
+      iconStatus: white
+      iconKind: org
+      iconSize: large
+      isBorder: false
+  - name: org-active-small
+    context:
+      iconStatus: active
+      iconKind: org
+      iconSize: small
+      isBorder: false
+  - name: org-active-medium
+    context:
+      iconStatus: active
+      iconKind: org
+      iconSize: medium
+      isBorder: false
+  - name: org-active-large
+    context:
+      iconStatus: active
+      iconKind: org
+      iconSize: large
+      isBorder: false
+  - name: org-disabled-small
+    context:
+      iconStatus: disabled
+      iconKind: org
+      iconSize: small
+      isBorder: false
+  - name: org-disabled-medium
+    context:
+      iconStatus: disabled
+      iconKind: org
+      iconSize: medium
+      isBorder: false
+  - name: org-disabled-large
+    context:
+      iconStatus: disabled
+      iconKind: org
+      iconSize: large
+      isBorder: false
+  - name: space-small
+    context:
+      iconKind: space
+      iconSize: small
+      isBorder: true
+  - name: space-medium
+    context:
+      iconKind: space
+      iconSize: medium
+      isBorder: true
+  - name: space-large
+    context:
+      iconKind: space
+      iconSize: large
+      isBorder: true
+  - name: space-white-small
+    context:
+      iconStatus: white
+      iconKind: space
+      iconSize: small
+      isBorder: true
+  - name: space-white-medium
+    context:
+      iconStatus: white
+      iconKind: space
+      iconSize: medium
+      isBorder: true
+  - name: space-white-large
+    context:
+      iconStatus: white
+      iconKind: space
+      iconSize: large
+      isBorder: true
+  - name: space-small-reverse
+    context:
+      iconKind: space
+      iconSize: small
+      isReverse: true
+  - name: space-medium-reverse
+    context:
+      iconKind: space
+      iconSize: medium
+      isReverse: true
+  - name: space-large-reverse
+    context:
+      iconKind: space
+      iconSize: large
+      isReverse: true
+  - name: space-disabled-small
+    context:
+      iconStatus: disabled
+      iconKind: space
+      iconSize: small
+      isBorder: true
+  - name: space-disabled-medium
+    context:
+      iconStatus: disabled
+      iconKind: space
+      iconSize: medium
+      isBorder: true
+  - name: space-disabled-large
+    context:
+      iconStatus: disabled
+      iconKind: space
+      iconSize: large
+      isBorder: true
+  - name: space-disabled-small-reverse
+    context:
+      iconStatus: disabled
+      iconKind: space
+      iconSize: small
+      isReverse: true
+  - name: space-disabled-medium-reverse
+    context:
+      iconStatus: disabled
+      iconKind: space
+      iconSize: medium
+      isReverse: true
+  - name: space-disabled-large-reverse
+    context:
+      iconStatus: disabled
+      iconKind: space
+      iconSize: large
+      isReverse: true
+  - name: space-active-small
+    context:
+      iconStatus: active
+      iconKind: space
+      iconSize: small
+      isBorder: true
+  - name: space-active-medium
+    context:
+      iconStatus: active
+      iconKind: space
+      iconSize: medium
+      isBorder: true
+  - name: space-active-large
+    context:
+      iconStatus: active
+      iconKind: space
+      iconSize: large
+      isBorder: true
+  - name: space-active-small-reverse
+    context:
+      iconStatus: active
+      iconKind: space
+      iconSize: small
+      isReverse: true
+  - name: space-active-medium-reverse
+    context:
+      iconStatus: active
+      iconKind: space
+      iconSize: medium
+      isReverse: true
+  - name: space-active-large-reverse
+    context:
+      iconStatus: active
+      iconKind: space
+      iconSize: large
+      isReverse: true
+  - name: space-ok-small
+    context:
+      iconStatus: ok
+      iconKind: space
+      iconSize: small
+      isBorder: true
+  - name: space-ok-medium
+    context:
+      iconStatus: ok
+      iconKind: space
+      iconSize: medium
+      isBorder: true
+  - name: space-ok-large
+    context:
+      iconStatus: ok
+      iconKind: space
+      iconSize: large
+      isBorder: true
+  - name: space-ok-small-reverse
+    context:
+      iconStatus: ok
+      iconKind: space
+      iconSize: small
+      isReverse: true
+  - name: space-ok-medium-reverse
+    context:
+      iconStatus: ok
+      iconKind: space
+      iconSize: medium
+      isReverse: true
+  - name: space-ok-large-reverse
+    context:
+      iconStatus: ok
+      iconKind: space
+      iconSize: large
+      isReverse: true
+  - name: space-error-small
+    context:
+      iconStatus: error
+      iconKind: space
+      iconSize: small
+      isBorder: true
+  - name: space-error-medium
+    context:
+      iconStatus: error
+      iconKind: space
+      iconSize: medium
+      isBorder: true
+  - name: space-error-large
+    context:
+      iconStatus: error
+      iconKind: space
+      iconSize: large
+      isBorder: true
+  - name: space-error-small-reverse
+    context:
+      iconStatus: error
+      iconKind: space
+      iconSize: small
+      isReverse: true
+  - name: space-error-medium-reverse
+    context:
+      iconStatus: error
+      iconKind: space
+      iconSize: medium
+      isReverse: true
+  - name: space-error-large-reverse
+    context:
+      iconStatus: error
+      iconKind: space
+      iconSize: large
+      isReverse: true
+  - name: app-small
+    context:
+      iconKind: app
+      iconSize: small
+      isBorder: true
+  - name: app-medium
+    context:
+      iconKind: app
+      iconSize: medium
+      isBorder: true
+  - name: app-large
+    context:
+      iconKind: app
+      iconSize: large
+      isBorder: true
+  - name: app-white-small
+    context:
+      iconStatus: white
+      iconKind: app
+      iconSize: small
+      isBorder: true
+  - name: app-white-medium
+    context:
+      iconStatus: white
+      iconKind: app
+      iconSize: medium
+      isBorder: true
+  - name: app-white-large
+    context:
+      iconStatus: white
+      iconKind: app
+      iconSize: large
+      isBorder: true
+  - name: app-small-reverse
+    context:
+      iconKind: app
+      iconSize: small
+      isReverse: true
+  - name: app-medium-reverse
+    context:
+      iconKind: app
+      iconSize: medium
+      isReverse: true
+  - name: app-large-reverse
+    context:
+      iconKind: app
+      iconSize: large
+      isReverse: true
+  - name: app-disabled-small
+    context:
+      iconStatus: disabled
+      iconKind: app
+      iconSize: small
+      isBorder: true
+  - name: app-disabled-medium
+    context:
+      iconStatus: disabled
+      iconKind: app
+      iconSize: medium
+      isBorder: true
+  - name: app-disabled-large
+    context:
+      iconStatus: disabled
+      iconKind: app
+      iconSize: large
+      isBorder: true
+  - name: app-disabled-small-reverse
+    context:
+      iconStatus: disabled
+      iconKind: app
+      iconSize: small
+      isReverse: true
+  - name: app-disabled-medium-reverse
+    context:
+      iconStatus: disabled
+      iconKind: app
+      iconSize: medium
+      isReverse: true
+  - name: app-disabled-large-reverse
+    context:
+      iconStatus: disabled
+      iconKind: app
+      iconSize: large
+      isReverse: true
+  - name: app-active-small
+    context:
+      iconStatus: active
+      iconKind: app
+      iconSize: small
+      isBorder: true
+  - name: app-active-medium
+    context:
+      iconStatus: active
+      iconKind: app
+      iconSize: medium
+      isBorder: true
+  - name: app-active-large
+    context:
+      iconStatus: active
+      iconKind: app
+      iconSize: large
+      isBorder: true
+  - name: app-active-small-reverse
+    context:
+      iconStatus: active
+      iconKind: app
+      iconSize: small
+      isReverse: true
+  - name: app-active-medium-reverse
+    context:
+      iconStatus: active
+      iconKind: app
+      iconSize: medium
+      isReverse: true
+  - name: app-active-large-reverse
+    context:
+      iconStatus: active
+      iconKind: app
+      iconSize: large
+      isReverse: true
+  - name: app-ok-small
+    context:
+      iconStatus: ok
+      iconKind: app
+      iconSize: small
+      isBorder: true
+  - name: app-ok-medium
+    context:
+      iconStatus: ok
+      iconKind: app
+      iconSize: medium
+      isBorder: true
+  - name: app-ok-large
+    context:
+      iconStatus: ok
+      iconKind: app
+      iconSize: large
+      isBorder: true
+  - name: app-ok-small-reverse
+    context:
+      iconStatus: ok
+      iconKind: app
+      iconSize: small
+      isReverse: true
+  - name: app-ok-medium-reverse
+    context:
+      iconStatus: ok
+      iconKind: app
+      iconSize: medium
+      isReverse: true
+  - name: app-ok-large-reverse
+    context:
+      iconStatus: ok
+      iconKind: app
+      iconSize: large
+      isReverse: true
+  - name: app-error-small
+    context:
+      iconStatus: error
+      iconKind: app
+      iconSize: small
+      isBorder: true
+  - name: app-error-medium
+    context:
+      iconStatus: error
+      iconKind: app
+      iconSize: medium
+      isBorder: true
+  - name: app-error-large
+    context:
+      iconStatus: error
+      iconKind: app
+      iconSize: large
+      isBorder: true
+  - name: app-error-small-reverse
+    context:
+      iconStatus: error
+      iconKind: app
+      iconSize: small
+      isReverse: true
+  - name: app-error-medium-reverse
+    context:
+      iconStatus: error
+      iconKind: app
+      iconSize: medium
+      isReverse: true
+  - name: app-error-large-reverse
+    context:
+      iconStatus: error
+      iconKind: app
+      iconSize: large
+      isReverse: true
+  - name: service-small
+    context:
+      iconKind: service
+      iconSize: small
+      isBorder: true
+  - name: service-medium
+    context:
+      iconKind: service
+      iconSize: medium
+      isBorder: true
+  - name: service-large
+    context:
+      iconKind: service
+      iconSize: large
+      isBorder: true
+  - name: service-white-small
+    context:
+      iconStatus: white
+      iconKind: service
+      iconSize: small
+      isBorder: true
+  - name: service-white-medium
+    context:
+      iconStatus: white
+      iconKind: service
+      iconSize: medium
+      isBorder: true
+  - name: service-white-large
+    context:
+      iconStatus: white
+      iconKind: service
+      iconSize: large
+      isBorder: true
+  - name: service-ok-small
+    context:
+      iconStatus: ok
+      iconKind: service
+      iconSize: small
+      isBorder: true
+  - name: service-ok-medium
+    context:
+      iconStatus: ok
+      iconKind: service
+      iconSize: medium
+      isBorder: true
+  - name: service-ok-large
+    context:
+      iconStatus: ok
+      iconKind: service
+      iconSize: large
+      isBorder: true
+  - name: service-ok-small-reverse
+    context:
+      iconStatus: ok
+      iconKind: service
+      iconSize: small
+      isReverse: true
+  - name: service-ok-medium-reverse
+    context:
+      iconStatus: ok
+      iconKind: service
+      iconSize: medium
+      isReverse: true
+  - name: service-ok-large-reverse
+    context:
+      iconStatus: ok
+      iconKind: service
+      iconSize: large
+      isReverse: true
+  - name: service-small-reverse
+    context:
+      iconKind: service
+      iconSize: small
+      isReverse: true
+  - name: service-medium-reverse
+    context:
+      iconKind: service
+      iconSize: medium
+      isReverse: true
+  - name: service-large-reverse
+    context:
+      iconKind: service
+      iconSize: large
+      isReverse: true
+  - name: service-error-small
+    context:
+      iconStatus: error
+      iconKind: service
+      iconSize: small
+      isBorder: true
+  - name: service-error-medium
+    context:
+      iconStatus: error
+      iconKind: service
+      iconSize: medium
+      isBorder: true
+  - name: service-error-large
+    context:
+      iconStatus: error
+      iconKind: service
+      iconSize: large
+      isBorder: true
+  - name: service-error-small-reverse
+    context:
+      iconStatus: error
+      iconKind: service
+      iconSize: small
+      isReverse: true
+  - name: service-error-medium-reverse
+    context:
+      iconStatus: error
+      iconKind: service
+      iconSize: medium
+      isReverse: true
+  - name: service-error-large-reverse
+    context:
+      iconStatus: error
+      iconKind: service
+      iconSize: large
+      isReverse: true
+  - name: home-small
+    context:
+      iconKind: home
+      iconSize: small
+      isBorder: true
+  - name: home-medium
+    context:
+      iconKind: home
+      iconSize: medium
+      isBorder: true
+  - name: home-large
+    context:
+      iconKind: home
+      iconSize: large
+      isBorder: true
+  - name: home-white-small
+    context:
+      iconStatus: white
+      iconKind: home
+      iconSize: small
+      isBorder: true
+  - name: home-white-medium
+    context:
+      iconStatus: white
+      iconKind: home
+      iconSize: medium
+      isBorder: true
+  - name: home-white-large
+    context:
+      iconStatus: white
+      iconKind: home
+      iconSize: large
+      isBorder: true
+  - name: home-small-reverse
+    context:
+      iconKind: home
+      iconSize: small
+      isReverse: true
+  - name: home-medium-reverse
+    context:
+      iconKind: home
+      iconSize: medium
+      isReverse: true
+  - name: home-large-reverse
+    context:
+      iconKind: home
+      iconSize: large
+      isReverse: true
+  - name: home-disabled-small
+    context:
+      iconStatus: disabled
+      iconKind: home
+      iconSize: small
+      isBorder: true
+  - name: home-disabled-medium
+    context:
+      iconStatus: disabled
+      iconKind: home
+      iconSize: medium
+      isBorder: true
+  - name: home-disabled-large
+    context:
+      iconStatus: disabled
+      iconKind: home
+      iconSize: large
+      isBorder: true
+  - name: home-disabled-small-reverse
+    context:
+      iconStatus: disabled
+      iconKind: home
+      iconSize: small
+      isReverse: true
+  - name: home-disabled-medium-reverse
+    context:
+      iconStatus: disabled
+      iconKind: home
+      iconSize: medium
+      isReverse: true
+  - name: home-disabled-large-reverse
+    context:
+      iconStatus: disabled
+      iconKind: home
+      iconSize: large
+      isReverse: true
+  - name: home-active-small
+    context:
+      iconStatus: active
+      iconKind: home
+      iconSize: small
+      isBorder: true
+  - name: home-active-medium
+    context:
+      iconStatus: active
+      iconKind: home
+      iconSize: medium
+      isBorder: true
+  - name: home-active-large
+    context:
+      iconStatus: active
+      iconKind: home
+      iconSize: large
+      isBorder: true
+  - name: home-active-small-reverse
+    context:
+      iconStatus: active
+      iconKind: home
+      iconSize: small
+      isReverse: true
+  - name: home-active-medium-reverse
+    context:
+      iconStatus: active
+      iconKind: home
+      iconSize: medium
+      isReverse: true
+  - name: home-active-large-reverse
+    context:
+      iconStatus: active
+      iconKind: home
+      iconSize: large
+      isReverse: true
+  - name: home-ok-small
+    context:
+      iconStatus: ok
+      iconKind: home
+      iconSize: small
+      isBorder: true
+  - name: home-ok-medium
+    context:
+      iconStatus: ok
+      iconKind: home
+      iconSize: medium
+      isBorder: true
+  - name: home-ok-large
+    context:
+      iconStatus: ok
+      iconKind: home
+      iconSize: large
+      isBorder: true
+  - name: home-ok-small-reverse
+    context:
+      iconStatus: ok
+      iconKind: home
+      iconSize: small
+      isReverse: true
+  - name: home-ok-medium-reverse
+    context:
+      iconStatus: ok
+      iconKind: home
+      iconSize: medium
+      isReverse: true
+  - name: home-ok-large-reverse
+    context:
+      iconStatus: ok
+      iconKind: home
+      iconSize: large
+      isReverse: true
+  - name: home-error-small
+    context:
+      iconStatus: error
+      iconKind: home
+      iconSize: small
+      isBorder: true
+  - name: home-error-medium
+    context:
+      iconStatus: error
+      iconKind: home
+      iconSize: medium
+      isBorder: true
+  - name: home-error-large
+    context:
+      iconStatus: error
+      iconKind: home
+      iconSize: large
+      isBorder: true
+  - name: home-error-small-reverse
+    context:
+      iconStatus: error
+      iconKind: home
+      iconSize: small
+      isReverse: true
+  - name: home-error-medium-reverse
+    context:
+      iconStatus: error
+      iconKind: home
+      iconSize: medium
+      isReverse: true
+  - name: home-error-large-reverse
+    context:
+      iconStatus: error
+      iconKind: home
+      iconSize: large
+      isReverse: true

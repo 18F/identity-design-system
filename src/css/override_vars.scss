@@ -1,0 +1,158 @@
+// color
+
+// named colors
+$color-blue:                    #056dd4;
+$color-brightmint:              #00df99;
+$color-cream:                   #f5f5f3;
+$color-gold:                    #f4b400;
+$color-yellow:                  #fad980;
+$color-textgreen:               #438500;
+$color-green:                   #0baf00;
+$color-red:                     #be4900;
+
+$color-trueblack:               #000000;
+$color-textblack:               #333333;
+$color-darkgray:                #555555;
+$color-mediumgray:              #8e8e8e;
+$color-mediumgray-trans:        rgba(0, 0, 0, .4);
+$color-lightgray:               #d3d3d3;
+$color-lightestgray:            #f5f5f3;
+$color-white:                   #ffffff; // perhaps redundant
+
+// semantic colors
+$color-primary:                 $color-blue;
+$color-primary-darker:          #2c3e50;
+$color-primary-darkest:         #1f2c38;
+
+$color-primary-alt:             #3498db;
+$color-primary-alt-dark:        darken($color-primary-alt, 40%);
+$color-primary-alt-darkest:     darken($color-primary-alt, 70%);
+$color-primary-alt-light:       #77b6ff;
+$color-primary-alt-lightest:    #d9f1ff;
+
+$color-secondary:               $color-red;
+$color-secondary-dark:          #b0392e;
+$color-secondary-darkest:       darken($color-secondary, 75%);
+$color-secondary-light:         #f3736e;
+$color-secondary-lightest:      #deeeef; // DEEF!
+
+$color-warning:                 $color-red;
+$color-error:                   $color-red;
+$color-finish:                  $color-green;
+$color-ok:                      $color-green;
+$color-textok:                  $color-textgreen;
+$color-inactive:                $color-textblack;
+$color-notice:                  $color-yellow;
+
+$color-visited:                 $color-blue;
+$color-focus:                   $color-gold;
+
+$color-base:                    $color-textblack;
+$color-background-light:        $color-cream;
+
+// Override WDS gray colors
+$color-gray:                    $color-mediumgray;
+$color-gray-dark:               $color-darkgray; // redundant to prevent breaking
+$color-disclaimer-text:         $color-textblack;
+$color-disclaimer-link:         $color-blue;
+
+// typefaces
+$font-sans:                     '18Franklin-webfont', system, -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-serif:                    'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+$font-mono:                     'Roboto Mono', 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace;
+
+// utility class scale suffixes
+
+$u-breakpoints: '-xs', '-s', '-m', '-l', '-xl';
+
+// spacing scale and grid
+// spacing is calculated on multiples of a base grid (here, 8px)
+$grid-base:          8; // unitless for some calculations
+$grid-base-px:       8px; // the same value in px
+$grid-type:          $grid-base * 2; // establishes the base type size (16px) for rem calculations; unitless here
+$grid-type-px:       #{$grid-type}px; // the base type size in px
+
+// calculates multiples of the base grid in units of rem
+$grid-05:            #{($grid-base / 2 / $grid-type)}rem;     // 4px
+$grid-1:             #{($grid-base / $grid-type)}rem;         // 8px
+$grid-105:           #{($grid-base * 1.5 / $grid-type)}rem;   // 12px
+$grid-2:             #{($grid-base * 2 / $grid-type)}rem;     // 16px
+$grid-3:             #{($grid-base * 3 / $grid-type)}rem;     // 24px
+$grid-4:             #{($grid-base * 4 / $grid-type)}rem;     // 32px
+$grid-5:             #{($grid-base * 5 / $grid-type)}rem;     // 40px
+$grid-6:             #{($grid-base * 6 / $grid-type)}rem;     // 48px
+$grid-7:             #{($grid-base * 7 / $grid-type)}rem;     // 56px
+$grid-8:             #{($grid-base * 8 / $grid-type)}rem;     // 64px
+$grid-9:             #{($grid-base * 9 / $grid-type)}rem;     // 72px
+$grid-10:            #{($grid-base * 10 / $grid-type)}rem;    // 80px
+$grid-15:            #{($grid-base * 15 / $grid-type)}rem;    // 80px
+$grid-20:            #{($grid-base * 20 / $grid-type)}rem;    // 160px
+$grid-25:            #{($grid-base * 25 / $grid-type)}rem;    // 160px
+$grid-30:            #{($grid-base * 30 / $grid-type)}rem;    // 240px
+$grid-40:            #{($grid-base * 40 / $grid-type)}rem;    // 320px
+$grid-50:            #{($grid-base * 50 / $grid-type)}rem;    // 400px
+
+$grid-n05:            #{($grid-base / -2 / $grid-type)}rem;     // 4px
+$grid-n1:             #{($grid-base * -1 / $grid-type)}rem;     // 8px
+$grid-n105:           #{($grid-base * -1.5 / $grid-type)}rem;   // 12px
+$grid-n2:             #{($grid-base * -2 / $grid-type)}rem;     // 16px
+$grid-n3:             #{($grid-base * -3 / $grid-type)}rem;     // 24px
+$grid-n4:             #{($grid-base * -4 / $grid-type)}rem;     // 32px
+$grid-n5:             #{($grid-base * -5 / $grid-type)}rem;     // 40px
+
+// widths
+$nav-width:             $grid-base-px * 75;          // 600px;
+$site-max-width:        $grid-base-px * 130;         // 1040px;
+$no-sidebar-max-width:  $grid-base-px * 126;         // 976px + 32px outer margin;
+$text-max-width:        36em;
+$text-narrow-width:     17em;
+
+// type scale
+$sans-s1:           (10rem / $grid-type);         // 10px;
+$sans-s2:           (12rem / $grid-type);         // 12px;
+$sans-s3:           (13rem / $grid-type);         // 13px;
+$sans-s4:           (14rem / $grid-type);         // 14px;
+$sans-s5:           (16rem / $grid-type);         // 16px;
+$sans-s6:           (18rem / $grid-type);         // 18px;
+$sans-s7:           (20rem / $grid-type);         // 20px;
+$sans-s8:           (24rem / $grid-type);         // 24px;
+$sans-s9:           (36rem / $grid-type);         // 36px;
+$sans-s10:          (52rem / $grid-type);         // 52px;
+
+$sans-s: $sans-s1, $sans-s2, $sans-s3, $sans-s4, $sans-s5, $sans-s6, $sans-s7, $sans-s8, $sans-s9, $sans-s10;
+
+$serif-s1:          (10rem / $grid-type);         // 10px;
+$serif-s2:          (13rem / $grid-type);         // 13px;
+$serif-s3:          (14rem / $grid-type);         // 14px;
+$serif-s4:          (15rem / $grid-type);         // 15px;
+$serif-s5:          (17rem / $grid-type);         // 17px;
+$serif-s6:          (19rem / $grid-type);         // 19px;
+$serif-s7:          (23rem / $grid-type);         // 23px;
+$serif-s8:          (27rem / $grid-type);         // 27px;
+$serif-s9:          (36rem / $grid-type);         // 38px;
+$serif-s10:         (52rem / $grid-type);         // 54px;
+
+$serif-s: $serif-s1, $serif-s2, $serif-s3, $serif-s4, $serif-s5, $serif-s6, $serif-s7, $serif-s8, $serif-s9, $serif-s10;
+
+$mono-s1:           (10rem / $grid-type);         // 10px;
+$mono-s2:           (12rem / $grid-type);         // 12px;
+$mono-s3:           (13rem / $grid-type);         // 13px;
+$mono-s4:           (15rem / $grid-type);         // 15px;
+$mono-s5:           (16rem / $grid-type);         // 16px;
+$mono-s6:           (18rem / $grid-type);         // 18px;
+$mono-s7:           (23rem / $grid-type);         // 23px;
+$mono-s8:           (25rem / $grid-type);         // 25px;
+$mono-s9:           (44rem / $grid-type);         // 44px;
+$mono-s10:          (72rem / $grid-type);         // 72px;
+
+$mono-s: $mono-s1, $mono-s2, $mono-s3, $mono-s4, $mono-s5, $mono-s6, $mono-s7, $mono-s8, $mono-s9, $mono-s10;
+
+$lh-single:    1;
+$lh-hed:       1.05;
+$lh-cap:       1.3;
+$lh-body:      1.55;
+$lh-display:   1.65;
+
+// border radius
+$rounded:         2px;
+$not-rounded:       0;

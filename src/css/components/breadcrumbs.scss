@@ -1,0 +1,34 @@
+
+@import '../override_vars.scss';
+@import '../core.scss';
+
+.breadcrumbs {
+  font-size: $sans-s5;
+  font-weight: 400;
+  line-height: $lh-single;
+  margin-bottom: $grid-4;
+  margin-top: -$grid-2;
+  padding-left: 0;
+}
+
+.breadcrumbs-item {
+  display: inline-block;
+  margin-bottom: 0;
+
+  // Breadcrumb separator
+  &::after {
+    color: $color-mediumgray-trans;
+    content: '/';
+    display: inline;
+    font-size: $sans-s6;
+    line-height: $lh-single;
+    padding: 0 $grid-1;
+    position: relative;
+    top: 2px;
+  }
+}
+
+.breadcrumbs-item-link {
+  border-bottom: 1px solid;
+  display: inline-block;
+}

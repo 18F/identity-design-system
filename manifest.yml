@@ -1,0 +1,10 @@
+---
+path: ./docs/build
+domain: fr.cloud.gov
+applications:
+- name: cg-style
+  host: styleguide
+  memory: 64M
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  env:
+    FORCE_HTTPS: true
