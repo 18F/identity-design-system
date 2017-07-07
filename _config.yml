@@ -2,9 +2,9 @@
 markdown: redcarpet
 highlighter: rouge
 
-name: Cloud.gov style
+name: Login.gov style
 
-source: documentation
+source: docs/build
 
 version: 0.4.0
 
@@ -25,13 +25,9 @@ exclude:
 permalink: pretty
 
 repos:
-- name: Cloud.gov style
-  description: The global style of cloud.gov.
-  url: https://github.com/18F/cg-style
-
-sass:
-  sass_dir: documentation/assets/css
-#  style: :compressed
+- name: Login.gov style
+  description: The global style of login.gov.
+  url: https://github.com/18F/identity-style-guide
 
 collections:
   base:
