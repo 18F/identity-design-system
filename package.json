@@ -23,6 +23,7 @@
     "copy-library-assets-css": "mkdir -p ./docs/assets/css && cp ./css/identity-style.css ./docs/src/main.css ./docs/assets/css",
     "copy-library-assets-font": "mkdir -p ./docs/assets/fonts && cp ./fonts/* ./docs/assets/fonts",
     "copy-library-assets-img": "mkdir -p ./docs/assets/img && cp -R ./img/* ./docs/assets/img",
+    "federalist": "npm run build-library",
     "lint": "node node_modules/.bin/18f-stylelint-rules './src/css/**/*.scss'",
     "svg": "gulp --gulpfile build/gulpfile.js svg-sprite",
     "test": "npm run lint",
