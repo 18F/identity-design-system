@@ -1,3 +1,0 @@
-# Entity quicklook
-
-Needs documentation...

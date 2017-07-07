@@ -1,0 +1,8 @@
+<div class="serif h6">Type scale for {{ typeface }}</div>
+
+{% for scale in scales %}
+  <div class="pattern">
+
+    <div class="pattern-code {{ typefaceClass }} {{ scale }}">.{{ scale }}</div>
+  </div>
+{% endfor %}

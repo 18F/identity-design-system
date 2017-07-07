@@ -8,30 +8,31 @@ const customTheme = mandelbrot({
   panels: ['notes', 'html', 'view', 'context', 'resources', 'info'],
   styles: [
     'default',
-    '/css/idenity-style-min.css',
+    '/css/identity-style.css',
+    '/css/identity-style-min.css',
     '/css/main.css'
   ]
 });
 
-fractal.set('project.title', 'cloud.gov pattern library');
+fractal.set('project.title', 'login.gov pattern library');
 
 fractal.components.set('path', __dirname + '/docs/src/components');
 fractal.components.set('default.preview', '@preview');
 fractal.components.set('statuses', {
-  prototype: {
-    label: "Prototype",
-    description: "Code implementation is in exploratory phase, incomplete and not for use.",
+  brianhurst: {
+    label: "Blocked – for Brian Hurst review",
+    description: "Brian Hurst should review.",
     color: "#be4900"
   },
-  draft: {
-    label: "Draft",
-    description: "Work in progress. Use with caution.",
+  review: {
+    label: "Ready for review",
+    description: "Ready for another team member to review.",
     color: "#f4b400"
   },
-  beta: {
-    label: "Beta",
-    description: "When some design/accessibility reviews have been done and documentation is complete. The component is ready for use.",
-    color: "#056dd4"
+  draft: {
+    label: "In progress",
+    description: "Work in progress. Use with caution.",
+    color: "#ccc"
   },
   ready: {
     label: "Ready",

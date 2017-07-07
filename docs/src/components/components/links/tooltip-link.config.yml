@@ -1,0 +1,45 @@
+title: Link
+status: draft
+collated: true
+default: primary-link
+variants:
+  - name: primary-link
+    context:
+      isDefault: false
+      isOutline: false
+      isLink: true
+      buttonStatus: primary
+      buttonStyle: link
+      buttonText: primary-link
+  - name: base-link
+    context:
+      isDefault: false
+      isOutline: false
+      isLink: true
+      buttonStatus: base
+      buttonStyle: link
+      buttonText: base-link
+  - name: disabled-link
+    context:
+      isDefault: false
+      isOutline: false
+      isLink: true
+      buttonStatus: cautious
+      buttonStyle: link
+      buttonText: disabled-link
+  - name: warning-link
+    context:
+      isDefault: false
+      isOutline: false
+      isLink: true
+      buttonStatus: warning
+      buttonStyle: link
+      buttonText: warning-outline
+  - name: finish-link
+    context:
+      isDefault: false
+      isOutline: false
+      isLink: true
+      buttonStatus: finish
+      buttonStyle: link
+      buttonText: finish-link

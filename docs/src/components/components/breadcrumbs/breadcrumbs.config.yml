@@ -1,8 +1,0 @@
-title: Breadcrumbs
-status: beta
-context:
-  breadcrumbs:
-  - text: overview
-  - text: my-org
-  - text: my-space
-  - text: my-app

@@ -1,3 +1,0 @@
-# Expandable box
-
-Needs documentation...

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="6px" height="11px" viewBox="0 0 6 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>chevron</title>
-    <g id="-blocks-components-symbols" stroke="none" stroke-width="1" fill-rule="evenodd">
-        <g id="block/ui/chevron--blue" transform="translate(-5.000000, 0.000000)">
-            <polygon id="Path-3" points="5 0 5 1.35170339 9.15245332 5.50415671 5.00392801 9.65268202 5.00392801 11 10.4958226 5.50810538"></polygon>
-        </g>
-    </g>
-</svg>
