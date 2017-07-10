@@ -1,6 +1,6 @@
 {
   "name": "identity-style-guide",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "The global style of login.gov",
   "main": "src/js/main.js",
   "scripts": {
