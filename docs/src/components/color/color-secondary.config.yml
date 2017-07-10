@@ -1,19 +1,7 @@
-title: 'color palette'
+title: 'secondary color palette'
 status: draft
 context:
   colors:
-    - color:
-      colorName: 'navy'
-      colorCode: '#112e51'
-    - color:
-      colorName: 'blue'
-      colorCode: '#0071bc'
-    - color:
-      colorName: 'blue-light'
-      colorCode: '#ebf3fa'
-    - color:
-      colorName: 'red'
-      colorCode: '#e21c3d'
     - color:
       colorName: 'gray'
       colorCode: '#5b616a'
@@ -29,9 +17,3 @@ context:
     - color:
       colorName: 'blue-lightest'
       colorCode: '#f2f9ff'
-    - color:
-      colorName: 'yellow'
-      colorCode: '#e1ce28'
-    - color:
-      colorName: 'pink'
-      colorCode: '#eb4d67'

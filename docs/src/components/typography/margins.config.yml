@@ -1,0 +1,17 @@
+title: margins (text)
+status: draft
+context:
+  margins:
+    - mb1
+    - mb2
+    - mb3
+    - mb4
+    - mb5
+    - mb6
+  typefaces:
+    - sans-serif
+    - serif
+    - monospace
+  weights:
+    - regular
+    - bold

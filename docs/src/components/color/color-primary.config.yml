@@ -1,4 +1,4 @@
-title: 'color palette'
+title: 'primary color palette'
 status: draft
 context:
   colors:
@@ -14,24 +14,3 @@ context:
     - color:
       colorName: 'red'
       colorCode: '#e21c3d'
-    - color:
-      colorName: 'gray'
-      colorCode: '#5b616a'
-    - color:
-      colorName: 'gray-light'
-      colorCode: '#dddddd'
-    - color:
-      colorName: 'teal'
-      colorCode: '#00bfe7'
-    - color:
-      colorName: 'blue-mid'
-      colorCode: '#1c5899'
-    - color:
-      colorName: 'blue-lightest'
-      colorCode: '#f2f9ff'
-    - color:
-      colorName: 'yellow'
-      colorCode: '#e1ce28'
-    - color:
-      colorName: 'pink'
-      colorCode: '#eb4d67'

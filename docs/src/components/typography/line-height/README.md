@@ -1,3 +1,0 @@
-# Line Height
-
-Needs documentation...

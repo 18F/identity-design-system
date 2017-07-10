@@ -1,0 +1,11 @@
+{% for w in weights %}
+  {% for t in typefaces %}
+    {% for m in margins %}
+      <div class="pattern">
+        <div class="pattern-vars sans-serif h5 bold">${{ w }} ${{ t }} ${{ m }}</div>
+        <div class="pattern-code monospace mb2">.{{ w }}.{{ t }}.{{ m }}</div>
+        <div class="cntnr-skinny {{ w }} {{ t }} {{ m }}">We hold these truths to be self-evident: that all men are created equal, that they are endowed by their creator with certain unalienable rights, that among these are life, liberty and the pursuit of happiness. That to secure these rights, governments are instituted among men, deriving their just powers from the consent of the governed.</div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+{% endfor %}

@@ -1,0 +1,10 @@
+title: 'tertiary color palette'
+status: draft
+context:
+  colors:
+    - color:
+      colorName: 'yellow'
+      colorCode: '#e1ce28'
+    - color:
+      colorName: 'pink'
+      colorCode: '#eb4d67'
