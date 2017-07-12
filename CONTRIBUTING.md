@@ -45,4 +45,6 @@ npm run watch
 
 Go to `localhost:3000` in your browser and you should be viewing a local instance of the Cloud.gov pattern library. When your file is saved, Fractal will reload the site automatically and you will be able to view those changes.
 
+When making changes to the style guide, update files in the `/src/` directory. These will be copied and built by Fractal and will be made accessible to companion sites as the `identity-style-guide` web module.
+
 Happy developing!
