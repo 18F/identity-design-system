@@ -1,12 +1,81 @@
 {
   "name": "identity-style-guide",
-  "version": "0.1.0",
+  "version": "0.1.7",
+  "description": "The global style of login.gov",
+  "main": "src/js/main.js",
   "scripts": {
-    "federalist": "fractal build"
+    "build": "npm run build-css && npm run build-css-components && npm run build-font && npm run build-img && npm run compile-css && npm run copy-library-assets && npm run build-js && npm run compile-js",
+    "build-css": "mkdir -p ./css && node-sass ./src/css/main.scss ./css/identity-style.css && npm run build-prefix",
+    "build-css-components": "node-sass ./src/css/base.scss ./css/base.css",
+    "build-documents": "mkdir -p ./documents && npm run copy-documents",
+    "build-font": "npm run copy-font",
+    "build-js": "mkdir -p ./js && browserify ./src/js/main.js -o ./js/identity-style.js",
+    "build-prefix": "postcss --use autoprefixer css/identity-style.css -o ./css/identity-style.css",
+    "build-img": "mkdir -p ./img && npm run copy-img",
+    "build-library": "npm run build-library-assets && fractal build",
+    "build-library-assets": "npm run clean && npm run build-css && npm run build-font && npm run build-documents && npm run build-img && npm run copy-library-assets",
+    "check-publish": "publish",
+    "clean": "rm -rf css/*.css && rm -rf img/* && rm -rf fonts/* && rm -rf js/* && rm -rf documents/* && rm -rf docs/build",
+    "compile-css": "cleancss ./css/identity-style.css -o ./css/identity-style-min.css",
+    "compile-js": "uglifyjs ./js/identity-style.js -o ./js/identity-style-min.js",
+    "copy-documents": "mkdir -p ./documents && cp ./src/documents/* ./documents",
+    "copy-img": "cp -r node_modules/uswds/dist/img/*  img/ && cp ./src/img/* ./img",
+    "copy-font": "mkdir -p ./fonts && cp node_modules/uswds/dist/fonts/* fonts/ && cp ./src/font/* ./fonts",
+    "copy-library-assets": "npm-run-all copy-library-assets-*",
+    "copy-library-assets-css": "mkdir -p ./docs/assets/css && cp ./css/identity-style.css ./docs/src/main.css ./docs/assets/css",
+    "copy-library-assets-documents": "mkdir -p ./docs/assets/documents && cp -R ./documents/* ./docs/assets/documents",
+    "copy-library-assets-font": "mkdir -p ./docs/assets/fonts && cp ./fonts/* ./docs/assets/fonts",
+    "copy-library-assets-img": "mkdir -p ./docs/assets/img && cp -R ./img/* ./docs/assets/img",
+    "federalist": "npm run build-library",
+    "lint": "node node_modules/.bin/18f-stylelint-rules './src/css/**/*.scss'",
+    "test": "npm run lint",
+    "watch": "npm-run-all --parallel watch-*",
+    "watch-js": "watch 'npm-run-all build-js compile-js' ./src/js -d",
+    "watch-css": "watch 'npm-run-all build-css compile-css copy-library-assets-css' ./src/css -d",
+    "watch-documents": "watch 'npm-run-all build-documents copy-documents copy-library-assets-documents' ./src/documents -d",
+    "watch-font": "watch 'npm-run-all build-font copy-font copy-library-assets-font' ./src/font -d",
+    "watch-img": "watch 'npm-run-all build-img copy-img copy-library-assets-img' ./src/img -d",
+    "start": "npm run build-library && fractal start --sync"
   },
-  "dependencies": {
-    "@frctl/fractal": "^1.1.4"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/18F/cg-style.git"
   },
   "author": "18F",
-  "license": "SEE LICENSE IN LICENSE.md"
+  "license": "SEE LICENSE in LICENSE.md",
+  "engines": {
+    "node": "6.x.x",
+    "npm": "3.x.x"
+  },
+  "bugs": {
+    "url": "https://github.com/18F/cg-style/issues"
+  },
+  "homepage": "https://github.com/18F/cg-style#readme",
+  "dependencies": {
+    "@18f/stylelint-rules": "^2.0.0",
+    "@frctl/fractal": "^1.0.11",
+    "@frctl/mandelbrot": "^1.0.7",
+    "@frctl/nunjucks": "^1.0.2",
+    "autoprefixer": "^6.6.1",
+    "basscss-sass": "^3.0.0",
+    "browserify": "^13.3.0",
+    "clean-css": "^3.4.23",
+    "cross-spawn": "^4.0.0",
+    "lodash.debounce": "^4.0.8",
+    "node-sass": "^3.13.1",
+    "normalize.css": "^4.2.0",
+    "npm-run-all": "^3.1.2",
+    "politespace": "^0.1.20",
+    "postcss": "^5.2.10",
+    "postcss-cli": "^2.3.3",
+    "postcss-copy-assets": "^0.3.0",
+    "postcss-sprites": "^3.0.3",
+    "uswds": "~0.12.1"
+  },
+  "devDependencies": {
+    "prompt": "^1.0.0",
+    "publish": "^0.6.0",
+    "uglify-js": "^2.7.5",
+    "watch": "^0.17.1"
+  }
 }

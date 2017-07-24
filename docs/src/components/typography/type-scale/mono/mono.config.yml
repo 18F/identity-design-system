@@ -1,0 +1,13 @@
+title: Monospace font type scale
+status: review
+context:
+  typeface: Source Code Pro
+  typefaceClass: monospace
+  scales:
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+    - fs-20p

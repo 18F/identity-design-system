@@ -1,0 +1,13 @@
+title: 'typefaces'
+status: review
+context:
+  typefaces:
+    - name: Source Sans Pro
+      class: sans-serif
+      variable: $sans-serif-font-family
+    - name: Merriweather
+      class: serif
+      variable: $serif-font-family
+    - name: Source Code Pro
+      class: monospace
+      variable: $monospace-font-family

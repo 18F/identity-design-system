@@ -1,0 +1,16 @@
+title: 'primary color palette'
+status: draft
+context:
+  colors:
+    - color:
+      colorName: 'navy'
+      colorCode: '#112e51'
+    - color:
+      colorName: 'blue'
+      colorCode: '#0071bc'
+    - color:
+      colorName: 'blue-light'
+      colorCode: '#ebf3fa'
+    - color:
+      colorName: 'red'
+      colorCode: '#e21c3d'
