@@ -1,6 +1,6 @@
 {
   "name": "identity-style-guide",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "The global style of login.gov",
   "main": "src/js/main.js",
   "scripts": {
@@ -35,7 +35,6 @@
     "watch-documents": "watch 'npm-run-all build-documents copy-documents copy-library-assets-documents' ./src/documents -d",
     "watch-font": "watch 'npm-run-all build-font copy-font copy-library-assets-font' ./src/font -d",
     "watch-img": "watch 'npm-run-all build-img copy-img copy-library-assets-img' ./src/img -d",
-    "release": "node ./scripts/release.js",
     "start": "npm run build-library && fractal start --sync"
   },
   "repository": {
