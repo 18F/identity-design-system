@@ -2,7 +2,7 @@
 markdown: redcarpet
 highlighter: rouge
 
-name: Login.gov style
+name: login.gov style guide
 
 source: docs/build
 
@@ -23,8 +23,8 @@ exclude:
 permalink: pretty
 
 repos:
-- name: Login.gov style
-  description: The global style of login.gov.
+- name: login.gov style guide
+  description: The global style of login.gov
   url: https://github.com/18F/identity-style-guide
 
 collections:

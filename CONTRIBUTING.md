@@ -3,7 +3,7 @@
 
 ## Purpose
 
-The repository serves a two-fold purpose: to document design decisions as a living style guide and to serve as the sole repository for Login.gov assets (css, js, images, fonts, and documents).
+The repository serves a two-fold purpose: to document design decisions as a living style guide and to serve as the sole repository for login.gov assets (css, js, images, fonts, and documents).
 
 Setup is slightly different for both of these purposes. Follow the steps below to get started.
 
@@ -27,7 +27,7 @@ Setup is slightly different for both of these purposes. Follow the steps below t
 
 ### Additional steps for running the style guide locally
 
-The Cloud.gov pattern library leverages [Fractal](http://fractal.build/guide), a static site framework for building and documenting component libraries. Here are some instructions for building and documenting UI patterns:
+The login.gov pattern library leverages [Fractal](http://fractal.build/guide), a static site framework for building and documenting component libraries. Here are some instructions for building and documenting UI patterns:
 
 After following the previous steps in [Setup](#setup), do the following:
 
@@ -43,7 +43,7 @@ To see changes as you're developing, ensure you're watching for file changes and
 npm run watch
 ```
 
-Go to `localhost:3000` in your browser and you should be viewing a local instance of the Cloud.gov pattern library. When your file is saved, Fractal will reload the site automatically and you will be able to view those changes.
+Go to `localhost:3000` in your browser and you should be viewing a local instance of the login.gov pattern library. When your file is saved, Fractal will reload the site automatically and you will be able to view those changes.
 
 When making changes to the style guide, update files in the `/src/` directory. These will be copied and built by Fractal and will be made accessible to companion sites as the `identity-style-guide` web module.
 
