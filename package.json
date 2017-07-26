@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/18F/cg-style.git"
+    "url": "git+https://github.com/18F/identity-style-guide.git"
   },
   "author": "18F",
   "license": "SEE LICENSE in LICENSE.md",
@@ -48,9 +48,9 @@
     "npm": "3.x.x"
   },
   "bugs": {
-    "url": "https://github.com/18F/cg-style/issues"
+    "url": "https://github.com/18F/identity-style-guide/issues"
   },
-  "homepage": "https://github.com/18F/cg-style#readme",
+  "homepage": "https://github.com/18F/identity-style-guide#readme",
   "dependencies": {
     "@18f/stylelint-rules": "^2.0.0",
     "@frctl/fractal": "^1.0.11",
