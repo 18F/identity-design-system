@@ -1,5 +1,8 @@
-.focused .caret {
-  transform: rotateX(180deg) translateY(-1px);
+#i18n-mobile-toggle,
+#i18n-desktop-toggle {
+  &.focused .caret {
+    transform: rotateX(180deg) translateY(-1px);
+  }
 }
 
 #i18n-mobile-dropdown {
