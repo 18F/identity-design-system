@@ -1,8 +1,11 @@
 {
   "name": "identity-style-guide",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "The global style of login.gov",
   "main": "src/js/main.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "build": "npm run build-css && npm run build-css-components && npm run build-font && npm run build-img && npm run compile-css && npm run copy-library-assets && npm run build-js && npm run compile-js",
     "build-css": "mkdir -p ./css && node-sass ./src/css/main.scss ./css/identity-style.css && npm run build-prefix",
@@ -26,7 +29,7 @@
     "copy-library-assets-favicons": "mkdir -p ./docs/assets/favicons && cp ./favicons/* ./docs/assets/favicons",
     "copy-library-assets-font": "mkdir -p ./docs/assets/fonts && cp ./fonts/* ./docs/assets/fonts",
     "copy-library-assets-img": "mkdir -p ./docs/assets/img && cp -R ./img/* ./docs/assets/img",
-    "federalist": "npm run build-library",
+    "federalist": "npm i && npm run build-library",
     "lint": "node node_modules/.bin/18f-stylelint-rules './src/css/**/*.scss'",
     "test": "npm run lint",
     "watch": "npm-run-all --parallel watch-*",
@@ -51,7 +54,7 @@
     "url": "https://github.com/18F/identity-style-guide/issues"
   },
   "homepage": "https://github.com/18F/identity-style-guide#readme",
-  "dependencies": {
+  "devDependencies": {
     "@18f/stylelint-rules": "^2.0.0",
     "@frctl/fractal": "^1.0.11",
     "@frctl/mandelbrot": "^1.0.7",
@@ -70,12 +73,10 @@
     "postcss-cli": "^2.3.3",
     "postcss-copy-assets": "^0.3.0",
     "postcss-sprites": "^3.0.3",
-    "uswds": "~0.12.1"
-  },
-  "devDependencies": {
     "prompt": "^1.0.0",
     "publish": "^0.6.0",
     "uglify-js": "^2.7.5",
+    "uswds": "~0.12.1",
     "watch": "^0.17.1"
   }
 }
