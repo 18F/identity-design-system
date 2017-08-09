@@ -44,6 +44,7 @@ header nav {
   }
 }
 
+
 @media #{$breakpoint-sm} {
   .logo { 
     line-height: 17px;
@@ -83,5 +84,11 @@ header nav {
         width: 100%;
       }
     }
+  }
+}
+
+@media #{$breakpoint-es}{
+  header nav.es-nav {
+    font-size: $sm-es; 
   }
 }
