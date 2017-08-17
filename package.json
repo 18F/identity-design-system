@@ -1,13 +1,13 @@
 {
   "name": "identity-style-guide",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "The global style of login.gov",
   "main": "src/js/main.js",
   "files": [
     "src"
   ],
   "scripts": {
-    "build-css": "mkdir -p ./css && node-sass ./src/css/main.scss ./css/identity-style.css && npm run build-prefix",
+    "build-css": "mkdir -p ./css && node-sass ./src/css/app.scss ./css/identity-style.css && npm run build-prefix",
     "build-favicons": "mkdir -p ./favicons && npm run copy-favicons",
     "build-font": "mkdir -p ./fonts && npm run copy-font",
     "build-js": "mkdir -p ./js && browserify ./src/js/main.js -o ./js/identity-style.js",
@@ -54,6 +54,7 @@
   "homepage": "https://github.com/18F/identity-style-guide#readme",
   "dependencies": {
     "basscss-sass": "^3.0.0",
+    "hint.css": "^2.3.2",
     "normalize.css": "^4.2.0"
   },
   "devDependencies": {
