@@ -2,6 +2,7 @@
   "name": "identity-style-guide",
   "version": "0.2.6",
   "description": "The global style of login.gov",
+  "private": true,
   "main": "src/js/main.js",
   "files": [
     "src"
@@ -59,15 +60,15 @@
   },
   "devDependencies": {
     "@18f/stylelint-rules": "^2.0.0",
-    "@frctl/fractal": "^1.0.11",
-    "@frctl/mandelbrot": "^1.0.7",
-    "@frctl/nunjucks": "^1.0.2",
+    "@frctl/fractal": "^1.1.7",
+    "@frctl/mandelbrot": "^1.2.0",
+    "@frctl/nunjucks": "^1.0.3",
     "autoprefixer": "^6.6.1",
     "browserify": "^13.3.0",
     "clean-css": "^3.4.23",
     "cross-spawn": "^4.0.0",
     "lodash.debounce": "^4.0.8",
-    "node-sass": "^3.13.1",
+    "node-sass": "^4.9.4",
     "npm-run-all": "^3.1.2",
     "postcss": "^5.2.10",
     "postcss-cli": "^2.3.3",
