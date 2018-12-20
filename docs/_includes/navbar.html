@@ -1,0 +1,29 @@
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+{% include banner.html %}
+<div class="usa-overlay"></div>
+
+<header class="usa-header usa-header-extended" role="banner">
+  <div class="usa-navbar">
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo-text"><a href="{{ site.baseurl }}/" title="Home" aria-label="Home">{{ site.title }}</a></em>
+    </div>
+    <button class="usa-menu-btn">Menu</button>
+  </div>
+  <nav role="navigation" class="usa-nav">
+    <div class="usa-nav-inner">
+      <button class="usa-nav-close"><img src="{{ site.baseurl }}/assets/img/close.svg" alt="Close"></button>
+      <ul class="usa-nav-primary usa-accordion">
+        {%
+          include nav/list.html
+          links = site.data.nav.primary
+          rel = 'contains'
+          flat = true
+        %}
+      </ul>
+      <div class="usa-nav-secondary">
+        <a href="{{ site.baseurl }}/#installation-and-usage" class="usa-button float-right">Download v{{ site.version }}</a>
+      </div>
+    </div>
+  </nav>
+</header>

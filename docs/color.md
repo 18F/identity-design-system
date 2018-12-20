@@ -1,0 +1,4 @@
+---
+permalink: /color/
+title: Color
+---

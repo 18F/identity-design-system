@@ -1,0 +1,10 @@
+primary:
+  - href: /
+  - href: /brand/
+  - href: /typography/
+  - href: /color/
+  - href: /layout/
+  - href: /components/
+    text: Components
+  - href: /templates/account-management/
+    text: Templates

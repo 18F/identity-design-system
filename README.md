@@ -1,25 +1,59 @@
 # identity-style-guide
 
-The purpose of identity-style-guide is to provide the assets such as CSS, SCSS, JS, images and fonts to design a site with the visual style of login.gov. This allows multiple sites built in separate repositories and with different languages to share a global style without repeating styling code. The identity-style-guide library is primarily distributed on the node/npm ecosystem.
+## Installation and usage
 
-## Install and use
-### node/npm
-The best way to install identity-style-guide is with the node package manager or [npm](https://www.npmjs.com/). If you haven't already cloned the `identity-style-guide` [repository for development use](run the following command on a computer with node/npm installed to install identity-style into your project
+See [the documentation](https://federalist-proxy.app.cloud.gov/site/18f/identity-style-guide/) for installation and usage instructions.
+
+## Configuring for development
+
+The following dependencies are required to build the documentation and assets within this repository:
+
+- [Ruby](.ruby-version)
+- [Node.js](.nvmrc)
+
+After satisfying the above language dependencies and cloning this repository, install package dependencies with `npm`:
 
 ```
-npm install identity-style-guide --save
+npm install
 ```
 
-Once installed, all the assets from identity-style have to be consumed by your project. This can be done in multiple ways depending on what assets and your project setup. For example, a simple site could copy over the relevant assets with build commands and include them from the html with link tags.
+In development, build the documentation site with assets, watch source files for changes, and serve the compiled site at [localhost:4000](http://localhost:4000) by running:
 
 ```
-# build commands
-cp ./node_modules/identity-style/js/* ./public/js
-cp ./node_modules/identity-style/css/* ./public/css
-cp -R ./node_modules/identity-style/img/**/* ./public/img
-cp -R ./node_modules/identity-style/fonts/**/* ./public/fonts
+npm start
 ```
 
-## Development and contributing setup
+## Linting
 
-See the [CONTRIBUTING documentation](CONTRIBUTING.md).
+[Lint](https://en.wikipedia.org/wiki/Lint_(software)) JavaScript and Sass files in `src/` by running:
+
+```
+npm run lint
+```
+
+## Deploying documentation updates
+
+Documentation deploys are performed automatically upon merging to `master` by [Federalist](https://federalist.18f.gov/). Federalist performs the following steps:
+
+- `npm install --production` (a no-op, as this package has no production dependencies)
+- `npm run federalist`
+- `bundle install`
+- `bundle exec jekyll build`
+
+More information can be found in Federalist’s [How Builds Work](https://federalist-docs.18f.gov/pages/how-federalist-works/how-builds-work/).
+
+## Publishing to `npm`
+
+Once you’re satisfied with any updates, do a trial publish to `npm` by running:
+
+```
+npm publish --dry-run
+```
+
+No need to run any special build steps — the publish script will lint the source JavaScript and Sass files, and clean and re-build all assets before including them in the published package.
+
+If everything looks alright, continue with publishing:
+
+```
+npm publish
+```

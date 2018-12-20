@@ -1,0 +1,40 @@
+---
+layout: base
+---
+
+{% include navbar.html %}
+
+{% assign sidenav = site.data.nav[page.sidenav] | default: page.sidenav %}
+
+<main class="usa-layout-docs usa-section" id="main-content">
+  <div class="grid-container">
+    {% if sidenav %}
+      <div class="grid-row grid-gap">
+        <aside class="usa-layout-docs-sidenav desktop:grid-col-3">
+          <nav>
+            <ul class="usa-sidenav usa-sticky-sidenav">
+              {%
+                include nav/list.html
+                links = sidenav
+              %}
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="usa-layout-docs-main_content desktop:grid-col-9 usa-prose">
+          <h1>{{ page.title }}</h1>
+
+          {{ content }}
+        </div>
+      </div>
+    {% else %}
+      <div class="usa-layout-docs-main_content usa-prose">
+        <h1>{{ page.title }}</h1>
+
+        {{ content }}
+      </div>
+    {% endif %}
+  </div>
+</main>
+
+{% include footer.html %}

@@ -1,0 +1,18 @@
+{% assign _href_key = include.href_key | default: 'href' %}
+{% if _href_key.size == 2 %}
+  {% assign _key = _href_key[1] %}
+  {% assign _slug = link[_key] | replace: '.', '' | slugify %}
+  {% assign _href = _href_key[0] | replace: '%', _slug %}
+{% else %}
+  {% assign _href = link[_href_key] %}
+{% endif %}
+{% assign _text_key = include.text_key | default: 'text' %}
+<a href="{{ _href }}"{% if _href == page.permalink or _href == page.url %} class="usa-current"{% endif %}>{{ link[_text_key] | smartify }}</a>
+{% if include.links -%}
+<ul class="usa-sidenav-sublist">{%
+  include nav/list.html
+  links=include.links
+  text_key=_text_key
+  href_key=_href_key
+%}</ul>
+{% endif %}
