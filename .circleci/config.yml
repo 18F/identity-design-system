@@ -1,0 +1,26 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/identity-style-guide
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Install bundle dependencies
+          command: bundle check --path ~/.bundler || bundle install --path ~/.bundler
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.npm
+            - ~/.bundler
+      - run:
+          name: Lint JavaScript and Sass
+          command: npm run lint
