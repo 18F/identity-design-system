@@ -7,6 +7,8 @@
     "start": "make start",
     "clean": "make clean",
     "lint": "make lint",
+    "test": "make test",
+    "test-pa11y": "make test-runner-pa11y",
     "build": "make build",
     "federalist": "npm install && make build-assets",
     "postinstall": "make install-jekyll",
@@ -44,6 +46,7 @@
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "get-port-cli": "^2.0.0",
     "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-notify": "^3.2.0",
@@ -54,12 +57,15 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylelint": "^8.0.0",
     "gulp-uglify": "^3.0.1",
+    "pa11y-ci": "^2.1.1",
     "path": "^0.12.7",
+    "serve": "^10.1.1",
     "stylelint": "^9.9.0",
     "stylelint-scss": "^3.4.1",
     "uswds": "^2.0.0-beta.4",
     "uswds-gulp": "github:uswds/uswds-gulp",
     "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
+    "vinyl-source-stream": "^2.0.0",
+    "wait-on": "^3.2.0"
   }
 }

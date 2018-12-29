@@ -1,4 +1,4 @@
-MAKEFLAGS += -j6
+MAKEFLAGS += --jobs=6
 OUTPUT_DIR = ./dist
 
 # Federalist builds overwrite the output directory.
@@ -45,7 +45,13 @@ build-images:
 	cp -r node_modules/uswds/src/img $(OUTPUT_DIR)/assets
 	cp -r src/img $(OUTPUT_DIR)/assets
 
+test: build
+	make test-runners
+
+test-runners: test-runner-pa11y
+
+test-runner-pa11y:
+	./scripts/pa11y.sh
+
 clean:
 	rm -rf $(OUTPUT_DIR)
-
-
