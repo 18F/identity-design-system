@@ -7,6 +7,6 @@ subnav:
     href: "#indeterminite"
 ---
 
-## Determinite
+# Determinite
 
-## Indeterminite
+# Indeterminite

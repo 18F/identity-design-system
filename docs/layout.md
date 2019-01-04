@@ -8,6 +8,6 @@ sidenav:
     href: "#spacing"
 ---
 
-## Grid
+# Grid
 
-## Spacing
+# Spacing
