@@ -40,7 +40,7 @@
 
   &:active,
   &.usa-button-active {
-    background-color: map-get($site-palette, 'site-dark-green');
+    background-color: map-get($site-palette, 'site-darkest-green');
   }
 }
 
@@ -54,7 +54,7 @@
 
   &:active,
   &.usa-button-active {
-    background-color: map-get($site-palette, 'site-dark-red');
+    background-color: map-get($site-palette, 'site-darkest-red');
   }
 }
 
