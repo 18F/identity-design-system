@@ -17,6 +17,36 @@ https://v2.designsystem.digital.gov/style-tokens/color
 ----------------------------------------
 */
 
+$site-palette: (
+  'site-navy': #112e51,
+  'site-dark-blue': #205493,
+  'site-blue': #0071bb,
+  'site-med-blue': #cedced,
+  'site-light-blue': #ebf3fa,
+  'site-input-blue': #f2f9ff,
+
+  'site-teal': #00bfe7,
+  'site-light-teal': #ecfcff,
+
+  'site-darkest-red': #8b0a21,
+  'site-dark-red': #ab142f,
+  'site-red': #e21c3d,
+  'site-pink': #fff0f3,
+
+  'site-grey': #5b616a,
+  'site-light-grey': #dddfe4,
+
+  'site-yellow': #f5d600,
+  'site-light-yellow': #fffdd7,
+
+  'site-darkest-green': #094316,
+  'site-dark-green': #116523,
+  'site-green': #18852e,
+  'site-light-green': #ebfcef,
+);
+
+$project-color-shortcodes: $site-palette;
+
 /*
 ----------------------------------------
 Theme palette colors
@@ -35,14 +65,13 @@ $theme-color-base-darkest:          '#{$theme-color-base-family}-90';
 $theme-color-base-ink:              '#{$theme-color-base-family}-90';
 
 // Primary colors
-$theme-color-primary-family:        'blue';
 $theme-color-primary-lightest:      false;
-$theme-color-primary-lighter:       '#{$theme-color-primary-family}-10';
-$theme-color-primary-light:         '#{$theme-color-primary-family}-30';
-$theme-color-primary:               '#{$theme-color-primary-family}-60v';
-$theme-color-primary-vivid:         'blue-warm-60v';
-$theme-color-primary-dark:          'blue-warm-70v';
-$theme-color-primary-darker:        'blue-warm-80v';
+$theme-color-primary-lighter:       'site-light-blue';
+$theme-color-primary-light:         'site-med-blue';
+$theme-color-primary:               'site-blue';
+$theme-color-primary-vivid:         false;
+$theme-color-primary-dark:          'site-dark-blue';
+$theme-color-primary-darker:        'site-navy';
 $theme-color-primary-darkest:       false;
 
 // Secondary colors
@@ -117,7 +146,7 @@ $theme-color-info-darker:      'blue-60';
 // Disabled colors
 $theme-color-disabled-family:  'gray';
 $theme-color-disabled-light:   '#{$theme-color-disabled-family}-10';
-$theme-color-disabled:         '#{$theme-color-disabled-family}-20';
+$theme-color-disabled:         'site-light-grey';
 $theme-color-disabled-dark:    '#{$theme-color-disabled-family}-30';
 
 /*
