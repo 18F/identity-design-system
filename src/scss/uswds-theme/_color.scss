@@ -98,8 +98,8 @@ $theme-color-accent-warm-darkest:   false;
 $theme-color-accent-cool-family:    'cyan';
 $theme-color-accent-cool-lightest:  false;
 $theme-color-accent-cool-lighter:   '#{$theme-color-accent-cool-family}-5';
-$theme-color-accent-cool-light:     '#{$theme-color-accent-cool-family}-20';
-$theme-color-accent-cool:           '#{$theme-color-accent-cool-family}-30v';
+$theme-color-accent-cool-light:     'site-light-teal';
+$theme-color-accent-cool:           'site-teal';
 $theme-color-accent-cool-dark:      '#{$theme-color-accent-cool-family}-40v';
 $theme-color-accent-cool-darker:    'blue-60';
 $theme-color-accent-cool-darkest:   false;
@@ -121,18 +121,17 @@ $theme-color-error-darker:     '#{$theme-color-error-family}-70v';
 // Warning colors
 $theme-color-warning-family:   'gold';
 $theme-color-warning-lighter:  '#{$theme-color-warning-family}-5v';
-$theme-color-warning-light:    '#{$theme-color-warning-family}-10v';
-$theme-color-warning:          '#{$theme-color-warning-family}-20v';
+$theme-color-warning-light:    'site-light-yellow';
+$theme-color-warning:          'site-yellow';
 $theme-color-warning-dark:     '#{$theme-color-warning-family}-30v';
 $theme-color-warning-darker:   '#{$theme-color-warning-family}-40v';
 
 // Success colors
-$theme-color-success-family:   'green-cool';
-$theme-color-success-lighter:  '#{$theme-color-success-family}-5';
-$theme-color-success-light:    '#{$theme-color-success-family}-30v';
-$theme-color-success:          '#{$theme-color-success-family}-40v';
-$theme-color-success-dark:     '#{$theme-color-success-family}-50';
-$theme-color-success-darker:   '#{$theme-color-success-family}-70';
+$theme-color-success-lighter:  'site-light-green';
+$theme-color-success-light:    false;
+$theme-color-success:          'site-green';
+$theme-color-success-dark:     'site-dark-green';
+$theme-color-success-darker:   'site-darkest-green';
 
 // Info colors
 $theme-color-info-family:      'cyan';
