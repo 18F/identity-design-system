@@ -10,14 +10,14 @@
 
   &:hover,
   &.usa-button-hover {
-    background-color: color('primary-lighter');
+    background-color: color('primary-lightest');
     box-shadow: $button-stroke color('primary');
     color: color('primary');
   }
 
   &:active,
   &.usa-button-active {
-    background-color: color('primary-light');
+    background-color: color('primary-lighter');
     box-shadow: $button-stroke color('primary');
     color: color('primary');
   }
