@@ -37,7 +37,7 @@ Accepts true or false
 ----------------------------------------
 */
 
-$theme-respect-user-font-size: true;
+$theme-respect-user-font-size: false;
 
 // $theme-root-font-size only applies when
 // $theme-respect-user-font-size is set to
@@ -49,7 +49,7 @@ $theme-respect-user-font-size: true;
 
 // Accepts values in px
 
-$theme-root-font-size: 10px;
+$theme-root-font-size: 16px;
 
 /*
 ----------------------------------------
@@ -197,13 +197,13 @@ values from the USWDS system type scale
 ----------------------------------------
 */
 
-$theme-type-scale-3xs:      2;
+$theme-type-scale-3xs:      'micro';
 $theme-type-scale-2xs:      3;
 $theme-type-scale-xs:       4;
 $theme-type-scale-sm:       5;
 $theme-type-scale-md:       6;
 $theme-type-scale-lg:       9;
-$theme-type-scale-xl:       12;
+$theme-type-scale-xl:       11;
 $theme-type-scale-2xl:      14;
 $theme-type-scale-3xl:      15;
 
@@ -284,22 +284,22 @@ none:    none
 
 // Body settings are the equivalent of setting the <body> element
 $theme-body-font-family:           'body';
-$theme-body-font-size:             'sm';
+$theme-body-font-size:             'xs';
 $theme-body-line-height:           5;
 
 // If true, explicitly style the <body> element with the base styles
 $theme-style-body-element:         false;
 
 // Headings
-$theme-h1-font-size:               '2xl';
-$theme-h2-font-size:               'xl';
-$theme-h3-font-size:               'lg';
-$theme-h4-font-size:               'sm';
-$theme-h5-font-size:               'xs';
+$theme-h1-font-size:               'xl';
+$theme-h2-font-size:               'lg';
+$theme-h3-font-size:               'md';
+$theme-h4-font-size:               'xs';
+$theme-h5-font-size:               '2xs';
 $theme-h6-font-size:               '3xs';
-$theme-heading-line-height:        2;
+$theme-heading-line-height:        3;
 $theme-small-font-size:            '2xs';
-$theme-title-font-size:            '3xl';
+$theme-title-font-size:            '2xl';
 
 // Text and prose
 $theme-text-measure-narrow:        1;
@@ -308,7 +308,7 @@ $theme-text-measure-wide:          4;
 $theme-prose-font-family:          'body';
 
 // Lead text
-$theme-lead-font-family:           'heading';
-$theme-lead-font-size:             'lg';
+$theme-lead-font-family:           'body';
+$theme-lead-font-size:             8;
 $theme-lead-line-height:           6;
 $theme-lead-measure:               5;

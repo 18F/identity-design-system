@@ -1,5 +1,7 @@
 ---
 title: Buttons
+lead: >
+  Use buttons to signal actions.
 subnav:
   - text: Standard Buttons
     href: "#standard-buttons"
@@ -21,13 +23,11 @@ subnav:
         href: "#tertiary"
 ---
 
-<p class="usa-font-lead">Use buttons to signal actions.</p>
-
-## Standard Buttons
+# Standard Buttons
 
 Use these button styles unless doing x and y, in which case, use [other buttons](#other-buttons).
 
-###### Primary
+##### Primary
 
 ```html
 <button class="usa-button">
@@ -39,7 +39,7 @@ Use these button styles unless doing x and y, in which case, use [other buttons]
 <button class="usa-button usa-focus">Focus</button>
 <button class="usa-button" disabled>Disabled</button>
 
-###### Secondary
+##### Secondary
 
 ```html
 <button class="usa-button usa-button-secondary">
@@ -51,7 +51,7 @@ Use these button styles unless doing x and y, in which case, use [other buttons]
 <button class="usa-button usa-button-secondary usa-focus">Focus</button>
 <button class="usa-button usa-button-secondary" disabled>Disabled</button>
 
-###### Success
+##### Success
 
 ```html
 <button class="usa-button usa-button-success">
@@ -63,7 +63,7 @@ Use these button styles unless doing x and y, in which case, use [other buttons]
 <button class="usa-button usa-button-success usa-focus">Focus</button>
 <button class="usa-button usa-button-success" disabled>Disabled</button>
 
-###### Danger
+##### Danger
 
 ```html
 <button class="usa-button usa-button-danger">
@@ -75,11 +75,11 @@ Use these button styles unless doing x and y, in which case, use [other buttons]
 <button class="usa-button usa-button-danger usa-focus">Focus</button>
 <button class="usa-button usa-button-danger" disabled>Disabled</button>
 
-## Other Buttons
+# Other Buttons
 
 These buttons should be used when x-ing and y-ing.
 
-###### Function
+##### Function
 
 ```html
 <button class="usa-button usa-button-inverse usa-button-small">
@@ -91,7 +91,7 @@ These buttons should be used when x-ing and y-ing.
 <button class="usa-button usa-button-inverse usa-button-small usa-focus">Focus</button>
 <button class="usa-button usa-button-inverse usa-button-small" disabled>Disabled</button>
 
-###### Tertiary
+##### Tertiary
 
 ```html
 <button class="usa-button usa-button-inverse usa-button-tiny">

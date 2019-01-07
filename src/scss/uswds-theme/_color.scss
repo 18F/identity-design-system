@@ -57,12 +57,12 @@ Theme palette colors
 $theme-color-base-family:           'gray';
 $theme-color-base-lightest:         '#{$theme-color-base-family}-5';
 $theme-color-base-lighter:          'gray-cool-10';
-$theme-color-base-light:            '#{$theme-color-base-family}-30';
-$theme-color-base:                  '#{$theme-color-base-family}-50';
+$theme-color-base-light:            'site-light-grey';
+$theme-color-base:                  'site-grey';
 $theme-color-base-dark:             'gray-cool-60';
 $theme-color-base-darker:           'gray-cool-80';
 $theme-color-base-darkest:          '#{$theme-color-base-family}-90';
-$theme-color-base-ink:              '#{$theme-color-base-family}-90';
+$theme-color-base-ink:              'site-grey';
 
 // Primary colors
 $theme-color-primary-lightest:      'site-input-blue';
@@ -75,14 +75,13 @@ $theme-color-primary-darker:        'site-navy';
 $theme-color-primary-darkest:       false;
 
 // Secondary colors
-$theme-color-secondary-family:      'red';
 $theme-color-secondary-lightest:    false;
-$theme-color-secondary-lighter:     '#{$theme-color-secondary-family}-10';
-$theme-color-secondary-light:       '#{$theme-color-secondary-family}-30';
-$theme-color-secondary:             '#{$theme-color-secondary-family}-50';
-$theme-color-secondary-vivid:       '#{$theme-color-secondary-family}-50v';
-$theme-color-secondary-dark:        '#{$theme-color-secondary-family}-60v';
-$theme-color-secondary-darker:      '#{$theme-color-secondary-family}-70v';
+$theme-color-secondary-lighter:     false;
+$theme-color-secondary-light:       'site-pink';
+$theme-color-secondary:             'site-red';
+$theme-color-secondary-vivid:       false;
+$theme-color-secondary-dark:        'site-dark-red';
+$theme-color-secondary-darker:      'site-darkest-red';
 $theme-color-secondary-darkest:     false;
 
 // Accent warm colors

@@ -9,14 +9,14 @@ subnav:
     href: "#date-entry"
 ---
 
-## Form field groups
-## Form validation errors
-## Date entry
+# Form field groups
+# Form validation errors
+# Date entry
 
-## Radio
+# Radio
 
-### Small
+## Small
 
-### Normal
+## Normal
 
-### Large
+## Large

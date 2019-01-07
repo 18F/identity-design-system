@@ -1,14 +1,14 @@
 ---
 permalink: /
 title: Overview
+lead: >
+  Get up and running with the login.gov Design System in minutes. Or something catchy like that.
 sidenav:
   - text: Installation and usage
     href: "#installation-and-usage"
 ---
 
-<p class="usa-font-lead">Get up and running with the login.gov Design System in minutes. Or something catchy like that.</p>
-
-## Installation and usage
+# Installation and usage
 
 Install with `npm`:
 
