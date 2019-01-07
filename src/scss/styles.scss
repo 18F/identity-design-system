@@ -14,5 +14,6 @@
 .bg-warning { background-color: color('warning'); }
 .bg-warning-light { background-color: color('warning-light'); }
 
+@import 'components/alerts';
 @import 'components/buttons';
 @import 'components/typography';

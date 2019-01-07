@@ -120,7 +120,7 @@ $theme-color-error-darker:     '#{$theme-color-error-family}-70v';
 
 // Warning colors
 $theme-color-warning-family:   'gold';
-$theme-color-warning-lighter:  '#{$theme-color-warning-family}-5v';
+$theme-color-warning-lighter:  'site-light-yellow';
 $theme-color-warning-light:    'site-light-yellow';
 $theme-color-warning:          'site-yellow';
 $theme-color-warning-dark:     '#{$theme-color-warning-family}-30v';
@@ -135,9 +135,9 @@ $theme-color-success-darker:   'site-darkest-green';
 
 // Info colors
 $theme-color-info-family:      'cyan';
-$theme-color-info-lighter:     '#{$theme-color-info-family}-5';
+$theme-color-info-lighter:     'site-light-teal';
 $theme-color-info-light:       '#{$theme-color-info-family}-20';
-$theme-color-info:             '#{$theme-color-info-family}-30v';
+$theme-color-info:             'site-teal';
 $theme-color-info-dark:        '#{$theme-color-info-family}-40v';
 $theme-color-info-darker:      'blue-60';
 
