@@ -1,4 +1,5 @@
 MAKEFLAGS += --jobs=6
+TMP_DIR = ./tmp
 OUTPUT_DIR = ./dist
 
 # Federalist builds overwrite the output directory.
@@ -55,3 +56,4 @@ test-runner-pa11y:
 
 clean:
 	rm -rf $(OUTPUT_DIR)
+	rm -rf $(TMP_DIR)
