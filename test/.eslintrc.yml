@@ -1,0 +1,13 @@
+env:
+  jest: true
+globals:
+  afterAll: true
+  afterEach: true
+  beforeAll: true
+  beforeEach: true
+  expect: true
+  describe: true
+  test: true
+  browser: true
+  page: true
+  context: true
