@@ -1,0 +1,29 @@
+$horizontal-padding: 2;
+$vertial-padding: 1.5;
+$icon-size: 3;
+
+.usa-alert {
+  border-radius: radius('lg');
+  padding: units($vertial-padding) units($horizontal-padding);
+  background-position: units($vertial-padding) units($horizontal-padding);
+  background-size: units($icon-size);
+
+  // Hide left border
+  &::before {
+    display: none;
+  }
+}
+
+.usa-alert-text:only-child {
+  margin-bottom: 0;
+  padding-top: 0;
+}
+
+.usa-alert-success,
+.usa-alert-warning,
+.usa-alert-error,
+.usa-alert-info {
+  .usa-alert-body {
+    padding-left: units($icon-size);
+  }
+}
