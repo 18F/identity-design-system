@@ -1,5 +1,5 @@
 {{ include.code }}
 
 ```html
-{{ include.code }}
+{{ include.code | replace_regex: '\s?data-test(?:="[^\s"]+")', '' }}
 ```

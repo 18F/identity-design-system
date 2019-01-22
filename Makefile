@@ -49,10 +49,13 @@ build-images:
 test: build
 	make test-runners
 
-test-runners: test-runner-pa11y
+test-runners: test-runner-pa11y test-runner-jest
 
 test-runner-pa11y:
 	./scripts/pa11y.sh
+
+test-runner-jest:
+	./scripts/jest.sh
 
 clean:
 	rm -rf $(OUTPUT_DIR)

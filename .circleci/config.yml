@@ -28,6 +28,9 @@ jobs:
           name: Build assets and site
           command: npm run build
       - run:
+          name: Run jest integration test
+          command: npm run test-jest
+      - run:
           name: Run pa11y accessibility test
           command: npm run test-pa11y
       - store_artifacts:
