@@ -167,6 +167,12 @@ $border-width: 1px;
 }
 
 .usa-input-error-message {
-  display: inline-block;
   color: color('error');
+
+  &.usa-input-error-message-with-icon {
+    @include add-background-svg('alerts/error');
+    background-position: 0 center;
+    background-size: units($icon-size);
+    padding-left: units($icon-size) + units(1);
+  }
 }
