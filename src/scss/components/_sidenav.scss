@@ -1,0 +1,36 @@
+.usa-sidenav {
+  @include u-border(1px, 'base-light');
+  border-radius: radius('md');
+
+  a {
+    padding: units(2);
+
+    &:hover {
+      background-color: color('primary-lightest');
+      color: unset;
+    }
+  }
+
+  .usa-nav-primary-item {
+    @include add-bar(1px, 'base-light', 'top', 'pill', 2, 0);
+  }
+
+  > .usa-nav-primary-item:first-of-type {
+    @include remove-bar;
+  }
+
+  .usa-current {
+    background-color: color('primary-lightest');
+    color: unset;
+
+    @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 'pill', 0, 0);
+
+    @include at-media('tablet') {
+      @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 'pill', 0, 0);
+    }
+  }
+}
+
+.usa-sidenav-sublist a {
+  padding-left: units(4);
+}

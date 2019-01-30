@@ -101,13 +101,13 @@ title: Color
   <div class="grid-row tablet:grid-col">
     {% include helpers/color.html
       name="Gray"
-      code="base"
+      code="ink"
       hex="#5b616a"
       text-color="white"
     %}
     {% include helpers/color.html
       name="Light Gray"
-      code="base-light"
+      code="disabled"
       hex="#dddfe4"
       text-color="black"
     %}
