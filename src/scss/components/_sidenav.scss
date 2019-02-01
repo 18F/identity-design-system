@@ -11,11 +11,12 @@
     }
   }
 
-  .usa-nav-primary-item {
+  .usa-sidenav-item {
     @include add-bar(1px, 'base-light', 'top', 'pill', 2, 0);
+    border-top: 0;
   }
 
-  > .usa-nav-primary-item:first-of-type {
+  > .usa-sidenav-item:first-of-type {
     @include remove-bar;
   }
 
