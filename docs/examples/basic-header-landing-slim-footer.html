@@ -1,0 +1,98 @@
+---
+layout: base
+---
+
+{% include banner.html %}
+
+<div class="usa-overlay"></div>
+
+<header class="usa-header usa-header-basic" role="banner">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      <div class="usa-logo" id="basic-logo">
+        <a href="javascript:;" title="Home" aria-label="Home">
+          <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo-img" alt="login.gov">
+        </a>
+      </div>
+      <button class="usa-menu-btn">Menu</button>
+    </div>
+    <nav role="navigation" class="usa-nav">
+      <button class="usa-nav-close"><img src="{{ site.baseurl }}/assets/img/close.svg" alt="Close"></button>
+      <ul class="usa-nav-primary usa-accordion">
+        <li class="usa-nav-primary-item">
+          <a class="usa-nav-link" href="javascript:;">
+            <span>Menu item</span>
+          </a>
+        </li>
+        <li class="usa-nav-primary-item">
+          <a class="usa-nav-link usa-current" href="javascript:;">
+            <span>Current item</span>
+          </a>
+        </li>
+        <li class="usa-nav-primary-item">
+          <button class="usa-accordion-button usa-nav-link" aria-controls="unique-id-1">
+            <span>Section</span>
+          </button>
+          <ul id="unique-id-1" class="usa-nav-submenu">
+            <li class="usa-nav-submenu-item">
+              <a href="javascript:;">
+                <span>First item</span>
+              </a>
+            </li>
+            <li class="usa-nav-submenu-item">
+              <a href="javascript:;">
+                <span>Second item</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="usa-hero">
+    <div class="grid-container">
+      <div class="usa-hero-callout">
+        <h2 class="usa-hero-heading">
+          <span class="usa-hero-callout-alt">Hero callout:</span>Bring attention to a project priority
+        </h2>
+        <p>Support the callout with some short explanatory text. You don’t need more than a couple of sentences.</p>
+        <a class="usa-button" href="javascript:;">Call to action</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-container usa-section">
+    <div class="grid-row grid-gap-4">
+      <div class="tablet:grid-col">
+        <h1>Key point 1</h1>
+
+        <p>The tagline should inspire confidence and interest, focusing on the value that your overall approach offers to your audience. Use a heading typeface and keep your tagline to just a few words, and don’t confuse or mystify.</p>
+      </div>
+      <div class="tablet:grid-col">
+        <h1>Key point 2</h1>
+
+        <p>Use the right side of the grid to explain the tagline a bit more. What are your goals? How do you do your work? Write in the present tense, and stay brief here. People who are interested can find details on internal pages.</p>
+      </div>
+      <div class="tablet:grid-col">
+        <h1>Key point 3</h1>
+
+        <p>What good is two points if you don’t inspire a third? Use this column to enhance the message that you’re a tripartite thinking organization with room to grow.</p>
+      </div>
+    </div>
+  </section>
+  <section class="usa-section bg-primary-lighter">
+    <div class="grid-container">
+      <div class="grid-row grid-gap-4">
+        <div class="tablet:grid-col-6">
+          <h2>Colored sections</h2>
+          <p>Use sections like this to use big colored blocks to divide main points.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include footer.html %}

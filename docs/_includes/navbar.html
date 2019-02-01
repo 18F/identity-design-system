@@ -1,12 +1,12 @@
-<a class="usa-skipnav" href="#main-content">Skip to main content</a>
-
-{% include banner.html %}
 <div class="usa-overlay"></div>
 
 <header class="usa-header usa-header-extended" role="banner">
   <div class="usa-navbar">
     <div class="usa-logo" id="extended-logo">
-      <em class="usa-logo-text"><a href="{{ site.baseurl }}/" title="Home" aria-label="Home">{{ site.title }}</a></em>
+      <a href="{{ site.baseurl }}/" title="Home" aria-label="Home">
+        <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo-img" alt="login.gov">
+        <em class="usa-logo-text">Design System</em>
+      </a>
     </div>
     <button class="usa-menu-btn">Menu</button>
   </div>
@@ -22,7 +22,7 @@
         %}
       </ul>
       <div class="usa-nav-secondary">
-        <a href="{{ site.baseurl }}/#installation-and-usage" class="usa-button float-right">Download v{{ site.version }}</a>
+        <a href="{{ site.baseurl }}/#installation-and-usage" class="usa-button">Download v{{ site.package_json.this_version }}</a>
       </div>
     </div>
   </nav>

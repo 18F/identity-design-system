@@ -2,6 +2,8 @@
 layout: base
 ---
 
+{% include banner.html %}
+
 {% include navbar.html %}
 
 {% assign sidenav = site.data.nav[page.sidenav] | default: page.sidenav %}
@@ -16,6 +18,7 @@ layout: base
               {%
                 include nav/list.html
                 links = sidenav
+                sidenav = true
               %}
             </ul>
           </nav>
