@@ -1,6 +1,3 @@
-<a class="usa-skipnav" href="#main-content">Skip to main content</a>
-
-{% include banner.html %}
 <div class="usa-overlay"></div>
 
 <header class="usa-header usa-header-extended" role="banner">
@@ -25,7 +22,7 @@
         %}
       </ul>
       <div class="usa-nav-secondary">
-        <a href="{{ site.baseurl }}/#installation-and-usage" class="usa-button">Download v{{ site.version }}</a>
+        <a href="{{ site.baseurl }}/#installation-and-usage" class="usa-button">Download v{{ site.package_json.this_version }}</a>
       </div>
     </div>
   </nav>

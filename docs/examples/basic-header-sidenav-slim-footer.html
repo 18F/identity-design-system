@@ -1,0 +1,95 @@
+---
+layout: base
+---
+
+{% include banner.html %}
+
+<div class="usa-overlay"></div>
+
+<header class="usa-header usa-header-basic" role="banner">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      <div class="usa-logo" id="basic-logo">
+        <a href="javascript:;" title="Home" aria-label="Home">
+          <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo-img" alt="login.gov">
+          <em class="usa-logo-text">Optional Site Title</em>
+        </a>
+      </div>
+      <button class="usa-menu-btn">Menu</button>
+    </div>
+    <nav role="navigation" class="usa-nav">
+      <button class="usa-nav-close"><img src="{{ site.baseurl }}/assets/img/close.svg" alt="Close"></button>
+      <ul class="usa-nav-primary usa-accordion">
+        <li class="usa-nav-primary-item">
+          <a class="usa-nav-link" href="javascript:;">
+            <span>Menu item</span>
+          </a>
+        </li>
+        <li class="usa-nav-primary-item">
+          <a class="usa-nav-link usa-current" href="javascript:;">
+            <span>Current item</span>
+          </a>
+        </li>
+        <li class="usa-nav-primary-item">
+          <button class="usa-accordion-button usa-nav-link" aria-controls="unique-id-1">
+            <span>Section</span>
+          </button>
+          <ul id="unique-id-1" class="usa-nav-submenu">
+            <li class="usa-nav-submenu-item">
+              <a href="javascript:;">
+                <span>First item</span>
+              </a>
+            </li>
+            <li class="usa-nav-submenu-item">
+              <a href="javascript:;">
+                <span>Second item</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="usa-layout-docs usa-section" id="main-content">
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+      <aside class="usa-layout-docs-sidenav desktop:grid-col-3">
+        <nav>
+          <ul class="usa-sidenav">
+            <li class="usa-sidenav-item">
+              <a href="javascript:;">First item</a>
+            </li>
+            <li class="usa-sidenav-item">
+              <a href="javascript:;" class="usa-current">Current item</a>
+            </li>
+            <li class="usa-sidenav-item">
+              <a href="javascript:;">Item with children</a>
+              <ul class="usa-sidenav-sublist">
+                <li class="usa-sidenav-item">
+                  <a href="javascript:;">First child item</a>
+                </li>
+                <li class="usa-sidenav-item">
+                  <a href="javascript:;">Second child item</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="usa-layout-docs-main_content desktop:grid-col-9 usa-prose">
+        <div class="usa-display">Page title</div>
+
+        <p class="usa-font-lead">A short description of the kinds of content seen on this page.</p>
+
+        <h2 id="section-heading-h2">Section heading (h2)</h2>
+
+        <p>These headings introduce, respectively, sections and subsections within your body copy. As you create these headings, follow the same guidelines that you use when writing section headings: Be succinct, descriptive, and precise.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% include footer.html %}
