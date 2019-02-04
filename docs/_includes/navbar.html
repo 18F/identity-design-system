@@ -17,7 +17,8 @@
         {%
           include nav/list.html
           links = site.data.nav.primary
-          rel = 'contains'
+          li_class = 'usa-nav-primary-item'
+          highlight_collection_when_is_current = true
           flat = true
         %}
       </ul>

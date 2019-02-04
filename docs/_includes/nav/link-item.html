@@ -1,19 +1,22 @@
-{% assign _href_key = include.href_key | default: 'href' %}
-{% if _href_key.size == 2 %}
-  {% assign _key = _href_key[1] %}
-  {% assign _slug = link[_key] | replace: '.', '' | slugify %}
-  {% assign _href = _href_key[0] | replace: '%', _slug %}
-{% else %}
-  {% assign _href = link[_href_key] %}
-{% endif %}
-{% assign _text_key = include.text_key | default: 'text' %}
-<a href="{{ _href }}"{% if _href == page.permalink or _href == page.url %} class="usa-current"{% endif %}>{{ link[_text_key] | smartify }}</a>
-{% if include.links -%}
-<ul class="usa-sidenav-sublist">{%
-  include nav/list.html
-  links=include.links
-  sidenav=include.sidenav
-  text_key=_text_key
-  href_key=_href_key
-%}</ul>
-{% endif %}
+{% assign is_current_page = include.link.href | eq: page.url -%}
+<a href="{{ include.link.href }}" class="{% if is_current_page %}usa-current{% endif %}">
+  <span>
+    {{ include.link.text | smartify }}
+  </span>
+</a>
+{% unless include.flat -%}
+  {% assign is_anchor_link = include.link.href | starts_with: '#' -%}
+  {% if is_current_page or is_anchor_link -%}
+    {% if include.link.links -%}
+      <ul class="{{ include.ul_class }}">
+        {%
+          include nav/list.html
+          links=include.link.links
+          li_class=include.li_class
+          ul_class=include.ul_class
+          highlight_collection_when_is_current=include.highlight_collection_when_is_current
+        %}
+      </ul>
+    {% endif -%}
+  {% endif -%}
+{% endunless -%}

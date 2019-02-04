@@ -1,27 +1,29 @@
 {% for link in include.links -%}
   {% if link.href -%}
-    {% assign _page = link.href | resolve_permalink %}
+    {% assign jekyll_page = link.href | resolve_permalink %}
   {% else -%}
-    {% assign _page = nil %}
+    {% assign jekyll_page = nil %}
   {% endif %}
-  <li class="{% if include.sidenav %}usa-sidenav-item{% else %}usa-nav-primary-item{% endif %}">
-    {% if _page -%}
+  <li class="{{ include.li_class }}">
+    {% if jekyll_page -%}
       {%
         include nav/page-item.html
-        page=_page
-        rel=include.rel
+        jekyll_page=jekyll_page
         flat=include.flat
         links=link.links
-        sidenav=include.sidenav
+        li_class=include.li_class
+        ul_class=include.ul_class
+        highlight_collection_when_is_current=include.highlight_collection_when_is_current
         text=link.text
       %}
     {% else -%}
-      {% include nav/link-item.html
+      {%
+        include nav/link-item.html
         link=link
-        links=link.links
-        sidenav=include.sidenav
-        href_key=include.href_key
-        text_key=include.text_key
+        flat=include.flat
+        li_class=include.li_class
+        ul_class=include.ul_class
+        highlight_collection_when_is_current=include.highlight_collection_when_is_current
       %}
     {% endif %}
   </li>
