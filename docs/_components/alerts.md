@@ -7,17 +7,6 @@ subnav:
     href: "#limiting-alert-width"
   - text: Types of Alerts
     href: "#types-of-alerts"
-    links:
-      - text: Success
-        href: "#success"
-      - text: Warning
-        href: "#warning"
-      - text: Error
-        href: "#error"
-      - text: Information
-        href: "#information"
-      - text: Other
-        href: "#other"
 ---
 
 # Limiting Alert Width

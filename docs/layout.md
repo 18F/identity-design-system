@@ -3,18 +3,6 @@ permalink: /layout/
 title: Layout
 lead: >
   For consistent visual appearance across login.gov sites, use these page layouts with grid and spacing systems.
-sidenav:
-  - text: Grid and spacing
-    href: "#grid-and-spacing"
-  - text: Page layouts
-    href: "#page-layouts"
-    links:
-      - text: Basic header, side navigation, and slim footer
-        href: "#basic-header-side-navigation-and-slim-footer"
-      - text: Extended header, full-width content, and medium footer
-        href: "#extended-header-full-width-content-and-medium-footer"
-      - text: Basic header, landing page content, and slim footer
-        href: "#basic-header-landing-page-content-and-slim-footer"
 ---
 
 # Grid and spacing

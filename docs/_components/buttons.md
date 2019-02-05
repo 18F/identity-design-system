@@ -5,22 +5,8 @@ lead: >
 subnav:
   - text: Standard Buttons
     href: "#standard-buttons"
-    links:
-      - text: Primary
-        href: "#primary"
-      - text: Secondary
-        href: "#secondary"
-      - text: Success
-        href: "#success"
-      - text: Danger
-        href: "#danger"
   - text: Other Buttons
     href: "#other-buttons"
-    links:
-      - text: Function
-        href: "#function"
-      - text: Tertiary
-        href: "#tertiary"
 ---
 
 # Standard Buttons

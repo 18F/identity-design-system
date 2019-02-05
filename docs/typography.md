@@ -3,9 +3,6 @@ permalink: /typography/
 title: Typography
 lead: >
   When writing longform text (a page like this), wrap the text in <code class="text-no-wrap text-secondary">div.usa-prose</code> to activate these styles.
-sidenav:
-  - text: Display, headings, and lead
-    href: "#display-headings-and-lead"
 ---
 
 # Display, headings, and lead
