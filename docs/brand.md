@@ -4,20 +4,8 @@ title: Brand
 sidenav:
   - text: Logo
     href: "#logo"
-    links:
-      - text: The shield and wordmark
-        href: "#the-shield-and-wordmark"
-      - text: Whitespace
-        href: "#whitespace"
-      - text: Minimum size
-        href: "#minimum-size"
   - text: Logo usage
     href: "#logo-usage"
-    links:
-      - text: Incorrect color usage
-        href: "#incorrect-color-usage"
-      - text: Do not modify the logo
-        href: "#do-not-modify-the-logo"
   - text: Illustration
     href: "#illustration"
 ---

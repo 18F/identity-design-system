@@ -9,22 +9,8 @@ subnav:
     href: "#dropdowns"
   - text: Radio buttons
     href: "#radio-buttons"
-    links:
-      - text: Simple
-        href: "#simple"
-      - text: Normal
-        href: "#normal"
-      - text: Large
-        href: "#large"
   - text: Checkboxes
     href: "#checkboxes"
-    links:
-      - text: Simple
-        href: "#simple-1"
-      - text: Normal
-        href: "#normal-1"
-      - text: Large
-        href: "#large-1"
   - text: Form field groups
     href: "#form-field-groups"
   - text: Form validation errors
