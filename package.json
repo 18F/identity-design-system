@@ -1,6 +1,6 @@
 {
   "name": "identity-style-guide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The global style of login.gov",
   "scripts": {
     "start": "make start",
@@ -11,7 +11,7 @@
     "test-jest": "make test-runner-jest",
     "build": "make build",
     "federalist": "npm install && make build-assets",
-    "postinstall": "make install-jekyll",
+    "prepare": "make install-jekyll",
     "prepublishOnly": "make lint && make clean && make build-assets"
   },
   "files": [
