@@ -39,4 +39,10 @@ Use <code class="text-no-wrap text-secondary">div.usa-prose</code> to indicate t
   <h6>Simple and secure <span class="text-no-wrap text-secondary">(h6)</span></h6>
 
   <p>Dedicated teams of design and security experts will continuously improve it.</p>
+
+  <ul>
+    <li>We welcome external review of our privacy-protection measures. All of our code is available for public inspection in an open-source repository. Our goal: make sure that at every step users know their privacy is being protected by design.</li>
+    <li>For more information, please visit the login.gov Help Center or contact us. You can also visit our open-source repository.</li>
+    <li>Dedicated teams of design and security experts will continuously improve it.</li>
+  </ul>
 </div>
