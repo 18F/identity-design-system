@@ -8,15 +8,6 @@
 
 @import 'uswds';
 
-// https://github.com/uswds/uswds/issues/2894
-.bg-success-darker { background-color: color('success-darker'); }
-.bg-success-dark { background-color: color('success-dark'); }
-.bg-success { background-color: color('success'); }
-.bg-success-lighter { background-color: color('success-lighter'); }
-.bg-warning { background-color: color('warning'); }
-.bg-warning-light { background-color: color('warning-light'); }
-.bg-disabled { background-color: color('disabled'); }
-
 @import 'functions/focus';
 
 @import 'components/accordions';
