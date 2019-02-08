@@ -2,6 +2,6 @@
 
 <div markdown="1">
 ```html
-{{ include.code | replace_regex: '\s?data-test(?:="[^\s"]+")', '' }}
+{{ include.code | strip | replace_regex: '\s?data-test(?:="[^\s"]+")', '' }}
 ```
 </div>
