@@ -1,12 +1,65 @@
 // stylelint-disable declaration-block-single-line-max-declarations
 
+$inline-border-radius: border-radius('sm');
+$inline-background-color: #f7f7f7;
+$block-border-radius: $inline-border-radius;
+$block-background-color: #fafafa;
+$block-border-width: 1px;
+$block-padding-width: units(2);
+
 pre,
 code {
   @include u-font('mono', $theme-body-font-size);
+  color: color('ink');
+}
+
+code {
+  // Override font size to use em so it adjusts appropriately to match nearby text.
+  font-size: .89309em;
+  padding: 2px 3px;
+  background-color: $inline-background-color;
+  border-radius: $inline-border-radius;
+}
+
+pre {
+  @include u-border($block-border-width, 'gray-5');
+  border-radius: $block-border-radius;
+  background-color: $block-background-color;
+  padding: $block-padding-width;
+
+  code {
+    font-size: unset;
+    background-color: transparent;
+  }
+}
+
+.highlight {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: $block-border-width;
+    bottom: $block-border-width;
+    width: $block-padding-width;
+    border-radius: $block-border-radius;
+  }
+
+  &::before {
+    left: $block-border-width;
+    background-image: linear-gradient(to left, transparent, $block-background-color);
+  }
+
+  &::after {
+    right: $block-border-width;
+    background-image: linear-gradient(to right, transparent, $block-background-color);
+  }
 }
 
 .highlight .hll { background-color: color('base-lightest'); }
-.highlight { background: color('white'); }
 .highlight .c { color: color('base'); font-style: italic; } /* comment */
 .highlight .err { color: color('error-lighter'); background-color: color('error'); } /* error */
 .highlight .k { color: color('primary-dark'); } /* keyword */
