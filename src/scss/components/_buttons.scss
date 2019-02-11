@@ -1,3 +1,9 @@
+.usa-button:focus,
+.usa-button.usa-focus {
+  @include disable-default-focus-styles;
+  box-shadow: roundable-focus-outline-box-shadows();
+}
+
 .usa-button-secondary,
 .usa-button-outline {
   background-color: color('white');
@@ -8,17 +14,20 @@
     color: color('primary');
   }
 
+  &:focus,
+  &.usa-focus {
+    box-shadow: $button-stroke color('primary'), roundable-focus-outline-box-shadows();
+  }
+
   &:hover,
   &.usa-button-hover {
     background-color: color('primary-lightest');
-    box-shadow: $button-stroke color('primary');
     color: color('primary');
   }
 
   &:active,
   &.usa-button-active {
     background-color: color('primary-lighter');
-    box-shadow: $button-stroke color('primary');
     color: color('primary');
   }
 
