@@ -9,17 +9,18 @@ lead: >
 <section class="usa-section usa-section-dark">
   <div class="grid-container">
     <div class="grid-row">
-      <div class="maxw-tablet usa-prose">
+      <div class="maxw-tablet">
         <div class="usa-display">
           The key to a strong brand <br>is <span class="text-accent-cool">consistency</span>.
         </div>
         <p class="usa-font-lead">{{ page.lead }}</p>
+        <a href="{{ site.baseurl }}/usage/" class="usa-button usa-button-big">See usage instructions</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="usa-section usa-section-light">
+<section class="usa-section">
   <div class="grid-container">
     <div class="grid-row grid-gap-4">
       <div class="tablet:grid-col">
@@ -49,38 +50,6 @@ The latest version is <strong class="text-no-wrap">{{ site.package_json.this_ver
 
 </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="usa-section">
-  <div class="grid-container">
-    <div class="grid-row grid-gap-4">
-<div class="grid-col usa-prose" markdown="1">
-
-# Using the {{ site.title }}
-
-First, install the latest version using npm:
-
-```shell
-npm install identity-style-guide
-```
-
-If this is your first npm dependency, a `package-lock.json` file will be generated. Commit this file to source control.
-
-The module is now installed at `./node_modules/identity-style-guide`. Woohoo!
-
-## Compiled CSS, JavaScript, fonts, and images
-
-You’ll find the compiled assets in `dist/assets`. These are ready to be used in your project directly.
-
-We recommend including these files from `node_modules` directly, either by linking to them at that location or by copying them automatically during a build process, to make upgrades easier in the future.
-
-## Uncompiled Sass and next-generation JavaScript
-
-The original source files in Sass and next-generation JavaScript are in `src`. Use these files if your project will be extending styles or JavaScript — but you’ll need to compile them in your build pipeline using a Sass compiler and a next-generation JavaScript compiler like Babel.
-
-</div>
     </div>
   </div>
 </section>
