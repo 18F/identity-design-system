@@ -50,6 +50,17 @@
     @include u-font-weight('bold');
     letter-spacing: 0.3px;
   }
+
+  // https://github.com/uswds/uswds/pull/2906
+  ol, ul {
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    li {
+      max-width: measure($theme-text-measure);
+    }
+  }
 }
 
 .usa-font-lead {
