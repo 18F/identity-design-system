@@ -2,12 +2,12 @@
 permalink: /typography/
 title: Typography
 lead: >
-  When writing longform text (a page like this), wrap the text in <code class="text-no-wrap text-secondary">div.usa-prose</code> to activate these styles.
+  When writing longform text (a page like this), wrap the text in <code class="text-no-wrap">div.usa-prose</code> to activate these styles.
 ---
 
 # Display, headings, and lead
 
-Use <code class="text-no-wrap text-secondary">div.usa-prose</code> to indicate that the immediately containing headings and paragraphs should be considered a longform text document:
+Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immediately containing headings and paragraphs should be considered a longform text document:
 
 <div class="border-base-light border-left-1 padding-2 usa-prose">
   <div class="usa-display">How login.gov keeps personal information private <span class="text-no-wrap text-secondary">(div.usa-display)</span></div>

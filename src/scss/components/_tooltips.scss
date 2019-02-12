@@ -8,6 +8,7 @@ $tooltip-distance: units(.5);
 
   &::before, &::after {
     visibility: hidden;
+    z-index: 1;
   }
 
   // the triangle
