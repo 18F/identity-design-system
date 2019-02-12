@@ -29,7 +29,7 @@ build: build-docs build-assets
 build-docs:
 	JEKYLL_ENV=production bundle exec jekyll build
 
-build-assets: build-sass-and-js build-fonts build-images
+build-assets: build-sass-and-js build-fonts build-images copy-scss
 
 build-sass-and-js:
 	NODE_ENV=production \
@@ -45,6 +45,9 @@ build-images:
 	mkdir -p $(OUTPUT_DIR)/assets/img
 	cp -r node_modules/uswds/src/img $(OUTPUT_DIR)/assets
 	cp -r src/img $(OUTPUT_DIR)/assets
+
+copy-scss:
+	./node_modules/.bin/gulp copy-scss
 
 test: build
 	make test-runners

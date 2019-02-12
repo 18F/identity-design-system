@@ -25,8 +25,8 @@ Relative font and image file paths
 ----------------------------------------
 */
 
-$theme-font-path:   '../fonts';
-$theme-image-path:  '../img';
+$theme-font-path: if(variable-exists(font-path), $font-path, '../fonts');
+$theme-image-path: if(variable-exists(image-path), $image-path, '../img');
 
 /*
 ----------------------------------------
