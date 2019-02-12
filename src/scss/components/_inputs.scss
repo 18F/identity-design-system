@@ -9,6 +9,11 @@ $border-width: 1px;
   background-color: color('primary-lightest');
   border-radius: radius('md');
 
+  &:focus {
+    @include disable-default-focus-styles;
+    box-shadow: roundable-focus-outline-box-shadows();
+  }
+
   &.usa-input-error {
     @include u-border($border-width, 'error');
     background-position: right units($input-padding) center;
@@ -26,6 +31,11 @@ $border-width: 1px;
   @include add-background-svg('arrow-down-filled');
   font-weight: font-weight('bold');
   border-radius: radius('md');
+
+  &:focus {
+    @include disable-default-focus-styles;
+    box-shadow: roundable-focus-outline-box-shadows();
+  }
 
   &.usa-input-error {
     @include u-border($border-width, 'error');
@@ -81,6 +91,20 @@ $border-width: 1px;
 
 .usa-checkbox-input:checked + .usa-checkbox-label::before {
   box-shadow: inset 0 0 0 units($border-width) color('primary');
+}
+
+.usa-radio-input:checked:focus + .usa-radio-label::before {
+  @include disable-default-focus-styles;
+  box-shadow: inset 0 0 0 0.3rem color('primary'), roundable-focus-outline-box-shadows();
+}
+
+.usa-checkbox-input:focus + .usa-checkbox-label::before {
+  @include disable-default-focus-styles;
+  box-shadow: inset 0 0 0 units($border-width) color('primary'), roundable-focus-outline-box-shadows();
+}
+
+.usa-checkbox-input:checked:focus + .usa-checkbox-label::before {
+  box-shadow: roundable-focus-outline-box-shadows();
 }
 
 .usa-radio-bordered,
