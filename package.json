@@ -15,9 +15,7 @@
     "prepublishOnly": "make lint && make clean && make build-assets"
   },
   "files": [
-    "dist/assets/**/*",
-    "src/js/**/*",
-    "src/scss/**/*"
+    "dist/assets/**/*"
   ],
   "repository": {
     "type": "git",
@@ -50,6 +48,7 @@
     "get-port-cli": "^2.0.0",
     "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",
+    "gulp-if": "^2.0.2",
     "gulp-notify": "^3.2.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",

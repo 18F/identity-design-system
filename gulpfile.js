@@ -7,6 +7,8 @@ const notify = require('gulp-notify');
 const uswdsPkg = require('uswds/package.json');
 const postcss = require('gulp-postcss');
 const replace = require('gulp-replace');
+const rename = require('gulp-rename');
+const gulpif = require('gulp-if');
 const sass = require('gulp-sass');
 const gulpStylelint = require('gulp-stylelint');
 const sourcemaps = require('gulp-sourcemaps');
@@ -25,6 +27,7 @@ const PROJECT_JS_MAIN = 'main.js';
 const OUTPUT_DIR = process.env.OUTPUT_DIR || './dist';
 const JS_DEST = `${OUTPUT_DIR}/assets/js`;
 const CSS_DEST = `${OUTPUT_DIR}/assets/css`;
+const SCSS_DEST = `${OUTPUT_DIR}/assets/scss`;
 
 const notificationOptions = {
   success: {
@@ -132,6 +135,24 @@ gulp.task('watch-sass', () => gulp.watch(
   `${PROJECT_SASS_SRC}/**/*.scss`,
   gulp.series('build-sass'),
 ));
+
+const replaceUrls = () => replace(/url\(["']?([^)"']+)["']?\)/g, 'url(asset-path-if-exists("$1"))');
+const underscorePrefix = () => gulpif(f => f.basename[0] !== '_', rename({ prefix: '_' }));
+
+gulp.task('copy-login-scss', () => gulp
+  .src([`${PROJECT_SASS_SRC}/**/*.scss`])
+  .pipe(replace("@import 'uswds'", "@import 'uswds/uswds'"))
+  .pipe(replaceUrls())
+  .pipe(underscorePrefix())
+  .pipe(gulp.dest(SCSS_DEST)));
+
+gulp.task('copy-uswds-scss', () => gulp
+  .src([`${uswds}/scss/**/*.scss`])
+  .pipe(replaceUrls())
+  .pipe(underscorePrefix())
+  .pipe(gulp.dest(`${SCSS_DEST}/uswds`)));
+
+gulp.task('copy-scss', gulp.parallel('copy-login-scss', 'copy-uswds-scss'));
 
 gulp.task('lint', gulp.parallel(
   'lint-js',

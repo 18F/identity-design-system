@@ -67,8 +67,32 @@ copy_to_destination:
   - node_modules/identity-style-guide/dist/assets
 ```
 
-# Compiling source files in your build process
+# Compiling Sass in your build process
 
-The original source files in Sass and next-generation JavaScript are in `src`.
+Use the original source scss files if your project will be extending styles — but you’ll need to compile them in your build pipeline using a Sass compiler. The source scss files can be found in `dist/assets/scss`, and can be imported into your project’s scss files in one import:
 
-Use these files if your project will be extending styles or JavaScript — but you’ll need to compile them in your build pipeline using a Sass compiler and a next-generation JavaScript compiler like Babel.
+```scss
+@import 'node_modules/identity-style-guide/dist/assets/scss/styles';
+```
+
+## Use with Rails
+
+The scss files natively support `asset-path()` out-of-the-box for ease of use with the Rails Asset Pipeline. To use with Rails, configure Rails to look for assets in both `node_modules` and the identity-style-guide module:
+
+```ruby
+# config/initializers/assets.rb
+
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
+Rails.application.config.assets.paths << Rails.root.join('node_modules/identity-style-guide/dist/assets')
+```
+
+Finally, import the styles into your main stylesheet:
+
+```scss
+// app/assets/stylesheets/application.css.scss
+
+$font-path: 'fonts';
+$image-path: 'img';
+
+@import 'identity-style-guide/dist/assets/scss/styles';
+```
