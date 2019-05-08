@@ -11,12 +11,12 @@
     }
   }
 
-  .usa-sidenav-item {
+  .usa-sidenav__item {
     @include add-bar(1px, 'base-light', 'top', 'pill', 2, 0);
     border-top: 0;
   }
 
-  > .usa-sidenav-item:first-of-type {
+  > .usa-sidenav__item:first-of-type {
     @include remove-bar;
   }
 
@@ -32,6 +32,6 @@
   }
 }
 
-.usa-sidenav-sublist a {
+.usa-sidenav__sublist a {
   padding-left: units(4);
 }

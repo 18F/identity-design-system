@@ -19,11 +19,11 @@ $icon-size: 3;
   padding-top: 0;
 }
 
-.usa-alert-success,
-.usa-alert-warning,
-.usa-alert-error,
-.usa-alert-info {
-  .usa-alert-body {
+.usa-alert---success,
+.usa-alert---warning,
+.usa-alert---error,
+.usa-alert---info {
+  .usa-alert__body {
     padding-left: units($icon-size);
   }
 }

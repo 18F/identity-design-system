@@ -264,14 +264,14 @@ Three styles of checkboxes are provided as well. Always label the grouping of it
 
 Follow the same pattern of applying `.usa-input-error` to the effected input and append the error message in the appropriate span.
 
-<div class="usa-accordion usa-accordion-bordered">
-  <h3 class="usa-accordion-heading">
+<div class="usa-accordion usa-accordion--bordered">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-textarea">
       Textarea (multiline) input
     </button>
   </h3>
   <div id="errored-textarea" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <label for="a37c" class="usa-label">Textarea (multiline) input</label>
 <textarea id="a37c" type="text" class="usa-textarea usa-input-error"></textarea>
@@ -282,13 +282,13 @@ Follow the same pattern of applying `.usa-input-error` to the effected input and
     <button class="usa-accordion-close-button">Close</button>
   </div>
 
-  <h3 class="usa-accordion-heading">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-dates">
       Dates
     </button>
   </h3>
   <div id="errored-dates" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-legend">Date of birth</legend>
@@ -315,13 +315,13 @@ Follow the same pattern of applying `.usa-input-error` to the effected input and
     <button class="usa-accordion-close-button">Close</button>
   </div>
 
-  <h3 class="usa-accordion-heading">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-dropdowns">
       Dropdowns
     </button>
   </h3>
   <div id="errored-dropdowns" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <label for="d8e1" class="usa-label">Dropdown label</label>
 <select id="d8e1" class="usa-select usa-input-error">
@@ -342,14 +342,14 @@ Follow the same pattern of applying `.usa-input-error` to the effected input and
 
 For radio buttons and checkboxes, simply add an error message directly after the input list. Do not apply `.usa-input-error` to the effected inputs.
 
-<div class="usa-accordion usa-accordion-bordered">
-  <h3 class="usa-accordion-heading">
+<div class="usa-accordion usa-accordion--bordered">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-radio-small">
       Radio buttons (small)
     </button>
   </h3>
   <div id="errored-radio-small" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>
@@ -375,13 +375,13 @@ For radio buttons and checkboxes, simply add an error message directly after the
     <button class="usa-accordion-close-button">Close</button>
   </div>
 
-  <h3 class="usa-accordion-heading">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-radio-normal">
       Radio buttons (normal)
     </button>
   </h3>
   <div id="errored-radio-normal" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>
@@ -407,13 +407,13 @@ For radio buttons and checkboxes, simply add an error message directly after the
     <button class="usa-accordion-close-button">Close</button>
   </div>
 
-  <h3 class="usa-accordion-heading">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-radio-large">
       Radio buttons (large)
     </button>
   </h3>
   <div id="errored-radio-large" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>
@@ -449,13 +449,13 @@ For radio buttons and checkboxes, simply add an error message directly after the
     <button class="usa-accordion-close-button">Close</button>
   </div>
 
-  <h3 class="usa-accordion-heading">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-checkbox-small">
       Checkboxes (small)
     </button>
   </h3>
   <div id="errored-checkbox-small" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>
@@ -481,13 +481,13 @@ For radio buttons and checkboxes, simply add an error message directly after the
     <button class="usa-accordion-close-button">Close</button>
   </div>
 
-  <h3 class="usa-accordion-heading">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-checkbox-normal">
       Checkboxes (normal)
     </button>
   </h3>
   <div id="errored-checkbox-normal" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>
@@ -513,13 +513,13 @@ For radio buttons and checkboxes, simply add an error message directly after the
     <button class="usa-accordion-close-button">Close</button>
   </div>
 
-  <h3 class="usa-accordion-heading">
+  <h3 class="usa-accordion__heading">
     <button class="usa-accordion-button" aria-controls="errored-checkbox-large">
       Checkboxes (large)
     </button>
   </h3>
   <div id="errored-checkbox-large" class="usa-accordion-container">
-    <div class="usa-accordion-content">
+    <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>

@@ -1,7 +1,7 @@
 $header-height: 15;
 
-.usa-header-extended,
-.usa-header-basic {
+.usa-header--extended,
+.usa-header--basic {
   .usa-logo {
     @include at-media-max($theme-navigation-width) {
       font-size: unset;
@@ -31,7 +31,7 @@ $header-height: 15;
   }
 }
 
-.usa-header-basic {
+.usa-header--basic {
   .usa-nav-container {
     @include at-media($theme-navigation-width) {
       align-items: center;
@@ -45,18 +45,18 @@ $header-height: 15;
   }
 }
 
-.usa-nav-primary {
+.usa-nav__primary {
   @include at-media-max($theme-navigation-width) {
-    .usa-nav-primary-item,
-    .usa-nav-submenu-item {
+    .usa-nav__primary-item,
+    .usa-nav__submenu-item {
       > a,
-      > .usa-nav-link {
+      > .usa-nav__link {
         &:hover {
           color: color('ink');
         }
       }
 
-      .usa-accordion-button {
+      .usa-accordion__button {
         background-position: right units(1) center;
       }
 
@@ -70,9 +70,9 @@ $header-height: 15;
   }
 
   @include at-media($theme-navigation-width) {
-    > .usa-nav-primary-item {
+    > .usa-nav__primary-item {
       > a,
-      > .usa-nav-link {
+      > .usa-nav__link {
         font-weight: normal;
         color: color('primary');
         text-transform: uppercase;
@@ -83,7 +83,7 @@ $header-height: 15;
         }
       }
 
-      .usa-accordion-button[aria-expanded=true] {
+      .usa-accordion__button[aria-expanded=true] {
         @include remove-bar;
         color: color('white');
       }
@@ -100,7 +100,7 @@ $header-height: 15;
   }
 }
 
-.usa-nav-secondary {
+.usa-nav__secondary {
   @include at-media($theme-navigation-width) {
     top: 0;
     bottom: unset;
@@ -113,11 +113,11 @@ $header-height: 15;
   }
 }
 
-.usa-menu-btn {
+.usa-menu__btn {
   height: units($header-height);
 }
 
-.usa-logo-img {
+.usa-logo__img {
   height: units(3);
 }
 
@@ -127,7 +127,7 @@ $header-height: 15;
   padding-left: 26px;
 }
 
-.usa-header-extended .usa-nav {
+.usa-header--extended .usa-nav {
   @include at-media($theme-navigation-width) {
     border-top: units(1px) solid color('base-light');
     padding: 0;

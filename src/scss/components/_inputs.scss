@@ -14,12 +14,12 @@ $border-width: 1px;
     box-shadow: roundable-focus-outline-box-shadows();
   }
 
-  &.usa-input-error {
+  &.usa-input--error {
     @include u-border($border-width, 'error');
     background-position: right units($input-padding) center;
     background-size: units($icon-size);
 
-    &:not(.usa-input-inline) {
+    &:not(.usa-input--inline) {
       @include add-background-svg('alerts/error');
       padding-right: units(2 * $input-padding) + units($icon-size);
     }
@@ -52,8 +52,8 @@ $border-width: 1px;
   }
 }
 
-.usa-radio-label,
-.usa-checkbox-label {
+.usa-radio__label,
+.usa-checkbox__label {
   display: inline-block;
   margin-bottom: units(1);
 }

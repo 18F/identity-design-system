@@ -1,7 +1,7 @@
 $border-width: 1px;
 $icon-size: 1.5;
 
-.usa-accordion-button {
+.usa-accordion__button {
   @include u-border($border-width, 'primary-light');
   @include u-radius('lg');
   @include u-text('normal');
@@ -19,7 +19,7 @@ $icon-size: 1.5;
   }
 }
 
-.usa-accordion-close-button {
+.usa-accordion__close-button {
   @extend .usa-accordion-button;
   @include typeset($theme-accordion-font-family, $theme-body-font-size, 1);
   background-image: none;
@@ -52,13 +52,13 @@ $icon-size: 1.5;
   }
 }
 
-.usa-accordion-bordered {
+.usa-accordion--bordered {
   .usa-accordion-button[aria-expanded='true'] {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .usa-accordion-container {
+  .usa-accordion__container {
     @include u-border($border-width, 'primary-light');
     @include u-radius('lg');
     border-top-width: 0;
@@ -66,11 +66,11 @@ $icon-size: 1.5;
     border-top-right-radius: 0;
   }
 
-  .usa-accordion-content {
+  .usa-accordion__content {
     border-width: 0;
   }
 
-  .usa-accordion-close-button {
+  .usa-accordion__close-button {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-width: $border-width 0 0 0;

@@ -4,8 +4,8 @@
   box-shadow: roundable-focus-outline-box-shadows();
 }
 
-.usa-button-secondary,
-.usa-button-outline {
+.usa-button--secondary,
+.usa-button--outline {
   background-color: color('white');
   box-shadow: $button-stroke color('primary');
   color: color('primary');
@@ -20,54 +20,54 @@
   }
 
   &:hover,
-  &.usa-button-hover {
+  &.usa-button--hover {
     background-color: color('primary-lightest');
     color: color('primary');
   }
 
   &:active,
-  &.usa-button-active {
+  &.usa-button--active {
     background-color: color('primary-lighter');
     color: color('primary');
   }
 
   &:disabled,
-  &.usa-button-disabled {
+  &.usa-button--disabled {
     background-color: color('white');
     box-shadow: $button-stroke color('disabled');
     color: color('disabled');
   }
 }
 
-.usa-button-success {
+.usa-button--success {
   background-color: map-get($site-palette, 'site-green');
 
   &:hover,
-  &.usa-button-hover {
+  &.usa-button--hover {
     background-color: map-get($site-palette, 'site-dark-green');
   }
 
   &:active,
-  &.usa-button-active {
+  &.usa-button--active {
     background-color: map-get($site-palette, 'site-darkest-green');
   }
 }
 
-.usa-button-danger {
+.usa-button--danger {
   background-color: map-get($site-palette, 'site-red');
 
   &:hover,
-  &.usa-button-hover {
+  &.usa-button--hover {
     background-color: map-get($site-palette, 'site-dark-red');
   }
 
   &:active,
-  &.usa-button-active {
+  &.usa-button--active {
     background-color: map-get($site-palette, 'site-darkest-red');
   }
 }
 
-.usa-button-inverse {
+.usa-button--inverse {
   background-color: color('primary-lighter');
   color: color('primary');
 
@@ -76,31 +76,31 @@
   }
 
   &:hover,
-  &.usa-button-hover {
+  &.usa-button--hover {
     background-color: color('primary-lighter');
     color: color('primary');
   }
 
   &:active,
-  &.usa-button-active {
+  &.usa-button--active {
     background-color: color('primary-light');
     color: color('primary-dark');
   }
 
   &:disabled,
-  &.usa-button-disabled {
+  &.usa-button--disabled {
     background-color: color('disabled');
     color: color('white');
   }
 }
 
-.usa-button-small {
+.usa-button--small {
   border-radius: radius('md');
   font-size: font-size($theme-button-font-family, '3xs');
   padding: units(1) units(2);
 }
 
-.usa-button-tiny {
+.usa-button--tiny {
   border-radius: radius('md');
   font-size: font-size($theme-button-font-family, 'micro');
   padding: units(1) units(1);
