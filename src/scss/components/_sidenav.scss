@@ -24,10 +24,10 @@
     background-color: color('primary-lightest');
     color: unset;
 
-    @include add-bar($theme-sidenav__current-border-width, 'secondary', 'left', 'pill', 0, 0);
+    @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 'pill', 0, 0);
 
     @include at-media('tablet') {
-      @include add-bar($theme-sidenav__current-border-width, 'secondary', 'left', 'pill', 0, 0);
+      @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 'pill', 0, 0);
     }
   }
 }
