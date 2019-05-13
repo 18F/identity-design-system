@@ -1,24 +1,23 @@
-$header-height: 15;
+$header-height: 10;
 
 .usa-header--extended,
 .usa-header--basic {
   .usa-logo {
     @include at-media-max($theme-navigation-width) {
       font-size: unset;
-      line-height: unset;
       flex: unset;
     }
 
     @include at-media($theme-navigation-width) {
       font-size: unset;
-      line-height: unset;
       margin: 0;
     }
+
+    line-height: units(2);
   }
 
   .usa-navbar {
     @include at-media-max($theme-navigation-width) {
-      height: units($header-height);
       border-bottom: units(1px) solid color('base-light');
       justify-content: space-between;
     }
@@ -118,13 +117,26 @@ $header-height: 15;
 }
 
 .usa-logo__img {
-  height: units(3);
+  @include at-media-max($theme-navigation-width) {
+    height: units(2);
+  }
+  @include at-media($theme-navigation-width) {
+    height: units(3);
+  }
 }
 
-.usa-logo-text {
-  @include u-font-size($theme-header-font-family, 4);
+.usa-logo__text {
+  @include at-media-max($theme-navigation-width) {
+    @include u-font-size($theme-header-font-family, 3);
+    padding-left: 17px;
+  }
+
+  @include at-media($theme-navigation-width) {
+    @include u-font-size($theme-header-font-family, 4);
+    padding-left: 27px;
+  }
+
   color: color('secondary');
-  padding-left: 26px;
 }
 
 .usa-header--extended .usa-nav {
