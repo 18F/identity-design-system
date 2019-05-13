@@ -27,3 +27,9 @@ $icon-size: 3;
     padding-left: units($icon-size);
   }
 }
+
+// Temporarily supporting this class until USWDS formally supports this again
+// or has an alternate recommendation.
+.usa-alert__paragraph {
+  max-width: 66ch;
+}

@@ -6,7 +6,7 @@ lead: >
   Use the login.gov Design System when developing login.gov sites to consistently identify the login.gov brand.
 ---
 
-<section class="usa-section usa-section-dark">
+<section class="usa-section usa-section--dark">
   <div class="grid-container">
     <div class="grid-row">
       <div class="maxw-tablet">
