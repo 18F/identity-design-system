@@ -11,7 +11,7 @@ $header-height: 15;
 
     @include at-media($theme-navigation-width) {
       font-size: unset;
-      line-height: unset;
+      line-height: units(2);
       margin: 0;
     }
   }
@@ -121,10 +121,10 @@ $header-height: 15;
   height: units(3);
 }
 
-.usa-logo-text {
+.usa-logo__text {
   @include u-font-size($theme-header-font-family, 4);
   color: color('secondary');
-  padding-left: 26px;
+  padding-left: 27px;
 }
 
 .usa-header--extended .usa-nav {
