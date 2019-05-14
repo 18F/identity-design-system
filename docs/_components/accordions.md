@@ -7,7 +7,6 @@ lead: >
 Before using an accordion, consider if their use would hinder usability. If there is not enough content to warrant condensing or if visitors need to see most or all of the information on a page, use well-formatted text instead.
 
 {% capture example %}
-<h6>Bordered</h6>
 
 <div class="usa-accordion usa-accordion--bordered">
   
@@ -20,7 +19,7 @@ Before using an accordion, consider if their use would hinder usability. If ther
     </button>
   </h2>
   <div id="b-a1" class="usa-accordion__content usa-prose">
-    <p>Follow this example! Mark the <code>.usa-accordion-button</code> with <code>aria-expanded="true"</code> to indicate that the content referenced with the ID listed in <code>aria-controls</code> is expanded by default, and omit the <code>hidden</code> attribute on the related <code>.usa-accordion__content</code>.</p>
+    <p>Follow this example! Mark the <code>.usa-accordion__button</code> with <code>aria-expanded="true"</code> to indicate that the content referenced with the ID listed in <code>aria-controls</code> is expanded by default, and omit the <code>hidden</code> attribute on the related <code>.usa-accordion__content</code>.</p>
 
   </div>
   
@@ -46,8 +45,8 @@ Before using an accordion, consider if their use would hinder usability. If ther
     </button>
   </h2>
   <div id="b-a3" class="usa-accordion__content usa-prose">
-    <p>On the wrapping <code>.usa-accordion</code>, add the <code>aria-multiselectable="true"</code> attribute.</p
-
+    <p>On the wrapping <code>.usa-accordion</code>, add the
+    <code>aria-multiselectable="true"</code> attribute.</p>
   </div>
 </div>
 {% endcapture %}
