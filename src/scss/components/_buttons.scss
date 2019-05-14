@@ -1,3 +1,33 @@
+.usa-button {
+  &:visited {
+    color: color('white');
+  }
+
+  &:hover,
+  &.usa-button--hover {
+    background-color: color('primary-dark');
+    border-bottom: 0;
+    color: color('white');
+    text-decoration: none;
+  }
+
+  &:active,
+  &.usa-button--active {
+    background-color: color('primary-darker');
+    color: color('white');
+  }
+
+  &:focus,
+  &.usa--focus {
+    outline-offset: units(0.5);
+  }
+
+  &:disabled {
+    @include button-disabled;
+  }
+}
+
+
 .usa-button:focus,
 .usa-button.usa-focus {
   @include disable-default-focus-styles;
