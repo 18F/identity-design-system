@@ -14,7 +14,7 @@ lead: >
           The key to a strong brand <br>is <span class="text-accent-cool">consistency</span>.
         </div>
         <p class="usa-intro">{{ page.lead }}</p>
-        <a href="{{ site.baseurl }}/usage/" class="usa-button usa-button-big">See usage instructions</a>
+        <a href="{{ site.baseurl }}/usage/" class="usa-button usa-button--big">See usage instructions</a>
       </div>
     </div>
   </div>
