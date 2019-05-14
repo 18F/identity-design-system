@@ -6,41 +6,41 @@ layout: base
 
 <div class="usa-overlay"></div>
 
-<header class="usa-header usa-header-extended" role="banner">
+<header class="usa-header usa-header--extended" role="banner">
   <div class="usa-navbar">
       <div class="usa-logo" id="extended-logo">
         <a href="javascript:;" title="Home" aria-label="Home">
-          <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo-img" alt="login.gov">
-          <em class="usa-logo-text">Optional Site Title</em>
+          <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo__img" alt="login.gov">
+          <em class="usa-logo__text">Optional Site Title</em>
         </a>
       </div>
       <button class="usa-menu-btn">Menu</button>
     </div>
     <nav role="navigation" class="usa-nav">
-      <div class="usa-nav-inner">
-        <button class="usa-nav-close"><img src="{{ site.baseurl }}/assets/img/close.svg" alt="Close"></button>
-        <ul class="usa-nav-primary usa-accordion">
-          <li class="usa-nav-primary-item">
-            <a class="usa-nav-link" href="javascript:;">
+      <div class="usa-nav__inner">
+        <button class="usa-nav__close"><img src="{{ site.baseurl }}/assets/img/close.svg" alt="Close"></button>
+        <ul class="usa-nav__primary usa-accordion">
+          <li class="usa-nav__primary-item">
+            <a class="usa-nav__link" href="javascript:;">
               <span>Menu item</span>
             </a>
           </li>
-          <li class="usa-nav-primary-item">
-            <a class="usa-nav-link usa-current" href="javascript:;">
+          <li class="usa-nav__primary-item">
+            <a class="usa-nav__link usa-current" href="javascript:;">
               <span>Current item</span>
             </a>
           </li>
-          <li class="usa-nav-primary-item">
-            <button class="usa-accordion-button usa-nav-link" aria-controls="unique-id-1">
+          <li class="usa-nav__primary-item">
+            <button class="usa-accordion-button usa-nav__link" aria-controls="unique-id-1">
               <span>Section</span>
             </button>
-            <ul id="unique-id-1" class="usa-nav-submenu">
-              <li class="usa-nav-submenu-item">
+            <ul id="unique-id-1" class="usa-nav__submenu">
+              <li class="usa-nav__submenu-item">
                 <a href="javascript:;">
                   <span>First item</span>
                 </a>
               </li>
-              <li class="usa-nav-submenu-item">
+              <li class="usa-nav__submenu-item">
                 <a href="javascript:;">
                   <span>Second item</span>
                 </a>
@@ -48,17 +48,17 @@ layout: base
             </ul>
           </li>
         </ul>
-        <div class="usa-nav-secondary">
-          <div class="usa-nav-secondary-container">
-            <ul class="usa-nav-secondary-links">
-              <li class="usa-nav-secondary-item">
+        <div class="usa-nav__secondary">
+          <div class="usa-nav__secondary-container">
+            <ul class="usa-nav__secondary-links">
+              <li class="usa-nav__secondary-item">
                 <a href="javascript:;">Secondary link</a>
               </li>
-              <li class="usa-nav-secondary-item">
+              <li class="usa-nav__secondary-item">
                 <a href="javascript:;">Another secondary link</a>
               </li>
             </ul>
-            <form class="usa-search usa-search-small">
+            <form class="usa-search usa-search--small">
               <div role="search">
                 <label class="usa-sr-only" for="extended-search-field-small">Search small</label>
                 <input class="usa-input" id="extended-search-field-small" type="search" name="search">
@@ -86,18 +86,18 @@ layout: base
   </div>
 </main>
 
-<footer class="usa-footer usa-footer-medium" role="contentinfo">
-  <div class="grid-container usa-footer-return-to-top">
+<footer class="usa-footer" role="contentinfo">
+  <div class="grid-container usa-footer__return-to-top">
     <div class="grid-row flex-align-center">
       <div class="grid-col flex-1">
         <a href="#">Return to top</a>
       </div>
       <div class="grid-col flex-auto">
-        <a href="{{ site.github_repo_url }}/edit/master/docs/{{ page.path }}" class="usa-button usa-button-outline">Edit this page</a>
+        <a href="{{ site.github_repo_url }}/edit/master/docs/{{ page.path }}" class="usa-button usa-button--outline">Edit this page</a>
       </div>
     </div>
   </div>
-  <div class="usa-footer-primary-section">
+  <div class="usa-footer__primary-section">
     <div class="grid-container">
       <div class="grid-row grid-gap">
         <div class="tablet:grid-col usa-prose">
@@ -107,12 +107,12 @@ layout: base
       </div>
     </div>
   </div>
-  <div class="usa-footer-secondary-section">
+  <div class="usa-footer__secondary-section">
     <div class="grid-container">
-      <div class="usa-footer-logo grid-row grid-gap-2">
-        <a href="https://www.gsa.gov" class="usa-footer-logo grid-row grid-gap-2" target="_blank">
+      <div class="usa-footer__logo grid-row grid-gap-2">
+        <a href="https://www.gsa.gov" class="usa-footer__logo grid-row grid-gap-2" target="_blank">
           <div class="grid-col-auto">
-            <img src="{{ site.baseurl }}/assets/img/gsa-logo-rev.svg" alt="U.S. General Services Administration logo" class="usa-footer-logo-img">
+            <img src="{{ site.baseurl }}/assets/img/gsa-logo-rev.svg" alt="U.S. General Services Administration logo" class="usa-footer__logo-img">
           </div>
           <div class="grid-col-auto">
             U.S. General Services Administration
@@ -122,4 +122,3 @@ layout: base
     </div>
   </div>
 </footer>
-
