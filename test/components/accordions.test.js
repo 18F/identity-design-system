@@ -13,33 +13,45 @@ const expectAccordionItem = async (id, { hidden }) => {
 beforeEach(async () => page.goto(`${host}/components/accordions/`));
 
 test('accordions are open on load only when aria-expanded="true"', async () => {
-  await expectAccordionItem('b-a1', { hidden: false });
-  await expectAccordionItem('b-a2', { hidden: true });
-  await expectAccordionItem('b-a3', { hidden: true });
+  await expectAccordionItem('unique-id-1', { hidden: false });
+  await expectAccordionItem('unique-id-2', { hidden: true });
+  await expectAccordionItem('unique-id-3', { hidden: true });
 });
 
 test('opening one accordion item closes the currently open one', async () => {
-  await expectAccordionItem('b-a1', { hidden: false });
-  await expectAccordionItem('b-a2', { hidden: true });
+  await expectAccordionItem('unique-id-1', { hidden: false });
+  await expectAccordionItem('unique-id-2', { hidden: true });
 
-  await page.click("[aria-controls='b-a2']");
+  await page.click("[aria-controls='unique-id-2']");
 
-  await expectAccordionItem('b-a1', { hidden: true });
-  await expectAccordionItem('b-a2', { hidden: false });
+  await expectAccordionItem('unique-id-1', { hidden: true });
+  await expectAccordionItem('unique-id-2', { hidden: false });
+});
+
+test('two accordion items can be open simultaneously with aria-multiselectable="true"', async () => {
+  await page.$eval("[data-test='accordion']", a => a.setAttribute('aria-multiselectable', true));
+
+  await expectAccordionItem('unique-id-1', { hidden: false });
+  await expectAccordionItem('unique-id-2', { hidden: true });
+
+  await page.click("[aria-controls='unique-id-2']");
+
+  await expectAccordionItem('unique-id-1', { hidden: false });
+  await expectAccordionItem('unique-id-2', { hidden: false });
 });
 
 test('clicking an open accordion title closes the accordion item', async () => {
-  await expectAccordionItem('b-a1', { hidden: false });
+  await expectAccordionItem('unique-id-1', { hidden: false });
 
-  await page.click("[aria-controls='b-a1']");
+  await page.click("[aria-controls='unique-id-1']");
 
-  await expectAccordionItem('b-a1', { hidden: true });
+  await expectAccordionItem('unique-id-1', { hidden: true });
 });
 
-test('clicking an open accordion  button closes the accordion item', async () => {
-  await expectAccordionItem('b-a1', { hidden: false });
+test('clicking an accordion close button closes the accordion item', async () => {
+  await expectAccordionItem('unique-id-1', { hidden: false });
 
-  await page.click('[aria-controls="b-a1"]');
+  await page.click('#unique-id-1 .usa-accordion-close-button');
 
-  await expectAccordionItem('b-a1', { hidden: true });
+  await expectAccordionItem('unique-id-1', { hidden: true });
 });
