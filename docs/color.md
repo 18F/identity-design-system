@@ -75,7 +75,7 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
     {% include helpers/color.html
       name="Light Teal"
       code="accent-cool-light"
-      hex="#00a2c4"
+      hex="#ecfcff"
       text-color="black"
     %}
   </div>
