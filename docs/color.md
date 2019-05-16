@@ -118,7 +118,7 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
     {% include helpers/color.html
       name="Light Gray"
       code="disabled"
-      hex="#767676c9"
+      hex="#767676"
       text-color="black"
     %}
   </div>
