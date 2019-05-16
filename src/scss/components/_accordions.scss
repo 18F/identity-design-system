@@ -58,7 +58,7 @@ $icon-size: 1.5;
   }
 
   .usa-accordion-button {
-    @include u-font-size('body', 'xs')
+    @include u-font-size('body', 'xs');
     border: 1px solid color('primary-light');
     color: color('primary');
     border-radius: radius('lg');
@@ -86,7 +86,7 @@ $icon-size: 1.5;
   }
 
   .usa-accordion__close-button {
-    @include u-font-size('body', 'xs')
+    @include u-font-size('body', 'xs');
     @include u-radius('lg');
     background-color: color('primary-lightest');
     font-weight: 400;
