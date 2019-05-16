@@ -51,7 +51,7 @@ test('clicking an open accordion title closes the accordion item', async () => {
 test('clicking an open accordion  button closes the accordion item', async () => {
   await expectAccordionItem('b-a1', { hidden: false });
 
-  await page.click('[aria-controls="b - a1"]');
+  await page.click('[aria-controls="b-a1"]');
 
   await expectAccordionItem('b-a1', { hidden: true });
 });
