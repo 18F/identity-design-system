@@ -53,9 +53,23 @@ $icon-size: 1.5;
 }
 
 .usa-accordion--bordered {
-  .usa-accordion-button[aria-expanded='true'] {
+  .usa-accordion__heading {
+    margin-block-end: 0;
+  }
+
+  .usa-accordion-button {
+    @include u-font-size('body', 'xs')
+    border: 1px solid color('primary-light');
+    color: color('primary');
+    border-radius: radius('lg');
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    font-weight: 400;
+    background-color: transparent;
+  }
+
+  .usa-accordion-button[aria-expanded=false] {
+    border-radius: .5rem;
   }
 
   .usa-accordion__container {
@@ -68,9 +82,14 @@ $icon-size: 1.5;
 
   .usa-accordion__content {
     border-width: 0;
+    padding: 1rem 1.25rem .75rem;
   }
 
   .usa-accordion__close-button {
+    @include u-font-size('body', 'xs')
+    @include u-radius('lg');
+    background-color: color('primary-lightest');
+    font-weight: 400;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-width: $border-width 0 0 0;

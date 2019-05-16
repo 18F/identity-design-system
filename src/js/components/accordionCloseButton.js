@@ -3,7 +3,7 @@ const behavior = require('uswds/src/js/utils/behavior');
 
 const accordionCloseButton = behavior({
   click: {
-    '[id] .usa-accordion-close-button': function closeAccordion(event) {
+    '[id] .usa-accordion__close-button': function closeAccordion(event) {
       event.preventDefault();
       const button = document.querySelector(`[aria-controls='${this.closest('[id]').id}']`);
       accordion.toggle(button);
