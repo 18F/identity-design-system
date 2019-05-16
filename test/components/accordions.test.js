@@ -12,12 +12,6 @@ const expectAccordionItem = async (id, { hidden }) => {
 
 beforeEach(async () => page.goto(`${host}/components/accordions/`));
 
-test('accordions are open on load only when aria-expanded="true"', async () => {
-  await expectAccordionItem('unique-id-1', { hidden: false });
-  await expectAccordionItem('unique-id-2', { hidden: true });
-  await expectAccordionItem('unique-id-3', { hidden: true });
-});
-
 test('opening one accordion item closes the currently open one', async () => {
   await expectAccordionItem('unique-id-1', { hidden: false });
   await expectAccordionItem('unique-id-2', { hidden: true });
