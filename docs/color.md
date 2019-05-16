@@ -69,13 +69,13 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
     {% include helpers/color.html
       name="Teal"
       code="accent-cool"
-      hex="#00bfe7"
+      hex="#00a2c4"
       text-color="black"
     %}
     {% include helpers/color.html
       name="Light Teal"
       code="accent-cool-light"
-      hex="#ecfcff"
+      hex="#00a2c4"
       text-color="black"
     %}
   </div>
@@ -118,7 +118,7 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
     {% include helpers/color.html
       name="Light Gray"
       code="disabled"
-      hex="#dddfe4"
+      hex="#767676c9"
       text-color="black"
     %}
   </div>
