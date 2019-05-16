@@ -33,7 +33,7 @@ test('if an asset-path function is defined, it is used to generate asset paths w
   const css = results.css.toString('utf-8');
 
   const [usaAlertWarning] = css.match(/\.usa-alert--warning\s?{[^}]+}/);
-  const [usaInputError] = css.match(/\.usa-textarea\.usa-input-error:not\(\.usa-input-inline\)\s?{[^}]+}/);
+  const [usaInputError] = css.match(/\.usa-textarea\.usa-input--error:not\(\.usa-input-inline\)\s?{[^}]+}/);
   const [fontFace] = css.match(/@font-face\s?{[^}]+}/);
 
   expect(usaAlertWarning).toMatch(/test-path-rewritten\/test-img/);
