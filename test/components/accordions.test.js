@@ -28,18 +28,6 @@ test('opening one accordion item closes the currently open one', async () => {
   await expectAccordionItem('b-a2', { hidden: false });
 });
 
-test('two accordion items can be open simultaneously with aria-multiselectable="true"', async () => {
-  await page.$eval("[data-test='accordion']", a => a.setAttribute('aria-multiselectable', true));
-
-  await expectAccordionItem('b-a1', { hidden: false });
-  await expectAccordionItem('b-a2', { hidden: true });
-
-  await page.click("[aria-controls='b-a2']");
-
-  await expectAccordionItem('b-a1', { hidden: false });
-  await expectAccordionItem('b-a2', { hidden: false });
-});
-
 test('clicking an open accordion title closes the accordion item', async () => {
   await expectAccordionItem('b-a1', { hidden: false });
 
