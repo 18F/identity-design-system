@@ -266,7 +266,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 
 <div class="usa-accordion usa-accordion--bordered">
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-textarea">
+    <button class="usa-accordion__button" aria-controls="errored-textarea">
       Textarea (multiline) input
     </button>
   </h3>
@@ -283,7 +283,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-dates">
+    <button class="usa-accordion__button" aria-controls="errored-dates">
       Dates
     </button>
   </h3>
@@ -316,7 +316,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-dropdowns">
+    <button class="usa-accordion__button" aria-controls="errored-dropdowns">
       Dropdowns
     </button>
   </h3>
@@ -344,7 +344,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
 
 <div class="usa-accordion usa-accordion--bordered">
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-radio-small">
+    <button class="usa-accordion__button" aria-controls="errored-radio-small">
       Radio buttons (small)
     </button>
   </h3>
@@ -376,7 +376,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-radio-normal">
+    <button class="usa-accordion__button" aria-controls="errored-radio-normal">
       Radio buttons (normal)
     </button>
   </h3>
@@ -408,7 +408,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-radio-large">
+    <button class="usa-accordion__button" aria-controls="errored-radio-large">
       Radio buttons (large)
     </button>
   </h3>
@@ -450,7 +450,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-checkbox-small">
+    <button class="usa-accordion__button" aria-controls="errored-checkbox-small">
       Checkboxes (small)
     </button>
   </h3>
@@ -482,7 +482,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-checkbox-normal">
+    <button class="usa-accordion__button" aria-controls="errored-checkbox-normal">
       Checkboxes (normal)
     </button>
   </h3>
@@ -514,7 +514,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="errored-checkbox-large">
+    <button class="usa-accordion__button" aria-controls="errored-checkbox-large">
       Checkboxes (large)
     </button>
   </h3>
