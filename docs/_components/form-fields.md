@@ -270,7 +270,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
       Textarea (multiline) input
     </button>
   </h3>
-  <div id="errored-textarea" class="usa-accordion-container">
+  <div id="errored-textarea" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <label for="a37c" class="usa-label">Textarea (multiline) input</label>
@@ -279,7 +279,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -287,7 +287,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
       Dates
     </button>
   </h3>
-  <div id="errored-dates" class="usa-accordion-container">
+  <div id="errored-dates" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -312,7 +312,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -320,7 +320,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
       Dropdowns
     </button>
   </h3>
-  <div id="errored-dropdowns" class="usa-accordion-container">
+  <div id="errored-dropdowns" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <label for="d8e1" class="usa-label">Dropdown label</label>
@@ -334,7 +334,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 </div>
 
@@ -348,7 +348,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Radio buttons (small)
     </button>
   </h3>
-  <div id="errored-radio-small" class="usa-accordion-container">
+  <div id="errored-radio-small" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -372,7 +372,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -380,7 +380,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Radio buttons (normal)
     </button>
   </h3>
-  <div id="errored-radio-normal" class="usa-accordion-container">
+  <div id="errored-radio-normal" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -404,7 +404,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -412,7 +412,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Radio buttons (large)
     </button>
   </h3>
-  <div id="errored-radio-large" class="usa-accordion-container">
+  <div id="errored-radio-large" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -446,7 +446,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -454,7 +454,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Checkboxes (small)
     </button>
   </h3>
-  <div id="errored-checkbox-small" class="usa-accordion-container">
+  <div id="errored-checkbox-small" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -478,7 +478,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -486,7 +486,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Checkboxes (normal)
     </button>
   </h3>
-  <div id="errored-checkbox-normal" class="usa-accordion-container">
+  <div id="errored-checkbox-normal" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -510,7 +510,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -518,7 +518,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Checkboxes (large)
     </button>
   </h3>
-  <div id="errored-checkbox-large" class="usa-accordion-container">
+  <div id="errored-checkbox-large" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -552,6 +552,6 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion-close-button">Close</button>
+    <button class="usa-accordion__close-button">Close</button>
   </div>
 </div>
