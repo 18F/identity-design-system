@@ -13,8 +13,8 @@ layout: base
     {% if sidenav %}
       <div class="grid-row grid-gap">
         <aside class="usa-layout-docs__sidenav desktop:grid-col-3">
-          <nav>
-            <ul class="usa-sidenav usa-sticky-sidenav">
+          <nav class="usa-sidenav--sticky">
+            <ul class="usa-sidenav">
               {%
                 include nav/list.html
                 links = sidenav
