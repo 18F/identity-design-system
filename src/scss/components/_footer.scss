@@ -22,6 +22,16 @@
   }
 }
 
+.usa-footer__return-to-top {
+  .usa-button {
+    text-decoration: none;
+
+    &:visited {
+      color: color('primary');
+    }
+  }
+}
+
 .usa-footer__logo-img {
   .usa-footer__slim &,
   .usa-footer__medium & {
