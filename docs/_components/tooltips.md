@@ -13,7 +13,7 @@ Tooltips can be useful means to display information to a user, most typically in
 ## Using the tooltip with an icon
 
 {% capture example %}
-<span class="usa-tooltip usa-tooltip-top" aria-label="Hello there! You look nice today." tabindex="0">
+<span class="usa-tooltip usa-tooltip--top" aria-label="Hello there! You look nice today." tabindex="0">
   <img src="{{ site.baseurl }}/assets/img/tooltip.svg" width="16" height="16" class="text-middle" alt="Help icon" />
 </span>
 {% endcapture %}
@@ -21,10 +21,10 @@ Tooltips can be useful means to display information to a user, most typically in
 
 ## Large tooltips
 
-Add the class `.usa-tooltip-large` to enhance!
+Add the class `.usa-tooltip--large` to enhance!
 
 {% capture example %}
-<div class="usa-tooltip usa-tooltip-top usa-tooltip-large bg-primary-lightest padding-1" aria-label="Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all [folks] are created equal." tabindex="0">
+<div class="usa-tooltip usa-tooltip--top usa-tooltip--large bg-primary-lightest padding-1" aria-label="Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all [folks] are created equal." tabindex="0">
   This element has a lot of tooltip text.
 </div>
 {% endcapture %}
@@ -35,28 +35,28 @@ Add the class `.usa-tooltip-large` to enhance!
 As long as the proper classes are applied, any HTML element can be decorated with a tooltip.
 
 {% capture example %}
-<div class="usa-tooltip usa-tooltip-top bg-primary-lightest padding-1" aria-label="Right here, in fact." tabindex="0">
+<div class="usa-tooltip usa-tooltip--top bg-primary-lightest padding-1" aria-label="Right here, in fact." tabindex="0">
   This element has a tooltip above it.
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 {% capture example %}
-<div class="usa-tooltip usa-tooltip-left bg-primary-lightest padding-1" aria-label="Everything you own in the box to the left!" tabindex="0">
+<div class="usa-tooltip usa-tooltip--left bg-primary-lightest padding-1" aria-label="Everything you own in the box to the left!" tabindex="0">
   This element has a tooltip to the left of it.
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 {% capture example %}
-<div class="usa-tooltip usa-tooltip-bottom bg-primary-lightest padding-1" aria-label="Down low! ✋" tabindex="0">
+<div class="usa-tooltip usa-tooltip--bottom bg-primary-lightest padding-1" aria-label="Down low! ✋" tabindex="0">
   This element has a tooltip below it.
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 {% capture example %}
-<div class="usa-tooltip usa-tooltip-right bg-primary-lightest padding-1" aria-label="… I ran out of jokes." tabindex="0">
+<div class="usa-tooltip usa-tooltip--right bg-primary-lightest padding-1" aria-label="… I ran out of jokes." tabindex="0">
   This element has a tooltip to the right of it.
 </div>
 {% endcapture %}
