@@ -59,9 +59,12 @@ $icon-size: 1.5;
 
   .usa-accordion__button {
     @include u-radius('lg');
+    background-color: transparent;
+  }
+
+  .usa-accordion__button[aria-expanded='true'] {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    background-color: transparent;
   }
 
   .usa-accordion__container {
