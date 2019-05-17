@@ -10,19 +10,19 @@ Before using an accordion, consider if their use would hinder usability. If ther
 <div class="usa-accordion usa-accordion--bordered" data-test="accordion">
   <!-- Use the accurate heading level to maintain the document outline -->
   <h2 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-expanded="true" aria-controls="unique-id-1">
+    <button class="usa-accordion__button" aria-expanded="true" aria-controls="unique-id-1">
       How do I make an accordion’s content shown by default?
     </button>
   </h2>
   <div id="unique-id-1" class="usa-accordion__container">
     <div class="usa-accordion__content usa-prose">
-      <p>Follow this example! Mark the <code>.usa-accordion-button</code> with <code>aria-expanded="true"</code> to indicate that the content referenced with the ID listed in <code>aria-controls</code> is expanded by default, and omit the <code>hidden</code> attribute on the related <code>.usa-accordion__content</code>.</p>
+      <p>Follow this example! Mark the <code>.usa-accordion__button</code> with <code>aria-expanded="true"</code> to indicate that the content referenced with the ID listed in <code>aria-controls</code> is expanded by default, and omit the <code>hidden</code> attribute on the related <code>.usa-accordion__content</code>.</p>
     </div>
     <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h2 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="unique-id-2">
+    <button class="usa-accordion__button" aria-controls="unique-id-2">
       How do I make an accordion’s content hidden by default?
     </button>
   </h2>
@@ -34,7 +34,7 @@ Before using an accordion, consider if their use would hinder usability. If ther
   </div>
 
   <h2 class="usa-accordion__heading">
-    <button class="usa-accordion-button" aria-controls="unique-id-3">
+    <button class="usa-accordion__button" aria-controls="unique-id-3">
       How can I allow more than one accordion item to be open simultaneously?
     </button>
   </h2>
