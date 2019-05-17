@@ -43,7 +43,7 @@ As long as the proper classes are applied, any HTML element can be decorated wit
 
 {% capture example %}
 <div class="usa-tooltip usa-tooltip--left bg-primary-lightest padding-1" aria-label="Everything you own in the box to the left!" tabindex="0">
-  This element has a tooltip to the left of it.
+  This element has a tooltip to the left, to the left.
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
