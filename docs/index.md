@@ -6,15 +6,15 @@ lead: >
   Use the login.gov Design System when developing login.gov sites to consistently identify the login.gov brand.
 ---
 
-<section class="usa-section usa-section-dark">
+<section class="usa-section usa-section--dark">
   <div class="grid-container">
     <div class="grid-row">
       <div class="maxw-tablet">
         <div class="usa-display">
           The key to a strong brand <br>is <span class="text-accent-cool">consistency</span>.
         </div>
-        <p class="usa-font-lead">{{ page.lead }}</p>
-        <a href="{{ site.baseurl }}/usage/" class="usa-button usa-button-big">See usage instructions</a>
+        <p class="usa-intro">{{ page.lead }}</p>
+        <a href="{{ site.baseurl }}/usage/" class="usa-button usa-button--big">See usage instructions</a>
       </div>
     </div>
   </div>

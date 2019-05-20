@@ -14,12 +14,12 @@ $border-width: 1px;
     box-shadow: roundable-focus-outline-box-shadows();
   }
 
-  &.usa-input-error {
+  &.usa-input--error {
     @include u-border($border-width, 'error');
     background-position: right units($input-padding) center;
     background-size: units($icon-size);
 
-    &:not(.usa-input-inline) {
+    &:not(.usa-input--inline) {
       @include add-background-svg('alerts/error');
       padding-right: units(2 * $input-padding) + units($icon-size);
     }
@@ -37,7 +37,7 @@ $border-width: 1px;
     box-shadow: roundable-focus-outline-box-shadows();
   }
 
-  &.usa-input-error {
+  &.usa-input--error {
     @include u-border($border-width, 'error');
   }
 }
@@ -52,20 +52,20 @@ $border-width: 1px;
   }
 }
 
-.usa-radio-label,
-.usa-checkbox-label {
+.usa-radio__label,
+.usa-checkbox__label {
   display: inline-block;
   margin-bottom: units(1);
 }
 
-.usa-radio-input:disabled + .usa-radio-label,
-.usa-checkbox-input:disabled + .usa-checkbox-label {
+.usa-radio__input:disabled + .usa-radio__label,
+.usa-checkbox__input:disabled + .usa-checkbox__label {
   color: color('disabled');
   border-color: color('disabled');
 }
 
-.usa-radio-label::before,
-.usa-checkbox-label::before {
+.usa-radio__label::before,
+.usa-checkbox__label::before {
   background-color: color('primary-lightest');
   box-shadow: inset 0 0 0 units($border-width) color('primary');
   height: units(2);
@@ -78,13 +78,13 @@ $border-width: 1px;
   border-radius: radius('md');
 }
 
-.usa-radio-input:disabled + .usa-radio-label::before,
+.usa-radio__input:disabled + .usa-radio__label::before,
 .usa-checkbox-input:disabled + .usa-checkbox-label::before {
   background-color: color('white');
   box-shadow: inset 0 0 0 units($border-width) color('disabled');
 }
 
-.usa-radio-input:checked + .usa-radio-label::before {
+.usa-radio__input:checked + .usa-radio__label::before {
   background-color: color('white');
   box-shadow: inset 0 0 0 0.3rem color('primary');
 }
@@ -93,7 +93,7 @@ $border-width: 1px;
   box-shadow: inset 0 0 0 units($border-width) color('primary');
 }
 
-.usa-radio-input:checked:focus + .usa-radio-label::before {
+.usa-radio__input:checked:focus + .usa-radio__label::before {
   @include disable-default-focus-styles;
   box-shadow: inset 0 0 0 0.3rem color('primary'), roundable-focus-outline-box-shadows();
 }
@@ -126,12 +126,12 @@ $border-width: 1px;
   }
 }
 
-.usa-radio-input:disabled + .usa-radio-bordered:hover,
+.usa-radio__input:disabled + .usa-radio-bordered:hover,
 .usa-checkbox-input:disabled + .usa-checkbox-bordered:hover {
   background-color: color('white');
 }
 
-.usa-radio-input:checked + .usa-radio-bordered,
+.usa-radio__input:checked + .usa-radio-bordered,
 .usa-checkbox-input:checked + .usa-checkbox-bordered {
   background-color: color('primary-lightest');
   border-color: color('primary');
@@ -165,7 +165,7 @@ $border-width: 1px;
   }
 }
 
-.usa-radio-input:disabled + .usa-radio-large .usa-radio-header,
+.usa-radio__input:disabled + .usa-radio-large .usa-radio-header,
 .usa-checkbox-input:disabled + .usa-checkbox-large .usa-checkbox-header {
   color: color('disabled');
 }
@@ -190,10 +190,10 @@ $border-width: 1px;
   display: inline-block;
 }
 
-.usa-input-error-message {
+.usa-input--error-message {
   color: color('error');
 
-  &.usa-input-error-message-with-icon {
+  &.usa-input--error-message-with-icon {
     @include add-background-svg('alerts/error');
     background-position: 0 center;
     background-size: units($icon-size);
