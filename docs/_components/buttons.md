@@ -11,7 +11,9 @@ subnav:
 
 # Standard Buttons
 
-Use these button styles unless doing x and y, in which case, use [other buttons](#other-buttons).
+Use the standard button styles to convey the most important action on you want the users to take. For actions outside of the top two actions, use the [other buttons](#other-buttons). See the [USWDS Button Usage](https://v2.designsystem.digital.gov/components/button/) for more on how to use buttons.
+
+Note: the  vertical alignment of a button is governed by the [layout grid](/layout).
 
 ##### Primary
 
@@ -63,7 +65,7 @@ Use these button styles unless doing x and y, in which case, use [other buttons]
 
 # Other Buttons
 
-These buttons should be used when x-ing and y-ing.
+These buttons if the actions are not among the top two actions in a view, use an other button to convey action.
 
 ##### Function
 
