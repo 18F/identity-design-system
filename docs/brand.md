@@ -8,6 +8,8 @@ sidenav:
     href: "#logo-usage"
   - text: Illustration
     href: "#illustration"
+lead: >
+  When working with the login.gov brand, follow these guidelines to ensure you're representing the product in a consistent way across all mediums.
 ---
 
 # Logo

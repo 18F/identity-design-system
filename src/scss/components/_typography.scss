@@ -63,7 +63,7 @@
   }
 }
 
-.usa-font-lead {
+.usa-intro {
   @include u-font-size('sans', 'md');
 
   @include at-media('mobile-lg') {

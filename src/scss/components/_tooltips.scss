@@ -50,7 +50,7 @@ $tooltip-distance: units(.5);
     visibility: visible;
   }
 
-  &.usa-tooltip-top {
+  &.usa-tooltip--top {
     &:before {
       left: 50%;
       top: -$tooltip-distance;
@@ -64,7 +64,7 @@ $tooltip-distance: units(.5);
     }
   }
 
-  &.usa-tooltip-left {
+  &.usa-tooltip--left {
     &:before {
       left: -$tooltip-distance;
       top: 50%;
@@ -81,7 +81,7 @@ $tooltip-distance: units(.5);
     }
   }
 
-  &.usa-tooltip-right {
+  &.usa-tooltip--right {
     &:before {
       right: -$tooltip-distance;
       top: 50%;
@@ -98,7 +98,7 @@ $tooltip-distance: units(.5);
     }
   }
 
-  &.usa-tooltip-bottom {
+  &.usa-tooltip--bottom {
     &:before {
       left: 50%;
       bottom: -$tooltip-distance;
@@ -115,7 +115,7 @@ $tooltip-distance: units(.5);
     }
   }
 
-  &.usa-tooltip-large {
+  &.usa-tooltip--large {
     &:after {
       @include u-width('card-lg');
     }

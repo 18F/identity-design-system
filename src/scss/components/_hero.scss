@@ -10,7 +10,7 @@
   }
 }
 
-.usa-hero-callout {
+.usa-hero__callout {
   background-color: transparent;
   padding: 0;
 
@@ -19,4 +19,9 @@
     @include grid-col(7);
     max-width: unset;
   }
+}
+
+.usa-hero__callout--alt {
+  color: #fff;
+  display: block;
 }

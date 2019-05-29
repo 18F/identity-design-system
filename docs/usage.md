@@ -17,9 +17,9 @@ The module is now installed at `./node_modules/identity-style-guide`. Woohoo!
 
 You’ll find the compiled assets in `dist/assets`. These are ready to be used in your project directly.
 
-<div class="usa-alert usa-alert-warning usa-alert-paragraph">
-  <div class="usa-alert-body">
-    <p class="usa-alert-text" markdown="1">The paths in the compiled CSS file assume that your asset folders follow the same structure as those in `dist/assets`. Copy this folder in its entirety, or compile the assets from source as described below.</p>
+<div class="usa-alert usa-alert--warning usa-alert__paragraph">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text" markdown="1">The paths in the compiled CSS file assume that your asset folders follow the same structure as those in `dist/assets`. Copy this folder in its entirety, or compile the assets from source as described below.</p>
   </div>
 </div>
 

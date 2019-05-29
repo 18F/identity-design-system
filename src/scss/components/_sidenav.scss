@@ -11,15 +11,6 @@
     }
   }
 
-  .usa-sidenav-item {
-    @include add-bar(1px, 'base-light', 'top', 'pill', 2, 0);
-    border-top: 0;
-  }
-
-  > .usa-sidenav-item:first-of-type {
-    @include remove-bar;
-  }
-
   .usa-current {
     background-color: color('primary-lightest');
     color: unset;
@@ -32,6 +23,14 @@
   }
 }
 
-.usa-sidenav-sublist a {
+.usa-sidenav--sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: units(2);
+}
+
+.usa-sidenav__sublist a {
   padding-left: units(4);
+  padding-top: units(1.5);
+  padding-bottom: units(1.5);
 }

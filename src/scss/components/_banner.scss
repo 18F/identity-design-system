@@ -2,7 +2,7 @@
   background-color: color('primary-lighter');
 }
 
-.usa-banner-header {
+.usa-banner__header {
   background-color: color('primary-darker');
   color: color('white');
   padding: units(1) 0;
@@ -14,7 +14,7 @@
   }
 }
 
-.usa-banner-button {
+.usa-banner__button {
   color: color('white');
   background-color: transparent;
   border: 0;
@@ -47,7 +47,7 @@
   }
 }
 
-.usa-banner-header-action {
+.usa-banner__header-action {
   color: color('white');
 
   @include add-icon('angle-arrow-down-white', 'after', 1, 1, 0.5, 'hover');
