@@ -6,8 +6,8 @@ The password strength indicator should be used when user's are trying to create 
 
 ## No Password
 {% capture example %}
-<label for="fd85" class="usa-label">Password</label>
-<input id="fd85" type="text" class="usa-input" required="required">
+<label for="password_form_password" class="usa-label">Password</label>
+<input id="password_form_password" type="text" class="usa-input" required="required">
 
 <div aria-atomic="true" aria-live="polite" class="pw-na" id="pw-strength-cntnr">
     <div>

@@ -1,4 +1,6 @@
-import zxcvbn from 'zxcvbn';
+/* eslint-disable prefer-destructuring */
+const zxcvbn = require('zxcvbn');
+const behavior = require('uswds/src/js/utils/behavior');
 
 const I18n = window.LoginGov.I18n;
 
@@ -52,7 +54,7 @@ function disableSubmit(submitEl, length = 0, score = 0) {
   }
 }
 
-function analyzePw() {
+function analyzePasswordStrength() {
   const userAgent = window.navigator.userAgent;
   const input = document.querySelector(
     '#password_form_password, #reset_password_form_password, #update_user_password_form_password',
@@ -89,4 +91,4 @@ function analyzePw() {
   input.addEventListener('input', checkPasswordStrength);
 }
 
-document.addEventListener('DOMContentLoaded', analyzePw);
+module.exports = analyzePasswordStrength;
