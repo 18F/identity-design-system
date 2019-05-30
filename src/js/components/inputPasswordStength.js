@@ -23,6 +23,7 @@ const getStrength = (z) => {
   // override the strength value to 2 if the password is < 12
   if (!(z && z.password.length && z.password.length >= 12)) {
     if (z.score >= 3) {
+      // eslint-disable-next-line no-param-reassign
       z.score = 2;
     }
   }
