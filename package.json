@@ -31,7 +31,9 @@
     "url": "https://github.com/18F/identity-style-guide/issues"
   },
   "homepage": "https://github.com/18F/identity-style-guide#readme",
-  "dependencies": {},
+  "dependencies": {
+    "zxcvbn": "^4.4.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
