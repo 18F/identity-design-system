@@ -12,7 +12,7 @@ const components = require('uswds/src/js/components');
 
 // login.gov additions
 components.accordionCloseButton = require('./components/accordionCloseButton');
-components.inputPasswordMeter= require('./components/pw-strength.js');
+components.inputPasswordMeter = require('./components/inputPasswordStength');
 
 uswds.components = components;
 
