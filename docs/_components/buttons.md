@@ -65,7 +65,7 @@ Note: the  vertical alignment of a button is governed by the [layout grid](/layo
 
 # Other Buttons
 
-These buttons if the actions are not among the top two actions in a view, use an other button to convey action.
+Use these buttons if the actions are not among the top two actions in a view, use an other button to convey action.
 
 ##### Function
 
