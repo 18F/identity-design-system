@@ -5,14 +5,13 @@
 }
 
 .spinner--hidden {
-    display: none;
+  display: none;
 }
 
 .usa-button__invokeSpinner {
-    @extend .usa-button;
+  @extend .usa-button;
 }
 
 .usa-button__invokeSpinner--hidden {
-    display: none;
+  display: none;
 }
-
