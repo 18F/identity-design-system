@@ -36,7 +36,7 @@ The password strength indicator should be used when user's are trying to create 
     </div>
     <div class="grid-row">
         <div class="grid-col">
-            <input type="submit" name="commit" value="Continue" class="usa-button" data-disable-with="Continue">
+            <input type="submit" name="commit" value="Continue" class="usa-button" data-disable-with="Continue" disabled>
         </div>
     </div>
 </div>
