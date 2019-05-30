@@ -12,7 +12,7 @@ const expectSpinnerHidden = async (hidden) => {
 
 beforeEach(async () => page.goto(`${host}/components/spinner/`));
 
-test('accordions are open on load only when aria-expanded="true"', async () => {
+test('the spinner hides when the button is clicked', async () => {
   await expectSpinnerHidden(true);
   await page.click('.usa-button__lg-invokeSpinner');
   await expectSpinnerHidden(false);
