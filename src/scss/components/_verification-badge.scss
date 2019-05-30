@@ -1,7 +1,7 @@
 $space-1: .5rem !default;
 $space-2: 1rem !default;
 
-.verification-badge {
+.lg-verification-badge {
   text-align: center;
   top: $space-1;
 
@@ -17,7 +17,7 @@ $space-2: 1rem !default;
 }
 
 @media #{$theme-site-margins-breakpoint} {
-  .verification-badge {
+  .lg-verification-badge {
     margin: -$space-1 0 0;
     position: static;
     text-align: right;

@@ -11,7 +11,7 @@ Badges are comprised with a div using the `verification-badge` class and then a 
 ## An unphishable badge example
 
 {% capture example %}
-<div class="verification-badge">
+<div class="lg-verification-badge">
     <span>
         <img src="{{ site.baseurl }}/assets/img/alerts/unphishable.svg" width="16" height="16" class="text-middle" alt="unphishable icon" id="unphishable_badge" />
         Unphishable
@@ -23,7 +23,7 @@ Badges are comprised with a div using the `verification-badge` class and then a 
 ## An verified account badge example
 
 {% capture example %}
-<div class="verification-badge">
+<div class="lg-verification-badge">
     <span>
         <img src="{{ site.baseurl }}/assets/img/alerts/success-badge.svg" width="16" height="16" class="text-middle" alt="verification icon" id="verified_account_badge" />
         Verified Account
