@@ -1,0 +1,18 @@
+.spinner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 144px;
+}
+
+.spinner--hidden {
+    display: none;
+}
+
+.usa-button__invokeSpinner {
+    @extend .usa-button;
+}
+
+.usa-button__invokeSpinner--hidden {
+    display: none;
+}
+
