@@ -29,7 +29,7 @@ const getStrength = (z) => {
   return z && z.password.length ? scale[z.score] : fallback;
 };
 
-const getFeedback = (z) => {
+const getExplanation = (z) => {
   if (!z || z.score > 2) return '&nbsp;';
 
   const { warning, suggestions } = z.feedback;
@@ -54,11 +54,11 @@ const toggleSubmitInput = (submitEl, length = 0, score = 0) => {
 const checkPasswordStrength = (e, submit, forbiddenPasswords) => {
   const passwordStrengthResponse = zxcvbn(e.target.value, JSON.parse(forbiddenPasswords));
   const [strengthClass, strength] = getStrength(passwordStrengthResponse);
-  const feedback = getFeedback(passwordStrengthResponse);
+  const explanation = getExplanation(passwordStrengthResponse);
   toggleSubmitInput(submit,
     passwordStrengthResponse.password.length,
     passwordStrengthResponse.score);
-  return { strengthClass, strength, feedback };
+  return { strengthClass, strength, explanation };
 };
 
 
@@ -72,12 +72,12 @@ const updatePasswordStrength = (e, submit) => {
   const passwordContainer = document.querySelector('#lg-password-strength--container');
   passwordContainer.className = '';
 
-  const { strengthClass, strength, feedback } = checkPasswordStrength(e, submit,
+  const { strengthClass, strength, explanation } = checkPasswordStrength(e, submit,
     forbiddenPasswords);
 
   passwordContainer.className = strengthClass;
-  document.querySelector('.lg-password-strength--text').innerHTML = strength;
-  document.querySelector('.lg-password-strength--feedback').innerHTML = feedback;
+  document.querySelector('.lg-password--summary').innerHTML = strength;
+  document.querySelector('.lg-password--explanation').innerHTML = explanation;
 };
 
 const inputPasswordMeter = behavior({
