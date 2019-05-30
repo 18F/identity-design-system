@@ -11,7 +11,7 @@ Spinners can be helpful to signal to a user that the current process may require
 ## Example of a spinner
 
 {% capture example %}
-<div class="spinner">
+<div class="lg-spinner">
     <div>
         <img src="{{ site.baseurl }}/assets/img/spinner.gif" srcset="{{ site.baseurl }}/assets/img/spinner@2x.gif" width="144" height="144" class="text-middle" alt="Spinner" />
     </div>
@@ -24,8 +24,8 @@ Spinners can be helpful to signal to a user that the current process may require
 We may want to start with a hidden spinner and then remove it with a button click will the page transition resolves. 
 
 {% capture example %}
-<button class="usa-button__invokeSpinner">Hide Button and trigger a spinner</button>
-<div class="spinner spinner--hidden" id="spinner-id">
+<button class="usa-button__lg-invokeSpinner">Hide Button and trigger a spinner</button>
+<div class="lg-spinner lg-spinner--hidden" id="spinner-id">
     <div>
         <img src="{{ site.baseurl }}/assets/img/spinner.gif" srcset="{{ site.baseurl }}/assets/img/spinner@2x.gif" width="144" height="144" class="text-middle" alt="Spinner" />
     </div>

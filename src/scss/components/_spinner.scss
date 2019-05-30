@@ -1,17 +1,17 @@
-.spinner {
+.lg-spinner {
   margin-left: auto;
   margin-right: auto;
   width: 144px;
 }
 
-.spinner--hidden {
+.lg-spinner--hidden {
   display: none;
 }
 
-.usa-button__invokeSpinner {
+.usa-button__lg-invokeSpinner {
   @extend .usa-button;
 }
 
-.usa-button__invokeSpinner--hidden {
+.usa-button__lg-invokeSpinner--hidden {
   display: none;
 }
