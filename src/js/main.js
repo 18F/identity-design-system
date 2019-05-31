@@ -12,6 +12,7 @@ const components = require('uswds/src/js/components');
 
 // login.gov additions
 components.accordionCloseButton = require('./components/accordionCloseButton');
+components.invokeSpinner = require('./components/invokeSpinner');
 
 uswds.components = components;
 
