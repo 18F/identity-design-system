@@ -7,7 +7,7 @@ lead: >
 
 # Display, headings, and lead
 
-Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immediately containing headings and paragraphs should be considered a longform text document:
+Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immediately containing headings and paragraphs should be considered a longform text document. Or jump to the [Print Guidance](#print-guidance) to learn a bit more about each style.
 
 <div class="border-base-light border-left-1 padding-2 usa-prose">
   <div class="usa-display">How login.gov keeps personal information private <span class="text-no-wrap text-secondary">(div.usa-display)</span></div>
@@ -46,3 +46,14 @@ Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immedia
     <li>Dedicated teams of design and security experts will continuously improve it.</li>
   </ul>
 </div>
+
+# Print Guidance
+
+# Merriweather Web 39px - line height 54px <span class="text-no-wrap text-secondary">(h1)</span>
+## Merriweather Web 21px - line height 30px <span class="text-no-wrap text-secondary">(h2)</span>
+### Merriweather Web 16.5px - line height 23px <span class="text-no-wrap text-secondary">(h3)</span>
+#### Merriweather Web 14.6px - line height 20px<span class="text-no-wrap text-secondary">(h4)</span>
+##### Source Sans Pro Web - All Caps 12.6px - line height 17.5px<span class="text-no-wrap text-secondary">(h5)</span>
+<h6>Source Sans Pro Web - All Caps 10.6px - line height 13.5px <span class="text-no-wrap text-secondary">(h6)</span></h6>
+
+Source Sans Prob Web 16px - line height 24.3px<span class="text-no-wrap text-secondary">(p)</span>
