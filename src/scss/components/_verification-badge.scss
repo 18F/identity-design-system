@@ -4,15 +4,15 @@ $space-2: 1rem !default;
 .lg-verification-badge {
 
   background-color: map-get($site-palette, 'site-white');
-  border: 1px solid map-get($site-palette, 'site-green');
+  border: units(1px) solid map-get($site-palette, 'site-green');
   border-radius: $theme-border-radius-xxl;
   box-sizing: border-box;
   display: inline-block;
-  padding: $space-1 $space-2;
+  padding: units(1) units(2);
   white-space: nowrap;
 
   img {
-    margin-right: $space-1;
+    margin-right: units(1);
   }
 
   span {
@@ -22,7 +22,7 @@ $space-2: 1rem !default;
 
 @media #{$theme-site-margins-breakpoint} {
   .lg-verification-badge {
-    margin: -$space-1 0 0;
+    margin: units(-1) 0 0;
     position: static;
     text-align: right;
   }
