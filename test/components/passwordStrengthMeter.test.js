@@ -37,7 +37,7 @@ test('expect input to be good', async () => {
 
   await page.type('.usa-input--lg-password', 'aaa123coolme');
   await expect(page).toMatch('Password strength: Good');
-  await expect(page).toMatchElement('.lg-password-strength--so-so');
+  await expect(page).toMatchElement('.lg-password-strength--good');
 });
 
 test('expect input to be great', async () => {
