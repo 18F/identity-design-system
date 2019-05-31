@@ -2,17 +2,21 @@ $space-1: .5rem !default;
 $space-2: 1rem !default;
 
 .lg-verification-badge {
-  text-align: center;
-  top: $space-1;
+
+  background-color: map-get($site-palette, 'site-white');
+  border: 1px solid map-get($site-palette, 'site-green');
+  border-radius: $theme-border-radius-xxl;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: $space-1 $space-2;
+  white-space: nowrap;
+
+  img {
+    margin-right: $space-1;
+  }
 
   span {
-    background-color: map-get($site-palette, 'site-white');
-    border: 1px solid map-get($site-palette, 'site-green');
-    border-radius: $theme-border-radius-xxl;
-    box-sizing: border-box;
-    display: inline-block;
-    padding: $space-1 $space-2;
-    white-space: nowrap;
+    vertical-align: text-top;
   }
 }
 
