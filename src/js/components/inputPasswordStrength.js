@@ -82,10 +82,9 @@ const updatePasswordStrength = (e, submit) => {
 };
 
 const inputPasswordMeter = behavior({
-  click: {
+  keyup: {
     '.usa-input--lg-password': function keyPress(event) {
       const submit = document.querySelector('input[type="submit"]');
-      event.preventDefault();
       updatePasswordStrength(event, submit);
     },
   },

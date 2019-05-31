@@ -238,6 +238,9 @@ Three styles of checkboxes are provided as well. Always label the grouping of it
 
 # Form field groups
 
+The fieldsets inputs default to a new line, unless the grid system is used to create
+a grid row.
+
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-legend">Full name</legend>
@@ -254,13 +257,15 @@ Three styles of checkboxes are provided as well. Always label the grouping of it
 # Form validation errors
 
 {% capture example %}
-<label for="e9a4" class="usa-label">Field label</label>
-<input id="e9a4" type="text" class="usa-input usa-input--error">
-<span class="usa-input--error-message" role="alert">Error message text.</span>
+
+<label for="e9a4" class="usa-label">Text input validation example</label>
+<input id="e9a4" type="text" class="usa-input usa-input-error">
+<span class="usa-input-error-message" role="alert">Error message text.</span>
+
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Other input types
+## Examples of form validation error for other input types
 
 Follow the same pattern of applying `.usa-input--error` to the effected input and append the error message in the appropriate span.
 
