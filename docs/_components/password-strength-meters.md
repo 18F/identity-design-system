@@ -23,7 +23,7 @@ The password strength indicator should be used when users are trying to create a
   </div>
 </div>
 <div class="grid-row">
-  <div class="grid-col">
+  <div class="grid-col lg-password--guidance">
     <span>Password strength: </span>
     <span class="bold" data-forbidden-passwords="[&quot;owq58917@cndps.com&quot;, &quot;owq58917&quot;, &quot;cndps&quot;, &quot;com&quot;, &quot;login.gov&quot;]" id="pw-strength-txt" class="lg-password--summary">
       ...
