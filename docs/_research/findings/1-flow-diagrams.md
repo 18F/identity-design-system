@@ -1,7 +1,7 @@
 ---
-title: Login flow diagrams
+title: 1 - Flow diagrams
 lead: >
-  Recommendations from usability testing.
+  Recommendations from usability testing some user flow diagrams
 ---
 
 ## High level diagram
@@ -17,7 +17,7 @@ lead: >
 - Not all users understood that the returning user was authenticated.
 
 ### Other Comments
-- People were not sure why this was included: “We deliver world-class identity management and authentication by leveraging a vendor agnostic approach for key Software as a Service (SaaS) providers. Today we use Twilio, but tomorrow may use PinPoint for OTPs.”  It appears that this might have conflated some of the discussion of the how with Login.gov which specifics that are too detailed for the intended audience.
+- People were not sure why this was included: “We deliver world-class identity management and authentication by leveraging a vendor agnostic approach for key Software as a Service (SaaS) providers. Today we use Twilio, but tomorrow may use PinPoint for OTPs.” It appears that this might have conflated some of the discussion of the how with Login.gov which specifics that are too detailed for the intended audience.
 - Some viewers appreciated that the diagram differentiated between the partner responsibility of authorization and authentication duty of Login.gov, and we should continue to refine this language as we iterate on the design.
 - As a promotional asset we should align this within the Login.gov style guide.
 
