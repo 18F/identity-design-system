@@ -5,4 +5,4 @@ lead: >
 permilink: /overview/
 ---
 
-Research findings from the login.gov research team will be posted as they occur and can be referenced in future user stories. 
+Research findings from the login.gov research team will be posted as they occur and can be referenced in future user stories.
