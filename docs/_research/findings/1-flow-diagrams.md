@@ -4,6 +4,14 @@ lead: >
   Recommendations from usability testing some user flow diagrams
 ---
 
+## Summary
+
+In an effort to better communicate how the login.gov service communicates with third party providers and managers user data, the team created two different graphics to demonstrate how the login services work. We tested these two diagrams with a few users to see if they would be understandable to various stakeholders.
+
+![data flow model](/post-images/login--data-flow-model.svg)
+
+![data flow model](/post-images/login--iam-model.svg)
+
 ## High level diagram
 ### Overall
 - While engineers recognized that this was likely for a stakeholder audience, one of the PMs found that the language was too jargony to understand the process. To improve the utility of this document to a high-level audience we should ensure the use of concise plain language.
