@@ -8,6 +8,8 @@ sidenav:
     href: "#logo-usage"
   - text: Illustration
     href: "#illustration"
+  - text: Slide decks
+    href: "#slide-decks"
 lead: >
   When working with the login.gov brand, follow these guidelines to ensure you're representing the product in a consistent way across all mediums.
 ---
@@ -121,6 +123,6 @@ Illustration is most effective when it is precise in choosing a single message t
   <img src="{{ site.baseurl }}/assets/img/illustrations/id-confirm.svg" alt="Confirmed identification illustration" class="display-block grid-col flex-auto flex-align-center">
 </div>
 
-# Slide Decks
+# Slide decks
 
 If you're looking to build a new slide deck, please use the official Login.gov slide template [available on Google Drive](https://docs.google.com/presentation/d/1UYyKTTaFmttIm46wxeupGgfozCix-RHLCvTiRZot6Mc/edit). Users of the slide deck template can submit additional template suggestions to the #login-design slack channel.
