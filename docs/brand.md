@@ -120,3 +120,7 @@ Illustration is most effective when it is precise in choosing a single message t
   <img src="{{ site.baseurl }}/assets/img/illustrations/fail.svg" alt="Failure illustration" class="display-block grid-col flex-auto flex-align-center">
   <img src="{{ site.baseurl }}/assets/img/illustrations/id-confirm.svg" alt="Confirmed identification illustration" class="display-block grid-col flex-auto flex-align-center">
 </div>
+
+# Slide Decks
+
+If you're looking to build a new slide deck, please use the official Login.gov slide template [available on Google Drive](https://docs.google.com/presentation/d/1UYyKTTaFmttIm46wxeupGgfozCix-RHLCvTiRZot6Mc/edit). Users of the slide deck template can submit additional template suggestions to the #login-design slack channel.
