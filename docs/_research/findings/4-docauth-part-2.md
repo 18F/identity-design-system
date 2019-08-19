@@ -6,7 +6,7 @@ lead: >
 
 ## Background
 
-In July 2019, users were asked to go to https://sp-rails.int.identitysandbox.gov/?ial=2 and create an IAL2 login.gov account. This included the create an account process and the identity verification process.
+In July 2019, users were asked to go to [the sandbox server](https://sp-rails.int.identitysandbox.gov/?ial=2) and create an IAL2 login.gov account. This included the create an account process and the identity verification process.
 
 ## Observations
 
