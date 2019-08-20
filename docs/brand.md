@@ -38,6 +38,8 @@ Establishing a minimum size ensures that the impact and legibility of the logo i
 
 <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-minimum-size.svg" alt="login.gov logo minimum size diagram">
 
+## Logo Usage
+
 ### Incorrect color usage
 
 For optimum legibility and brand consistency, the logo should never be used in white with a light background. Conversely, the standard logo should never appear on a dark background.
