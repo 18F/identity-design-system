@@ -13,7 +13,7 @@ If this is your first npm dependency, a `package-lock.json` file will be generat
 
 The module is now installed at `./node_modules/identity-style-guide`. Woohoo!
 
-# Precompiled CSS, JavaScript, fonts, and images
+## Precompiled CSS, JavaScript, fonts, and images
 
 You’ll find the compiled assets in `dist/assets`. These are ready to be used in your project directly.
 
@@ -25,7 +25,7 @@ You’ll find the compiled assets in `dist/assets`. These are ready to be used i
 
 We recommend including these files from `node_modules` directly, either by linking to them at that location or by copying them automatically during a build process, to make upgrades easier in the future.
 
-## Copy during Jekyll build process
+### Copy during Jekyll build process
 
 If you’re using Jekyll, a simple plugin can help copy this file during your build process to keep your assets up-to-date. First, add this file to `_plugins/`:
 
@@ -67,7 +67,7 @@ copy_to_destination:
   - node_modules/identity-style-guide/dist/assets
 ```
 
-# Compiling Sass in your build process
+## Compiling Sass in your build process
 
 Use the original source scss files if your project will be extending styles — but you’ll need to compile them in your build pipeline using a Sass compiler. The source scss files can be found in `dist/assets/scss`, and can be imported into your project’s scss files in one import:
 
@@ -75,7 +75,7 @@ Use the original source scss files if your project will be extending styles —�
 @import 'node_modules/identity-style-guide/dist/assets/scss/styles';
 ```
 
-## Use with Rails
+### Use with Rails
 
 The scss files natively support `asset-path()` out-of-the-box for ease of use with the Rails Asset Pipeline. To use with Rails, configure Rails to look for assets in both `node_modules` and the identity-style-guide module:
 

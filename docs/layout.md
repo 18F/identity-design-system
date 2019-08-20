@@ -17,17 +17,17 @@ lead: >
   For consistent visual appearance across login.gov sites, use these page layouts with grid and spacing systems.
 ---
 
-# Grid and spacing
+## Grid and spacing
 
 The grid system uses a series of containers, rows, and columns to lay out and align content. See [the U.S. Web Design System documentation](https://v2.designsystem.digital.gov/utilities/layout-grid/) for further information (for reference, the {{ site.title }} is built upon `uswds@{{ site.package_json.uswds_version }}`).
 
-# Page layouts
+## Page layouts
 
 Below are a few sample layouts which combine together main layout pieces as may be required for use. Feel free to mix-and-match from the below layouts to achieve the desired layout for your use.
 
 Select the previews below to open the layout in a new tab, where you can inspect the source.
 
-## Basic header, side navigation, and slim footer
+### Basic header, side navigation, and slim footer
 
 - The **basic header** with optional site title features a multi-level primary menu to the right of the logo.
 - **Side navigation** to be used for links to items within this page or within the section under the current primary menu item.
@@ -37,7 +37,7 @@ Select the previews below to open the layout in a new tab, where you can inspect
   path="/examples/basic-header-sidenav-slim-footer.html"
 %}
 
-## Extended header, full-width content, and medium footer
+### Extended header, full-width content, and medium footer
 
 - The **extended header** features the primary menu underneath the logo and a secondary menu with search bar to the right of the logo. It is the header used on this site.
 - Without a side navigation, the content is **full-width**.
@@ -47,7 +47,7 @@ Select the previews below to open the layout in a new tab, where you can inspect
   path="/examples/extended-header-no-sidenav-medium-footer.html"
 %}
 
-## Basic header, landing page content, and slim footer
+### Basic header, landing page content, and slim footer
 
 - The **basic header** features a multi-level primary menu to the right of the logo.
 - The **landing page** content features large blocks of color to call out your message. Use it sparingly for greatest effect.

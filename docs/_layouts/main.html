@@ -26,7 +26,7 @@ layout: base
         </aside>
 
         <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
-          <div class="usa-display">{{ page.title }}</div>
+          <h1>{{ page.title }}</h1>
 
           {% if page.lead %}
             <p class="usa-intro">{{ page.lead }}</p>
@@ -37,7 +37,7 @@ layout: base
       </div>
     {% else %}
       <div class="usa-layout-docs__main usa-prose">
-        <div class="usa-display">{{ page.title }}</div>
+        <h1 class="usa-display">{{ page.title }}</h1>
 
         {% if page.lead %}
           <p class="usa-intro">{{ page.lead }}</p>

@@ -13,7 +13,7 @@ The color codes listed beneath each name indicate what names can be used with th
 
 Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" target="_blank">the U.S. Web Design System’s color utility classes</a>.
 
-# Main palette
+## Main palette
 
 <div class="grid-row grid-gap">
   {% include helpers/color.html
@@ -42,7 +42,7 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
   %}
 </div>
 
-# Extended palette
+## Extended palette
 
 <div class="grid-row grid-gap">
   <div class="grid-row tablet:grid-col">
