@@ -1,0 +1,137 @@
+I"2<h2 id="types-of-alerts">Types of Alerts</h2>
+
+<h3 id="success">Success</h3>
+
+<div>
+  <div class="margin-y-3">
+    
+<div class="usa-alert usa-alert--success">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Banner text</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<div>
+  <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert usa-alert--success"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert__body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"usa-alert__text"</span><span class="nt">&gt;</span>Banner text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>  </div>
+</div>
+
+<h3 id="warning">Warning</h3>
+
+<div>
+  <div class="margin-y-3">
+    
+<div class="usa-alert usa-alert--warning">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Banner text</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<div>
+  <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert usa-alert--warning"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert__body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"usa-alert__text"</span><span class="nt">&gt;</span>Banner text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>  </div>
+</div>
+
+<h3 id="error">Error</h3>
+
+<div>
+  <div class="margin-y-3">
+    
+<div class="usa-alert usa-alert--error">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Banner text</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<div>
+  <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert usa-alert--error"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert__body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"usa-alert__text"</span><span class="nt">&gt;</span>Banner text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>  </div>
+</div>
+
+<h3 id="information">Information</h3>
+
+<div>
+  <div class="margin-y-3">
+    
+<div class="usa-alert usa-alert--info">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Banner text</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<div>
+  <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert usa-alert--info"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert__body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"usa-alert__text"</span><span class="nt">&gt;</span>Banner text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>  </div>
+</div>
+
+<h3 id="other">Other</h3>
+
+<div>
+  <div class="margin-y-3">
+    
+<div class="usa-alert usa-alert--other">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Banner text</p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<div>
+  <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert usa-alert--other"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"usa-alert__body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"usa-alert__text"</span><span class="nt">&gt;</span>Banner text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>  </div>
+</div>
+
+<h2 id="limiting-alert-width">Limiting Alert Width</h2>
+
+<p>If desired for aesthetics, the background coloring for alerts can be constrained to the width of a paragraph by appending the <code class="highlighter-rouge">usa-alert__paragraph</code> class to the <code class="highlighter-rouge">usa-alert</code> container.</p>
+
+<div class="usa-alert usa-alert--other usa-alert__paragraph">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">This “Other”-styled alert is constrained to the width of a paragraph. It works well when an alert is displayed in the context of a larger document, with paragraphs of text before or after it.</p>
+  </div>
+</div>
+
+<p>Without the <code class="highlighter-rouge">usa-alert__paragraph</code> class, alert messages can look a little silly when used with paragraph text:</p>
+
+<div class="usa-alert usa-alert--other">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">This “Other”-styled alert is full width. It can look a little silly when combined with paragraph-width text.</p>
+  </div>
+</div>
+
+<p>This is a following paragraph, to demostrate the width of the above alert message more clearly.</p>
+:ET

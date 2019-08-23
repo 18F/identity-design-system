@@ -1,0 +1,16 @@
+I"7<p>Any pygments-compatible syntax highlighter will produce markup that is compatible with the code highlighting classes included.</p>
+
+<h2 id="jekyll">Jekyll</h2>
+
+<p>Jekyll uses <a href="https://github.com/jneen/rouge">rouge</a>, which is pygments-compatible. Use fenced code blocks within markdown, and code will be highlighted as expected:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```html
+&lt;div contenteditable&gt;A HTML code sample.&lt;/div&gt;
+```
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">contenteditable</span><span class="nt">&gt;</span>A HTML code sample.<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+:ET
