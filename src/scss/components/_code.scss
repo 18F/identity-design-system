@@ -58,6 +58,10 @@ pre {
   }
 }
 
+.highlight__paragraph {
+  max-width: 66ch;
+}
+
 .highlight .hll { background-color: color('base-lightest'); }
 .highlight .c { color: color('base'); font-style: italic; } /* comment */
 .highlight .err { color: color('error-lighter'); background-color: color('error'); } /* error */
