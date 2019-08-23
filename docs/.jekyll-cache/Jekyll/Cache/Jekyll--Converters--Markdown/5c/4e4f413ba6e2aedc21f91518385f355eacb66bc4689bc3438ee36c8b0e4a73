@@ -1,7 +1,0 @@
-I"<p>An error page may be used to communicate that the user has found a page that does not exist.</p>
-
-<div class="width-full add-aspect-16x9 border border-base-light margin-bottom-2">
-  <iframe src="/examples/error-page.html" class="position-absolute border-0" style="height: 200%; width: 200%; transform: scale(.5); transform-origin: top left;" title="Preview of /examples/error-page.html"></iframe>
-  <a href="/examples/error-page.html" class="position-absolute width-full height-full" title="View larger" target="_blank"></a>
-</div>
-:ET
