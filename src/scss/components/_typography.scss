@@ -13,12 +13,6 @@
     letter-spacing: -0.2px;
   }
 
-  h1 {
-    * + & {
-      margin-top: 1.9em;
-    }
-  }
-
   h2, h3 {
     * + & {
       margin-top: 1.7em;
@@ -60,6 +54,18 @@
     li {
       max-width: measure($theme-text-measure);
     }
+  }
+}
+
+.usa-layout-docs__sidenav + .usa-layout-docs__main.usa-prose > {
+  h1 {
+    @include typeset-h1;
+  }
+}
+
+.usa-layout-docs__main.usa-prose > {
+  h1 {
+    @include typeset-display;
   }
 }
 

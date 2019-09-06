@@ -14,11 +14,11 @@ lead: >
   When working with the login.gov brand, follow these guidelines to ensure you're representing the product in a consistent way across all mediums.
 ---
 
-# Logo
+## Logo
 
 Consistent and repeated use of the logo and lockups will establish equity and strengthen the visual identity of login.gov. To ensure consistency, it is critical that every person who uses the logo does so in accordance with the guidelines that follow, regardless of personal preference.
 
-## The shield and wordmark
+### The shield and wordmark
 
 The login.gov logo is the cornerstone of our brand. Whenever possible, the red and blue version should be used. A white (or reverse) version can be used on a dark background.
 
@@ -26,21 +26,21 @@ The login.gov logo is the cornerstone of our brand. Whenever possible, the red a
 
 <a href="{{ site.baseurl }}/assets/img/login-gov-logo-rev.svg" download><img src="{{ site.baseurl }}/assets/img/login-gov-logo-rev.svg" alt="login.gov logo" class="bg-primary-darker padding-4"></a>
 
-## Whitespace
+### Whitespace
 
 The logo should always be surrounded by generous white space. The diagram below defines the minimum amount of clear space needed, which is based on the cap-height of the typography.
 
 <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-spacing.svg" alt="login.gov logo spacing diagram">
 
-## Minimum size
+### Minimum size
 
 Establishing a minimum size ensures that the impact and legibility of the logo is not compromised in application.
 
 <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-minimum-size.svg" alt="login.gov logo minimum size diagram">
 
-# Logo usage
+## Logo Usage
 
-## Incorrect color usage
+### Incorrect color usage
 
 For optimum legibility and brand consistency, the logo should never be used in white with a light background. Conversely, the standard logo should never appear on a dark background.
 
@@ -48,7 +48,7 @@ For optimum legibility and brand consistency, the logo should never be used in w
 
 <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="login.gov logo" class="bg-gray-70 padding-4">
 
-## Do not modify the logo
+### Do not modify the logo
 
 <div class="grid-row grid-gap">
   <div class="tablet:grid-col-4">
@@ -101,19 +101,19 @@ For optimum legibility and brand consistency, the logo should never be used in w
   </div>
 </div>
 
-# Illustration
+## Illustration
 
-## Principles
+### Principles
 
-### Be useful
+#### Be useful
 
 Illustration provides context, adds clarity, builds consistency, and lead users to their next step. Ultimately, any illustration should provide a deeper understanding of the application or brand.
 
-### Be consistent
+#### Be consistent
 
 Being consistent in illustration means considering details of a single illustration, as well as looking at the body of illustration work as a whole. Consistency speaks to quality: of the illustration and of the product it represents.
 
-### Be focused
+#### Be focused
 
 Illustration is most effective when it is precise in choosing a single message to deliver. With every narrative that is built there needs to be a focal point, a hierarchy of elements that contribute to the single, pointed message. With every illustration, we ask ourselves “what are we trying to say?”
 
@@ -123,6 +123,6 @@ Illustration is most effective when it is precise in choosing a single message t
   <img src="{{ site.baseurl }}/assets/img/illustrations/id-confirm.svg" alt="Confirmed identification illustration" class="display-block grid-col flex-auto flex-align-center">
 </div>
 
-# Slide decks
+## Slide decks
 
 If you're looking to build a new slide deck, please use the official Login.gov slide template [available on Google Drive](https://docs.google.com/presentation/d/1UYyKTTaFmttIm46wxeupGgfozCix-RHLCvTiRZot6Mc/edit). Users of the slide deck template can submit additional template suggestions to the #login-design slack channel.

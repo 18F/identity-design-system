@@ -9,9 +9,9 @@ subnav:
     href: "#limiting-alert-width"
 ---
 
-# Types of Alerts
+## Types of Alerts
 
-## Success
+### Success
 
 {% capture example %}
 <div class="usa-alert usa-alert--success">
@@ -22,7 +22,7 @@ subnav:
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Warning
+### Warning
 
 {% capture example %}
 <div class="usa-alert usa-alert--warning">
@@ -33,7 +33,7 @@ subnav:
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Error
+### Error
 
 {% capture example %}
 <div class="usa-alert usa-alert--error">
@@ -44,7 +44,7 @@ subnav:
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Information
+### Information
 
 {% capture example %}
 <div class="usa-alert usa-alert--info">
@@ -55,7 +55,7 @@ subnav:
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Other
+### Other
 
 {% capture example %}
 <div class="usa-alert usa-alert--other">
@@ -66,7 +66,7 @@ subnav:
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-# Limiting Alert Width
+## Limiting Alert Width
 
 If desired for aesthetics, the background coloring for alerts can be constrained to the width of a paragraph by appending the `usa-alert__paragraph` class to the `usa-alert` container.
 

@@ -5,6 +5,7 @@ title: Password strength meters
 The password strength indicator should be used when users are trying to create a password.
 
 ## Password component example
+
 {% capture example %}
 
 <div class="grid-row">

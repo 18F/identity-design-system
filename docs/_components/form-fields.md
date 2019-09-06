@@ -17,7 +17,7 @@ subnav:
     href: "#form-validation-errors"
 ---
 
-# Text
+## Text
 
 {% capture example %}
 <label for="fd85" class="usa-label">Text input</label>
@@ -31,7 +31,7 @@ subnav:
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-# Dates
+## Dates
 
 Three text fields are the easiest way for users to enter most dates.
 
@@ -57,7 +57,7 @@ Three text fields are the easiest way for users to enter most dates.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-# Dropdowns
+## Dropdowns
 
 {% capture example %}
 <label for="ab84" class="usa-label">Dropdown label</label>
@@ -70,11 +70,11 @@ Three text fields are the easiest way for users to enter most dates.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-# Radio buttons
+## Radio buttons
 
 Three styles of radio buttons are provided. Always label the grouping of items using a fieldset and legend for screen readers, using the `usa-sr-only` class. Do not use the label for visual rendering, as it has rendering quirks, unfortunately.
 
-## Simple
+### Simple
 
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -97,7 +97,7 @@ Three styles of radio buttons are provided. Always label the grouping of items u
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Normal
+### Normal
 
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -120,7 +120,7 @@ Three styles of radio buttons are provided. Always label the grouping of items u
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Large
+### Large
 
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -153,11 +153,11 @@ Three styles of radio buttons are provided. Always label the grouping of items u
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-# Checkboxes
+## Checkboxes
 
 Three styles of checkboxes are provided as well. Always label the grouping of items using a fieldset and legend for screen readers, using the `usa-sr-only` class. Do not use the label for visual rendering, as it has rendering quirks, unfortunately.
 
-## Simple
+### Simple
 
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -180,7 +180,7 @@ Three styles of checkboxes are provided as well. Always label the grouping of it
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Normal
+### Normal
 
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -203,7 +203,7 @@ Three styles of checkboxes are provided as well. Always label the grouping of it
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Large
+### Large
 
 {% capture example %}
 <fieldset class="usa-fieldset">
@@ -236,7 +236,7 @@ Three styles of checkboxes are provided as well. Always label the grouping of it
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-# Form field groups
+## Form field groups
 
 The fieldsets inputs default to a new line, unless the grid system is used to create
 a grid row.
@@ -254,7 +254,7 @@ a grid row.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-# Form validation errors
+## Form validation errors
 
 {% capture example %}
 
@@ -265,7 +265,7 @@ a grid row.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Examples of form validation error for other input types
+### Examples of form validation error for other input types
 
 Follow the same pattern of applying `.usa-input--error` to the effected input and append the error message in the appropriate span.
 
@@ -343,7 +343,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   </div>
 </div>
 
-### Radio buttons and checkboxes
+#### Radio buttons and checkboxes
 
 For radio buttons and checkboxes, simply add an error message directly after the input list. Do not apply `.usa-input--error` to the effected inputs.
 

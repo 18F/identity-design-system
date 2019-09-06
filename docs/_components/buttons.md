@@ -9,7 +9,7 @@ subnav:
     href: "#other-buttons"
 ---
 
-# Standard Buttons
+## Standard Buttons
 
 Use the standard button styles to convey the most important action on you want the users to take. For actions outside of the top two actions, use the [other buttons](#other-buttons). See the [USWDS Button Usage](https://v2.designsystem.digital.gov/components/button/) for more on how to use buttons.
 
@@ -63,7 +63,7 @@ Note: the  vertical alignment of a button is governed by the [layout grid](/layo
 <button class="usa-button usa-button--danger usa-focus">Focus</button>
 <button class="usa-button usa-button--danger" disabled>Disabled</button>
 
-# Other Buttons
+## Other Buttons
 
 Use these buttons if the actions are not among the top two actions in a view, use an other button to convey action.
 
