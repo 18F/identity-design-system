@@ -60,6 +60,9 @@
 .usa-layout-docs__sidenav + .usa-layout-docs__main.usa-prose > {
   h1 {
     @include typeset-h1;
+    + * {
+      margin-top: 0.5em;
+    }
   }
 }
 
