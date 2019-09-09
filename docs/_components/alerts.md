@@ -2,7 +2,6 @@
 title: Alerts
 lead: >
   Alerts keep users informed of important and sometimes time-sensitive changes.
- 
 subnav:
   - text: Types of Alerts
     href: "#types-of-alerts"
