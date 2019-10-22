@@ -83,3 +83,9 @@
 .usa-display {
   @include typeset-h1;
 }
+@mixin text-wrap-mixin {
+  word-break: break-all;
+}
+.text-wrap {
+  @include text-wrap-mixin;
+}
