@@ -1,4 +1,4 @@
-# identity-style-guide
+# Login.gov Design System
 
 ## Installation and usage
 
@@ -42,9 +42,21 @@ Documentation deploys are performed automatically upon merging to `master` by [F
 
 More information can be found in Federalist’s [How Builds Work](https://federalist-docs.18f.gov/pages/how-federalist-works/how-builds-work/).
 
-## Publishing to `npm`
+## Publishing a release to `npm`
 
-Once you’re satisfied with any updates, do a trial publish to `npm` by running:
+When you're ready to release a new version of the `identity-style-guide` package there are just a few steps to take. 
+
+1️⃣ Make sure all the changes indended for release are merged into the `master` branch.
+
+2️⃣ Check out the master branch on your local machine by running `git checkout master`
+
+3️⃣ Decide on a version. The login.gov design system uses [semantic versioning](https://semver.org/). Once you decide whether you're going to release a `patch`, `minor`, or `major` version, run the appropriate `npm` command like
+
+`npm version patch -m "Upgrade to %s for reasons"`
+
+And a new version will be created. 
+
+4️⃣ Once you’re satisfied with any updates, do a trial publish to `npm` by running:
 
 ```
 npm publish --dry-run
@@ -52,8 +64,10 @@ npm publish --dry-run
 
 No need to run any special build steps — the publish script will lint the source JavaScript and Sass files, and clean and re-build all assets before including them in the published package.
 
-If everything looks alright, continue with publishing:
+5️⃣ If everything looks alright, continue with publishing:
 
 ```
 npm publish
 ```
+
+6️⃣ Document the release on Github. After you've pushed the release changes back up to `master`, [create a new release](https://github.com/18F/identity-style-guide/releases) with a target of `master`. The release version should match the version you just sent off to `npm` (like `v2.1.5`) and the title can be the same. Use the release notes to link to any important issues or pull requests that were addressed in the release. 
