@@ -24,8 +24,8 @@
   "author": "18F",
   "license": "CC0-1.0",
   "engines": {
-    "node": ">=8.x.x",
-    "npm": ">=5.x.x"
+    "node": ">=10.x.x",
+    "npm": ">6.x.x"
   },
   "bugs": {
     "url": "https://github.com/18F/identity-style-guide/issues"
