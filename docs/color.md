@@ -381,7 +381,7 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
   {% include helpers/color.html
     name="Dark Success Green"
     code="success-dark"
-    hex="0e581e"
+    hex="#0e581e"
     text-color="white"
   %}
   {% include helpers/color.html
