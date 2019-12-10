@@ -81,7 +81,7 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
     text-color="white"
   %}
   {% include helpers/color.html
-    name="Navy / Darker Blue"
+    name="Darker Blue / Navy"
     code="primary-darker"
     hex="#112e51"
     text-color="white"
@@ -396,19 +396,19 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
 
 <div class="grid-row tablet:grid-col">
   {% include helpers/color.html
-    name="Light Disabled"
+    name="Light Disabled Grey"
     code="disabled-light"
     hex="#f0f0f0"
     text-color="black"
   %}
   {% include helpers/color.html
-    name="Disabled"
+    name="Disabled Grey"
     code="disabled"
     hex="#767676"
     text-color="white"
   %}
   {% include helpers/color.html
-    name="Dark Disabled"
+    name="Dark Disabled Grey"
     code="disabled-dark"
     hex="#454545"
     text-color="white"
