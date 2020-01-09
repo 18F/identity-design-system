@@ -59,7 +59,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^8.0.0",
     "gulp-uglify": "^3.0.2",
-    "jest": "^25.0.0",
+    "jest": "^23.6.0",
     "jest-puppeteer": "^3.9.1",
     "pa11y-ci": "^2.3.0",
     "path": "^0.12.7",
