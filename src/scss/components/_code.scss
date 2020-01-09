@@ -60,22 +60,22 @@ pre {
 }
 
 .highlight .hll { background-color: color('base-lightest'); }
-.highlight .c { color: color('base'); font-style: italic; } /* comment */
+.highlight .c { color: color('base-dark'); font-style: italic; } /* comment */
 .highlight .err { color: color('error-lighter'); background-color: color('error'); } /* error */
 .highlight .k { color: color('primary-dark'); } /* keyword */
-.highlight .ch { color: color('base'); font-style: italic; } /* comment.hashbang */
-.highlight .cm { color: color('base'); font-style: italic; } /* comment.multiline */
+.highlight .ch { color: color('base-dark'); font-style: italic; } /* comment.hashbang */
+.highlight .cm { color: color('base-dark'); font-style: italic; } /* comment.multiline */
 .highlight .cp { color: color('success'); } /* comment.preproc */
-.highlight .cpf { color: color('base'); font-style: italic; } /* comment.preprocfile */
-.highlight .c1 { color: color('base'); font-style: italic; } /* comment.single */
+.highlight .cpf { color: color('base-dark'); font-style: italic; } /* comment.preprocfile */
+.highlight .c1 { color: color('base-dark'); font-style: italic; } /* comment.single */
 .highlight .cs { color: color('primary-dark'); font-style: italic; } /* comment.special */
 .highlight .gd { color: color('secondary-dark'); } /* generic.deleted */
 .highlight .ge { font-style: italic; } /* generic.emph */
 .highlight .gr { color: color('secondary-dark'); } /* generic.error */
 .highlight .gh { font-weight: bold; } /* generic.heading */
 .highlight .gi { color: color('primary-darker'); } /* generic.inserted */
-.highlight .go { color: color('base'); } /* generic.output */
-.highlight .gp { color: color('base'); } /* generic.prompt */
+.highlight .go { color: color('base-dark'); } /* generic.output */
+.highlight .gp { color: color('base-dark'); } /* generic.prompt */
 .highlight .gs { font-weight: bold; } /* generic.strong */
 .highlight .gu { font-weight: bold; } /* generic.subheading */
 .highlight .gt { color: color('secondary-dark'); } /* generic.traceback */
@@ -91,7 +91,7 @@ pre {
 .highlight .nb { color: color('secondary'); } /* name.builtin */
 .highlight .nc { color: color('primary-darker'); text-decoration: underline; } /* name.class */
 .highlight .no { color: color('secondary-dark'); } /* name.constant */
-.highlight .nd { color: color('base'); } /* name.decorator */
+.highlight .nd { color: color('base-dark'); } /* name.decorator */
 .highlight .ni { font-weight: bold; } /* name.entity */
 .highlight .nf { color: color('primary-darker'); } /* name.function */
 .highlight .nn { color: color('secondary'); text-decoration: underline; } /* name.namespace */
