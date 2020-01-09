@@ -29,32 +29,29 @@ Reference the [18F content principles](https://content-guide.18f.gov/content-pri
 
 Login.gov’s voice is&hellip;
 
-<ul>
-  <li>Friendly</li>
-  <li>Informative</li>
-  <li>Helpful</li>
-  <li>Supportive</li>
-</ul>
+* Friendly
+* Informative
+* Helpful
+* Supportive
 
 ## In-app content hierarchy
 
-<div class="border border-base-light padding-3">
-  <!--alert-error-->
-  <div class="usa-alert usa-alert--error">
-    <div class="usa-alert__body">
-      <p class="usa-alert__text">Alert appear at the top, when applicable</p>
+<div class="maxw-tablet">
+  <div class="border border-base-light padding-5">
+    <!--alert-error-->
+    <div class="usa-alert usa-alert--error">
+      <div class="usa-alert__body">
+        <p class="usa-alert__text">Alert appear at the top, when applicable</p>
+      </div>
     </div>
+    <!--text-->
+    <h1 class="usa-prose">Call to action</h1>
+    <p>More information that explain what we're asking for and how it affects the user.</p>  
+    <p class="bg-gray-5 padding-5">Form fields / interaction space</p>
+    <button class="usa-button">Forward navigation</button>
+    <div class="border-top margin-top-4"></div>
+    <a href="#" class="primary">Cancel / close / back navigation</a>
   </div>
-  <!--text-->
-  <h1>Call to action</h1>
-
-  <p>More information that explain what we're asking for and how it affects the user.</p>
-  
-  <p class="bg-gray-5 padding-5">Form fields / interaction space</p>
-
-  <button class="usa-button">Forward navigation</button>
-  <div class="border-top margin-top-4"></div>
-  <a href="#" class="primary">Cancel / close / back navigation</a>
 </div>
 
 ## Common terms and phrases
