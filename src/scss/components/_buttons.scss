@@ -92,7 +92,24 @@
 
   &:active,
   &.usa-button--active {
-    background-color: map-get($site-palette, 'site-darkest-red');
+    background-color: map-get($site-palette, 'site-lightest-grey');
+  }
+}
+
+.usa-button--action {
+  background-color: #F0F0F0;
+  color: #42474D;
+
+  &:hover,
+  &.usa-button--hover {
+    background-color: #B3B4B5;
+    color: #42474D;
+  }
+
+  &:active,
+  &.usa-button--active {
+    background-color: #B3B4B5;
+    color: color('white');
   }
 }
 
