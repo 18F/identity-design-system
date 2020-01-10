@@ -45,12 +45,18 @@ Login.gov’s voice is&hellip;
       </div>
     </div>
     <!--text-->
-    <h1 class="usa-prose">Call to action</h1>
-    <p>More information that explain what we're asking for and how it affects the user.</p>  
-    <p class="bg-gray-5 padding-5">Form fields / interaction space</p>
+    <div class="usa-prose margin-y-5">
+      <h1 class="">Call to action</h1>
+      <p>More information that explain what we're asking for and how it affects the user.</p>  
+    </div>
+    <div class="margin-y-6">
+      <p class="bg-gray-5 padding-5">Form fields / interaction space</p>
+    </div>
     <button class="usa-button">Forward navigation</button>
     <div class="border-top margin-top-4"></div>
-    <a href="#" class="primary">Cancel / close / back navigation</a>
+    <div class="usa-prose margin-top-2">
+      <a href="#" class="primary">Cancel / close / back navigation</a>
+    </div>
   </div>
 </div>
 
