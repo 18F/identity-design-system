@@ -18,31 +18,56 @@ https://v2.designsystem.digital.gov/style-tokens/color
 */
 
 $site-palette: (
-  'site-navy': #112e51,
+  'site-darkest-blue': #0c213a,
+  'site-darker-blue': #112e51,
   'site-dark-blue': #205493,
   'site-blue': #0071bb,
-  'site-med-blue': #cedced,
-  'site-light-blue': #ebf3fa,
-  'site-input-blue': #f2f9ff,
+  'site-light-blue': #cedced,
+  'site-lighter-blue': #ebf3fa,
+  'site-lightest-blue': #f2f9ff,
 
+  'site-darkest-teal': #006175,
+  'site-darker-teal': #007187,
+  'site-dark-teal': #008099,
   'site-teal': #00a2c4,
-  'site-light-teal': #ecfcff,
+  'site-light-teal': #7bbfd6,
+  'site-lighter-teal': #b7dde9,
+  'site-lightest-teal': #ecfcff,
 
-  'site-darkest-red': #8b0a21,
+  'site-darkest-red': #680617,
+  'site-darker-red': #8b0a21,
   'site-dark-red': #ab142f,
   'site-red': #e21c3d,
-  'site-pink': #fff0f3,
+  'site-light-red': #ea7b85,
+  'site-lighter-red': #f3b8be,
+  'site-lightest-red': #fff0f3,
 
-  'site-grey': #5b616a,
-  'site-light-grey': #767676,
+  'site-darkest-grey': #1b1b1b,
+  'site-darker-grey': #454545,
+  'site-dark-grey': #5c5c5c,
+  'site-grey': #757575,
+  'site-light-grey': #adadad,
+  'site-lighter-grey': #e6e6e6,
+  'site-lightest-grey': #f0f0f0,
+  'site-ink': #454545,
+  'site-disabled-grey': #767676,
 
+  'site-darkest-yellow': #504332,
+  'site-darker-yellow': #847122,
+  'site-dark-yellow': #bba212,
   'site-yellow': #f5d600,
-  'site-light-yellow': #fffdd7,
+  'site-light-yellow': #f9e450,
+  'site-lighter-yellow': #fcf197,
+  'site-lightest-yellow': #fffdd7,
 
   'site-darkest-green': #094316,
-  'site-dark-green': #116523,
+  'site-darker-green': #0e581e,
+  'site-dark-green': #136e26,
   'site-green': #18852e,
-  'site-light-green': #ebfcef,
+  'site-light-green': #60ae70,
+  'site-lighter-green': #a6d5af,
+  'site-lightest-green': #ebfcef,
+
   'site-white': #ffffff,
 );
 
@@ -55,35 +80,46 @@ Theme palette colors
 */
 
 // Base colors
-$theme-color-base-family:           'gray';
-$theme-color-base-lightest:         'site-light-blue';
-$theme-color-base-lighter:          'site-light-blue';
-$theme-color-base-light:            'site-med-blue';
-$theme-color-base:                  'site-blue';
-$theme-color-base-dark:             'gray-cool-60';
-$theme-color-base-darker:           'gray-cool-80';
-$theme-color-base-darkest:          '#{$theme-color-base-family}-90';
-$theme-color-base-ink:              'site-grey';
+$theme-color-base-family:           'grey';
+$theme-color-base-lightest:         'site-lightest-grey';
+$theme-color-base-lighter:          'site-lighter-grey';
+$theme-color-base-light:            'site-light-grey';
+$theme-color-base:                  'site-grey';
+$theme-color-base-dark:             'site-dark-grey';
+$theme-color-base-darker:           'site-darker-grey';
+$theme-color-base-darkest:          'site-darkest-grey';
+$theme-color-base-ink:              'site-ink';
 
 // Primary colors
-$theme-color-primary-lightest:      'site-input-blue';
-$theme-color-primary-lighter:       'site-light-blue';
-$theme-color-primary-light:         'site-med-blue';
+$theme-color-primary-lightest:      'site-lightest-blue';
+$theme-color-primary-lighter:       'site-lighter-blue';
+$theme-color-primary-light:         'site-light-blue';
 $theme-color-primary:               'site-blue';
 $theme-color-primary-vivid:         false;
 $theme-color-primary-dark:          'site-dark-blue';
-$theme-color-primary-darker:        'site-navy';
-$theme-color-primary-darkest:       false;
+$theme-color-primary-darker:        'site-darker-blue';
+$theme-color-primary-darkest:       'site-darkest-blue';
 
 // Secondary colors
-$theme-color-secondary-lightest:    false;
-$theme-color-secondary-lighter:     false;
-$theme-color-secondary-light:       'site-pink';
+$theme-color-secondary-lightest:    'site-lightest-red';
+$theme-color-secondary-lighter:     'site-lighter-red';
+$theme-color-secondary-light:       'site-light-red';
 $theme-color-secondary:             'site-red';
 $theme-color-secondary-vivid:       false;
 $theme-color-secondary-dark:        'site-dark-red';
-$theme-color-secondary-darker:      'site-darkest-red';
-$theme-color-secondary-darkest:     false;
+$theme-color-secondary-darker:      'site-darker-red';
+$theme-color-secondary-darkest:     'site-darkest-red';
+
+// Grey colors
+$theme-color-grey:                  'grey';
+$theme-color-grey-lightest:         'site-lightest-grey';
+$theme-color-grey-lighter:          'site-lighter-grey';
+$theme-color-grey-light:            'site-light-grey';
+$theme-color-grey:                  'site-grey';
+$theme-color-grey-vivid:            false;
+$theme-color-grey-dark:             'site-dark-grey';
+$theme-color-grey-darker:           'site-darker-grey';
+$theme-color-grey-darkest:          'site-darkest-grey';
 
 // Accent warm colors
 $theme-color-accent-warm-family:    'orange';
@@ -96,14 +132,14 @@ $theme-color-accent-warm-darker:    '#{$theme-color-accent-warm-family}-60';
 $theme-color-accent-warm-darkest:   false;
 
 // Accent cool colors
-$theme-color-accent-cool-family:    'cyan';
-$theme-color-accent-cool-lightest:  false;
-$theme-color-accent-cool-lighter:   '#{$theme-color-accent-cool-family}-5';
+$theme-color-accent-cool-family:    'teal';
+$theme-color-accent-cool-lightest:  'site-lightest-teal';
+$theme-color-accent-cool-lighter:   'site-lighter-teal';
 $theme-color-accent-cool-light:     'site-light-teal';
 $theme-color-accent-cool:           'site-teal';
-$theme-color-accent-cool-dark:      '#{$theme-color-accent-cool-family}-40v';
-$theme-color-accent-cool-darker:    'blue-60';
-$theme-color-accent-cool-darkest:   false;
+$theme-color-accent-cool-dark:      'site-dark-teal';
+$theme-color-accent-cool-darker:    'site-darker-teal';
+$theme-color-accent-cool-darkest:   'site-darkest-teal';
 
 /*
 ----------------------------------------
@@ -113,40 +149,41 @@ State palette colors
 
 // Error colors
 $theme-color-error-family:     'red';
-$theme-color-error-lighter:    '#{$theme-color-error-family}-10';
-$theme-color-error-light:      '#{$theme-color-error-family}-40v';
+$theme-color-error-lighter:    'site-lightest-red';
+$theme-color-error-light:      'site-lighter-red';
 $theme-color-error:            'site-red';
-$theme-color-error-dark:       '#{$theme-color-error-family}-60v';
-$theme-color-error-darker:     '#{$theme-color-error-family}-70v';
+$theme-color-error-dark:       'site-darker-red';
+$theme-color-error-darker:     'site-darkest-red';
 
 // Warning colors
-$theme-color-warning-family:   'gold';
-$theme-color-warning-lighter:  'site-light-yellow';
-$theme-color-warning-light:    'site-light-yellow';
+$theme-color-warning-family:   'yellow';
+$theme-color-warning-lighter:  'site-lightest-yellow';
+$theme-color-warning-light:    'site-lighter-yellow';
 $theme-color-warning:          'site-yellow';
-$theme-color-warning-dark:     '#{$theme-color-warning-family}-30v';
-$theme-color-warning-darker:   '#{$theme-color-warning-family}-40v';
+$theme-color-warning-dark:     'site-darker-yellow';
+$theme-color-warning-darker:   'site-darkest-yellow';
 
 // Success colors
-$theme-color-success-lighter:  'site-light-green';
-$theme-color-success-light:    false;
+$theme-color-success-family:   'green';
+$theme-color-success-lighter:  'site-lightest-green';
+$theme-color-success-light:    'site-lighter-green';
 $theme-color-success:          'site-green';
-$theme-color-success-dark:     'site-dark-green';
+$theme-color-success-dark:     'site-darker-green';
 $theme-color-success-darker:   'site-darkest-green';
 
 // Info colors
-$theme-color-info-family:      'cyan';
-$theme-color-info-lighter:     'site-light-teal';
-$theme-color-info-light:       '#{$theme-color-info-family}-20';
+$theme-color-info-family:      'teal';
+$theme-color-info-lighter:     'site-lightest-teal';
+$theme-color-info-light:       'site-lighter-teal';
 $theme-color-info:             'site-teal';
-$theme-color-info-dark:        '#{$theme-color-info-family}-40v';
-$theme-color-info-darker:      'blue-60';
+$theme-color-info-dark:        'site-darker-teal';
+$theme-color-info-darker:      'site-darkest-teal';
 
 // Disabled colors
-$theme-color-disabled-family:  'gray';
-$theme-color-disabled-light:   '#{$theme-color-disabled-family}-10';
-$theme-color-disabled:         'site-light-grey';
-$theme-color-disabled-dark:    '#{$theme-color-disabled-family}-30';
+$theme-color-disabled-family:  'grey';
+$theme-color-disabled-light:   'site-lightest-grey';
+$theme-color-disabled:         'site-disabled-grey';
+$theme-color-disabled-dark:    'site-darker-grey';
 
 /*
 ----------------------------------------
