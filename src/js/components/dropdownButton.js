@@ -11,25 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function toggleAriaExpanded(element) {
     if (element.getAttribute('aria-expanded') === 'true') {
-    element.setAttribute('aria-expanded', 'false');
+      element.setAttribute('aria-expanded', 'false');
     } else {
-    element.setAttribute('aria-expanded', 'true');
+      element.setAttribute('aria-expanded', 'true');
     }
   }
 
   function dropdownPicker(trigger, dropdown) {
     addListenerMulti(trigger, 'click keypress', function (event) {
-    const eventType = event.type;
+      const eventType = event.type;
 
-    event.preventDefault();
+      event.preventDefault();
     if (eventType === 'click' || (eventType === 'keypress' && event.which === 13)) {
-    this.parentNode.classList.toggle('focused');
+        this.parentNode.classList.toggle('focused');
     dropdown.classList.toggle('display-none');
-    toggleAriaExpanded(this);
+        toggleAriaExpanded(this);
     }
     });
   }
 
   if (desktopLink) dropdownPicker(desktopLink, desktopDropdown);
   if (mobileLink) dropdownPicker(mobileLink, mobileDropdown);
-    });
+});
