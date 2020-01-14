@@ -12,6 +12,7 @@ const components = require('uswds/src/js/components');
 
 // login.gov additions
 components.accordionCloseButton = require('./components/accordionCloseButton');
+components.i18ndropdown = require('./components/dropdownButton');
 components.inputPasswordMeter = require('./components/inputPasswordStrength');
 components.invokeSpinner = require('./components/invokeSpinner');
 
