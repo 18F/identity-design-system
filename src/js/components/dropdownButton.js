@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       event.preventDefault();
     if (eventType === 'click' || (eventType === 'keypress' && event.which === 13)) {
-        this.parentNode.classList.toggle('focused');
-    dropdown.classList.toggle('display-none');
+          this.parentNode.classList.toggle('focused');
+        dropdown.classList.toggle('display-none');
         toggleAriaExpanded(this);
-    }
+      }
     });
   }
 
