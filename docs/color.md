@@ -153,7 +153,7 @@ Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" t
   {% include helpers/color.html
     name="Lighter Grey"
     code="base-lighter"
-    hex="#e6e6e6"
+    hex="#dedede"
     text-color="black"
   %}
   {% include helpers/color.html
