@@ -134,11 +134,9 @@
   width: auto;
   left: -1px;
 
-
   @include at-media('mobile-lg') {
     width: 194px;
   }
-
 }
 
 .mobile-dropdown {
@@ -148,6 +146,7 @@
    left: -1px;
    bottom: 100%;
 }
+
 .desktop-menu, .mobile-menu  {
   color: color('ink');
   text-align: center;
@@ -166,11 +165,6 @@
     @include u-padding-left(3);
   }
 }
-
-.mobile-menu {
-  text-align: center;
-}
-
 
 .usa-button--inverse {
   background-color: color('primary-lighter');
