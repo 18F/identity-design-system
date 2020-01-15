@@ -157,8 +157,8 @@
     text-decoration: none;
   }
   &:hover {
-   background-color: color('base-lighter');
-   color: color('ink');
+    background-color: color('base-lighter');
+    color: color('ink');
   }
   @include at-media('mobile-lg') {
     text-align: left;
