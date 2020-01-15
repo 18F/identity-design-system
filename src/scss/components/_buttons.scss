@@ -100,7 +100,7 @@
   background-color: color('base-lightest');
   color: color('ink');
 
-&:hover,
+  &:hover,
   &.usa-button--hover {
     background-color: color('base-lighter');
     color: color('ink');
@@ -140,14 +140,14 @@
 }
 
 .mobile-dropdown {
-   background-color: color('white');
-   border: solid 1px color('base-lightest');
-   right: 0;
-   left: -1px;
-   bottom: 100%;
+  background-color: color('white');
+  border: solid 1px color('base-lightest');
+  right: 0;
+  left: -1px;
+  bottom: 100%;
 }
 
-.desktop-menu, .mobile-menu  {
+.desktop-menu, .mobile-menu {
   color: color('ink');
   text-align: center;
   @include u-padding-left(1);
@@ -157,8 +157,8 @@
     text-decoration: none;
   }
   &:hover {
-  background-color: color('base-lighter');
-  color: color('ink');
+   background-color: color('base-lighter');
+   color: color('ink');
   }
   @include at-media('mobile-lg') {
     text-align: left;
