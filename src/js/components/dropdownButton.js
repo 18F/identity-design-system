@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const eventType = event.type;
 
       event.preventDefault();
-    if (eventType === 'click' || (eventType === 'keypress' && event.which === 13)) {
-          this.parentNode.classList.toggle('focused');
+      if (eventType === 'click' || (eventType === 'keypress' && event.which === 13)) {
+        this.parentNode.classList.toggle('focused');
         dropdown.classList.toggle('display-none');
         toggleAriaExpanded(this);
       }
