@@ -2,7 +2,7 @@
 
 ## Installation and usage
 
-See [the documentation](https://design.login.gov/) for installation and usage instructions.
+See [the documentation](https://design.login.gov/) for installation and usage instructions
 
 ## Configuring for development
 
