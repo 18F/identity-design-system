@@ -15,7 +15,7 @@ test('hex codes match background color on the color documentation page', async (
     return { text, background };
   }));
 
-  expect(colors.length).toBe(56);
+  expect(colors.length).toBe(20);
 
   colors.forEach((swatch) => {
     const backgroundColor = rgb2hex(swatch.background);
