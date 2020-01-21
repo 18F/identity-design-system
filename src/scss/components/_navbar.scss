@@ -75,6 +75,7 @@ $header-height: 10;
         font-weight: normal;
         color: color('primary');
         text-transform: uppercase;
+        @include u-margin-x(-0.5);
 
         &:hover {
           @include add-bar(0.5, 'secondary', 'bottom', 0, 2, 0);
