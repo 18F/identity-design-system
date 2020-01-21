@@ -109,7 +109,7 @@
   &:active,
   &.usa-button--active {
     background-color: color('base-light');
-    color: color('white');
+    color: color('base-darkest');
   }
 }
 
@@ -129,6 +129,7 @@
 }
 
 .desktop-dropdown {
+  background-color: color('white');
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.17);
   border: solid 1px color('base-lightest');
   width: auto;
