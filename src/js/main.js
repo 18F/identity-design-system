@@ -26,4 +26,6 @@ domready(() => {
     });
 });
 
+require('./components/dropdownButton');
+
 module.exports = uswds;

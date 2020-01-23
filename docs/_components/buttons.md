@@ -63,6 +63,44 @@ Note: the  vertical alignment of a button is governed by the [layout grid](/layo
 <button class="usa-button usa-button--danger usa-focus">Focus</button>
 <button class="usa-button usa-button--danger" disabled>Disabled</button>
 
+
+##### Dropdown
+
+```html
+<button class="usa-button usa-button--dropdown">Default <span class="caret inline-block ml-tiny" aria-hidden="true">&#9662;</span></button><br>
+  <ul class="desktop-dropdown add-list-reset display-none">
+    <li>
+      <button class="usa-button--unstyled text-no-underline padding-right-1 padding-left-1 padding-bottom-1 padding-top-1 desktop-menu text-bold width-full">
+        <span class="">Option 1</span>
+      </button>
+    </li>
+    <li>
+      <button class="usa-button--unstyled text-no-underline padding-right-1 padding-left-1 padding-bottom-1 padding-top-1 desktop-menu text-bold width-full">
+        <span class="">Option 2</span>
+      </button>
+    </li>
+  </ul>
+```
+<div class="dropdown-desktop-toggle flex my1 mx3 relative">
+<button class="usa-button usa-button--dropdown">Default <span class="caret inline-block ml-tiny" aria-hidden="true">&#9662;</span></button><br>
+  <ul class="desktop-dropdown add-list-reset display-none">
+    <li>
+      <button class="usa-button--unstyled text-no-underline padding-right-1 padding-left-1 padding-bottom-1 padding-top-1 desktop-menu text-bold width-full">
+        <span class="">Option 1</span>
+      </button>
+    </li>
+    <li>
+      <button class="usa-button--unstyled text-no-underline padding-right-1 padding-left-1 padding-bottom-1 padding-top-1 desktop-menu text-bold width-full">
+        <span class="">Option 2</span>
+      </button>
+    </li>
+  </ul>
+</div>
+<button class="usa-button usa-button--dropdown usa-button--hover">Hover ▾</button>
+<button class="usa-button usa-button--dropdown usa-button--active">Active ▾</button>
+<button class="usa-button usa-button--dropdown usa-focus">Focus ▾</button>
+<button class="usa-button usa-button--dropdown" disabled="">Disabled ▾</button>
+
 ## Other Buttons
 
 Use these buttons if the actions are not among the top two actions in a view, use an other button to convey action.
