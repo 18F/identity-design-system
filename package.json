@@ -1,6 +1,6 @@
 {
   "name": "identity-style-guide",
-  "version": "2.1.6",
+  "version": "2.2.1",
   "description": "The global style of login.gov",
   "scripts": {
     "start": "make start",
