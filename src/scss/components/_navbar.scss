@@ -1,5 +1,8 @@
 $header-height: 10;
 
+// Header navigation
+// ---------------------------------
+
 .usa-header--extended,
 .usa-header--basic {
   .usa-logo {
@@ -30,6 +33,18 @@ $header-height: 10;
   }
 }
 
+.usa-header {
+  + .usa-section,
+  + main {
+    @include at-media($theme-navigation-width) {
+      border-top: units(1px) solid color('base-light');
+    }
+  }
+}
+
+// Header navigation for basic
+// ---------------------------------
+
 .usa-header--basic {
   .usa-nav-container {
     @include at-media($theme-navigation-width) {
@@ -43,6 +58,20 @@ $header-height: 10;
     }
   }
 }
+
+// Header navigation for extended
+// ---------------------------------
+
+.usa-header--extended .usa-nav {
+  @include at-media($theme-navigation-width) {
+    border-top: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+// Primary navigation
+// ---------------------------------
 
 .usa-nav__primary {
   @include at-media-max($theme-navigation-width) {
@@ -184,19 +213,4 @@ $header-height: 10;
   color: color('secondary');
 }
 
-.usa-header--extended .usa-nav {
-  @include at-media($theme-navigation-width) {
-    border-top: 0;
-    padding: 0;
-    width: 100%;
-  }
-}
 
-.usa-header {
-  + .usa-section,
-  + main {
-    @include at-media($theme-navigation-width) {
-      border-top: units(1px) solid color('base-light');
-    }
-  }
-}
