@@ -17,7 +17,7 @@ lead: >
   This guide is intended to help login.gov team members create content that is consistent and accessible to our users.
 ---
 
-We follow the 18F content guide and federal plain language guidelines. This guide is intended as a supplement to those guides.
+We follow the [18F content guide](https://content-guide.18f.gov/) and [federal plain language guidelines](https://www.plainlanguage.gov/guidelines/). This guide is intended as a supplement to those guides.
 
 We follow the AP Stylebook for grammar. If you have a grammatical question that is not answered here, please use it as a reference.
 
