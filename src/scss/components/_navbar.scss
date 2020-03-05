@@ -100,6 +100,9 @@ $header-height: 10;
   }
 }
 
+// Secondary navigation
+// ---------------------------------
+
 .usa-nav__secondary {
   @include at-media($theme-navigation-width) {
     top: 0;
@@ -110,6 +113,44 @@ $header-height: 10;
     align-items: center;
     justify-content: flex-end;
     height: units($header-height);
+  }
+}
+
+.usa-nav__secondary-links {
+  @include add-list-reset;
+  line-height: line-height($theme-navigation-font-family, 3);
+  margin-top: units(3);
+
+  @include at-media($theme-navigation-width) {
+    float: right;
+    line-height: line-height($theme-navigation-font-family, 1);
+    margin-bottom: units(0.5);
+    margin-top: 0;
+  }
+
+  .usa-nav__secondary-item {
+    @include at-media($theme-navigation-width) {
+      display: inline;
+      padding-left: units(0.5);
+
+      & + .usa-nav__secondary-item::before {
+        color: color('base-lighter');
+        content: '|';
+        padding-right: units(0.5);
+      }
+    }
+  }
+
+  a {
+    color: color('ink');
+    display: inline-block;
+    font-size: font-size($theme-navigation-font-family, '2xs');
+    text-decoration: none;
+
+    &:hover {
+      color: color('primary');
+      text-decoration: underline;
+    }
   }
 }
 
