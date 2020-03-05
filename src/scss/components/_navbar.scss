@@ -75,10 +75,10 @@ $header-height: 10;
         font-weight: normal;
         color: color('primary');
         text-transform: uppercase;
-        @include u-margin-x(-0.5);
+        @include u-padding-x(1.5);
 
         &:hover {
-          @include add-bar(0.5, 'secondary', 'bottom', 0, 2, 0);
+          @include add-bar(0.5, 'secondary', 'bottom', 0, 1.5, 0);
           color: color('primary');
         }
       }
@@ -89,7 +89,7 @@ $header-height: 10;
       }
 
       .usa-current {
-        @include add-bar(0.5, 'secondary', 'bottom', 0, 2, 0);
+        @include add-bar(0.5, 'secondary', 'bottom', 0, 1.5, 0);
         font-weight: font-weight('bold');
 
         &:hover {
