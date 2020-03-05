@@ -144,7 +144,7 @@ $header-height: 10;
   a {
     color: color('ink');
     display: inline-block;
-    font-size: font-size($theme-navigation-font-family, '2xs');
+    font-size: font-size($theme-navigation-font-family, 'xs');
     text-decoration: none;
 
     &:hover {
