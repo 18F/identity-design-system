@@ -126,7 +126,7 @@ $header-height: 10;
         }
       }
     }
-    
+
     button {
       $button-vertical-offset: 53%; // XXX: Magic number
 
@@ -162,10 +162,8 @@ $header-height: 10;
           @include add-background-svg('angle-arrow-down-primary');
           background-size: units($nav-link-arrow-icon-size);
           background-position: right units(2) top $button-vertical-offset;
-        }
 
-        &:hover {
-          @include at-media($theme-navigation-width) {
+          &:hover {
             @include add-background-svg('angle-arrow-down-primary');
           }
         }
