@@ -153,22 +153,6 @@ $header-height: 10;
         }
       }
 
-      &[aria-expanded=false] { /* stylelint-disable-line selector-no-qualifying-type */
-        @include add-background-svg('plus-alt');
-        background-position: right 0 center;
-        background-size: units($nav-link-accordion-icon-size);
-
-        @include at-media($theme-navigation-width) {
-          @include add-background-svg('angle-arrow-down-primary');
-          background-size: units($nav-link-arrow-icon-size);
-          background-position: right units(2) top $button-vertical-offset;
-
-          &:hover {
-            @include add-background-svg('angle-arrow-down-primary');
-          }
-        }
-      }
-
       &[aria-expanded=true] { /* stylelint-disable-line selector-no-qualifying-type */
         @include add-background-svg('minus-alt');
         background-position: right 0 center;
