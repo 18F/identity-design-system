@@ -114,7 +114,7 @@ $header-height: 10;
 
       .usa-accordion__button[aria-expanded=true] {
         @include remove-bar;
-        color: color('white');
+        color: color('primary-darker');
       }
 
       .usa-current {
@@ -123,6 +123,65 @@ $header-height: 10;
 
         &:hover {
           color: color('primary-darker');
+        }
+      }
+    }
+    button {
+      $button-vertical-offset: 53%; // XXX: Magic number
+
+      @include button-unstyled;
+      color: color($nav-link-color);
+      font-weight: font-weight('normal');
+      line-height: line-height($theme-navigation-font-family, 2);
+      padding: units(1.5) units(2);
+      text-decoration: none;
+
+      @include at-media($theme-navigation-width) {
+        @include primary-nav-link;
+        font-size: font-size($theme-navigation-font-family, '2xs');
+        font-weight: font-weight('bold');
+      }
+
+      &:hover {
+        color: color('primary');
+        background-color: color('base-lightest');
+        text-decoration: none;
+
+        @include at-media($theme-navigation-width) {
+          background-color: transparent;
+        }
+      }
+
+      &[aria-expanded=false] { /* stylelint-disable-line selector-no-qualifying-type */
+        @include add-background-svg('plus-alt');
+        background-position: right 0 center;
+        background-size: units($nav-link-accordion-icon-size);
+
+        @include at-media($theme-navigation-width) {
+          @include add-background-svg('angle-arrow-down-primary');
+          background-size: units($nav-link-arrow-icon-size);
+          background-position: right units(2) top $button-vertical-offset;
+        }
+
+        &:hover {
+          @include at-media($theme-navigation-width) {
+            @include add-background-svg('angle-arrow-down-primary');
+          }
+        }
+      }
+
+      &[aria-expanded=true] { /* stylelint-disable-line selector-no-qualifying-type */
+        @include add-background-svg('minus-alt');
+        background-position: right 0 center;
+        background-size: units($nav-link-accordion-icon-size);
+
+        @include at-media($theme-navigation-width) {
+          @include add-background-svg('angle-arrow-up-primary');
+          @include add-knockout-font-smoothing;
+          background-size: units($nav-link-arrow-icon-size);
+          background-color: color('primary-lighter');
+          background-position: right units(2) top $button-vertical-offset;
+          color: color('white');
         }
       }
     }
@@ -212,5 +271,3 @@ $header-height: 10;
 
   color: color('secondary');
 }
-
-
