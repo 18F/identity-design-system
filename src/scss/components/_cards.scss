@@ -1,0 +1,9 @@
+.lg-card {
+  @include u-radius('sm');
+  @include u-shadow(1);
+
+  border-color: map-get($site-palette, 'site-teal') map-get($site-palette, 'site-lighter-grey') map-get($site-palette, 'site-lighter-grey');
+  border-style: solid;
+  border-width: 4px 1px 1px;
+  padding: units(2.5);
+}
