@@ -1,5 +1,8 @@
 $header-height: 10;
 
+// Header navigation
+// ---------------------------------
+
 .usa-header--extended,
 .usa-header--basic {
   .usa-logo {
@@ -30,6 +33,18 @@ $header-height: 10;
   }
 }
 
+.usa-header {
+  + .usa-section,
+  + main {
+    @include at-media($theme-navigation-width) {
+      border-top: units(1px) solid color('base-light');
+    }
+  }
+}
+
+// Header navigation for basic
+// ---------------------------------
+
 .usa-header--basic {
   .usa-nav-container {
     @include at-media($theme-navigation-width) {
@@ -43,6 +58,20 @@ $header-height: 10;
     }
   }
 }
+
+// Header navigation for extended
+// ---------------------------------
+
+.usa-header--extended .usa-nav {
+  @include at-media($theme-navigation-width) {
+    border-top: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+// Primary navigation
+// ---------------------------------
 
 .usa-nav__primary {
   @include at-media-max($theme-navigation-width) {
@@ -73,32 +102,77 @@ $header-height: 10;
       > a,
       > .usa-nav__link {
         font-weight: normal;
-        color: color('primary');
+        color: color('primary-dark');
         text-transform: uppercase;
-        @include u-margin-x(-0.5);
+        @include u-padding-x(1.5);
 
         &:hover {
-          @include add-bar(0.5, 'secondary', 'bottom', 0, 2, 0);
-          color: color('primary');
+          @include add-bar(0.5, 'secondary', 'bottom', 0, 1.5, 0);
+          color: color('primary-dark');
         }
       }
 
       .usa-accordion__button[aria-expanded=true] {
         @include remove-bar;
-        color: color('white');
+        color: color('primary-dark');
       }
 
       .usa-current {
-        @include add-bar(0.5, 'secondary', 'bottom', 0, 2, 0);
+        @include add-bar(0.5, 'secondary', 'bottom', 0, 1.5, 0);
         font-weight: font-weight('bold');
 
         &:hover {
-          color: color('primary');
+          color: color('primary-dark');
+        }
+      }
+    }
+
+    button {
+      $button-vertical-offset: 53%; // XXX: Magic number
+
+      @include button-unstyled;
+      color: color($nav-link-color);
+      font-weight: font-weight('normal');
+      line-height: line-height($theme-navigation-font-family, 2);
+      padding: units(1.5) units(2);
+      text-decoration: none;
+
+      @include at-media($theme-navigation-width) {
+        @include primary-nav-link;
+        font-size: font-size($theme-navigation-font-family, '2xs');
+        font-weight: font-weight('bold');
+      }
+
+      &:hover {
+        color: color('primary');
+        background-color: color('base-lightest');
+        text-decoration: none;
+
+        @include at-media($theme-navigation-width) {
+          background-color: transparent;
+        }
+      }
+
+      &[aria-expanded=true] { /* stylelint-disable-line selector-no-qualifying-type */
+        @include add-background-svg('minus-alt');
+        background-position: right 0 center;
+        background-size: units($nav-link-accordion-icon-size);
+
+        @include at-media($theme-navigation-width) {
+          @include add-background-svg('angle-arrow-up-primary');
+          @include add-knockout-font-smoothing;
+          background-size: units($nav-link-arrow-icon-size);
+          background-color: color('primary-lighter');
+          background-position: right units(2) top $button-vertical-offset;
+          color: color('white');
         }
       }
     }
   }
 }
+
+// Secondary navigation
+// ---------------------------------
 
 .usa-nav__secondary {
   @include at-media($theme-navigation-width) {
@@ -112,6 +186,103 @@ $header-height: 10;
     height: units($header-height);
   }
 }
+
+.usa-nav__secondary-links {
+  @include add-list-reset;
+  line-height: line-height($theme-navigation-font-family, 3);
+  margin-top: units(3);
+
+  @include at-media($theme-navigation-width) {
+    float: right;
+    line-height: line-height($theme-navigation-font-family, 1);
+    margin-bottom: units(0.5);
+    margin-top: 0;
+  }
+
+  .usa-nav__secondary-item {
+    @include at-media($theme-navigation-width) {
+      display: inline;
+      padding-left: units(0.5);
+
+      & + .usa-nav__secondary-item::before {
+        color: color('base-lighter');
+        content: '|';
+        padding-right: units(0.5);
+      }
+    }
+  }
+
+  a {
+    color: color('ink');
+    display: inline-block;
+    font-size: font-size($theme-navigation-font-family, 'xs');
+    text-decoration: none;
+
+    &:hover {
+      color: color('primary');
+      text-decoration: underline;
+    }
+  }
+}
+
+// Navigation dropdowns
+// ---------------------------------
+
+.usa-nav__submenu {
+  @include at-media-max($theme-navigation-width) {
+    @include nav-sublist;
+  }
+
+  @include at-media($theme-navigation-width) {
+    @include add-list-reset;
+    background-color: color('primary-lighter');
+    width: units('card-lg');
+    padding: units(2);
+    position: absolute;
+    z-index: z-index(400);
+  }
+
+  &[aria-hidden=true] {
+    display: none;
+  }
+
+  .usa-nav__submenu-item {
+    @include at-media($theme-navigation-width) {
+      & + * {
+        margin-top: units(1.5);
+      }
+
+      a {
+        color: color('primary-dark');
+        padding: 0;
+        line-height: line-height($theme-navigation-font-family, 3);
+
+        &:hover {
+          background-color: transparent;
+          color: color('primary-dark');
+          padding: 0;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.usa-nav__submenu-list {
+  @include unstyled-list;
+
+  .usa-nav__submenu-list-item {
+    margin: 0;
+    font-size: font-size($theme-navigation-font-family, '2xs');
+
+    a {
+      line-height: line-height($theme-navigation-font-family, 3);
+    }
+  }
+}
+
+// Navigation menu
+// ---------------------------------
 
 .usa-menu__btn {
   height: units($header-height);
@@ -138,21 +309,4 @@ $header-height: 10;
   }
 
   color: color('secondary');
-}
-
-.usa-header--extended .usa-nav {
-  @include at-media($theme-navigation-width) {
-    border-top: units(1px) solid color('base-light');
-    padding: 0;
-    width: 100%;
-  }
-}
-
-.usa-header {
-  + .usa-section,
-  + main {
-    @include at-media($theme-navigation-width) {
-      border-top: units(1px) solid color('base-light');
-    }
-  }
 }
