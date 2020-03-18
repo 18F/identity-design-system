@@ -205,3 +205,23 @@
   font-size: font-size($theme-button-font-family, 'micro');
   padding: units(1) units(1);
 }
+
+.usa-form a.usa-button.usa-button--danger { /* stylelint-disable-line selector-no-qualifying-type */
+  color: color('white');
+  text-decoration: none;
+
+  &:visited {
+    color: color('white');
+    text-decoration: none;
+  }
+}
+
+.usa-form a.usa-button.usa-button--outline { /* stylelint-disable-line selector-no-qualifying-type */
+  color: color('primary');
+  text-decoration: none;
+
+  &:visited {
+    color: color('primary');
+    text-decoration: none;
+  }
+}
