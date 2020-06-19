@@ -12,7 +12,7 @@ Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immedia
 <div class="border-base-light border-left-1 padding-3 usa-prose">
   <div class="usa-display">How login.gov keeps personal information private <span class="text-no-wrap text-secondary">(div.usa-display)</span></div>
 
-  <p class="usa-intro">login.gov encrypts the personal information of each user separately, using a unique value generated from each user’s password. Our encryption method works like a safe deposit box in a bank vault. Only the user has the key. Only the user can open the box to reveal the contents. Only the user knows the password, and only the user can decrypt their information. <span class="text-no-wrap text-secondary">(p.usa-intro)</span></p>
+  <p class="usa-intro">Login.gov encrypts the personal information of each user separately, using a unique value generated from each user’s password. Our encryption method works like a safe deposit box in a bank vault. Only the user has the key. Only the user can open the box to reveal the contents. Only the user knows the password, and only the user can decrypt their information. <span class="text-no-wrap text-secondary">(p.usa-intro)</span></p>
 
   <h1>The vault <span class="text-no-wrap text-secondary">(h1)</span></h1>
 
