@@ -1,5 +1,4 @@
 const autoprefixer = require('autoprefixer');
-const autoprefixerOptions = require('uswds-gulp/config/browsers');
 const cssnano = require('cssnano');
 const gulp = require('gulp');
 const mqpacker = require('css-mqpacker');
@@ -101,9 +100,12 @@ gulp.task('lint-sass', () => gulp
 
 gulp.task('build-sass', () => {
   const plugins = [
-    autoprefixer(autoprefixerOptions),
+    autoprefixer({
+      cascade: false,
+      grid: true
+    }),
     mqpacker({ sort: true }),
-    cssnano(({ autoprefixer: { browsers: autoprefixerOptions } })),
+    cssnano(),
   ];
 
   const stream = gulp
