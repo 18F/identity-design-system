@@ -16,7 +16,7 @@ Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immedia
 
   <h1>The vault <span class="text-no-wrap text-secondary">(h1)</span></h1>
 
-  <p>It’s hard to break into the “vault” or database. login.gov implements the latest National Institute of Standards and Technology (NIST) standards for secure authentication and verification. Our plans for ongoing security include regular penetration testing and external security reviews.</p>
+  <p>It’s hard to break into the “vault” or database. Login.gov implements the latest National Institute of Standards and Technology (NIST) standards for secure authentication and verification. Our plans for ongoing security include regular penetration testing and external security reviews.</p>
 
   <h2>The safe deposit box <span class="text-no-wrap text-secondary">(h2)</span></h2>
 
