@@ -1,0 +1,4 @@
+---
+permalink: /accessibility/
+title: Accessibility
+---
