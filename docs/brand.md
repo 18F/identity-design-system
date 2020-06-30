@@ -125,4 +125,4 @@ Illustration is most effective when it is precise in choosing a single message t
 
 ## Slide decks
 
-If you're looking to build a new slide deck, please use the official Login.gov slide template [available on Google Drive](https://docs.google.com/presentation/d/1UYyKTTaFmttIm46wxeupGgfozCix-RHLCvTiRZot6Mc/edit). Users of the slide deck template can submit additional template suggestions to the #login-design slack channel.
+If you're looking to build a new slide deck, please use the official Login.gov slide template [available on Google Drive](https://docs.google.com/presentation/d/1UYyKTTaFmttIm46wxeupGgfozCix-RHLCvTiRZot6Mc/edit). Users of the slide deck template can submit additional template suggestions to the #login-ux slack channel.
