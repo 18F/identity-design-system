@@ -2,6 +2,7 @@
   "name": "identity-style-guide",
   "version": "2.2.3",
   "description": "The global style of login.gov",
+  "main": "dist/assets/js/main.js",
   "scripts": {
     "start": "make start",
     "clean": "make clean",
