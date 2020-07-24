@@ -40,7 +40,7 @@ Our completed accessibility assessment reports can be found below:
 
 In addition to completed accessibility reports, Login.gov has compiled a page regarding accessibility policies and frequently asked questions.
 
-[Login.gov accessibility policies and frequently asked questions]()
+[Login.gov accessibility policies and frequently asked questions]({% link accessibility/policies_faq.md %})
 
 ## Known limitations
 
