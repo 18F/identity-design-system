@@ -5,7 +5,7 @@ sidenav:
   - text: Decorative images
     href: "#using-decorative-images"
 ---
-[\<\< Back to Login.gov Accessibility home]({% link accessibility.md %})
+[← Back to Login.gov Accessibility home]({% link accessibility.md %})
 
 ## Using decorative images
 
