@@ -34,7 +34,7 @@ Login.gov is regularly evaluated through a series of semi-automated evaluation t
 
 Our completed accessibility assessment reports can be found below:
 
-[IAL 1 Account creation report]()
+[IAL 1 Account creation report](https://docs.google.com/document/d/1wqbVOvNg-7tFW1l4ZxMJrA_VR2gQqNpimlbzxPtvpXg/export?format=pdf)
 
 ### Accessibility policies and frequently asked questions (FAQ)
 
