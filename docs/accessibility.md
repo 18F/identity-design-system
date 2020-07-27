@@ -36,11 +36,11 @@ Our completed accessibility assessment reports can be found below:
 
 [IAL 1 Account creation report](https://docs.google.com/document/d/1wqbVOvNg-7tFW1l4ZxMJrA_VR2gQqNpimlbzxPtvpXg/export?format=pdf)
 
-### Accessibility policies and frequently asked questions (FAQ)
+### Accessibility policies
 
-In addition to completed accessibility reports, Login.gov has compiled a page regarding accessibility policies and frequently asked questions.
+In addition to completed accessibility reports, Login.gov has compiled a page regarding accessibility policies.
 
-[Login.gov accessibility policies and frequently asked questions]({% link accessibility/policies_faq.md %})
+[Login.gov accessibility policies]({% link accessibility/policies.md %})
 
 ## Known limitations
 

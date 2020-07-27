@@ -1,6 +1,6 @@
 ---
-permalink: /accessibility/policies_faq/
-title: Accessibility policies and frequently asked questions
+permalink: /accessibility/policies/
+title: Accessibility policies
 sidenav:
   - text: Decorative images
     href: "#using-decorative-images"
