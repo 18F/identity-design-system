@@ -25,11 +25,11 @@ If an image is informative, we add a description with a caption, alt attribute, 
 
 **Example: A decorative icon with an adjacent text**
 
-![]({{ '/post-images/accessibility/decorative-icon.png' | absolute_url }})
+![]({{ '/post-images/accessibility/decorative-icon.png' | relative_url }})
 
 **Example: A decorative illustration that makes the page more attractive**
 
-![]({{ '/post-images/accessibility/decorative-illustration.png' | absolute_url }})
+![]({{ '/post-images/accessibility/decorative-illustration.png' | relative_url }})
 
 **Additional resources on decorative images:**
 
