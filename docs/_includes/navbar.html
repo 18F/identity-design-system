@@ -1,17 +1,17 @@
 <div class="usa-overlay"></div>
 
-<header class="usa-header usa-header--basic" role="banner">
-  <div class="usa-nav-container">
-    <div class="usa-navbar">
-      <div class="usa-logo" id="basic-logo">
-        <a href="{{ site.baseurl }}/" title="Home" aria-label="Home">
-          <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo__img" alt="login.gov">
-          <em class="usa-logo__text">Design System</em>
-        </a>
-      </div>
-      <button class="usa-menu-btn">Menu</button>
+<header class="usa-header usa-header--extended" role="banner">
+  <div class="usa-navbar">
+    <div class="usa-logo" id="basic-logo">
+      <a href="{{ site.baseurl }}/" title="Home" aria-label="Home">
+        <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo__img" alt="login.gov">
+        <em class="usa-logo__text">Design System</em>
+      </a>
     </div>
-    <nav role="navigation" class="usa-nav">
+    <button class="usa-menu-btn">Menu</button>
+  </div>
+  <nav aria-label="Primary navigation" role="navigation" class="usa-nav">
+    <div class="usa-nav__inner">
       <button class="usa-nav__close"><img src="{{ site.baseurl }}/assets/img/close.svg" alt="Close"></button>
       <ul class="usa-nav__primary usa-accordion">
         {%
@@ -22,6 +22,6 @@
           flat = true
         %}
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
