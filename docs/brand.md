@@ -6,6 +6,8 @@ sidenav:
     href: "#logo"
   - text: Logo usage
     href: "#logo-usage"
+  - text: Tagline
+    href: "#tagline"
   - text: Illustration
     href: "#illustration"
   - text: Slide decks
@@ -100,6 +102,14 @@ For optimum legibility and brand consistency, the logo should never be used in w
     <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-shield.svg" alt="login.gov logo separated" class="display-block margin-top-1 margin-bottom-4">
   </div>
 </div>
+
+## Tagline
+
+Taglines help to create a continued, consistent brand messaging. Login.gov has created a plain language tagline:
+
+**"The public's one account for government."**
+
+This tagline is meant to be used alongside our logo and other marketing materials to simply describe our program.
 
 ## Illustration
 
