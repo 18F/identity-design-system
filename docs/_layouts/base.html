@@ -73,5 +73,6 @@
   <body class="page-{{ page.title | slugify }} layout-{{ page.layout }}{% if page.class %} page-{{ page.class | slugify }}{% endif %}">
     {{ content }}
     <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+    {% include dap.html %}
   </body>
 </html>
