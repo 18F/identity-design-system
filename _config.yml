@@ -15,9 +15,6 @@ collections:
   components:
     output: true
     permalink: /:collection/:name/
-  templates:
-    output: true
-    permalink: /:collection/:name/
   research:
     output: true
     permalink: /:collection/:name/
@@ -31,10 +28,6 @@ defaults:
       type: components
     values:
       sidenav: components
-  - scope:
-      type: templates
-    values:
-      sidenav: templates
   - scope:
       type: research
     values:

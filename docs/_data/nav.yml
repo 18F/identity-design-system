@@ -8,7 +8,5 @@ primary:
   - href: /layout/
   - href: /components/accordions/
     text: Components
-  - href: /templates/account-management/
-    text: Templates
   - href: /research/00-overview/
     text: Research
