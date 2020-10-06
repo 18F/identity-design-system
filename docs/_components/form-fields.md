@@ -373,7 +373,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -405,7 +405,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -447,7 +447,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -479,7 +479,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -511,7 +511,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -553,7 +553,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>

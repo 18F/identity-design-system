@@ -193,7 +193,7 @@ $border-width: 1px;
 .usa-error-message {
   color: color('error');
 
-  &.usa-input--error-message-with-icon {
+  &.usa-error-message--with-icon {
     @include add-background-svg('alerts/error');
     background-position: 0 center;
     background-size: units($icon-size);
