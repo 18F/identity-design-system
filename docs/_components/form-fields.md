@@ -259,8 +259,8 @@ a grid row.
 {% capture example %}
 
 <label for="e9a4" class="usa-label">Text input validation example</label>
-<input id="e9a4" type="text" class="usa-input usa-input-error">
-<span class="usa-input-error-message" role="alert">Error message text.</span>
+<input id="e9a4" type="text" class="usa-input usa-input--error">
+<span class="usa-error-message" role="alert">Error message text.</span>
 
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -280,7 +280,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% capture example %}
 <label for="a37c" class="usa-label">Textarea (multiline) input</label>
 <textarea id="a37c" type="text" class="usa-textarea usa-input--error"></textarea>
-<span class="usa-input--error-message" role="alert">Error message text.</span>
+<span class="usa-error-message" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -312,7 +312,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
     </div>
   </div>
   <span class="usa-form-hint" id="f9e5">Example: 04 28 1986</span>
-  <span class="usa-input--error-message" role="alert">Error message text.</span>
+  <span class="usa-error-message" role="alert">Error message text.</span>
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -335,7 +335,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   <option value="value2">Option B</option>
   <option value="value3">Option C</option>
 </select>
-<span class="usa-input--error-message" role="alert">Error message text.</span>
+<span class="usa-error-message" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -373,7 +373,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-input--error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -405,7 +405,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-input--error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -447,7 +447,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-input--error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -479,7 +479,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-input--error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -511,7 +511,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-input--error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -553,7 +553,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-input--error-message usa-input--error-message-with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
