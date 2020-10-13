@@ -125,6 +125,6 @@ testFn('screenshot visual regression', async () => {
         writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
       ]);
     }
-    assert.strictEqual(diffs, 0, `Expected "${path}" to have 0 diffs`);
+    assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the live site.`);
   }
 }, 1000000);
