@@ -81,10 +81,10 @@ function fillImageToSize(image, width, height) {
     for (let x = image.width; x < width; x += 1) {
       // eslint-disable-next-line no-bitwise
       const index = ((resizedImage.width * y) + x) << 2;
-      resizedImage.data[index] = 0;
-      resizedImage.data[index + 1] = 0;
-      resizedImage.data[index + 2] = 0;
-      resizedImage.data[index + 3] = 64;
+      resizedImage.data[index] = 255; // Red
+      resizedImage.data[index + 1] = 255; // Green
+      resizedImage.data[index + 2] = 255; // Blue
+      resizedImage.data[index + 3] = 255; // Alpha (Opacity)
     }
   }
 
