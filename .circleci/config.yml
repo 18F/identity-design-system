@@ -80,3 +80,12 @@ jobs:
           destination: results
       - store_test_results:
           path: tmp/results
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - lints
+      - integration
+      - visual-regression
+      - accessibility
