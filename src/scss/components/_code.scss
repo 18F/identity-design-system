@@ -33,6 +33,7 @@ pre {
 }
 
 .highlight {
+  @include u-overflow-x('auto');
   position: relative;
   max-width: 90ch;
 
