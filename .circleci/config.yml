@@ -1,13 +1,8 @@
-version: 2
+version: 2.1
 
-jobs:
-  build:
-    working_directory: ~/identity-style-guide
-    docker:
-      - image: circleci/ruby:2.5.3-node-browsers
-
+commands:
+  bundle-npm-install:
     steps:
-      - checkout
       - restore_cache:
           key: dependency-cache-v1-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
       - run:
@@ -21,15 +16,62 @@ jobs:
           paths:
             - ~/.npm
             - ~/.bundler
-      - run:
-          name: Lint JavaScript and Sass
-          command: npm run lint
+  build:
+    steps:
       - run:
           name: Build assets and site
           command: npm run build
+
+jobs:
+  lints:
+    working_directory: ~/identity-style-guide
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+    steps:
+      - checkout
+      - bundle-npm-install
+      - run:
+          name: Lint JavaScript and Sass
+          command: npm run lint
+  integration:
+    working_directory: ~/identity-style-guide
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+    environment:
+      SKIP_VISUAL_REGRESSION_TEST: true
+    steps:
+      - checkout
+      - bundle-npm-install
+      - build
       - run:
           name: Run jest integration test
           command: npm run test-jest
+  visual-regression:
+    working_directory: ~/identity-style-guide
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+    environment:
+      ONLY_VISUAL_REGRESSION_TEST: true
+    steps:
+      - checkout
+      - bundle-npm-install
+      - build
+      - run:
+          name: Run visual regression test
+          command: npm run test-jest
+      - store_artifacts:
+          path: tmp/results
+          destination: results
+      - store_test_results:
+          path: tmp/results
+  accessibility:
+    working_directory: ~/identity-style-guide
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+    steps:
+      - checkout
+      - bundle-npm-install
+      - build
       - run:
           name: Run pa11y accessibility test
           command: npm run test-pa11y
@@ -38,3 +80,12 @@ jobs:
           destination: results
       - store_test_results:
           path: tmp/results
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - lints
+      - integration
+      - visual-regression
+      - accessibility

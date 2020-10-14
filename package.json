@@ -62,8 +62,11 @@
     "gulp-uglify": "^3.0.2",
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.9.1",
+    "mkdirp": "^1.0.4",
     "pa11y-ci": "^2.3.0",
     "path": "^0.12.7",
+    "pixelmatch": "^5.2.1",
+    "pngjs": "^5.0.0",
     "puppeteer": "^1.18.1",
     "serve": "^10.1.2",
     "stylelint": "^9.10.1",
@@ -72,6 +75,7 @@
     "uswds-gulp": "github:uswds/uswds-gulp",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
-    "wait-on": "^3.3.0"
+    "wait-on": "^3.3.0",
+    "yaml": "^1.10.0"
   }
 }
