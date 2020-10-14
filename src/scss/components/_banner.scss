@@ -1,54 +1,41 @@
-.usa-banner {
-  background-color: color('primary-lighter');
-}
-
 .usa-banner__header {
+  @include set-text-from-bg('primary-darker');
   background-color: color('primary-darker');
-  color: color('white');
   padding: units(1) 0;
 
   @include at-media('tablet') {
-    background-color: color('primary-darker');
-    color: color('white');
     padding: units(1) 0;
   }
 }
 
-.usa-banner__button {
-  color: color('white');
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-
-  &:hover {
-    background-color: transparent;
-  }
-
+.usa-banner__header--expanded {
   @include at-media('tablet') {
-    @include add-icon('angle-arrow-down-white', 'after', 1, 1, 0.5, 'hover');
-
-    &:hover {
-      color: inherit;
-    }
-  }
-
-  &[aria-expanded=true] {
-    @include at-media('tablet') {
-      @include add-icon('angle-arrow-up-white', 'after', 1, 1, 0.5, 'hover');
-    }
-
-    @include at-media-max('tablet') {
-      @include add-icon('close-primary', 'after', $theme-icon-image-size, $size-touch-target, 0, 'no-hover');
-
-      &::after {
-        background-color: color('primary-lighter');
-      }
-    }
+    background-color: color('primary-darker');
+    padding: units(1) 0;
   }
 }
 
-.usa-banner__header-action {
-  color: color('white');
+.usa-accordion__button.usa-banner__button {
+  // Reset default accordion button border styling for banner button.
+  @include u-border(0);
+  @include u-radius(0);
+  color: currentColor;
 
-  @include add-icon('angle-arrow-down-white', 'after', 1, 1, 0.5, 'hover');
+  &:hover,
+  &:active {
+    background-color: color('transparent');
+    color: currentColor;
+  }
+}
+
+.usa-banner__button {
+  &,
+  &[aria-expanded=true] {
+    @include at-media('tablet') {
+      &::after,
+      &:hover::after {
+        background-color: currentColor;
+      }
+    }
+  }
 }
