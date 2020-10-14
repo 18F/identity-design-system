@@ -1,7 +1,7 @@
 version: 2.1
 
 commands:
-  bundle-yarn-install:
+  bundle-npm-install:
     steps:
       - restore_cache:
           key: dependency-cache-v1-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
@@ -29,7 +29,7 @@ jobs:
       - image: circleci/ruby:2.5.3-node-browsers
     steps:
       - checkout
-      - bundle-yarn-install
+      - bundle-npm-install
       - run:
           name: Lint JavaScript and Sass
           command: npm run lint
@@ -41,7 +41,7 @@ jobs:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
       - checkout
-      - bundle-yarn-install
+      - bundle-npm-install
       - build
       - run:
           name: Run jest integration test
@@ -54,7 +54,7 @@ jobs:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
       - checkout
-      - bundle-yarn-install
+      - bundle-npm-install
       - build
       - run:
           name: Run visual regression test
@@ -70,7 +70,7 @@ jobs:
       - image: circleci/ruby:2.5.3-node-browsers
     steps:
       - checkout
-      - bundle-yarn-install
+      - bundle-npm-install
       - build
       - run:
           name: Run pa11y accessibility test
