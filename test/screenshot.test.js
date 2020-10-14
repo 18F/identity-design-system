@@ -2,7 +2,6 @@
 
 const { promises: fsPromises, readFileSync } = require('fs');
 const { join } = require('path');
-const { spawnSync } = require('child_process');
 const assert = require('assert');
 const mkdirp = require('mkdirp');
 const { PNG } = require('pngjs');
@@ -11,13 +10,10 @@ const YAML = require('yaml');
 
 const { writeFile } = fsPromises;
 
-const ACKNOWLEDGED_COMMIT = '247b7e6815b358d7962ad2bc21d34dd9122bbe69';
 const LOCAL_HOST = `http://localhost:${process.env.JEST_PORT}`;
 const REMOTE_HOST = 'https://design.login.gov';
 const DIFF_DIRECTORY = join(__dirname, '../tmp/results/screenshot-diff');
-const { url: URL_PREFIX, github_repo_url: GITHUB_REPO_URL } = YAML.parse(
-  readFileSync(join(__dirname, '../_config.yml'), 'utf8'),
-);
+const { url: URL_PREFIX } = YAML.parse(readFileSync(join(__dirname, '../_config.yml'), 'utf8'));
 
 async function getURLsFromSitemap(url) {
   await page.goto(url);
@@ -36,16 +32,6 @@ async function stubAnimations() {
 
     [...document.querySelectorAll('img')].filter(isGif).forEach(stubGif);
   });
-}
-
-function getLatestCommit() {
-  const [sha] = spawnSync('git', ['ls-remote', GITHUB_REPO_URL, 'HEAD'])
-    .stdout
-    .toString()
-    .trim()
-    .split('\t');
-
-  return sha;
 }
 
 async function getScreenshot(url) {
@@ -91,9 +77,7 @@ function fillImageToSize(image, width, height) {
   return resizedImage;
 }
 
-const testFn = getLatestCommit() === ACKNOWLEDGED_COMMIT ? test.skip : test;
-
-testFn('screenshot visual regression', async () => {
+test('screenshot visual regression', async () => {
   const paths = (await getURLsFromSitemap(`${REMOTE_HOST}/sitemap.xml`)).map(getURLPath);
 
   for (const path of paths) {
