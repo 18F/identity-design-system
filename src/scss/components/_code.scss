@@ -32,7 +32,7 @@ pre {
   }
 }
 
-pre.highlight {
+pre.highlight { /* stylelint-disable-line selector-no-qualifying-type */
   @include u-overflow-x('auto');
 }
 
