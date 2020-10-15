@@ -26,7 +26,7 @@ jobs:
   lints:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/ruby:2.6-node-browsers
     steps:
       - checkout
       - bundle-npm-install
@@ -36,7 +36,7 @@ jobs:
   integration:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/ruby:2.6-node-browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
@@ -49,7 +49,7 @@ jobs:
   visual-regression:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/ruby:2.6-node-browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
@@ -67,7 +67,7 @@ jobs:
   accessibility:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/ruby:2.6-node-browsers
     steps:
       - checkout
       - bundle-npm-install
