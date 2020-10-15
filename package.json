@@ -38,7 +38,6 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "acorn": "^6.2.1",
     "autoprefixer": "^9.6.1",
     "babelify": "^10.0.0",
     "browserify": "^16.3.0",
@@ -64,7 +63,6 @@
     "jest-puppeteer": "^3.9.1",
     "mkdirp": "^1.0.4",
     "pa11y-ci": "^2.3.0",
-    "path": "^0.12.7",
     "pixelmatch": "^5.2.1",
     "pngjs": "^5.0.0",
     "puppeteer": "^1.18.1",
