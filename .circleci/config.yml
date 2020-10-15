@@ -9,9 +9,6 @@ commands:
           name: Update Bundler
           command: gem install bundler -v "<2"
       - run:
-          name: Update NPM
-          command: npm install -g npm@latest
-      - run:
           name: Install bundle dependencies
           command: bundle check --path ~/.bundler || bundle install --path ~/.bundler
       - run:
