@@ -4,13 +4,7 @@ commands:
   bundle-npm-install:
     steps:
       - restore_cache:
-          key: dependency-cache-ruby-2-6-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Update Bundler
-          command: gem install bundler -v "<2"
-      - run:
-          name: Update NPM
-          command: npm install -g npm@latest
+          key: dependency-cache-ruby-2-7-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install bundle dependencies
           command: bundle check --path ~/.bundler || bundle install --path ~/.bundler
@@ -18,7 +12,7 @@ commands:
           name: Install dependencies
           command: npm ci
       - save_cache:
-          key: dependency-cache-ruby-2-6-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
+          key: dependency-cache-ruby-2-7-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.npm
             - ~/.bundler
@@ -32,7 +26,7 @@ jobs:
   lints:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.7-node-browsers
     steps:
       - checkout
       - bundle-npm-install
@@ -42,7 +36,7 @@ jobs:
   integration:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.7-node-browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
@@ -55,7 +49,7 @@ jobs:
   visual-regression:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.7-node-browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
@@ -73,7 +67,7 @@ jobs:
   accessibility:
     working_directory: ~/identity-style-guide
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.7-node-browsers
     steps:
       - checkout
       - bundle-npm-install
