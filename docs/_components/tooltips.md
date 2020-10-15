@@ -14,7 +14,7 @@ Tooltips can be useful means to display information to a user, most typically in
 
 {% capture example %}
 <span class="usa-tooltip usa-tooltip--top" aria-label="Hello there! You look nice today." tabindex="0">
-  <img src="{{ site.baseurl }}/assets/img/tooltip.svg" width="16" height="16" class="text-middle" alt="Help icon" />
+  <img src="{{ site.baseurl }}/assets/img/tooltip.svg" role="img" width="16" height="16" class="text-middle" alt="Help icon" />
 </span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
