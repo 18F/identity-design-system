@@ -6,6 +6,9 @@ commands:
       - restore_cache:
           key: dependency-cache-ruby-2-6-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
       - run:
+          name: Update Bundler
+          command: gem install bundler -v "<2"
+      - run:
           name: Install bundle dependencies
           command: bundle check --path ~/.bundler || bundle install --path ~/.bundler
       - run:
