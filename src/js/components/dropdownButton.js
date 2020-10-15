@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const mobileLink = document.querySelector('.dropdown-mobile-toggle > button');
   const mobileDropdown = document.querySelector('.mobile-dropdown');
@@ -6,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const desktopDropdown = document.querySelector('.desktop-dropdown');
 
   function addListenerMulti(el, s, fn) {
-    s.split(' ').forEach(e => el.addEventListener(e, fn, false));
+    s.split(' ').forEach((e) => el.addEventListener(e, fn, false));
   }
 
   function toggleAriaExpanded(element) {

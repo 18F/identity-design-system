@@ -29,7 +29,7 @@ test('opening one accordion item closes the currently open one', async () => {
 });
 
 test('two accordion items can be open simultaneously with aria-multiselectable="true"', async () => {
-  await page.$eval("[data-test='accordion']", a => a.setAttribute('aria-multiselectable', true));
+  await page.$eval("[data-test='accordion']", (a) => a.setAttribute('aria-multiselectable', true));
 
   await expectAccordionItem('unique-id-1', { hidden: false });
   await expectAccordionItem('unique-id-2', { hidden: true });

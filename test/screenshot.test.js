@@ -17,15 +17,19 @@ const { url: URL_PREFIX } = YAML.parse(readFileSync(join(__dirname, '../_config.
 
 async function getURLsFromSitemap(url) {
   await page.goto(url);
-  return page.$$eval('url loc', locs => locs.map(loc => loc.textContent));
+  return page.$$eval('url loc', (locs) => locs.map((loc) => loc.textContent));
 }
 
 async function stubAnimations() {
   await page.evaluate(() => {
-    const isGif = img => img.src.endsWith('.gif');
+    const isGif = (img) => img.src.endsWith('.gif');
     function stubGif(img) {
+      // Disable reason: Self-assignment for attribute reflection.
+      // See: https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflecting-content-attributes-in-idl-attributes
+      /* eslint-disable no-self-assign */
       img.width = img.width;
       img.height = img.height;
+      /* eslint-enable no-self-assign */
       img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
       img.removeAttribute('srcset');
     }
