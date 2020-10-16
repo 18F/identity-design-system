@@ -19,6 +19,10 @@
   // Reset default accordion button border styling for banner button.
   @include u-border(0);
   @include u-radius(0);
+}
+
+.usa-accordion__button.usa-banner__button,
+.usa-banner__header-action {
   color: currentColor;
 
   &:hover,
@@ -46,4 +50,8 @@
       }
     }
   }
+}
+
+.usa-banner__header-action::after {
+  background-color: currentColor;
 }
