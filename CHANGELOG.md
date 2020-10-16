@@ -11,6 +11,7 @@
     - Banner should be rendered as a `section` element instead of a `div`, and include a descriptive `aria-label`.
     - Footer and hero content should include a descriptive `aria-label`.
     - Graphic list should use `h2` as a heading element instead of `h3`.
+- "Official government website" banner text has been updated. Refer to [USWDS guidance](https://designsystem.digital.gov/components/banner/) for updated markup.
 
 ### Bug Fixes
 
