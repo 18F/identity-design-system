@@ -29,6 +29,14 @@
 }
 
 .usa-banner__button {
+  &[aria-expanded=true] {
+    @include at-media-max('tablet') {
+      &::before {
+        background-color: color('primary-lighter');
+      }
+    }
+  }
+
   &,
   &[aria-expanded=true] {
     @include at-media('tablet') {
