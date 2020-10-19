@@ -2,7 +2,6 @@
 const behavior = require('uswds/src/js/utils/behavior');
 const zxcvbn = require('zxcvbn');
 
-
 // zxcvbn returns a strength score from 0 to 4
 // we map those scores to:
 // 1. a CSS class to the pw strength module
@@ -51,7 +50,6 @@ const toggleSubmitInput = (submitEl, length = 0, score = 0) => {
   }
 };
 
-
 const checkPasswordStrength = (e, submit, forbiddenPasswords) => {
   const passwordStrengthResponse = zxcvbn(e.target.value, JSON.parse(forbiddenPasswords));
   const [strengthClass, strength] = getStrength(passwordStrengthResponse);
@@ -61,7 +59,6 @@ const checkPasswordStrength = (e, submit, forbiddenPasswords) => {
     passwordStrengthResponse.score);
   return { strengthClass, strength, explanation };
 };
-
 
 const updatePasswordStrength = (e, submit) => {
   const forbiddenPasswordsElement = document.querySelector('[data-forbidden-passwords]');
