@@ -21,8 +21,21 @@ start-docs:
 start-assets: build-fonts build-images
 	NODE_ENV=development ./node_modules/.bin/gulp watch
 
+validate-gemfile-lock: Gemfile Gemfile.lock
+	@echo "Validating Gemfile.lock..."
+	@bundle check
+	@git diff-index --quiet HEAD || (echo "Error: There are uncommitted changes after running 'bundle install'"; exit 1)
+
+validate-package-lock: package.json package-lock.json
+	@echo "Validating package-lock.json..."
+	@npm install
+	@git diff-index --quiet HEAD || (echo "Error: There are uncommitted changes after running 'npm install'"; exit 1)
+
+validate-lockfiles: validate-gemfile-lock validate-package-lock
+
 lint:
 	./node_modules/.bin/gulp lint
+	make validate-lockfiles
 
 build: build-docs build-assets
 
