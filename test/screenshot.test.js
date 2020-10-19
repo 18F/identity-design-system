@@ -38,9 +38,18 @@ async function stubAnimations() {
   });
 }
 
+async function toggleHiddenContent() {
+  await page.$$eval('.usa-accordion__container', (containers) => (
+    containers.forEach((container) => container.removeAttribute('hidden'))
+  ));
+}
+
 async function getScreenshot(url) {
   await page.goto(url);
-  await stubAnimations();
+  await Promise.all([
+    stubAnimations(),
+    toggleHiddenContent(),
+  ]);
   return page.screenshot({ fullPage: true });
 }
 
