@@ -23,7 +23,8 @@ const pkg = require('./package.json');
 
 const PROJECT_SASS_SRC = './src/scss';
 const PROJECT_JS_SRC = './src/js';
-const PROJECT_JS_MAIN = 'auto.js';
+const PROJECT_JS_AUTO = 'auto.js';
+const PROJECT_JS_AUTO_OUT = 'main.js';
 const OUTPUT_DIR = process.env.OUTPUT_DIR || './dist';
 const PACKAGE_DEST = 'build';
 const JS_DEST = `${OUTPUT_DIR}/assets/js`;
@@ -75,12 +76,13 @@ gulp.task('build-package-esm', () =>
 );
 
 gulp.task('build-js', () => {
-  const stream = browserify({ entries: `${PROJECT_JS_SRC}/${PROJECT_JS_MAIN}`, debug: true })
+  const stream = browserify({ entries: `${PROJECT_JS_SRC}/${PROJECT_JS_AUTO}`, debug: true })
     .transform('babelify', { global: true, presets: ['@babel/preset-env'] })
     .bundle()
     .on('error', notificationOptions.handler)
-    .pipe(source(PROJECT_JS_MAIN))
+    .pipe(source(PROJECT_JS_AUTO))
     .pipe(buffer())
+    .pipe(rename(PROJECT_JS_AUTO_OUT))
     .pipe(gulp.dest(JS_DEST))
     .pipe(notify(notificationOptions.success));
 
