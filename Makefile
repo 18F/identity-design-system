@@ -34,7 +34,7 @@ validate-package-lock: package.json package-lock.json
 
 validate-lockfiles: validate-gemfile-lock validate-package-lock
 
-lint:
+lint: build-package
 	./node_modules/.bin/gulp lint
 	make validate-lockfiles
 
