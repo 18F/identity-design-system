@@ -38,7 +38,7 @@ lint:
 	./node_modules/.bin/gulp lint
 	make validate-lockfiles
 
-build: build-docs build-assets
+build: build-docs build-assets build-package
 
 build-docs:
 	JEKYLL_ENV=production bundle exec jekyll build
@@ -66,7 +66,7 @@ build-images:
 copy-scss:
 	./node_modules/.bin/gulp copy-scss
 
-test: build build-package
+test: build
 	make test-runners
 
 test-runners: test-runner-pa11y test-runner-jest
