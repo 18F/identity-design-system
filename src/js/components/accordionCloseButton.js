@@ -1,5 +1,5 @@
-const accordion = require('uswds/src/js/components/accordion');
-const behavior = require('uswds/src/js/utils/behavior');
+import accordion from 'uswds/src/js/components/accordion';
+import behavior from 'uswds/src/js/utils/behavior';
 
 const accordionCloseButton = behavior({
   click: {
@@ -11,4 +11,4 @@ const accordionCloseButton = behavior({
   },
 });
 
-module.exports = accordionCloseButton;
+export default accordionCloseButton;

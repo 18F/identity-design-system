@@ -2,7 +2,13 @@
   "name": "identity-style-guide",
   "version": "2.2.3",
   "description": "The global style of login.gov",
-  "main": "dist/assets/js/main.js",
+  "main": "./build/cjs/index.js",
+  "module": "./build/esm/index.js",
+  "exports": {
+    "require": "./build/cjs/index.js",
+    "import": "./build/esm/index.js"
+  },
+  "sideEffects": false,
   "scripts": {
     "start": "make start",
     "clean": "make clean",
@@ -13,9 +19,10 @@
     "build": "make build",
     "federalist": "npm install && make build-assets",
     "prepare": "make install-jekyll",
-    "prepublishOnly": "make lint && make clean && make build-assets"
+    "prepublishOnly": "make lint && make clean && make build-assets build-package"
   },
   "files": [
+    "build",
     "dist/assets/**/*"
   ],
   "repository": {
@@ -33,6 +40,7 @@
   },
   "homepage": "https://github.com/18F/identity-style-guide#readme",
   "dependencies": {
+    "uswds": "^2.9.0",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
@@ -50,6 +58,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "get-port-cli": "^2.0.0",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-eslint": "^6.0.0",
     "gulp-if": "^3.0.0",
     "gulp-notify": "^3.2.0",
@@ -74,7 +83,6 @@
     "serve": "^11.3.2",
     "stylelint": "^13.7.2",
     "stylelint-scss": "^3.18.0",
-    "uswds": "^2.9.0",
     "uswds-gulp": "github:uswds/uswds-gulp",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",

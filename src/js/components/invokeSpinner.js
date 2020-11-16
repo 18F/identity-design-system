@@ -1,4 +1,4 @@
-const behavior = require('uswds/src/js/utils/behavior');
+import behavior from 'uswds/src/js/utils/behavior';
 
 const HIDDEN_CLASS = 'lg-spinner--hidden';
 const COLLAPSED_SPINNER = 'usa-button__lg-invokeSpinner--hidden';
@@ -13,4 +13,4 @@ const invokeSpinner = behavior({
   },
 });
 
-module.exports = invokeSpinner;
+export default invokeSpinner;

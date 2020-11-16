@@ -96,3 +96,26 @@ $image-path: 'img';
 
 @import 'identity-style-guide/dist/assets/scss/styles';
 ```
+
+### Use as a JavaScript package
+
+If you're already using a JavaScript bundler in your project, you can import specific component implementations from the `identity-style-guide` package. Most modern bundlers that support dead-code elimination will automatically optimize the bundle size to include only the code necessary in your project.
+
+```js
+import { accordion } from 'identity-style-guide';
+
+accordion.on();
+```
+
+Note that unlike the pre-built JavaScript assets found in the `dist/assets` directory, importing the package from NPM will not automatically initialize the components on the page or include polyfills necessary to support older browsers. You will have to call the `on()` method for each component you import.
+
+If you need support for older browsers in your project, it's suggested you import polyfills shipped with the `uswds` package and import it before any components:
+
+```
+npm install uswds
+```
+
+```js
+import 'uswds/src/js/polyfills';
+import { accordion } from 'identity-style-guide';
+```

@@ -1,6 +1,7 @@
 MAKEFLAGS += --jobs=6
 TMP_DIR = ./tmp
 OUTPUT_DIR = ./dist
+PACKAGE_DIR = ./build
 
 # Federalist builds overwrite the output directory.
 ifdef SITE_PREFIX
@@ -44,6 +45,9 @@ build-docs:
 
 build-assets: build-sass-and-js build-fonts build-images copy-scss
 
+build-package:
+	./node_modules/.bin/gulp build-package
+
 build-sass-and-js:
 	NODE_ENV=production \
 	DISABLE_NOTIFIER=true \
@@ -62,7 +66,7 @@ build-images:
 copy-scss:
 	./node_modules/.bin/gulp copy-scss
 
-test: build
+test: build build-package
 	make test-runners
 
 test-runners: test-runner-pa11y test-runner-jest
@@ -76,3 +80,4 @@ test-runner-jest:
 clean:
 	rm -rf $(OUTPUT_DIR)
 	rm -rf $(TMP_DIR)
+	rm -rf $(PACKAGE_DIR)
