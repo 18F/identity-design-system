@@ -19,11 +19,10 @@ uswds.components = components;
 
 domready(() => {
   const target = document.body;
-  Object.keys(components)
-    .forEach((key) => {
-      const behavior = components[key];
-      behavior.on(target);
-    });
+  Object.keys(components).forEach((key) => {
+    const behavior = components[key];
+    behavior.on(target);
+  });
 });
 
 require('./components/dropdownButton');

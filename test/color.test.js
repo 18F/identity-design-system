@@ -8,12 +8,14 @@ const rgb2hex = (rgb) => {
 
 test('hex codes match background color on the color documentation page', async () => {
   await page.goto(`${host}/color/`);
-  const colors = await page.$$eval("[data-test='color-swatch']", (els) => [...els].map((el) => {
-    const text = el.innerText.trim();
-    const background = window.getComputedStyle(el).backgroundColor;
+  const colors = await page.$$eval("[data-test='color-swatch']", (els) =>
+    [...els].map((el) => {
+      const text = el.innerText.trim();
+      const background = window.getComputedStyle(el).backgroundColor;
 
-    return { text, background };
-  }));
+      return { text, background };
+    }),
+  );
 
   expect(colors.length).toBe(56);
 
