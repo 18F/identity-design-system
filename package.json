@@ -12,6 +12,7 @@
   "scripts": {
     "start": "make start",
     "clean": "make clean",
+    "prelint": "make build-package",
     "lint": "gulp lint",
     "test": "make test",
     "test-pa11y": "make test-runner-pa11y",
