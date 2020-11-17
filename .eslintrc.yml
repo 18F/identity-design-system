@@ -1,11 +1,15 @@
 extends: airbnb-base
 plugins:
   - import
+  - prettier
 env:
   node: true
   browser: true
   es6: true
 rules:
+  function-paren-newline: off
+  implicit-arrow-linebreak: off
   import/no-extraneous-dependencies:
     - error
     - devDependencies: true
+  prettier/prettier: error

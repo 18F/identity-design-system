@@ -54,9 +54,11 @@ const checkPasswordStrength = (e, submit, forbiddenPasswords) => {
   const passwordStrengthResponse = zxcvbn(e.target.value, JSON.parse(forbiddenPasswords));
   const [strengthClass, strength] = getStrength(passwordStrengthResponse);
   const explanation = getExplanation(passwordStrengthResponse);
-  toggleSubmitInput(submit,
+  toggleSubmitInput(
+    submit,
     passwordStrengthResponse.password.length,
-    passwordStrengthResponse.score);
+    passwordStrengthResponse.score,
+  );
   return { strengthClass, strength, explanation };
 };
 
@@ -70,8 +72,11 @@ const updatePasswordStrength = (e, submit) => {
   const passwordContainer = document.querySelector('#lg-password-strength--container');
   passwordContainer.className = '';
 
-  const { strengthClass, strength, explanation } = checkPasswordStrength(e, submit,
-    forbiddenPasswords);
+  const { strengthClass, strength, explanation } = checkPasswordStrength(
+    e,
+    submit,
+    forbiddenPasswords,
+  );
 
   passwordContainer.className = strengthClass;
   document.querySelector('.lg-password--summary').innerHTML = strength;

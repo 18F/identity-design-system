@@ -70,7 +70,7 @@ function fillImageToSize(image, width, height) {
   for (let y = image.height; y < height; y += 1) {
     for (let x = image.width; x < width; x += 1) {
       // eslint-disable-next-line no-bitwise
-      const index = ((resizedImage.width * y) + x) << 2;
+      const index = (resizedImage.width * y + x) << 2;
       resizedImage.data[index] = 255; // Red
       resizedImage.data[index + 1] = 255; // Green
       resizedImage.data[index + 2] = 255; // Blue
@@ -94,16 +94,9 @@ test('screenshot visual regression', async () => {
     const resizedLocalPNG = fillImageToSize(localPNG, width, height);
     const resizedRemotePNG = fillImageToSize(remotePNG, width, height);
     const diff = new PNG({ width, height });
-    const diffs = match(
-      resizedLocalPNG.data,
-      resizedRemotePNG.data,
-      diff.data,
-      width,
-      height,
-      {
-        threshold: 0.2,
-      },
-    );
+    const diffs = match(resizedLocalPNG.data, resizedRemotePNG.data, diff.data, width, height, {
+      threshold: 0.2,
+    });
     if (diffs > 0) {
       const diffOutputBase = getDiffOutputBaseFileName(path);
       await mkdirp(DIFF_DIRECTORY);
