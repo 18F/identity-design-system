@@ -14,6 +14,7 @@ const components = require('uswds/src/js/components');
 components.accordionCloseButton = require('./components/accordionCloseButton');
 components.inputPasswordMeter = require('./components/inputPasswordStrength');
 components.invokeSpinner = require('./components/invokeSpinner');
+components.dropdownButton = require('./components/dropdownButton');
 
 uswds.components = components;
 
@@ -24,7 +25,5 @@ domready(() => {
     behavior.on(target);
   });
 });
-
-require('./components/dropdownButton');
 
 module.exports = uswds;

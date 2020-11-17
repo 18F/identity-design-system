@@ -1,34 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const mobileLink = document.querySelector('.dropdown-mobile-toggle > button');
-  const mobileDropdown = document.querySelector('.mobile-dropdown');
-  const desktopLink = document.querySelector('.dropdown-desktop-toggle > button');
-  const desktopDropdown = document.querySelector('.desktop-dropdown');
+const behavior = require('uswds/src/js/utils/behavior');
 
-  function addListenerMulti(el, s, fn) {
-    s.split(' ').forEach((e) => el.addEventListener(e, fn, false));
-  }
+function createDropdownPicker(contentSelector) {
+  return function onDropdownButtonClickOrKeyPress(event) {
+    const button = event.target;
+    const content = button.parentNode.querySelector(contentSelector);
+    const isExpanded = !content.classList.toggle('display-none');
+    button.setAttribute('aria-expanded', isExpanded.toString());
+  };
+}
 
-  function toggleAriaExpanded(element) {
-    if (element.getAttribute('aria-expanded') === 'true') {
-      element.setAttribute('aria-expanded', 'false');
-    } else {
-      element.setAttribute('aria-expanded', 'true');
-    }
-  }
-
-  function dropdownPicker(trigger, dropdown) {
-    addListenerMulti(trigger, 'click keypress', function (event) {
-      const eventType = event.type;
-
-      event.preventDefault();
-      if (eventType === 'click' || (eventType === 'keypress' && event.which === 13)) {
-        this.parentNode.classList.toggle('focused');
-        dropdown.classList.toggle('display-none');
-        toggleAriaExpanded(this);
-      }
-    });
-  }
-
-  if (desktopLink) dropdownPicker(desktopLink, desktopDropdown);
-  if (mobileLink) dropdownPicker(mobileLink, mobileDropdown);
+const dropdownButton = behavior({
+  click: {
+    '.dropdown-mobile-toggle > button': createDropdownPicker('.mobile-dropdown'),
+    '.dropdown-desktop-toggle > button': createDropdownPicker('.desktop-dropdown'),
+  },
 });
+
+module.exports = dropdownButton;
