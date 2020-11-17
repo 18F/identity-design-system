@@ -53,16 +53,20 @@ $theme-root-font-size: 16px;
 
 /*
 ----------------------------------------
-Basic styles
+Global styles
 ----------------------------------------
-Sets the default typography styles for
-paragraph text and links
-
-Accepts true or false
+Adds basic styling for the following
+unclassed elements:
+- paragraph: paragraph text
+- link: links
+- content: paragraph text, links,
+  headings, lists, and tables
 ----------------------------------------
 */
 
-$theme-global-styles-basic: true;
+$theme-global-paragraph-styles: false;
+$theme-global-link-styles: false;
+$theme-global-content-styles: false;
 
 /*
 ----------------------------------------
