@@ -51,7 +51,7 @@ Select the previews below to open the layout in a new tab, where you can inspect
 
 - The **basic header** features a multi-level primary menu to the right of the logo.
 - The **landing page** content features large blocks of color to call out your message. Use it sparingly for greatest effect.
-- The **medium footer** includes an area for content related to the current page or section.
+- The **slim footer**, which is the minimum footer required. It is the footer used on this site.
 
 {% include helpers/page-preview.html
   path="/examples/basic-header-landing-slim-footer.html"
