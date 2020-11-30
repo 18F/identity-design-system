@@ -97,6 +97,52 @@ $image-path: 'img';
 @import 'identity-style-guide/dist/assets/scss/styles';
 ```
 
+If you're using Sprockets and precompiling assets you'll need to update your
+Sprockets manifest to include the images and fonts for production:
+
+```js
+// app/assets/config/manifest.js
+
+//= link_tree ../../../node_modules/identity-style-guide/dist/assets/img
+//= link_tree ../../../node_modules/identity-style-guide/dist/assets/fonts
+```
+
+Unfortunately, this results in the assets being saved under paths that include
+everything after the `node_modules` directory, so a helper method is useful in
+cleaning up the views:
+
+```ruby
+# app/helpers/assets_helper.rb
+
+module AssetsHelper
+  def login_design_asset_path(path)
+    "identity-style-guide/dist/assets/#{path}"
+  end
+end
+```
+
+```erb
+# app/views/foo.html.erb
+
+<%= image_tag login_design_asset_path('img/us_flag_small.png'), ... %>
+
+# app/views/layouts/application.html.erb
+
+<head>
+  ...
+  <%= favicon_link_tag identity_asset_path('img/favicons/favicon.ico') %>
+</head>
+```
+
+Finally, if you're using Webpacker you'll need to reference the JS files in the
+default pack:
+
+```js
+// app/javascript/packs/application.js
+
+require("identity-style-guide/dist/assets/js/main")
+```
+
 ### Use as a JavaScript package
 
 If you're already using a JavaScript bundler in your project, you can import specific component implementations from the `identity-style-guide` package. Most modern bundlers that support dead-code elimination will automatically optimize the bundle size to include only the code necessary in your project.
