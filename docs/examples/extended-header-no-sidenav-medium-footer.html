@@ -10,7 +10,7 @@ layout: base
   <div class="usa-navbar">
       <div class="usa-logo" id="extended-logo">
         <a href="javascript:;" title="Home" aria-label="Home">
-          <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" class="usa-logo__img" alt="login.gov">
+          <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" role="img" class="usa-logo__img" alt="login.gov">
           <em class="usa-logo__text">Optional Site Title</em>
         </a>
       </div>
@@ -18,7 +18,7 @@ layout: base
     </div>
     <nav role="navigation" class="usa-nav">
       <div class="usa-nav__inner">
-        <button class="usa-nav__close"><img src="{{ site.baseurl }}/assets/img/close.svg" alt="Close"></button>
+        <button class="usa-nav__close"><img src="{{ site.baseurl }}/assets/img/close.svg" role="img" alt="Close"></button>
         <ul class="usa-nav__primary usa-accordion">
           <li class="usa-nav__primary-item">
             <a class="usa-nav__link" href="javascript:;">
@@ -58,14 +58,12 @@ layout: base
                 <a href="javascript:;">Another secondary link</a>
               </li>
             </ul>
-            <form class="usa-search usa-search--small">
-              <div role="search">
-                <label class="usa-sr-only" for="extended-search-field-small">Search small</label>
-                <input class="usa-input" id="extended-search-field-small" type="search" name="search">
-                <button class="usa-button" type="submit">
-                  <span class="usa-sr-only">Search</span>
-                </button>
-              </div>
+            <form class="usa-search usa-search--small" role="search">
+              <label class="usa-sr-only" for="extended-search-field-small">Search small</label>
+              <input class="usa-input" id="extended-search-field-small" type="search" name="search">
+              <button class="usa-button" type="submit">
+                <span class="usa-sr-only">Search</span>
+              </button>
             </form>
           </div>
         </div>
@@ -112,7 +110,7 @@ layout: base
       <div class="usa-footer__logo grid-row grid-gap-2">
         <a href="https://www.gsa.gov" class="usa-footer__logo grid-row grid-gap-2" target="_blank">
           <div class="grid-col-auto">
-            <img src="{{ site.baseurl }}/assets/img/gsa-logo-rev.svg" alt="U.S. General Services Administration logo" class="usa-footer__logo-img">
+            <img src="{{ site.baseurl }}/assets/img/gsa-logo-rev.svg" role="img" alt="U.S. General Services Administration logo" class="usa-footer__logo-img">
           </div>
           <div class="grid-col-auto">
             U.S. General Services Administration

@@ -74,7 +74,7 @@
     "serve": "^11.3.2",
     "stylelint": "^13.7.2",
     "stylelint-scss": "^3.18.0",
-    "uswds": "^2.0.3",
+    "uswds": "^2.9.0",
     "uswds-gulp": "github:uswds/uswds-gulp",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
