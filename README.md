@@ -58,28 +58,18 @@ More information can be found in Federalist’s [How Builds Work](https://federa
 
 When you're ready to release a new version of the `identity-style-guide` package there are just a few steps to take.
 
-1️⃣ Make sure all the changes indended for release are merged into the `master` branch.
-
-2️⃣ Check out the master branch on your local machine by running `git checkout master`
-
-3️⃣ Decide on a version. The login.gov design system uses [semantic versioning](https://semver.org/). Once you decide whether you're going to release a `patch`, `minor`, or `major` version, run the appropriate `npm` command like
-
-`npm version patch -m "Upgrade to %s for reasons"`
-
-And a new version will be created.
-
-4️⃣ Once you’re satisfied with any updates, do a trial publish to `npm` by running:
-
-```
-npm publish --dry-run
-```
-
-No need to run any special build steps — the publish script will lint the source JavaScript and Sass files, and clean and re-build all assets before including them in the published package.
-
-5️⃣ If everything looks alright, continue with publishing:
-
-```
-npm publish
-```
-
-6️⃣ Document the release on Github. After you've pushed the release changes back up to `master`, [create a new release](https://github.com/18F/identity-style-guide/releases) with a target of `master`. The release version should match the version you just sent off to `npm` (like `v2.1.5`) and the title can be the same. Use the release notes to link to any important issues or pull requests that were addressed in the release.
+1. Make sure all the changes intended for release are merged into the `master` branch.
+2. Check out the master branch on your local machine by running `git checkout master`.
+3. Run `npm version` to bump the package version, passing one of `patch`, `minor`, or `major` depending on the types of changes included.
+   - Example: `npm version patch`
+   - This project uses [semantic versioning](https://semver.org/): breaking changes should bump the major version, backwards-compatible changes should bump the minor version, and bug fixes should bump the patch version.
+   - Ideally all changes to be included in this version have been described in `CHANGELOG.md` to make the choice of version obvious.
+4. A new version will be created. This will update `package.json` and `package-lock.json` automatically and create a commit that should be pushed.
+5. Do a trial publish by running `npm publish --dry-run`.
+   - No need to run any special build steps — the publish script will lint the source JavaScript and Sass files, and clean and re-build all assets before including them in the published package.
+6. If everything looks alright, continue with publishing by running `npm publish`.
+7. Create a new release on the [GitHub "Releases" page](https://github.com/18F/identity-style-guide/releases).
+   - Use `master` as the target.
+   - The release version should match the version just published to `npm` (for example, `v2.1.5`).
+   - Use the version name as the release title.
+   - Use the release notes to link to any important issues or pull requests that were addressed in the release. You may copy this from `CHANGELOG.md`.
