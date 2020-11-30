@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
-const behavior = require('uswds/src/js/utils/behavior');
-const zxcvbn = require('zxcvbn');
+import behavior from 'uswds/src/js/utils/behavior';
+import zxcvbn from 'zxcvbn';
 
 // zxcvbn returns a strength score from 0 to 4
 // we map those scores to:
@@ -92,4 +92,4 @@ const inputPasswordMeter = behavior({
   },
 });
 
-module.exports = inputPasswordMeter;
+export default inputPasswordMeter;

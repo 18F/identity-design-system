@@ -13,6 +13,7 @@ const gulpStylelint = require('gulp-stylelint');
 const sourcemaps = require('gulp-sourcemaps');
 const uswds = require('uswds-gulp/config/uswds');
 const browserify = require('browserify');
+const babel = require('gulp-babel');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
@@ -22,8 +23,10 @@ const pkg = require('./package.json');
 
 const PROJECT_SASS_SRC = './src/scss';
 const PROJECT_JS_SRC = './src/js';
-const PROJECT_JS_MAIN = 'main.js';
+const PROJECT_JS_AUTO = 'auto.js';
+const PROJECT_JS_AUTO_OUT = 'main.js';
 const OUTPUT_DIR = process.env.OUTPUT_DIR || './dist';
+const PACKAGE_DEST = 'build';
 const JS_DEST = `${OUTPUT_DIR}/assets/js`;
 const CSS_DEST = `${OUTPUT_DIR}/assets/css`;
 const SCSS_DEST = `${OUTPUT_DIR}/assets/scss`;
@@ -58,13 +61,28 @@ gulp.task('lint-js', () =>
     .pipe(eslint.failAfterError()),
 );
 
+gulp.task('build-package-cjs', () =>
+  gulp
+    .src(`${PROJECT_JS_SRC}/**/*.js`)
+    .pipe(babel({ presets: [['@babel/preset-env', { modules: 'cjs' }]] }))
+    .pipe(gulp.dest(`${PACKAGE_DEST}/cjs`)),
+);
+
+gulp.task('build-package-esm', () =>
+  gulp
+    .src(`${PROJECT_JS_SRC}/**/*.js`)
+    .pipe(babel({ presets: [['@babel/preset-env', { modules: false }]] }))
+    .pipe(gulp.dest(`${PACKAGE_DEST}/esm`)),
+);
+
 gulp.task('build-js', () => {
-  const stream = browserify({ entries: `${PROJECT_JS_SRC}/${PROJECT_JS_MAIN}`, debug: true })
+  const stream = browserify({ entries: `${PROJECT_JS_SRC}/${PROJECT_JS_AUTO}`, debug: true })
     .transform('babelify', { global: true, presets: ['@babel/preset-env'] })
     .bundle()
     .on('error', notificationOptions.handler)
-    .pipe(source(PROJECT_JS_MAIN))
+    .pipe(source(PROJECT_JS_AUTO))
     .pipe(buffer())
+    .pipe(rename(PROJECT_JS_AUTO_OUT))
     .pipe(gulp.dest(JS_DEST))
     .pipe(notify(notificationOptions.success));
 
@@ -149,6 +167,8 @@ gulp.task('copy-scss', gulp.parallel('copy-login-scss', 'copy-uswds-scss'));
 gulp.task('lint', gulp.parallel('lint-js', 'lint-sass'));
 
 gulp.task('build', gulp.parallel('build-js', 'build-sass'));
+
+gulp.task('build-package', gulp.parallel('build-package-cjs', 'build-package-esm'));
 
 gulp.task(
   'watch',

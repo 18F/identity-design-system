@@ -1,6 +1,7 @@
 MAKEFLAGS += --jobs=6
 TMP_DIR = ./tmp
 OUTPUT_DIR = ./dist
+PACKAGE_DIR = ./build
 
 # Federalist builds overwrite the output directory.
 ifdef SITE_PREFIX
@@ -33,16 +34,19 @@ validate-package-lock: package.json package-lock.json
 
 validate-lockfiles: validate-gemfile-lock validate-package-lock
 
-lint:
+lint: build-package
 	./node_modules/.bin/gulp lint
 	make validate-lockfiles
 
-build: build-docs build-assets
+build: build-docs build-assets build-package
 
 build-docs:
 	JEKYLL_ENV=production bundle exec jekyll build
 
 build-assets: build-sass-and-js build-fonts build-images copy-scss
+
+build-package:
+	./node_modules/.bin/gulp build-package
 
 build-sass-and-js:
 	NODE_ENV=production \
@@ -76,3 +80,4 @@ test-runner-jest:
 clean:
 	rm -rf $(OUTPUT_DIR)
 	rm -rf $(TMP_DIR)
+	rm -rf $(PACKAGE_DIR)

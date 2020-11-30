@@ -14,6 +14,10 @@
     - Graphic list should use `h2` as a heading element instead of `h3`.
 - "Official government website" banner text has been updated. Refer to [USWDS guidance](https://designsystem.digital.gov/components/banner/) for updated markup.
 
+### New Features
+
+- The published NPM package can now be imported into a project. Bundlers that support dead-code elimination (Webpack, etc.) can automatically remove unused code to optimize bundle size. See [Usage guide](https://design.login.gov/usage/) for more information. Existing usage of JavaScript code from `dist/assets/` is unaffected by these changes.
+
 ### Bug Fixes
 
 - Fixed support for multiple dropdown buttons on a page.
