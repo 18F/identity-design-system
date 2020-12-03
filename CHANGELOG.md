@@ -1,3 +1,9 @@
+## 3.0.1
+
+### Internal
+
+- Replace deprecated USWDS variable references with updated equivalent values.
+
 ## 3.0.0
 
 ### Breaking Changes

@@ -6,12 +6,12 @@ $header-height: 10;
 .usa-header--extended,
 .usa-header--basic {
   .usa-logo {
-    @include at-media-max($theme-navigation-width) {
+    @include at-media-max($theme-header-min-width) {
       font-size: unset;
       flex: unset;
     }
 
-    @include at-media($theme-navigation-width) {
+    @include at-media($theme-header-min-width) {
       font-size: unset;
       margin: 0;
     }
@@ -20,12 +20,12 @@ $header-height: 10;
   }
 
   .usa-navbar {
-    @include at-media-max($theme-navigation-width) {
+    @include at-media-max($theme-header-min-width) {
       border-bottom: units(1px) solid color('base-light');
       justify-content: space-between;
     }
 
-    @include at-media($theme-navigation-width) {
+    @include at-media($theme-header-min-width) {
       display: flex;
       align-items: center;
       height: units($header-height);
@@ -36,7 +36,7 @@ $header-height: 10;
 .usa-header {
   + .usa-section,
   + main {
-    @include at-media($theme-navigation-width) {
+    @include at-media($theme-header-min-width) {
       border-top: units(1px) solid color('base-light');
     }
   }
@@ -47,13 +47,13 @@ $header-height: 10;
 
 .usa-header--basic {
   .usa-nav-container {
-    @include at-media($theme-navigation-width) {
+    @include at-media($theme-header-min-width) {
       align-items: center;
     }
   }
 
   .usa-nav {
-    @include at-media($theme-navigation-width) {
+    @include at-media($theme-header-min-width) {
       padding: 0;
     }
   }
@@ -63,7 +63,7 @@ $header-height: 10;
 // ---------------------------------
 
 .usa-header--extended .usa-nav {
-  @include at-media($theme-navigation-width) {
+  @include at-media($theme-header-min-width) {
     border-top: 0;
     padding: 0;
     width: 100%;
@@ -74,7 +74,7 @@ $header-height: 10;
 // ---------------------------------
 
 .usa-nav__primary {
-  @include at-media-max($theme-navigation-width) {
+  @include at-media-max($theme-header-min-width) {
     .usa-nav__primary-item,
     .usa-nav__submenu-item {
       > a,
@@ -97,7 +97,7 @@ $header-height: 10;
     }
   }
 
-  @include at-media($theme-navigation-width) {
+  @include at-media($theme-header-min-width) {
     > .usa-nav__primary-item {
       > a,
       > .usa-nav__link {
@@ -137,7 +137,7 @@ $header-height: 10;
       padding: units(1.5) units(2);
       text-decoration: none;
 
-      @include at-media($theme-navigation-width) {
+      @include at-media($theme-header-min-width) {
         @include primary-nav-link;
         font-size: font-size($theme-navigation-font-family, '2xs');
         font-weight: font-weight('bold');
@@ -148,7 +148,7 @@ $header-height: 10;
         background-color: color('base-lightest');
         text-decoration: none;
 
-        @include at-media($theme-navigation-width) {
+        @include at-media($theme-header-min-width) {
           background-color: transparent;
         }
       }
@@ -158,7 +158,7 @@ $header-height: 10;
         background-position: right 0 center;
         background-size: units($nav-link-accordion-icon-size);
 
-        @include at-media($theme-navigation-width) {
+        @include at-media($theme-header-min-width) {
           @include add-background-svg('angle-arrow-up-primary');
           @include add-knockout-font-smoothing;
           background-size: units($nav-link-arrow-icon-size);
@@ -175,7 +175,7 @@ $header-height: 10;
 // ---------------------------------
 
 .usa-nav__secondary {
-  @include at-media($theme-navigation-width) {
+  @include at-media($theme-header-min-width) {
     top: 0;
     bottom: unset;
     margin-top: 0;
@@ -192,7 +192,7 @@ $header-height: 10;
   line-height: line-height($theme-navigation-font-family, 3);
   margin-top: units(3);
 
-  @include at-media($theme-navigation-width) {
+  @include at-media($theme-header-min-width) {
     float: right;
     line-height: line-height($theme-navigation-font-family, 1);
     margin-bottom: units(0.5);
@@ -200,7 +200,7 @@ $header-height: 10;
   }
 
   .usa-nav__secondary-item {
-    @include at-media($theme-navigation-width) {
+    @include at-media($theme-header-min-width) {
       display: inline;
       padding-left: units(0.5);
 
@@ -229,11 +229,11 @@ $header-height: 10;
 // ---------------------------------
 
 .usa-nav__submenu {
-  @include at-media-max($theme-navigation-width) {
+  @include at-media-max($theme-header-min-width) {
     @include nav-sublist;
   }
 
-  @include at-media($theme-navigation-width) {
+  @include at-media($theme-header-min-width) {
     @include add-list-reset;
     background-color: color('primary-lighter');
     width: units('card-lg');
@@ -247,7 +247,7 @@ $header-height: 10;
   }
 
   .usa-nav__submenu-item {
-    @include at-media($theme-navigation-width) {
+    @include at-media($theme-header-min-width) {
       & + * {
         margin-top: units(1.5);
       }
@@ -289,21 +289,21 @@ $header-height: 10;
 }
 
 .usa-logo__img {
-  @include at-media-max($theme-navigation-width) {
+  @include at-media-max($theme-header-min-width) {
     height: units(2);
   }
-  @include at-media($theme-navigation-width) {
+  @include at-media($theme-header-min-width) {
     height: units(3);
   }
 }
 
 .usa-logo__text {
-  @include at-media-max($theme-navigation-width) {
+  @include at-media-max($theme-header-min-width) {
     @include u-font-size($theme-header-font-family, 3);
     padding-left: 17px;
   }
 
-  @include at-media($theme-navigation-width) {
+  @include at-media($theme-header-min-width) {
     @include u-font-size($theme-header-font-family, 4);
     padding-left: 27px;
   }
