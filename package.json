@@ -50,7 +50,6 @@
     "autoprefixer": "^10.0.1",
     "babelify": "^10.0.0",
     "browserify": "^17.0.0",
-    "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "domready": "^1.0.8",
     "eslint": "^7.11.0",
