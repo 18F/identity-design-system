@@ -1,5 +1,9 @@
 ## 3.0.1
 
+### Bug Fixes
+
+- Fix an issue where builds may produce styles in an unpredictable order.
+
 ### Internal
 
 - Replace deprecated USWDS variable references with updated equivalent values.
