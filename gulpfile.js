@@ -1,7 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const gulp = require('gulp');
-const mqpacker = require('css-mqpacker');
 const notify = require('gulp-notify');
 const uswdsPkg = require('uswds/package.json');
 const postcss = require('gulp-postcss');
@@ -116,7 +115,6 @@ gulp.task('build-sass', () => {
       cascade: false,
       grid: true,
     }),
-    mqpacker({ sort: true }),
     cssnano(),
   ];
 
