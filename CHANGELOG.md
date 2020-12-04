@@ -3,6 +3,7 @@
 ### Bug Fixes
 
 - Fix an issue where builds may produce styles in an unpredictable order.
+- Fix an issue where `.usa-display` heading font size was rendered larger than intended.
 
 ### Internal
 
