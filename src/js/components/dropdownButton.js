@@ -1,4 +1,4 @@
-const behavior = require('uswds/src/js/utils/behavior');
+import behavior from 'uswds/src/js/utils/behavior';
 
 function createDropdownPicker(contentSelector) {
   return function onDropdownButtonClickOrKeyPress(event) {
@@ -16,4 +16,4 @@ const dropdownButton = behavior({
   },
 });
 
-module.exports = dropdownButton;
+export default dropdownButton;
