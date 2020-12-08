@@ -4,6 +4,7 @@
 
 - Fix an issue where builds may produce styles in an unpredictable order.
 - Fix an issue where `.usa-display` heading font size was rendered larger than intended.
+- Fix an issue where `dropdownButton` was using invalid CommonJS syntax when imported from ES module entrypoint.
 
 ### Internal
 
