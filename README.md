@@ -45,7 +45,7 @@ A failure of this status check only indicates that a visual change was detected.
 
 ## Deploying documentation updates
 
-Documentation deploys are performed automatically upon merging to `master` by [Federalist](https://federalist.18f.gov/). Federalist performs the following steps:
+Documentation deploys are performed automatically upon merging to `main` by [Federalist](https://federalist.18f.gov/). Federalist performs the following steps:
 
 - `npm install --production` (a no-op, as this package has no production dependencies)
 - `npm run federalist`
@@ -58,8 +58,8 @@ More information can be found in Federalist’s [How Builds Work](https://federa
 
 When you're ready to release a new version of the `identity-style-guide` package there are just a few steps to take.
 
-1. Make sure all the changes intended for release are merged into the `master` branch.
-2. Check out the master branch on your local machine by running `git checkout master`.
+1. Make sure all the changes intended for release are merged into the `main` branch.
+2. Check out the main branch on your local machine by running `git checkout main`.
 3. Run `npm version` to bump the package version, passing one of `patch`, `minor`, or `major` depending on the types of changes included.
    - Example: `npm version patch`
    - This project uses [semantic versioning](https://semver.org/): breaking changes should bump the major version, backwards-compatible changes should bump the minor version, and bug fixes should bump the patch version.
@@ -69,7 +69,7 @@ When you're ready to release a new version of the `identity-style-guide` package
    - No need to run any special build steps — the publish script will lint the source JavaScript and Sass files, and clean and re-build all assets before including them in the published package.
 6. If everything looks alright, continue with publishing by running `npm publish`.
 7. Create a new release on the [GitHub "Releases" page](https://github.com/18F/identity-style-guide/releases).
-   - Use `master` as the target.
+   - Use `main` as the target.
    - The release version should match the version just published to `npm` (for example, `v2.1.5`).
    - Use the version name as the release title.
    - Use the release notes to link to any important issues or pull requests that were addressed in the release. You may copy this from `CHANGELOG.md`.
