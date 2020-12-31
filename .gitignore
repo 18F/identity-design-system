@@ -1,6 +1,0 @@
-/dist
-/build
-/node_modules
-/tmp
-.DS_Store
-/docs/.jekyll-cache
