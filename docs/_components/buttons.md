@@ -13,8 +13,6 @@ subnav:
 
 Use the standard button styles to convey the most important action on you want the users to take. For actions outside of the top two actions, use the [other buttons](#other-buttons). See the [USWDS Button Usage](https://v2.designsystem.digital.gov/components/button/) for more on how to use buttons.
 
-Note: the  vertical alignment of a button is governed by the [layout grid](/layout).
-
 ##### Primary
 
 ```html
