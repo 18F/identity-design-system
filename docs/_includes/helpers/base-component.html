@@ -1,0 +1,11 @@
+{% assign stylesheet = include.stylesheet | default: include.component %}
+{% assign uswds_url = include.component | append: '/' | prepend: 'https://designsystem.digital.gov/components/' %}
+{% assign sass_url = stylesheet | append: '.scss' | prepend: 'https://github.com/18F/identity-style-guide/blob/main/src/scss/components/_' %}
+
+<a href="{{ uswds_url }}" class="usa-link usa-link--external margin-bottom-2">
+  View USWDS component
+</a>
+
+<a href="{{ sass_url }}" class="usa-link usa-link--external">
+  View login.gov SCSS on GitHub
+</a>
