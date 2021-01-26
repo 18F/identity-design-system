@@ -4,8 +4,6 @@
 
 - The Spinner button has been removed (`.usa-button__lg-invokeSpinner`).
 
-## 3.0.1
-
 ### Bug Fixes
 
 - Fix an issue where builds may produce styles in an unpredictable order.
