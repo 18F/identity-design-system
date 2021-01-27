@@ -1,4 +1,8 @@
-## 3.0.1
+## Unreleased
+
+### Breaking Changes
+
+- The Spinner button has been removed (`.usa-button__lg-invokeSpinner`).
 
 ### Bug Fixes
 

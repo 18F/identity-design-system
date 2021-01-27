@@ -16,7 +16,6 @@ import validator from 'uswds/src/js/components/validator';
 import accordionCloseButton from './accordionCloseButton';
 import dropdownButton from './dropdownButton';
 import inputPasswordMeter from './inputPasswordStrength';
-import invokeSpinner from './invokeSpinner';
 
 export {
   accordion,
@@ -37,5 +36,4 @@ export {
   accordionCloseButton,
   dropdownButton,
   inputPasswordMeter,
-  invokeSpinner,
 };
