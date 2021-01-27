@@ -15,7 +15,7 @@ Login.gov uses illustration to provide context, add clarity, build consistency, 
 
 ### Accessibility Guidance
 
-Illustrations are often decorative images. A decorative image does not add information to the content of a page. Unlike an informative image, a decorative image can be hidden from screen readers. To help prevent confusing, redundant and/or tedious experience, we at Login.gov have set decorative images to be hidden from screen readers.
+Illustrations are often decorative images. A decorative image does not add information to the content of a page. Unlike an informative image, a decorative image can be hidden from screen readers. We set decorative images as "hidden" from screen readers to help prevent a confusing, redundant and/or a tedious experience.
 
 For decorative images, the `alt` attribute should be set as empty. Avoid ommitting the `alt` attribute altogether. If the `alt` attribute is not used, a screen reader will read out the full filename to the user, which is not an accessible or good user experience.
 
