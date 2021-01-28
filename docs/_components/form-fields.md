@@ -17,6 +17,8 @@ subnav:
     href: "#form-validation-errors"
 ---
 
+{% include helpers/base-component.html component="form-controls" stylesheet="inputs" %}
+
 ## Text
 
 {% capture example %}
