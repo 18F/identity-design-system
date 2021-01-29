@@ -7,11 +7,25 @@ redirect_from: /accessibility/policies/
 
 ## Illustrations
 
-Login.gov uses illustration to provide context, add clarity, build consistency, and lead users to their next step.
+### Principles
 
-**Example:**
+#### Be useful
 
-![Screenshot of illustration on secure.login.gov]({{ '/post-images/accessibility/decorative-illustration.png' | relative_url }})
+Illustration provides context, adds clarity, builds consistency, and lead users to their next step. Ultimately, any illustration should provide a deeper understanding of the application or brand.
+
+#### Be consistent
+
+Being consistent in illustration means considering details of a single illustration, as well as looking at the body of illustration work as a whole. Consistency speaks to quality: of the illustration and of the product it represents.
+
+#### Be focused
+
+Illustration is most effective when it is precise in choosing a single message to deliver. With every narrative that is built there needs to be a focal point, a hierarchy of elements that contribute to the single, pointed message. With every illustration, we ask ourselves “what are we trying to say?”
+
+<div class="grid-row grid-gap">
+  <img src="{{ site.baseurl }}/assets/img/illustrations/security-key.svg" role="img" alt="Security key illustration" class="display-block grid-col flex-auto flex-align-center">
+  <img src="{{ site.baseurl }}/assets/img/illustrations/fail.svg" role="img" alt="Failure illustration" class="display-block grid-col flex-auto flex-align-center">
+  <img src="{{ site.baseurl }}/assets/img/illustrations/id-confirm.svg" role="img" alt="Confirmed identification illustration" class="display-block grid-col flex-auto flex-align-center">
+</div>
 
 ### Accessibility Guidance
 
