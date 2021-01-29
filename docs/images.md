@@ -24,7 +24,6 @@ Illustration is most effective when it is precise in choosing a single message t
 <div class="grid-row grid-gap">
   <img src="{{ site.baseurl }}/assets/img/illustrations/security-key.svg" role="img" alt="Security key illustration" class="display-block grid-col flex-auto flex-align-center">
   <img src="{{ site.baseurl }}/assets/img/illustrations/fail.svg" role="img" alt="Failure illustration" class="display-block grid-col flex-auto flex-align-center">
-  <img src="{{ site.baseurl }}/assets/img/illustrations/id-confirm.svg" role="img" alt="Confirmed identification illustration" class="display-block grid-col flex-auto flex-align-center">
 </div>
 
 ### Accessibility Guidance
