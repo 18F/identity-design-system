@@ -7,17 +7,17 @@ redirect_from: /accessibility/policies/
 
 ## Illustrations
 
-### Principles
+Login.gov uses illustrations throughout our products and services to help create an easy to follow guidance of our products and services. Below is guidance on how to use and create imagery that is in line with our brand.
 
-#### Be useful
+### Be useful
 
 Illustration provides context, adds clarity, builds consistency, and lead users to their next step. Ultimately, any illustration should provide a deeper understanding of the application or brand.
 
-#### Be consistent
+### Be consistent
 
 Being consistent in illustration means considering details of a single illustration, as well as looking at the body of illustration work as a whole. Consistency speaks to quality: of the illustration and of the product it represents.
 
-#### Be focused
+### Be focused
 
 Illustration is most effective when it is precise in choosing a single message to deliver. With every narrative that is built there needs to be a focal point, a hierarchy of elements that contribute to the single, pointed message. With every illustration, we ask ourselves “what are we trying to say?”
 
