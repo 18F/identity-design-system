@@ -26,7 +26,7 @@ Illustration is most effective when it is precise in choosing a single message t
   <img src="{{ site.baseurl }}/assets/img/illustrations/fail.svg" role="img" alt="Failure illustration" class="display-block grid-col flex-auto flex-align-center">
 </div>
 
-### Accessibility Guidance
+### Be accessible
 
 Illustrations are often decorative images. A decorative image does not add information to the content of a page. Unlike an informative image, a decorative image can be hidden from screen readers. We set decorative images as "hidden" from screen readers to help prevent a confusing, redundant and/or a tedious experience.
 
