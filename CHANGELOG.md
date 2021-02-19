@@ -3,6 +3,11 @@
 ### Breaking Changes
 
 - The Spinner button has been removed (`.usa-button__lg-invokeSpinner`).
+- Favicon images have been updated for consistency with the U.S. Web Design System. Existing references to `favicon-16x16.png` should be updated to `favicon-16.png`. `favicon-32x32.png` has been removed. The closest substitute is `favicon-40.png`, at size 40 pixels x 40 pixels.
+
+## Improvements
+
+- New favicon size variations are available. The complete set of pixel sizes are: `16`, `40`, `57`, `72`, `114`, `144`, `192`.
 
 ### Bug Fixes
 
