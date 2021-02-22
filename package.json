@@ -5,8 +5,24 @@
   "main": "./build/cjs/index.js",
   "module": "./build/esm/index.js",
   "exports": {
-    "require": "./build/cjs/index.js",
-    "import": "./build/esm/index.js"
+    ".": {
+      "require": "./build/cjs/index.js",
+      "import": "./build/esm/index.js"
+    },
+    "./auto": {
+      "require": "./build/cjs/auto.js",
+      "import": "./build/esm/auto.js"
+    },
+    "./build/cjs/auto": "./build/cjs/auto.js",
+    "./build/cjs/auto.js": "./build/cjs/auto.js",
+    "./build/cjs/index": "./build/cjs/index.js",
+    "./build/cjs/index.js": "./build/cjs/index.js",
+    "./build/esm/auto": "./build/esm/auto.js",
+    "./build/esm/auto.js": "./build/esm/auto.js",
+    "./build/esm/index": "./build/esm/index.js",
+    "./build/esm/index.js": "./build/esm/index.js",
+    "./dist/assets/js/main": "./dist/assets/js/main.js",
+    "./dist/assets/js/main.js": "./dist/assets/js/main.js"
   },
   "sideEffects": false,
   "scripts": {

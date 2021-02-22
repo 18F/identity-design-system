@@ -15,6 +15,7 @@
 - Fix an issue where `.usa-display` heading font size was rendered larger than intended.
 - Fix an issue where `dropdownButton` was using invalid CommonJS syntax when imported from ES module entrypoint.
 - Fix an issue where `.usa-prose` heading margins were not applied consistently.
+- Fix an issue where importing subpaths may not resolve correctly using native ES modules.
 
 ### Internal
 
