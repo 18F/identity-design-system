@@ -60,15 +60,21 @@ When you're ready to release a new version of the `identity-style-guide` package
 
 1. Make sure all the changes intended for release are merged into the `main` branch.
 2. Check out the main branch on your local machine by running `git checkout main`.
-3. Run `npm version` to bump the package version, passing one of `patch`, `minor`, or `major` depending on the types of changes included.
-   - Example: `npm version patch`
+3. Decide the version number for the new release.
+   - The `CHANGELOG.md` should ideally include all pending changes under an "Unreleased" heading.
    - This project uses [semantic versioning](https://semver.org/): breaking changes should bump the major version, backwards-compatible changes should bump the minor version, and bug fixes should bump the patch version.
-   - Ideally all changes to be included in this version have been described in `CHANGELOG.md` to make the choice of version obvious.
-4. A new version will be created. This will update `package.json` and `package-lock.json` automatically and create a commit that should be pushed.
-5. Do a trial publish by running `npm publish --dry-run`.
+4. Since the main branch is protected, you will need to bump the version in a new branch and open a pull request. Start by creating a new branch.
+   - Example: `git checkout -b release-4-3-1`
+5. Change the "Unreleased" heading in `CHANGELOG.md` to the version you decided in Step 3. Commit this change to your new branch.
+6. Run `npm version` to bump the package version, passing one of `patch`, `minor`, or `major` depending on what you had decided in Step 3 for the next version.
+   - Example: `npm version patch`
+   - A new version will be created. This will update `package.json` and `package-lock.json` automatically and create a commit.
+7. Do a trial publish by running `npm publish --dry-run`.
    - No need to run any special build steps — the publish script will lint the source JavaScript and Sass files, and clean and re-build all assets before including them in the published package.
-6. If everything looks alright, continue with publishing by running `npm publish`.
-7. Create a new release on the [GitHub "Releases" page](https://github.com/18F/identity-style-guide/releases).
+   - Consider: In the files listed, are there any that should or shouldn't be included? Does the version match what you expect?
+8. If everything looks alright, continue with publishing by running `npm publish`.
+9. Push your release branch to the GitHub repository and open a pull request.
+10. Once approved and merged, create a new release on the [GitHub "Releases" page](https://github.com/18F/identity-style-guide/releases).
    - Use `main` as the target.
    - The release version should match the version just published to `npm` (for example, `v2.1.5`).
    - Use the version name as the release title.
