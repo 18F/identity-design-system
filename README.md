@@ -60,7 +60,7 @@ When you're ready to release a new version of the `identity-style-guide` package
 
 Before starting, make sure that all changes intended for release should be merged into the `main` branch. You will need permissions to publish the package to npm. Check current package owners by running `npm owner ls` or by consulting the list of admins through the [Services and Accounts handbook page](https://handbook.login.gov/articles/accounts.html). If you do not have access, contact an owner to have access granted or to publish on your behalf.
 
-1. Check out the main branch on your local machine by running `git checkout main`.
+1. Check out the latest main branch on your local machine by running `git checkout main`, followed by `git pull`.
 2. Decide the version number for the new release.
    - The `CHANGELOG.md` should ideally include all pending changes under an "Unreleased" heading.
    - This project uses [semantic versioning](https://semver.org/): breaking changes should bump the major version, backwards-compatible changes should bump the minor version, and bug fixes should bump the patch version.
