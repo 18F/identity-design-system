@@ -68,20 +68,6 @@
   }
 }
 
-.usa-button--success {
-  background-color: map-get($site-palette, 'site-green');
-
-  &:hover,
-  &.usa-button--hover {
-    background-color: map-get($site-palette, 'site-dark-green');
-  }
-
-  &:active,
-  &.usa-button--active {
-    background-color: map-get($site-palette, 'site-darkest-green');
-  }
-}
-
 .usa-button--danger {
   background-color: map-get($site-palette, 'site-red');
 
@@ -93,77 +79,6 @@
   &:active,
   &.usa-button--active {
     background-color: map-get($site-palette, 'site-darkest-red');
-  }
-}
-
-.usa-button--dropdown {
-  background-color: color('base-lightest');
-  color: color('ink');
-
-  &:hover,
-  &.usa-button--hover {
-    background-color: color('base-lighter');
-    color: color('ink');
-  }
-
-  &:active,
-  &.usa-button--active {
-    background-color: color('base-light');
-    color: color('base-darkest');
-  }
-}
-
-.dropdown-mobile-toggle,
-.dropdown-desktop-toggle {
-  .caret {
-    float: right;
-    display: block;
-    @include u-padding-left(1);
-
-  }
-  &.focused .caret {
-    transform: rotate(180deg) translateY(-2px);
-    padding-right: .25rem;
-    padding-left: 0;
-  }
-}
-
-.desktop-dropdown {
-  background-color: color('white');
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.17);
-  border: solid 1px color('base-lightest');
-  width: auto;
-  left: -1px;
-
-  @include at-media('mobile-lg') {
-    width: 194px;
-  }
-}
-
-.mobile-dropdown {
-  background-color: color('white');
-  border: solid 1px color('base-lightest');
-  right: 0;
-  left: -1px;
-  bottom: 100%;
-}
-
-.desktop-menu, .mobile-menu {
-  color: color('ink');
-  text-align: center;
-  @include u-padding-left(1);
-
-  &:visited {
-    color: color('ink');
-    text-decoration: none;
-  }
-  &:hover {
-    background-color: color('base-lighter');
-    color: color('ink');
-  }
-  @include at-media('mobile-lg') {
-    text-align: left;
-    @include u-padding-left(3);
   }
 }
 
@@ -192,18 +107,6 @@
     background-color: color('disabled');
     color: color('white');
   }
-}
-
-.usa-button--small {
-  border-radius: radius('md');
-  font-size: font-size($theme-button-font-family, '3xs');
-  padding: units(1) units(2);
-}
-
-.usa-button--tiny {
-  border-radius: radius('md');
-  font-size: font-size($theme-button-font-family, 'micro');
-  padding: units(1) units(1);
 }
 
 .usa-form a.usa-button.usa-button--danger { /* stylelint-disable-line selector-no-qualifying-type */

@@ -1,5 +1,13 @@
 ## Unreleased
 
+### Breaking Changes
+
+- Several button variants have been removed. These include:
+  - Success (`usa-button--success`)
+  - Dropdown (`usa-button--dropdown`)
+  - Small (`usa-button--small`)
+  - Tiny (`usa-button--tiny`)
+
 ### Bug Fixes
 
 - Fix an issue where focused buttons appear with a double focus ring style.
