@@ -1,3 +1,13 @@
+## Unreleased
+
+### Breaking Changes
+
+- Several button variants have been removed. These include:
+  - Success (`usa-button--success`)
+  - Dropdown (`usa-button--dropdown`)
+  - Small (`usa-button--small`)
+  - Tiny (`usa-button--tiny`)
+
 ## 4.0.0
 
 ### Breaking Changes
