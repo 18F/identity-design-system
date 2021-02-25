@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bug Fixes
+
+- Fix an issue where focused buttons appear with a double focus ring style.
+
 ## 4.0.0
 
 ### Breaking Changes
