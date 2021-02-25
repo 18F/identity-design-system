@@ -27,7 +27,7 @@ Use the standard button styles to convey the most important action on you want t
 <button class="usa-button usa-focus">Focus</button>
 <button class="usa-button" disabled>Disabled</button>
 
-### Secondary
+### Outline
 
 ```html
 <button class="usa-button usa-button--outline">
