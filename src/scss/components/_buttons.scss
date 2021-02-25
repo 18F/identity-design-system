@@ -17,8 +17,8 @@
     color: color('white');
   }
 
-  &:focus,
-  &.usa--focus {
+  &:not([disabled]):focus,
+  &:not([disabled]).usa-focus {
     outline-offset: units(0.5);
   }
 
@@ -27,8 +27,8 @@
   }
 }
 
-.usa-button:focus,
-.usa-button.usa-focus {
+.usa-button:not([disabled]):focus,
+.usa-button:not([disabled]).usa-focus {
   @include disable-default-focus-styles;
   box-shadow: roundable-focus-outline-box-shadows();
 }
@@ -43,8 +43,8 @@
     color: color('primary');
   }
 
-  &:focus,
-  &.usa-focus {
+  &:not([disabled]):focus,
+  &:not([disabled]).usa-focus {
     box-shadow: $button-stroke color('primary'), roundable-focus-outline-box-shadows();
   }
 
