@@ -153,6 +153,20 @@
   }
 }
 
+.usa-button--wide {
+  @include at-media-max('tablet') {
+    width: 100%;
+  }
+
+  @include at-media('tablet') {
+    min-width: 14rem;
+  }
+}
+
+.usa-button--full-width {
+  width: 100%;
+}
+
 .usa-form a.usa-button.usa-button--danger { /* stylelint-disable-line selector-no-qualifying-type */
   color: color('white');
   text-decoration: none;
