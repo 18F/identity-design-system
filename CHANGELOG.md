@@ -13,6 +13,7 @@
 - Link hover and active colors are now distinct.
   - Before: Hover and active colors are both `primary-darker`.
   - After: Hover is `primary-dark`, and active is `primary-darker`.
+- Improved support for "Unstyled" button variant ([see documentation](https://design.login.gov/components/buttons/))
 
 ### Bug Fixes
 

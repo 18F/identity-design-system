@@ -1,0 +1,16 @@
+{% comment %}
+This component displays an unstyled button, staged as if it has dimensions of a styled button, for
+the purpose of aligning button previews amongst other variants.
+{% endcomment %}
+
+<span style="position: relative; display: inline-flex;">
+  <button class="usa-button" disabled hidden style="visibility: hidden;">{{ include.text }}</button>
+  <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding-right: 0.5rem;">
+    <button
+      class="usa-button usa-button--unstyled {{ include.extra_classes }}"
+      {{ include.extra_attributes }}
+    >
+      {{ include.text }}
+    </button>
+  </span>
+</span>
