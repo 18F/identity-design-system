@@ -3,17 +3,17 @@ title: Buttons
 lead: >
   Use buttons to signal actions.
 subnav:
-  - text: Standard Buttons
-    href: "#standard-buttons"
-  - text: Button Widths
+  - text: Button sizes and states
+    href: "#button-sizes-and-states"
+  - text: Button widths
     href: "#button-widths"
 ---
 
 {% include helpers/base-component.html component="button" stylesheet="buttons" %}
 
-## Standard Buttons
+## Button sizes and states
 
-Use the standard button styles to convey the most important action on you want the users to take. See the [USWDS Button Usage](https://v2.designsystem.digital.gov/components/button/) for more on how to use buttons.
+### Default
 
 ### Primary
 
@@ -65,7 +65,65 @@ Use the standard button styles to convey the most important action on you want t
   {% include helpers/unstyled-button.html text="Disabled" extra_attributes="disabled" %}
 </div>
 
-## Button Widths
+### Big
+
+### Primary
+
+```html
+<button class="usa-button usa-button--big">
+```
+
+<div>
+  <button class="usa-button usa-button--big">Default</button>
+  <button class="usa-button usa-button--big usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--big usa-button--active">Active</button>
+  <button class="usa-button usa-button--big usa-focus">Focus</button>
+  <button class="usa-button usa-button--big" disabled>Disabled</button>
+</div>
+
+### Outline
+
+```html
+<button class="usa-button usa-button--big usa-button--outline">
+```
+
+<div>
+  <button class="usa-button usa-button--big usa-button--outline">Default</button>
+  <button class="usa-button usa-button--big usa-button--outline usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--big usa-button--outline usa-button--active">Active</button>
+  <button class="usa-button usa-button--big usa-button--outline usa-focus">Focus</button>
+  <button class="usa-button usa-button--big usa-button--outline" disabled>Disabled</button>
+</div>
+
+### Danger
+
+```html
+<button class="usa-button usa-button--big usa-button--danger">
+```
+
+<div>
+  <button class="usa-button usa-button--big usa-button--danger">Default</button>
+  <button class="usa-button usa-button--big usa-button--danger usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--big usa-button--danger usa-button--active">Active</button>
+  <button class="usa-button usa-button--big usa-button--danger usa-focus">Focus</button>
+  <button class="usa-button usa-button--big usa-button--danger" disabled>Disabled</button>
+</div>
+
+### Unstyled
+
+```html
+<button class="usa-button usa-button--unstyled">
+```
+
+<div>
+  {% include helpers/unstyled-button.html text="Default" extra_classes="usa-button--big" %}
+  {% include helpers/unstyled-button.html text="Hover" extra_classes="usa-button--hover usa-button--big" %}
+  {% include helpers/unstyled-button.html text="Active" extra_classes="usa-button--active usa-button--big" %}
+  {% include helpers/unstyled-button.html text="Focus" extra_classes="usa-focus usa-button--big" %}
+  {% include helpers/unstyled-button.html text="Disabled" extra_attributes="disabled" extra_classes="usa-button--big" %}
+</div>
+
+## Button widths
 
 ### Flexible width
 

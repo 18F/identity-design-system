@@ -23,6 +23,7 @@
 
 ### Documentation
 
+- Add documentation for "Big" button variants.
 - Rename "Secondary" as "Outline" in buttons documentation.
 
 ## 4.0.0
