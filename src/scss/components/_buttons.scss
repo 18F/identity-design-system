@@ -1,4 +1,6 @@
 .usa-button {
+  line-height: 1;
+
   &:visited {
     color: color('white');
   }
@@ -161,6 +163,11 @@
 
 .usa-button--full-width {
   width: 100%;
+}
+
+.usa-button--big {
+  @include u-padding-x('205');
+  font-size: 1.25rem;
 }
 
 .usa-form a.usa-button.usa-button--danger { /* stylelint-disable-line selector-no-qualifying-type */
