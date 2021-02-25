@@ -13,7 +13,7 @@ subnav:
 
 Use the standard button styles to convey the most important action on you want the users to take. See the [USWDS Button Usage](https://v2.designsystem.digital.gov/components/button/) for more on how to use buttons.
 
-##### Primary
+### Primary
 
 ```html
 <button class="usa-button">
@@ -25,7 +25,7 @@ Use the standard button styles to convey the most important action on you want t
 <button class="usa-button usa-focus">Focus</button>
 <button class="usa-button" disabled>Disabled</button>
 
-##### Secondary
+### Secondary
 
 ```html
 <button class="usa-button usa-button--outline">
@@ -37,7 +37,7 @@ Use the standard button styles to convey the most important action on you want t
 <button class="usa-button usa-button--outline usa-focus">Focus</button>
 <button class="usa-button usa-button--outline" disabled>Disabled</button>
 
-##### Danger
+### Danger
 
 ```html
 <button class="usa-button usa-button--danger">
@@ -49,7 +49,7 @@ Use the standard button styles to convey the most important action on you want t
 <button class="usa-button usa-button--danger usa-focus">Focus</button>
 <button class="usa-button usa-button--danger" disabled>Disabled</button>
 
-##### Unstyled
+### Unstyled
 
 ```html
 <button class="usa-button usa-button--unstyled">
