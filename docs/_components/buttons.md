@@ -5,15 +5,13 @@ lead: >
 subnav:
   - text: Standard Buttons
     href: "#standard-buttons"
-  - text: Other Buttons
-    href: "#other-buttons"
 ---
 
 {% include helpers/base-component.html component="button" stylesheet="buttons" %}
 
 ## Standard Buttons
 
-Use the standard button styles to convey the most important action on you want the users to take. For actions outside of the top two actions, use the [other buttons](#other-buttons). See the [USWDS Button Usage](https://v2.designsystem.digital.gov/components/button/) for more on how to use buttons.
+Use the standard button styles to convey the most important action on you want the users to take. See the [USWDS Button Usage](https://v2.designsystem.digital.gov/components/button/) for more on how to use buttons.
 
 ##### Primary
 
