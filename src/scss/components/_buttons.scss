@@ -154,10 +154,6 @@
 }
 
 .usa-button--wide {
-  @include at-media-max('tablet') {
-    width: 100%;
-  }
-
   @include at-media('tablet') {
     min-width: 14rem;
   }
