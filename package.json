@@ -24,7 +24,10 @@
     "./dist/assets/js/main": "./dist/assets/js/main.js",
     "./dist/assets/js/main.js": "./dist/assets/js/main.js"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/assets/js/main.js",
+    "./build/*/auto.js"
+  ],
   "scripts": {
     "start": "make start",
     "clean": "make clean",
