@@ -5,6 +5,8 @@ lead: >
 subnav:
   - text: Standard Buttons
     href: "#standard-buttons"
+  - text: Button Widths
+    href: "#button-widths"
 ---
 
 {% include helpers/base-component.html component="button" stylesheet="buttons" %}
@@ -62,3 +64,43 @@ Use the standard button styles to convey the most important action on you want t
   {% include helpers/unstyled-button.html text="Focus" extra_classes="usa-focus" %}
   {% include helpers/unstyled-button.html text="Disabled" extra_attributes="disabled" %}
 </div>
+
+## Button Widths
+
+### Flexible width
+
+Default button width for desktop viewports.
+
+```html
+<button class="usa-button">
+```
+
+<button class="usa-button">Default</button>
+
+<button class="usa-button usa-button--big">Default</button>
+
+### Minimum width
+
+Use `usa-button--wide` to set a minimum button width for desktop viewports.
+
+```html
+<button class="usa-button usa-button--wide">
+```
+
+<button class="usa-button usa-button--wide">Default</button>
+
+<button class="usa-button usa-button--wide usa-button--big">Default</button>
+
+### Full width
+
+All buttons default to full width for mobile viewports.
+
+Use `usa-button--full-width` to set full-width buttons for desktop viewports.
+
+```html
+<button class="usa-button use-button--full-width">
+```
+
+<button class="usa-button usa-button--full-width">Default</button>
+
+<button class="usa-button usa-button--full-width usa-button--big">Default</button>
