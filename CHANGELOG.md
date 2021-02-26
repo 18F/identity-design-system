@@ -8,6 +8,12 @@
   - Small (`usa-button--small`)
   - Tiny (`usa-button--tiny`)
 
+### Improvements
+
+- Link hover and active colors are now distinct.
+  - Before: Hover and active colors are both `primary-darker`.
+  - After: Hover is `primary-dark`, and active is `primary-darker`.
+
 ### Bug Fixes
 
 - Fix an issue where focused buttons appear with a double focus ring style.
