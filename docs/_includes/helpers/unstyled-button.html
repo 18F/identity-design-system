@@ -1,0 +1,16 @@
+{% comment %}
+This component displays an unstyled button, staged as if it has dimensions of a styled button, for
+the purpose of aligning button previews amongst other variants.
+{% endcomment %}
+
+<span class="display-block mobile-lg:display-inline-flex position-relative">
+  <button class="usa-button" disabled hidden style="visibility: hidden;">{{ include.text }}</button>
+  <div class="position-absolute pin-all padding-right-1 display-flex flex-align-center flex-justify-center">
+    <button
+      class="usa-button usa-button--unstyled {{ include.extra_classes }}"
+      {{ include.extra_attributes }}
+    >
+      {{ include.text }}
+    </button>
+  </div>
+</span>

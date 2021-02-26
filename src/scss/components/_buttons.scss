@@ -27,6 +27,50 @@
   }
 }
 
+.usa-button--unstyled {
+  position: relative;
+  text-underline-offset: 3px;
+
+  // In USWDS, unstyled button styles are applied last to take precedence over base button styles.
+  // Since we override base button styles, we must re-apply the unstyled button styles.
+  &.usa-button {
+    @include button-unstyled;
+  }
+
+  // Hover colors are already applied by USWDS via `typeset-link`, but this does not include the
+  // button modifier classes.
+  &:hover,
+  &.usa-button--hover {
+    color: color($theme-link-hover-color);
+  }
+
+  &:active,
+  &.usa-button--active {
+    color: color($theme-link-active-color);
+  }
+
+  &:disabled {
+    color: color('disabled');
+  }
+
+  &.usa-button:not([disabled]):focus,
+  &.usa-button:not([disabled]).usa-focus {
+    box-shadow: none;
+
+    &::before {
+      border-radius: .125rem;
+      bottom: -5px;
+      box-shadow: 0 0 0 $theme-focus-width color($theme-focus-color);
+      content: '';
+      left: -5px;
+      pointer-events: none;
+      position: absolute;
+      right: -5px;
+      top: -5px;
+    }
+  }
+}
+
 .usa-button:not([disabled]):focus,
 .usa-button:not([disabled]).usa-focus {
   @include disable-default-focus-styles;
