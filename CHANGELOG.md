@@ -17,6 +17,7 @@
 ### Bug Fixes
 
 - Fix an issue where focused buttons appear with a double focus ring style.
+- Fix an issue where using the "auto" package entrypoint may cause components not to be loaded when used with some bundlers (e.g. Webpack).
 
 ## 4.0.0
 
