@@ -81,7 +81,7 @@ Default button width for desktop viewports.
 
 ### Minimum width
 
-Use to set a minimum button width for desktop viewports.
+Use `usa-button--wide` to set a minimum button width for desktop viewports.
 
 ```html
 <button class="usa-button usa-button--wide">
@@ -94,6 +94,8 @@ Use to set a minimum button width for desktop viewports.
 ### Full width
 
 All buttons default to full width for mobile viewports.
+
+Use `usa-button--full-width` to set full-width buttons for desktop viewports.
 
 ```html
 <button class="usa-button use-button--full-width">
