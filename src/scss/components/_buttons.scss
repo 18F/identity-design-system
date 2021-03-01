@@ -1,31 +1,10 @@
 .usa-button {
   line-height: 1;
 
-  &:visited {
-    color: color('white');
-  }
-
-  &:hover,
-  &.usa-button--hover {
-    background-color: color('primary-dark');
-    border-bottom: 0;
-    color: color('white');
-    text-decoration: none;
-  }
-
-  &:active,
-  &.usa-button--active {
-    background-color: color('primary-darker');
-    color: color('white');
-  }
-
   &:not([disabled]):focus,
   &:not([disabled]).usa-focus {
-    outline-offset: units(0.5);
-  }
-
-  &:disabled {
-    @include button-disabled;
+    @include disable-default-focus-styles;
+    box-shadow: roundable-focus-outline-box-shadows();
   }
 }
 
@@ -73,12 +52,6 @@
   }
 }
 
-.usa-button:not([disabled]):focus,
-.usa-button:not([disabled]).usa-focus {
-  @include disable-default-focus-styles;
-  box-shadow: roundable-focus-outline-box-shadows();
-}
-
 .usa-button--secondary,
 .usa-button--outline {
   background-color: color('white');
@@ -97,13 +70,11 @@
   &:hover,
   &.usa-button--hover {
     background-color: color('primary-lightest');
-    color: color('primary');
   }
 
   &:active,
   &.usa-button--active {
     background-color: color('primary-lighter');
-    color: color('primary');
   }
 
   &:disabled,
