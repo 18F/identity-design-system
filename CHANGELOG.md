@@ -21,6 +21,11 @@
 - Fix an issue where focused buttons appear with a double focus ring style.
 - Fix an issue where using the "auto" package entrypoint may cause components not to be loaded when used with some bundlers (e.g. Webpack).
 
+### Documentation
+
+- Add documentation for "Big" button variants.
+- Rename "Secondary" as "Outline" in buttons documentation.
+
 ## 4.0.0
 
 ### Breaking Changes
