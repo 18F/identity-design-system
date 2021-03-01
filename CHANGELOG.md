@@ -14,7 +14,10 @@
   - Before: Hover and active colors are both `primary-darker`.
   - After: Hover is `primary-dark`, and active is `primary-darker`.
 - Improved support for "Unstyled" button variant ([see documentation](https://design.login.gov/components/buttons/))
-- Add two new wide-width button variants `usa-button--wide` and `usa-button--full-width`.
+- Add three new button variants to control width:
+  - `usa-button--wide` displays a button at a wider (minimum) width at larger viewport displays.
+  - `usa-button--flexible-width` displays a button at flexible width regardless of viewport size, and overrides default mobile appearance of full-width buttons.
+  - `usa-button--full-width` displays a button at full width regardless of viewport size, and overrides default desktop appearance of flexible-width buttons.
 
 ### Bug Fixes
 

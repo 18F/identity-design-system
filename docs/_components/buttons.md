@@ -137,6 +137,16 @@ Default button width for desktop viewports.
 
 <button class="usa-button usa-button--big">Default</button>
 
+Use `usa-button--flexible-width` to set flexible width buttons for mobile.
+
+```html
+<button class="usa-button usa-button--flexible-width">
+```
+
+<button class="usa-button usa-button--flexible-width">Default</button>
+
+<button class="usa-button usa-button--flexible-width usa-button--big">Default</button>
+
 ### Minimum width
 
 Use `usa-button--wide` to set a minimum button width for desktop viewports.
