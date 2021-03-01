@@ -167,6 +167,7 @@
 
 .usa-button--big {
   @include u-padding-x('205');
+  border-radius: units(1);
   font-size: 1.25rem;
 }
 
