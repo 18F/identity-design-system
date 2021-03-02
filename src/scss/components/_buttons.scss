@@ -126,6 +126,10 @@
   }
 }
 
+.usa-button--flexible-width {
+  width: auto;
+}
+
 .usa-button--wide {
   @include at-media('mobile-lg') {
     min-width: 14rem;
