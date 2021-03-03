@@ -14,7 +14,6 @@ import timePicker from 'uswds/src/js/components/time-picker';
 import tooltip from 'uswds/src/js/components/tooltip';
 import validator from 'uswds/src/js/components/validator';
 import accordionCloseButton from './accordionCloseButton';
-import inputPasswordMeter from './inputPasswordStrength';
 
 export {
   accordion,
@@ -33,5 +32,4 @@ export {
   tooltip,
   validator,
   accordionCloseButton,
-  inputPasswordMeter,
 };

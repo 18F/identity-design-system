@@ -7,6 +7,7 @@
   - Dropdown (`usa-button--dropdown`)
   - Small (`usa-button--small`)
   - Tiny (`usa-button--tiny`)
+- The Password Strength Meter component has been removed.
 
 ### Improvements
 
