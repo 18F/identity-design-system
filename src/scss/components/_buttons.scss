@@ -8,7 +8,16 @@
   }
 }
 
+.usa-button--big {
+  @include u-padding-x('205');
+  border-radius: units(1);
+  font-size: 1.25rem;
+}
+
 .usa-button--unstyled {
+  // In USWDS, unstyled button styles are applied last to take precedence over base button styles.
+  // Since we override base button styles, we must re-apply the unstyled button styles.
+  @include button-unstyled;
   position: relative;
   text-underline-offset: 3px;
 
@@ -148,12 +157,6 @@
 
 .usa-button--full-width {
   width: 100%;
-}
-
-.usa-button--big {
-  @include u-padding-x('205');
-  border-radius: units(1);
-  font-size: 1.25rem;
 }
 
 .usa-form a.usa-button.usa-button--danger { /* stylelint-disable-line selector-no-qualifying-type */
