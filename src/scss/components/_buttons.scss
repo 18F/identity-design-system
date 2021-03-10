@@ -12,10 +12,20 @@
   position: relative;
   text-underline-offset: 3px;
 
-  // In USWDS, unstyled button styles are applied last to take precedence over base button styles.
-  // Since we override base button styles, we must re-apply the unstyled button styles.
-  &.usa-button {
-    @include button-unstyled;
+  // USWDS currently only sets hover and active unstyled button styles for the browser-native
+  // states, and not with the modifier classes. It also does not apply these styles to the disabled
+  // button, allowing some background color to bleed through. These overrides may be removed if an
+  // upstream fix is merged.
+  //
+  // See: https://github.com/uswds/uswds/pull/4077
+  &.usa-button--hover,
+  &.usa-button--active,
+  &:disabled,
+  &.usa-button--disabled {
+    @include no-knockout-font-smoothing;
+    background-color: transparent;
+    box-shadow: none;
+    text-decoration: underline;
   }
 
   // Hover colors are already applied by USWDS via `typeset-link`, but this does not include the
