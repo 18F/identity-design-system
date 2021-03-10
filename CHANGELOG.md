@@ -1,3 +1,9 @@
+## 5.0.1
+
+### Bug Fixes
+
+- Fix an issue where a second focus ring effect was still applied to the unstyled button variant.
+
 ## 5.0.0
 
 ### Breaking Changes
