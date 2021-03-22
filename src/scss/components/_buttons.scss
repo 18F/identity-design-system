@@ -31,7 +31,8 @@
   &.usa-button--active,
   &:disabled,
   &.usa-button--disabled {
-    @include no-knockout-font-smoothing;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-font-smoothing: inherit;
     background-color: transparent;
     box-shadow: none;
     text-decoration: underline;
