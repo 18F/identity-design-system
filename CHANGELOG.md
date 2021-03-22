@@ -2,7 +2,7 @@
 
 ### Bug Fixes
 
-- Fix an issue where unstyled buttons may appear heavier than an equivalent link.
+- Fix the appearance of unstyled buttons to appear visually identical to a link.
 
 ## 5.0.1
 
