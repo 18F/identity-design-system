@@ -1,3 +1,9 @@
+## 5.0.2
+
+### Bug Fixes
+
+- Fix the appearance of unstyled buttons to appear visually identical to a link.
+
 ## 5.0.1
 
 ### Bug Fixes
