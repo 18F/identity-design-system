@@ -5,5 +5,6 @@ module.exports = {
     },
     "concurrency": 10,
     "standard": "WCAG2AA",
+    "runners": ["axe"],
   }
 }
