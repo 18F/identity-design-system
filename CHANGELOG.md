@@ -1,3 +1,9 @@
+## 5.0.3
+
+### Bug Fixes
+
+- Fix font weight appearance of unstyled buttons in content which applies anti-aliased font smoothing.
+
 ## 5.0.2
 
 ### Bug Fixes
