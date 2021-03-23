@@ -20,6 +20,13 @@
   @include button-unstyled;
   position: relative;
 
+  // If upstream USWDS changes are merged to revise default behavior of unstyled font smoothing
+  // reset, these styles could be safely removed.
+  //
+  // See: https://github.com/uswds/uswds/pull/4115
+  -moz-osx-font-smoothing: inherit;
+  -webkit-font-smoothing: inherit;
+
   // USWDS currently only sets hover and active unstyled button styles for the browser-native
   // states, and not with the modifier classes. It also does not apply these styles to the disabled
   // button, allowing some background color to bleed through. These overrides may be removed if an
