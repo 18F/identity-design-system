@@ -35,7 +35,7 @@
   padding-bottom: units(1.5);
 }
 
-a.active {
+li > .active {
   color: $theme-color-primary-dark;
   font-weight: bold;  
 }
