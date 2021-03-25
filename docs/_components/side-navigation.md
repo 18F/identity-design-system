@@ -4,6 +4,7 @@ lead: >
   Hierarchical, vertical navigation to place at the side of a page. This should correspond to other headers on the page.
 ---
 
+{% include helpers/base-component.html component="side-navigation" stylesheet="sidenav" %}
 ## Single level
 {% capture example %}
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
