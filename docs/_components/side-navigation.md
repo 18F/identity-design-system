@@ -6,7 +6,7 @@ lead: >
 
 ## Single level
 {% capture example %}
-    <nav aria-label="example nav" class="tablet:grid-col-4">
+    <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
       <ul class="usa-sidenav">
         <li class="usa-sidenav__item">
           <a href="{{ page.url }}" class="usa-current">Current page</a>
@@ -25,7 +25,7 @@ lead: >
 ## Two levels
 
 {% capture example %}
-    <nav aria-label="example nav" class="tablet:grid-col-4">
+    <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
       <ul class="usa-sidenav">
         <li class="usa-sidenav__item">
           <a href="{{ page.url }}" class="usa-current">Current page</a>
@@ -49,7 +49,7 @@ lead: >
 ## Three levels
 
 {% capture example %}
-    <nav aria-label="example nav" class="tablet:grid-col-4">
+    <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
       <ul class="usa-accordion usa-sidenav">
         <li class="usa-sidenav__item">
           <a href="{{ page.url }}" class="usa-current usa-parent">Current page</a>

@@ -34,3 +34,14 @@
   padding-top: units(1.5);
   padding-bottom: units(1.5);
 }
+
+a.active {
+  color: $theme-color-primary-dark;
+  font-weight: bold;  
+}
+
+.sidenav {
+  ul {
+    border: none;
+  }
+}
