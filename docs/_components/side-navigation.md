@@ -32,7 +32,7 @@ lead: >
       <a href="{{ page.url }}" class="usa-current">Current page</a>
       <ul class="usa-sidenav__sublist">
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}" class="active">Child link</a>
+          <a href="{{ page.url }}" class="usa-current">Child link</a>
         </li>
         <li class="usa-sidenav__item">
           <a href="{{ page.url }}">Child link</a>
@@ -59,7 +59,7 @@ lead: >
           <a href="{{ page.url }}">Child link</a>
           <ul class="usa-sidenav__sublist">
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}" class="active">Grandchild link</a>
+          <a href="{{ page.url }}" class="usa-current">Grandchild link</a>
         </li>
         <li class="usa-sidenav__item">
           <a href="{{ page.url }}">Grandchild link</a>
