@@ -35,7 +35,9 @@
   padding-bottom: units(1.5);
 }
 
-li > .active {
+.usa-sidenav__sublist .usa-current {
+  @include remove-bar;
+  background-color: color('white');
   color: $theme-color-primary-dark;
   font-weight: bold;
 }
