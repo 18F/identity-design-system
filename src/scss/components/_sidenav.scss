@@ -1,7 +1,4 @@
 .usa-sidenav {
-  @include u-border(1px, 'base-lighter');
-  border-radius: radius('md');
-
   a {
     padding: units(2);
 
@@ -40,10 +37,4 @@
   background-color: color('white');
   color: $theme-color-primary-dark;
   font-weight: bold;
-}
-
-.sidenav {
-  ul {
-    border: none;
-  }
 }
