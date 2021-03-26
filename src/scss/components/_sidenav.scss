@@ -10,7 +10,7 @@
 
   .usa-current {
     background-color: color('primary-lightest');
-    color: unset;
+    color: #205493;
 
     @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 'pill', 0, 0);
 
