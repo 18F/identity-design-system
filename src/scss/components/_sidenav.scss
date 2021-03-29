@@ -33,9 +33,6 @@
 
 .usa-sidenav__sublist .usa-current {
   @include remove-bar;
-  background-color: color('white');
-  color: $theme-color-primary-dark;
-  font-weight: bold;
 }
 
 .usa-sidenav__sublist .usa-sidenav__item {
