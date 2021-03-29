@@ -7,7 +7,7 @@ lead: >
 {% include helpers/base-component.html component="side-navigation" stylesheet="sidenav" %}
 ## Single level
 {% capture example %}
-<nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
+<nav aria-label="Secondary navigation" class="tablet:grid-col-4">
   <ul class="usa-sidenav">
     <li class="usa-sidenav__item usa-parent">
       <a href="" class="usa-current">Current page</a>
@@ -26,7 +26,7 @@ lead: >
 ## Two levels
 
 {% capture example %}
-<nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
+<nav aria-label="Secondary navigation" class="tablet:grid-col-4">
   <ul class="usa-sidenav">
     <li class="usa-sidenav__item usa-parent">
       <a href="" class="usa-current">Current page</a>
@@ -50,7 +50,7 @@ lead: >
 ## Three levels
 
 {% capture example %}
-<nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
+<nav aria-label="Secondary navigation" class="tablet:grid-col-4">
   <ul class="usa-accordion usa-sidenav">
     <li class="usa-sidenav__item usa-parent">
       <a href="" class="usa-current">Current page</a>
