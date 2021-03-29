@@ -10,13 +10,13 @@ lead: >
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
   <ul class="usa-sidenav">
     <li class="usa-sidenav__item usa-parent">
-      <a href="{{ page.url }}" class="usa-current">Current page</a>
+      <a href="" class="usa-current">Current page</a>
     </li>
     <li class="usa-sidenav__item usa-parent">
-      <a href="{{ page.url }}">Parent link</a>
+      <a href="">Parent link</a>
     </li>
     <li class="usa-sidenav__item usa-parent">
-      <a href="{{ page.url }}">Parent link</a>
+      <a href="">Parent link</a>
     </li>
   </ul>
 </nav>
@@ -29,18 +29,18 @@ lead: >
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
   <ul class="usa-sidenav">
     <li class="usa-sidenav__item usa-parent">
-      <a href="{{ page.url }}" class="usa-current">Current page</a>
+      <a href="" class="usa-current">Current page</a>
       <ul class="usa-sidenav__sublist">
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}" class="usa-current">Child link</a>
+          <a href="" class="usa-current">Child link</a>
         </li>
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}">Child link</a>
+          <a href="">Child link</a>
         </li>           
       </ul>
     </li>
     <li class="usa-sidenav__item usa-parent">
-      <a href="{{ page.url }}">Parent link</a>
+      <a href="">Parent link</a>
     </li>
   </ul>
 </nav>
@@ -53,26 +53,26 @@ lead: >
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
   <ul class="usa-accordion usa-sidenav">
     <li class="usa-sidenav__item usa-parent">
-      <a href="{{ page.url }}" class="usa-current">Current page</a>
+      <a href="" class="usa-current">Current page</a>
       <ul class="usa-sidenav__sublist">
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}">Child link</a>
+          <a href="">Child link</a>
           <ul class="usa-sidenav__sublist">
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}" class="usa-current">Grandchild link</a>
+          <a href="" class="usa-current">Grandchild link</a>
         </li>
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}">Grandchild link</a>
+          <a href="">Grandchild link</a>
         </li>           
       </ul>
         </li>
         <li class="usa-sidenav__item">
-          <a href="{{ page.url }}">Child link</a>
+          <a href="">Child link</a>
         </li>           
       </ul>
     </li>
     <li class="usa-sidenav__item usa-parent">
-      <a href="{{ page.url }}">Parent link</a>
+      <a href="">Parent link</a>
     </li>
   </ul>
 </nav>

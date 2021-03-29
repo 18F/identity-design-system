@@ -38,3 +38,9 @@
 .usa-sidenav__sublist .usa-sidenav__item {
   border-top: 0;
 }
+
+.usa-sidenav .usa-current {
+  &:hover {
+      color: #205493;
+  }
+}
