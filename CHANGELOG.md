@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bug Fixes
+
+- Reduce the border width of the normal outline button to the intended width of `1px` (previously `2px`). The big variant of the outline button is unaffected by this change, and remains `2px`.
+
 ## 5.0.3
 
 ### Bug Fixes
