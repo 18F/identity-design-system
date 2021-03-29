@@ -1,3 +1,5 @@
+$button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
+
 .usa-button {
   line-height: 1;
 
@@ -108,6 +110,44 @@
     background-color: color('white');
     box-shadow: $button-stroke color('disabled');
     color: color('disabled');
+  }
+
+  &.usa-button--big {
+    box-shadow: $button-stroke-big color('primary');
+
+    &:not([disabled]):focus,
+    &:not([disabled]).usa-focus {
+      box-shadow: $button-stroke-big color('primary'), roundable-focus-outline-box-shadows();
+    }
+
+    &:hover,
+    &.usa-button--hover {
+      box-shadow: $button-stroke-big color('primary-dark');
+    }
+
+    &:active,
+    &.usa-button--active {
+      box-shadow: $button-stroke-big color('primary-darker');
+    }
+
+    &:disabled,
+    &.usa-button--disabled {
+      box-shadow: $button-stroke-big color('disabled');
+    }
+
+    &.usa-button--inverse {
+      box-shadow: $button-stroke-big color('base-lighter');
+
+      &:hover,
+      &.usa-button--hover {
+        box-shadow: $button-stroke-big color($theme-link-reverse-hover-color);
+      }
+
+      &:active,
+      &.usa-button--active {
+        box-shadow: $button-stroke-big color($theme-link-reverse-active-color);
+      }
+    }
   }
 }
 
