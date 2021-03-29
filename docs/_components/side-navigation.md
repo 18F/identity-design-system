@@ -9,13 +9,13 @@ lead: >
 {% capture example %}
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
   <ul class="usa-sidenav">
-    <li class="usa-sidenav__item">
+    <li class="usa-sidenav__item usa-parent">
       <a href="{{ page.url }}" class="usa-current">Current page</a>
     </li>
-    <li class="usa-sidenav__item">
+    <li class="usa-sidenav__item usa-parent">
       <a href="{{ page.url }}">Parent link</a>
     </li>
-    <li class="usa-sidenav__item">
+    <li class="usa-sidenav__item usa-parent">
       <a href="{{ page.url }}">Parent link</a>
     </li>
   </ul>
@@ -28,7 +28,7 @@ lead: >
 {% capture example %}
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
   <ul class="usa-sidenav">
-    <li class="usa-sidenav__item">
+    <li class="usa-sidenav__item usa-parent">
       <a href="{{ page.url }}" class="usa-current">Current page</a>
       <ul class="usa-sidenav__sublist">
         <li class="usa-sidenav__item">
@@ -39,7 +39,7 @@ lead: >
         </li>           
       </ul>
     </li>
-    <li class="usa-sidenav__item">
+    <li class="usa-sidenav__item usa-parent">
       <a href="{{ page.url }}">Parent link</a>
     </li>
   </ul>
@@ -52,8 +52,8 @@ lead: >
 {% capture example %}
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4 sidenav">
   <ul class="usa-accordion usa-sidenav">
-    <li class="usa-sidenav__item">
-      <a href="{{ page.url }}" class="usa-current usa-parent">Current page</a>
+    <li class="usa-sidenav__item usa-parent">
+      <a href="{{ page.url }}" class="usa-current">Current page</a>
       <ul class="usa-sidenav__sublist">
         <li class="usa-sidenav__item">
           <a href="{{ page.url }}">Child link</a>
@@ -71,7 +71,7 @@ lead: >
         </li>           
       </ul>
     </li>
-    <li class="usa-sidenav__item">
+    <li class="usa-sidenav__item usa-parent">
       <a href="{{ page.url }}">Parent link</a>
     </li>
   </ul>
