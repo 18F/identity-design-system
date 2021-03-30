@@ -41,6 +41,6 @@
 
 .usa-sidenav .usa-current {
   &:hover {
-      color: color('primary-dark');
+    color: $theme-color-primary-dark;
   }
 }
