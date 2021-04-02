@@ -11,10 +11,11 @@ The following dependencies are required to build the documentation and assets wi
 - [Ruby](.ruby-version)
 - [Node.js](.nvmrc)
 
-After satisfying the above language dependencies and cloning this repository, install package dependencies with `npm`:
+After satisfying the above language dependencies and cloning this repository, install package dependencies:
 
 ```
 npm install
+bundle install
 ```
 
 In development, build the documentation site with assets, watch source files for changes, and serve the compiled site at [localhost:4000](http://localhost:4000) by running:

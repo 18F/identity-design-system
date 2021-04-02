@@ -8,12 +8,6 @@ ifdef SITE_PREFIX
 	OUTPUT_DIR = ./_site
 endif
 
-install-jekyll: install-bundler
-	bundle check || bundle install
-
-install-bundler:
-	gem list -i bundler || gem install bundler
-
 start: start-docs start-assets
 
 start-docs:

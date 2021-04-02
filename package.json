@@ -38,7 +38,6 @@
     "test-jest": "make test-runner-jest",
     "build": "make build",
     "federalist": "npm install && make build-assets",
-    "prepare": "make install-jekyll",
     "prepublishOnly": "make lint && make clean && make build-assets build-package"
   },
   "files": [
