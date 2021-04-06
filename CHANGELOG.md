@@ -5,6 +5,7 @@
 - Reduce the border width of the normal outline button to the intended width of `1px` (previously `2px`). The big variant of the outline button is unaffected by this change, and remains `2px`.
 - Fix rounded corners on sidebar current page item.
 - Fix unintentional rounded corners on search text field.
+- Fix utility classes not always applying as expected when applied to components. For example, using `margin-` utility classes on an unstyled button would previously unexpectedly conflict with and not take precedent over the button's own margins.
 
 ## 5.0.3
 

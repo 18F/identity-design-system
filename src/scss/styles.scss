@@ -8,7 +8,9 @@
 @import 'uswds-theme/utilities';
 @import 'uswds-theme/components';
 
-@import 'uswds';
+@import 'uswds/dist/scss/packages/required';
+@import 'uswds/dist/scss/packages/global';
+@import 'uswds/dist/scss/packages/uswds-components';
 
 @import 'functions/focus';
 
@@ -27,3 +29,5 @@
 @import 'components/spinner';
 @import 'components/typography';
 @import 'components/verification-badge';
+
+@import 'uswds/dist/scss/packages/uswds-utilities';

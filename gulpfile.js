@@ -10,7 +10,6 @@ const gulpif = require('gulp-if');
 const sass = require('gulp-sass');
 const gulpStylelint = require('gulp-stylelint');
 const sourcemaps = require('gulp-sourcemaps');
-const uswds = require('uswds-gulp/config/uswds');
 const browserify = require('browserify');
 const babel = require('gulp-babel');
 const source = require('vinyl-source-stream');
@@ -124,7 +123,7 @@ gulp.task('build-sass', () => {
     .pipe(sourcemaps.init({ largeFile: true }))
     .pipe(
       sass({
-        includePaths: [PROJECT_SASS_SRC, `${uswds}/scss`, `${uswds}/scss/packages`],
+        includePaths: [PROJECT_SASS_SRC, 'node_modules'],
       }).on('error', notificationOptions.handler),
     )
     .pipe(postcss(plugins))
@@ -146,7 +145,6 @@ const underscorePrefix = () => gulpif((f) => f.basename[0] !== '_', rename({ pre
 gulp.task('copy-login-scss', () =>
   gulp
     .src([`${PROJECT_SASS_SRC}/**/*.scss`])
-    .pipe(replace("@import 'uswds'", "@import 'uswds/uswds'"))
     .pipe(replaceUrls())
     .pipe(underscorePrefix())
     .pipe(gulp.dest(SCSS_DEST)),
@@ -154,10 +152,10 @@ gulp.task('copy-login-scss', () =>
 
 gulp.task('copy-uswds-scss', () =>
   gulp
-    .src([`${uswds}/scss/**/*.scss`])
+    .src(['node_modules/uswds/dist/scss/**/*.scss'])
     .pipe(replaceUrls())
     .pipe(underscorePrefix())
-    .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
+    .pipe(gulp.dest(`${SCSS_DEST}/uswds/dist/scss`)),
 );
 
 gulp.task('copy-scss', gulp.parallel('copy-login-scss', 'copy-uswds-scss'));
