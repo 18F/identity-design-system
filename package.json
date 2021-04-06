@@ -37,8 +37,7 @@
     "test-pa11y": "make test-runner-pa11y",
     "test-jest": "make test-runner-jest",
     "build": "make build",
-    "federalist": "npm install && make build-assets",
-    "prepare": "make install-jekyll",
+    "federalist": "make build-assets",
     "prepublishOnly": "make lint && make clean && make build-assets build-package"
   },
   "files": [
