@@ -26,6 +26,14 @@ $border-width: 1px;
   }
 }
 
+[type='search'],
+.usa-search__input {
+  // Restore USWDS inherited square corners customized for `.usa-input`.
+  border-bottom-right-radius: 0;
+  border-right: none;
+  border-top-right-radius: 0;
+}
+
 .usa-select {
   @include u-border($border-width, 'primary-light');
   @include add-background-svg('arrow-down-filled');
