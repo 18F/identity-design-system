@@ -30,6 +30,7 @@ $border-width: 1px;
 .usa-search__input {
   // Restore USWDS inherited square corners customized for `.usa-input`.
   border-bottom-right-radius: 0;
+  border-right: none;
   border-top-right-radius: 0;
 }
 
