@@ -1,5 +1,9 @@
 ## Unreleased
 
+### New Features
+
+- Add support for SASS package entrypoints to limit or control loading of styles, [similar to USWDS components](https://designsystem.digital.gov/components/packages/). Available packages are `packages/required`, `packages/global`, `packages/components`, `packages/utilities-required`, and `packages/utilities` (includes `packages/utilities-required`).
+
 ### Bug Fixes
 
 - Reduce the border width of the normal outline button to the intended width of `1px` (previously `2px`). The big variant of the outline button is unaffected by this change, and remains `2px`.

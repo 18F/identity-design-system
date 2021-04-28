@@ -75,6 +75,17 @@ Use the original source scss files if your project will be extending styles â€”Â
 @import 'node_modules/identity-style-guide/dist/assets/scss/styles';
 ```
 
+If you only want to include specific parts of the design system, or if you need more fine-grained control over the load order of style sheets, you can import the individual package groupings. This can be useful if your application defines its own custom components, as you may want to load utility classes after your component stylesheets to avoid style priority conflicts.
+
+```scss
+@import 'node_modules/identity-style-guide/dist/assets/scss/packages/required';
+@import 'node_modules/identity-style-guide/dist/assets/scss/packages/global';
+@import 'node_modules/identity-style-guide/dist/assets/scss/packages/components';
+// ... load own components' styles
+@import 'node_modules/identity-style-guide/dist/assets/scss/packages/utilities';
+```
+
+
 ### Use with Rails
 
 The scss files natively support `asset-path()` out-of-the-box for ease of use with the Rails Asset Pipeline. To use with Rails, configure Rails to look for assets in both `node_modules` and the identity-style-guide module:
