@@ -121,11 +121,7 @@ gulp.task('build-sass', () => {
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(replace(/\buswds @version\b/g, `uswds v${uswdsPkg.version}`))
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(
-      sass({
-        includePaths: [PROJECT_SASS_SRC, 'node_modules'],
-      }).on('error', notificationOptions.handler),
-    )
+    .pipe(sass().on('error', notificationOptions.handler))
     .pipe(postcss(plugins))
     .pipe(gulp.dest(CSS_DEST))
     .pipe(notify(notificationOptions.success));
@@ -155,7 +151,7 @@ gulp.task('copy-uswds-scss', () =>
     .src(['node_modules/uswds/dist/scss/**/*.scss'])
     .pipe(replaceUrls())
     .pipe(underscorePrefix())
-    .pipe(gulp.dest(`${SCSS_DEST}/uswds/dist/scss`)),
+    .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
 );
 
 gulp.task('copy-scss', gulp.parallel('copy-login-scss', 'copy-uswds-scss'));
