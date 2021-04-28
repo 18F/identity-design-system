@@ -10,7 +10,6 @@ const gulpif = require('gulp-if');
 const sass = require('gulp-sass');
 const gulpStylelint = require('gulp-stylelint');
 const sourcemaps = require('gulp-sourcemaps');
-const uswds = require('uswds-gulp/config/uswds');
 const browserify = require('browserify');
 const babel = require('gulp-babel');
 const source = require('vinyl-source-stream');
@@ -99,7 +98,7 @@ gulp.task('build-js', () => {
 gulp.task('watch-js', () => gulp.watch(`${PROJECT_JS_SRC}/**/*.js`, gulp.series('build-js')));
 
 gulp.task('lint-sass', () =>
-  gulp.src(`${PROJECT_SASS_SRC}/**/*.scss`).pipe(
+  gulp.src([`${PROJECT_SASS_SRC}/**/*.scss`, `!${PROJECT_SASS_SRC}/uswds/**/*.scss`]).pipe(
     gulpStylelint({
       failAfterError: true,
       reporters: [{ formatter: 'string', console: true }],
@@ -122,11 +121,7 @@ gulp.task('build-sass', () => {
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(replace(/\buswds @version\b/g, `uswds v${uswdsPkg.version}`))
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(
-      sass({
-        includePaths: [PROJECT_SASS_SRC, `${uswds}/scss`, `${uswds}/scss/packages`],
-      }).on('error', notificationOptions.handler),
-    )
+    .pipe(sass().on('error', notificationOptions.handler))
     .pipe(postcss(plugins))
     .pipe(gulp.dest(CSS_DEST))
     .pipe(notify(notificationOptions.success));
@@ -146,7 +141,6 @@ const underscorePrefix = () => gulpif((f) => f.basename[0] !== '_', rename({ pre
 gulp.task('copy-login-scss', () =>
   gulp
     .src([`${PROJECT_SASS_SRC}/**/*.scss`])
-    .pipe(replace("@import 'uswds'", "@import 'uswds/uswds'"))
     .pipe(replaceUrls())
     .pipe(underscorePrefix())
     .pipe(gulp.dest(SCSS_DEST)),
@@ -154,13 +148,13 @@ gulp.task('copy-login-scss', () =>
 
 gulp.task('copy-uswds-scss', () =>
   gulp
-    .src([`${uswds}/scss/**/*.scss`])
+    .src(['node_modules/uswds/dist/scss/**/*.scss'])
     .pipe(replaceUrls())
     .pipe(underscorePrefix())
     .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
 );
 
-gulp.task('copy-scss', gulp.parallel('copy-login-scss', 'copy-uswds-scss'));
+gulp.task('copy-scss', gulp.series('copy-login-scss', 'copy-uswds-scss'));
 
 gulp.task('lint', gulp.parallel('lint-js', 'lint-sass'));
 
