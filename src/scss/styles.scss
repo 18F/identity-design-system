@@ -1,33 +1,4 @@
-@import 'functions/asset-path';
-
-@import 'uswds-theme/custom-styles';
-@import 'uswds-theme/general';
-@import 'uswds-theme/typography';
-@import 'uswds-theme/spacing';
-@import 'uswds-theme/color';
-@import 'uswds-theme/utilities';
-@import 'uswds-theme/components';
-
-@import 'uswds/packages/required';
-@import 'uswds/packages/global';
-@import 'uswds/packages/uswds-components';
-
-@import 'functions/focus';
-
-@import 'components/accordions';
-@import 'components/alerts';
-@import 'components/banner';
-@import 'components/buttons';
-@import 'components/cards';
-@import 'components/code';
-@import 'components/footer';
-@import 'components/general';
-@import 'components/hero';
-@import 'components/inputs';
-@import 'components/navbar';
-@import 'components/sidenav';
-@import 'components/spinner';
-@import 'components/typography';
-@import 'components/verification-badge';
-
-@import 'uswds/packages/uswds-utilities';
+@import 'packages/required';
+@import 'packages/global';
+@import 'packages/components';
+@import 'packages/utilities';
