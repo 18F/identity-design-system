@@ -154,7 +154,7 @@ gulp.task('copy-uswds-scss', () =>
     .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
 );
 
-gulp.task('copy-scss', gulp.parallel('copy-login-scss', 'copy-uswds-scss'));
+gulp.task('copy-scss', gulp.series('copy-login-scss', 'copy-uswds-scss'));
 
 gulp.task('lint', gulp.parallel('lint-js', 'lint-sass'));
 
