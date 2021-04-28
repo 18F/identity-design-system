@@ -2,7 +2,7 @@
 
 ### New Features
 
-- Add support for SASS package entrypoints to limit or control loading of styles, [similar to USWDS components](https://designsystem.digital.gov/components/packages/). Available packages are `packages/required`, `packages/global`, `packages/components`, `packages/utilities-required`, and `packages/utilities` (includes `packages/utilities-required`).
+- Add support for SASS package entrypoints to limit or control loading of styles, [similar to USWDS components](https://designsystem.digital.gov/components/packages/). Available packages are `packages/required`, `packages/global`, `packages/components`, and `packages/utilities`.
 
 ### Bug Fixes
 
