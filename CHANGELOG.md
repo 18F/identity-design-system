@@ -10,6 +10,7 @@
 - Fix rounded corners on sidebar current page item.
 - Fix unintentional rounded corners on search text field.
 - Fix utility classes not always applying as expected when applied to components. For example, using `margin-` utility classes on an unstyled button would previously unexpectedly conflict with and not take precedent over the button's own margins.
+- Fix all instances of font weight appearance of unstyled buttons in content which applies anti-aliased font smoothing. Previous bug fix attempts had still missed default `:hover` and `:active` states.
 
 ## 5.0.3
 
