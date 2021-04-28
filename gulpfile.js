@@ -98,7 +98,7 @@ gulp.task('build-js', () => {
 gulp.task('watch-js', () => gulp.watch(`${PROJECT_JS_SRC}/**/*.js`, gulp.series('build-js')));
 
 gulp.task('lint-sass', () =>
-  gulp.src(`${PROJECT_SASS_SRC}/**/*.scss`).pipe(
+  gulp.src([`${PROJECT_SASS_SRC}/**/*.scss`, `!${PROJECT_SASS_SRC}/uswds/**/*.scss`]).pipe(
     gulpStylelint({
       failAfterError: true,
       reporters: [{ formatter: 'string', console: true }],
