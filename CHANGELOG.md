@@ -1,8 +1,9 @@
-## Unreleased
+## 5.1.0
 
 ### New Features
 
 - Add support for SASS package entrypoints to limit or control loading of styles, [similar to USWDS components](https://designsystem.digital.gov/components/packages/). Available packages are `packages/required`, `packages/global`, `packages/components`, and `packages/utilities`.
+- The [Side Navigation component](https://design.login.gov/components/side-navigation/) is now documented and includes updated and improved styling. While this should not require any markup changes, you should validate that the updated styling does not conflict with any product-specific styles for side navigation.
 
 ### Bug Fixes
 
