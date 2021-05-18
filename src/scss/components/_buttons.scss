@@ -22,52 +22,6 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   @include button-unstyled;
   position: relative;
 
-  // If upstream USWDS changes are merged to revise default behavior of unstyled font smoothing
-  // reset, these styles could be safely removed.
-  //
-  // See: https://github.com/uswds/uswds/pull/4115
-  &,
-  &:hover,
-  &.usa-button--hover,
-  &:active,
-  &.usa-button--active,
-  &:disabled,
-  &.usa-button--disabled {
-    -moz-osx-font-smoothing: inherit;
-    -webkit-font-smoothing: inherit;
-  }
-
-  // USWDS currently only sets hover and active unstyled button styles for the browser-native
-  // states, and not with the modifier classes. It also does not apply these styles to the disabled
-  // button, allowing some background color to bleed through. These overrides may be removed if an
-  // upstream fix is merged.
-  //
-  // See: https://github.com/uswds/uswds/pull/4077
-  &.usa-button--hover,
-  &.usa-button--active,
-  &:disabled,
-  &.usa-button--disabled {
-    background-color: transparent;
-    box-shadow: none;
-    text-decoration: underline;
-  }
-
-  // Hover colors are already applied by USWDS via `typeset-link`, but this does not include the
-  // button modifier classes.
-  &:hover,
-  &.usa-button--hover {
-    color: color($theme-link-hover-color);
-  }
-
-  &:active,
-  &.usa-button--active {
-    color: color($theme-link-active-color);
-  }
-
-  &:disabled {
-    color: color('disabled');
-  }
-
   &.usa-button:not([disabled]):focus,
   &.usa-button:not([disabled]).usa-focus {
     box-shadow: none;

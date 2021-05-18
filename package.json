@@ -59,7 +59,7 @@
   },
   "homepage": "https://github.com/18F/identity-style-guide#readme",
   "dependencies": {
-    "uswds": "^2.9.0"
+    "uswds": "^2.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

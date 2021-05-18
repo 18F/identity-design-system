@@ -1,5 +1,5 @@
 .usa-sidenav {
-  a {
+  a:not(.usa-button) {
     padding: units(2);
 
     &:hover {
@@ -25,7 +25,7 @@
   top: units(2);
 }
 
-.usa-sidenav__sublist a {
+.usa-sidenav__sublist a:not(.usa-button) {
   padding-left: units(4);
   padding-top: units(1.5);
   padding-bottom: units(1.5);

@@ -74,81 +74,83 @@ Three text fields are the easiest way for users to enter most dates.
 
 ## Radio buttons
 
-Three styles of radio buttons are provided. Always label the grouping of items using a fieldset and legend for screen readers, using the `usa-sr-only` class. Do not use the label for visual rendering, as it has rendering quirks, unfortunately.
+Three styles of radio buttons are provided.
 
-### Simple
+### Default
 
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
+  <legend class="usa-legend">Group label</legend>
   <ul class="usa-input-list">
     <li>
-      <input id="fa61" class="usa-radio__input" type="radio" name="de1a">
-      <label for="fa61" class="usa-radio__label">Option 1</label>
+      <input id="fa61" class="usa-radio__input" type="radio" name="fa61">
+      <label for="fa61" class="usa-radio__label">Option - Unselected</label>
     </li>
     <li>
-      <input id="a786" class="usa-radio__input" type="radio" name="de1a" checked>
-      <label for="a786" class="usa-radio__label">Option 2</label>
+      <input id="a786" class="usa-radio__input" type="radio" name="a786" checked>
+      <label for="a786" class="usa-radio__label">Option - Selected</label>
     </li>
     <li>
-      <input id="b306" class="usa-radio__input" type="radio" name="de1a" disabled>
-      <label for="b306" class="usa-radio__label">Option 3</label>
+      <input id="s3vb" class="usa-radio__input usa-focus" type="radio" name="s3vb" checked>
+      <label for="s3vb" class="usa-radio__label">Option - Selected Focus</label>
+    </li>
+    <li>
+      <input id="b306" class="usa-radio__input" type="radio" name="b306" disabled>
+      <label for="b306" class="usa-radio__label">Option - Disabled</label>
     </li>
   </ul>
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Normal
+### Bordered
 
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list grid-row grid-gap-md">
-    <li class="grid-col">
-      <input id="a7e9" class="usa-radio__input" type="radio" name="a69d">
-      <label for="a7e9" class="usa-radio__label usa-radio-bordered">Option 1</label>
+  <legend class="usa-legend">Group label</legend>
+  <ul class="usa-input-list">
+    <li>
+      <input id="a7e9" class="usa-radio__input usa-radio__input--bordered" type="radio" name="a7e9">
+      <label for="a7e9" class="usa-radio__label">Option - Unselected</label>
     </li>
-    <li class="grid-col">
-      <input id="b7d5" class="usa-radio__input" type="radio" name="a69d" checked>
-      <label for="b7d5" class="usa-radio__label usa-radio-bordered">Option 2</label>
+    <li>
+      <input id="b7d5" class="usa-radio__input usa-radio__input--bordered" type="radio" name="b7d5" checked>
+      <label for="b7d5" class="usa-radio__label">Option - Selected</label>
     </li>
-    <li class="grid-col">
-      <input id="db6f" class="usa-radio__input" type="radio" name="a69d" disabled>
-      <label for="db6f" class="usa-radio__label usa-radio-bordered">Option 3</label>
+    <li>
+      <input id="rkg9" class="usa-radio__input usa-radio__input--bordered usa-focus" type="radio" name="rkg9" checked>
+      <label for="rkg9" class="usa-radio__label">Option - Selected Focus</label>
+    </li>
+    <li>
+      <input id="db6f" class="usa-radio__input usa-radio__input--bordered" type="radio" name="db6f" disabled>
+      <label for="db6f" class="usa-radio__label">Option - Disabled</label>
     </li>
   </ul>
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Large
+### Tile
 
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
+  <legend class="usa-legend">Group label</legend>
   <ul class="usa-input-list">
     <li>
-      <input id="a8c1" class="usa-radio__input" type="radio" name="d815">
-      <label for="a8c1" class="usa-radio__label usa-radio-bordered usa-radio-large">
-        <!-- Use the accurate heading level to maintain the document outline -->
-        <h4 class="usa-radio-header">Option 1</h4>
-        <p>Button support text</p>
-      </label>
+      <input id="a8c1" class="usa-radio__input usa-radio__input--tile" type="radio" name="a8c1">
+      <label for="a8c1" class="usa-radio__label">Option - Unselected<span class="usa-radio__label-description">Support text</span></label>
     </li>
     <li>
-      <input id="b4ed" class="usa-radio__input" type="radio" name="d815" checked>
-      <label for="b4ed" class="usa-radio__label usa-radio-bordered usa-radio-large">
-        <h4 class="usa-radio-header">Option 2</h4>
-        <p>Button support text</p>
-      </label>
+      <input id="b4ed" class="usa-radio__input usa-radio__input--tile" type="radio" name="b4ed" checked>
+      <label for="b4ed" class="usa-radio__label">Option - Selected<span class="usa-radio__label-description">Support text</span></label>
     </li>
     <li>
-      <input id="b93f" class="usa-radio__input" type="radio" name="d815" disabled>
-      <label for="b93f" class="usa-radio__label usa-radio-bordered usa-radio-large">
-        <h4 class="usa-radio-header">Option 3</h4>
-        <p>Button support text</p>
-      </label>
+      <input id="v9h3" class="usa-radio__input usa-radio__input--tile usa-focus" type="radio" name="v9h3" checked>
+      <label for="v9h3" class="usa-radio__label">Option - Selected Focus<span class="usa-radio__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="b93f" class="usa-radio__input usa-radio__input--tile" type="radio" name="b93f" disabled>
+      <label for="b93f" class="usa-radio__label">Option - Disabled<span class="usa-radio__label-description">Support text</span></label>
     </li>
   </ul>
 </fieldset>
@@ -157,81 +159,83 @@ Three styles of radio buttons are provided. Always label the grouping of items u
 
 ## Checkboxes
 
-Three styles of checkboxes are provided as well. Always label the grouping of items using a fieldset and legend for screen readers, using the `usa-sr-only` class. Do not use the label for visual rendering, as it has rendering quirks, unfortunately.
+Three styles of checkboxes are provided as well.
 
-### Simple
+### Default
 
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
+  <legend class="usa-legend">Group label</legend>
   <ul class="usa-input-list">
     <li>
-      <input id="dee5" class="usa-checkbox__input" type="checkbox" name="e189">
-      <label for="dee5" class="usa-checkbox__label">Option 1</label>
+      <input id="dee5" class="usa-checkbox__input" type="checkbox" name="dee5">
+      <label for="dee5" class="usa-checkbox__label">Option - Unchecked</label>
     </li>
     <li>
-      <input id="b711" class="usa-checkbox__input" type="checkbox" name="e189" checked>
-      <label for="b711" class="usa-checkbox__label">Option 2</label>
+      <input id="b711" class="usa-checkbox__input" type="checkbox" name="b711" checked>
+      <label for="b711" class="usa-checkbox__label">Option - Checked</label>
     </li>
     <li>
-      <input id="badc" class="usa-checkbox__input" type="checkbox" name="e189" disabled>
-      <label for="badc" class="usa-checkbox__label">Option 3</label>
+      <input id="ojqb" class="usa-checkbox__input usa-focus" type="checkbox" name="ojqb" checked>
+      <label for="ojqb" class="usa-checkbox__label">Option - Checked Focus</label>
+    </li>
+    <li>
+      <input id="badc" class="usa-checkbox__input" type="checkbox" name="badc" disabled>
+      <label for="badc" class="usa-checkbox__label">Option - Disabled</label>
     </li>
   </ul>
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Normal
-
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list grid-row grid-gap-md">
-    <li class="grid-col">
-      <input id="d30c" class="usa-checkbox__input" type="checkbox" name="a792">
-      <label for="d30c" class="usa-checkbox__label usa-checkbox-bordered">Option 1</label>
-    </li>
-    <li class="grid-col">
-      <input id="a123" class="usa-checkbox__input" type="checkbox" name="a792" checked>
-      <label for="a123" class="usa-checkbox__label usa-checkbox-bordered">Option 2</label>
-    </li>
-    <li class="grid-col">
-      <input id="c6b3" class="usa-checkbox__input" type="checkbox" name="a792" disabled>
-      <label for="c6b3" class="usa-checkbox__label usa-checkbox-bordered">Option 3</label>
-    </li>
-  </ul>
-</fieldset>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-
-### Large
+### Bordered
 
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>
   <ul class="usa-input-list">
     <li>
-      <input id="c288" class="usa-checkbox__input" type="checkbox" name="befb">
-      <label for="c288" class="usa-checkbox__label usa-checkbox-bordered usa-checkbox-large">
-        <!-- Use the accurate heading level to maintain the document outline -->
-        <h4 class="usa-checkbox-header">Option 1</h4>
-        <p>Button support text</p>
-      </label>
+      <input id="d30c" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="d30c">
+      <label for="d30c" class="usa-checkbox__label">Option - Unchecked</label>
     </li>
     <li>
-      <input id="e484" class="usa-checkbox__input" type="checkbox" name="befb" checked>
-      <label for="e484" class="usa-checkbox__label usa-checkbox-bordered usa-checkbox-large">
-        <h4 class="usa-checkbox-header">Option 2</h4>
-        <p>Button support text</p>
-      </label>
+      <input id="a123" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="a123" checked>
+      <label for="a123" class="usa-checkbox__label">Option - Checked</label>
     </li>
     <li>
-      <input id="ea84" class="usa-checkbox__input" type="checkbox" name="befb" disabled>
-      <label for="ea84" class="usa-checkbox__label usa-checkbox-bordered usa-checkbox-large">
-        <h4 class="usa-checkbox-header">Option 3</h4>
-        <p>Button support text</p>
-      </label>
+      <input id="xqgt" class="usa-checkbox__input usa-checkbox__input--bordered usa-focus" type="checkbox" name="xqgt" checked>
+      <label for="xqgt" class="usa-checkbox__label">Option - Checked Focus</label>
+    </li>
+    <li>
+      <input id="c6b3" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="c6b3" disabled>
+      <label for="c6b3" class="usa-checkbox__label">Option - Disabled</label>
+    </li>
+  </ul>
+</fieldset>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+### Tile
+
+{% capture example %}
+<fieldset class="usa-fieldset">
+  <legend class="usa-sr-only">Group label</legend>
+  <ul class="usa-input-list">
+    <li>
+      <input id="c288" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="c288">
+      <label for="c288" class="usa-checkbox__label">Option - Unchecked<span class="usa-checkbox__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="e484" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="e484" checked>
+      <label for="e484" class="usa-checkbox__label">Option - Checked<span class="usa-checkbox__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="afeg" class="usa-checkbox__input usa-checkbox__input--tile usa-focus" type="checkbox" name="afeg" checked>
+      <label for="afeg" class="usa-checkbox__label">Option - Checked Focus<span class="usa-checkbox__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="ea84" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="ea84" disabled>
+      <label for="ea84" class="usa-checkbox__label">Option - Disabled<span class="usa-checkbox__label-description">Support text</span></label>
     </li>
   </ul>
 </fieldset>
@@ -352,14 +356,14 @@ For radio buttons and checkboxes, simply add an error message directly after the
 <div class="usa-accordion usa-accordion--bordered">
   <h3 class="usa-accordion__heading">
     <button class="usa-accordion__button" aria-controls="errored-radio-small">
-      Radio buttons (small)
+      Radio buttons
     </button>
   </h3>
   <div id="errored-radio-small" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
+  <legend class="usa-legend">Group label</legend>
   <ul class="usa-input-list">
     <li>
       <input id="f5c3" class="usa-radio__input" type="radio" name="c8ff">
@@ -383,89 +387,15 @@ For radio buttons and checkboxes, simply add an error message directly after the
   </div>
 
   <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-radio-normal">
-      Radio buttons (normal)
-    </button>
-  </h3>
-  <div id="errored-radio-normal" class="usa-accordion__container">
-    <div class="usa-accordion__content">
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list grid-row grid-gap-md">
-    <li class="grid-col">
-      <input id="e5a0" class="usa-radio__input" type="radio" name="de9e">
-      <label for="e5a0" class="usa-radio__label usa-radio-bordered">Option 1</label>
-    </li>
-    <li class="grid-col">
-      <input id="c1a1" class="usa-radio__input" type="radio" name="de9e" checked>
-      <label for="c1a1" class="usa-radio__label usa-radio-bordered">Option 2</label>
-    </li>
-    <li class="grid-col">
-      <input id="b8da" class="usa-radio__input" type="radio" name="de9e" disabled>
-      <label for="b8da" class="usa-radio__label usa-radio-bordered">Option 3</label>
-    </li>
-  </ul>
-</fieldset>
-<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-    </div>
-    <button class="usa-accordion__close-button">Close</button>
-  </div>
-
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-radio-large">
-      Radio buttons (large)
-    </button>
-  </h3>
-  <div id="errored-radio-large" class="usa-accordion__container">
-    <div class="usa-accordion__content">
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="fdf0" class="usa-radio__input" type="radio" name="ceb9">
-      <label for="fdf0" class="usa-radio__label usa-radio-bordered usa-radio-large">
-        <!-- Use the accurate heading level to maintain the document outline -->
-        <h4 class="usa-radio-header">Option 1</h4>
-        <p>Button support text</p>
-      </label>
-    </li>
-    <li>
-      <input id="d546" class="usa-radio__input" type="radio" name="ceb9" checked>
-      <label for="d546" class="usa-radio__label usa-radio-bordered usa-radio-large">
-        <h4 class="usa-radio-header">Option 2</h4>
-        <p>Button support text</p>
-      </label>
-    </li>
-    <li>
-      <input id="b2bb" class="usa-radio__input" type="radio" name="ceb9" disabled>
-      <label for="b2bb" class="usa-radio__label usa-radio-bordered usa-radio-large">
-        <h4 class="usa-radio-header">Option 3</h4>
-        <p>Button support text</p>
-      </label>
-    </li>
-  </ul>
-</fieldset>
-<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-    </div>
-    <button class="usa-accordion__close-button">Close</button>
-  </div>
-
-  <h3 class="usa-accordion__heading">
     <button class="usa-accordion__button" aria-controls="errored-checkbox-small">
-      Checkboxes (small)
+      Checkboxes
     </button>
   </h3>
   <div id="errored-checkbox-small" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
+  <legend class="usa-legend">Group label</legend>
   <ul class="usa-input-list">
     <li>
       <input id="f5c1" class="usa-checkbox__input" type="checkbox" name="b851">
@@ -478,80 +408,6 @@ For radio buttons and checkboxes, simply add an error message directly after the
     <li>
       <input id="c30e" class="usa-checkbox__input" type="checkbox" name="b851" disabled>
       <label for="c30e" class="usa-checkbox__label">Option 3</label>
-    </li>
-  </ul>
-</fieldset>
-<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-    </div>
-    <button class="usa-accordion__close-button">Close</button>
-  </div>
-
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-checkbox-normal">
-      Checkboxes (normal)
-    </button>
-  </h3>
-  <div id="errored-checkbox-normal" class="usa-accordion__container">
-    <div class="usa-accordion__content">
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list grid-row grid-gap-md">
-    <li class="grid-col">
-      <input id="ac05" class="usa-checkbox__input" type="checkbox" name="a4b3">
-      <label for="ac05" class="usa-checkbox__label usa-checkbox-bordered">Option 1</label>
-    </li>
-    <li class="grid-col">
-      <input id="bce9" class="usa-checkbox__input" type="checkbox" name="a4b3" checked>
-      <label for="bce9" class="usa-checkbox__label usa-checkbox-bordered">Option 2</label>
-    </li>
-    <li class="grid-col">
-      <input id="a677" class="usa-checkbox__input" type="checkbox" name="a4b3" disabled>
-      <label for="a677" class="usa-checkbox__label usa-checkbox-bordered">Option 3</label>
-    </li>
-  </ul>
-</fieldset>
-<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-    </div>
-    <button class="usa-accordion__close-button">Close</button>
-  </div>
-
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-checkbox-large">
-      Checkboxes (large)
-    </button>
-  </h3>
-  <div id="errored-checkbox-large" class="usa-accordion__container">
-    <div class="usa-accordion__content">
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="b340" class="usa-checkbox__input" type="checkbox" name="b998">
-      <label for="b340" class="usa-checkbox__label usa-checkbox-bordered usa-checkbox-large">
-        <!-- Use the accurate heading level to maintain the document outline -->
-        <h4 class="usa-checkbox-header">Option 1</h4>
-        <p>Button support text</p>
-      </label>
-    </li>
-    <li>
-      <input id="aafb" class="usa-checkbox__input" type="checkbox" name="b998" checked>
-      <label for="aafb" class="usa-checkbox__label usa-checkbox-bordered usa-checkbox-large">
-        <h4 class="usa-checkbox-header">Option 2</h4>
-        <p>Button support text</p>
-      </label>
-    </li>
-    <li>
-      <input id="dc6c" class="usa-checkbox__input" type="checkbox" name="b998" disabled>
-      <label for="dc6c" class="usa-checkbox__label usa-checkbox-bordered usa-checkbox-large">
-        <h4 class="usa-checkbox-header">Option 3</h4>
-        <p>Button support text</p>
-      </label>
     </li>
   </ul>
 </fieldset>

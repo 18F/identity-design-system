@@ -33,7 +33,12 @@
 }
 
 .usa-banner__button {
-  &[aria-expanded=true] {
+  &[aria-expanded='false'],
+  &[aria-expanded='true'] {
+    background-image: none;
+  }
+
+  &[aria-expanded='true'] {
     @include at-media-max('tablet') {
       &::before {
         background-color: color('primary-lighter');
@@ -42,7 +47,7 @@
   }
 
   &,
-  &[aria-expanded=true] {
+  &[aria-expanded='true'] {
     @include at-media('tablet') {
       &::after,
       &:hover::after {

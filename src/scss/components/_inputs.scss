@@ -1,6 +1,15 @@
+$theme-input-tile-background-color: 'transparent'; // https://github.com/uswds/uswds/pull/4199
+$theme-input-bordered-background-color: $theme-input-tile-background-color;
+$theme-input-bordered-background-color-selected: $theme-input-tile-background-color-selected;
+$theme-input-bordered-border-radius: $theme-input-tile-border-radius;
+$theme-input-bordered-border-width: $theme-input-tile-border-width;
+$theme-input-bordered-border-color: $theme-input-tile-border-color;
+$theme-input-bordered-border-color-selected: $theme-input-tile-border-color-selected;
+
 $input-padding: 1;
-$icon-size: 3;
+$icon-size: 2;
 $border-width: 1px;
+$checkbox-radio-size: .875rem;
 
 .usa-input,
 .usa-textarea {
@@ -9,6 +18,7 @@ $border-width: 1px;
   background-color: color('primary-lightest');
   border-radius: radius('md');
 
+  &.usa-focus,
   &:focus {
     @include disable-default-focus-styles;
     box-shadow: roundable-focus-outline-box-shadows();
@@ -20,7 +30,7 @@ $border-width: 1px;
     background-size: units($icon-size);
 
     &:not(.usa-input--inline) {
-      @include add-background-svg('alerts/error');
+      @include add-background-svg('usa-icons/error');
       padding-right: units(2 * $input-padding) + units($icon-size);
     }
   }
@@ -38,6 +48,8 @@ $border-width: 1px;
   @include u-border($border-width, 'primary-light');
   @include add-background-svg('arrow-down-filled');
   font-weight: font-weight('bold');
+  background-position: right .75rem center;
+  background-size: units(1);
   border-radius: radius('md');
 
   &:focus {
@@ -76,89 +88,87 @@ $border-width: 1px;
 .usa-checkbox__label::before {
   background-color: color('primary-lightest');
   box-shadow: inset 0 0 0 units($border-width) color('primary');
-  height: units(2);
-  width: units(2);
+  height: $checkbox-radio-size;
+  line-height: $checkbox-radio-size;
   margin-left: units(.5);
-  line-height: 1;
-}
-
-.usa-checkbox-label::before {
-  border-radius: radius('md');
+  // Margin = Default margin + difference from default width, with custom offset, on one side.
+  margin-right: units($input-select-margin-right) + (units($theme-input-select-size) - $checkbox-radio-size - units(.5)) / 2;
+  width: $checkbox-radio-size;
 }
 
 .usa-radio__input:disabled + .usa-radio__label::before,
-.usa-checkbox-input:disabled + .usa-checkbox-label::before {
+.usa-checkbox__input:disabled + .usa-checkbox__label::before {
   background-color: color('white');
   box-shadow: inset 0 0 0 units($border-width) color('disabled');
 }
 
-.usa-radio__input:checked + .usa-radio__label::before {
-  background-color: color('white');
-  box-shadow: inset 0 0 0 0.3rem color('primary');
+.usa-checkbox__input:checked + .usa-checkbox__label::before,
+.usa-checkbox__input:checked:disabled + .usa-checkbox__label::before {
+  background-size: units(1) auto;
 }
 
-.usa-checkbox-input:checked + .usa-checkbox-label::before {
+.usa-radio__input:checked + .usa-radio__label::before {
+  background-color: color('white');
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px color('primary');
+}
+
+.usa-checkbox__input:checked + .usa-checkbox__label::before {
   box-shadow: inset 0 0 0 units($border-width) color('primary');
 }
 
+.usa-radio__input:checked.usa-focus + .usa-radio__label::before,
 .usa-radio__input:checked:focus + .usa-radio__label::before {
   @include disable-default-focus-styles;
-  box-shadow: inset 0 0 0 0.3rem color('primary'), roundable-focus-outline-box-shadows();
+  box-shadow: inset 0 0 0 3px color('primary'),
+    roundable-focus-outline-box-shadows($width: 1px);
 }
 
-.usa-checkbox-input:focus + .usa-checkbox-label::before {
+.usa-checkbox__input.usa-focus + .usa-checkbox__label::before,
+.usa-checkbox__input:focus + .usa-checkbox__label::before {
   @include disable-default-focus-styles;
-  box-shadow: inset 0 0 0 units($border-width) color('primary'), roundable-focus-outline-box-shadows();
+  box-shadow: inset 0 0 0 units($border-width) color('primary'),
+    roundable-focus-outline-box-shadows($offset: .5px, $width: 1px);
 }
 
-.usa-checkbox-input:checked:focus + .usa-checkbox-label::before {
-  box-shadow: roundable-focus-outline-box-shadows();
+.usa-checkbox__input:checked.usa-focus + .usa-checkbox__label::before,
+.usa-checkbox__input:checked:focus + .usa-checkbox__label::before {
+  box-shadow: roundable-focus-outline-box-shadows($offset: .5px, $width: 1px);
 }
 
-.usa-radio-bordered,
-.usa-checkbox-bordered {
-  @include u-border($border-width, 'primary-light');
-  border-radius: radius('lg');
-  background-color: color('white');
-  color: color('primary');
-  padding: units(1) units(2) units(1) units(5);
-  display: block;
+.usa-checkbox__input--tile + .usa-checkbox__label,
+.usa-radio__input--tile + .usa-radio__label {
+  @include u-text('primary', 'bold');
+  @include u-display('block');
+  background-color: color($theme-input-tile-background-color); // https://github.com/uswds/uswds/pull/4178
   max-width: units($theme-input-max-width);
-
-  &:hover {
-    background-color: color('primary-lightest');
-
-    &::before {
-      background-color: color('white');
-    }
-  }
 }
 
-.usa-radio__input:disabled + .usa-radio-bordered:hover,
-.usa-checkbox-input:disabled + .usa-checkbox-bordered:hover {
-  background-color: color('white');
+.usa-radio__input--bordered + .usa-radio__label,
+.usa-checkbox__input--bordered + .usa-checkbox__label {
+  @include u-display('table'); // Margin collapse of a "block" while retaining collapsed width.
+  background-color: color($theme-input-bordered-background-color);
+  border: units($theme-input-bordered-border-width) solid color($theme-input-bordered-border-color);
+  border-radius: radius($theme-input-bordered-border-radius);
+  margin: units(1) 0;
+  max-width: units($theme-input-max-width);
+  padding: units(1) units(2) units(1) units(5);
 }
 
-.usa-radio__input:checked + .usa-radio-bordered,
-.usa-checkbox-input:checked + .usa-checkbox-bordered {
-  background-color: color('primary-lightest');
-  border-color: color('primary');
+.usa-checkbox__input--bordered:checked + .usa-checkbox__label,
+.usa-radio__input--bordered:checked + .usa-radio__label {
+  background-color: color($theme-input-bordered-background-color-selected);
+  border-color: color($theme-input-bordered-border-color-selected);
 }
 
-.usa-radio-large,
-.usa-checkbox-large {
-  color: color('ink');
-  padding: units(3) units(3) units(3) units(8);
-  margin-bottom: units(2);
-  text-indent: 0;
-  width: 100%;
-
-  &::before {
-    position: absolute;
-    top: units(3);
-    left: units(3);
-    margin-top: units(1px);
-  }
+.usa-checkbox__label-description,
+.usa-radio__label-description {
+  @include typeset(
+    $theme-body-font-family,
+    $theme-body-font-size,
+    $theme-body-line-height
+  );
+  @include u-text('ink', 'normal');
 }
 
 .usa-radio-header,
@@ -171,11 +181,6 @@ $border-width: 1px;
   & + * {
     margin-top: units(.5);
   }
-}
-
-.usa-radio__input:disabled + .usa-radio-large .usa-radio-header,
-.usa-checkbox-input:disabled + .usa-checkbox-large .usa-checkbox-header {
-  color: color('disabled');
 }
 
 .usa-legend {
@@ -202,9 +207,9 @@ $border-width: 1px;
   color: color('error');
 
   &.usa-error-message--with-icon {
-    @include add-background-svg('alerts/error');
+    @include add-background-svg('usa-icons/error');
     background-position: 0 center;
     background-size: units($icon-size);
-    padding-left: units($icon-size);
+    padding-left: units($icon-size * 1.5);
   }
 }

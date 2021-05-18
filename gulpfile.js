@@ -2,7 +2,6 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const gulp = require('gulp');
 const notify = require('gulp-notify');
-const uswdsPkg = require('uswds/package.json');
 const postcss = require('gulp-postcss');
 const replace = require('gulp-replace');
 const rename = require('gulp-rename');
@@ -119,7 +118,6 @@ gulp.task('build-sass', () => {
 
   const stream = gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
-    .pipe(replace(/\buswds @version\b/g, `uswds v${uswdsPkg.version}`))
     .pipe(sourcemaps.init({ largeFile: true }))
     .pipe(sass().on('error', notificationOptions.handler))
     .pipe(postcss(plugins))
