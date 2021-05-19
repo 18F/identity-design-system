@@ -96,6 +96,10 @@ $checkbox-radio-size: .875rem;
   width: $checkbox-radio-size;
 }
 
+.usa-radio__label::before {
+  border-radius: 50%;
+}
+
 .usa-radio__input:disabled + .usa-radio__label::before,
 .usa-checkbox__input:disabled + .usa-checkbox__label::before {
   background-color: color('white');
@@ -109,7 +113,6 @@ $checkbox-radio-size: .875rem;
 
 .usa-radio__input:checked + .usa-radio__label::before {
   background-color: color('white');
-  border-radius: 50%;
   box-shadow: inset 0 0 0 3px color('primary');
 }
 
