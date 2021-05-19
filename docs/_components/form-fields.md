@@ -87,6 +87,10 @@ Three styles of radio buttons are provided.
       <label for="fa61" class="usa-radio__label">Option - Unselected</label>
     </li>
     <li>
+      <input id="zeh4" class="usa-radio__input usa-focus" type="radio" name="zeh4">
+      <label for="zeh4" class="usa-radio__label">Option - Unselected Focus</label>
+    </li>
+    <li>
       <input id="a786" class="usa-radio__input" type="radio" name="a786" checked>
       <label for="a786" class="usa-radio__label">Option - Selected</label>
     </li>
@@ -114,8 +118,12 @@ Three styles of radio buttons are provided.
       <label for="a7e9" class="usa-radio__label">Option - Unselected</label>
     </li>
     <li>
-      <input id="b7d5" class="usa-radio__input usa-radio__input--bordered" type="radio" name="b7d5" checked>
-      <label for="b7d5" class="usa-radio__label">Option - Selected</label>
+      <input id="a7e9" class="usa-radio__input usa-radio__input--bordered usa-focus" type="radio" name="a7e9">
+      <label for="a7e9" class="usa-radio__label">Option - Unselected Focus</label>
+    </li>
+    <li>
+      <input id="ahfa" class="usa-radio__input usa-radio__input--bordered" type="radio" name="ahfa" checked>
+      <label for="ahfa" class="usa-radio__label">Option - Selected</label>
     </li>
     <li>
       <input id="rkg9" class="usa-radio__input usa-radio__input--bordered usa-focus" type="radio" name="rkg9" checked>
@@ -139,6 +147,10 @@ Three styles of radio buttons are provided.
     <li>
       <input id="a8c1" class="usa-radio__input usa-radio__input--tile" type="radio" name="a8c1">
       <label for="a8c1" class="usa-radio__label">Option - Unselected<span class="usa-radio__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="t6wh" class="usa-radio__input usa-radio__input--tile usa-focus" type="radio" name="t6wh">
+      <label for="t6wh" class="usa-radio__label">Option - Unselected Focus<span class="usa-radio__label-description">Support text</span></label>
     </li>
     <li>
       <input id="b4ed" class="usa-radio__input usa-radio__input--tile" type="radio" name="b4ed" checked>
@@ -172,6 +184,10 @@ Three styles of checkboxes are provided as well.
       <label for="dee5" class="usa-checkbox__label">Option - Unchecked</label>
     </li>
     <li>
+      <input id="nhjq" class="usa-checkbox__input usa-focus" type="checkbox" name="nhjq">
+      <label for="nhjq" class="usa-checkbox__label">Option - Unchecked Focus</label>
+    </li>
+    <li>
       <input id="b711" class="usa-checkbox__input" type="checkbox" name="b711" checked>
       <label for="b711" class="usa-checkbox__label">Option - Checked</label>
     </li>
@@ -199,6 +215,10 @@ Three styles of checkboxes are provided as well.
       <label for="d30c" class="usa-checkbox__label">Option - Unchecked</label>
     </li>
     <li>
+      <input id="lipc" class="usa-checkbox__input usa-checkbox__input--bordered usa-focus" type="checkbox" name="lipc">
+      <label for="lipc" class="usa-checkbox__label">Option - Unchecked Focus</label>
+    </li>
+    <li>
       <input id="a123" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="a123" checked>
       <label for="a123" class="usa-checkbox__label">Option - Checked</label>
     </li>
@@ -224,6 +244,10 @@ Three styles of checkboxes are provided as well.
     <li>
       <input id="c288" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="c288">
       <label for="c288" class="usa-checkbox__label">Option - Unchecked<span class="usa-checkbox__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="u22j" class="usa-checkbox__input usa-checkbox__input--tile usa-focus" type="checkbox" name="u22j">
+      <label for="u22j" class="usa-checkbox__label">Option - Unchecked Focus<span class="usa-checkbox__label-description">Support text</span></label>
     </li>
     <li>
       <input id="e484" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="e484" checked>
