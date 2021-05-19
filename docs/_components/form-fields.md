@@ -118,8 +118,8 @@ Three styles of radio buttons are provided.
       <label for="a7e9" class="usa-radio__label">Option - Unselected</label>
     </li>
     <li>
-      <input id="a7e9" class="usa-radio__input usa-radio__input--bordered usa-focus" type="radio" name="a7e9">
-      <label for="a7e9" class="usa-radio__label">Option - Unselected Focus</label>
+      <input id="rzb8" class="usa-radio__input usa-radio__input--bordered usa-focus" type="radio" name="rzb8">
+      <label for="rzb8" class="usa-radio__label">Option - Unselected Focus</label>
     </li>
     <li>
       <input id="ahfa" class="usa-radio__input usa-radio__input--bordered" type="radio" name="ahfa" checked>
