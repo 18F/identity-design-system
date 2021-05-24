@@ -124,26 +124,26 @@ $checkbox-radio-size: .875rem;
 .usa-radio__input:focus + .usa-radio__label::before {
   @include disable-default-focus-styles;
   box-shadow: inset 0 0 0 units($border-width) color('primary'),
-    roundable-focus-outline-box-shadows($width: 1px);
+    roundable-focus-outline-box-shadows();
 }
 
 .usa-radio__input:checked.usa-focus + .usa-radio__label::before,
 .usa-radio__input:checked:focus + .usa-radio__label::before {
   @include disable-default-focus-styles;
   box-shadow: inset 0 0 0 3px color('primary'),
-    roundable-focus-outline-box-shadows($width: 1px);
+    roundable-focus-outline-box-shadows();
 }
 
 .usa-checkbox__input.usa-focus + .usa-checkbox__label::before,
 .usa-checkbox__input:focus + .usa-checkbox__label::before {
   @include disable-default-focus-styles;
   box-shadow: inset 0 0 0 units($border-width) color('primary'),
-    roundable-focus-outline-box-shadows($offset: .5px, $width: 1px);
+    roundable-focus-outline-box-shadows();
 }
 
 .usa-checkbox__input:checked.usa-focus + .usa-checkbox__label::before,
 .usa-checkbox__input:checked:focus + .usa-checkbox__label::before {
-  box-shadow: roundable-focus-outline-box-shadows($offset: .5px, $width: 1px);
+  box-shadow: roundable-focus-outline-box-shadows();
 }
 
 .usa-checkbox__input--tile + .usa-checkbox__label,

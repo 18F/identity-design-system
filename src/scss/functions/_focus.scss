@@ -2,9 +2,6 @@
   outline: none;
 }
 
-@function roundable-focus-outline-box-shadows(
-  $offset: $theme-focus-offset,
-  $width: $theme-focus-width
-) {
-  @return 0 0 0 $offset color('white'), 0 0 0 $width + $offset color($theme-focus-color);
+@function roundable-focus-outline-box-shadows() {
+  @return 0 0 0 $theme-focus-offset color('white'), 0 0 0 $theme-focus-width + $theme-focus-offset color($theme-focus-color);
 }
