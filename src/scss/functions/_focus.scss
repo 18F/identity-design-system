@@ -3,7 +3,5 @@
 }
 
 @function roundable-focus-outline-box-shadows() {
-  @return
-    0 0 0 $theme-focus-offset color('white'),
-    0 0 0 $theme-focus-width + $theme-focus-offset color($theme-focus-color);
+  @return 0 0 0 $theme-focus-offset color('white'), 0 0 0 $theme-focus-width + $theme-focus-offset color($theme-focus-color);
 }

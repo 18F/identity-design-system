@@ -1,30 +1,24 @@
-$horizontal-padding: 2;
-$vertial-padding: 1.5;
-$icon-size: 3;
+$alerts: 'success', 'warning', 'error', 'info', 'emergency';
 
 .usa-alert {
   border-radius: radius('lg');
-  padding: units($vertial-padding) units($horizontal-padding);
-  background-position: units($vertial-padding) units($horizontal-padding);
-  background-size: units($icon-size);
 
-  // Hide left border
   &::before {
-    display: none;
+    background-color: transparent;
+    background-position: center;
+    mask: none;
   }
 }
 
-.usa-alert__text:only-child {
-  margin-bottom: 0;
-  padding-top: 0;
-}
+@each $name in $alerts {
+  .usa-alert--#{$name} {
+    &::before {
+      @include add-background-svg('alerts/#{$name}');
+    }
 
-.usa-alert--success,
-.usa-alert--warning,
-.usa-alert--error,
-.usa-alert--info {
-  .usa-alert__body {
-    padding-left: units($icon-size);
+    .usa-alert__body {
+      padding-left: units($theme-alert-icon-size) + (1.5 * $alert-icon-optical-padding);
+    }
   }
 }
 
