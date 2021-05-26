@@ -2,12 +2,18 @@ $alerts: 'success', 'warning', 'error', 'info', 'emergency';
 
 .usa-alert {
   border-radius: radius('lg');
+
+  &::before {
+    background-color: transparent;
+    background-position: center;
+    mask: none;
+  }
 }
 
 @each $name in $alerts {
   .usa-alert--#{$name} {
     &::before {
-      background-color: color($name);
+      @include add-background-svg("alerts/#{$name}");
     }
 
     .usa-alert__body {

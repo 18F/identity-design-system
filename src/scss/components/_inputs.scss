@@ -30,7 +30,7 @@ $checkbox-radio-size: .875rem;
     background-size: units($icon-size);
 
     &:not(.usa-input--inline) {
-      @include add-background-svg('usa-icons/error');
+      @include add-background-svg('alerts/error');
       padding-right: units(2 * $input-padding) + units($icon-size);
     }
   }
@@ -217,7 +217,7 @@ $checkbox-radio-size: .875rem;
   color: color('error');
 
   &.usa-error-message--with-icon {
-    @include add-background-svg('usa-icons/error');
+    @include add-background-svg('alerts/error');
     background-position: 0 center;
     background-size: units($icon-size);
     padding-left: units($icon-size * 1.5);
