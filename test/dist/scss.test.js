@@ -9,7 +9,7 @@ test('scss files can be imported without node_modules', async () => {
   });
 
   expect(results.css.toString('utf-8')).toMatch(/\.usa-/);
-});
+}, 10000);
 
 test('if an asset-path function is defined, it is used to generate asset paths with $image-path and $font-path', async () => {
   const results = await util.promisify(compiler.render)({
@@ -37,4 +37,4 @@ test('if an asset-path function is defined, it is used to generate asset paths w
   expect(usaAlertWarning).toMatch(/test-path-rewritten\/test-img/);
   expect(usaInputError).toMatch(/test-path-rewritten\/test-img/);
   expect(fontFace).toMatch(/test-path-rewritten\/test-fonts/);
-});
+}, 10000);
