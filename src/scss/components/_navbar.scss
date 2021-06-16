@@ -95,6 +95,13 @@ $header-height: 10;
         color: color('ink');
       }
     }
+
+    .usa-nav__primary-item {
+      > a,
+      > .usa-nav__link {
+        @include u-padding-y(2);
+      }
+    }
   }
 
   @include at-media($theme-header-min-width) {
@@ -120,10 +127,6 @@ $header-height: 10;
       .usa-current {
         @include add-bar(0.5, 'secondary', 'bottom', 0, 1.5, 0);
         font-weight: font-weight('bold');
-
-        &:hover {
-          color: color('primary-dark');
-        }
       }
     }
 
@@ -281,12 +284,15 @@ $header-height: 10;
   }
 }
 
-// Navigation menu
+// Navigation close button
 // ---------------------------------
 
-.usa-menu__btn {
-  height: units($header-height);
+.usa-nav__close img {
+  width: units(1.5);
 }
+
+// Navigation menu
+// ---------------------------------
 
 .usa-logo__img {
   @include at-media-max($theme-header-min-width) {
