@@ -29,7 +29,3 @@ defaults:
       type: components
     values:
       sidenav: components
-  - scope:
-      type: research
-    values:
-      sidenav: research
