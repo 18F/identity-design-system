@@ -16,9 +16,6 @@ collections:
   components:
     output: true
     permalink: /:collection/:name/
-  research:
-    output: true
-    permalink: /:collection/:name/
 
 defaults:
   - scope:
