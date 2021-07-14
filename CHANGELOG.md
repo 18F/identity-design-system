@@ -4,6 +4,7 @@
 
 - USWDS is upgraded to the latest version, from v2.9.0 to v2.11.2.
   - The bordered and large styles of checkboxes and radio buttons have updated guidance to improve compatibility with the [USWDS tile style](https://designsystem.digital.gov/components/radio-buttons/). The classes `usa-radio-bordered`, `usa-radio-large`, `usa-checkbox-bordered`, and `usa-checkbox-large` have been removed. Instead, add `usa-radio__input--bordered`, `usa-radio__input--tile`, `usa-checkbox__input-bordered`, `usa-checkbox__input--tile` respectively as modifiers to the element with the class `usa-radio__input` or `usa-checkbox__input`.
+- The Accordion component no longer includes a "Close" button. Remove any instances of `<button class="usa-accordion__close-button">` in your project.
 
 ## 5.1.0
 
