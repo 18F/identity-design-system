@@ -314,7 +314,6 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -347,7 +346,6 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -369,7 +367,6 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 </div>
 
@@ -407,7 +404,6 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -439,6 +435,5 @@ For radio buttons and checkboxes, simply add an error message directly after the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 </div>
