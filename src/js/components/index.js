@@ -16,7 +16,6 @@ import timePicker from 'uswds/src/js/components/time-picker';
 import table from 'uswds/src/js/components/table';
 import tooltip from 'uswds/src/js/components/tooltip';
 import validator from 'uswds/src/js/components/validator';
-import accordionCloseButton from './accordionCloseButton';
 
 export {
   accordion,
@@ -37,5 +36,4 @@ export {
   table,
   tooltip,
   validator,
-  accordionCloseButton,
 };

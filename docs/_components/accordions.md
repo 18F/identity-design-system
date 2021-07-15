@@ -20,7 +20,6 @@ Before using an accordion, consider if their use would hinder usability. If ther
     <div class="usa-accordion__content usa-prose">
       <p>Follow this example! Mark the <code>.usa-accordion__button</code> with <code>aria-expanded="true"</code> to indicate that the content referenced with the ID listed in <code>aria-controls</code> is expanded by default, and omit the <code>hidden</code> attribute on the related <code>.usa-accordion__content</code>.</p>
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h2 class="usa-accordion__heading">
@@ -32,7 +31,6 @@ Before using an accordion, consider if their use would hinder usability. If ther
     <div class="usa-accordion__content usa-prose">
       <p>Do not mark any attributes, other than linking a header and content body by <code>aria-controls="unique-id"</code> and <code>id="unique-id"</code>. This ensures the content is accessible should JavaScript fail to load.</p>
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 
   <h2 class="usa-accordion__heading">
@@ -44,7 +42,6 @@ Before using an accordion, consider if their use would hinder usability. If ther
     <div class="usa-accordion__content usa-prose">
       <p>On the wrapping <code>.usa-accordion</code>, add the <code>aria-multiselectable="true"</code> attribute.</p>
     </div>
-    <button class="usa-accordion__close-button">Close</button>
   </div>
 </div>
 {% endcapture %}

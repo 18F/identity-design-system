@@ -47,11 +47,3 @@ test('clicking an open accordion title closes the accordion item', async () => {
 
   await expectAccordionItem('unique-id-1', { hidden: true });
 });
-
-test('clicking an accordion close button closes the accordion item', async () => {
-  await expectAccordionItem('unique-id-1', { hidden: false });
-
-  await page.click('#unique-id-1 .usa-accordion__close-button');
-
-  await expectAccordionItem('unique-id-1', { hidden: true });
-});
