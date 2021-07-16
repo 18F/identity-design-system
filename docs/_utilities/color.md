@@ -2,6 +2,8 @@
 title: Color
 lead: >
   These official colors connect the Login.gov brand across products — use them when possible.
+redirect_from:
+  - /color/
 ---
 
 The color codes listed beneath each name indicate what names can be used with the U.S. Web Design System’s color utility classes. For example:
