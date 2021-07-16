@@ -1,5 +1,4 @@
 ---
-permalink: /color/
 title: Color
 lead: >
   These official colors connect the Login.gov brand across products — use them when possible.

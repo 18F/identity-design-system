@@ -16,6 +16,9 @@ collections:
   components:
     output: true
     permalink: /:collection/:name/
+  utilities:
+    output: true
+    permalink: /:collection/:name/
 
 defaults:
   - scope:
@@ -26,3 +29,7 @@ defaults:
       type: components
     values:
       sidenav: components
+  - scope:
+      type: utilities
+    values:
+      sidenav: utilities

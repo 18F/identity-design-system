@@ -1,8 +1,7 @@
 primary:
   - href: /brand/
   - href: /content/
-  - href: /images/
-  - href: /typography/
-  - href: /color/
   - href: /components/accordions/
     text: Components
+  - href: /utilities/color/
+    text: Utilities
