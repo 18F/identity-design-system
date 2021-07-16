@@ -6,9 +6,7 @@ This repository contains the code for the Login.gov Design System. The documenta
 1. [Testing](#testing)
 1. [Deploying documentation updates](#deploying-documentation-updates)
 1. [Publishing a release to `npm`](#releases)
-1. [Use with Rails](#use-with-rails)
-1. [Use as a JavaScript package](#use-as-a-javascript-package)
-1. [Use with Jekyll](#use-with-jekyll)
+1. [Usage](#usage)
 
 ## Installation (Local)
 
@@ -90,7 +88,11 @@ Before starting, make sure that all changes intended for release should be merge
    - Use the version name as the release title.
    - Use the release notes to link to any important issues or pull requests that were addressed in the release. You may copy this from `CHANGELOG.md`.
 
-## Use with Rails
+## Usage
+
+Below are various ways to use the Login.gov Design System throughout our various products.
+
+### Ruby on Rails (Rails)
 
  The SCSS files natively support `asset-path()` out-of-the-box for ease of use with the Rails Asset Pipeline. To use with Rails, configure Rails to look for assets in both `node_modules` and the identity-style-guide module:
 
@@ -158,7 +160,7 @@ Before starting, make sure that all changes intended for release should be merge
  require("identity-style-guide/dist/assets/js/main")
  ```
 
-## Use as a JavaScript package
+### JavaScript package
 
   If you're already using a JavaScript bundler in your project, you can import specific component implementations from the `identity-style-guide` package. Most modern bundlers that support dead-code elimination will automatically optimize the bundle size to include only the code necessary in your project.
 
@@ -181,7 +183,7 @@ Before starting, make sure that all changes intended for release should be merge
   import { accordion } from 'identity-style-guide';
   ```
 
-## Use with Jekyll
+### Jekyll
 
 If you’re using Jekyll, a simple plugin can help copy this file during your build process to keep your assets up-to-date. First, add this file to `_plugins/`:
 
