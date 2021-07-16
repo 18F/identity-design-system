@@ -3,7 +3,7 @@ permalink: /
 layout: home
 title: Overview
 lead: >
-  Use the login.gov Design System when developing login.gov sites to consistently identify the login.gov brand.
+  Use the Login.gov Design System when developing Login.gov sites to consistently identify the Login.gov brand.
 ---
 
 <section class="usa-section usa-section--dark">

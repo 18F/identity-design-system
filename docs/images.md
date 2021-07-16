@@ -1,7 +1,7 @@
 ---
 permalink: /images/
 title: Images
-lead: This guidance is intended to help you use images effectively in login.gov products.
+lead: This guidance is intended to help you use images effectively in Login.gov products.
 redirect_from: /accessibility/policies/
 ---
 
