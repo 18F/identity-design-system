@@ -8,6 +8,7 @@ This repository contains the code for the Login.gov Design System. The documenta
 1. [Publishing a release to `npm`](#publishing-a-release-to-npm)
 1. [Use with Rails](#use-with-rails)
 1. [Use as a JavaScript package](#use-as-a-javascript-package)
+1. [Use with Jekyll](#use-with-jekyll)
 
 ## Installation (Local)
 
@@ -180,3 +181,44 @@ Before starting, make sure that all changes intended for release should be merge
   import 'uswds/src/js/polyfills';
   import { accordion } from 'identity-style-guide';
   ```
+
+## Use with Jekyll
+
+If you’re using Jekyll, a simple plugin can help copy this file during your build process to keep your assets up-to-date. First, add this file to `_plugins/`:
+
+```ruby
+# _plugins/copy_to_destination.rb
+
+module Jekyll
+  module CopyToDestination
+    class CopyGenerator < Generator
+      def generate(site)
+        folders = site.config['copy_to_destination'] || []
+
+        static_files = folders.map do |relative_path|
+          absolute_path = File.join(site.source, relative_path)
+          folder_path = File.dirname(absolute_path)
+          entries = Dir.glob(File.join(absolute_path, '**', '*'))
+          files = entries.select { |f| File.file?(f) }
+
+          files.map do |file|
+            relative_directory = File.dirname(file).sub(folder_path, '')
+            filename = File.basename(file)
+            StaticFile.new(site, folder_path, relative_directory, filename)
+          end
+        end.flatten
+
+        site.static_files.concat(static_files)
+      end
+    end
+  end
+end
+```
+
+Then, configure it to copy the compiled assets to your site output folder:
+
+```yaml
+# _config.yml
+
+copy_to_destination:
+  - node_modules/identity-style-guide/dist/assets
