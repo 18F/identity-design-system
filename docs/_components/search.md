@@ -10,7 +10,7 @@ lead: >
 ---
 
 ## Default
-Search should be easily found. For the default search version, consider displaying in the header and/or side navigation. 
+Search should be easily found. For the default search version, consider displaying in the header and/or side navigation.
 
 {% capture example %}
 <form accept-charset="UTF-8" action="https://search.usa.gov/search" class="usa-search usa-search--smalldisplay-flex flex-justify-center tablet:grid-col-4" method="get" role="search">

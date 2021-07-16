@@ -1,7 +1,7 @@
 ---
 title: Code formatting
 lead: >
-  Highlight code samples using the login.gov color palette.
+  Highlight code samples using the Login.gov color palette.
 ---
 
 Any pygments-compatible syntax highlighter will produce markup that is compatible with the code highlighting classes included.

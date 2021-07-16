@@ -3,7 +3,7 @@ permalink: /
 layout: home
 title: Overview
 lead: >
-  Use the login.gov Design System when developing login.gov sites to consistently identify the login.gov brand.
+  Use the Login.gov Design System when developing Login.gov sites to consistently identify the Login.gov brand.
 ---
 
 <section class="usa-section usa-section--dark">
@@ -14,7 +14,7 @@ lead: >
           The key to a strong brand <br>is <span class="text-accent-cool">consistency</span>.
         </div>
         <p class="usa-intro">{{ page.lead }}</p>
-        <a href="https://github.com/18F/identity-style-guide#installation-local" class="usa-button usa-button--big">See install instructions on GitHub</a>
+        <a href="https://github.com/18F/identity-style-guide#configuring-for-development" class="usa-button usa-button--big">See installation instructions on GitHub</a>
       </div>
     </div>
   </div>
