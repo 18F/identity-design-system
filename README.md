@@ -28,7 +28,6 @@ In development, build the documentation site with assets, watch source files for
 
 ```
 npm start
-
 ```
 
 ## Testing
