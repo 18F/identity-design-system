@@ -5,7 +5,7 @@ This repository contains the code for the Login.gov Design System. The documenta
 1. [Installation](#installation-local)
 1. [Testing](#testing)
 1. [Deploying documentation updates](#deploying-documentation-updates)
-1. [Publishing a release to `npm`](#publishing-a-release-to-npm)
+1. [Publishing a release to `npm`](#releases)
 1. [Use with Rails](#use-with-rails)
 1. [Use as a JavaScript package](#use-as-a-javascript-package)
 1. [Use with Jekyll](#use-with-jekyll)
