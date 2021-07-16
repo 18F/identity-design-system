@@ -2,7 +2,7 @@
 
 This repository contains the code for the Login.gov Design System. The documentation in here includes resources for both how to install locally, but also in various development environments.
 
-1. [Installation](#installation)
+1. [Installation](#installation-local)
 1. [Testing](#testing)
 1. [Deploying documentation updates](#deploying-documentation-updates)
 1. [Publishing a release to `npm`](#publishing-a-release-to-npm)
