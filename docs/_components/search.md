@@ -15,7 +15,7 @@ Search should be easily found. For the default search version, consider displayi
 {% capture example %}
 <form accept-charset="UTF-8" action="https://search.usa.gov/search" class="usa-search usa-search--smalldisplay-flex flex-justify-center tablet:grid-col-4" method="get" role="search">
   <input name="utf8" type="hidden" value="&#x2713;"/>
-  <input name="affiliate" type="hidden" value="Login.gov"/>
+  <input name="affiliate" type="hidden" value="login.gov"/>
   <label class="usa-sr-only" for="search-field-header-nav">Search</label>
   <input class="usa-input" id="search-field-header-nav" name="query" type="search">
   <button class="usa-button" type="submit">
