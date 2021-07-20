@@ -64,6 +64,7 @@ Login.gov’s voice is&hellip;
 
 |Correct term or phrase   	|Common errors   	|More information   	|
 |---	|---	|---	|
+|Login.gov   	|Login; login.gov; Login.Gov; LOGIN.gov; LOGIN  	|The “L” in Login.gov is always capitalized. Previous guidance suggested the “L” only be capitalized when at the beginning of a sentence.   	|
 |Online identity proofing, prove your identity   	|Identity verification, verify your identity,   	|   	|
 |two-factor authentication (2FA)   	|multi-factor authentication (MFA)   	|Always write out on first use   	|
 |authentication method   	|authentication device; secondary authentication devise; authentication factor; two-factor authenticator; security option; security method; security factor   	|   	|
