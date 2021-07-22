@@ -2,8 +2,8 @@
 title: Typography
 lead: >
   When writing longform text (a page like this), wrap the text in <code class="text-no-wrap">div.usa-prose</code> to activate these styles.
-  redirect_from:
-    - /typography/
+redirect_from:
+  - /typography/
 ---
 
 ## Display, headings, and lead
