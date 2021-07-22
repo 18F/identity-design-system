@@ -31,7 +31,7 @@ We also leverage the U.S. Web Design System’s design principles to guide our w
 
 - Are users aware of what data they are sharing, who they are sharing it with and how it is used?
 - Is language around consent for sharing their data written in [plain language](https://www.plainlanguage.gov/) and [accessible](https://login.gov/accessibility/)?
-- Does the public understand that they have the right to revoke consent of the sharing of their data?"
+- Does the public understand that they have the right to revoke consent of the sharing of their data?
 
 ## Simple, secure login for everyone.
 
