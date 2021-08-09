@@ -134,7 +134,7 @@ $theme-color-error-darker: map-get($site-palette, 'site-darkest-red');
 
 // Warning colors
 $theme-color-warning-family: 'yellow';
-$heme-color-warning-lighter: map-get($site-palette, 'site-lightest-yellow');
+$theme-color-warning-lighter: map-get($site-palette, 'site-lightest-yellow');
 $theme-color-warning-light: map-get($site-palette, 'site-lighter-yellow');
 $theme-color-warning: map-get($site-palette, 'site-yellow');
 $theme-color-warning-dark: map-get($site-palette, 'site-darker-yellow');
