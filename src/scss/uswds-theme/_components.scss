@@ -7,62 +7,37 @@
 ========================================
 ========================================
 ----------------------------------------
-USWDS THEME COMPONENT SETTINGS
+COMPONENT SETTINGS
 ----------------------------------------
--
 Read more about settings and
 USWDS style tokens in the documentation:
-https://v2.designsystem.digital.gov/style-tokens
--
+https://designsystem.digital.gov/design-tokens
 ----------------------------------------
 */
 
 // Accordion
-$theme-accordion-border-width:        '1px';
-$theme-accordion-border-color:        'primary-light';
-$theme-accordion-font-family:         'body';
+$theme-accordion-border-width: '1px';
+$theme-accordion-border-color: 'primary-light';
 
 // Alert
-$theme-alert-bar-width:               0;
-$theme-alert-font-family:             'ui';
-$theme-alert-icon-size:               2;
-$theme-alert-padding-x:               2;
-$theme-alert-padding-y:               '105';
+$theme-alert-bar-width: 0;
+$theme-alert-icon-size: 2;
+$theme-alert-padding-x: 2;
+$theme-alert-padding-y: '105';
 
 // Banner
-$theme-banner-font-family:            'ui';
+$theme-banner-background-color: 'primary-lighter';
 
 // Button
-$theme-button-font-family:            'ui';
-$theme-button-border-radius:          'md';
-$theme-button-small-width:            6;
-$theme-button-stroke-width:           1px;
+$theme-button-stroke-width: 1px;
 
 // Footer
-$theme-footer-font-family:            'body';
+$theme-footer-font-family: 'body';
 
 // Form and input
-$theme-checkbox-border-radius:        1.5px;
-$theme-form-font-family:              'ui';
-$theme-input-line-height:             3;
-$theme-input-max-width:               'mobile-lg';
+$theme-checkbox-border-radius: 1.5px;
+$theme-input-line-height: 3;
 $theme-input-tile-background-color-selected: 'primary-lightest';
-$theme-input-tile-border-radius:      'lg';
-$theme-input-tile-border-width:       1px;
-$theme-input-tile-border-color:       'primary-light';
-
-// Header
-$theme-header-font-family:            'ui';
-$theme-header-logo-text-width:        33%;
-
-// Navigation
-$theme-navigation-font-family:        'ui';
-$theme-navigation-min-width:          'desktop';
-
-// Search
-$theme-search-font-family:            'ui';
-$theme-search-min-width:              27ch;
-
-// Sidenav
-$theme-sidenav-current-border-width:  0.5;
-$theme-sidenav-font-family:           'ui';
+$theme-input-tile-border-radius: 'lg';
+$theme-input-tile-border-width: 1px;
+$theme-input-tile-border-color: 'primary-light';

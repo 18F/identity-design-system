@@ -1,8 +1,7 @@
 .lg-verification-badge {
-
+  @include u-radius('pill');
   background-color: map-get($site-palette, 'site-white');
   border: units(1px) solid map-get($site-palette, 'site-green');
-  border-radius: $theme-border-radius-xxl;
   box-sizing: border-box;
   display: inline-block;
   padding: units(1) units(2);
