@@ -194,18 +194,6 @@ $checkbox-radio-size: .875rem;
   @include u-text('ink', 'normal');
 }
 
-.usa-radio-header,
-.usa-checkbox-header {
-  @include typeset('sans', 7, 1);
-  display: inline-block;
-  color: color('primary');
-  margin: 0;
-
-  & + * {
-    margin-top: units(.5);
-  }
-}
-
 .usa-legend {
   @include u-font-size('sans', '2xs');
   text-transform: uppercase;
