@@ -75,6 +75,8 @@ $checkbox-radio-size: .875rem;
 .usa-radio__label,
 .usa-checkbox__label {
   @extend %block-input-general;
+  display: inline-block;
+  margin-bottom: units(1);
   text-indent: 0;
 
   &::before {
