@@ -146,23 +146,38 @@ Three styles of radio buttons are provided.
   <ul class="usa-input-list">
     <li>
       <input id="a8c1" class="usa-radio__input usa-radio__input--tile" type="radio" name="a8c1">
-      <label for="a8c1" class="usa-radio__label">Option - Unselected<span class="usa-radio__label-description">Support text</span></label>
+      <label for="a8c1" class="usa-radio__label">
+        Option - Unselected
+        <span class="usa-radio__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="t6wh" class="usa-radio__input usa-radio__input--tile usa-focus" type="radio" name="t6wh">
-      <label for="t6wh" class="usa-radio__label">Option - Unselected Focus<span class="usa-radio__label-description">Support text</span></label>
+      <label for="t6wh" class="usa-radio__label">
+        Option - Unselected Focus
+        <span class="usa-radio__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="b4ed" class="usa-radio__input usa-radio__input--tile" type="radio" name="b4ed" checked>
-      <label for="b4ed" class="usa-radio__label">Option - Selected<span class="usa-radio__label-description">Support text</span></label>
+      <label for="b4ed" class="usa-radio__label">
+        Option - Selected
+        <span class="usa-radio__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="v9h3" class="usa-radio__input usa-radio__input--tile usa-focus" type="radio" name="v9h3" checked>
-      <label for="v9h3" class="usa-radio__label">Option - Selected Focus<span class="usa-radio__label-description">Support text</span></label>
+      <label for="v9h3" class="usa-radio__label">
+        Option - Selected Focus
+        <span class="usa-radio__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="b93f" class="usa-radio__input usa-radio__input--tile" type="radio" name="b93f" disabled>
-      <label for="b93f" class="usa-radio__label">Option - Disabled<span class="usa-radio__label-description">Support text</span></label>
+      <label for="b93f" class="usa-radio__label">
+        Option - Disabled
+        <span class="usa-radio__label-description">Support text</span>
+      </label>
     </li>
   </ul>
 </fieldset>
@@ -243,23 +258,38 @@ Three styles of checkboxes are provided as well.
   <ul class="usa-input-list">
     <li>
       <input id="c288" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="c288">
-      <label for="c288" class="usa-checkbox__label">Option - Unchecked<span class="usa-checkbox__label-description">Support text</span></label>
+      <label for="c288" class="usa-checkbox__label">
+        Option - Unchecked
+        <span class="usa-checkbox__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="u22j" class="usa-checkbox__input usa-checkbox__input--tile usa-focus" type="checkbox" name="u22j">
-      <label for="u22j" class="usa-checkbox__label">Option - Unchecked Focus<span class="usa-checkbox__label-description">Support text</span></label>
+      <label for="u22j" class="usa-checkbox__label">
+        Option - Unchecked Focus
+        <span class="usa-checkbox__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="e484" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="e484" checked>
-      <label for="e484" class="usa-checkbox__label">Option - Checked<span class="usa-checkbox__label-description">Support text</span></label>
+      <label for="e484" class="usa-checkbox__label">
+        Option - Checked
+        <span class="usa-checkbox__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="afeg" class="usa-checkbox__input usa-checkbox__input--tile usa-focus" type="checkbox" name="afeg" checked>
-      <label for="afeg" class="usa-checkbox__label">Option - Checked Focus<span class="usa-checkbox__label-description">Support text</span></label>
+      <label for="afeg" class="usa-checkbox__label">
+        Option - Checked Focus
+        <span class="usa-checkbox__label-description">Support text</span>
+      </label>
     </li>
     <li>
       <input id="ea84" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="ea84" disabled>
-      <label for="ea84" class="usa-checkbox__label">Option - Disabled<span class="usa-checkbox__label-description">Support text</span></label>
+      <label for="ea84" class="usa-checkbox__label">
+        Option - Disabled
+        <span class="usa-checkbox__label-description">Support text</span>
+      </label>
     </li>
   </ul>
 </fieldset>
