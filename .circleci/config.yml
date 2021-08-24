@@ -1,13 +1,20 @@
 version: 2.1
 
+executors:
+  ruby_node_browsers:
+    docker:
+      - image: circleci/ruby:2.7-node-browsers
+        environment:
+          BUNDLER_VERSION: 2.2.20
+
 commands:
   bundle-npm-install:
     steps:
       - restore_cache:
-          key: dependency-cache-ruby-2-6-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
+          key: dependency-cache-ruby-2-7-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
       - run:
-          name: Update Bundler
-          command: gem install bundler -v "<2"
+          name: Update bundler
+          command: gem install bundler --version $BUNDLER_VERSION
       - run:
           name: Install bundle dependencies
           command: bundle check --path ~/.bundler || bundle install --path ~/.bundler
@@ -15,7 +22,7 @@ commands:
           name: Install dependencies
           command: npm ci
       - save_cache:
-          key: dependency-cache-ruby-2-6-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
+          key: dependency-cache-ruby-2-7-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.npm
             - ~/.bundler
@@ -28,8 +35,7 @@ commands:
 jobs:
   lints:
     working_directory: ~/identity-style-guide
-    docker:
-      - image: circleci/ruby:2.6-node-browsers
+    executor: ruby_node_browsers
     steps:
       - checkout
       - bundle-npm-install
@@ -38,8 +44,7 @@ jobs:
           command: npm run lint
   integration:
     working_directory: ~/identity-style-guide
-    docker:
-      - image: circleci/ruby:2.6-node-browsers
+    executor: ruby_node_browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
@@ -51,8 +56,7 @@ jobs:
           command: npm run test-jest
   visual-regression:
     working_directory: ~/identity-style-guide
-    docker:
-      - image: circleci/ruby:2.6-node-browsers
+    executor: ruby_node_browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
@@ -69,8 +73,7 @@ jobs:
           path: tmp/results
   accessibility:
     working_directory: ~/identity-style-guide
-    docker:
-      - image: circleci/ruby:2.6-node-browsers
+    executor: ruby_node_browsers
     steps:
       - checkout
       - bundle-npm-install
