@@ -3,6 +3,7 @@
 ### Improvements
 
 - Whitespace in checkbox and radio label markup will no longer cause the label text to be misplaced.
+- Margins surrounding an external link icon have been increased slightly.
 
 ## 6.0.0
 
