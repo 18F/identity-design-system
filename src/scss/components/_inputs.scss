@@ -75,7 +75,6 @@ $input-select-margin-right: 1;
 
 .usa-radio__label,
 .usa-checkbox__label {
-  @include u-font-size($theme-form-font-family, 'md');
   @extend %block-input-general;
   display: inline-block;
   margin-bottom: units(1);
@@ -92,7 +91,7 @@ $input-select-margin-right: 1;
     margin-right: 0;
     margin-top: (
       line-height($theme-form-font-family, $theme-input-line-height) *
-      font-size($theme-form-font-family, 'md') -
+      font-size($theme-form-font-family, $theme-body-font-size) -
       $checkbox-radio-size
     ) / 2;
     position: absolute;
@@ -159,12 +158,22 @@ $input-select-margin-right: 1;
 
 .usa-checkbox__input--tile + .usa-checkbox__label,
 .usa-radio__input--tile + .usa-radio__label {
+  @include u-font-size($theme-form-font-family, 'md');
   @include u-text('primary', 'bold');
   @include u-display('block');
   @include u-padding(3);
   padding-left: units(3) + $checkbox-radio-size + $input-select-margin-right;
   background-color: color($theme-input-tile-background-color); // https://github.com/uswds/uswds/pull/4178
   max-width: units($theme-input-max-width);
+
+  &::before {
+    left: units(3);
+    margin-top: (
+      line-height($theme-form-font-family, $theme-input-line-height) *
+      font-size($theme-form-font-family, 'md') -
+      $checkbox-radio-size
+    ) / 2;
+  }
 }
 
 .usa-radio__input--bordered + .usa-radio__label,
@@ -176,13 +185,10 @@ $input-select-margin-right: 1;
   margin: units(1) 0;
   max-width: units($theme-input-max-width);
   padding: units(1) units(2) units(1) #{units(2) + $checkbox-radio-size + units($input-select-margin-right)};
-}
 
-.usa-checkbox__input--tile + .usa-checkbox__label::before,
-.usa-radio__input--tile + .usa-radio__label::before,
-.usa-radio__input--bordered + .usa-radio__label::before,
-.usa-checkbox__input--bordered + .usa-checkbox__label::before {
-  left: units(3);
+  &::before {
+    left: units(2);
+  }
 }
 
 .usa-checkbox__input--bordered:checked + .usa-checkbox__label,
