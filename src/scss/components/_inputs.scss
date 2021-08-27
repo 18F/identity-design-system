@@ -1,5 +1,6 @@
-$theme-input-tile-background-color: 'transparent'; // https://github.com/uswds/uswds/pull/4199
-$theme-input-bordered-background-color: $theme-input-tile-background-color;
+$theme-input-tile-background-color-selected: 'primary-lightest';
+$theme-input-tile-border-color: 'primary-light';
+$theme-input-tile-border-color-selected: 'primary-light';
 $theme-input-bordered-background-color-selected: $theme-input-tile-background-color-selected;
 $theme-input-bordered-border-radius: $theme-input-tile-border-radius;
 $theme-input-bordered-border-width: $theme-input-tile-border-width;
@@ -75,18 +76,14 @@ $input-select-margin-right: 1;
 
 .usa-radio__label,
 .usa-checkbox__label {
-  @extend %block-input-general;
   display: inline-block;
   margin-bottom: units(1);
   padding-left: $checkbox-radio-size + units($input-select-margin-right);
-  text-indent: 0;
 
   &::before {
     background-color: color('primary-lightest');
     box-shadow: inset 0 0 0 units($border-width) color('primary');
-    display: block;
     height: $checkbox-radio-size;
-    left: 0;
     margin-left: 0;
     margin-right: 0;
     margin-top: (
@@ -94,8 +91,6 @@ $input-select-margin-right: 1;
       font-size($theme-form-font-family, $theme-body-font-size) -
       $checkbox-radio-size
     ) / 2;
-    position: absolute;
-    white-space: normal;
     width: $checkbox-radio-size;
   }
 }
@@ -163,7 +158,7 @@ $input-select-margin-right: 1;
   @include u-display('block');
   @include u-padding(3);
   padding-left: units(3) + $checkbox-radio-size + $input-select-margin-right;
-  background-color: color($theme-input-tile-background-color); // https://github.com/uswds/uswds/pull/4178
+  border-color: color($theme-input-tile-border-color);
   max-width: units($theme-input-max-width);
 
   &::before {
@@ -179,7 +174,6 @@ $input-select-margin-right: 1;
 .usa-radio__input--bordered + .usa-radio__label,
 .usa-checkbox__input--bordered + .usa-checkbox__label {
   @include u-display('table'); // Margin collapse of a "block" while retaining collapsed width.
-  background-color: color($theme-input-bordered-background-color);
   border: units($theme-input-bordered-border-width) solid color($theme-input-bordered-border-color);
   border-radius: radius($theme-input-bordered-border-radius);
   margin: units(1) 0;
@@ -195,6 +189,12 @@ $input-select-margin-right: 1;
 .usa-radio__input--bordered:checked + .usa-radio__label {
   background-color: color($theme-input-bordered-background-color-selected);
   border-color: color($theme-input-bordered-border-color-selected);
+}
+
+.usa-checkbox__input--tile:checked + .usa-checkbox__label,
+.usa-radio__input--tile:checked + .usa-radio__label {
+  background-color: color($theme-input-tile-background-color-selected);
+  border-color: color($theme-input-tile-border-color-selected);
 }
 
 .usa-checkbox__label-description,
