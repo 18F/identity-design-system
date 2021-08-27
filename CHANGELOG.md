@@ -4,6 +4,7 @@
 
 - Whitespace in checkbox and radio label markup will no longer cause the label text to be misplaced.
 - Margins surrounding an external link icon have been increased slightly.
+- Padding and label font size for tile checkboxes and radio buttons have increased slightly.
 
 ## 6.0.0
 
