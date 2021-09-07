@@ -67,6 +67,7 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "autoprefixer": "^10.2.6",
+    "babel-jest": "^27.1.0",
     "babelify": "^10.0.0",
     "browserify": "^17.0.0",
     "cssnano": "^5.0.5",
