@@ -1,3 +1,5 @@
+const { pipeline } = require('stream');
+const { ESLint } = require('eslint');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const gulp = require('gulp');
@@ -14,7 +16,6 @@ const babel = require('gulp-babel');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
-const eslint = require('gulp-eslint');
 const path = require('path');
 const pkg = require('./package.json');
 
@@ -49,14 +50,25 @@ const notificationOptions = {
   },
 };
 
-gulp.task('lint-js', () =>
-  gulp
-    .src([`${PROJECT_JS_SRC}/**/*.js`, 'test/**/*.js', '*.js'], { base: './' })
-    .pipe(eslint({ fix: process.argv.includes('--fix') }))
-    .pipe(eslint.format())
-    .pipe(gulp.dest('./'))
-    .pipe(eslint.failAfterError()),
-);
+gulp.task('lint-js', async () => {
+  const eslint = new ESLint({});
+  const formatter = await eslint.loadFormatter('stylish');
+
+  return pipeline(
+    gulp.src([`${PROJECT_JS_SRC}/**/*.js`, 'test/**/*.js', '*.js'], { base: './' }),
+    async function (files) {
+      for await (const file of files) {
+        const results = await eslint.lintText(file.contents.toString(), { filePath: file.path });
+        const errors = ESLint.getErrorResults(results);
+        if (errors.length) {
+          process.stdout.write(formatter.format(results));
+          process.exitCode = 1;
+        }
+      }
+    },
+    () => {},
+  );
+});
 
 gulp.task('build-package-cjs', () =>
   gulp
