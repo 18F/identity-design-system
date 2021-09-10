@@ -6,6 +6,10 @@
   - Note: Since the design system is meant to be an opinionated set of smart defaults, it's recommended to use restraint with variable customization, or at least consider when it may be more appropriate to adjust a setting from the design system itself in order to maintain consistency across projects.
 - Responsive variants of width utility classes are now enabled.
 
+### Improvements
+
+- Navbar link text is no longer uppercase.
+
 ## 6.1.0
 
 ### Improvements
