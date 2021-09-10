@@ -23,7 +23,7 @@ Relative image file path
 ----------------------------------------
 */
 
-$theme-image-path: if(variable-exists(image-path), $image-path, '../img');
+$theme-image-path: if(variable-exists(image-path), $image-path, '../img') !default;
 
 /*
 ----------------------------------------
@@ -34,8 +34,8 @@ mixins use nonstanard or false tokens.
 ----------------------------------------
 */
 
-$theme-show-compile-warnings: false;
-$theme-show-notifications: false;
+$theme-show-compile-warnings: false !default;
+$theme-show-notifications: false !default;
 
 /*
 ----------------------------------------
@@ -43,6 +43,6 @@ Focus styles
 ----------------------------------------
 */
 
-$theme-focus-color: 'primary';
-$theme-focus-offset: 1px;
-$theme-focus-width: 2px;
+$theme-focus-color: 'primary' !default;
+$theme-focus-offset: 1px !default;
+$theme-focus-width: 2px !default;
