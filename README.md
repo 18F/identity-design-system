@@ -108,8 +108,8 @@ Below are various ways to use the Login.gov Design System throughout our various
  ```scss
  // app/assets/stylesheets/application.css.scss
 
- $font-path: 'fonts';
- $image-path: 'img';
+ $theme-font-path: 'fonts';
+ $theme-image-path: 'img';
 
  @import 'identity-style-guide/dist/assets/scss/styles';
  ```
