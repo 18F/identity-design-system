@@ -31,18 +31,3 @@ $global-color-palettes: (
   'palette-color-default',
   'palette-color-state',
 ) !default;
-
-/*
-----------------------------------------
-Settings
-----------------------------------------
-*/
-
-$width-settings: (
-  output: true,
-  responsive: false,
-  active: false,
-  focus: false,
-  hover: false,
-  visited: false,
-) !default;

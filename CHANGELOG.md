@@ -4,6 +4,7 @@
 
 - All theme variables are now set as [default values](https://sass-lang.com/documentation/variables#default-values), allowing you to override them for per-project requirements.
   - Note: Since the design system is meant to be an opinionated set of smart defaults, it's recommended to use restraint with variable customization, or at least consider when it may be more appropriate to adjust a setting from the design system itself in order to maintain consistency across projects.
+- Responsive variants of width utility classes are now enabled.
 
 ## 6.1.0
 
