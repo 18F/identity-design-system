@@ -110,7 +110,6 @@ $header-height: 10;
       > .usa-nav__link {
         font-weight: normal;
         color: color('primary-dark');
-        text-transform: uppercase;
         @include u-padding-x(1.5);
 
         &:hover {
