@@ -3,23 +3,12 @@
   background-color: map-get($site-palette, 'site-white');
   border: units(1px) solid map-get($site-palette, 'site-green');
   box-sizing: border-box;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: units(1) units(2);
   white-space: nowrap;
 
   img {
     margin-right: units(1);
-  }
-
-  span {
-    vertical-align: text-top;
-  }
-}
-
-@media #{$theme-site-margins-breakpoint} {
-  .lg-verification-badge {
-    margin: units(-1) 0 0;
-    position: static;
-    text-align: right;
   }
 }
