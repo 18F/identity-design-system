@@ -132,7 +132,7 @@ Below are various ways to use the Login.gov Design System throughout our various
  # app/helpers/assets_helper.rb
 
  module AssetsHelper
-   def login_design_asset_path(path)
+   def design_system_asset_path(path)
      "identity-style-guide/dist/assets/#{path}"
    end
  end
@@ -141,13 +141,13 @@ Below are various ways to use the Login.gov Design System throughout our various
  ```erb
  # app/views/foo.html.erb
 
- <%= image_tag login_design_asset_path('img/us_flag_small.png'), ... %>
+ <%= image_tag design_system_asset_path('img/us_flag_small.png'), ... %>
 
  # app/views/layouts/application.html.erb
 
  <head>
    ...
-   <%= favicon_link_tag identity_asset_path('img/favicons/favicon.ico') %>
+   <%= favicon_link_tag design_system_asset_path('img/favicons/favicon.ico') %>
  </head>
  ```
 
