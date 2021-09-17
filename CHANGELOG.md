@@ -9,6 +9,7 @@
 ### Improvements
 
 - Navbar link text is no longer uppercase.
+- Visual alignment of Badge component is improved, and its markup guidance has been simplified with improved accessibility semantics.
 
 ## 6.1.0
 
