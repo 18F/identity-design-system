@@ -37,7 +37,7 @@ Install images, stylesheets, and script files in both their original and compile
 
 # Built with USWDS
 
-The {{ site.title }} is built using the <a href="https://v2.designsystem.digital.gov/" target="_blank">U.S. Web Design System</a> for a consistent appearance across government sites.
+The {{ site.title }} is built using the [U.S. Web Design System](https://designsystem.digital.gov/) for a consistent appearance across government sites.
 
 </div>
       </div>
@@ -46,7 +46,7 @@ The {{ site.title }} is built using the <a href="https://v2.designsystem.digital
 
 # A work in progress
 
-The latest version is <strong class="text-no-wrap">{{ site.package_json.this_version }}</strong> which uses <strong class="text-no-wrap">uswds@{{ site.package_json.uswds_version }}</strong>. Spot an issue? We’d love to hear about it <a href="https://github.com/18F/identity-style-guide/issues" target="_blank">on GitHub</a>.
+The latest version is <strong class="text-no-wrap">{{ site.package_json.this_version }}</strong> which uses <strong class="text-no-wrap">uswds@{{ site.package_json.uswds_version }}</strong>. Spot an issue? We’d love to hear about it [on GitHub](https://github.com/18F/identity-style-guide/issues).
 
 </div>
       </div>

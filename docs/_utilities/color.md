@@ -12,7 +12,7 @@ The color codes listed beneath each name indicate what names can be used with th
   This element has classes <code>bg-primary-lighter</code> and <code>text-primary-dark</code>.
 </div>
 
-Read more about <a href="https://v2.designsystem.digital.gov/utilities/color/" target="_blank">the U.S. Web Design System’s color utility classes</a>.
+Read more about [the U.S. Web Design System’s color utility classes](https://designsystem.digital.gov/utilities/color/).
 
 ## Featured palette
 <div class="border-top">
