@@ -24,19 +24,8 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
 
   &.usa-button:not([disabled]):focus,
   &.usa-button:not([disabled]).usa-focus {
+    @include focus-outline;
     box-shadow: none;
-
-    &::before {
-      border-radius: .125rem;
-      bottom: -5px;
-      box-shadow: 0 0 0 $theme-focus-width color($theme-focus-color);
-      content: '';
-      left: -5px;
-      pointer-events: none;
-      position: absolute;
-      right: -5px;
-      top: -5px;
-    }
   }
 }
 
