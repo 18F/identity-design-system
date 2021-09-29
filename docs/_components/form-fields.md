@@ -43,15 +43,15 @@ Three text fields are the easiest way for users to enter most dates.
   <div class="usa-memorable-date">
     <div class="usa-form-group usa-form-group--month">
       <label for="f5bf" class="usa-label">Month</label>
-      <input id="f5bf" class="usa-input usa-input--inline" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="f5bf" class="usa-input" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--day">
       <label for="b0fe" class="usa-label">Day</label>
-      <input id="b0fe" class="usa-input usa-input--inline" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="b0fe" class="usa-input" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--year">
       <label for="dc41" class="usa-label">Year</label>
-      <input id="dc41" class="usa-input usa-input--inline" aria-describedby="d7d4" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
+      <input id="dc41" class="usa-input" aria-describedby="d7d4" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
     </div>
   </div>
   <span class="usa-form-hint" id="d7d4">Example: 4 28 1986</span>
@@ -329,15 +329,15 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   <div class="usa-memorable-date">
     <div class="usa-form-group usa-form-group--month">
       <label for="e30e" class="usa-label">Month</label>
-      <input id="e30e" class="usa-input usa-input--inline usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="e30e" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--day">
       <label for="b857" class="usa-label">Day</label>
-      <input id="b857" class="usa-input usa-input--inline usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="b857" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--year">
       <label for="a5dc" class="usa-label">Year</label>
-      <input id="a5dc" class="usa-input usa-input--inline usa-input--error" aria-describedby="f9e5" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
+      <input id="a5dc" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
     </div>
   </div>
   <span class="usa-form-hint" id="f9e5">Example: 4 28 1986</span>
