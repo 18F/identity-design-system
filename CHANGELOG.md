@@ -10,7 +10,7 @@
 
 - Navbar link text is no longer uppercase.
 - Visual alignment of Badge component is improved, and its markup guidance has been simplified with improved accessibility semantics.
-- Field validation error messages now use updated styling to always display an icon as part of the error message, and not within the field itself. The modifier classes `usa-input--inline` and `usa-error-message--with-icon` no longer have any effect and can be safely removed.
+- Field validation error messages now use updated styling to always display an icon as part of the error message, and not within the field itself. The modifier classes `usa-input--inline` and `usa-error-message--with-icon` no longer have any effect and can be safely removed. ([#255](https://github.com/18F/identity-style-guide/pull/255))
 
 ## 6.1.0
 
