@@ -43,15 +43,15 @@ Three text fields are the easiest way for users to enter most dates.
   <div class="usa-memorable-date">
     <div class="usa-form-group usa-form-group--month">
       <label for="f5bf" class="usa-label">Month</label>
-      <input id="f5bf" class="usa-input usa-input--inline" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="f5bf" class="usa-input" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--day">
       <label for="b0fe" class="usa-label">Day</label>
-      <input id="b0fe" class="usa-input usa-input--inline" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="b0fe" class="usa-input" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--year">
       <label for="dc41" class="usa-label">Year</label>
-      <input id="dc41" class="usa-input usa-input--inline" aria-describedby="d7d4" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
+      <input id="dc41" class="usa-input" aria-describedby="d7d4" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
     </div>
   </div>
   <span class="usa-form-hint" id="d7d4">Example: 4 28 1986</span>
@@ -290,7 +290,7 @@ a grid row.
 
 <label for="e9a4" class="usa-label">Text input validation example</label>
 <input id="e9a4" type="text" class="usa-input usa-input--error">
-<span class="usa-error-message" role="alert">Error message text.</span>
+<span class="usa-error-message" role="alert">Error message text</span>
 
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -310,7 +310,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 {% capture example %}
 <label for="a37c" class="usa-label">Textarea (multiline) input</label>
 <textarea id="a37c" type="text" class="usa-textarea usa-input--error"></textarea>
-<span class="usa-error-message" role="alert">Error message text.</span>
+<span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -329,19 +329,19 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   <div class="usa-memorable-date">
     <div class="usa-form-group usa-form-group--month">
       <label for="e30e" class="usa-label">Month</label>
-      <input id="e30e" class="usa-input usa-input--inline usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="e30e" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--day">
       <label for="b857" class="usa-label">Day</label>
-      <input id="b857" class="usa-input usa-input--inline usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <input id="b857" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
     </div>
     <div class="usa-form-group usa-form-group--year">
       <label for="a5dc" class="usa-label">Year</label>
-      <input id="a5dc" class="usa-input usa-input--inline usa-input--error" aria-describedby="f9e5" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
+      <input id="a5dc" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
     </div>
   </div>
   <span class="usa-form-hint" id="f9e5">Example: 4 28 1986</span>
-  <span class="usa-error-message" role="alert">Error message text.</span>
+  <span class="usa-error-message" role="alert">Error message text</span>
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -363,7 +363,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   <option value="value2">Option B</option>
   <option value="value3">Option C</option>
 </select>
-<span class="usa-error-message" role="alert">Error message text.</span>
+<span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -400,7 +400,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>
@@ -431,7 +431,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
     </li>
   </ul>
 </fieldset>
-<span class="usa-error-message usa-error-message--with-icon" role="alert">Error message text.</span>
+<span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
     </div>

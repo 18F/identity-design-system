@@ -15,7 +15,7 @@ $input-select-margin-right: 1;
 
 .usa-input,
 .usa-textarea {
-  @include u-border($border-width, 'primary-light');
+  @include u-border-color('primary-light');
   font-weight: font-weight('bold');
   background-color: color('primary-lightest');
   border-radius: radius('md');
@@ -27,14 +27,7 @@ $input-select-margin-right: 1;
   }
 
   &.usa-input--error {
-    @include u-border($border-width, 'error');
-    background-position: right units($input-padding) center;
-    background-size: units($icon-size);
-
-    &:not(.usa-input--inline) {
-      @include add-background-svg('alerts/error');
-      padding-right: units(2 * $input-padding) + units($icon-size);
-    }
+    @include u-border-color('error');
   }
 }
 
@@ -47,7 +40,7 @@ $input-select-margin-right: 1;
 }
 
 .usa-select {
-  @include u-border($border-width, 'primary-light');
+  @include u-border-color('primary-light');
   @include add-background-svg('arrow-down-filled');
   font-weight: font-weight('bold');
   background-position: right .75rem center;
@@ -60,7 +53,7 @@ $input-select-margin-right: 1;
   }
 
   &.usa-input--error {
-    @include u-border($border-width, 'error');
+    @include u-border-color('error');
   }
 }
 
@@ -228,12 +221,9 @@ $input-select-margin-right: 1;
 }
 
 .usa-error-message {
+  @include add-background-svg('alerts/error');
+  background-position: 0 center;
+  background-size: units($icon-size);
   color: color('error');
-
-  &.usa-error-message--with-icon {
-    @include add-background-svg('alerts/error');
-    background-position: 0 center;
-    background-size: units($icon-size);
-    padding-left: units($icon-size * 1.5);
-  }
+  padding-left: units($icon-size * 1.5);
 }

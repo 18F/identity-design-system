@@ -2,14 +2,15 @@
 
 ### New Features
 
-- All theme variables are now set as [default values](https://sass-lang.com/documentation/variables#default-values), allowing you to override them for per-project requirements.
+- All theme variables are now set as [default values](https://sass-lang.com/documentation/variables#default-values), allowing you to override them for per-project requirements. ([#247](https://github.com/18F/identity-style-guide/pull/247))
   - Note: Since the design system is meant to be an opinionated set of smart defaults, it's recommended to use restraint with variable customization, or at least consider when it may be more appropriate to adjust a setting from the design system itself in order to maintain consistency across projects.
-- Responsive variants of width utility classes are now enabled.
+- Responsive variants of width utility classes are now enabled. ([#248](https://github.com/18F/identity-style-guide/pull/248))
 
 ### Improvements
 
-- Navbar link text is no longer uppercase.
-- Visual alignment of Badge component is improved, and its markup guidance has been simplified with improved accessibility semantics.
+- Navbar link text is no longer uppercase. ([#249](https://github.com/18F/identity-style-guide/pull/249))
+- Visual alignment of Badge component is improved, and its markup guidance has been simplified with improved accessibility semantics. ([#251](https://github.com/18F/identity-style-guide/pull/251))
+- Field validation error messages now use updated styling to always display an icon as part of the error message, and not within the field itself. The modifier classes `usa-input--inline` and `usa-error-message--with-icon` no longer have any effect and can be safely removed. ([#255](https://github.com/18F/identity-style-guide/pull/255))
 
 ## 6.1.0
 
