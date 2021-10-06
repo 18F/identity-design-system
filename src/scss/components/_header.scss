@@ -1,0 +1,7 @@
+.usa-overlay {
+  background: color('base-darker');
+
+  &.is-visible {
+    opacity: opacity(50);
+  }
+}
