@@ -2,7 +2,9 @@
 
 ### Improvements
 
-- Add Login.gov-specific configuration for the [Identifier component](https://designsystem.digital.gov/components/identifier/). ([#258])(https://github.com/18F/identity-style-guide/pull/258)
+- Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258)
+  - [Identifier component](https://designsystem.digital.gov/components/identifier/)
+  - Link colors on dark backgrounds
 
 ## 6.2.0
 
