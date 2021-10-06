@@ -2,6 +2,7 @@ title: Login.gov Design System
 description: A place for designers and developers to see components available for use on Login.gov sites.
 github_repo_url: https://github.com/18F/identity-style-guide
 url: https://federalist-proxy.app.cloud.gov/site/18f/identity-style-guide
+domain: design.login.gov
 
 source: docs
 destination: dist
@@ -22,7 +23,7 @@ collections:
 
 defaults:
   - scope:
-      path: ""
+      path: ''
     values:
       layout: main
   - scope:
