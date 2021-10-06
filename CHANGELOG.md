@@ -1,3 +1,9 @@
+## Unreleased
+
+### Improvements
+
+- Add Login.gov-specific configuration for the [Identifier component](https://designsystem.digital.gov/components/identifier/). ([#258])(https://github.com/18F/identity-style-guide/pull/258)
+
 ## 6.2.0
 
 ### New Features
