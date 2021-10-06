@@ -1,0 +1,19 @@
+.usa-search [type='submit'],
+.usa-search .usa-search__submit {
+  @include u-padding-x('105');
+  background-image: none;
+  font-size: font-size($theme-search-font-family, '2xs');
+  width: auto;
+}
+
+.usa-search .usa-search__submit-text {
+  position: static;
+}
+
+.usa-search--big [type='submit'],
+.usa-search--big .usa-search__submit {
+  @include at-media('mobile-lg') {
+    @include u-padding-x(4);
+    font-size: font-size($theme-search-font-family, 'lg');
+  }
+}
