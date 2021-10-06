@@ -160,3 +160,14 @@ $theme-color-info-darker: map-get($site-palette, 'site-darkest-teal') !default;
 $theme-color-disabled-light: map-get($site-palette, 'site-lightest-grey') !default;
 $theme-color-disabled: map-get($site-palette, 'site-disabled-grey') !default;
 $theme-color-disabled-dark: map-get($site-palette, 'site-darker-grey') !default;
+
+/*
+----------------------------------------
+General colors
+----------------------------------------
+*/
+
+// Links
+$theme-link-reverse-color: 'white' !default;
+$theme-link-reverse-hover-color: 'primary-light' !default;
+$theme-link-reverse-active-color: 'white' !default;
