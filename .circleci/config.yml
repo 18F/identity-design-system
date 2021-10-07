@@ -1,9 +1,12 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.1
+
 executors:
   ruby_node_browsers:
     docker:
-      - image: circleci/ruby:2.7-node-browsers
+      - image: cimg/ruby:2.7-browsers
         environment:
           BUNDLER_VERSION: 2.2.20
 
@@ -48,6 +51,7 @@ jobs:
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
@@ -60,6 +64,7 @@ jobs:
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
@@ -75,6 +80,7 @@ jobs:
     working_directory: ~/identity-style-guide
     executor: ruby_node_browsers
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
