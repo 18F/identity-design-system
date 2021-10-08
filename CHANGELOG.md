@@ -5,6 +5,7 @@
 - Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258)
   - [Identifier component](https://designsystem.digital.gov/components/identifier/)
   - Link colors on dark backgrounds
+- Overlay: Updated visual appearance. ([#260](https://github.com/18F/identity-style-guide/pull/260))
 
 ## 6.2.0
 
