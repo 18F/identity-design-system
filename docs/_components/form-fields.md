@@ -33,6 +33,17 @@ subnav:
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+## Format constraints
+
+When enforcing a specific text input pattern, provide a hint in the form of an example.
+
+{% capture example %}
+<label for="kvgx" class="usa-label">Social Security number</label>
+<div id="kvgx-hint" class="usa-hint">Example: 000-123-4567</div>
+<input id="kvgx" type="text" class="usa-input" aria-describedby="kvgx-hint" pattern="^\d{3}-?\d{2}-?\d{4}$">
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Dates
 
 Three text fields are the easiest way for users to enter most dates.

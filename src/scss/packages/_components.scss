@@ -1,5 +1,11 @@
 @import '../uswds/packages/uswds-components';
 
+// Elements
+// -------------------------------------
+@import '../elements/form-controls/all';
+
+// Components
+// -------------------------------------
 @import '../components/accordions';
 @import '../components/alerts';
 @import '../components/banner';
