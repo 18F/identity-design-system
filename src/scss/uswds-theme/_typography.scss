@@ -61,6 +61,34 @@ $theme-font-path: if(variable-exists(font-path), $font-path, '../fonts') !defaul
 
 /*
 ----------------------------------------
+Type-based font settings
+----------------------------------------
+Set the type-based tokens for your
+project from the following tokens,
+or from any new font tokens you added in
+$theme-typeface-tokens.
+----------------------------------------
+'georgia'
+'helvetica'
+'merriweather'
+'open-sans'
+'public-sans'
+'roboto-mono'
+'source-sans-pro'
+'system'
+'tahoma'
+'verdana'
+----------------------------------------
+*/
+
+// sans-serif
+$theme-font-type-sans: 'public-sans';
+
+// serif
+$theme-font-type-serif: 'public-sans';
+
+/*
+----------------------------------------
 Type scale
 ----------------------------------------
 Define your project's type scale using
