@@ -14,7 +14,8 @@ $checkbox-radio-size: .875rem;
 $input-select-margin-right: 1;
 
 .usa-input,
-.usa-textarea {
+.usa-textarea,
+.usa-select {
   @include u-border-color('primary-light');
   font-weight: font-weight('bold');
   background-color: color('primary-lightest');
@@ -37,24 +38,6 @@ $input-select-margin-right: 1;
   border-bottom-right-radius: 0;
   border-right: none;
   border-top-right-radius: 0;
-}
-
-.usa-select {
-  @include u-border-color('primary-light');
-  @include add-background-svg('arrow-down-filled');
-  font-weight: font-weight('bold');
-  background-position: right .75rem center;
-  background-size: units(1);
-  border-radius: radius('md');
-
-  &:focus {
-    @include disable-default-focus-styles;
-    box-shadow: roundable-focus-outline-box-shadows();
-  }
-
-  &.usa-input--error {
-    @include u-border-color('error');
-  }
 }
 
 .usa-label {

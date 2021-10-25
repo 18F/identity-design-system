@@ -5,7 +5,8 @@
 - Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258)
   - [Identifier component](https://designsystem.digital.gov/components/identifier/)
   - Link colors on dark backgrounds
-- Overlay: Updated visual appearance. ([#260](https://github.com/18F/identity-style-guide/pull/260))
+- Overlay is now shown with a lighter backdrop color. ([#260](https://github.com/18F/identity-style-guide/pull/260))
+- Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-style-guide/pull/260))
 - Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
 
 ## 6.2.0
