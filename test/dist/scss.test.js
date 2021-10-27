@@ -1,11 +1,8 @@
 const path = require('path');
-const util = require('util');
-const sass = require('sass');
+const { renderSync } = require('sass');
 
-const render = util.promisify(sass.render);
-
-test('scss files can be imported without node_modules', async () => {
-  const results = await render({
+test('scss files can be imported without node_modules', () => {
+  const results = renderSync({
     data: "@import 'assets/scss/styles';",
     includePaths: [path.resolve(__dirname, '../../dist')],
   });
@@ -13,8 +10,8 @@ test('scss files can be imported without node_modules', async () => {
   expect(results.css.toString('utf-8')).toMatch(/\.usa-/);
 }, 10000);
 
-test('if an asset-path function is defined, it is used to generate asset paths with $image-path and $font-path', async () => {
-  const results = await render({
+test('if an asset-path function is defined, it is used to generate asset paths with $image-path and $font-path', () => {
+  const results = renderSync({
     data: `
       @function asset-path($path) {
         @return 'test-path-rewritten/' + $path;
