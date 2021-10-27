@@ -78,14 +78,14 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 
 {% capture example %}
 <div class="usa-error-message" role="alert">
-  <p class="usa-alert__text">Banner text</p>
+  <p class="usa-alert__text">This is an inline error message</p>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 {% capture example %}
 <div class="usa-success-message" role="alert">
-  <p class="usa-alert__text">Banner text</p>
+  <p class="usa-alert__text">This is an inline success message</p>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
