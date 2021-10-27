@@ -205,9 +205,9 @@ $input-select-margin-right: 1;
 
 .usa-error-message, .usa-success-message {
   @include u-padding-y(0.5);
-  background-position: 0 .5em;   
+  background-position: 0 .5em;
   background-size: units($icon-size);
-  font-weight: font-weight('bold');  
+  font-weight: font-weight('bold');
   padding-left: units($icon-size * 1.5);
 }
 
