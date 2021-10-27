@@ -76,6 +76,20 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+{% capture example %}
+<div class="usa-error-message" role="alert">
+  <p class="usa-alert__text">Banner text</p>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-success-message" role="alert">
+  <p class="usa-alert__text">Banner text</p>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Limiting Alert Width
 
 If desired for aesthetics, the background coloring for alerts can be constrained to the width of a paragraph by appending the `usa-alert__paragraph` class to the `usa-alert` container.

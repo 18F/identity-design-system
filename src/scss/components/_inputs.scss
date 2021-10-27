@@ -205,8 +205,17 @@ $input-select-margin-right: 1;
 
 .usa-error-message {
   @include add-background-svg('alerts/error');
-  background-position: 0 center;
+  background-position: 0 .5em;
   background-size: units($icon-size);
   color: color('error');
+  padding-left: units($icon-size * 1.5);
+}
+
+.usa-success-message {
+  @include add-background-svg('alerts/success');
+  background-position: 0 center;
+  background-repeat: no-repeat;
+  background-size: units($icon-size);
+  color: color('success');
   padding-left: units($icon-size * 1.5);
 }
