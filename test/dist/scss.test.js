@@ -1,9 +1,9 @@
 const path = require('path');
 const util = require('util');
-const { compiler } = require('gulp-sass');
+const { render } = require('sass');
 
 test('scss files can be imported without node_modules', async () => {
-  const results = await util.promisify(compiler.render)({
+  const results = await util.promisify(render)({
     data: "@import 'assets/scss/styles';",
     includePaths: [path.resolve(__dirname, '../../dist')],
   });
@@ -12,7 +12,7 @@ test('scss files can be imported without node_modules', async () => {
 }, 10000);
 
 test('if an asset-path function is defined, it is used to generate asset paths with $image-path and $font-path', async () => {
-  const results = await util.promisify(compiler.render)({
+  const results = await util.promisify(render)({
     data: `
       @function asset-path($path) {
         @return 'test-path-rewritten/' + $path;
