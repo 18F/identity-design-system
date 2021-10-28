@@ -207,6 +207,7 @@ $input-select-margin-right: 1;
   @include u-padding-y(0.5);
   background-position: 0 .5em;
   background-size: units($icon-size);
+  display: block;
   font-weight: font-weight('bold');
   padding-left: units($icon-size * 1.5);
 }
