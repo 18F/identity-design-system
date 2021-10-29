@@ -60,7 +60,6 @@ jobs:
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
-      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
@@ -76,7 +75,6 @@ jobs:
     working_directory: ~/identity-style-guide
     executor: ruby_node
     steps:
-      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
