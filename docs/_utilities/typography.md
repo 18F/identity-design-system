@@ -8,7 +8,7 @@ redirect_from:
 
 ## Display, headings, and lead
 
-Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immediately containing headings and paragraphs should be considered a longform text document. Or jump to the [Print Guidance](#print-guidance) to learn a bit more about each style.
+Use <code class="text-no-wrap">div.usa-prose</code> to indicate that the immediately containing headings and paragraphs should be considered a longform text document.
 
 <div class="border-base-light border-left-1 padding-3 usa-prose">
   <div class="usa-display">How Login.gov keeps personal information private <span class="text-no-wrap text-secondary">(div.usa-display)</span></div>
