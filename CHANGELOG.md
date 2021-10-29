@@ -2,8 +2,10 @@
 
 ### New Features
 - Field validation success is added to form validation ([#265](https://github.com/18F/identity-style-guide/pull/265))
+
 ### Improvements
 
+- The default font is now Public Sans for both headings and body copy. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$theme-font-type-sans: 'source-sans-pro';` and `$theme-font-type-serif: 'merriweather';`. ([#264](https://github.com/18F/identity-style-guide/pull/264))
 - Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258))
   - [Identifier component](https://designsystem.digital.gov/components/identifier/)
   - Link colors on dark backgrounds
