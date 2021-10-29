@@ -40,8 +40,8 @@ jobs:
       - checkout
       - bundle-npm-install
       - run:
-          name: Lint JavaScript and Sass
-          command: npm run lint
+          name: Lint JavaScript, Sass, and lockfiles
+          command: make lint
   integration:
     working_directory: ~/identity-style-guide
     executor: ruby_browsers
