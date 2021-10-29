@@ -1,10 +1,7 @@
 version: 2.1
 
-orbs:
-  browser-tools: circleci/browser-tools@1.1
-
 executors:
-  ruby_node_browsers:
+  ruby_browsers:
     docker:
       - image: cimg/ruby:2.7-browsers
         environment:
@@ -38,7 +35,7 @@ commands:
 jobs:
   lints:
     working_directory: ~/identity-style-guide
-    executor: ruby_node_browsers
+    executor: ruby_browsers
     steps:
       - checkout
       - bundle-npm-install
@@ -47,11 +44,10 @@ jobs:
           command: npm run lint
   integration:
     working_directory: ~/identity-style-guide
-    executor: ruby_node_browsers
+    executor: ruby_browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
-      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
@@ -60,11 +56,10 @@ jobs:
           command: npm run test-jest
   visual-regression:
     working_directory: ~/identity-style-guide
-    executor: ruby_node_browsers
+    executor: ruby_browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
-      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
@@ -78,9 +73,8 @@ jobs:
           path: tmp/results
   accessibility:
     working_directory: ~/identity-style-guide
-    executor: ruby_node_browsers
+    executor: ruby_browsers
     steps:
-      - browser-tools/install-browser-tools
       - checkout
       - bundle-npm-install
       - build
