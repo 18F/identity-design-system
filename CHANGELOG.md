@@ -1,13 +1,16 @@
 ## Unreleased
 
+### New Features
+- Field validation success is added to form validation ([#265](https://github.com/18F/identity-style-guide/pull/265))
 ### Improvements
 
-- Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258)
+- Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258))
   - [Identifier component](https://designsystem.digital.gov/components/identifier/)
   - Link colors on dark backgrounds
 - Overlay is now shown with a lighter backdrop color. ([#260](https://github.com/18F/identity-style-guide/pull/260))
 - Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-style-guide/pull/260))
 - Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
+- Icons for form validation errors are aligned to the top ([#265](https://github.com/18F/identity-style-guide/pull/265))
 
 ## 6.2.0
 
