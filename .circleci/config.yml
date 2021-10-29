@@ -1,9 +1,9 @@
 version: 2.1
 
 executors:
-  ruby_node:
+  ruby_browsers:
     docker:
-      - image: cimg/ruby:2.7-node
+      - image: cimg/ruby:2.7-browsers
         environment:
           BUNDLER_VERSION: 2.2.20
 
@@ -35,7 +35,7 @@ commands:
 jobs:
   lints:
     working_directory: ~/identity-style-guide
-    executor: ruby_node
+    executor: ruby_browsers
     steps:
       - checkout
       - bundle-npm-install
@@ -44,7 +44,7 @@ jobs:
           command: npm run lint
   integration:
     working_directory: ~/identity-style-guide
-    executor: ruby_node
+    executor: ruby_browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
@@ -56,7 +56,7 @@ jobs:
           command: npm run test-jest
   visual-regression:
     working_directory: ~/identity-style-guide
-    executor: ruby_node
+    executor: ruby_browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
@@ -73,7 +73,7 @@ jobs:
           path: tmp/results
   accessibility:
     working_directory: ~/identity-style-guide
-    executor: ruby_node
+    executor: ruby_browsers
     steps:
       - checkout
       - bundle-npm-install
