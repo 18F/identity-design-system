@@ -3,7 +3,7 @@ version: 2.1
 executors:
   ruby_browsers:
     docker:
-      - image: cimg/ruby:2.7-browsers
+      - image: cimg/ruby:3.0.2-browsers
         environment:
           BUNDLER_VERSION: 2.2.20
 
