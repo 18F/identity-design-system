@@ -8,8 +8,22 @@ executors:
           BUNDLER_VERSION: 2.2.20
 
 commands:
+  node-install:
+    steps:
+      - run:
+          name: Switch Node.js version
+          command: |
+            wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            . "$NVM_DIR/nvm.sh" --install --latest-npm
+            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV;
+            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV;
+      - run:
+          name: Print Node.js version
+          command: node -v
   bundle-npm-install:
     steps:
+      - node-install
       - restore_cache:
           key: dependency-cache-ruby-2-7-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
       - run:
@@ -40,8 +54,8 @@ jobs:
       - checkout
       - bundle-npm-install
       - run:
-          name: Lint JavaScript and Sass
-          command: npm run lint
+          name: Lint JavaScript, Sass, and lockfiles
+          command: make lint
   integration:
     working_directory: ~/identity-style-guide
     executor: ruby_browsers
