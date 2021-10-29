@@ -1,13 +1,18 @@
 ## Unreleased
 
+### New Features
+- Field validation success is added to form validation ([#265](https://github.com/18F/identity-style-guide/pull/265))
+
 ### Improvements
 
 - The default font is now Public Sans for both headings and body copy. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$theme-font-type-sans: 'source-sans-pro';` and `$theme-font-type-serif: 'merriweather';`. ([#264](https://github.com/18F/identity-style-guide/pull/264))
-- Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258)
+- Add Login.gov-specific component configuration. ([#258])(https://github.com/18F/identity-style-guide/pull/258))
   - [Identifier component](https://designsystem.digital.gov/components/identifier/)
   - Link colors on dark backgrounds
-- Overlay: Updated visual appearance. ([#260](https://github.com/18F/identity-style-guide/pull/260))
+- Overlay is now shown with a lighter backdrop color. ([#260](https://github.com/18F/identity-style-guide/pull/260))
+- Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-style-guide/pull/260))
 - Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
+- Icons for form validation errors are aligned to the top ([#265](https://github.com/18F/identity-style-guide/pull/265))
 
 ## 6.2.0
 
