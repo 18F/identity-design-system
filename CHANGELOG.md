@@ -1,6 +1,7 @@
 ## Unreleased
 
 ### New Features
+
 - Field validation success is added to form validation ([#265](https://github.com/18F/identity-style-guide/pull/265))
 
 ### Improvements
@@ -13,6 +14,10 @@
 - Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-style-guide/pull/260))
 - Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
 - Icons for form validation errors are aligned to the top ([#265](https://github.com/18F/identity-style-guide/pull/265))
+
+### Dependencies
+
+- Upgraded USWDS from v2.12.1 to v2.12.2 (see [release notes](https://github.com/uswds/uswds/releases/tag/v2.12.2)) ([#269](https://github.com/18F/identity-style-guide/pull/269))
 
 ## 6.2.0
 
