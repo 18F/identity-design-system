@@ -17,7 +17,7 @@
 
 ### Dependencies
 
-- Upgraded USWDS from v2.12.1 to v2.12.2 (see [release notes](https://github.com/uswds/uswds/releases/tag/v2.12.2))
+- Upgraded USWDS from v2.12.1 to v2.12.2 (see [release notes](https://github.com/uswds/uswds/releases/tag/v2.12.2)) ([#269](https://github.com/18F/identity-style-guide/pull/269))
 
 ## 6.2.0
 
