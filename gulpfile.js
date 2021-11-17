@@ -131,7 +131,7 @@ gulp.task('build-sass', () => {
   const stream = gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass().on('error', notificationOptions.handler))
+    .pipe(sass.sync().on('error', notificationOptions.handler))
     .pipe(postcss(plugins))
     .pipe(gulp.dest(CSS_DEST))
     .pipe(notify(notificationOptions.success));
