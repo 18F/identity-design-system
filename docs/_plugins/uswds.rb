@@ -23,7 +23,19 @@ module USWDS
 
     if current_page['url'] == page['url']
       value
-    elsif current_if_in_collection && !current_page['collection'].nil? && current_page['collection'] == page['collection']
+    elsif current_if_in_collection
+      if_is_current_page_in_collection(value, page)
+    end
+  end
+
+  # Output the value if the page passed is the current page being rendered:
+  #
+  # {{ 'thing' | if_is_current_page: page_variable }}
+  # {{ 'thing' | if_is_current_page: page_variable, true }}
+  def if_is_current_page_in_collection(value, page)
+    current_page = @context['page']
+
+    if !current_page['collection'].nil? && current_page['collection'] == page['collection']
       value
     end
   end

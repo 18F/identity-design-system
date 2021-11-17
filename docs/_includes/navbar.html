@@ -13,13 +13,23 @@
   <nav aria-label="Primary navigation" role="navigation" class="usa-nav">
     <div class="usa-nav__inner">
       <button class="usa-nav__close"><img src="{{ site.baseurl }}/assets/img/close.svg" role="img" alt="Close"></button>
-      <ul class="usa-nav__primary usa-accordion">
+      <ul class="usa-nav__primary usa-accordion desktop:display-none">
         {%
           include nav/list.html
           links = site.data.nav.primary
           li_class = 'usa-nav__primary-item'
-          highlight_collection_when_is_current = true
+          ul_class = 'usa-nav__submenu'
+          ul_li_class = 'usa-nav__submenu-item'
+          highlight_collection_when_is_current = false
+        %}
+      </ul>
+      <ul class="usa-nav__primary usa-accordion display-none desktop:display-flex">
+        {%
+          include nav/list.html
+          links = site.data.nav.primary
+          li_class = 'usa-nav__primary-item'
           flat = true
+          highlight_collection_when_is_current = true
         %}
       </ul>
     </div>

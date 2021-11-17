@@ -1,7 +1,7 @@
 primary:
   - href: /brand/
   - href: /content/
-  - href: /components/accordions/
+  - href: /components/
     text: Components
   - href: /security-experience-principles/
     text: Security Experience Principles
