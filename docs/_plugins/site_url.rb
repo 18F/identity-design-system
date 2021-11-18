@@ -1,10 +1,12 @@
-FEDERALIST_URL_BASE = 'https://federalist-proxy.app.cloud.gov/site'
 FEDERALIST_PREVIEW_BRANCH_PREFIX = '/preview/'
 
 Jekyll::Hooks.register :site, :after_init do |site|
   if ENV['BRANCH'].nil?
     site.config['url'] = "http://localhost:#{site.config['port']}"
   elsif ENV['BASEURL']&.start_with?(FEDERALIST_PREVIEW_BRANCH_PREFIX)
-    site.config['url'] = "#{FEDERALIST_URL_BASE}/#{ENV['OWNER']}/#{ENV['REPOSITORY']}"
+    # We don't have enough information to reconstruct the URL for the preview site. Setting to `nil`
+    # at least allows redirects to work correctly. Sitemap URLs will be invalid, but since preview
+    # sites aren't intended to be indexed, this is tolerable.
+    site.config['url'] = nil
   end
 end
