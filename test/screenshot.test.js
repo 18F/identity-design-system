@@ -84,7 +84,7 @@ function fillImageToSize(image, width, height) {
 }
 
 test('screenshot visual regression', async () => {
-  const paths = (await getURLsFromSitemap(`${REMOTE_HOST}/sitemap.xml`)).map(getURLPath);
+  const paths = (await getURLsFromSitemap(`${LOCAL_HOST}/sitemap.xml`)).map(getURLPath);
 
   for (const path of paths) {
     const local = await getScreenshot(LOCAL_HOST + path);
