@@ -1,19 +1,17 @@
 /* eslint-disable no-restricted-syntax, no-await-in-loop, no-param-reassign */
 
-const { promises: fsPromises, readFileSync } = require('fs');
+const { promises: fsPromises } = require('fs');
 const { join } = require('path');
 const assert = require('assert');
 const mkdirp = require('mkdirp');
 const { PNG } = require('pngjs');
 const match = require('pixelmatch');
-const YAML = require('yaml');
 
 const { writeFile } = fsPromises;
 
 const LOCAL_HOST = `http://localhost:${process.env.JEST_PORT}`;
 const REMOTE_HOST = 'https://design.login.gov';
 const DIFF_DIRECTORY = join(__dirname, '../tmp/results/screenshot-diff');
-const { url: URL_PREFIX } = YAML.parse(readFileSync(join(__dirname, '../_config.yml'), 'utf8'));
 
 async function getURLsFromSitemap(url) {
   await page.goto(url);
@@ -51,9 +49,7 @@ async function getScreenshot(url) {
 }
 
 function getURLPath(url) {
-  const prefix = new URL(URL_PREFIX).pathname;
-  const { pathname } = new URL(url);
-  return pathname.indexOf(prefix) === 0 ? pathname.slice(prefix.length) : pathname;
+  return new URL(url).pathname;
 }
 
 function getDiffOutputBaseFileName(pathname) {
@@ -88,7 +84,7 @@ function fillImageToSize(image, width, height) {
 }
 
 test('screenshot visual regression', async () => {
-  const paths = (await getURLsFromSitemap(`${REMOTE_HOST}/sitemap.xml`)).map(getURLPath);
+  const paths = (await getURLsFromSitemap(`${LOCAL_HOST}/sitemap.xml`)).map(getURLPath);
 
   for (const path of paths) {
     const local = await getScreenshot(LOCAL_HOST + path);
