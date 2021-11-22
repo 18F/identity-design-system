@@ -26,10 +26,10 @@ $input-select-margin-right: 1;
     @include disable-default-focus-styles;
     box-shadow: roundable-focus-outline-box-shadows();
   }
+}
 
-  &.usa-input--error {
-    @include u-border-color('error');
-  }
+.usa-input--error {
+  @include u-border-color('error');
 }
 
 [type='search'],
