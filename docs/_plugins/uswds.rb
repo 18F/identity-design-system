@@ -28,10 +28,10 @@ module USWDS
     end
   end
 
-  # Output the value if the page passed is the current page being rendered:
+  # Output the value if the page passed belongs to the same collection as the page being rendered.
   #
-  # {{ 'thing' | if_is_current_page: page_variable }}
-  # {{ 'thing' | if_is_current_page: page_variable, true }}
+  # {{ 'thing' | if_is_current_page_in_collection: page_variable }}
+  # {{ 'thing' | if_is_current_page_in_collection: page_variable, true }}
   def if_is_current_page_in_collection(value, page)
     current_page = @context['page']
 

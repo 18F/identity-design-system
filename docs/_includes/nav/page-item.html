@@ -6,18 +6,21 @@
   </span>
 </a>
 {% unless include.flat -%}
-  {% if is_current_page_in_collection -%}
-    {% assign links = include.links | default: site.data.nav[include.jekyll_page.subnav] -%}
-    {% if links -%}
-      <ul class="{{ include.ul_class }}">
-        {%
-          include nav/list.html
-          links=links
-          li_class=include.li_class
-          ul_class=include.ul_class
-          highlight_collection_when_is_current=include.highlight_collection_when_is_current
-        %}
-      </ul>
-    {% endif -%}
+  {% assign links = nil %}
+  {% if include.links and is_current_page_in_collection -%}
+    {% assign links = include.links -%}
+  {% elsif include.jekyll_page.subnav and is_current_page -%}
+    {% assign links = include.jekyll_page.subnav -%}
+  {% endif -%}
+  {% if links -%}
+    <ul class="{{ include.ul_class }}">
+      {%
+        include nav/list.html
+        links=links
+        li_class=include.li_class
+        ul_class=include.ul_class
+        highlight_collection_when_is_current=include.highlight_collection_when_is_current
+      %}
+    </ul>
   {% endif -%}
 {% endunless -%}

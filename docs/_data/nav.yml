@@ -3,7 +3,35 @@ primary:
   - href: /content/
   - href: /components/
     text: Components
+    links:
+      - href: /components/accordions/
+        text: Accordions
+      - href: /components/alerts/
+        text: Alerts
+      - href: /components/badges/
+        text: Badges
+      - href: /components/buttons/
+        text: Buttons
+      - href: /components/cards/
+        text: Cards
+      - href: /components/code-formatting/
+        text: Code formatting
+      - href: /components/form-fields/
+        text: Form fields
+      - href: /components/search/
+        text: Search
+      - href: /components/side-navigation/
+        text: Side navigation
+      - href: /components/spinner/
+        text: Spinner
   - href: /security-experience-principles/
     text: Security Experience Principles
   - href: /utilities/color/
     text: Utilities
+    links:
+      - href: /utilities/color/
+        text: Color
+      - href: /utilities/images/
+        text: Images
+      - href: /utilities/typography/
+        text: Typography
