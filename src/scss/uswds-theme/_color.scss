@@ -16,6 +16,7 @@ https://designsystem.digital.gov/design-tokens/color
 */
 
 $site-palette: (
+  // Blue
   'site-darkest-blue': #0c213a,
   'site-darker-blue': #112e51,
   'site-dark-blue': #205493,
@@ -23,7 +24,7 @@ $site-palette: (
   'site-light-blue': #cedced,
   'site-lighter-blue': #ebf3fa,
   'site-lightest-blue': #f2f9ff,
-
+  // Teal
   'site-darkest-teal': #006175,
   'site-darker-teal': #007187,
   'site-dark-teal': #008099,
@@ -31,7 +32,7 @@ $site-palette: (
   'site-light-teal': #7bbfd6,
   'site-lighter-teal': #b7dde9,
   'site-lightest-teal': #ecfcff,
-
+  // Red
   'site-darkest-red': #680617,
   'site-darker-red': #8b0a21,
   'site-dark-red': #ab142f,
@@ -39,7 +40,7 @@ $site-palette: (
   'site-light-red': #ea7b85,
   'site-lighter-red': #f3b8be,
   'site-lightest-red': #fff0f3,
-
+  // Grey
   'site-darkest-grey': #1b1b1b,
   'site-darker-grey': #454545,
   'site-dark-grey': #5c5c5c,
@@ -49,7 +50,7 @@ $site-palette: (
   'site-lightest-grey': #f0f0f0,
   'site-ink': #454545,
   'site-disabled-grey': #767676,
-
+  // Yellow
   'site-darkest-yellow': #504332,
   'site-darker-yellow': #847122,
   'site-dark-yellow': #bba212,
@@ -57,7 +58,7 @@ $site-palette: (
   'site-light-yellow': #f9e450,
   'site-lighter-yellow': #fcf197,
   'site-lightest-yellow': #fffdd7,
-
+  // Green
   'site-darkest-green': #094316,
   'site-darker-green': #0e581e,
   'site-dark-green': #136e26,
@@ -65,8 +66,8 @@ $site-palette: (
   'site-light-green': #60ae70,
   'site-lighter-green': #a6d5af,
   'site-lightest-green': #ebfcef,
-
-  'site-white': #ffffff,
+  // White
+  'site-white': #ffffff
 );
 
 $project-color-shortcodes: $site-palette;

@@ -16,12 +16,15 @@
     @include at-media('tablet') {
       @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 0, 0, 0);
     }
+
+    &:hover {
+      color: $theme-color-primary-dark;
+    }
   }
 }
 
 .usa-sidenav--sticky {
   position: sticky;
-  position: -webkit-sticky;
   top: units(2);
 }
 
@@ -35,10 +38,4 @@
 
 .usa-sidenav__sublist .usa-sidenav__item {
   border-top: 0;
-}
-
-.usa-sidenav .usa-current {
-  &:hover {
-    color: $theme-color-primary-dark;
-  }
 }

@@ -9,7 +9,7 @@ const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const gulpif = require('gulp-if');
 const sass = require('gulp-sass')(require('sass'));
-const gulpStylelint = require('gulp-stylelint');
+const stylelint = require('stylelint');
 const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
 const babel = require('gulp-babel');
@@ -108,16 +108,14 @@ gulp.task('build-js', () => {
 
 gulp.task('watch-js', () => gulp.watch(`${PROJECT_JS_SRC}/**/*.js`, gulp.series('build-js')));
 
-gulp.task('lint-sass', () =>
-  gulp.src([`${PROJECT_SASS_SRC}/**/*.scss`, `!${PROJECT_SASS_SRC}/uswds/**/*.scss`]).pipe(
-    gulpStylelint({
-      failAfterError: true,
-      reporters: [{ formatter: 'string', console: true }],
-      syntax: 'scss',
-      debug: true,
-    }),
-  ),
-);
+gulp.task('lint-sass', async function (callback) {
+  const { errored, output } = await stylelint.lint({
+    files: [`${PROJECT_SASS_SRC}/**/*.scss`, `!${PROJECT_SASS_SRC}/uswds/**/*.scss`],
+    formatter: 'string',
+  });
+
+  callback(errored ? new Error(output) : null);
+});
 
 gulp.task('build-sass', () => {
   const plugins = [

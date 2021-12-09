@@ -155,7 +155,7 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   width: 100%;
 }
 
-.usa-form a.usa-button.usa-button--danger { /* stylelint-disable-line selector-no-qualifying-type */
+.usa-form a.usa-button.usa-button--danger {
   color: color('white');
   text-decoration: none;
 
@@ -165,7 +165,7 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   }
 }
 
-.usa-form a.usa-button.usa-button--outline { /* stylelint-disable-line selector-no-qualifying-type */
+.usa-form a.usa-button.usa-button--outline {
   color: color('primary');
   text-decoration: none;
 
