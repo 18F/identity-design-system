@@ -1,0 +1,18 @@
+.usa-process-list:not(.usa-process-list--connected) .usa-process-list__item {
+  @include override-prose {
+    border-left-width: 0;
+    padding-left: units(4);
+  }
+}
+
+.usa-process-list__item::before {
+  margin-top: #{(units($theme-process-list-counter-size) - (1.125rem * lh('heading', 2))) * -0.5};
+}
+
+.usa-process-list__heading {
+  font-size: 1.125rem;
+
+  & + * {
+    margin-top: units(1);
+  }
+}

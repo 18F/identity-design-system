@@ -9,7 +9,7 @@ lead: A process list displays the steps or stages of important instructions or p
 <ol class="usa-process-list">
   <li class="usa-process-list__item">
     <h4 class="usa-process-list__heading">Start a process</h4>
-    <p class="margin-top-05">
+    <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo,
       ipsum sed pharetra gravida, orci magna rhoncus neque.
     </p>
