@@ -60,7 +60,7 @@
   "homepage": "https://github.com/18F/identity-style-guide#readme",
   "dependencies": {
     "domready": "^1.0.8",
-    "uswds": "^2.12.1"
+    "uswds": "^2.13.0"
   },
   "devDependencies": {
     "@18f/eslint-plugin-identity": "^1.0.0",
@@ -97,7 +97,7 @@
     "postcss-csso": "^5.0.1",
     "prettier": "^2.5.1",
     "puppeteer": "^9.1.1",
-    "sass": "^1.34.0",
+    "sass-embedded": "^1.0.0-beta.8",
     "serve": "^11.3.2",
     "stylelint": "^14.1.0",
     "vinyl-buffer": "^1.0.1",

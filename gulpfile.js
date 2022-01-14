@@ -8,7 +8,7 @@ const postcss = require('gulp-postcss');
 const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const gulpif = require('gulp-if');
-const sass = require('gulp-sass')(require('sass'));
+const sass = require('gulp-sass')(require('sass-embedded'));
 const stylelint = require('stylelint');
 const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
@@ -129,7 +129,7 @@ gulp.task('build-sass', () => {
   const stream = gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass.sync().on('error', notificationOptions.handler))
+    .pipe(sass().on('error', notificationOptions.handler))
     .pipe(postcss(plugins))
     .pipe(gulp.dest(CSS_DEST))
     .pipe(notify(notificationOptions.success));
