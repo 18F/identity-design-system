@@ -62,10 +62,11 @@ $input-select-margin-right: 1;
     height: $checkbox-radio-size;
     margin-left: 0;
     margin-right: 0;
-    margin-top: (
-        line-height($theme-form-font-family, $theme-input-line-height) *
-          font-size($theme-form-font-family, $theme-body-font-size) - $checkbox-radio-size
-      ) / 2;
+    margin-top: divide(
+      line-height($theme-form-font-family, $theme-input-line-height) *
+        font-size($theme-form-font-family, $theme-body-font-size) - $checkbox-radio-size,
+      2
+    );
     width: $checkbox-radio-size;
   }
 }
@@ -137,10 +138,11 @@ $input-select-margin-right: 1;
 
   &::before {
     left: units(3);
-    margin-top: (
-        line-height($theme-form-font-family, $theme-input-line-height) *
-          font-size($theme-form-font-family, 'md') - $checkbox-radio-size
-      ) / 2;
+    margin-top: divide(
+      line-height($theme-form-font-family, $theme-input-line-height) *
+        font-size($theme-form-font-family, 'md') - $checkbox-radio-size,
+      2
+    );
   }
 }
 
