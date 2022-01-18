@@ -7,6 +7,9 @@
 
 .usa-process-list__item::before {
   margin-top: #{(units($theme-process-list-counter-size) - (1.125rem * lh('heading', 2))) * -0.5};
+  @if get-typeface-token($theme-process-list-counter-font-family) == 'public-sans' {
+    padding-top: units(2px); // Nudge to improve vertical centering
+  }
 }
 
 .usa-process-list__heading {
