@@ -1,14 +1,17 @@
-.usa-process-list:not(.usa-process-list--connected) .usa-process-list__item {
-  @include override-prose {
-    border-left-width: 0;
-    padding-left: units(4);
-  }
+.usa-process-list:not(.usa-process-list--connected) .usa-process-list__item,
+.usa-prose .usa-process-list:not(.usa-process-list--connected) .usa-process-list__item {
+  border-left-width: 0;
 }
 
-.usa-process-list__item::before {
-  margin-top: #{(units($theme-process-list-counter-size) - (1.125rem * lh('heading', 2))) * -0.5};
-  @if get-typeface-token($theme-process-list-counter-font-family) == 'public-sans' {
-    padding-top: units(2px); // Nudge to improve vertical centering
+.usa-process-list__item,
+.usa-prose .usa-process-list__item {
+  padding-left: units(4);
+
+  &::before {
+    margin-top: #{(units($theme-process-list-counter-size) - (1.125rem * lh('heading', 2))) * -0.5};
+    @if get-typeface-token($theme-process-list-counter-font-family) == 'public-sans' {
+      padding-top: units(2px); // Nudge to improve vertical centering
+    }
   }
 }
 
@@ -17,5 +20,23 @@
 
   & + * {
     margin-top: units(1);
+  }
+}
+
+.usa-process-list.usa-process-list--big {
+  padding-left: units(2.5);
+
+  .usa-process-list__item {
+    padding-left: units(6);
+
+    &::before {
+      margin-top: #{(3.125rem - (1.125rem * lh('heading', 2))) * -0.5};
+      width: 3.125rem;
+      height: 3.125rem;
+      font-size: units(3);
+      @if get-typeface-token($theme-process-list-counter-font-family) == 'public-sans' {
+        padding-top: 0;
+      }
+    }
   }
 }
