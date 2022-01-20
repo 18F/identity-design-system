@@ -9,9 +9,6 @@
 
   &::before {
     margin-top: #{(units($theme-process-list-counter-size) - (1.125rem * lh('heading', 2))) * -0.5};
-    @if get-typeface-token($theme-process-list-counter-font-family) == 'public-sans' {
-      padding-top: units(2px); // Nudge to improve vertical centering
-    }
   }
 }
 
@@ -34,9 +31,6 @@
       width: 3.125rem;
       height: 3.125rem;
       font-size: units(3);
-      @if get-typeface-token($theme-process-list-counter-font-family) == 'public-sans' {
-        padding-top: 0;
-      }
     }
   }
 }
