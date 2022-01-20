@@ -3,6 +3,7 @@
 ### New Features
 
 - Field validation success is added to form validation ([#265](https://github.com/18F/identity-style-guide/pull/265))
+- Added custom styling for the Process List component. ([#279](https://github.com/18F/identity-style-guide/pull/279))
 
 ### Improvements
 
