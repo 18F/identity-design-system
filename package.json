@@ -67,7 +67,6 @@
     "@18f/identity-stylelint-config": "^1.0.0",
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
-    "@parcel/css": "^1.1.0",
     "autoprefixer": "^10.4.2",
     "babel-jest": "^27.1.0",
     "babelify": "^10.0.0",
