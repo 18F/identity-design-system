@@ -19,6 +19,8 @@ const uglify = require('gulp-uglify');
 const path = require('path');
 const pkg = require('./package.json');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const PROJECT_SASS_SRC = './src/scss';
 const PROJECT_JS_SRC = './src/js';
 const PROJECT_JS_AUTO = 'auto.js';
@@ -124,21 +126,19 @@ gulp.task('build-sass', () => {
       cascade: false,
       grid: true,
     }),
-    cssnano(),
-  ];
+    isProduction && cssnano(),
+  ].filter(Boolean);
 
-  const stream = gulp
+  return gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
     .pipe(sass())
-    .on('error', notificationOptions.handler)
     .pipe(postcss(plugins))
+    .on('error', notificationOptions.handler)
     .pipe(gulp.dest(CSS_DEST))
-    .pipe(notify(notificationOptions.success));
-
-  stream.pipe(sourcemaps.write('.')).pipe(gulp.dest(CSS_DEST));
-
-  return stream;
+    .pipe(notify(notificationOptions.success))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(CSS_DEST));
 });
 
 gulp.task('watch-sass', () =>
