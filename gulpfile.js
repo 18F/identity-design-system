@@ -42,11 +42,12 @@ const notificationOptions = {
     title: pkg.name,
     message: '💔 Failed to build <%= file.relative %>',
   },
-  handler: (err) => {
+  handler(err) {
     notify(notificationOptions.error).write({
       relative: path.basename(err.file || err.filename),
     });
     console.error(err.toString()); // eslint-disable-line no-console
+    this.emit('end');
   },
 };
 
@@ -129,7 +130,8 @@ gulp.task('build-sass', () => {
   const stream = gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass().on('error', notificationOptions.handler))
+    .pipe(sass())
+    .on('error', notificationOptions.handler)
     .pipe(postcss(plugins))
     .pipe(gulp.dest(CSS_DEST))
     .pipe(notify(notificationOptions.success));
