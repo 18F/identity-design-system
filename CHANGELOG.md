@@ -13,7 +13,8 @@
 - Overlay is now shown with a lighter backdrop color. ([#260](https://github.com/18F/identity-style-guide/pull/260))
 - Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-style-guide/pull/260))
 - Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
-- Icons for form validation errors are aligned to the top ([#265](https://github.com/18F/identity-style-guide/pull/265))
+- Icons for form validation errors are aligned to the top. ([#265](https://github.com/18F/identity-style-guide/pull/265))
+- The tile variant of checkboxes and radio buttons have a slightly increased font size. ([#281](https://github.com/18F/identity-style-guide/pull/281))
 
 ### Bug Fixes
 

@@ -128,19 +128,19 @@ $input-select-margin-right: 1;
 
 .usa-checkbox__input--tile + .usa-checkbox__label,
 .usa-radio__input--tile + .usa-radio__label {
-  @include u-font-size($theme-form-font-family, 'md');
   @include u-text('primary', 'bold');
   @include u-display('block');
   @include u-padding(3);
   padding-left: units(3) + $checkbox-radio-size + $input-select-margin-right;
   border-color: color($theme-input-tile-border-color);
   max-width: units($theme-input-max-width);
+  font-size: 1.125rem;
 
   &::before {
     left: units(3);
     margin-top: divide(
-      line-height($theme-form-font-family, $theme-input-line-height) *
-        font-size($theme-form-font-family, 'md') - $checkbox-radio-size,
+      line-height($theme-form-font-family, $theme-input-line-height) * 1.125rem -
+        $checkbox-radio-size,
       2
     );
   }
