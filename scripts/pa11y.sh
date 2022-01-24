@@ -2,8 +2,6 @@
 
 set -o xtrace
 
-JEKYLL_PORT=$(grep '^port:' ./_config.yml | cut -d ' ' -f2)
-JEKYLL_PORT=${JEKYLL_PORT:-4000}
 PA11Y_PORT=$(./node_modules/.bin/get-port)
 RESULTS_DIRECTORY=./tmp/results/pa11y
 
@@ -17,7 +15,7 @@ mkdir -p $RESULTS_DIRECTORY
 
 ./node_modules/.bin/pa11y-ci \
   --sitemap http://0.0.0.0:$PA11Y_PORT/sitemap.xml \
-  --sitemap-find http://localhost:$JEKYLL_PORT \
+  --sitemap-find https://design.login.gov \
   --sitemap-replace http://0.0.0.0:$PA11Y_PORT \
   --json > ${RESULTS_DIRECTORY}/results.json
 

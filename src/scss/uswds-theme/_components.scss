@@ -42,6 +42,14 @@ $theme-footer-font-family: 'body' !default;
 // Form and input
 $theme-checkbox-border-radius: 1.5px !default;
 $theme-input-line-height: 3 !default;
-$theme-input-state-border-width: 2px;
+$theme-input-state-border-width: 2px !default;
 $theme-input-tile-border-radius: 'lg' !default;
 $theme-input-tile-border-width: 1px !default;
+
+// Process List
+$theme-process-list-connector-color: 'base-lighter' !default;
+$theme-process-list-counter-background-color: 'primary-dark' !default;
+$theme-process-list-counter-border-width: 0 !default;
+$theme-process-list-counter-font-size: 'sm' !default;
+$theme-process-list-counter-size: 3 !default;
+$theme-process-list-counter-text-color: 'white' !default;
