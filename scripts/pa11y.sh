@@ -5,7 +5,7 @@ set -o xtrace
 PA11Y_PORT=$(./node_modules/.bin/get-port)
 RESULTS_DIRECTORY=./tmp/results/pa11y
 
-python -m http.server $PA11Y_PORT --directory ./dist &
+ruby -run -ehttpd ./dist -p$PA11Y_PORT &
 
 SERVER_PID=$!
 
