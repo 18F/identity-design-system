@@ -5,7 +5,7 @@ set -o xtrace
 PA11Y_PORT=$(./node_modules/.bin/get-port)
 RESULTS_DIRECTORY=./tmp/results/pa11y
 
-./node_modules/.bin/serve --listen $PA11Y_PORT --no-clipboard ./dist &
+python -m http.server $PA11Y_PORT --directory ./dist &
 
 SERVER_PID=$!
 

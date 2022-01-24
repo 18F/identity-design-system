@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    command: `./node_modules/.bin/serve --listen ${process.env.JEST_PORT} --no-clipboard ./dist`,
+    command: `python -m http.server ${process.env.JEST_PORT} --directory ./dist`,
     port: parseInt(process.env.JEST_PORT, 10),
   },
 };

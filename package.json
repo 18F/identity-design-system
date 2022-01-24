@@ -97,7 +97,6 @@
     "prettier": "^2.5.1",
     "puppeteer": "^9.1.1",
     "sass-embedded": "^1.0.0-rc.1",
-    "serve": "^11.3.2",
     "stylelint": "^14.1.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
