@@ -16,6 +16,7 @@
 - Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
 - Icons for form validation errors are aligned to the top. ([#265](https://github.com/18F/identity-style-guide/pull/265))
 - The tile variant of checkboxes and radio buttons have a slightly increased font size. ([#281](https://github.com/18F/identity-style-guide/pull/281))
+- Search will now show full text labels at all sizes, and uses standardized font tokens. ([#259](https://github.com/18F/identity-style-guide/pull/259))
 
 ### Bug Fixes
 
