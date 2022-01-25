@@ -6,17 +6,13 @@ const assert = require('assert');
 const mkdirp = require('mkdirp');
 const { PNG } = require('pngjs');
 const match = require('pixelmatch');
+const { getURLsFromSitemap } = require('./support/sitemap');
 
 const { writeFile } = fsPromises;
 
 const LOCAL_HOST = `http://localhost:${process.env.JEST_PORT}`;
 const REMOTE_HOST = 'https://design.login.gov';
 const DIFF_DIRECTORY = join(__dirname, '../tmp/results/screenshot-diff');
-
-async function getURLsFromSitemap(url) {
-  await page.goto(url);
-  return page.$$eval('url loc', (locs) => locs.map((loc) => loc.textContent));
-}
 
 async function stubAnimations() {
   await page.evaluate(() => {
@@ -84,7 +80,7 @@ function fillImageToSize(image, width, height) {
 }
 
 test('screenshot visual regression', async () => {
-  const paths = (await getURLsFromSitemap(`${LOCAL_HOST}/sitemap.xml`)).map(getURLPath);
+  const paths = (await getURLsFromSitemap()).map(getURLPath);
 
   for (const path of paths) {
     const local = await getScreenshot(LOCAL_HOST + path);

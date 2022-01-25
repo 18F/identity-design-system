@@ -85,21 +85,6 @@ jobs:
           destination: results
       - store_test_results:
           path: tmp/results
-  accessibility:
-    working_directory: ~/identity-style-guide
-    executor: ruby_browsers
-    steps:
-      - checkout
-      - bundle-npm-install
-      - build
-      - run:
-          name: Run pa11y accessibility test
-          command: npm run test-pa11y
-      - store_artifacts:
-          path: tmp/results
-          destination: results
-      - store_test_results:
-          path: tmp/results
 
 workflows:
   version: 2

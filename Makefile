@@ -61,15 +61,7 @@ copy-scss:
 	./node_modules/.bin/gulp copy-scss
 
 test: build
-	make test-runners
-
-test-runners: test-runner-pa11y test-runner-jest
-
-test-runner-pa11y:
-	./scripts/pa11y.sh
-
-test-runner-jest:
-	./scripts/jest.sh
+	npm exec jest
 
 clean:
 	rm -rf $(OUTPUT_DIR)

@@ -34,8 +34,6 @@
     "prelint": "make build-package",
     "lint": "gulp lint",
     "test": "make test",
-    "test-pa11y": "make test-runner-pa11y",
-    "test-jest": "make test-runner-jest",
     "build": "make build",
     "federalist": "make build-assets",
     "prepublishOnly": "make lint && make clean && make build-assets build-package"
@@ -76,7 +74,6 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
-    "get-port-cli": "^2.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-if": "^3.0.0",
@@ -87,10 +84,10 @@
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
+    "html_codesniffer": "^2.5.1",
     "jest": "^27.0.3",
     "jest-puppeteer": "^5.0.4",
     "mkdirp": "^1.0.4",
-    "pa11y-ci": "^2.4.1",
     "pixelmatch": "^5.2.1",
     "pngjs": "^6.0.0",
     "postcss": "^8.4.5",
@@ -99,7 +96,6 @@
     "sass-embedded": "^1.0.0-rc.1",
     "stylelint": "^14.1.0",
     "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0",
-    "wait-on": "^5.3.0"
+    "vinyl-source-stream": "^2.0.0"
   }
 }
