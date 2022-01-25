@@ -93,4 +93,3 @@ workflows:
       - lints
       - integration
       - visual-regression
-      - accessibility
