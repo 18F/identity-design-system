@@ -67,7 +67,7 @@ jobs:
       - build
       - run:
           name: Run jest integration test
-          command: npm run test-jest
+          command: npm test
   visual-regression:
     working_directory: ~/identity-style-guide
     executor: ruby_browsers
@@ -79,22 +79,7 @@ jobs:
       - build
       - run:
           name: Run visual regression test
-          command: npm run test-jest
-      - store_artifacts:
-          path: tmp/results
-          destination: results
-      - store_test_results:
-          path: tmp/results
-  accessibility:
-    working_directory: ~/identity-style-guide
-    executor: ruby_browsers
-    steps:
-      - checkout
-      - bundle-npm-install
-      - build
-      - run:
-          name: Run pa11y accessibility test
-          command: npm run test-pa11y
+          command: npm test
       - store_artifacts:
           path: tmp/results
           destination: results
@@ -108,4 +93,3 @@ workflows:
       - lints
       - integration
       - visual-regression
-      - accessibility
