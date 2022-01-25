@@ -67,7 +67,7 @@ jobs:
       - build
       - run:
           name: Run jest integration test
-          command: npm run test-jest
+          command: npm test
   visual-regression:
     working_directory: ~/identity-style-guide
     executor: ruby_browsers
@@ -79,7 +79,7 @@ jobs:
       - build
       - run:
           name: Run visual regression test
-          command: npm run test-jest
+          command: npm test
       - store_artifacts:
           path: tmp/results
           destination: results
