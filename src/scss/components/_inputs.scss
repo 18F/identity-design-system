@@ -52,6 +52,7 @@ $input-select-margin-right: 1;
 
 .usa-radio__label,
 .usa-checkbox__label {
+  @include u-line-height($theme-form-font-family, $theme-body-line-height);
   display: inline-block;
   margin-bottom: units(1);
   padding-left: $checkbox-radio-size + units($input-select-margin-right);
@@ -63,7 +64,7 @@ $input-select-margin-right: 1;
     margin-left: 0;
     margin-right: 0;
     margin-top: divide(
-      line-height($theme-form-font-family, $theme-input-line-height) *
+      line-height($theme-form-font-family, $theme-body-line-height) *
         font-size($theme-form-font-family, $theme-body-font-size) - $checkbox-radio-size,
       2
     );
