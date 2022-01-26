@@ -11,7 +11,7 @@
 - Add Login.gov-specific component configuration. ([#258](https://github.com/18F/identity-style-guide/pull/258))
   - [Identifier component](https://designsystem.digital.gov/components/identifier/)
   - Link colors on dark backgrounds
-- The default line-height is now set to 1.5. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$$theme-body-line-height: 6`. ([#283](https://github.com/18F/identity-style-guide/pull/283))
+- The default line-height is now set to 1.5. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$theme-body-line-height: 6`. ([#283](https://github.com/18F/identity-style-guide/pull/283))
 - Overlay is now shown with a lighter backdrop color. ([#260](https://github.com/18F/identity-style-guide/pull/260))
 - Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-style-guide/pull/260))
 - Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
