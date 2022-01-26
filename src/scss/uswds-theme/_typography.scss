@@ -82,10 +82,10 @@ $theme-typeface-tokens.
 */
 
 // sans-serif
-$theme-font-type-sans: 'public-sans';
+$theme-font-type-sans: 'public-sans' !default;
 
 // serif
-$theme-font-type-serif: 'public-sans';
+$theme-font-type-serif: 'public-sans' !default;
 
 /*
 ----------------------------------------
