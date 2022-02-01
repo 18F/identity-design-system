@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bug Fixes
+
+- Fix external link icon margin when followed by additional text content. ([#289](https://github.com/18F/identity-style-guide/pull/289))
+
 ## 6.3.0
 
 ### New Features
