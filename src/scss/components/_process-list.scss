@@ -14,11 +14,15 @@
   border-left-width: 0.3125rem;
 
   &::before {
-    margin-top: #{(units($theme-process-list-counter-size) - (1.125rem * lh('heading', 2))) * -0.5};
+    margin-top: #{(
+        units($theme-process-list-counter-size) -
+          (1.125rem * lh('heading', $theme-heading-line-height))
+      ) * -0.5};
   }
 }
 
 .usa-process-list__heading {
+  @include u-line-height('heading', $theme-heading-line-height);
   font-size: 1.125rem;
 
   & + * {
@@ -34,7 +38,7 @@
     border-left-width: units(1);
 
     &::before {
-      margin-top: #{(3.125rem - (1.125rem * lh('heading', 2))) * -0.5};
+      margin-top: #{(3.125rem - (1.125rem * lh('heading', $theme-heading-line-height))) * -0.5};
       width: 3.125rem;
       height: 3.125rem;
       font-size: units(3);

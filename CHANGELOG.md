@@ -1,7 +1,8 @@
-## Unreleased
+## 6.3.1
 
 ### Bug Fixes
 
+- Improve vertical spacing in heading of Process List item spanning multiple lines. ([#288](https://github.com/18F/identity-style-guide/pull/288))
 - Fix external link icon margin when followed by additional text content. ([#289](https://github.com/18F/identity-style-guide/pull/289))
 
 ## 6.3.0
