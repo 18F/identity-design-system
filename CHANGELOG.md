@@ -1,3 +1,9 @@
+## Unreleased
+
+### Improvements
+
+- The Process List component no longer applies vertical padding which would affect its layout relative to surrounding content. ([#290](https://github.com/18F/identity-style-guide/pull/290))
+
 ## 6.3.1
 
 ### Bug Fixes
