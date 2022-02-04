@@ -1,23 +1,37 @@
-.usa-process-list,
-.usa-prose .usa-process-list {
-  padding-left: (units($theme-process-list-counter-size) * 0.5) - (0.3125rem * 0.5);
-}
+$theme-process-list-counter-size-big: 3.125rem;
 
-.usa-process-list:not(.usa-process-list--connected) .usa-process-list__item,
-.usa-prose .usa-process-list:not(.usa-process-list--connected) .usa-process-list__item {
-  border-left-width: 0;
-}
+@include override-prose {
+  .usa-process-list {
+    padding-top: 0;
+    padding-left: (units($theme-process-list-counter-size) * 0.5) - (0.3125rem * 0.5);
 
-.usa-process-list__item,
-.usa-prose .usa-process-list__item {
-  padding-left: units(2) + (units($theme-process-list-counter-size) * 0.5) - (0.3125rem * 0.5);
-  border-left-width: 0.3125rem;
+    &:not(.usa-process-list--connected) .usa-process-list__item {
+      border-left-width: 0;
+    }
 
-  &::before {
-    margin-top: #{(
-        units($theme-process-list-counter-size) -
-          (1.125rem * lh('heading', $theme-heading-line-height))
-      ) * -0.5};
+    &.usa-process-list--big {
+      padding-top: 0.5 *
+        (
+          $theme-process-list-counter-size-big -
+            (1.125rem * lh('heading', $theme-heading-line-height))
+        );
+    }
+  }
+
+  .usa-process-list__item {
+    padding-left: units(2) + (units($theme-process-list-counter-size) * 0.5) - (0.3125rem * 0.5);
+    border-left-width: 0.3125rem;
+
+    &::before {
+      margin-top: #{(
+          units($theme-process-list-counter-size) -
+            (1.125rem * lh('heading', $theme-heading-line-height))
+        ) * -0.5};
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -38,9 +52,12 @@
     border-left-width: units(1);
 
     &::before {
-      margin-top: #{(3.125rem - (1.125rem * lh('heading', $theme-heading-line-height))) * -0.5};
-      width: 3.125rem;
-      height: 3.125rem;
+      margin-top: #{(
+          $theme-process-list-counter-size-big -
+            (1.125rem * lh('heading', $theme-heading-line-height))
+        ) * -0.5};
+      width: $theme-process-list-counter-size-big;
+      height: $theme-process-list-counter-size-big;
       font-size: units(3);
     }
   }
