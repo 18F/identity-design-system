@@ -1,0 +1,54 @@
+/*
+----------------------------------------
+typeset()
+----------------------------------------
+Replaces USWDS typeset to set heading
+line-height as the maximum between the
+default heading line-height and the body
+line-height when considering font-size
+----------------------------------------
+*/
+
+@mixin typeset(
+  $family: $theme-body-font-family,
+  $scale: $theme-body-font-size,
+  $line-height-scale: $theme-body-line-height
+) {
+  @if type-of($family) == 'list' {
+    $list: $family;
+    $family: if(nth($list, 1), nth($list, 1), null);
+    $scale: if(nth($list, 2), nth($list, 2), null);
+    $line-height: if(nth($list, 3), nth($list, 3), null);
+  }
+  $family: if($family == null, $theme-body-font-family, $family);
+  $scale: if($scale == null, $theme-body-font-size, $scale);
+  $line-height-scale: if($line-height-scale == null, $theme-body-line-height, $line-height-scale);
+
+  $font-size: font-size($family, $scale);
+  $line-height: lh($family, $line-height-scale);
+
+  font-family: ff($family);
+  font-size: $font-size;
+  @if (
+    $family == 'heading' and $font-size * $line-height < 1rem * lh('body', $theme-body-line-height)
+  ) {
+    $line-height: lh($family, $theme-body-line-height);
+  }
+  line-height: $line-height;
+}
+
+/*
+----------------------------------------
+h6()
+----------------------------------------
+Replaces USWDS h6 to set heading family
+----------------------------------------
+*/
+
+@mixin h6 {
+  @include typeset('heading', $theme-h6-font-size, $theme-heading-line-height);
+
+  font-weight: fw('normal');
+  letter-spacing: ls('ls-1');
+  text-transform: uppercase;
+}
