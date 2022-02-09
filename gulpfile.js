@@ -1,7 +1,6 @@
 const { pipeline } = require('stream');
 const { ESLint } = require('eslint');
 const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
 const gulp = require('gulp');
 const notify = require('gulp-notify');
 const postcss = require('gulp-postcss');
@@ -126,13 +125,12 @@ gulp.task('build-sass', () => {
       cascade: false,
       grid: true,
     }),
-    isProduction && cssnano(),
   ].filter(Boolean);
 
   return gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass())
+    .pipe(sass({ outputStyle: isProduction ? 'compressed' : 'expanded' }))
     .pipe(postcss(plugins))
     .on('error', notificationOptions.handler)
     .pipe(gulp.dest(CSS_DEST))
