@@ -1,7 +1,6 @@
 const { pipeline } = require('stream');
 const { ESLint } = require('eslint');
 const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
 const gulp = require('gulp');
 const notify = require('gulp-notify');
 const postcss = require('gulp-postcss');
@@ -120,26 +119,25 @@ gulp.task('lint-sass', async function (callback) {
   callback(errored ? new Error(output) : null);
 });
 
-gulp.task('build-sass', () => {
-  const plugins = [
-    autoprefixer({
-      cascade: false,
-      grid: true,
-    }),
-    isProduction && cssnano(),
-  ].filter(Boolean);
-
-  return gulp
+gulp.task('build-sass', () =>
+  gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass())
-    .pipe(postcss(plugins))
+    .pipe(sass({ outputStyle: isProduction ? 'compressed' : 'expanded' }))
+    .pipe(
+      postcss([
+        autoprefixer({
+          cascade: false,
+          grid: true,
+        }),
+      ]),
+    )
     .on('error', notificationOptions.handler)
     .pipe(gulp.dest(CSS_DEST))
     .pipe(notify(notificationOptions.success))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(CSS_DEST));
-});
+    .pipe(gulp.dest(CSS_DEST)),
+);
 
 gulp.task('watch-sass', () =>
   gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series('build-sass')),
