@@ -6,6 +6,7 @@
    - In the case of headings, line-height will fall back to the configured body line-height if the resulting actual line-height would be smaller than body content when using the heading scale.
 - Body font size has been increased slightly to restore an effective font size of 1rem. ([#292](https://github.com/18F/identity-style-guide/pull/292))
 - The Process List component no longer applies vertical padding which would affect its layout relative to surrounding content. ([#290](https://github.com/18F/identity-style-guide/pull/290))
+- Input hint text is no longer italicized. ([#293](https://github.com/18F/identity-style-guide/pull/293))
 
 ## 6.3.1
 
