@@ -160,6 +160,18 @@ Three styles of radio buttons are provided.
       <label for="a8c1" class="usa-radio__label">Option - Unselected<span class="usa-radio__label-description">Support text</span></label>
     </li>
     <li>
+      <input id="abc123" class="usa-radio__input usa-radio__input--tile" type="radio" name="abc123">
+      <label for="abc123" class="usa-radio__label">
+      <div class="img-container">
+          <img src = "{{ site.baseurl}}/assets/img/fingerprint-icon.svg" class="label-illustration">
+          <div>
+            <span>Option - Illustration</span>
+            <span class="usa-radio__label-description">Support text</span>
+          </div>
+      </div>
+      </label>
+    </li>
+    <li>
       <input id="t6wh" class="usa-radio__input usa-radio__input--tile usa-focus" type="radio" name="t6wh">
       <label for="t6wh" class="usa-radio__label">Option - Unselected Focus<span class="usa-radio__label-description">Support text</span></label>
     </li>
@@ -255,6 +267,18 @@ Three styles of checkboxes are provided as well.
     <li>
       <input id="c288" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="c288">
       <label for="c288" class="usa-checkbox__label">Option - Unchecked<span class="usa-checkbox__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="abc123" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="abc123">
+      <label for="abc123" class="usa-radio__label">
+      <div class="img-container">
+          <img src = "{{ site.baseurl}}/assets/img/fingerprint-icon.svg" class="label-illustration">
+          <div>
+            <span>Option - Illustration</span>
+            <span class="usa-radio__label-description">Support text</span>
+          </div>
+      </div>
+      </label>
     </li>
     <li>
       <input id="u22j" class="usa-checkbox__input usa-checkbox__input--tile usa-focus" type="checkbox" name="u22j">
