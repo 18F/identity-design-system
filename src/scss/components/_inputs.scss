@@ -154,7 +154,7 @@ $input-select-margin-right: 1;
   &__image {
     width: 1em;
     float: left;
-    margin-right: 1em;
+    margin-right: .5em;
     @include at-media('tablet') {
       width: 2em;
       object-fit: contain;
