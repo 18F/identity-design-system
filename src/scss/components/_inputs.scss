@@ -147,21 +147,24 @@ $input-select-margin-right: 1;
   }
 }
 
-.tile-container {
+.usa-checkbox__label-illustrated,
+.usa-radio__label-illustrated {
   @include at-media('tablet') {
     display: flex;
   }
-  &__image {
-    width: 1em;
+  & .usa-radio__image,
+  .usa-checkbox__image {
+    width: 1rem;
     float: left;
-    margin-right: .5em;
+    margin-right: 0.5rem;
     @include at-media('tablet') {
-      width: 2em;
+      width: 2rem;
       object-fit: contain;
       align-self: flex-start;
     }
   }
-  &__text {
+  & .usa-radio__label-text,
+  .usa-checkbox__label-text {
     @include at-media('tablet') {
       flex: 1 1 auto;
     }
