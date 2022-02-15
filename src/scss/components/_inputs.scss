@@ -147,6 +147,27 @@ $input-select-margin-right: 1;
   }
 }
 
+.container {
+  @include at-media ('tablet') {
+    display: flex;
+  }
+  &__image {
+    width: 1em;
+    float: left;
+    margin-right: 0.5em;
+    @include at-media('tablet') {
+      width: 2em;
+      object-fit: contain;
+      align-self: flex-start;
+    }
+  }
+  &__text {
+    @include at-media('tablet') {
+      flex: 1 1 auto;      
+    }
+  }
+}
+
 .usa-radio__input--bordered + .usa-radio__label,
 .usa-checkbox__input--bordered + .usa-checkbox__label {
   @include u-display('table'); // Margin collapse of a "block" while retaining collapsed width.
