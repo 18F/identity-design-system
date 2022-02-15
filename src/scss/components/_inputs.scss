@@ -147,24 +147,23 @@ $input-select-margin-right: 1;
   }
 }
 
-.usa-checkbox__label-illustrated,
-.usa-radio__label-illustrated {
+.usa-checkbox__label--illustrated,
+.usa-radio__label--illustrated {
   @include at-media('tablet') {
     display: flex;
   }
-  & .usa-radio__image,
+  .usa-radio__image,
   .usa-checkbox__image {
     width: 1rem;
     float: left;
     margin-right: 0.5rem;
     @include at-media('tablet') {
       width: 2rem;
-      object-fit: contain;
       align-self: flex-start;
     }
   }
-  & .usa-radio__label-text,
-  .usa-checkbox__label-text {
+  .usa-radio__label--text,
+  .usa-checkbox__label--text {
     @include at-media('tablet') {
       flex: 1 1 auto;
     }
