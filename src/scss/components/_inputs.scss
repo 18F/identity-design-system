@@ -148,7 +148,7 @@ $input-select-margin-right: 1;
 }
 
 .container {
-  @include at-media ('tablet') {
+  @include at-media('tablet') {
     display: flex;
   }
   &__image {
@@ -163,7 +163,7 @@ $input-select-margin-right: 1;
   }
   &__text {
     @include at-media('tablet') {
-      flex: 1 1 auto;      
+      flex: 1 1 auto;
     }
   }
 }
