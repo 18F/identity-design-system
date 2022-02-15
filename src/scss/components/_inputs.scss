@@ -147,7 +147,7 @@ $input-select-margin-right: 1;
   }
 }
 
-.container {
+.tile-container {
   @include at-media('tablet') {
     display: flex;
   }
