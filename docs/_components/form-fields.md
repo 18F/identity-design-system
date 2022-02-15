@@ -165,7 +165,7 @@ Three styles of radio buttons are provided.
         <div class="tile-container">
           <img class="tile-container__image" src="{{ site.baseurl}}/assets/img/fingerprint-icon.svg">
           <div class="tile-container__text">
-            <span class="grid-col-fill">Option - Illustration</span>
+            <span>Option - Illustration</span>
             <span class="usa-radio__label-description">Support text</span>
           </div>
         </div>      
