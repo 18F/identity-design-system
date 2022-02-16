@@ -147,6 +147,31 @@ $input-select-margin-right: 1;
   }
 }
 
+.usa-checkbox__input--tile + .usa-checkbox__label--illustrated,
+.usa-radio__input--tile + .usa-radio__label--illustrated {
+  align-items: flex-start;
+
+  @include at-media('tablet') {
+    display: flex;
+  }
+
+  .usa-radio__image,
+  .usa-checkbox__image {
+    width: 1rem;
+    float: left;
+    margin-right: 0.5rem;
+    @include at-media('tablet') {
+      width: 2rem;
+    }
+  }
+  .usa-radio__label--text,
+  .usa-checkbox__label--text {
+    @include at-media('tablet') {
+      flex: 1;
+    }
+  }
+}
+
 .usa-radio__input--bordered + .usa-radio__label,
 .usa-checkbox__input--bordered + .usa-checkbox__label {
   @include u-display('table'); // Margin collapse of a "block" while retaining collapsed width.

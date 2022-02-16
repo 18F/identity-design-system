@@ -7,6 +7,7 @@
 - Body font size has been increased slightly to restore an effective font size of 1rem. ([#292](https://github.com/18F/identity-style-guide/pull/292))
 - The Process List component no longer applies vertical padding which would affect its layout relative to surrounding content. ([#290](https://github.com/18F/identity-style-guide/pull/290))
 - Input hint text is no longer italicized. ([#293](https://github.com/18F/identity-style-guide/pull/293))
+- New variation of checkbox and radio button tiles with illustrations is added to form fields. ([#296](https://github.com/18F/identity-style-guide/pull/296))
 
 ## 6.3.1
 
