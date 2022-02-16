@@ -68,6 +68,10 @@
 
 ## 6.3.2
 
+### Breaking Changes
+
+- Sass artifacts now require Dart Sass. The Ruby Sass and LibSass (C) compilers are no longer supported.
+
 ### Improvements
 
 - Line height calculations are improved such that the [desired token size](https://github.com/uswds/uswds/blob/61a0d99f0e6b36c3758948ba6ac46140abc5e585/src/stylesheets/theme/_uswds-theme-typography.scss#L363-L371) will always apply regardless of font family or scale. ([#291](https://github.com/18F/identity-style-guide/pull/291))
