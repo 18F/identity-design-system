@@ -147,11 +147,12 @@ $input-select-margin-right: 1;
   }
 }
 
-.usa-checkbox__label--illustrated,
-.usa-radio__label--illustrated {
+.usa-checkbox__input--tile + .usa-checkbox__label--illustrated,
+.usa-radio__input--tile + .usa-radio__label--illustrated {
   @include at-media('tablet') {
     display: flex;
   }
+    
   .usa-radio__image,
   .usa-checkbox__image {
     width: 1rem;
@@ -159,13 +160,12 @@ $input-select-margin-right: 1;
     margin-right: 0.5rem;
     @include at-media('tablet') {
       width: 2rem;
-      align-self: flex-start;
     }
   }
   .usa-radio__label--text,
   .usa-checkbox__label--text {
     @include at-media('tablet') {
-      flex: 1 1 auto;
+      flex: 1;
     }
   }
 }

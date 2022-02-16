@@ -272,7 +272,7 @@ Three styles of checkboxes are provided as well.
       <input id="abc123" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="abc123">
         <label for="abc123" class="usa-checkbox__label usa-checkbox__label--illustrated">
         <div class="usa-checkbox__image">
-          <img src="{{ site.baseurl}}/assets/img/fingerprint-icon.svg">        
+          <img alt="" src="{{ site.baseurl}}/assets/img/fingerprint-icon.svg">        
         </div>
         <div class="usa-checkbox__label--text">
           Option - Illustration
