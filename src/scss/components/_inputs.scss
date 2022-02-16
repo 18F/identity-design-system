@@ -149,6 +149,8 @@ $input-select-margin-right: 1;
 
 .usa-checkbox__input--tile + .usa-checkbox__label--illustrated,
 .usa-radio__input--tile + .usa-radio__label--illustrated {
+  align-items: flex-start;
+
   @include at-media('tablet') {
     display: flex;
   }
