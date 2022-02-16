@@ -162,9 +162,9 @@ Three styles of radio buttons are provided.
     <li>
       <input id="abc123" class="usa-radio__input usa-radio__input--tile" type="radio" name="abc123">
       <label for="abc123" class="usa-radio__label usa-radio__label--illustrated">
-      <div class="usa-radio__image">
-        <img alt="" src="{{ site.baseurl}}/assets/img/fingerprint-icon.svg">
-      </div>
+        <div class="usa-radio__image">
+          <img alt="" src="{{ site.baseurl}}/assets/img/fingerprint-icon.svg">
+        </div>
         <div class="usa-radio__label--text">
           Option - Illustration
           <span class="usa-radio__label-description">Support text</span>
