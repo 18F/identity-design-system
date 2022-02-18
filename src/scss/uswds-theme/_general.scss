@@ -17,16 +17,6 @@ https://designsystem.digital.gov/design-tokens
 
 /*
 ----------------------------------------
-Image path
-----------------------------------------
-Relative image file path
-----------------------------------------
-*/
-
-$theme-image-path: if(variable-exists(image-path), $image-path, '../img') !default;
-
-/*
-----------------------------------------
 Show compile warnings
 ----------------------------------------
 Show Sass warnings when functions and
