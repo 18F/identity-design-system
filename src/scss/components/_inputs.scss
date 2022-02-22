@@ -59,7 +59,7 @@ $input-select-margin-right: 1;
     height: $checkbox-radio-size;
     margin-left: 0;
     margin-right: 0;
-    margin-top: math.divide(
+    margin-top: math.div(
       line-height($theme-form-font-family, $theme-body-line-height) *
         font-size($theme-form-font-family, $theme-body-font-size) - $checkbox-radio-size,
       2
@@ -136,7 +136,7 @@ $input-select-margin-right: 1;
 
   &::before {
     left: units(3);
-    margin-top: math.divide(
+    margin-top: math.div(
       line-height($theme-form-font-family, $theme-body-line-height) * 1.125rem -
         $checkbox-radio-size,
       2
