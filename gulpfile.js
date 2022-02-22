@@ -4,7 +4,6 @@ const autoprefixer = require('autoprefixer');
 const gulp = require('gulp');
 const notify = require('gulp-notify');
 const postcss = require('gulp-postcss');
-const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const gulpif = require('gulp-if');
 const sass = require('gulp-sass')(require('sass-embedded'));
