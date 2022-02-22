@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bug Fixes
+
+- Changing the radio tile image size from 1rem to 1.5rem. ([#299](https://github.com/18F/identity-style-guide/pull/299))
+
 ## 6.3.2
 
 ### Improvements
