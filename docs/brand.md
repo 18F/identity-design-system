@@ -28,13 +28,13 @@ The Login.gov logo is the cornerstone of our brand. Whenever possible, the red a
 
 The logo should always be surrounded by generous white space. The diagram below defines the minimum amount of clear space needed, which is based on the cap-height of the typography.
 
-<img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-spacing.svg" role="img" alt="Login.gov logo spacing diagram">
+<img src="{{ site.baseurl }}/img/login-gov-logo-spacing.svg" role="img" alt="Login.gov logo spacing diagram">
 
 ### Minimum size
 
 Establishing a minimum size ensures that the impact and legibility of the logo is not compromised in application.
 
-<img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-minimum-size.svg" role="img" alt="Login.gov logo minimum size diagram">
+<img src="{{ site.baseurl }}/img/login-gov-logo-minimum-size.svg" role="img" alt="Login.gov logo minimum size diagram">
 
 ## Logo Usage
 
@@ -51,51 +51,51 @@ For optimum legibility and brand consistency, the logo should never be used in w
 <div class="grid-row grid-gap">
   <div class="tablet:grid-col-4">
     Do not outline.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-outlined.svg" role="img" alt="Login.gov logo outlined" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-outlined.svg" role="img" alt="Login.gov logo outlined" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not skew.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-skewed.svg" role="img" alt="Login.gov logo skewed" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-skewed.svg" role="img" alt="Login.gov logo skewed" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not apply effects.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-with-effects.svg" role="img" alt="Login.gov logo with effects" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-with-effects.svg" role="img" alt="Login.gov logo with effects" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not adjust spacing.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-spaced.svg" role="img" alt="Login.gov logo spaced" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-spaced.svg" role="img" alt="Login.gov logo spaced" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not apply drop shadows.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-shadowed.svg" role="img" alt="Login.gov logo shadowed" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-shadowed.svg" role="img" alt="Login.gov logo shadowed" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not distort.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-distorted.svg" role="img" alt="Login.gov logo distorted" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-distorted.svg" role="img" alt="Login.gov logo distorted" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not apply brand colors.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-brand-colored.svg" role="img" alt="Login.gov logo brand colored" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-brand-colored.svg" role="img" alt="Login.gov logo brand colored" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not apply gradients.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-gradiented.svg" role="img" alt="Login.gov logo gradiented" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-gradiented.svg" role="img" alt="Login.gov logo gradiented" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not rotate.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-rotated.svg" role="img" alt="Login.gov logo rotated" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-rotated.svg" role="img" alt="Login.gov logo rotated" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not mask images or graphics.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-masked.svg" role="img" alt="Login.gov logo masked" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-masked.svg" role="img" alt="Login.gov logo masked" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not use additional colors.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-logo-colored.svg" role="img" alt="Login.gov logo colored" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-logo-colored.svg" role="img" alt="Login.gov logo colored" class="display-block margin-top-1 margin-bottom-4">
   </div>
   <div class="tablet:grid-col-4">
     Do not separate the shield from the wordmark.
-    <img src="{{ site.baseurl }}/assets/img/style-guide/login-gov-shield.svg" role="img" alt="Login.gov logo separated" class="display-block margin-top-1 margin-bottom-4">
+    <img src="{{ site.baseurl }}/img/login-gov-shield.svg" role="img" alt="Login.gov logo separated" class="display-block margin-top-1 margin-bottom-4">
   </div>
 </div>
 
