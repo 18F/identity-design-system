@@ -4,6 +4,7 @@
 
 - Remove documentation-specific images from published package. ([#300](https://github.com/18F/identity-style-guide/pull/300))
 - Remove duplicate styles. ([#301](https://github.com/18F/identity-style-guide/pull/301))
+- Reconcile redundant focus styles with U.S. Web Design System. ([#302](https://github.com/18F/identity-style-guide/pull/302))
 
 ## 6.3.3
 
