@@ -5,8 +5,7 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
 
   &:not([disabled]):focus,
   &:not([disabled]).usa-focus {
-    @include disable-default-focus-styles;
-    box-shadow: roundable-focus-outline-box-shadows();
+    outline-offset: units($theme-focus-offset);
   }
 }
 
@@ -20,28 +19,15 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   // In USWDS, unstyled button styles are applied last to take precedence over base button styles.
   // Since we override base button styles, we must re-apply the unstyled button styles.
   @include button-unstyled;
-  position: relative;
-
-  &.usa-button:not([disabled]):focus,
-  &.usa-button:not([disabled]).usa-focus {
-    @include focus-outline;
-    box-shadow: none;
-  }
 }
 
 .usa-button--secondary,
 .usa-button--outline {
   background-color: color('white');
-  box-shadow: $button-stroke color('primary');
   color: color('primary');
 
   &:visited {
     color: color('primary');
-  }
-
-  &:not([disabled]):focus,
-  &:not([disabled]).usa-focus {
-    box-shadow: $button-stroke color('primary'), roundable-focus-outline-box-shadows();
   }
 
   &:hover,
@@ -57,17 +43,11 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   &:disabled,
   &.usa-button--disabled {
     background-color: color('white');
-    box-shadow: $button-stroke color('disabled');
     color: color('disabled');
   }
 
   &.usa-button--big {
     box-shadow: $button-stroke-big color('primary');
-
-    &:not([disabled]):focus,
-    &:not([disabled]).usa-focus {
-      box-shadow: $button-stroke-big color('primary'), roundable-focus-outline-box-shadows();
-    }
 
     &:hover,
     &.usa-button--hover {
