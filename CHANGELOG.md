@@ -6,6 +6,10 @@
 - Remove duplicate styles. ([#301](https://github.com/18F/identity-style-guide/pull/301))
 - Reconcile redundant focus styles with U.S. Web Design System. ([#302](https://github.com/18F/identity-style-guide/pull/302))
 
+### Dependencies
+
+- Update USWDS from v2.13.1 to 2.13.2 ([#304](https://github.com/18F/identity-style-guide/pull/304))
+
 ## 6.3.3
 
 ### Bug Fixes
