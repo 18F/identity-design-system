@@ -1,5 +1,13 @@
 ## Unreleased
 
+### Deprecation Notice
+
+- The `alerts/success-badge.svg` image will be removed in a future major version. Use `alerts/success.svg` instead. ([#306](https://github.com/18F/identity-style-guide/pull/306))
+
+### Bug Fixes
+
+- Use correct "Success" green color for `alerts/unphishable.svg` icon. ([#306](https://github.com/18F/identity-style-guide/pull/306))
+
 ### Optimization
 
 - Remove documentation-specific images from published package. ([#300](https://github.com/18F/identity-style-guide/pull/300))
