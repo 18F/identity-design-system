@@ -94,6 +94,7 @@
     "puppeteer": "^13.1.2",
     "sass-embedded": "^1.0.0-rc.1",
     "stylelint": "^14.3.0",
+    "svgo": "^2.8.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

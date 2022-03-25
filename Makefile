@@ -2,6 +2,7 @@ MAKEFLAGS += --jobs=6
 TMP_DIR = ./tmp
 OUTPUT_DIR = ./dist
 PACKAGE_DIR = ./build
+NODE_BIN = ./node_modules/.bin
 
 # Federalist builds overwrite the output directory.
 ifdef SITE_PREFIX
@@ -14,7 +15,7 @@ start-docs:
 	bundle exec jekyll serve --watch
 
 start-assets: build-fonts build-images
-	NODE_ENV=development ./node_modules/.bin/gulp watch
+	NODE_ENV=development $(NODE_BIN)/gulp watch
 
 validate-gemfile-lock: Gemfile Gemfile.lock
 	@echo "Validating Gemfile.lock..."
@@ -28,9 +29,16 @@ validate-package-lock: package.json package-lock.json
 
 validate-lockfiles: validate-gemfile-lock validate-package-lock
 
-lint: build-package
-	./node_modules/.bin/gulp lint
-	make validate-lockfiles
+optimize-svg:
+	$(NODE_BIN)/svgo --config svgo.config.js -f src/img
+
+optimize-assets: optimize-svg
+
+lint-optimized-assets: optimize-assets
+	(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize_assets'"; exit 1)
+
+lint: build-package validate-lockfiles lint-optimized-assets
+	$(NODE_BIN)/gulp lint
 
 build: build-docs build-assets build-package
 
@@ -40,13 +48,13 @@ build-docs:
 build-assets: build-sass-and-js build-fonts build-images copy-scss
 
 build-package:
-	./node_modules/.bin/gulp build-package
+	$(NODE_BIN)/gulp build-package
 
 build-sass-and-js:
 	NODE_ENV=production \
 	DISABLE_NOTIFIER=true \
 	OUTPUT_DIR=$(OUTPUT_DIR) \
-	./node_modules/.bin/gulp build
+	$(NODE_BIN)/gulp build
 
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts
@@ -58,7 +66,7 @@ build-images:
 	cp -r src/img $(OUTPUT_DIR)/assets
 
 copy-scss:
-	./node_modules/.bin/gulp copy-scss
+	$(NODE_BIN)/gulp copy-scss
 
 test: build
 	npm exec jest
