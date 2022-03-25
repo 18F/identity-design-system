@@ -75,6 +75,7 @@
 - Image URLs in stylesheets are no longer processed by `asset-path-if-exists`. For Rails integrations, consider using [the `$theme-image-path` Sass variable](https://designsystem.digital.gov/documentation/settings/#general-settings) in combination with [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options).
 - The deprecated `$image-path` Sass variable setting has been removed. Use `$theme-image-path` instead.
 - The deprecated `alerts/success-badge.svg` image has been removed. Use `alerts/success.svg` instead.
+- Removed `usa-alert__paragraph` alert helper class. Use [`measure-3` measure utility](https://designsystem.digital.gov/utilities/paragraph-styles/#max-width) instead.
 
 ### Improvements
 
