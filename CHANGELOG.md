@@ -74,6 +74,7 @@
 - To improve performance of the default CSS bundle, responsive utility breakpoints other than `tablet:` have been disabled by default. Previously, `mobile-lg:` and `desktop:` utilities were also enabled. You can restore the original settings by overriding [the `$theme-utility-breakpoints` Sass variable](https://designsystem.digital.gov/documentation/settings/#utilities-settings).
 - Image URLs in stylesheets are no longer processed by `asset-path-if-exists`. For Rails integrations, consider using [the `$theme-image-path` Sass variable](https://designsystem.digital.gov/documentation/settings/#general-settings) in combination with [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options).
 - The deprecated `$image-path` Sass variable setting has been removed. Use `$theme-image-path` instead.
+- The deprecated `alerts/success-badge.svg` image has been removed. Use `alerts/success.svg` instead.
 
 ### Improvements
 
