@@ -15,12 +15,15 @@
 - Reconcile redundant focus styles with U.S. Web Design System. ([#302](https://github.com/18F/identity-style-guide/pull/302))
 - Remove documentation site styles from design system artifact. ([#305](https://github.com/18F/identity-style-guide/pull/305))
 - Reduce size of SVG images. ([#307](https://github.com/18F/identity-style-guide/pull/307))
-- Incorporate mfa icon styles, which were previously added to the identity-idp. ([#309](https://github.com/18F/identity-style-guide/pull/309))
 
 ### Dependencies
 
 - Update USWDS from v2.13.1 to 2.13.2. ([#304](https://github.com/18F/identity-style-guide/pull/304))
 - Update dependencies to resolve vulnerability advisories. ([#308](https://github.com/18F/identity-style-guide/pull/308))
+
+### Improvements
+
+- Incorporate mfa icon styles, which were previously added to the identity-idp. ([#309](https://github.com/18F/identity-style-guide/pull/309))
 
 ## 6.3.3
 
