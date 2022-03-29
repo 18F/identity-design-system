@@ -150,13 +150,15 @@ $input-select-margin-right: 1;
     float: left;
     margin-right: 0.5rem;
     @include at-media('tablet') {
-      width: 2rem;
+      width: 2.625rem;
+      padding-top: 0.25rem;
     }
   }
   .usa-radio__label--text,
   .usa-checkbox__label--text {
     @include at-media('tablet') {
       flex: 1;
+      padding-left: 0.5rem;
     }
   }
 }
