@@ -21,6 +21,10 @@
 - Update USWDS from v2.13.1 to 2.13.2. ([#304](https://github.com/18F/identity-style-guide/pull/304))
 - Update dependencies to resolve vulnerability advisories. ([#308](https://github.com/18F/identity-style-guide/pull/308))
 
+### Improvements
+
+- Incorporate mfa icon styles, which were previously added to the identity-idp. ([#309](https://github.com/18F/identity-style-guide/pull/309))
+
 ## 6.3.3
 
 ### Bug Fixes
