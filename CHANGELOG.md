@@ -6,7 +6,7 @@
 
 ### Improvements
 
-- Improve appearance of illustrated tile checkboxes and radiob uttons. ([#309](https://github.com/18F/identity-style-guide/pull/309))
+- Improve appearance of illustrated tile checkboxes and radio buttons. ([#309](https://github.com/18F/identity-style-guide/pull/309))
 
 ### Bug Fixes
 
