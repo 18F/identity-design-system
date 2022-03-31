@@ -1,8 +1,12 @@
-## Unreleased
+## 6.4.0
 
 ### Deprecation Notice
 
 - The `alerts/success-badge.svg` image will be removed in a future major version. Use `alerts/success.svg` instead. ([#306](https://github.com/18F/identity-style-guide/pull/306))
+
+### Improvements
+
+- Improve appearance of illustrated tile checkboxes and radio buttons. ([#309](https://github.com/18F/identity-style-guide/pull/309))
 
 ### Bug Fixes
 
@@ -20,10 +24,6 @@
 
 - Update USWDS from v2.13.1 to 2.13.2. ([#304](https://github.com/18F/identity-style-guide/pull/304))
 - Update dependencies to resolve vulnerability advisories. ([#308](https://github.com/18F/identity-style-guide/pull/308))
-
-### Improvements
-
-- Incorporate mfa icon styles, which were previously added to the identity-idp. ([#309](https://github.com/18F/identity-style-guide/pull/309))
 
 ## 6.3.3
 
