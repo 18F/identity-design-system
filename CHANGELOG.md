@@ -1,3 +1,9 @@
+## 6.4.1
+
+### Bug Fixes
+
+- Fix an issue where search field submit buttons would not show text at small viewport sizes. ([#311](https://github.com/18F/identity-style-guide/pull/311))
+
 ## 6.4.0
 
 ### Deprecation Notice

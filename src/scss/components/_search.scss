@@ -6,8 +6,8 @@
   width: auto;
 }
 
-.usa-search .usa-search__submit-text {
-  position: static;
+.usa-search__submit-text {
+  display: block;
 }
 
 .usa-search--big [type='submit'],
