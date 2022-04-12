@@ -1,3 +1,9 @@
+## Unreleased
+
+### Dependencies
+
+- Update USWDS from v2.13.2 to 2.13.3. ([#312](https://github.com/18F/identity-style-guide/pull/312))
+
 ## 6.4.1
 
 ### Bug Fixes
