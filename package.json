@@ -57,7 +57,7 @@
   },
   "homepage": "https://github.com/18F/identity-style-guide#readme",
   "dependencies": {
-    "domready": "^1.0.8",
+    "domready": "1.0.8",
     "uswds": "^2.13.1"
   },
   "devDependencies": {
