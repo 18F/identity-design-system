@@ -70,10 +70,6 @@ $input-select-margin-right: 1;
 .usa-checkbox__input:disabled + .usa-checkbox__label {
   color: color('disabled');
   border-color: color('disabled');
-
-  .usa-checkbox__image {
-    filter: invert(45%) sepia(1%) saturate(0%) hue-rotate(232deg) brightness(100%) contrast(80%);
-  }
 }
 
 .usa-radio__label::before {
