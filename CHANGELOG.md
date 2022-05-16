@@ -4,6 +4,10 @@
 
 - Update USWDS from v2.13.2 to 2.13.3. ([#312](https://github.com/18F/identity-style-guide/pull/312))
 
+### Improvements
+
+- Add styles and markdown content for selected and disabled radios and checkboxes. ([#313](https://github.com/18F/identity-style-guide/pull/313))
+
 ## 6.4.1
 
 ### Bug Fixes

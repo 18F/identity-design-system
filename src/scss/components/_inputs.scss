@@ -78,13 +78,18 @@ $input-select-margin-right: 1;
 
 .usa-radio__input:disabled + .usa-radio__label::before,
 .usa-checkbox__input:disabled + .usa-checkbox__label::before {
-  background-color: color('white');
   box-shadow: inset 0 0 0 units($border-width) color('disabled');
 }
 
-.usa-checkbox__input:checked + .usa-checkbox__label::before,
+.usa-radio__input:checked:disabled + .usa-radio__label::before {
+  box-shadow: inset 0 0 0 3px color('disabled');
+  background-color: color('white');
+}
+
 .usa-checkbox__input:checked:disabled + .usa-checkbox__label::before {
-  background-size: units(1) auto;
+  background-color: color('disabled');
+  box-shadow: inset 0 0 0 units($border-width) color('disabled');
+  background-size: 0.5rem auto;
 }
 
 .usa-radio__input:checked + .usa-radio__label::before {
@@ -94,6 +99,7 @@ $input-select-margin-right: 1;
 
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
   box-shadow: inset 0 0 0 units($border-width) color('primary');
+  background-size: 0.5rem auto;
 }
 
 .usa-radio__input.usa-focus + .usa-radio__label::before,
@@ -136,6 +142,11 @@ $input-select-margin-right: 1;
   }
 }
 
+.usa-radio__input--tile:disabled + .usa-radio__label--illustrated .usa-radio__image,
+.usa-checkbox__input--tile:disabled + .usa-checkbox__label--illustrated .usa-checkbox__image {
+  filter: invert(45%) sepia(1%) saturate(0%) hue-rotate(232deg) brightness(100%) contrast(80%);
+}
+
 .usa-checkbox__input--tile + .usa-checkbox__label--illustrated,
 .usa-radio__input--tile + .usa-radio__label--illustrated {
   align-items: flex-start;
@@ -154,6 +165,7 @@ $input-select-margin-right: 1;
       padding-top: 0.25rem;
     }
   }
+
   .usa-radio__label--text,
   .usa-checkbox__label--text {
     @include at-media('tablet') {
@@ -182,6 +194,12 @@ $input-select-margin-right: 1;
 .usa-radio__input--bordered:checked + .usa-radio__label {
   background-color: color($theme-input-bordered-background-color-selected);
   border-color: color($theme-input-bordered-border-color-selected);
+}
+
+.usa-checkbox__input--bordered:checked:disabled + .usa-checkbox__label,
+.usa-radio__input--bordered:checked:disabled + .usa-radio__label {
+  background-color: transparent;
+  border-color: color('disabled');
 }
 
 .usa-checkbox__input--tile:checked + .usa-checkbox__label,

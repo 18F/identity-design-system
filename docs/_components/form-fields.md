@@ -113,6 +113,10 @@ Three styles of radio buttons are provided.
       <input id="b306" class="usa-radio__input" type="radio" name="b306" disabled>
       <label for="b306" class="usa-radio__label">Option - Disabled</label>
     </li>
+    <li>
+      <input id="306b" class="usa-radio__input" type="radio" name="306b" disabled checked>
+      <label for="306b" class="usa-radio__label">Option - Disabled and Selected</label>
+    </li>
   </ul>
 </fieldset>
 {% endcapture %}
@@ -143,6 +147,10 @@ Three styles of radio buttons are provided.
     <li>
       <input id="db6f" class="usa-radio__input usa-radio__input--bordered" type="radio" name="db6f" disabled>
       <label for="db6f" class="usa-radio__label">Option - Disabled</label>
+    </li>
+    <li>
+      <input id="b6fd" class="usa-radio__input usa-radio__input--bordered" type="radio" name="b6fd" disabled checked>
+      <label for="b6fd" class="usa-radio__label">Option - Disabled and Selected</label>
     </li>
   </ul>
 </fieldset>
@@ -185,6 +193,10 @@ Three styles of radio buttons are provided.
       <input id="b93f" class="usa-radio__input usa-radio__input--tile" type="radio" name="b93f" disabled>
       <label for="b93f" class="usa-radio__label">Option - Disabled<span class="usa-radio__label-description">Support text</span></label>
     </li>
+    <li>
+      <input id="93fb" class="usa-radio__input usa-radio__input--tile" type="radio" name="93fb" disabled checked>
+      <label for="93fb" class="usa-radio__label">Option - Disabled and Selected<span class="usa-radio__label-description">Support text</span></label>
+    </li>
   </ul>
 </fieldset>
 {% endcapture %}
@@ -220,6 +232,10 @@ Three styles of checkboxes are provided as well.
       <input id="badc" class="usa-checkbox__input" type="checkbox" name="badc" disabled>
       <label for="badc" class="usa-checkbox__label">Option - Disabled</label>
     </li>
+    <li>
+      <input id="adcb" class="usa-checkbox__input" type="checkbox" name="adcb" disabled checked>
+      <label for="adcb" class="usa-checkbox__label">Option - Disabled and Checked</label>
+    </li>
   </ul>
 </fieldset>
 {% endcapture %}
@@ -250,6 +266,10 @@ Three styles of checkboxes are provided as well.
     <li>
       <input id="c6b3" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="c6b3" disabled>
       <label for="c6b3" class="usa-checkbox__label">Option - Disabled</label>
+    </li>
+    <li>
+      <input id="6b3c" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="6b3c" disabled checked>
+      <label for="6b3c" class="usa-checkbox__label">Option - Disabled and Checked</label>
     </li>
   </ul>
 </fieldset>
@@ -293,6 +313,10 @@ Three styles of checkboxes are provided as well.
     <li>
       <input id="ea84" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="ea84" disabled>
       <label for="ea84" class="usa-checkbox__label">Option - Disabled<span class="usa-checkbox__label-description">Support text</span></label>
+    </li>
+    <li>
+      <input id="a84e" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="a84e" disabled checked>
+      <label for="a84e" class="usa-checkbox__label">Option - Disabled and Checked<span class="usa-checkbox__label-description">Support text</span></label>
     </li>
   </ul>
 </fieldset>
