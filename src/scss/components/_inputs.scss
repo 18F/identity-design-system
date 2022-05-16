@@ -76,7 +76,7 @@ $input-select-margin-right: 1;
   border-radius: 50%;
 }
 
-.usa-radio__input:disabled+.usa-radio__label::before,
+.usa-radio__input:disabled + .usa-radio__label::before,
 .usa-checkbox__input:disabled + .usa-checkbox__label::before {
   box-shadow: inset 0 0 0 units($border-width) color('disabled');
 }
