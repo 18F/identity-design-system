@@ -143,7 +143,7 @@ $input-select-margin-right: 1;
 
 .usa-radio__input--tile:disabled + .usa-radio__label--illustrated .usa-radio__image,
 .usa-checkbox__input--tile:disabled + .usa-checkbox__label--illustrated .usa-checkbox__image {
-  filter: invert(0%) sepia(1%) saturate(0%) hue-rotate(232deg) brightness(100%) contrast(100%);
+  filter: invert(45%) sepia(1%) saturate(0%) hue-rotate(232deg) brightness(100%) contrast(80%);
 }
 
 .usa-checkbox__input--tile + .usa-checkbox__label--illustrated,
