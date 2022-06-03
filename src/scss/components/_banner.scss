@@ -19,6 +19,7 @@
   // Reset default accordion button border styling for banner button.
   @include u-border(0);
   @include u-radius(0);
+  line-height: line-height($theme-banner-font-family, 2);
 }
 
 .usa-accordion__button.usa-banner__button,
