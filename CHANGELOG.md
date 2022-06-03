@@ -1,3 +1,9 @@
+## Unreleased
+
+### Improvements
+
+- Increase line-height for accordion heading content to improve readability. ([#316](https://github.com/18F/identity-style-guide/pull/316))
+
 ## 6.4.2
 
 ### Dependencies

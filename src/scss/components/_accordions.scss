@@ -6,6 +6,7 @@
   background-color: color('transparent');
   background-size: units(2);
   color: color('primary');
+  line-height: line-height($theme-body-font-family, $theme-body-line-height);
 
   &:hover {
     background-color: color('primary-lightest');
