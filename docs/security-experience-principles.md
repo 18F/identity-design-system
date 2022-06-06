@@ -7,11 +7,11 @@ lead: >
 
 Our team leverages the following principles to guide us to create the best security product for the public.
 
-We also leverage the U.S. Web Design System’s design principles to guide our work. [You can read more about those on their website.](https://designsystem.digital.gov/design-principles/)
+We also leverage the [U.S. Web Design System’s design principles](https://designsystem.digital.gov/design-principles/) to guide our work.
 
 ## Security experience is everyone’s job.
 
-**Creating a secure, usable experience is a priority for everyone at Login.gov.** We are all responsible for maintaining the integrity of our products and services. We prioritize protecting the public’s data in sync with our practice of continuously improving our product. As users use Login.gov, we should ensure their security awareness is raised. We want to affect users to keep their entire digital presence secure, not just their Login.gov presence. [You can read more about Login.gov’s security and privacy best practices here.](https://login.gov/policy/our-security-practices/)
+**Creating a secure, usable experience is a priority for everyone at Login.gov.** We are all responsible for maintaining the integrity of our products and services. We prioritize protecting the public’s data in sync with our practice of continuously improving our product. As users use Login.gov, we should ensure their security awareness is raised. We want to affect users to keep their entire digital presence secure, not just their Login.gov presence. [You can read more about our security and privacy practices](https://login.gov/policy/our-security-practices/).
 
 ### Key considerations
 
