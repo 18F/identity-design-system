@@ -1,6 +1,6 @@
 {
   "name": "identity-style-guide",
-  "version": "6.4.2",
+  "version": "6.5.0",
   "description": "The global style of Login.gov",
   "main": "./build/cjs/index.js",
   "module": "./build/esm/index.js",
