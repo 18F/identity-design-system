@@ -15,6 +15,8 @@ $input-select-margin-right: 1;
 
 .usa-input,
 .usa-textarea,
+.usa-combobox__input,
+.usa-combobox__list,
 .usa-select {
   @include u-border-color('primary-light');
   font-weight: font-weight('bold');
