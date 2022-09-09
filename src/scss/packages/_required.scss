@@ -1,24 +1,3 @@
-@import '../uswds-theme/general';
-@import '../uswds-theme/typography';
-@import '../uswds-theme/spacing';
-@import '../uswds-theme/color';
-@import '../uswds-theme/utilities';
-@import '../uswds-theme/components';
-@import '../uswds/settings/settings-general';
-@import '../uswds/settings/settings-typography';
-@import '../uswds/settings/settings-color';
-@import '../uswds/settings/settings-spacing';
-@import '../uswds/settings/settings-utilities';
-@import '../uswds/settings/settings-components';
-@import '../uswds/core/functions';
-@import '../functions/lh';
-@import '../uswds/core/system-tokens';
-@import '../uswds/core/variables';
-@import '../uswds/core/properties';
-@import '../uswds/core/mixins/all';
-@import '../core/mixins/all';
-@import '../uswds/core/placeholders/all';
-@import '../uswds/core/deprecated';
-@import '../uswds/core/notifications';
-@import '../uswds/utilities/palettes/all';
-@import '../uswds/utilities/rules/all';
+@forward '../uswds-theme';
+@forward 'uswds-core';
+// @forward '../mixins/typography'; // TODO: Figure out how to override

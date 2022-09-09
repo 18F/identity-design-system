@@ -1,3 +1,5 @@
+@use 'uswds-core' as *;
+
 .usa-search [type='submit'],
 .usa-search .usa-search__submit {
   @include u-padding-x('105');

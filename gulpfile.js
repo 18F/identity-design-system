@@ -122,7 +122,12 @@ gulp.task('build-sass', () =>
   gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass({ outputStyle: isProduction ? 'compressed' : 'expanded' }))
+    .pipe(
+      sass({
+        outputStyle: isProduction ? 'compressed' : 'expanded',
+        includePaths: ['node_modules/@uswds/uswds/packages'],
+      }),
+    )
     .pipe(
       postcss([
         autoprefixer({
@@ -153,7 +158,7 @@ gulp.task('copy-login-scss', () =>
 
 gulp.task('copy-uswds-scss', () =>
   gulp
-    .src(['node_modules/uswds/dist/scss/**/*.scss'])
+    .src(['node_modules/@uswds/uswds/dist/scss/**/*.scss'])
     .pipe(underscorePrefix())
     .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
 );

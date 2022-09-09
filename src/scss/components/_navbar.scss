@@ -1,3 +1,6 @@
+@use 'uswds-core' as *;
+@use 'usa-nav';
+
 $header-height: 10;
 
 // Header navigation
@@ -133,14 +136,14 @@ $header-height: 10;
       $button-vertical-offset: 53%; // XXX: Magic number
 
       @include button-unstyled;
-      color: color($nav-link-color);
+      color: color(usa-nav.$nav-link-color);
       font-weight: font-weight('normal');
       line-height: line-height($theme-navigation-font-family, 2);
       padding: units(1.5) units(2);
       text-decoration: none;
 
       @include at-media($theme-header-min-width) {
-        @include primary-nav-link;
+        @include usa-nav.primary-nav-link;
         font-size: font-size($theme-navigation-font-family, '2xs');
         font-weight: font-weight('bold');
       }
@@ -158,12 +161,12 @@ $header-height: 10;
       &[aria-expanded='true'] {
         @include add-background-svg('minus-alt');
         background-position: right 0 center;
-        background-size: units($nav-link-accordion-icon-size);
+        background-size: units(usa-nav.$nav-link-accordion-icon-size);
 
         @include at-media($theme-header-min-width) {
           @include add-background-svg('angle-arrow-up-primary');
           @include add-knockout-font-smoothing;
-          background-size: units($nav-link-arrow-icon-size);
+          background-size: units(usa-nav.$nav-link-arrow-icon-size);
           background-color: color('primary-lighter');
           background-position: right units(2) top $button-vertical-offset;
           color: color('white');

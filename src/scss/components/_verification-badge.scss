@@ -1,7 +1,9 @@
+@use 'uswds-core' as *;
+
 .lg-verification-badge {
   @include u-radius('pill');
-  background-color: map-get($site-palette, 'site-white');
-  border: units(1px) solid map-get($site-palette, 'site-green');
+  background-color: color('white');
+  border: units(1px) solid color('success');
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;

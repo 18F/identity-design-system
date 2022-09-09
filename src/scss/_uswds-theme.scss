@@ -1,0 +1,237 @@
+@use 'sass:map';
+
+$site-palette: (
+  // Blue
+  'site-darkest-blue': #0c213a,
+  'site-darker-blue': #112e51,
+  'site-dark-blue': #205493,
+  'site-blue': #0071bb,
+  'site-light-blue': #cedced,
+  'site-lighter-blue': #ebf3fa,
+  'site-lightest-blue': #f2f9ff,
+  // Teal
+  'site-darkest-teal': #006175,
+  'site-darker-teal': #007187,
+  'site-dark-teal': #008099,
+  'site-teal': #00a2c4,
+  'site-light-teal': #7bbfd6,
+  'site-lighter-teal': #b7dde9,
+  'site-lightest-teal': #ecfcff,
+  // Red
+  'site-darkest-red': #680617,
+  'site-darker-red': #8b0a21,
+  'site-dark-red': #ab142f,
+  'site-red': #e21c3d,
+  'site-light-red': #ea7b85,
+  'site-lighter-red': #f3b8be,
+  'site-lightest-red': #fff0f3,
+  // Grey
+  'site-darkest-grey': #1b1b1b,
+  'site-darker-grey': #454545,
+  'site-dark-grey': #5c5c5c,
+  'site-grey': #767676,
+  'site-light-grey': #adadad,
+  'site-lighter-grey': #dedede,
+  'site-lightest-grey': #f0f0f0,
+  'site-ink': #454545,
+  'site-disabled-grey': #767676,
+  // Yellow
+  'site-darkest-yellow': #504332,
+  'site-darker-yellow': #847122,
+  'site-dark-yellow': #bba212,
+  'site-yellow': #f5d600,
+  'site-light-yellow': #f9e450,
+  'site-lighter-yellow': #fcf197,
+  'site-lightest-yellow': #fffdd7,
+  // Green
+  'site-darkest-green': #094316,
+  'site-darker-green': #0e581e,
+  'site-dark-green': #136e26,
+  'site-green': #18852e,
+  'site-light-green': #60ae70,
+  'site-lighter-green': #a6d5af,
+  'site-lightest-green': #ebfcef,
+  // White
+  'site-white': #ffffff
+);
+
+@use 'uswds-core' with (
+  // ----------------------------------------
+  // Colors
+  // ----------------------------------------
+  // Palettes
+  $global-color-palettes: ('palette-color-default', 'palette-color-state'),
+  // Base colors
+  $theme-color-base-family: 'grey',
+  $theme-color-base-lightest: map.get($site-palette, 'site-lightest-grey'),
+  $theme-color-base-lighter: map.get($site-palette, 'site-lighter-grey'),
+  $theme-color-base-light: map.get($site-palette, 'site-light-grey'),
+  $theme-color-base: map.get($site-palette, 'site-grey'),
+  $theme-color-base-dark: map.get($site-palette, 'site-dark-grey'),
+  $theme-color-base-darker: map.get($site-palette, 'site-darker-grey'),
+  $theme-color-base-darkest: map.get($site-palette, 'site-darkest-grey'),
+  $theme-color-base-ink: map.get($site-palette, 'site-ink'),
+  // Primary colors
+  $theme-color-primary-lightest: map.get($site-palette, 'site-lightest-blue'),
+  $theme-color-primary-lighter: map.get($site-palette, 'site-lighter-blue'),
+  $theme-color-primary-light: map.get($site-palette, 'site-light-blue'),
+  $theme-color-primary: map.get($site-palette, 'site-blue'),
+  $theme-color-primary-vivid: map.get($site-palette, 'site-blue'),
+  $theme-color-primary-dark: map.get($site-palette, 'site-dark-blue'),
+  $theme-color-primary-darker: map.get($site-palette, 'site-darker-blue'),
+  $theme-color-primary-darkest: map.get($site-palette, 'site-darkest-blue'),
+  // Secondary colors
+  $theme-color-secondary-lightest: map.get($site-palette, 'site-lightest-red'),
+  $theme-color-secondary-lighter: map.get($site-palette, 'site-lighter-red'),
+  $theme-color-secondary-light: map.get($site-palette, 'site-light-red'),
+  $theme-color-secondary: map.get($site-palette, 'site-red'),
+  $theme-color-secondary-vivid: false,
+  $theme-color-secondary-dark: map.get($site-palette, 'site-dark-red'),
+  $theme-color-secondary-darker: map.get($site-palette, 'site-darker-red'),
+  $theme-color-secondary-darkest: map.get($site-palette, 'site-darkest-red'),
+  // Accent cool colors
+  $theme-color-accent-cool-family: 'teal',
+  $theme-color-accent-cool-lightest: map.get($site-palette, 'site-lightest-teal'),
+  $theme-color-accent-cool-lighter: map.get($site-palette, 'site-lighter-teal'),
+  $theme-color-accent-cool-light: map.get($site-palette, 'site-light-teal'),
+  $theme-color-accent-cool: map.get($site-palette, 'site-teal'),
+  $theme-color-accent-cool-dark: map.get($site-palette, 'site-dark-teal'),
+  $theme-color-accent-cool-darker: map.get($site-palette, 'site-darker-teal'),
+  $theme-color-accent-cool-darkest: map.get($site-palette, 'site-darkest-teal'),
+  // Error colors
+  $theme-color-error-family: 'red',
+  $theme-color-error-lighter: map.get($site-palette, 'site-lightest-red'),
+  $theme-color-error-light: map.get($site-palette, 'site-lighter-red'),
+  $theme-color-error: map.get($site-palette, 'site-red'),
+  $theme-color-error-dark: map.get($site-palette, 'site-darker-red'),
+  $theme-color-error-darker: map.get($site-palette, 'site-darkest-red'),
+  // Warning colors
+  $theme-color-warning-family: 'yellow',
+  $theme-color-warning-lighter: map.get($site-palette, 'site-lightest-yellow'),
+  $theme-color-warning-light: map.get($site-palette, 'site-lighter-yellow'),
+  $theme-color-warning: map.get($site-palette, 'site-yellow'),
+  $theme-color-warning-dark: map.get($site-palette, 'site-darker-yellow'),
+  $theme-color-warning-darker: map.get($site-palette, 'site-darkest-yellow'),
+  // Success colors
+  $theme-color-success-family: 'green',
+  $theme-color-success-lighter: map.get($site-palette, 'site-lightest-green'),
+  $theme-color-success-light: map.get($site-palette, 'site-lighter-green'),
+  $theme-color-success: map.get($site-palette, 'site-green'),
+  $theme-color-success-dark: map.get($site-palette, 'site-darker-green'),
+  $theme-color-success-darker: map.get($site-palette, 'site-darkest-green'),
+  // Info colors
+  $theme-color-info-family: 'teal',
+  $theme-color-info-lighter: map.get($site-palette, 'site-lightest-teal'),
+  $theme-color-info-light: map.get($site-palette, 'site-lighter-teal'),
+  $theme-color-info: map.get($site-palette, 'site-teal'),
+  $theme-color-info-dark: map.get($site-palette, 'site-darker-teal'),
+  $theme-color-info-darker: map.get($site-palette, 'site-darkest-teal'),
+  // Disabled colors
+  $theme-color-disabled-light: map.get($site-palette, 'site-lightest-grey'),
+  $theme-color-disabled: map.get($site-palette, 'site-disabled-grey'),
+  $theme-color-disabled-dark: map.get($site-palette, 'site-darker-grey'),
+  // Links
+  $theme-link-reverse-color: 'white',
+  $theme-link-reverse-hover-color: 'primary-light',
+  $theme-link-reverse-active-color: 'white',
+  // ----------------------------------------
+  // Components
+  // ----------------------------------------
+  // Accordion
+  $theme-accordion-border-width: '1px',
+  $theme-accordion-border-color: 'primary-light',
+  // Alert
+  $theme-alert-bar-width: 0,
+  $theme-alert-icon-size: 2,
+  $theme-alert-padding-x: 2,
+  $theme-alert-padding-y: '105',
+  // Banner
+  $theme-banner-background-color: 'primary-lighter',
+  // Button
+  $theme-button-stroke-width: 1px,
+  // Identifier
+  $theme-identifier-background-color: 'primary-darker',
+  $theme-identifier-identity-domain-color: 'primary-light',
+  $theme-identifier-secondary-link-color: 'primary-light',
+  // Footer
+  $theme-footer-font-family: 'body',
+  // Form and input
+  $theme-checkbox-border-radius: 1.5px,
+  $theme-input-line-height: 3,
+  $theme-input-state-border-width: 2px,
+  $theme-input-tile-border-radius: 'lg',
+  $theme-input-tile-border-width: 1px,
+  // Process List
+  $theme-process-list-connector-color: 'base-lighter',
+  $theme-process-list-counter-background-color: 'primary-dark',
+  $theme-process-list-counter-border-width: 0,
+  $theme-process-list-counter-font-size: 'sm',
+  $theme-process-list-counter-size: 3,
+  $theme-process-list-counter-text-color: 'white',
+  // ----------------------------------------
+  // General
+  // ----------------------------------------
+  // Notifications
+  $theme-show-compile-warnings: false,
+  $theme-show-notifications: false,
+  // Focus
+  $theme-focus-color: 'primary',
+  $theme-focus-offset: 1px,
+  $theme-focus-width: 2px,
+  // ----------------------------------------
+  // Typography
+  // ----------------------------------------
+  // Root font size
+  $theme-respect-user-font-size: false,
+  $theme-root-font-size: 16px,
+  // Font path
+  $theme-font-path: if(variable-exists(font-path), $font-path, '../fonts'),
+  // Font type
+  $theme-font-type-sans: 'public-sans',
+  $theme-font-type-serif: 'public-sans',
+  // Type scale
+  $theme-type-scale-3xs: 'micro',
+  $theme-type-scale-2xs: 2,
+  $theme-type-scale-xl: 11,
+  // Line height
+  $theme-body-line-height: 4,
+  // Headings
+  $theme-h1-font-size: 'xl',
+  $theme-h2-font-size: 'lg',
+  $theme-h3-font-size: 'md',
+  $theme-h4-font-size: 'xs',
+  $theme-h5-font-size: '2xs',
+  $theme-heading-line-height: 3,
+  $theme-display-font-size: '2xl',
+  // Text and prose
+  $theme-text-measure: 3,
+  $theme-text-measure-wide: 4,
+  // Lead text
+  $theme-lead-font-family: 'body',
+  $theme-lead-font-size: 8,
+  $theme-lead-measure: 5,
+  // ----------------------------------------
+  // Typography
+  // ----------------------------------------
+  $theme-utility-breakpoints:
+    (
+      // 160px:
+      'card': false,
+      // 240px:
+      'card-lg': false,
+      // 320px:
+      'mobile': false,
+      // 480px:
+      'mobile-lg': false,
+      // 640px:
+      'tablet': true,
+      // 800px:
+      'tablet-lg': false,
+      // 1024px:
+      'desktop': false,
+      // 1200px:
+      'desktop-lg': false,
+      // 1400px:
+      'widescreen': false
+    )
+);

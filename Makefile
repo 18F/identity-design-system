@@ -58,11 +58,11 @@ build-sass-and-js:
 
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts
-	cp -r node_modules/uswds/src/fonts $(OUTPUT_DIR)/assets
+	cp -r node_modules/@uswds/uswds/dist/fonts $(OUTPUT_DIR)/assets
 
 build-images:
 	mkdir -p $(OUTPUT_DIR)/assets/img
-	cp -r node_modules/uswds/src/img $(OUTPUT_DIR)/assets
+	cp -r node_modules/@uswds/uswds/dist/img $(OUTPUT_DIR)/assets
 	cp -r src/img $(OUTPUT_DIR)/assets
 
 copy-scss:

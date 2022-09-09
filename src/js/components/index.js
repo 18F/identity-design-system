@@ -1,21 +1,21 @@
-import accordion from 'uswds/src/js/components/accordion';
-import banner from 'uswds/src/js/components/banner';
-import characterCount from 'uswds/src/js/components/character-count';
-import comboBox from 'uswds/src/js/components/combo-box';
-import datePicker from 'uswds/src/js/components/date-picker';
-import dateRangePicker from 'uswds/src/js/components/date-range-picker';
-import fileInput from 'uswds/src/js/components/file-input';
-import footer from 'uswds/src/js/components/footer';
-import inputPrefixSuffix from 'uswds/src/js/components/input-prefix-suffix';
-import modal from 'uswds/src/js/components/modal';
-import navigation from 'uswds/src/js/components/navigation';
-import password from 'uswds/src/js/components/password';
-import search from 'uswds/src/js/components/search';
-import skipnav from 'uswds/src/js/components/skipnav';
-import timePicker from 'uswds/src/js/components/time-picker';
-import table from 'uswds/src/js/components/table';
-import tooltip from 'uswds/src/js/components/tooltip';
-import validator from 'uswds/src/js/components/validator';
+import accordion from '@uswds/uswds/packages/usa-accordion/src';
+import banner from '@uswds/uswds/packages/usa-banner/src';
+import characterCount from '@uswds/uswds/packages/usa-character-count/src';
+import comboBox from '@uswds/uswds/packages/usa-combo-box/src';
+import datePicker from '@uswds/uswds/packages/usa-date-picker/src';
+import dateRangePicker from '@uswds/uswds/packages/usa-date-range-picker/src';
+import fileInput from '@uswds/uswds/packages/usa-file-input/src';
+import footer from '@uswds/uswds/packages/usa-footer/src';
+import inputPrefixSuffix from '@uswds/uswds/packages/usa-input-prefix-suffix/src';
+import modal from '@uswds/uswds/packages/usa-modal/src';
+import header from '@uswds/uswds/packages/usa-header/src';
+import password from '@uswds/uswds/packages/_usa-password/src';
+import search from '@uswds/uswds/packages/usa-search/src';
+import skipnav from '@uswds/uswds/packages/usa-skipnav/src';
+import timePicker from '@uswds/uswds/packages/usa-time-picker/src';
+import table from '@uswds/uswds/packages/usa-table/src';
+import tooltip from '@uswds/uswds/packages/usa-tooltip/src';
+import validation from '@uswds/uswds/packages/usa-validation/src';
 
 export {
   accordion,
@@ -28,12 +28,12 @@ export {
   footer,
   inputPrefixSuffix,
   modal,
-  navigation,
+  header,
   password,
   search,
   skipnav,
   timePicker,
   table,
   tooltip,
-  validator,
+  validation,
 };

@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'uswds-core' as *;
 
 $theme-input-tile-background-color-selected: 'primary-lightest';
 $theme-input-tile-border-color: 'primary-light';
@@ -10,7 +11,6 @@ $theme-input-bordered-border-color: $theme-input-tile-border-color;
 $theme-input-bordered-border-color-selected: $theme-input-tile-border-color-selected;
 
 $input-padding: 1;
-$icon-size: 2;
 $border-width: 1px;
 $checkbox-radio-size: 0.875rem;
 $input-select-margin-right: 1;
@@ -240,10 +240,10 @@ $input-select-margin-right: 1;
 .usa-success-message {
   @include u-padding-y(0.5);
   background-position: 0 0.5em;
-  background-size: units($icon-size);
+  background-size: units(2);
   display: block;
   font-weight: font-weight('bold');
-  padding-left: units($icon-size * 1.5);
+  padding-left: units(3);
 }
 
 .usa-error-message {

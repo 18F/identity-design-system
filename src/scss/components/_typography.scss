@@ -1,3 +1,5 @@
+@use 'uswds-core' as *;
+
 .usa-prose {
   @include add-knockout-font-smoothing;
 }

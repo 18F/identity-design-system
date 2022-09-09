@@ -1,3 +1,5 @@
+@use 'uswds-core' as *;
+
 $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
 
 .usa-button {
@@ -81,16 +83,16 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
 }
 
 .usa-button--danger {
-  background-color: map-get($site-palette, 'site-red');
+  background-color: color('secondary');
 
   &:hover,
   &.usa-button--hover {
-    background-color: map-get($site-palette, 'site-dark-red');
+    background-color: color('secondary-dark');
   }
 
   &:active,
   &.usa-button--active {
-    background-color: map-get($site-palette, 'site-darkest-red');
+    background-color: color('secondary-darkest');
   }
 }
 

@@ -1,3 +1,1 @@
-@import '../uswds/utilities/utility-fonts';
-@import '../uswds/utilities/rules/package';
-@include render-utilities-in($utilities-package);
+@forward 'uswds-utilities';
