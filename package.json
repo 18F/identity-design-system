@@ -35,7 +35,7 @@
     "lint": "gulp lint",
     "test": "make test",
     "build": "make build",
-    "federalist": "make build-assets",
+    "pages": "make build-assets",
     "prepublishOnly": "make lint && make clean && make build-assets build-package"
   },
   "files": [
