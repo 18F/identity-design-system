@@ -52,14 +52,14 @@ A failure of this status check only indicates that a visual change was detected.
 
 ## Deploying documentation updates
 
-Documentation deploys are performed automatically upon merging to `main` by [Federalist](https://federalist.18f.gov/). Federalist performs the following steps:
+Documentation deploys are performed automatically upon merging to `main` by [Cloud.gov Pages](https://cloud.gov/pages/). Cloud.gov Pages performs the following steps:
 
 - `npm install --production` (a no-op, as this package has no production dependencies)
-- `npm run federalist`
+- `npm run pages`
 - `bundle install`
 - `bundle exec jekyll build`
 
-More information can be found in Federalist’s [How Builds Work](https://federalist-docs.18f.gov/pages/how-federalist-works/how-builds-work/).
+More information can be found in Cloud.gov Pages' [How Builds Work](https://cloud.gov/pages/documentation/how-builds-work/).
 
 ## Releases
 

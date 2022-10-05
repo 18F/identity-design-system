@@ -4,7 +4,7 @@ OUTPUT_DIR = ./dist
 PACKAGE_DIR = ./build
 NODE_BIN = ./node_modules/.bin
 
-# Federalist builds overwrite the output directory.
+# Cloud.gov Pages builds overwrite the output directory.
 ifdef SITE_PREFIX
 	OUTPUT_DIR = ./_site
 endif
