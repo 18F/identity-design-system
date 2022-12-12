@@ -1,3 +1,9 @@
+## Unreleased
+
+### Improvements
+
+- Update Text Input styling to adhere to design specification.
+
 ## 6.5.0
 
 ### Improvements
