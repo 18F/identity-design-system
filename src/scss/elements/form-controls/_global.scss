@@ -1,4 +1,3 @@
-.usa-hint {
-  @include u-margin-top(0.5);
-  @include u-margin-bottom(1.5);
+%block-input-styles {
+  margin-top: units(0.5);
 }
