@@ -2,7 +2,8 @@
 
 ### Improvements
 
-- Update Text Input styling to adhere to design specification.
+- Add new "Big" variants of Text Input and Textarea components. ([#326](https://github.com/18F/identity-style-guide/pull/326))
+- Update Text Input styling to adhere to design specification. ([#325](https://github.com/18F/identity-style-guide/pull/325))
 
 ## 6.5.0
 
