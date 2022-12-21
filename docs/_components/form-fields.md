@@ -1,8 +1,10 @@
 ---
 title: Form fields
 subnav:
-  - text: Text
-    href: "#text"
+  - text: Text Input
+    href: "#text-input"
+  - text: Textarea
+    href: "#textarea"
   - text: Dates
     href: "#dates"
   - text: Dropdowns
