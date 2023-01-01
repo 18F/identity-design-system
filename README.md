@@ -223,3 +223,4 @@ Then, configure it to copy the compiled assets to your site output folder:
 
 copy_to_destination:
   - node_modules/identity-style-guide/dist/assets
+test
