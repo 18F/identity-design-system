@@ -1,3 +1,9 @@
+## Unreleased
+
+### Improvements
+
+- Add new "Big" variant of Dropdown component. ([#328](https://github.com/18F/identity-style-guide/pull/328))
+
 ## 6.6.0
 
 ### Improvements

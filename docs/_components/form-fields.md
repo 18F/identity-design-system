@@ -96,9 +96,24 @@ Three text fields are the easiest way for users to enter most dates.
 
 ## Dropdowns
 
+### Default
+
 {% capture example %}
 <label for="ab84" class="usa-label">Dropdown label</label>
 <select id="ab84" class="usa-select">
+  <option value>- Select -</option>
+  <option value="value1">Option A</option>
+  <option value="value2">Option B</option>
+  <option value="value3">Option C</option>
+</select>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+### Big
+
+{% capture example %}
+<label for="vg01" class="usa-label">Dropdown label</label>
+<select id="vg01" class="usa-select usa-select--big">
   <option value>- Select -</option>
   <option value="value1">Option A</option>
   <option value="value2">Option B</option>
