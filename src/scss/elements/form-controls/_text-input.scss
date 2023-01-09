@@ -1,14 +1,14 @@
-.usa-input--big,
-.usa-textarea--big {
+.usa-input.usa-input--big,
+.usa-textarea.usa-textarea--big {
   font-size: units(2.5);
   line-height: 1.5;
 }
 
-.usa-input--big {
+.usa-input.usa-input--big {
   @include u-padding-x(2);
   height: auto;
 }
 
-.usa-textarea--big {
+.usa-textarea.usa-textarea--big {
   height: 15rem;
 }
