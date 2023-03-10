@@ -1,5 +1,5 @@
 {
-  "name": "identity-style-guide",
+  "name": "@18f/identity-design-system",
   "version": "6.7.0",
   "description": "The global style of Login.gov",
   "main": "./build/cjs/index.js",
