@@ -1,0 +1,11 @@
+{
+  "extends": "plugin:@18f/eslint-plugin-identity/recommended",
+  "plugins": ["@18f/eslint-plugin-identity"],
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "import/no-unresolved": ["error", { "ignore": ["^@uswds/uswds/js/_?usa-[a-z-]+$"] }]
+  }
+}

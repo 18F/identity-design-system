@@ -1,6 +1,0 @@
-extends: 'plugin:@18f/eslint-plugin-identity/recommended'
-plugins:
-  - '@18f/eslint-plugin-identity'
-env:
-  node: true
-  browser: true
