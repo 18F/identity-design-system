@@ -15,7 +15,7 @@
 
 ### Breaking Changes
 
-- Update USWDS from 2.13.3 to 3.4.0
+- Update USWDS from 2.13.3 to 3.4.1
   - Polyfills have been removed, consistent with current Login.gov browser support
   - The following JavaScript named exports have been renamed or removed:
     - `navigation` is renamed to `header`
