@@ -3,12 +3,11 @@
 const { promises: fsPromises } = require('fs');
 const { join } = require('path');
 const assert = require('assert');
-const mkdirp = require('mkdirp');
 const { PNG } = require('pngjs');
 const match = require('pixelmatch');
 const { getURLsFromSitemap } = require('./support/sitemap');
 
-const { writeFile } = fsPromises;
+const { writeFile, mkdir } = fsPromises;
 
 const LOCAL_HOST = `http://localhost:${process.env.JEST_PORT}`;
 const REMOTE_HOST = 'https://design.login.gov';
@@ -97,7 +96,7 @@ test('screenshot visual regression', async () => {
     });
     if (diffs > 0) {
       const diffOutputBase = getDiffOutputBaseFileName(path);
-      await mkdirp(DIFF_DIRECTORY);
+      await mkdir(DIFF_DIRECTORY, { recursive: true });
       await Promise.all([
         writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(resizedLocalPNG)),
         writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(resizedRemotePNG)),
