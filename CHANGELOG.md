@@ -16,7 +16,7 @@
 ### Breaking Changes
 
 - Update USWDS from 2.13.3 to 3.4.0
-  - Refer to README.md for new polyfill usage
+  - Polyfills have been removed, consistent with current Login.gov browser support
   - The following JavaScript named exports have been renamed or removed:
     - `navigation` is renamed to `header`
     - `validator` is renamed to `validation`

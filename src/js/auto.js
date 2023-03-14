@@ -1,4 +1,3 @@
-import '@uswds/uswds/packages/uswds-core/src/js/polyfills';
 import * as components from './components';
 
 function initComponents() {
