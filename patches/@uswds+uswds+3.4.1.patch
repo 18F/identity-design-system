@@ -1,0 +1,64 @@
+diff --git a/node_modules/@uswds/uswds/packages/uswds-core/src/styles/functions/utilities/line-height.scss b/node_modules/@uswds/uswds/packages/uswds-core/src/styles/functions/utilities/line-height.scss
+index 95983b2..40f8d60 100644
+--- a/node_modules/@uswds/uswds/packages/uswds-core/src/styles/functions/utilities/line-height.scss
++++ b/node_modules/@uswds/uswds/packages/uswds-core/src/styles/functions/utilities/line-height.scss
+@@ -38,8 +38,8 @@
+     (math.div($system-base-cap-height, $this-cap))
+   );
+   $normalized-line-height: math.div(
+-    math.round($normalized-line-height * 10),
+-    10
++    math.round($normalized-line-height * 100),
++    100
+   );
+ 
+   @return $normalized-line-height;
+diff --git a/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/headings.scss b/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/headings.scss
+index 4cafe14..4443398 100644
+--- a/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/headings.scss
++++ b/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/headings.scss
+@@ -38,7 +38,7 @@
+ }
+ 
+ @mixin h6 {
+-  @include typeset("body", $theme-h6-font-size, $theme-heading-line-height);
++  @include typeset("heading", $theme-h6-font-size, $theme-heading-line-height);
+   font-weight: fw("normal");
+   letter-spacing: ls("ls-1");
+   text-transform: uppercase;
+diff --git a/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/typeset.scss b/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/typeset.scss
+index 26fef3b..684751d 100644
+--- a/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/typeset.scss
++++ b/node_modules/@uswds/uswds/packages/uswds-core/src/styles/mixins/typography/typeset.scss
+@@ -20,7 +20,7 @@ Sets:
+ @mixin typeset(
+   $family: $theme-body-font-family,
+   $scale: $theme-body-font-size,
+-  $line-height: $theme-body-line-height
++  $line-height-scale: $theme-body-line-height
+ ) {
+   @if meta.type-of($family) == "list" {
+     $list: $family;
+@@ -30,9 +30,19 @@ Sets:
+   }
+   $family: if($family == null, $theme-body-font-family, $family);
+   $scale: if($scale == null, $theme-body-font-size, $scale);
+-  $line-height: if($line-height == null, $theme-body-line-height, $line-height);
+-  @include u-font($family, $scale);
+-  @include u-line-height($family, $line-height);
++  $line-height-scale: if($line-height-scale == null, $theme-body-line-height, $line-height-scale);
++
++  $font-size: font-size($family, $scale);
++  $line-height: lh($family, $line-height-scale);
++
++  font-family: ff($family);
++  font-size: $font-size;
++  @if (
++    $family == "heading" and $font-size * $line-height < 1rem * lh("body", $theme-body-line-height)
++  ) {
++    $line-height: lh($family, $theme-body-line-height);
++  }
++  line-height: $line-height;
+ }
+ 
+ @mixin typeset-heading {

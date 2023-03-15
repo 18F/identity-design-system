@@ -36,6 +36,7 @@
     "test": "make test",
     "build": "make build",
     "pages": "make build-assets",
+    "postinstall": "patch-package",
     "prepublishOnly": "make lint && make clean && make build-assets build-package"
   },
   "files": [
@@ -57,7 +58,8 @@
   },
   "homepage": "https://github.com/18F/identity-style-guide#readme",
   "dependencies": {
-    "@uswds/uswds": "^3.4.1"
+    "@uswds/uswds": "^3.4.1",
+    "patch-package": "^6.5.1"
   },
   "devDependencies": {
     "@18f/eslint-plugin-identity": "^2.0.0",
