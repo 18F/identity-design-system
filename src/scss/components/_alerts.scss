@@ -5,7 +5,7 @@ $alerts: 'success', 'warning', 'error', 'info', 'emergency';
 .usa-alert {
   border-radius: radius('lg');
 
-  &::before {
+  .usa-alert__body::before {
     background-color: transparent;
     background-position: center;
     mask: none;
@@ -13,14 +13,14 @@ $alerts: 'success', 'warning', 'error', 'info', 'emergency';
 }
 
 @each $name in $alerts {
-  .usa-alert--#{$name} {
+  .usa-alert--#{$name} .usa-alert__body {
     &::before {
       @include add-background-svg('alerts/#{$name}');
+      left: $alert-icon-optical-padding;
+      top: units($theme-alert-padding-y) + units(0.5);
     }
 
-    .usa-alert__body {
-      padding-left: units($theme-alert-icon-size) + (1.5 * $alert-icon-optical-padding);
-    }
+    padding-left: units($theme-alert-icon-size) + (1.5 * $alert-icon-optical-padding);
   }
 }
 
