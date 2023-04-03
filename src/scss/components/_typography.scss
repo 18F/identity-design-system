@@ -60,7 +60,7 @@
 .usa-intro {
   @include u-font-size('sans', 'md');
 
-  @include at-media('mobile-lg') {
+  @include at-media('tablet') {
     @include u-font-size('sans', $theme-lead-font-size);
   }
 }
