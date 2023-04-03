@@ -94,13 +94,21 @@ Below are various ways to use the Login.gov Design System throughout our various
 
 ### Ruby on Rails (Rails)
 
- The SCSS files natively support `asset-path()` out-of-the-box for ease of use with the Rails Asset Pipeline. To use with Rails, configure Rails to look for assets in both `node_modules` and the identity-style-guide module:
+ To use with Rails, configure Rails to look for assets in both `node_modules` and the identity-style-guide module:
 
  ```ruby
  # config/initializers/assets.rb
 
  Rails.application.config.assets.paths << Rails.root.join('node_modules')
  Rails.application.config.assets.paths << Rails.root.join('node_modules/identity-style-guide/dist/assets')
+ ```
+
+ For images to be processed by the asset pipeline, ensure that the [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options) is enabled:
+
+ ```ruby
+ # config/application.rb
+
+ config.assets.resolve_assets_in_css_urls = true
  ```
 
  Finally, import the styles into your main stylesheet:

@@ -25,9 +25,3 @@ $alerts: 'success', 'warning', 'error', 'info', 'emergency';
 .usa-alert--other {
   background-color: color('primary-lighter');
 }
-
-// Temporarily supporting this class until USWDS formally supports this again
-// or has an alternate recommendation.
-.usa-alert__paragraph {
-  max-width: 66ch;
-}

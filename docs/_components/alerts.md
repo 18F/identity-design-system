@@ -5,8 +5,6 @@ lead: >
 subnav:
   - text: Types of Alerts
     href: "#types-of-alerts"
-  - text: Limiting Alert Width
-    href: "#limiting-alert-width"
 ---
 
 {% include helpers/base-component.html component="alert" stylesheet="alerts" %}
@@ -75,23 +73,3 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-
-## Limiting Alert Width
-
-If desired for aesthetics, the background coloring for alerts can be constrained to the width of a paragraph by appending the `usa-alert__paragraph` class to the `usa-alert` container.
-
-<div class="usa-alert usa-alert--other usa-alert__paragraph">
-  <div class="usa-alert__body">
-    <p class="usa-alert__text">This “Other”-styled alert is constrained to the width of a paragraph. It works well when an alert is displayed in the context of a larger document, with paragraphs of text before or after it.</p>
-  </div>
-</div>
-
-Without the `usa-alert__paragraph` class, alert messages can look a little silly when used with paragraph text:
-
-<div class="usa-alert usa-alert--other">
-  <div class="usa-alert__body">
-    <p class="usa-alert__text">This “Other”-styled alert is full width. It can look a little silly when combined with paragraph-width text.</p>
-  </div>
-</div>
-
-This is a following paragraph, to demostrate the width of the above alert message more clearly.

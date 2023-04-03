@@ -4,7 +4,6 @@ const autoprefixer = require('autoprefixer');
 const gulp = require('gulp');
 const notify = require('gulp-notify');
 const postcss = require('gulp-postcss');
-const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const gulpif = require('gulp-if');
 const sass = require('gulp-sass')(require('sass-embedded'));
@@ -143,13 +142,11 @@ gulp.task('watch-sass', () =>
   gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series('build-sass')),
 );
 
-const replaceUrls = () => replace(/url\(["']?([^)"']+)["']?\)/g, 'url(asset-path-if-exists("$1"))');
 const underscorePrefix = () => gulpif((f) => f.basename[0] !== '_', rename({ prefix: '_' }));
 
 gulp.task('copy-login-scss', () =>
   gulp
     .src([`${PROJECT_SASS_SRC}/**/*.scss`])
-    .pipe(replaceUrls())
     .pipe(underscorePrefix())
     .pipe(gulp.dest(SCSS_DEST)),
 );
@@ -157,7 +154,6 @@ gulp.task('copy-login-scss', () =>
 gulp.task('copy-uswds-scss', () =>
   gulp
     .src(['node_modules/uswds/dist/scss/**/*.scss'])
-    .pipe(replaceUrls())
     .pipe(underscorePrefix())
     .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
 );
