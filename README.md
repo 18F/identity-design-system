@@ -63,7 +63,7 @@ More information can be found in Cloud.gov Pages' [How Builds Work](https://clou
 
 ## Releases
 
-When you're ready to release a new version of the `identity-style-guide` package there are just a few steps to take.
+When you're ready to release a new version of the `@18f/identity-design-system` package there are just a few steps to take.
 
 Before starting, make sure that all changes intended for release should be merged into the `main` branch. You will need permissions to publish the package to npm. Check current package owners by running `npm owner ls` or by consulting the list of admins through the [Services and Accounts handbook page](https://handbook.login.gov/articles/accounts.html). If you do not have access, contact an owner to have access granted or to publish on your behalf.
 
@@ -94,13 +94,13 @@ Below are various ways to use the Login.gov Design System throughout our various
 
 ### Ruby on Rails (Rails)
 
- To use with Rails, configure Rails to look for assets in both `node_modules` and the identity-style-guide module:
+ To use with Rails, configure Rails to look for assets in both `node_modules` and the `@18f/identity-design-system` module:
 
  ```ruby
  # config/initializers/assets.rb
 
  Rails.application.config.assets.paths << Rails.root.join('node_modules')
- Rails.application.config.assets.paths << Rails.root.join('node_modules/identity-style-guide/dist/assets')
+ Rails.application.config.assets.paths << Rails.root.join('node_modules/@18f/identity-design-system/dist/assets')
  ```
 
  For images to be processed by the asset pipeline, ensure that the [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options) is enabled:
@@ -119,7 +119,7 @@ Below are various ways to use the Login.gov Design System throughout our various
  $theme-font-path: 'fonts';
  $theme-image-path: 'img';
 
- @import 'identity-style-guide/dist/assets/scss/styles';
+ @import '@18f/identity-design-system/dist/assets/scss/styles';
  ```
 
  If you're using Sprockets and precompiling assets you'll need to update your
@@ -128,8 +128,8 @@ Below are various ways to use the Login.gov Design System throughout our various
  ```js
  // app/assets/config/manifest.js
 
- //= link_tree ../../../node_modules/identity-style-guide/dist/assets/img
- //= link_tree ../../../node_modules/identity-style-guide/dist/assets/fonts
+ //= link_tree ../../../node_modules/@18f/identity-design-system/dist/assets/img
+ //= link_tree ../../../node_modules/@18f/identity-design-system/dist/assets/fonts
  ```
 
  Unfortunately, this results in the assets being saved under paths that include
@@ -141,7 +141,7 @@ Below are various ways to use the Login.gov Design System throughout our various
 
  module AssetsHelper
    def design_system_asset_path(path)
-     "identity-style-guide/dist/assets/#{path}"
+     "@18f/identity-design-system/dist/assets/#{path}"
    end
  end
  ```
@@ -165,15 +165,15 @@ Below are various ways to use the Login.gov Design System throughout our various
  ```js
  // app/javascript/packs/application.js
 
- require("identity-style-guide/dist/assets/js/main")
+ require("@18f/identity-design-system/dist/assets/js/main")
  ```
 
 ### JavaScript package
 
-  If you're already using a JavaScript bundler in your project, you can import specific component implementations from the `identity-style-guide` package. Most modern bundlers that support dead-code elimination will automatically optimize the bundle size to include only the code necessary in your project.
+  If you're already using a JavaScript bundler in your project, you can import specific component implementations from the `@18f/identity-design-system` package. Most modern bundlers that support dead-code elimination will automatically optimize the bundle size to include only the code necessary in your project.
 
   ```js
-  import { accordion } from 'identity-style-guide';
+  import { accordion } from '@18f/identity-design-system';
 
   accordion.on();
   ```
@@ -188,7 +188,7 @@ Below are various ways to use the Login.gov Design System throughout our various
 
   ```js
   import 'uswds/src/js/polyfills';
-  import { accordion } from 'identity-style-guide';
+  import { accordion } from '@18f/identity-design-system';
   ```
 
 ### Jekyll
@@ -230,4 +230,4 @@ Then, configure it to copy the compiled assets to your site output folder:
 # _config.yml
 
 copy_to_destination:
-  - node_modules/identity-style-guide/dist/assets
+  - node_modules/@18f/identity-design-system/dist/assets
