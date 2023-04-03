@@ -5,6 +5,7 @@
 - NPM package is renamed from `identity-style-guide` to `@18f/identity-design-system`. ([#331](https://github.com/18F/identity-design-system/pull/331))
 - Sass artifacts now require Dart Sass. The Ruby Sass and LibSass (C) compilers are no longer supported.
 - To improve performance of the default CSS bundle, responsive utility breakpoints other than `tablet:` have been disabled by default. Previously, `mobile-lg:` and `desktop:` utilities were also enabled. You can restore the original settings by overriding [the `$theme-utility-breakpoints` Sass variable](https://designsystem.digital.gov/documentation/settings/#utilities-settings).
+   - Component styling which previously responded to now-disabled breakpoints have been updated to standardize on the `tablet` breakpoint. This affects `usa-button--wide`, `usa-search--big`, and `usa-intro` CSS classes.
 - Image URLs in stylesheets are no longer processed by `asset-path-if-exists`. For Rails integrations, consider using [the `$theme-image-path` Sass variable](https://designsystem.digital.gov/documentation/settings/#general-settings) in combination with [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options).
 - The deprecated `$image-path` Sass variable setting has been removed. Use `$theme-image-path` instead.
 - The deprecated `alerts/success-badge.svg` image has been removed. Use `alerts/success.svg` instead.
