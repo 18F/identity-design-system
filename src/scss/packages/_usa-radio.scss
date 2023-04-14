@@ -13,6 +13,7 @@ $input-select-margin-right: 1;
   padding-left: $radio-size + units($input-select-margin-right);
 
   &::before {
+    border-radius: 50%;
     background-color: color('primary-lightest');
     box-shadow: inset 0 0 0 units($border-width) color('primary');
     height: $radio-size;
@@ -30,10 +31,6 @@ $input-select-margin-right: 1;
 .usa-radio__input:disabled + .usa-radio__label {
   color: color('disabled');
   border-color: color('disabled');
-}
-
-.usa-radio__label::before {
-  border-radius: 50%;
 }
 
 .usa-radio__input:disabled + .usa-radio__label::before {
