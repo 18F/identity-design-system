@@ -1,0 +1,6 @@
+@use 'uswds-core' as *;
+@forward './usa-memorable-date/index';
+
+.usa-memorable-date {
+  margin-bottom: units(1);
+}

@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-footer/index';
 
 .usa-footer__primary-section {
   padding-top: units(4);

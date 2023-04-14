@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-alert/index';
 
 $alerts: 'success', 'warning', 'error', 'info', 'emergency';
 

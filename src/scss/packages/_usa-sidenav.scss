@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-sidenav/index';
 
 .usa-sidenav {
   a:not(.usa-button) {

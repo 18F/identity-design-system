@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-identifier/index';
 
 .usa-identifier {
   @include u-line-height($theme-identifier-font-family, 5);

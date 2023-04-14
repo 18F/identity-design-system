@@ -1,0 +1,12 @@
+@use 'uswds-core' as *;
+
+.usa-success-message {
+  @include u-padding-y(0.5);
+  @include add-background-svg('alerts/success');
+  background-position: 0 0.5em;
+  background-size: units(2);
+  display: block;
+  font-weight: font-weight('bold');
+  padding-left: units(3);
+  color: color('success');
+}

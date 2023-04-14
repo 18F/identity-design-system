@@ -1,4 +1,12 @@
 @use 'uswds-core' as *;
+@forward './usa-search/index';
+
+[type='search'],
+.usa-search__input {
+  border-bottom-right-radius: 0;
+  border-right: none;
+  border-top-right-radius: 0;
+}
 
 .usa-search [type='submit'],
 .usa-search .usa-search__submit {

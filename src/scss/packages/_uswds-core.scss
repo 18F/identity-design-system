@@ -55,7 +55,7 @@ $site-palette: (
   'site-white': #ffffff
 );
 
-@forward 'uswds-core' with (
+@forward './uswds-core/index' with (
   // ----------------------------------------
   // Colors
   // ----------------------------------------
@@ -236,3 +236,18 @@ $site-palette: (
     )
     !default
 );
+
+@use './uswds-core/index' as *;
+
+$theme-input-tile-background-color-selected: 'primary-lightest';
+$theme-input-tile-border-color: 'primary-light';
+$theme-input-tile-border-color-selected: 'primary-light';
+$theme-input-bordered-background-color-selected: $theme-input-tile-background-color-selected;
+$theme-input-bordered-border-radius: $theme-input-tile-border-radius;
+$theme-input-bordered-border-width: $theme-input-tile-border-width;
+$theme-input-bordered-border-color: $theme-input-tile-border-color;
+$theme-input-bordered-border-color-selected: $theme-input-tile-border-color-selected;
+
+%block-input-styles {
+  margin-top: units(0.5);
+}

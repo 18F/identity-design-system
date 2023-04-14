@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-prose/index';
 
 .usa-prose {
   @include add-knockout-font-smoothing;
@@ -57,20 +58,4 @@
     @include u-font-weight('bold');
     letter-spacing: 0.3px;
   }
-}
-
-.usa-intro {
-  @include u-font-size('sans', 'md');
-
-  @include at-media('tablet') {
-    @include u-font-size('sans', $theme-lead-font-size);
-  }
-}
-
-@mixin text-wrap-mixin {
-  word-break: break-all;
-}
-
-.text-wrap {
-  @include text-wrap-mixin;
 }

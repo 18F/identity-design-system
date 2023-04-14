@@ -1,5 +1,6 @@
 /dist
 /build
+/packages
 /node_modules
 /tmp
 .DS_Store

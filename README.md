@@ -113,14 +113,15 @@ Below are various ways to use the Login.gov Design System throughout our various
 
  Finally, import the styles into your main stylesheet:
 
- ```scss
- // app/assets/stylesheets/application.css.scss
+```scss
+// app/assets/stylesheets/application.css.scss
+@use 'uswds-core' with (
+  $theme-font-path: 'fonts',
+  $theme-image-path: 'img',
+);
 
- $theme-font-path: 'fonts';
- $theme-image-path: 'img';
-
- @import '@18f/identity-design-system/dist/assets/scss/styles';
- ```
+@forward 'uswds';
+```
 
  If you're using Sprockets and precompiling assets you'll need to update your
  Sprockets manifest to include the images and fonts for production:
