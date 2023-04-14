@@ -55,163 +55,163 @@ $site-palette: (
   'site-white': #ffffff
 );
 
-@use 'uswds-core' with (
+@forward 'uswds-core' with (
   // ----------------------------------------
   // Colors
   // ----------------------------------------
   // Palettes
-  $global-color-palettes: ('palette-color-default', 'palette-color-state'),
+  $global-color-palettes: ('palette-color-default', 'palette-color-state') !default,
   // Base colors
-  $theme-color-base-family: 'grey',
-  $theme-color-base-lightest: map.get($site-palette, 'site-lightest-grey'),
-  $theme-color-base-lighter: map.get($site-palette, 'site-lighter-grey'),
-  $theme-color-base-light: map.get($site-palette, 'site-light-grey'),
-  $theme-color-base: map.get($site-palette, 'site-grey'),
-  $theme-color-base-dark: map.get($site-palette, 'site-dark-grey'),
-  $theme-color-base-darker: map.get($site-palette, 'site-darker-grey'),
-  $theme-color-base-darkest: map.get($site-palette, 'site-darkest-grey'),
-  $theme-color-base-ink: map.get($site-palette, 'site-ink'),
+  $theme-color-base-family: 'grey' !default,
+  $theme-color-base-lightest: map.get($site-palette, 'site-lightest-grey') !default,
+  $theme-color-base-lighter: map.get($site-palette, 'site-lighter-grey') !default,
+  $theme-color-base-light: map.get($site-palette, 'site-light-grey') !default,
+  $theme-color-base: map.get($site-palette, 'site-grey') !default,
+  $theme-color-base-dark: map.get($site-palette, 'site-dark-grey') !default,
+  $theme-color-base-darker: map.get($site-palette, 'site-darker-grey') !default,
+  $theme-color-base-darkest: map.get($site-palette, 'site-darkest-grey') !default,
+  $theme-color-base-ink: map.get($site-palette, 'site-ink') !default,
   // Primary colors
-  $theme-color-primary-lightest: map.get($site-palette, 'site-lightest-blue'),
-  $theme-color-primary-lighter: map.get($site-palette, 'site-lighter-blue'),
-  $theme-color-primary-light: map.get($site-palette, 'site-light-blue'),
-  $theme-color-primary: map.get($site-palette, 'site-blue'),
-  $theme-color-primary-vivid: map.get($site-palette, 'site-blue'),
-  $theme-color-primary-dark: map.get($site-palette, 'site-dark-blue'),
-  $theme-color-primary-darker: map.get($site-palette, 'site-darker-blue'),
-  $theme-color-primary-darkest: map.get($site-palette, 'site-darkest-blue'),
+  $theme-color-primary-lightest: map.get($site-palette, 'site-lightest-blue') !default,
+  $theme-color-primary-lighter: map.get($site-palette, 'site-lighter-blue') !default,
+  $theme-color-primary-light: map.get($site-palette, 'site-light-blue') !default,
+  $theme-color-primary: map.get($site-palette, 'site-blue') !default,
+  $theme-color-primary-vivid: map.get($site-palette, 'site-blue') !default,
+  $theme-color-primary-dark: map.get($site-palette, 'site-dark-blue') !default,
+  $theme-color-primary-darker: map.get($site-palette, 'site-darker-blue') !default,
+  $theme-color-primary-darkest: map.get($site-palette, 'site-darkest-blue') !default,
   // Secondary colors
-  $theme-color-secondary-lightest: map.get($site-palette, 'site-lightest-red'),
-  $theme-color-secondary-lighter: map.get($site-palette, 'site-lighter-red'),
-  $theme-color-secondary-light: map.get($site-palette, 'site-light-red'),
-  $theme-color-secondary: map.get($site-palette, 'site-red'),
-  $theme-color-secondary-vivid: false,
-  $theme-color-secondary-dark: map.get($site-palette, 'site-dark-red'),
-  $theme-color-secondary-darker: map.get($site-palette, 'site-darker-red'),
-  $theme-color-secondary-darkest: map.get($site-palette, 'site-darkest-red'),
+  $theme-color-secondary-lightest: map.get($site-palette, 'site-lightest-red') !default,
+  $theme-color-secondary-lighter: map.get($site-palette, 'site-lighter-red') !default,
+  $theme-color-secondary-light: map.get($site-palette, 'site-light-red') !default,
+  $theme-color-secondary: map.get($site-palette, 'site-red') !default,
+  $theme-color-secondary-vivid: false !default,
+  $theme-color-secondary-dark: map.get($site-palette, 'site-dark-red') !default,
+  $theme-color-secondary-darker: map.get($site-palette, 'site-darker-red') !default,
+  $theme-color-secondary-darkest: map.get($site-palette, 'site-darkest-red') !default,
   // Accent cool colors
-  $theme-color-accent-cool-family: 'teal',
-  $theme-color-accent-cool-lightest: map.get($site-palette, 'site-lightest-teal'),
-  $theme-color-accent-cool-lighter: map.get($site-palette, 'site-lighter-teal'),
-  $theme-color-accent-cool-light: map.get($site-palette, 'site-light-teal'),
-  $theme-color-accent-cool: map.get($site-palette, 'site-teal'),
-  $theme-color-accent-cool-dark: map.get($site-palette, 'site-dark-teal'),
-  $theme-color-accent-cool-darker: map.get($site-palette, 'site-darker-teal'),
-  $theme-color-accent-cool-darkest: map.get($site-palette, 'site-darkest-teal'),
+  $theme-color-accent-cool-family: 'teal' !default,
+  $theme-color-accent-cool-lightest: map.get($site-palette, 'site-lightest-teal') !default,
+  $theme-color-accent-cool-lighter: map.get($site-palette, 'site-lighter-teal') !default,
+  $theme-color-accent-cool-light: map.get($site-palette, 'site-light-teal') !default,
+  $theme-color-accent-cool: map.get($site-palette, 'site-teal') !default,
+  $theme-color-accent-cool-dark: map.get($site-palette, 'site-dark-teal') !default,
+  $theme-color-accent-cool-darker: map.get($site-palette, 'site-darker-teal') !default,
+  $theme-color-accent-cool-darkest: map.get($site-palette, 'site-darkest-teal') !default,
   // Error colors
-  $theme-color-error-family: 'red',
-  $theme-color-error-lighter: map.get($site-palette, 'site-lightest-red'),
-  $theme-color-error-light: map.get($site-palette, 'site-lighter-red'),
-  $theme-color-error: map.get($site-palette, 'site-red'),
-  $theme-color-error-dark: map.get($site-palette, 'site-darker-red'),
-  $theme-color-error-darker: map.get($site-palette, 'site-darkest-red'),
+  $theme-color-error-family: 'red' !default,
+  $theme-color-error-lighter: map.get($site-palette, 'site-lightest-red') !default,
+  $theme-color-error-light: map.get($site-palette, 'site-lighter-red') !default,
+  $theme-color-error: map.get($site-palette, 'site-red') !default,
+  $theme-color-error-dark: map.get($site-palette, 'site-darker-red') !default,
+  $theme-color-error-darker: map.get($site-palette, 'site-darkest-red') !default,
   // Warning colors
-  $theme-color-warning-family: 'yellow',
-  $theme-color-warning-lighter: map.get($site-palette, 'site-lightest-yellow'),
-  $theme-color-warning-light: map.get($site-palette, 'site-lighter-yellow'),
-  $theme-color-warning: map.get($site-palette, 'site-yellow'),
-  $theme-color-warning-dark: map.get($site-palette, 'site-darker-yellow'),
-  $theme-color-warning-darker: map.get($site-palette, 'site-darkest-yellow'),
+  $theme-color-warning-family: 'yellow' !default,
+  $theme-color-warning-lighter: map.get($site-palette, 'site-lightest-yellow') !default,
+  $theme-color-warning-light: map.get($site-palette, 'site-lighter-yellow') !default,
+  $theme-color-warning: map.get($site-palette, 'site-yellow') !default,
+  $theme-color-warning-dark: map.get($site-palette, 'site-darker-yellow') !default,
+  $theme-color-warning-darker: map.get($site-palette, 'site-darkest-yellow') !default,
   // Success colors
-  $theme-color-success-family: 'green',
-  $theme-color-success-lighter: map.get($site-palette, 'site-lightest-green'),
-  $theme-color-success-light: map.get($site-palette, 'site-lighter-green'),
-  $theme-color-success: map.get($site-palette, 'site-green'),
-  $theme-color-success-dark: map.get($site-palette, 'site-darker-green'),
-  $theme-color-success-darker: map.get($site-palette, 'site-darkest-green'),
+  $theme-color-success-family: 'green' !default,
+  $theme-color-success-lighter: map.get($site-palette, 'site-lightest-green') !default,
+  $theme-color-success-light: map.get($site-palette, 'site-lighter-green') !default,
+  $theme-color-success: map.get($site-palette, 'site-green') !default,
+  $theme-color-success-dark: map.get($site-palette, 'site-darker-green') !default,
+  $theme-color-success-darker: map.get($site-palette, 'site-darkest-green') !default,
   // Info colors
-  $theme-color-info-family: 'teal',
-  $theme-color-info-lighter: map.get($site-palette, 'site-lightest-teal'),
-  $theme-color-info-light: map.get($site-palette, 'site-lighter-teal'),
-  $theme-color-info: map.get($site-palette, 'site-teal'),
-  $theme-color-info-dark: map.get($site-palette, 'site-darker-teal'),
-  $theme-color-info-darker: map.get($site-palette, 'site-darkest-teal'),
+  $theme-color-info-family: 'teal' !default,
+  $theme-color-info-lighter: map.get($site-palette, 'site-lightest-teal') !default,
+  $theme-color-info-light: map.get($site-palette, 'site-lighter-teal') !default,
+  $theme-color-info: map.get($site-palette, 'site-teal') !default,
+  $theme-color-info-dark: map.get($site-palette, 'site-darker-teal') !default,
+  $theme-color-info-darker: map.get($site-palette, 'site-darkest-teal') !default,
   // Disabled colors
-  $theme-color-disabled-light: map.get($site-palette, 'site-lightest-grey'),
-  $theme-color-disabled: map.get($site-palette, 'site-disabled-grey'),
-  $theme-color-disabled-dark: map.get($site-palette, 'site-darker-grey'),
+  $theme-color-disabled-light: map.get($site-palette, 'site-lightest-grey') !default,
+  $theme-color-disabled: map.get($site-palette, 'site-disabled-grey') !default,
+  $theme-color-disabled-dark: map.get($site-palette, 'site-darker-grey') !default,
   // Links
-  $theme-link-reverse-color: 'white',
-  $theme-link-reverse-hover-color: 'primary-light',
-  $theme-link-reverse-active-color: 'white',
+  $theme-link-reverse-color: 'white' !default,
+  $theme-link-reverse-hover-color: 'primary-light' !default,
+  $theme-link-reverse-active-color: 'white' !default,
   // ----------------------------------------
   // Components
   // ----------------------------------------
   // Accordion
-  $theme-accordion-border-width: '1px',
-  $theme-accordion-border-color: 'primary-light',
+  $theme-accordion-border-width: '1px' !default,
+  $theme-accordion-border-color: 'primary-light' !default,
   // Alert
-  $theme-alert-bar-width: 0,
-  $theme-alert-icon-size: 2,
-  $theme-alert-padding-x: 2,
-  $theme-alert-padding-y: 1.5,
+  $theme-alert-bar-width: 0 !default,
+  $theme-alert-icon-size: 2 !default,
+  $theme-alert-padding-x: 2 !default,
+  $theme-alert-padding-y: 1.5 !default,
   // Banner
-  $theme-banner-background-color: 'primary-lighter',
+  $theme-banner-background-color: 'primary-lighter' !default,
   // Button
-  $theme-button-stroke-width: 1px,
+  $theme-button-stroke-width: 1px !default,
   // Identifier
-  $theme-identifier-background-color: 'primary-darker',
-  $theme-identifier-identity-domain-color: 'primary-light',
-  $theme-identifier-secondary-link-color: 'primary-light',
+  $theme-identifier-background-color: 'primary-darker' !default,
+  $theme-identifier-identity-domain-color: 'primary-light' !default,
+  $theme-identifier-secondary-link-color: 'primary-light' !default,
   // Footer
-  $theme-footer-font-family: 'body',
+  $theme-footer-font-family: 'body' !default,
   // Form and input
-  $theme-checkbox-border-radius: 1.5px,
-  $theme-input-line-height: 3,
-  $theme-input-state-border-width: 2px,
-  $theme-input-tile-border-radius: 'lg',
-  $theme-input-tile-border-width: 1px,
+  $theme-checkbox-border-radius: 1.5px !default,
+  $theme-input-line-height: 3 !default,
+  $theme-input-state-border-width: 2px !default,
+  $theme-input-tile-border-radius: 'lg' !default,
+  $theme-input-tile-border-width: 1px !default,
   // Process List
-  $theme-process-list-connector-color: 'base-lighter',
-  $theme-process-list-counter-background-color: 'primary-dark',
-  $theme-process-list-counter-border-width: 0,
-  $theme-process-list-counter-font-size: 'sm',
-  $theme-process-list-counter-size: 3,
-  $theme-process-list-counter-text-color: 'white',
+  $theme-process-list-connector-color: 'base-lighter' !default,
+  $theme-process-list-counter-background-color: 'primary-dark' !default,
+  $theme-process-list-counter-border-width: 0 !default,
+  $theme-process-list-counter-font-size: 'sm' !default,
+  $theme-process-list-counter-size: 3 !default,
+  $theme-process-list-counter-text-color: 'white' !default,
   // ----------------------------------------
   // General
   // ----------------------------------------
   // Notifications
-  $theme-show-compile-warnings: false,
-  $theme-show-notifications: false,
+  $theme-show-compile-warnings: false !default,
+  $theme-show-notifications: false !default,
   // Focus
-  $theme-focus-color: 'primary',
-  $theme-focus-offset: 1px,
-  $theme-focus-width: 2px,
+  $theme-focus-color: 'primary' !default,
+  $theme-focus-offset: 1px !default,
+  $theme-focus-width: 2px !default,
   // ----------------------------------------
   // Typography
   // ----------------------------------------
   // Root font size
-  $theme-respect-user-font-size: false,
-  $theme-root-font-size: 16px,
+  $theme-respect-user-font-size: false !default,
+  $theme-root-font-size: 16px !default,
   // Font path
-  $theme-font-path: if(variable-exists(font-path), $font-path, '../fonts'),
+  $theme-font-path: if(variable-exists(font-path), $font-path, '../fonts') !default,
   // Font type
-  $theme-font-type-sans: 'public-sans',
-  $theme-font-type-serif: 'public-sans',
+  $theme-font-type-sans: 'public-sans' !default,
+  $theme-font-type-serif: 'public-sans' !default,
   // Type scale
-  $theme-type-scale-3xs: 'micro',
-  $theme-type-scale-2xs: 2,
-  $theme-type-scale-xl: 11,
+  $theme-type-scale-3xs: 'micro' !default,
+  $theme-type-scale-2xs: 2 !default,
+  $theme-type-scale-xl: 11 !default,
   // Line height
-  $theme-body-line-height: 4,
+  $theme-body-line-height: 4 !default,
   // Headings
-  $theme-h1-font-size: 'xl',
-  $theme-h2-font-size: 'lg',
-  $theme-h3-font-size: 'md',
-  $theme-h4-font-size: 'xs',
-  $theme-h5-font-size: '2xs',
-  $theme-heading-line-height: 3,
-  $theme-display-font-size: '2xl',
+  $theme-h1-font-size: 'xl' !default,
+  $theme-h2-font-size: 'lg' !default,
+  $theme-h3-font-size: 'md' !default,
+  $theme-h4-font-size: 'xs' !default,
+  $theme-h5-font-size: '2xs' !default,
+  $theme-heading-line-height: 3 !default,
+  $theme-display-font-size: '2xl' !default,
   // Text and prose
-  $theme-text-measure: 3,
-  $theme-text-measure-wide: 4,
+  $theme-text-measure: 3 !default,
+  $theme-text-measure-wide: 4 !default,
   // Lead text
-  $theme-lead-font-family: 'body',
-  $theme-lead-font-size: 8,
-  $theme-lead-measure: 5,
+  $theme-lead-font-family: 'body' !default,
+  $theme-lead-font-size: 8 !default,
+  $theme-lead-measure: 5 !default,
   // ----------------------------------------
-  // Typography
+  // Utilility
   // ----------------------------------------
   $theme-utility-breakpoints:
     (
@@ -234,4 +234,5 @@ $site-palette: (
       // 1400px:
       'widescreen': false
     )
+    !default
 );
