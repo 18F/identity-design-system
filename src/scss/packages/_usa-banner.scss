@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-banner/index';
 
 .usa-banner__header {
   @include set-text-from-bg('primary-darker');

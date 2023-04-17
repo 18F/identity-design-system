@@ -40,7 +40,8 @@
   },
   "files": [
     "build",
-    "dist/assets/**/*"
+    "dist/assets/**/*",
+    "packages"
   ],
   "repository": {
     "type": "git",

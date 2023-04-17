@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-accordion/index';
 
 .usa-accordion__button {
   @include u-border($theme-accordion-border-width, $theme-accordion-border-color);

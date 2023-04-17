@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-card/index';
 
 .lg-card {
   @include u-radius('sm');

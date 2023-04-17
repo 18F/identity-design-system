@@ -130,7 +130,7 @@ gulp.task('build-sass', () =>
     .pipe(
       sass({
         outputStyle: isProduction ? 'compressed' : 'expanded',
-        includePaths: ['node_modules/@uswds/uswds/packages'],
+        includePaths: ['./src/scss/packages', './src/scss/uswds-packages'],
       }),
     )
     .pipe(
@@ -161,14 +161,7 @@ gulp.task('copy-login-scss', () =>
     .pipe(gulp.dest(SCSS_DEST)),
 );
 
-gulp.task('copy-uswds-scss', () =>
-  gulp
-    .src(['node_modules/@uswds/uswds/dist/scss/**/*.scss'])
-    .pipe(underscorePrefix())
-    .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
-);
-
-gulp.task('copy-scss', gulp.series('copy-login-scss', 'copy-uswds-scss'));
+gulp.task('copy-scss', gulp.series('copy-login-scss'));
 
 gulp.task('lint', gulp.parallel('lint-js', 'lint-sass'));
 

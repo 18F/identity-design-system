@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-process-list/index';
 
 $theme-process-list-counter-size-big: 3.125rem;
 

@@ -1,9 +1,0 @@
-@use 'uswds-core' as *;
-
-.usa-overlay {
-  background: color('base-darker');
-
-  &.is-visible {
-    opacity: opacity(50);
-  }
-}

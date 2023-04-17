@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-button/index';
 
 $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
 

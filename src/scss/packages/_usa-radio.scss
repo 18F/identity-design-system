@@ -1,0 +1,138 @@
+@use 'sass:math';
+@use 'uswds-core' as *;
+@forward './usa-radio/index';
+
+$border-width: 1px;
+$radio-size: 0.875rem;
+$input-select-margin-right: 1;
+
+.usa-radio__label {
+  @include u-line-height($theme-form-font-family, $theme-body-line-height);
+  display: inline-block;
+  margin-bottom: units(1);
+  padding-left: $radio-size + units($input-select-margin-right);
+
+  &::before {
+    border-radius: 50%;
+    background-color: color('primary-lightest');
+    box-shadow: inset 0 0 0 units($border-width) color('primary');
+    height: $radio-size;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: math.div(
+      line-height($theme-form-font-family, $theme-body-line-height) *
+        font-size($theme-form-font-family, $theme-body-font-size) - $radio-size,
+      2
+    );
+    width: $radio-size;
+  }
+}
+
+.usa-radio__input:disabled + .usa-radio__label {
+  color: color('disabled');
+  border-color: color('disabled');
+}
+
+.usa-radio__input:disabled + .usa-radio__label::before {
+  box-shadow: inset 0 0 0 units($border-width) color('disabled');
+}
+
+.usa-radio__input:checked:disabled + .usa-radio__label::before {
+  box-shadow: inset 0 0 0 3px color('disabled');
+  background-color: color('white');
+}
+
+.usa-radio__input:checked + .usa-radio__label::before {
+  background-color: color('white');
+  box-shadow: inset 0 0 0 3px color('primary');
+}
+
+.usa-radio__input.usa-focus + .usa-radio__label::before,
+.usa-radio__input:focus + .usa-radio__label::before {
+  @include focus-outline();
+}
+
+.usa-radio__input:checked.usa-focus + .usa-radio__label::before,
+.usa-radio__input:checked:focus + .usa-radio__label::before {
+  @include focus-outline();
+}
+
+.usa-radio__input--tile + .usa-radio__label {
+  @include u-text('primary', 'bold');
+  @include u-display('block');
+  @include u-padding(3);
+  padding-left: units(3) + $radio-size + $input-select-margin-right;
+  border-color: color($theme-input-tile-border-color);
+  max-width: units($theme-input-max-width);
+  font-size: 1.125rem;
+
+  &::before {
+    left: units(3);
+    margin-top: math.div(
+      line-height($theme-form-font-family, $theme-body-line-height) * 1.125rem - $radio-size,
+      2
+    );
+  }
+}
+
+.usa-radio__input--tile:disabled + .usa-radio__label--illustrated .usa-radio__image {
+  filter: invert(45%) sepia(1%) saturate(0%) hue-rotate(232deg) brightness(100%) contrast(80%);
+}
+
+.usa-radio__input--tile + .usa-radio__label--illustrated {
+  align-items: flex-start;
+
+  @include at-media('tablet') {
+    display: flex;
+  }
+
+  .usa-radio__image {
+    width: 1.5rem;
+    float: left;
+    margin-right: 0.5rem;
+    @include at-media('tablet') {
+      width: 2.625rem;
+      padding-top: 0.25rem;
+    }
+  }
+
+  .usa-radio__label--text {
+    @include at-media('tablet') {
+      flex: 1;
+      padding-left: 0.5rem;
+    }
+  }
+}
+
+.usa-radio__input--bordered + .usa-radio__label {
+  @include u-display('table'); // Margin collapse of a "block" while retaining collapsed width.
+  border: units($theme-input-bordered-border-width) solid color($theme-input-bordered-border-color);
+  border-radius: radius($theme-input-bordered-border-radius);
+  margin: units(1) 0;
+  max-width: units($theme-input-max-width);
+  padding: units(1) units(2) units(1) #{units(2) + $radio-size + units($input-select-margin-right)};
+
+  &::before {
+    left: units(2);
+  }
+}
+
+.usa-radio__input--bordered:checked + .usa-radio__label {
+  background-color: color($theme-input-bordered-background-color-selected);
+  border-color: color($theme-input-bordered-border-color-selected);
+}
+
+.usa-radio__input--bordered:checked:disabled + .usa-radio__label {
+  background-color: transparent;
+  border-color: color('disabled');
+}
+
+.usa-radio__input--tile:checked + .usa-radio__label {
+  background-color: color($theme-input-tile-background-color-selected);
+  border-color: color($theme-input-tile-border-color-selected);
+}
+
+.usa-radio__label-description {
+  @include typeset($theme-body-font-family, $theme-body-font-size, $theme-body-line-height);
+  @include u-text('ink', 'normal');
+}

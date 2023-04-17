@@ -1,0 +1,82 @@
+@use 'uswds-core' as *;
+@forward './usa-header/index';
+
+$header-height: 10;
+
+.usa-overlay {
+  background: color('base-darker');
+
+  &.is-visible {
+    opacity: opacity(50);
+  }
+}
+
+// Header navigation
+// ---------------------------------
+
+.usa-header--extended,
+.usa-header--basic {
+  .usa-logo {
+    @include at-media-max($theme-header-min-width) {
+      font-size: unset;
+      flex: unset;
+    }
+
+    @include at-media($theme-header-min-width) {
+      font-size: unset;
+      margin: 0;
+    }
+
+    line-height: units(2);
+  }
+
+  .usa-navbar {
+    @include at-media-max($theme-header-min-width) {
+      border-bottom: units(1px) solid color('base-light');
+      justify-content: space-between;
+    }
+
+    @include at-media($theme-header-min-width) {
+      display: flex;
+      align-items: center;
+      height: units($header-height);
+    }
+  }
+}
+
+.usa-header {
+  + .usa-section,
+  + main {
+    @include at-media($theme-header-min-width) {
+      border-top: units(1px) solid color('base-light');
+    }
+  }
+}
+
+// Header navigation for basic
+// ---------------------------------
+
+.usa-header--basic {
+  .usa-nav-container {
+    @include at-media($theme-header-min-width) {
+      align-items: center;
+    }
+  }
+
+  .usa-nav {
+    @include at-media($theme-header-min-width) {
+      padding: 0;
+    }
+  }
+}
+
+// Header navigation for extended
+// ---------------------------------
+
+.usa-header--extended .usa-nav {
+  @include at-media($theme-header-min-width) {
+    border-top: 0;
+    padding: 0;
+    width: 100%;
+  }
+}

@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@forward './usa-hero/index';
 
 .usa-hero {
   background-color: color('primary-darker');

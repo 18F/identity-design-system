@@ -1,4 +1,14 @@
-// USWDS Components
+@use 'uswds-core' as *;
+
+// Global
+// -------------------------------------
+@forward 'uswds-global';
+
+// Helpers
+// -------------------------------------
+@forward 'uswds-helpers';
+
+// Components
 // -------------------------------------
 @forward 'uswds-typography';
 @forward 'usa-accordion';
@@ -8,6 +18,7 @@
 @forward 'usa-button-group';
 @forward 'usa-button';
 @forward 'usa-card';
+@forward 'usa-code';
 @forward 'usa-checklist';
 @forward 'usa-collection';
 @forward 'usa-embed-container';
@@ -19,6 +30,8 @@
 @forward 'usa-icon-list';
 @forward 'usa-icon';
 @forward 'usa-identifier';
+@forward 'usa-in-page-navigation';
+@forward 'usa-language-selector';
 @forward 'usa-layout-docs';
 @forward 'usa-layout-grid';
 @forward 'usa-media-block';
@@ -31,36 +44,20 @@
 @forward 'usa-sidenav';
 @forward 'usa-site-alert';
 @forward 'usa-skipnav';
+@forward 'usa-spinner';
 @forward 'usa-step-indicator';
 @forward 'usa-summary-box';
 @forward 'usa-table';
 @forward 'usa-tag';
 @forward 'usa-tooltip';
+@forward 'usa-verification-badge';
 @forward 'uswds-form-controls';
 
-// Elements
+// Utilities
 // -------------------------------------
-@forward '../elements/form-controls/all';
-@forward '../elements/typography/links';
+@forward 'uswds-utilities';
 
-// Components
-// -------------------------------------
-@forward '../components/accordions';
-@forward '../components/alerts';
-@forward '../components/banner';
-@forward '../components/buttons';
-@forward '../components/cards';
-@forward '../components/code';
-@forward '../components/footer';
-@forward '../components/general';
-@forward '../components/header';
-@forward '../components/hero';
-@forward '../components/identifier';
-@forward '../components/inputs';
-@forward '../components/navbar';
-@forward '../components/process-list';
-@forward '../components/search';
-@forward '../components/sidenav';
-@forward '../components/spinner';
-@forward '../components/typography';
-@forward '../components/verification-badge';
+// Overscroll background color to match header and footer
+html {
+  background-color: color('primary-darker');
+}

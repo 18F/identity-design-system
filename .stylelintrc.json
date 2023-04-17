@@ -1,4 +1,4 @@
 {
   "extends": "@18f/identity-stylelint-config",
-  "ignoreFiles": "./src/scss/uswds/**/*"
+  "ignoreFiles": "./src/scss/uswds-packages/**/*"
 }
