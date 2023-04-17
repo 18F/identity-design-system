@@ -70,26 +70,59 @@ When enforcing a specific text input pattern, provide a hint in the form of an e
 
 ## Dates
 
-Three text fields are the easiest way for users to enter most dates.
-
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-legend">Date of birth</legend>
+  <legend class="usa-label">Date of Birth</legend>
+  <span class="usa-hint" id="d7d4">Example: January 19 2000</span>
   <div class="usa-memorable-date">
-    <div class="usa-form-group usa-form-group--month">
-      <label for="f5bf" class="usa-label">Month</label>
-      <input id="f5bf" class="usa-input" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+    <div class="usa-form-group usa-form-group--month usa-form-group--select">
+      <label class="usa-label" for="f5bf">Month</label>
+      <select
+        class="usa-select"
+        id="f5bf"
+        aria-describedby="d7d4"
+      >
+        <option value>- Select -</option>
+        <option value="1">01 - January</option>
+        <option value="2">02 - February</option>
+        <option value="3">03 - March</option>
+        <option value="4">04 - April</option>
+        <option value="5">05 - May</option>
+        <option value="6">06 - June</option>
+        <option value="7">07 - July</option>
+        <option value="8">08 - August</option>
+        <option value="9">09 - September</option>
+        <option value="10">10 - October</option>
+        <option value="11">11 - November</option>
+        <option value="12">12 - December</option>
+      </select>
     </div>
     <div class="usa-form-group usa-form-group--day">
-      <label for="b0fe" class="usa-label">Day</label>
-      <input id="b0fe" class="usa-input" aria-describedby="d7d4" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <label class="usa-label" for="b0fe">Day</label>
+      <input
+        class="usa-input"
+        aria-describedby="d7d4"
+        id="b0fe"
+        maxlength="2"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        value=""
+      />
     </div>
     <div class="usa-form-group usa-form-group--year">
-      <label for="dc41" class="usa-label">Year</label>
-      <input id="dc41" class="usa-input" aria-describedby="d7d4" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
+      <label class="usa-label" for="dc41">Year</label>
+      <input
+        class="usa-input"
+        aria-describedby="d7d4"
+        id="dc41"
+        minlength="4"
+        maxlength="4"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        value=""
+      />
     </div>
   </div>
-  <span class="usa-form-hint" id="d7d4">Example: 4 28 1986</span>
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -434,24 +467,59 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
   <div id="errored-dates" class="usa-accordion__container">
     <div class="usa-accordion__content">
 {% capture example %}
+
 <fieldset class="usa-fieldset">
-  <legend class="usa-legend">Date of birth</legend>
+  <legend class="usa-label">Date of Birth</legend>
+  <span class="usa-hint" id="f9e5">Example: January 19 2000</span>
   <div class="usa-memorable-date">
-    <div class="usa-form-group usa-form-group--month">
-      <label for="e30e" class="usa-label">Month</label>
-      <input id="e30e" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+    <div class="usa-form-group usa-form-group--month usa-form-group--select">
+      <label class="usa-label" for="e30e">Month</label>
+      <select
+        class="usa-select"
+        id="e30e"
+        aria-describedby="f9e5"
+      >
+        <option value>- Select -</option>
+        <option value="1">01 - January</option>
+        <option value="2">02 - February</option>
+        <option value="3">03 - March</option>
+        <option value="4">04 - April</option>
+        <option value="5">05 - May</option>
+        <option value="6">06 - June</option>
+        <option value="7">07 - July</option>
+        <option value="8">08 - August</option>
+        <option value="9">09 - September</option>
+        <option value="10">10 - October</option>
+        <option value="11">11 - November</option>
+        <option value="12">12 - December</option>
+      </select>
     </div>
     <div class="usa-form-group usa-form-group--day">
-      <label for="b857" class="usa-label">Day</label>
-      <input id="b857" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" maxlength="2" pattern="[0-9]*" inputmode="numeric">
+      <label class="usa-label" for="b857">Day</label>
+      <input
+        class="usa-input"
+        aria-describedby="f9e5"
+        id="b857"
+        maxlength="2"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        value=""
+      />
     </div>
     <div class="usa-form-group usa-form-group--year">
-      <label for="a5dc" class="usa-label">Year</label>
-      <input id="a5dc" class="usa-input usa-input--error" aria-describedby="f9e5" type="text" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric">
+      <label class="usa-label" for="a5dc">Year</label>
+      <input
+        class="usa-input"
+        aria-describedby="f9e5"
+        id="a5dc"
+        minlength="4"
+        maxlength="4"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        value=""
+      />
     </div>
   </div>
-  <span class="usa-form-hint" id="f9e5">Example: 4 28 1986</span>
-  <span class="usa-error-message" role="alert">Error message text</span>
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

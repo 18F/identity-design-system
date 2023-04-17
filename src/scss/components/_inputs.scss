@@ -230,12 +230,6 @@ $input-select-margin-right: 1;
   margin-bottom: units(1);
 }
 
-.usa-form-hint {
-  padding-top: units(0.5);
-  padding-bottom: units(0.5);
-  display: inline-block;
-}
-
 .usa-error-message,
 .usa-success-message {
   @include u-padding-y(0.5);
