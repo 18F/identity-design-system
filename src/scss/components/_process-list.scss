@@ -1,3 +1,5 @@
+@use 'uswds-core' as *;
+
 $theme-process-list-counter-size-big: 3.125rem;
 
 @include override-prose {

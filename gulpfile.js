@@ -9,7 +9,9 @@ const gulpif = require('gulp-if');
 const sass = require('gulp-sass')(require('sass-embedded'));
 const stylelint = require('stylelint');
 const sourcemaps = require('gulp-sourcemaps');
-const browserify = require('browserify');
+const rollup = require('@rollup/stream');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
 const babel = require('gulp-babel');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
@@ -86,13 +88,16 @@ gulp.task('build-package-esm', () =>
 );
 
 gulp.task('build-js', () => {
-  const stream = browserify({ entries: `${PROJECT_JS_SRC}/${PROJECT_JS_AUTO}`, debug: true })
-    .transform('babelify', { global: true, presets: ['@babel/preset-env'] })
-    .bundle()
+  const stream = rollup({
+    input: `${PROJECT_JS_SRC}/${PROJECT_JS_AUTO}`,
+    output: { format: 'iife' },
+    plugins: [nodeResolve(), commonjs()],
+  })
     .on('error', notificationOptions.handler)
     .pipe(source(PROJECT_JS_AUTO))
     .pipe(buffer())
     .pipe(rename(PROJECT_JS_AUTO_OUT))
+    .pipe(babel({ presets: [['@babel/preset-env']] }))
     .pipe(gulp.dest(JS_DEST))
     .pipe(notify(notificationOptions.success));
 
@@ -122,7 +127,12 @@ gulp.task('build-sass', () =>
   gulp
     .src([`${PROJECT_SASS_SRC}/*.scss`])
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass({ outputStyle: isProduction ? 'compressed' : 'expanded' }))
+    .pipe(
+      sass({
+        outputStyle: isProduction ? 'compressed' : 'expanded',
+        includePaths: ['node_modules/@uswds/uswds/packages'],
+      }),
+    )
     .pipe(
       postcss([
         autoprefixer({
@@ -153,7 +163,7 @@ gulp.task('copy-login-scss', () =>
 
 gulp.task('copy-uswds-scss', () =>
   gulp
-    .src(['node_modules/uswds/dist/scss/**/*.scss'])
+    .src(['node_modules/@uswds/uswds/dist/scss/**/*.scss'])
     .pipe(underscorePrefix())
     .pipe(gulp.dest(`${SCSS_DEST}/uswds`)),
 );

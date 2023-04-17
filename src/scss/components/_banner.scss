@@ -1,3 +1,5 @@
+@use 'uswds-core' as *;
+
 .usa-banner__header {
   @include set-text-from-bg('primary-darker');
   background-color: color('primary-darker');

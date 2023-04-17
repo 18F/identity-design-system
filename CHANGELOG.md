@@ -3,6 +3,11 @@
 ### Breaking Changes
 
 - NPM package is renamed from `identity-style-guide` to `@18f/identity-design-system`. ([#331](https://github.com/18F/identity-design-system/pull/331))
+- Update USWDS from 2.13.3 to 3.4.1
+  - Polyfills have been removed, consistent with current Login.gov browser support
+  - The following JavaScript named exports have been renamed or removed:
+    - `navigation` is renamed to `header`
+    - `validator` is renamed to `validation`
 - Sass artifacts now require Dart Sass. The Ruby Sass and LibSass (C) compilers are no longer supported.
 - To improve performance of the default CSS bundle, responsive utility breakpoints other than `tablet:` have been disabled by default. Previously, `mobile-lg:` and `desktop:` utilities were also enabled. You can restore the original settings by overriding [the `$theme-utility-breakpoints` Sass variable](https://designsystem.digital.gov/documentation/settings/#utilities-settings).
    - Component styling which previously responded to now-disabled breakpoints have been updated to standardize on the `tablet` breakpoint. This affects `usa-button--wide`, `usa-search--big`, and `usa-intro` CSS classes.
@@ -85,7 +90,7 @@
 ### Improvements
 
 - Line height calculations are improved such that the [desired token size](https://github.com/uswds/uswds/blob/61a0d99f0e6b36c3758948ba6ac46140abc5e585/src/stylesheets/theme/_uswds-theme-typography.scss#L363-L371) will always apply regardless of font family or scale. ([#291](https://github.com/18F/identity-style-guide/pull/291))
-   - In the case of headings, line-height will fall back to the configured body line-height if the resulting actual line-height would be smaller than body content when using the heading scale.
+  - In the case of headings, line-height will fall back to the configured body line-height if the resulting actual line-height would be smaller than body content when using the heading scale.
 - Body font size has been increased slightly to restore an effective font size of 1rem. ([#292](https://github.com/18F/identity-style-guide/pull/292))
 - The Process List component no longer applies vertical padding which would affect its layout relative to surrounding content. ([#290](https://github.com/18F/identity-style-guide/pull/290))
 - Input hint text is no longer italicized. ([#293](https://github.com/18F/identity-style-guide/pull/293))

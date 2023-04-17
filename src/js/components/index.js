@@ -1,21 +1,21 @@
-import accordion from 'uswds/src/js/components/accordion';
-import banner from 'uswds/src/js/components/banner';
-import characterCount from 'uswds/src/js/components/character-count';
-import comboBox from 'uswds/src/js/components/combo-box';
-import datePicker from 'uswds/src/js/components/date-picker';
-import dateRangePicker from 'uswds/src/js/components/date-range-picker';
-import fileInput from 'uswds/src/js/components/file-input';
-import footer from 'uswds/src/js/components/footer';
-import inputPrefixSuffix from 'uswds/src/js/components/input-prefix-suffix';
-import modal from 'uswds/src/js/components/modal';
-import navigation from 'uswds/src/js/components/navigation';
-import password from 'uswds/src/js/components/password';
-import search from 'uswds/src/js/components/search';
-import skipnav from 'uswds/src/js/components/skipnav';
-import timePicker from 'uswds/src/js/components/time-picker';
-import table from 'uswds/src/js/components/table';
-import tooltip from 'uswds/src/js/components/tooltip';
-import validator from 'uswds/src/js/components/validator';
+import accordion from '@uswds/uswds/js/usa-accordion';
+import banner from '@uswds/uswds/js/usa-banner';
+import characterCount from '@uswds/uswds/js/usa-character-count';
+import comboBox from '@uswds/uswds/js/usa-combo-box';
+import datePicker from '@uswds/uswds/js/usa-date-picker';
+import dateRangePicker from '@uswds/uswds/js/usa-date-range-picker';
+import fileInput from '@uswds/uswds/js/usa-file-input';
+import footer from '@uswds/uswds/js/usa-footer';
+import inputPrefixSuffix from '@uswds/uswds/js/usa-input-prefix-suffix';
+import modal from '@uswds/uswds/js/usa-modal';
+import header from '@uswds/uswds/js/usa-header';
+import password from '@uswds/uswds/js/_usa-password';
+import search from '@uswds/uswds/js/usa-search';
+import skipnav from '@uswds/uswds/js/usa-skipnav';
+import timePicker from '@uswds/uswds/js/usa-time-picker';
+import table from '@uswds/uswds/js/usa-table';
+import tooltip from '@uswds/uswds/js/usa-tooltip';
+import validation from '@uswds/uswds/js/usa-validation';
 
 export {
   accordion,
@@ -28,12 +28,12 @@ export {
   footer,
   inputPrefixSuffix,
   modal,
-  navigation,
+  header,
   password,
   search,
   skipnav,
   timePicker,
   table,
   tooltip,
-  validator,
+  validation,
 };

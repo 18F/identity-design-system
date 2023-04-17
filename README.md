@@ -180,17 +180,6 @@ Below are various ways to use the Login.gov Design System throughout our various
 
   Note that unlike the pre-built JavaScript assets found in the `dist/assets` directory, importing the package from NPM will not automatically initialize the components on the page or include polyfills necessary to support older browsers. You will have to call the `on()` method for each component you import.
 
-  If you need support for older browsers in your project, it's suggested you import polyfills shipped with the `uswds` package and import it before any components:
-
-  ```
-  npm install uswds
-  ```
-
-  ```js
-  import 'uswds/src/js/polyfills';
-  import { accordion } from '@18f/identity-design-system';
-  ```
-
 ### Jekyll
 
 If you’re using Jekyll, a simple plugin can help copy this file during your build process to keep your assets up-to-date. First, add this file to `_plugins/`:

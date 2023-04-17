@@ -46,7 +46,7 @@ The {{ site.title }} is built using the [U.S. Web Design System](https://designs
 
 # A work in progress
 
-The latest version is <strong class="text-no-wrap">{{ site.package_json.this_version }}</strong> which uses <strong class="text-no-wrap">uswds@{{ site.package_json.uswds_version }}</strong>. Spot an issue? We’d love to hear about it [on GitHub](https://github.com/18F/identity-style-guide/issues).
+The latest version is <strong class="text-no-wrap">{{ site.package_json.this_version }}</strong> which uses <strong class="text-no-wrap">uswds@{{ site.package_json['@uswds/uswds_version'] }}</strong>. Spot an issue? We’d love to hear about it [on GitHub](https://github.com/18F/identity-style-guide/issues).
 
 </div>
       </div>
