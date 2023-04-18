@@ -74,6 +74,19 @@ In JavaScript, you can import named members of the JavaScript package. If you ar
 + accordion.on();
 ```
 
+### Theme Variables
+
+The Login.gov Design System configures USWDS theme variables to provide defaults designed to be used across all Login.gov sites. These should almost always work well out-of-the-box, and not require further configuration.
+
+If needed, you can extend these using [the documented process for configuring settings](https://designsystem.digital.gov/documentation/settings/), providing variables when importing the `uswds-core` package:
+
+```diff
+- @use 'uswds-core';
++ @use 'uswds-core' with (
++   $theme-body-font-size: 'sm'
++ );
+```
+
 ## License
 
 See [LICENSE](https://github.com/18F/identity-style-guide/blob/main/LICENSE) for licensing information.
