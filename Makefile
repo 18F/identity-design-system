@@ -45,7 +45,7 @@ build: build-docs build-assets build-package
 build-docs:
 	JEKYLL_ENV=production bundle exec jekyll build
 
-build-assets: build-sass-and-js build-fonts build-images copy-scss build-sass-packages
+build-assets: build-sass-and-js build-fonts build-images build-sass-packages
 
 build-package:
 	$(NODE_BIN)/gulp build-package
@@ -69,13 +69,6 @@ build-images:
 	mkdir -p $(OUTPUT_DIR)/assets/img
 	cp -r node_modules/@uswds/uswds/dist/img $(OUTPUT_DIR)/assets
 	cp -r src/img $(OUTPUT_DIR)/assets
-
-copy-uswds-scss:
-	mkdir -p $(OUTPUT_DIR)/assets/scss/uswds-packages
-	cp -r node_modules/@uswds/uswds/packages/* $(OUTPUT_DIR)/assets/scss/uswds-packages
-
-copy-scss: copy-uswds-scss
-	$(NODE_BIN)/gulp copy-scss
 
 test: build
 	npm exec jest

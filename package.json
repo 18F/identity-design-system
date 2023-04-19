@@ -41,7 +41,8 @@
   "files": [
     "build",
     "dist/assets/**/*",
-    "packages"
+    "packages",
+    "!node_modules"
   ],
   "repository": {
     "type": "git",
@@ -76,7 +77,6 @@
     "fast-glob": "^3.2.12",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-if": "^3.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",

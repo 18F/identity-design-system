@@ -5,7 +5,6 @@ const gulp = require('gulp');
 const notify = require('gulp-notify');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
-const gulpif = require('gulp-if');
 const sass = require('gulp-sass')(require('sass-embedded'));
 const stylelint = require('stylelint');
 const sourcemaps = require('gulp-sourcemaps');
@@ -29,7 +28,6 @@ const OUTPUT_DIR = process.env.OUTPUT_DIR || './dist';
 const PACKAGE_DEST = 'build';
 const JS_DEST = `${OUTPUT_DIR}/assets/js`;
 const CSS_DEST = `${OUTPUT_DIR}/assets/css`;
-const SCSS_DEST = `${OUTPUT_DIR}/assets/scss`;
 
 const notificationOptions = {
   success: {
@@ -151,17 +149,6 @@ gulp.task('build-sass', () =>
 gulp.task('watch-sass', () =>
   gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series('build-sass')),
 );
-
-const underscorePrefix = () => gulpif((f) => f.basename[0] !== '_', rename({ prefix: '_' }));
-
-gulp.task('copy-login-scss', () =>
-  gulp
-    .src([`${PROJECT_SASS_SRC}/**/*.scss`])
-    .pipe(underscorePrefix())
-    .pipe(gulp.dest(SCSS_DEST)),
-);
-
-gulp.task('copy-scss', gulp.series('copy-login-scss'));
 
 gulp.task('lint', gulp.parallel('lint-js', 'lint-sass'));
 
