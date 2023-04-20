@@ -1,5 +1,3 @@
-@use 'uswds-core' as *;
-
 // Global
 // -------------------------------------
 @forward 'uswds-global';
@@ -56,8 +54,3 @@
 // Utilities
 // -------------------------------------
 @forward 'uswds-utilities';
-
-// Overscroll background color to match header and footer
-html {
-  background-color: color('primary-darker');
-}
