@@ -3,20 +3,20 @@
 
 $alerts: 'success', 'warning', 'error', 'info', 'emergency';
 
-.usa-alert__body {
-  @include u-padding-x($theme-alert-padding-x); // See: https://github.com/uswds/uswds/issues/5252}
-}
-
 .usa-alert {
   &,
   & .usa-alert__body {
     border-radius: radius('lg');
   }
 
-  .usa-alert__body::before {
-    background-color: transparent;
-    background-position: center;
-    mask: none;
+  .usa-alert__body {
+    @include u-padding-x($theme-alert-padding-x); // See: https://github.com/uswds/uswds/issues/5252
+
+    &::before {
+      background-color: transparent;
+      background-position: center;
+      mask: none;
+    }
   }
 }
 
