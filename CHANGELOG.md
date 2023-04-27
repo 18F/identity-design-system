@@ -17,6 +17,10 @@
 - The deprecated `.usa-form-hint` CSS class has been removed. Use `.usa-hint` instead.
 - Removed `usa-alert__paragraph` alert helper class. Use [`measure-3` measure utility](https://designsystem.digital.gov/utilities/paragraph-styles/#max-width) instead.
 
+### New Features
+
+- Add Tag component styles.
+
 ## 6.7.0
 
 ### Improvements
