@@ -7,7 +7,7 @@ subnav:
     href: "#types-of-alerts"
 ---
 
-{% include helpers/base-component.html component="alert" stylesheet="alerts" %}
+{% include helpers/base-component.html component="alert" %}
 
 ## Alert Usage
 

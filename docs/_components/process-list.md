@@ -3,7 +3,7 @@ title: Process List
 lead: A process list displays the steps or stages of important instructions or processes.
 ---
 
-{% include helpers/base-component.html component="process-list" stylesheet="process-list" %}
+{% include helpers/base-component.html component="process-list" %}
 
 ## Default
 
