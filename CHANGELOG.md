@@ -17,6 +17,7 @@
 - The deprecated `.usa-form-hint` CSS class has been removed. Use `.usa-hint` instead.
 - Removed `usa-alert__paragraph` alert helper class. Use [`measure-3` measure utility](https://designsystem.digital.gov/utilities/paragraph-styles/#max-width) instead.
 - The Spinner component has been removed (`.lg-spinner`). A new "Loading" component will be made available in a future release.
+- The all-white Login.gov logo `login-gov-logo-rev.svg` has been replaced with a new color-reversed version `src/img/login-gov-logo-reverse.svg`.
 
 ### New Features
 
