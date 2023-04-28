@@ -2,7 +2,7 @@
 
 The Login.gov Design System is an extension of the [U.S. Web Design System](https://designsystem.digital.gov/) used on Login.gov sites to consistently identify the Login.gov brand.
 
-This documentation describes how to use the Login.gov Design System in a new project. Read [CONTRIBUTING.md](https://github.com/18F/identity-style-guide/blob/main/CONTRIBUTING.md) to learn more about contributing to the design system itself.
+This documentation describes how to use the Login.gov Design System in a new project. Read [CONTRIBUTING.md](https://github.com/18F/identity-design-system/blob/main/CONTRIBUTING.md) to learn more about contributing to the design system itself.
 
 ## Installation
 
@@ -89,4 +89,4 @@ If needed, you can extend these using [the documented process for configuring se
 
 ## License
 
-See [LICENSE](https://github.com/18F/identity-style-guide/blob/main/LICENSE) for licensing information.
+See [LICENSE](https://github.com/18F/identity-design-system/blob/main/LICENSE) for licensing information.

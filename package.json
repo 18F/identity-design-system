@@ -46,7 +46,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/18F/identity-style-guide.git"
+    "url": "git+https://github.com/18F/identity-design-system.git"
   },
   "author": "18F",
   "license": "CC0-1.0",
@@ -55,9 +55,9 @@
     "npm": ">6"
   },
   "bugs": {
-    "url": "https://github.com/18F/identity-style-guide/issues"
+    "url": "https://github.com/18F/identity-design-system/issues"
   },
-  "homepage": "https://github.com/18F/identity-style-guide#readme",
+  "homepage": "https://github.com/18F/identity-design-system#readme",
   "dependencies": {
     "@uswds/uswds": "^3.4.1"
   },

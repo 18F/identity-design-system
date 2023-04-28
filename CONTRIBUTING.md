@@ -82,7 +82,7 @@ Before starting, make sure that all changes intended for release should be merge
    - Consider: In the files listed, are there any that should or shouldn't be included? Does the version match what you expect?
 7. If everything looks alright, continue with publishing by running `npm publish`.
 8. Push your release branch to the GitHub repository and open a pull request.
-9. Once approved and merged, create a new release on the [GitHub "Releases" page](https://github.com/18F/identity-style-guide/releases).
+9. Once approved and merged, create a new release on the [GitHub "Releases" page](https://github.com/18F/identity-design-system/releases).
    - Use `main` as the target.
    - The release version should match the version just published to `npm` (for example, `v2.1.5`).
    - Use the version name as the release title.
