@@ -18,6 +18,10 @@
 - Removed `usa-alert__paragraph` alert helper class. Use [`measure-3` measure utility](https://designsystem.digital.gov/utilities/paragraph-styles/#max-width) instead.
 - The Spinner component has been removed (`.lg-spinner`). A new "Loading" component will be made available in a future release.
 
+### New Features
+
+- Add Tag component styles.
+
 ## 6.7.0
 
 ### Improvements
