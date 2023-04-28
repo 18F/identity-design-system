@@ -4,7 +4,7 @@ lead: >
   Hierarchical, vertical navigation to place at the side of a page. This should correspond to other headers on the page.
 ---
 
-{% include helpers/base-component.html component="side-navigation" stylesheet="sidenav" %}
+{% include helpers/base-component.html component="side-navigation" stylesheet="usa-sidenav" %}
 ## Single level
 {% capture example %}
 <nav aria-label="Secondary navigation" class="tablet:grid-col-4">
@@ -36,7 +36,7 @@ lead: >
         </li>
         <li class="usa-sidenav__item">
           <a href="">Child link</a>
-        </li>           
+        </li>
       </ul>
     </li>
     <li class="usa-sidenav__item usa-parent">
@@ -63,12 +63,12 @@ lead: >
         </li>
         <li class="usa-sidenav__item">
           <a href="">Grandchild link</a>
-        </li>           
+        </li>
       </ul>
         </li>
         <li class="usa-sidenav__item">
           <a href="">Child link</a>
-        </li>           
+        </li>
       </ul>
     </li>
     <li class="usa-sidenav__item usa-parent">

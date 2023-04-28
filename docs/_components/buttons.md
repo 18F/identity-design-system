@@ -9,7 +9,7 @@ subnav:
     href: "#button-widths"
 ---
 
-{% include helpers/base-component.html component="button" stylesheet="buttons" %}
+{% include helpers/base-component.html component="button" %}
 
 ## Button sizes and states
 

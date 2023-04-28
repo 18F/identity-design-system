@@ -19,7 +19,7 @@ subnav:
     href: "#form-validation-errors"
 ---
 
-{% include helpers/base-component.html component="form-controls" stylesheet="inputs" %}
+{% include helpers/base-component.html component="form-controls" stylesheet="uswds-form-controls" %}
 
 ### Text Input
 
