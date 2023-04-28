@@ -16,6 +16,7 @@
 - The deprecated `alerts/success-badge.svg` image has been removed. Use `alerts/success.svg` instead.
 - The deprecated `.usa-form-hint` CSS class has been removed. Use `.usa-hint` instead.
 - Removed `usa-alert__paragraph` alert helper class. Use [`measure-3` measure utility](https://designsystem.digital.gov/utilities/paragraph-styles/#max-width) instead.
+- The Spinner component has been removed (`.lg-spinner`). A new "Loading" component will be made available in a future release.
 
 ## 6.7.0
 
