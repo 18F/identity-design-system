@@ -22,7 +22,7 @@ The Login.gov logo is the cornerstone of our brand. Whenever possible, the red a
 
 <a href="{{ site.baseurl }}/assets/img/login-gov-logo.svg" download><img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" role="img" alt="Login.gov logo" class="padding-4"></a>
 
-<a href="{{ site.baseurl }}/assets/img/login-gov-logo-rev.svg" download><img src="{{ site.baseurl }}/assets/img/login-gov-logo-rev.svg" role="img" alt="Login.gov logo" class="bg-primary-darker padding-4"></a>
+<a href="{{ site.baseurl }}/assets/img/login-gov-logo-reverse.svg" download><img src="{{ site.baseurl }}/assets/img/login-gov-logo-reverse.svg" role="img" alt="Login.gov logo" class="bg-primary-darker padding-4"></a>
 
 ### Whitespace
 
@@ -42,7 +42,7 @@ Establishing a minimum size ensures that the impact and legibility of the logo i
 
 For optimum legibility and brand consistency, the logo should never be used in white with a light background. Conversely, the standard logo should never appear on a dark background.
 
-<img src="{{ site.baseurl }}/assets/img/login-gov-logo-rev.svg" role="img" alt="Login.gov logo" class="bg-primary-lighter padding-4">
+<img src="{{ site.baseurl }}/assets/img/login-gov-logo-reverse.svg" role="img" alt="Login.gov logo" class="bg-primary-lighter padding-4">
 
 <img src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" role="img" alt="Login.gov logo" class="bg-gray-70 padding-4">
 
