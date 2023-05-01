@@ -1,27 +1,28 @@
-## Unreleased
+## 7.0.0
 
 ### Breaking Changes
 
-- NPM package is renamed from `identity-style-guide` to `@18f/identity-design-system`. ([#331](https://github.com/18F/identity-design-system/pull/331))
-- Update USWDS from 2.13.3 to 3.4.1
+- NPM package renamed from `identity-style-guide` to `@18f/identity-design-system`. ([#331](https://github.com/18F/identity-design-system/pull/331))
+- Update USWDS from 2.13.3 to 3.4.1. ([#321](https://github.com/18F/identity-style-guide/pull/321))
   - Polyfills have been removed, consistent with current Login.gov browser support
   - The following JavaScript named exports have been renamed or removed:
     - `navigation` is renamed to `header`
     - `validator` is renamed to `validation`
-- Sass artifacts now require Dart Sass. The Ruby Sass and LibSass (C) compilers are no longer supported.
-- To improve performance of the default CSS bundle, responsive utility breakpoints other than `tablet:` have been disabled by default. Previously, `mobile-lg:` and `desktop:` utilities were also enabled. You can restore the original settings by overriding [the `$theme-utility-breakpoints` Sass variable](https://designsystem.digital.gov/documentation/settings/#utilities-settings).
+  - Refer to README.md for updated usage instructions, as well as the [U.S. Web Design System migration guide](https://designsystem.digital.gov/documentation/migration/).
+- Sass artifacts now require Dart Sass. The Ruby Sass and LibSass (C) compilers are no longer supported. ([#298](https://github.com/18F/identity-style-guide/pull/298))
+- To improve performance of the default CSS bundle, responsive utility breakpoints other than `tablet:` have been disabled by default. Previously, `mobile-lg:` and `desktop:` utilities were also enabled. You can restore the original settings by overriding [the `$theme-utility-breakpoints` Sass variable](https://designsystem.digital.gov/documentation/settings/#utilities-settings). ([#298](https://github.com/18F/identity-style-guide/pull/298))
    - Component styling which previously responded to now-disabled breakpoints have been updated to standardize on the `tablet` breakpoint. This affects `usa-button--wide`, `usa-search--big`, and `usa-intro` CSS classes.
-- Image URLs in stylesheets are no longer processed by `asset-path-if-exists`. For Rails integrations, consider using [the `$theme-image-path` Sass variable](https://designsystem.digital.gov/documentation/settings/#general-settings) in combination with [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options).
-- The deprecated `$image-path` Sass variable setting has been removed. Use `$theme-image-path` instead.
-- The deprecated `alerts/success-badge.svg` image has been removed. Use `alerts/success.svg` instead.
-- The deprecated `.usa-form-hint` CSS class has been removed. Use `.usa-hint` instead.
-- Removed `usa-alert__paragraph` alert helper class. Use [`measure-3` measure utility](https://designsystem.digital.gov/utilities/paragraph-styles/#max-width) instead.
-- The Spinner component has been removed (`.lg-spinner`). A new "Loading" component will be made available in a future release.
-- The all-white Login.gov logo `login-gov-logo-rev.svg` has been replaced with a new color-reversed version `src/img/login-gov-logo-reverse.svg`.
+- Image URLs in stylesheets are no longer processed by `asset-path-if-exists`. For Rails integrations, consider using [the `$theme-image-path` Sass variable](https://designsystem.digital.gov/documentation/settings/#general-settings) in combination with [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options). ([#298](https://github.com/18F/identity-style-guide/pull/298))
+- The deprecated `$image-path` Sass variable setting has been removed. Use `$theme-image-path` instead. ([#298](https://github.com/18F/identity-style-guide/pull/298))
+- The deprecated `alerts/success-badge.svg` image has been removed. Use `alerts/success.svg` instead. ([#298](https://github.com/18F/identity-style-guide/pull/298))
+- The deprecated `.usa-form-hint` CSS class has been removed. Use `.usa-hint` instead. ([#337](https://github.com/18F/identity-style-guide/pull/337))
+- Removed `usa-alert__paragraph` alert helper class. Use [`measure-3` measure utility](https://designsystem.digital.gov/utilities/paragraph-styles/#max-width) instead. ([#298](https://github.com/18F/identity-style-guide/pull/298))
+- The Spinner component has been removed (`.lg-spinner`). A new "Loading" component will be made available in a future release. ([#347](https://github.com/18F/identity-style-guide/pull/347))
+- The all-white Login.gov logo `login-gov-logo-rev.svg` has been replaced with a new color-reversed version `src/img/login-gov-logo-reverse.svg`. ([#351](https://github.com/18F/identity-style-guide/pull/351))
 
 ### New Features
 
-- Add Tag component styles.
+- Add Tag component styles. ([#346](https://github.com/18F/identity-style-guide/pull/346))
 
 ## 6.7.0
 
