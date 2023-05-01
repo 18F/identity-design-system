@@ -21,6 +21,10 @@
       color: color('primary-dark');
     }
   }
+
+  > .usa-sidenav__item > .usa-sidenav__sublist {
+    border-top: units(1px) solid color('base-lighter');
+  }
 }
 
 .usa-sidenav__sublist a:not(.usa-button) {
