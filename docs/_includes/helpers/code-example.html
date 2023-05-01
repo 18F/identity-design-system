@@ -6,6 +6,6 @@
 
 <div markdown="1">
 ```html
-{{ include.code | strip | replace_regex: '\s?data-test(?:="[^\s"]+")', '' }}
+{{ include.code | replace: site.baseurl, '' | strip | replace_regex: '\s?data-test(?:="[^\s"]+")', '' }}
 ```
 </div>
