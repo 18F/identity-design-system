@@ -177,7 +177,7 @@
 ### New Features
 
 - Add support for SASS package entrypoints to limit or control loading of styles, [similar to USWDS components](https://designsystem.digital.gov/components/packages/). Available packages are `packages/required`, `packages/global`, `packages/components`, and `packages/utilities`.
-- The [Side Navigation component](https://design.login.gov/components/side-navigation/) is now documented and includes updated and improved styling. While this should not require any markup changes, you should validate that the updated styling does not conflict with any product-specific styles for side navigation.
+- The Side Navigation component is now documented and includes updated and improved styling. While this should not require any markup changes, you should validate that the updated styling does not conflict with any product-specific styles for side navigation.
 
 ### Bug Fixes
 
@@ -221,7 +221,7 @@
 - Link hover and active colors are now distinct.
   - Before: Hover and active colors are both `primary-darker`.
   - After: Hover is `primary-dark`, and active is `primary-darker`.
-- Improved support for "Unstyled" button variant ([see documentation](https://design.login.gov/components/buttons/))
+- Improved support for "Unstyled" button variant
 - Add three new button variants to control width:
   - `usa-button--wide` displays a button at a wider (minimum) width at larger viewport displays.
   - `usa-button--flexible-width` displays a button at flexible width regardless of viewport size, and overrides default mobile appearance of full-width buttons.

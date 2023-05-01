@@ -96,7 +96,7 @@ Since the Login.gov Design System is based upon the [U.S. Web Design System (USW
 
 - Where possible, use [the available Sass theme variables](https://designsystem.digital.gov/documentation/developers/#customization-theming-and-tokens) to customize the appearance of components. These are configured under `src/scss/uswds-theme`. We only include the customized variables, to improve visibility of where differences are expected. Refer to the [USWDS theme variables source](https://github.com/uswds/uswds/tree/develop/src/stylesheets/theme) for the full set of configuration values.
 - To limit side-effects and to clarify where styles are extended, customized USWDS styles should follow as close to the file location and CSS selector as possible. For example, if USWDS defines a selector `.usa-header` in `packages/usa-header` which defines a style `background` that we want to override, the style should be located at an identically-named selector in `src/scss/packages/_usa-header.scss` in this project.
-- Prefer color and size tokens when possible. Never use hard-coded hex colors. Instead, use the `color` SCSS function with a [color token](https://design.login.gov/utilities/color/) as its argument.
+- Prefer color and size tokens when possible. Never use hard-coded hex colors. Instead, use the `color` SCSS function with a [color token](https://designsystem.digital.gov/design-tokens/color/theme-tokens/) as its argument.
 
 ## Public domain
 

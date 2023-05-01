@@ -10,7 +10,8 @@ const { getURLsFromSitemap } = require('./support/sitemap');
 const { writeFile, mkdir } = fsPromises;
 
 const LOCAL_HOST = `http://localhost:${process.env.JEST_PORT}`;
-const REMOTE_HOST = 'https://design.login.gov';
+const REMOTE_HOST =
+  'https://federalist-340d8801-aa16-4df5-ad22-b1e3e731098e.sites.pages.cloud.gov/site/18f/identity-design-system';
 const DIFF_DIRECTORY = join(__dirname, '../tmp/results/screenshot-diff');
 
 async function stubAnimations() {
