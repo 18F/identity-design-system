@@ -4,249 +4,36 @@
 
 $header-height: 10;
 
-// Primary navigation
-// ---------------------------------
-
 .usa-nav__primary {
   @include at-media-max($theme-header-min-width) {
-    .usa-nav__primary-item,
-    .usa-nav__submenu-item {
-      > a,
-      > .usa-nav__link {
-        &:hover {
-          color: color('ink');
-        }
-      }
-
-      .usa-accordion__button {
-        background-position: right units(1) center;
-      }
-
-      .usa-current {
-        @include add-bar(0.5, 'secondary', 'left', 0, 0, 0);
-        font-weight: font-weight('bold');
-        background-color: color('primary-lighter');
-        color: color('ink');
-      }
-    }
-
-    .usa-nav__primary-item {
-      > a,
-      > .usa-nav__link {
-        @include u-padding-y(2);
-      }
-    }
-  }
-
-  @include at-media($theme-header-min-width) {
-    > .usa-nav__primary-item {
-      > a,
-      > .usa-nav__link {
-        @include u-padding-x(1.5);
-        font-weight: normal;
-        color: color('primary-dark');
-
-        &:hover {
-          @include add-bar(0.5, 'secondary', 'bottom', 0, 1.5, 0);
-          color: color('primary-dark');
-        }
-      }
-
-      .usa-accordion__button[aria-expanded='true'] {
-        @include remove-bar;
-        color: color('primary-dark');
-      }
-
-      .usa-current {
-        @include add-bar(0.5, 'secondary', 'bottom', 0, 1.5, 0);
-        font-weight: font-weight('bold');
-      }
-    }
-
-    button {
-      $button-vertical-offset: 53%; // XXX: Magic number
-
-      @include button-unstyled;
-      color: color(usa-nav.$nav-link-color);
-      font-weight: font-weight('normal');
-      line-height: line-height($theme-navigation-font-family, 2);
-      padding: units(1.5) units(2);
-      text-decoration: none;
-
-      @include at-media($theme-header-min-width) {
-        @include usa-nav.primary-nav-link;
-        font-size: font-size($theme-navigation-font-family, '2xs');
-        font-weight: font-weight('bold');
-      }
+    a:not(.usa-button) {
+      padding: units(2);
 
       &:hover {
-        color: color('primary');
-        background-color: color('base-lightest');
-        text-decoration: none;
-
-        @include at-media($theme-header-min-width) {
-          background-color: transparent;
-        }
-      }
-
-      &[aria-expanded='true'] {
-        @include add-background-svg('minus-alt');
-        background-position: right 0 center;
-        background-size: units(usa-nav.$nav-link-accordion-icon-size);
-
-        @include at-media($theme-header-min-width) {
-          @include add-background-svg('angle-arrow-up-primary');
-          @include add-knockout-font-smoothing;
-          background-size: units(usa-nav.$nav-link-arrow-icon-size);
-          background-color: color('primary-lighter');
-          background-position: right units(2) top $button-vertical-offset;
-          color: color('white');
-        }
+        background-color: color('primary-lightest');
       }
     }
-  }
-}
 
-// Secondary navigation
-// ---------------------------------
+    .usa-current {
+      color: color('primary-dark');
 
-.usa-nav__secondary {
-  @include at-media($theme-header-min-width) {
-    top: 0;
-    bottom: unset;
-    margin-top: 0;
-    transform: translateY(-100%);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: units($header-height);
-  }
-}
-
-.usa-nav__secondary-links {
-  @include add-list-reset;
-  line-height: line-height($theme-navigation-font-family, 3);
-  margin-top: units(3);
-
-  @include at-media($theme-header-min-width) {
-    float: right;
-    line-height: line-height($theme-navigation-font-family, 1);
-    margin-bottom: units(0.5);
-    margin-top: 0;
-  }
-
-  .usa-nav__secondary-item {
-    @include at-media($theme-header-min-width) {
-      display: inline;
-      padding-left: units(0.5);
-
-      & + .usa-nav__secondary-item::before {
-        color: color('base-lighter');
-        content: '|';
-        padding-right: units(0.5);
+      &::after {
+        background-color: color('secondary');
       }
     }
   }
 
-  a {
-    color: color('ink');
-    display: inline-block;
-    font-size: font-size($theme-navigation-font-family, 'xs');
-    text-decoration: none;
-
-    &:hover {
-      color: color('primary');
-      text-decoration: underline;
-    }
-  }
-}
-
-// Navigation dropdowns
-// ---------------------------------
-
-.usa-nav__submenu {
-  @include at-media-max($theme-header-min-width) {
-    @include nav-sublist;
-  }
-
-  @include at-media($theme-header-min-width) {
-    @include add-list-reset;
-    background-color: color('primary-lighter');
-    width: units('card-lg');
-    padding: units(2);
-    position: absolute;
-    z-index: z-index(400);
-  }
-
-  &[aria-hidden='true'] {
-    display: none;
-  }
-
-  .usa-nav__submenu-item {
-    @include at-media($theme-header-min-width) {
-      & + * {
-        margin-top: units(1.5);
-      }
-
-      a {
+  > .usa-nav__primary-item {
+    > a {
+      @include at-media($theme-header-min-width) {
+        @include u-padding-x(1.5);
         color: color('primary-dark');
-        padding: 0;
-        line-height: line-height($theme-navigation-font-family, 3);
+        font-weight: font-weight('normal');
 
-        &:hover {
-          background-color: transparent;
-          color: color('primary-dark');
-          padding: 0;
-          text-decoration: underline;
+        &.usa-current {
+          font-weight: font-weight('bold');
         }
       }
     }
   }
-}
-
-.usa-nav__submenu-list {
-  @include unstyled-list;
-
-  .usa-nav__submenu-list-item {
-    margin: 0;
-    font-size: font-size($theme-navigation-font-family, '2xs');
-
-    a {
-      line-height: line-height($theme-navigation-font-family, 3);
-    }
-  }
-}
-
-// Navigation close button
-// ---------------------------------
-
-.usa-nav__close img {
-  width: units(1.5);
-}
-
-// Navigation menu
-// ---------------------------------
-
-.usa-logo__img {
-  @include at-media-max($theme-header-min-width) {
-    height: units(2);
-  }
-
-  @include at-media($theme-header-min-width) {
-    height: units(3);
-  }
-}
-
-.usa-logo__text {
-  @include at-media-max($theme-header-min-width) {
-    @include u-font-size($theme-header-font-family, 3);
-    padding-left: 17px;
-  }
-
-  @include at-media($theme-header-min-width) {
-    @include u-font-size($theme-header-font-family, 4);
-    padding-left: 27px;
-  }
-
-  color: color('secondary');
 }

@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bug Fixes
+
+- Fix header navigation current link styling regression in 7.0.0 release.
+
 ## 7.0.0
 
 ### Breaking Changes

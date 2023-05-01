@@ -1,7 +1,31 @@
 @use 'uswds-core' as *;
 @forward './usa-header/index';
 
-$header-height: 10;
+// Header
+// ---------------------------------
+
+.usa-logo img {
+  display: block;
+  height: units(2);
+
+  @include at-media($theme-header-min-width) {
+    height: units(3);
+  }
+}
+
+.usa-logo__text {
+  @include at-media-max($theme-header-min-width) {
+    @include u-font-size($theme-header-font-family, 3);
+    padding-left: 17px;
+  }
+
+  @include at-media($theme-header-min-width) {
+    @include u-font-size($theme-header-font-family, 4);
+    padding-left: 27px;
+  }
+
+  color: color('secondary');
+}
 
 .usa-overlay {
   background: color('base-darker');
@@ -11,72 +35,36 @@ $header-height: 10;
   }
 }
 
-// Header navigation
+// usa-header--extended
 // ---------------------------------
 
-.usa-header--extended,
-.usa-header--basic {
+.usa-header--extended {
   .usa-logo {
-    @include at-media-max($theme-header-min-width) {
-      font-size: unset;
-      flex: unset;
-    }
-
     @include at-media($theme-header-min-width) {
-      font-size: unset;
-      margin: 0;
-    }
-
-    line-height: units(2);
-  }
-
-  .usa-navbar {
-    @include at-media-max($theme-header-min-width) {
-      border-bottom: units(1px) solid color('base-light');
-      justify-content: space-between;
-    }
-
-    @include at-media($theme-header-min-width) {
-      display: flex;
-      align-items: center;
-      height: units($header-height);
-    }
-  }
-}
-
-.usa-header {
-  + .usa-section,
-  + main {
-    @include at-media($theme-header-min-width) {
-      border-top: units(1px) solid color('base-light');
-    }
-  }
-}
-
-// Header navigation for basic
-// ---------------------------------
-
-.usa-header--basic {
-  .usa-nav-container {
-    @include at-media($theme-header-min-width) {
-      align-items: center;
+      @include u-margin-y(2.5);
     }
   }
 
   .usa-nav {
     @include at-media($theme-header-min-width) {
-      padding: 0;
+      border-top: none;
     }
   }
-}
 
-// Header navigation for extended
-// ---------------------------------
+  .usa-nav__primary {
+    @include at-media($theme-header-min-width) {
+      margin-left: units(-1.5);
+    }
+  }
 
-.usa-header--extended .usa-nav {
   @include at-media($theme-header-min-width) {
-    border-top: 0;
-    padding: 0;
-    width: 100%;
+    .usa-nav__primary-item > .usa-current,
+    .usa-nav__primary-item > .usa-nav__link:hover {
+      &::after {
+        background-color: color('secondary');
+        left: units(1.5);
+        right: units(1.5);
+      }
+    }
   }
 }

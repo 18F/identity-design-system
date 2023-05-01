@@ -1,5 +1,5 @@
 {% assign is_current_page = true | if_is_current_page: include.jekyll_page, include.highlight_collection_when_is_current -%}
-<a href="{{ include.jekyll_page.url | relative_url }}" class="{% if is_current_page %}usa-current{% endif %}">
+<a href="{{ include.jekyll_page.url | relative_url }}" class="{% if is_current_page %}usa-current{% endif %} usa-nav__link">
   <span>
     {{ include.text | default: include.jekyll_page.title | smartify }}
   </span>
