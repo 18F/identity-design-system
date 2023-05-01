@@ -48,7 +48,6 @@ commands:
 
 jobs:
   lints:
-    working_directory: ~/identity-style-guide
     executor: ruby_browsers
     steps:
       - checkout
@@ -57,7 +56,6 @@ jobs:
           name: Lint JavaScript, Sass, and lockfiles
           command: make lint
   integration:
-    working_directory: ~/identity-style-guide
     executor: ruby_browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
@@ -69,7 +67,6 @@ jobs:
           name: Run jest integration test
           command: npm test
   visual-regression:
-    working_directory: ~/identity-style-guide
     executor: ruby_browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true

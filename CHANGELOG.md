@@ -27,132 +27,132 @@
 
 ### Improvements
 
-- Add new "Big" variant of Dropdown component. ([#328](https://github.com/18F/identity-style-guide/pull/328))
+- Add new "Big" variant of Dropdown component. ([#328](https://github.com/18F/identity-design-system/pull/328))
 
 ## 6.6.0
 
 ### Improvements
 
-- Add new "Big" variants of Text Input and Textarea components. ([#326](https://github.com/18F/identity-style-guide/pull/326))
-- Update Text Input styling to adhere to design specification. ([#325](https://github.com/18F/identity-style-guide/pull/325))
+- Add new "Big" variants of Text Input and Textarea components. ([#326](https://github.com/18F/identity-design-system/pull/326))
+- Update Text Input styling to adhere to design specification. ([#325](https://github.com/18F/identity-design-system/pull/325))
 
 ## 6.5.0
 
 ### Improvements
 
-- Increase line-height for accordion heading content to improve readability. ([#316](https://github.com/18F/identity-style-guide/pull/316))
+- Increase line-height for accordion heading content to improve readability. ([#316](https://github.com/18F/identity-design-system/pull/316))
 
 ## 6.4.2
 
 ### Dependencies
 
-- Update USWDS from v2.13.2 to 2.13.3. ([#312](https://github.com/18F/identity-style-guide/pull/312))
+- Update USWDS from v2.13.2 to 2.13.3. ([#312](https://github.com/18F/identity-design-system/pull/312))
 
 ### Improvements
 
-- Add styles and markdown content for selected and disabled radios and checkboxes. ([#313](https://github.com/18F/identity-style-guide/pull/313))
+- Add styles and markdown content for selected and disabled radios and checkboxes. ([#313](https://github.com/18F/identity-design-system/pull/313))
 
 ## 6.4.1
 
 ### Bug Fixes
 
-- Fix an issue where search field submit buttons would not show text at small viewport sizes. ([#311](https://github.com/18F/identity-style-guide/pull/311))
+- Fix an issue where search field submit buttons would not show text at small viewport sizes. ([#311](https://github.com/18F/identity-design-system/pull/311))
 
 ## 6.4.0
 
 ### Deprecation Notice
 
-- The `alerts/success-badge.svg` image will be removed in a future major version. Use `alerts/success.svg` instead. ([#306](https://github.com/18F/identity-style-guide/pull/306))
+- The `alerts/success-badge.svg` image will be removed in a future major version. Use `alerts/success.svg` instead. ([#306](https://github.com/18F/identity-design-system/pull/306))
 
 ### Improvements
 
-- Improve appearance of illustrated tile checkboxes and radio buttons. ([#309](https://github.com/18F/identity-style-guide/pull/309))
+- Improve appearance of illustrated tile checkboxes and radio buttons. ([#309](https://github.com/18F/identity-design-system/pull/309))
 
 ### Bug Fixes
 
-- Use correct "Success" green color for `alerts/unphishable.svg` icon. ([#306](https://github.com/18F/identity-style-guide/pull/306))
+- Use correct "Success" green color for `alerts/unphishable.svg` icon. ([#306](https://github.com/18F/identity-design-system/pull/306))
 
 ### Optimization
 
-- Remove documentation-specific images from published package. ([#300](https://github.com/18F/identity-style-guide/pull/300))
-- Remove duplicate styles. ([#301](https://github.com/18F/identity-style-guide/pull/301))
-- Reconcile redundant focus styles with U.S. Web Design System. ([#302](https://github.com/18F/identity-style-guide/pull/302))
-- Remove documentation site styles from design system artifact. ([#305](https://github.com/18F/identity-style-guide/pull/305))
-- Reduce size of SVG images. ([#307](https://github.com/18F/identity-style-guide/pull/307))
+- Remove documentation-specific images from published package. ([#300](https://github.com/18F/identity-design-system/pull/300))
+- Remove duplicate styles. ([#301](https://github.com/18F/identity-design-system/pull/301))
+- Reconcile redundant focus styles with U.S. Web Design System. ([#302](https://github.com/18F/identity-design-system/pull/302))
+- Remove documentation site styles from design system artifact. ([#305](https://github.com/18F/identity-design-system/pull/305))
+- Reduce size of SVG images. ([#307](https://github.com/18F/identity-design-system/pull/307))
 
 ### Dependencies
 
-- Update USWDS from v2.13.1 to 2.13.2. ([#304](https://github.com/18F/identity-style-guide/pull/304))
-- Update dependencies to resolve vulnerability advisories. ([#308](https://github.com/18F/identity-style-guide/pull/308))
+- Update USWDS from v2.13.1 to 2.13.2. ([#304](https://github.com/18F/identity-design-system/pull/304))
+- Update dependencies to resolve vulnerability advisories. ([#308](https://github.com/18F/identity-design-system/pull/308))
 
 ## 6.3.3
 
 ### Bug Fixes
 
-- Changing the radio tile image size from 1rem to 1.5rem. ([#299](https://github.com/18F/identity-style-guide/pull/299))
+- Changing the radio tile image size from 1rem to 1.5rem. ([#299](https://github.com/18F/identity-design-system/pull/299))
 
 ## 6.3.2
 
 ### Improvements
 
-- Line height calculations are improved such that the [desired token size](https://github.com/uswds/uswds/blob/61a0d99f0e6b36c3758948ba6ac46140abc5e585/src/stylesheets/theme/_uswds-theme-typography.scss#L363-L371) will always apply regardless of font family or scale. ([#291](https://github.com/18F/identity-style-guide/pull/291))
+- Line height calculations are improved such that the [desired token size](https://github.com/uswds/uswds/blob/61a0d99f0e6b36c3758948ba6ac46140abc5e585/src/stylesheets/theme/_uswds-theme-typography.scss#L363-L371) will always apply regardless of font family or scale. ([#291](https://github.com/18F/identity-design-system/pull/291))
   - In the case of headings, line-height will fall back to the configured body line-height if the resulting actual line-height would be smaller than body content when using the heading scale.
-- Body font size has been increased slightly to restore an effective font size of 1rem. ([#292](https://github.com/18F/identity-style-guide/pull/292))
-- The Process List component no longer applies vertical padding which would affect its layout relative to surrounding content. ([#290](https://github.com/18F/identity-style-guide/pull/290))
-- Input hint text is no longer italicized. ([#293](https://github.com/18F/identity-style-guide/pull/293))
-- New variation of checkbox and radio button tiles with illustrations is added to form fields. ([#296](https://github.com/18F/identity-style-guide/pull/296))
+- Body font size has been increased slightly to restore an effective font size of 1rem. ([#292](https://github.com/18F/identity-design-system/pull/292))
+- The Process List component no longer applies vertical padding which would affect its layout relative to surrounding content. ([#290](https://github.com/18F/identity-design-system/pull/290))
+- Input hint text is no longer italicized. ([#293](https://github.com/18F/identity-design-system/pull/293))
+- New variation of checkbox and radio button tiles with illustrations is added to form fields. ([#296](https://github.com/18F/identity-design-system/pull/296))
 
 ## 6.3.1
 
 ### Bug Fixes
 
-- Improve vertical spacing in heading of Process List item spanning multiple lines. ([#288](https://github.com/18F/identity-style-guide/pull/288))
-- Fix external link icon margin when followed by additional text content. ([#289](https://github.com/18F/identity-style-guide/pull/289))
+- Improve vertical spacing in heading of Process List item spanning multiple lines. ([#288](https://github.com/18F/identity-design-system/pull/288))
+- Fix external link icon margin when followed by additional text content. ([#289](https://github.com/18F/identity-design-system/pull/289))
 
 ## 6.3.0
 
 ### New Features
 
-- Field validation success is added to form validation. ([#265](https://github.com/18F/identity-style-guide/pull/265))
-- Added custom styling for the Process List component. ([#279](https://github.com/18F/identity-style-guide/pull/279))
+- Field validation success is added to form validation. ([#265](https://github.com/18F/identity-design-system/pull/265))
+- Added custom styling for the Process List component. ([#279](https://github.com/18F/identity-design-system/pull/279))
 
 ### Improvements
 
-- The default font is now Public Sans for both headings and body copy. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$theme-font-type-sans: 'source-sans-pro';` and `$theme-font-type-serif: 'merriweather';`. ([#264](https://github.com/18F/identity-style-guide/pull/264))
-- Add Login.gov-specific component configuration. ([#258](https://github.com/18F/identity-style-guide/pull/258))
+- The default font is now Public Sans for both headings and body copy. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$theme-font-type-sans: 'source-sans-pro';` and `$theme-font-type-serif: 'merriweather';`. ([#264](https://github.com/18F/identity-design-system/pull/264))
+- Add Login.gov-specific component configuration. ([#258](https://github.com/18F/identity-design-system/pull/258))
   - [Identifier component](https://designsystem.digital.gov/components/identifier/)
   - Link colors on dark backgrounds
-- The default line-height is now set to 1.5. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$theme-body-line-height: 6`. ([#283](https://github.com/18F/identity-style-guide/pull/283))
-- Overlay is now shown with a lighter backdrop color. ([#260](https://github.com/18F/identity-style-guide/pull/260))
-- Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-style-guide/pull/263))
-- Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-style-guide/pull/262))
-- Icons for form validation errors are aligned to the top. ([#265](https://github.com/18F/identity-style-guide/pull/265))
-- The tile variant of checkboxes and radio buttons have a slightly increased font size. ([#281](https://github.com/18F/identity-style-guide/pull/281))
-- Checkbox and radio labels which span multiple lines should now appear with a consistent line height relative to surrounding body copy. ([#283](https://github.com/18F/identity-style-guide/pull/283))
-- Search will now show full text labels at all sizes, and uses standardized font tokens. ([#259](https://github.com/18F/identity-style-guide/pull/259))
+- The default line-height is now set to 1.5. This is not being considered a breaking change, as it is the new default guidance. To preserve existing font settings to allow more time to migrate, set `$theme-body-line-height: 6`. ([#283](https://github.com/18F/identity-design-system/pull/283))
+- Overlay is now shown with a lighter backdrop color. ([#260](https://github.com/18F/identity-design-system/pull/260))
+- Form Dropdown is now more visually consistent with other form fields. ([#263](https://github.com/18F/identity-design-system/pull/263))
+- Form hint text is now shown with an italicized style and increased vertical margins. ([#262](https://github.com/18F/identity-design-system/pull/262))
+- Icons for form validation errors are aligned to the top. ([#265](https://github.com/18F/identity-design-system/pull/265))
+- The tile variant of checkboxes and radio buttons have a slightly increased font size. ([#281](https://github.com/18F/identity-design-system/pull/281))
+- Checkbox and radio labels which span multiple lines should now appear with a consistent line height relative to surrounding body copy. ([#283](https://github.com/18F/identity-design-system/pull/283))
+- Search will now show full text labels at all sizes, and uses standardized font tokens. ([#259](https://github.com/18F/identity-design-system/pull/259))
 
 ### Bug Fixes
 
-- Fix an issue where `.usa-input--error` would apply the incorrect border color unless also accompanied by `.usa-input`, `.usa-textarea`, or `.usa-select`. ([#275](https://github.com/18F/identity-style-guide/pull/275))
+- Fix an issue where `.usa-input--error` would apply the incorrect border color unless also accompanied by `.usa-input`, `.usa-textarea`, or `.usa-select`. ([#275](https://github.com/18F/identity-design-system/pull/275))
 
 ### Dependencies
 
-- Upgraded USWDS from v2.12.1 to v2.13.1 (see [release notes](https://github.com/uswds/uswds/releases)) ([#269](https://github.com/18F/identity-style-guide/pull/269), [#277](https://github.com/18F/identity-style-guide/pull/277), [#280](https://github.com/18F/identity-style-guide/pull/280))
+- Upgraded USWDS from v2.12.1 to v2.13.1 (see [release notes](https://github.com/uswds/uswds/releases)) ([#269](https://github.com/18F/identity-design-system/pull/269), [#277](https://github.com/18F/identity-design-system/pull/277), [#280](https://github.com/18F/identity-design-system/pull/280))
 
 ## 6.2.0
 
 ### New Features
 
-- All theme variables are now set as [default values](https://sass-lang.com/documentation/variables#default-values), allowing you to override them for per-project requirements. ([#247](https://github.com/18F/identity-style-guide/pull/247))
+- All theme variables are now set as [default values](https://sass-lang.com/documentation/variables#default-values), allowing you to override them for per-project requirements. ([#247](https://github.com/18F/identity-design-system/pull/247))
   - Note: Since the design system is meant to be an opinionated set of smart defaults, it's recommended to use restraint with variable customization, or at least consider when it may be more appropriate to adjust a setting from the design system itself in order to maintain consistency across projects.
-- Responsive variants of width utility classes are now enabled. ([#248](https://github.com/18F/identity-style-guide/pull/248))
+- Responsive variants of width utility classes are now enabled. ([#248](https://github.com/18F/identity-design-system/pull/248))
 
 ### Improvements
 
-- Navbar link text is no longer uppercase. ([#249](https://github.com/18F/identity-style-guide/pull/249))
-- Visual alignment of Badge component is improved, and its markup guidance has been simplified with improved accessibility semantics. ([#251](https://github.com/18F/identity-style-guide/pull/251))
-- Field validation error messages now use updated styling to always display an icon as part of the error message, and not within the field itself. The modifier classes `usa-input--inline` and `usa-error-message--with-icon` no longer have any effect and can be safely removed. ([#255](https://github.com/18F/identity-style-guide/pull/255))
-- Focus styles for links and unstyled buttons are now the same. ([#253](https://github.com/18F/identity-style-guide/pull/253))
+- Navbar link text is no longer uppercase. ([#249](https://github.com/18F/identity-design-system/pull/249))
+- Visual alignment of Badge component is improved, and its markup guidance has been simplified with improved accessibility semantics. ([#251](https://github.com/18F/identity-design-system/pull/251))
+- Field validation error messages now use updated styling to always display an icon as part of the error message, and not within the field itself. The modifier classes `usa-input--inline` and `usa-error-message--with-icon` no longer have any effect and can be safely removed. ([#255](https://github.com/18F/identity-design-system/pull/255))
+- Focus styles for links and unstyled buttons are now the same. ([#253](https://github.com/18F/identity-design-system/pull/253))
 
 ## 6.1.0
 

@@ -14,7 +14,7 @@ lead: >
           The key to a strong brand <br>is <span class="text-accent-cool">consistency</span>.
         </div>
         <p class="usa-intro">{{ page.lead }}</p>
-        <a href="https://github.com/18F/identity-style-guide#configuring-for-development" class="usa-button usa-button--big">See installation instructions on GitHub</a>
+        <a href="https://github.com/18F/identity-design-system#configuring-for-development" class="usa-button usa-button--big">See installation instructions on GitHub</a>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@ The {{ site.title }} is built using the [U.S. Web Design System](https://designs
 
 # A work in progress
 
-The latest version is <strong class="text-no-wrap">{{ site.package_json.this_version }}</strong> which uses <strong class="text-no-wrap">uswds@{{ site.package_json['@uswds/uswds_version'] }}</strong>. Spot an issue? We’d love to hear about it [on GitHub](https://github.com/18F/identity-style-guide/issues).
+The latest version is <strong class="text-no-wrap">{{ site.package_json.this_version }}</strong> which uses <strong class="text-no-wrap">uswds@{{ site.package_json['@uswds/uswds_version'] }}</strong>. Spot an issue? We’d love to hear about it [on GitHub](https://github.com/18F/identity-design-system/issues).
 
 </div>
       </div>
