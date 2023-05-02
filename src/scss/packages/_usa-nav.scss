@@ -2,8 +2,6 @@
 @use './usa-nav/index' as usa-nav;
 @forward './usa-nav/index';
 
-$header-height: 10;
-
 .usa-nav__primary {
   @include at-media-max($theme-header-min-width) {
     a:not(.usa-button) {
