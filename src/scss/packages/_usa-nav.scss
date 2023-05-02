@@ -43,10 +43,16 @@
     }
   }
 
-  // Upstream: https://github.com/uswds/uswds/pull/5267
-  button[aria-expanded] span::after {
-    top: 50%;
-    transform: translateY(-50%);
+  button {
+    &:hover {
+      background-color: color('primary-lightest');
+    }
+
+    // Upstream: https://github.com/uswds/uswds/pull/5267
+    &[aria-expanded] span::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 
