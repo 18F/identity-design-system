@@ -44,7 +44,7 @@
   }
 
   // Upstream: https://github.com/uswds/uswds/pull/5267
-  button[aria-expanded='false'] span::after {
+  button[aria-expanded] span::after {
     top: 50%;
     transform: translateY(-50%);
   }
