@@ -4,8 +4,7 @@
 // Header
 // ---------------------------------
 
-.usa-header + .usa-section,
-.usa-header + main {
+.usa-header + .usa-section--dark {
   @include at-media($theme-header-min-width) {
     border-top: none;
   }
