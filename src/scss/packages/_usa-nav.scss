@@ -50,6 +50,17 @@
   }
 }
 
+// Navigation dropdowns
+// ---------------------------------
+
+.usa-nav__submenu {
+  @include at-media-max($theme-header-min-width) {
+    .usa-nav__submenu-item + .usa-nav__submenu-item {
+      border-top: none;
+    }
+  }
+}
+
 // Navigation close button
 // ---------------------------------
 
