@@ -4,6 +4,13 @@
 // Header
 // ---------------------------------
 
+.usa-header + .usa-section,
+.usa-header + main {
+  @include at-media($theme-header-min-width) {
+    border-top: none;
+  }
+}
+
 .usa-logo img {
   display: block;
   height: units(2);
