@@ -51,6 +51,14 @@
     }
   }
 
+  .usa-navbar {
+    @include at-media($theme-header-min-width) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
   .usa-nav {
     @include at-media($theme-header-min-width) {
       border-top: none;
