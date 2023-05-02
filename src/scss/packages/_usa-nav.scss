@@ -2,6 +2,9 @@
 @use './usa-nav/index' as usa-nav;
 @forward './usa-nav/index';
 
+// Primary navigation
+// ---------------------------------
+
 .usa-nav__primary {
   @include at-media-max($theme-header-min-width) {
     a:not(.usa-button) {
@@ -35,4 +38,11 @@
       }
     }
   }
+}
+
+// Navigation close button
+// ---------------------------------
+
+.usa-nav__close img {
+  width: units(1.5);
 }
