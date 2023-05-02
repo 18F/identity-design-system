@@ -1,5 +1,5 @@
 {% assign is_current_page = include.link.href | eq: page.url -%}
-<a href="{{ include.link.href }}" class="{% if is_current_page %}usa-current{% endif %}">
+<a href="{{ include.link.href }}" class="{% if is_current_page %}usa-current{% endif %} usa-nav__link">
   <span>
     {{ include.link.text | smartify }}
   </span>

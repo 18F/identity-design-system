@@ -1,3 +1,16 @@
+## Unreleased
+
+### Bug Fixes
+
+- Fix header navigation current link styling regression in 7.0.0 release. ([#352](https://github.com/18F/identity-design-system/pull/352))
+- Fix dark background sections to show heading text as white. ([#352](https://github.com/18F/identity-design-system/pull/352))
+
+### Breaking Changes for Undocumented APIs
+
+_Note:_ While these are backwards-incompatible changes, the major version is not being changed because they impact features which were never part of a publicly-documented API.
+
+- Remove `.usa-sidenav--sticky` CSS class. ([#352](https://github.com/18F/identity-design-system/pull/352))
+
 ## 7.0.0
 
 ### Breaking Changes

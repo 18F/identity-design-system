@@ -7,28 +7,25 @@
 
     &:hover {
       background-color: color('primary-lightest');
-      color: unset;
     }
   }
 
   .usa-current {
-    color: $theme-color-primary-dark;
+    color: color('primary-dark');
 
-    @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 0, 0, 0);
-
-    @include at-media('tablet') {
-      @include add-bar($theme-sidenav-current-border-width, 'secondary', 'left', 0, 0, 0);
+    &::after {
+      background-color: color('secondary');
+      border-radius: 0;
     }
 
     &:hover {
-      color: $theme-color-primary-dark;
+      color: color('primary-dark');
     }
   }
-}
 
-.usa-sidenav--sticky {
-  position: sticky;
-  top: units(2);
+  > .usa-sidenav__item > .usa-sidenav__sublist {
+    border-top: units(1px) solid color('base-lighter');
+  }
 }
 
 .usa-sidenav__sublist a:not(.usa-button) {
