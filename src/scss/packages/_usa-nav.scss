@@ -26,6 +26,10 @@
   }
 
   > .usa-nav__primary-item {
+    @include at-media($theme-header-min-width) {
+      font-size: 0.875rem;
+    }
+
     > a {
       @include at-media($theme-header-min-width) {
         @include u-padding-x(1.5);
