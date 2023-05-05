@@ -1,9 +1,10 @@
-## Unreleased
+## 7.0.1
 
 ### Bug Fixes
 
 - Fix header navigation current link styling regression in 7.0.0 release. ([#352](https://github.com/18F/identity-design-system/pull/352))
 - Fix dark background sections to show heading text as white. ([#352](https://github.com/18F/identity-design-system/pull/352))
+- Fix issue causing search button widths to collapse when displayed in narrow containers. ([#354](https://github.com/18F/identity-design-system/pull/354))
 
 ### Breaking Changes for Undocumented APIs
 

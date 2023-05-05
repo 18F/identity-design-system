@@ -14,6 +14,7 @@
   background-image: none;
   font-size: font-size($theme-search-font-family, '2xs');
   width: auto;
+  flex-shrink: 0;
 }
 
 .usa-search__submit-text {
