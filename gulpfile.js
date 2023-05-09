@@ -128,7 +128,7 @@ gulp.task('build-sass', () =>
     .pipe(
       sass({
         outputStyle: isProduction ? 'compressed' : 'expanded',
-        includePaths: ['./src/scss/packages', './src/scss/uswds-packages'],
+        includePaths: ['./src/scss/packages', './node_modules/@uswds/uswds/packages'],
       }),
     )
     .pipe(
