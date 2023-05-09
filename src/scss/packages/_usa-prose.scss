@@ -1,5 +1,5 @@
 @use 'uswds-core' as *;
-@forward 'usa-prose/src/styles/index';
+@forward './usa-prose/index';
 
 .usa-prose {
   @include add-knockout-font-smoothing;

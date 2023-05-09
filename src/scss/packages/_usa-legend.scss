@@ -1,5 +1,5 @@
 @use 'uswds-core' as *;
-@forward 'usa-legend/src/styles/index';
+@forward './usa-legend/index';
 
 $border-width: 1px;
 

@@ -1,5 +1,5 @@
 @use 'uswds-core' as *;
-@forward 'usa-intro/src/styles/index';
+@forward './usa-intro/index';
 
 .usa-intro {
   @include u-font-size('sans', 'md');

@@ -1,6 +1,6 @@
 @use 'sass:math';
 @use 'uswds-core' as *;
-@forward 'usa-radio/src/styles/index';
+@forward './usa-radio/index';
 
 $border-width: 1px;
 $radio-size: 0.875rem;

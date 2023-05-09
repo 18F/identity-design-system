@@ -1,6 +1,6 @@
 @use 'sass:math';
 @use 'uswds-core' as *;
-@forward 'usa-checkbox/src/styles/index';
+@forward './usa-checkbox/index';
 
 $border-width: 1px;
 $checkbox-size: 0.875rem;

@@ -1,16 +1,22 @@
 @use 'uswds-core' as *;
-@forward 'usa-select/src/styles/index';
+@forward './usa-input/index';
 
-.usa-select {
+$input-padding: 1;
+
+.usa-input {
   @include u-border-color('primary-light');
   font-weight: font-weight('bold');
   background-color: color('primary-lightest');
   border-radius: radius('md');
 }
 
-.usa-select.usa-select--big {
+.usa-input--error {
+  @include u-border-color('error');
+}
+
+.usa-input.usa-input--big {
   @include u-padding-x(2);
-  height: auto;
-  font-size: 1.25rem;
+  font-size: units(2.5);
   line-height: 1.5;
+  height: auto;
 }
