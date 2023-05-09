@@ -1,0 +1,14 @@
+@use 'uswds-core' as *;
+@forward 'usa-legend/src/styles/index';
+
+$border-width: 1px;
+
+.usa-legend {
+  @include u-font-size('sans', '2xs');
+  text-transform: uppercase;
+  font-weight: font-weight('normal');
+  border-bottom: $border-width color('primary-light') solid;
+  width: 100%;
+  max-width: units($theme-input-max-width);
+  padding: units(1) 0;
+}

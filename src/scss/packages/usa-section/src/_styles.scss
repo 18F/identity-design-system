@@ -1,0 +1,17 @@
+@use 'uswds-core' as *;
+@forward 'usa-section/src/styles/index';
+
+.usa-section--dark {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    // As of USWDS 3.4.1, an inline code comment mentions making this configurable or defaulting to
+    // white, at which point it would no longer be necessary to override.
+    //
+    // See: https://github.com/uswds/uswds/blob/v3.4.1/packages/usa-section/src/styles/_usa-section.scss#L20-L29
+    color: color('white');
+  }
+}

@@ -1,0 +1,38 @@
+@use 'uswds-core' as *;
+@forward 'usa-accordion/src/styles/index';
+
+.usa-accordion__button {
+  @include u-border($theme-accordion-border-width, $theme-accordion-border-color);
+  @include u-radius('lg');
+  @include u-text('normal');
+  @include add-background-svg('minus');
+  background-color: color('transparent');
+  background-size: units(2);
+  color: color('primary');
+  line-height: line-height($theme-body-font-family, $theme-body-line-height);
+
+  &:hover {
+    background-color: color('primary-lightest');
+    color: color('primary');
+  }
+
+  &:active {
+    background-color: color('primary-lighter');
+    color: color('primary');
+  }
+
+  &[aria-expanded='false'] {
+    @include add-background-svg('plus');
+    background-size: units(2);
+  }
+}
+
+.usa-accordion--bordered {
+  .usa-accordion__button[aria-expanded='true'] {
+    @include u-radius-bottom(0);
+  }
+
+  .usa-accordion__content {
+    @include u-radius-bottom('lg');
+  }
+}

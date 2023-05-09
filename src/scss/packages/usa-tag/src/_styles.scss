@@ -1,0 +1,19 @@
+@use 'uswds-core' as *;
+@forward 'usa-tag/src/styles/index';
+
+.usa-tag {
+  display: inline-block;
+  font-size: units(2);
+  font-weight: bold;
+  text-transform: none;
+  line-height: 1.5;
+  border-radius: units(0.5);
+}
+
+.usa-tag--big {
+  font-size: units(2.5);
+}
+
+.usa-tag--informative {
+  @include u-bg('accent-cool-darker');
+}

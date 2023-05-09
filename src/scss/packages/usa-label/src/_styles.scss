@@ -1,0 +1,6 @@
+@use 'uswds-core' as *;
+@forward 'usa-label/src/styles/index';
+
+.usa-label {
+  font-weight: font-weight('bold');
+}

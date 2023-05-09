@@ -1,0 +1,10 @@
+@use 'uswds-core' as *;
+@forward 'usa-intro/src/styles/index';
+
+.usa-intro {
+  @include u-font-size('sans', 'md');
+
+  @include at-media('tablet') {
+    @include u-font-size('sans', $theme-lead-font-size);
+  }
+}

@@ -1,0 +1,159 @@
+@use 'uswds-core' as *;
+@forward 'usa-button/src/styles/index';
+
+$button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
+
+.usa-button {
+  line-height: 1;
+
+  &:not([disabled]):focus,
+  &:not([disabled]).usa-focus {
+    outline-offset: units($theme-focus-offset);
+  }
+}
+
+.usa-button--big {
+  @include u-padding-x('205');
+  border-radius: units(1);
+  font-size: 1.25rem;
+}
+
+.usa-button--unstyled {
+  // In USWDS, unstyled button styles are applied last to take precedence over base button styles.
+  // Since we override base button styles, we must re-apply the unstyled button styles.
+  @include button-unstyled;
+}
+
+.usa-button--secondary,
+.usa-button--outline {
+  background-color: color('white');
+  color: color('primary');
+
+  &:visited {
+    color: color('primary');
+  }
+
+  &:hover,
+  &.usa-button--hover {
+    background-color: color('primary-lightest');
+  }
+
+  &:active,
+  &.usa-button--active {
+    background-color: color('primary-lighter');
+  }
+
+  &:disabled,
+  &.usa-button--disabled {
+    background-color: color('white');
+    color: color('disabled');
+  }
+
+  &.usa-button--big {
+    box-shadow: $button-stroke-big color('primary');
+
+    &:hover,
+    &.usa-button--hover {
+      box-shadow: $button-stroke-big color('primary-dark');
+    }
+
+    &:active,
+    &.usa-button--active {
+      box-shadow: $button-stroke-big color('primary-darker');
+    }
+
+    &:disabled,
+    &.usa-button--disabled {
+      box-shadow: $button-stroke-big color('disabled');
+    }
+
+    &.usa-button--inverse {
+      box-shadow: $button-stroke-big color('base-lighter');
+
+      &:hover,
+      &.usa-button--hover {
+        box-shadow: $button-stroke-big color($theme-link-reverse-hover-color);
+      }
+
+      &:active,
+      &.usa-button--active {
+        box-shadow: $button-stroke-big color($theme-link-reverse-active-color);
+      }
+    }
+  }
+}
+
+.usa-button--danger {
+  background-color: color('secondary');
+
+  &:hover,
+  &.usa-button--hover {
+    background-color: color('secondary-dark');
+  }
+
+  &:active,
+  &.usa-button--active {
+    background-color: color('secondary-darkest');
+  }
+}
+
+.usa-button--inverse {
+  background-color: color('primary-lighter');
+  color: color('primary');
+
+  &:visited {
+    color: color('primary');
+  }
+
+  &:hover,
+  &.usa-button--hover {
+    background-color: color('primary-lighter');
+    color: color('primary');
+  }
+
+  &:active,
+  &.usa-button--active {
+    background-color: color('primary-light');
+    color: color('primary-dark');
+  }
+
+  &:disabled,
+  &.usa-button--disabled {
+    background-color: color('disabled');
+    color: color('white');
+  }
+}
+
+.usa-button--flexible-width {
+  width: auto;
+}
+
+.usa-button--wide {
+  @include at-media('tablet') {
+    min-width: 14rem;
+  }
+}
+
+.usa-button--full-width {
+  width: 100%;
+}
+
+.usa-form a.usa-button.usa-button--danger {
+  color: color('white');
+  text-decoration: none;
+
+  &:visited {
+    color: color('white');
+    text-decoration: none;
+  }
+}
+
+.usa-form a.usa-button.usa-button--outline {
+  color: color('primary');
+  text-decoration: none;
+
+  &:visited {
+    color: color('primary');
+    text-decoration: none;
+  }
+}
