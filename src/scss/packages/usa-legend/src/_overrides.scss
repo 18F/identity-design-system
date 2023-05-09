@@ -1,0 +1,11 @@
+@use 'uswds-core' as *;
+
+.usa-legend {
+  @include u-font-size('sans', '2xs');
+  text-transform: uppercase;
+  font-weight: font-weight('normal');
+  border-bottom: 1px color('primary-light') solid;
+  width: 100%;
+  max-width: units($theme-input-max-width);
+  padding: units(1) 0;
+}

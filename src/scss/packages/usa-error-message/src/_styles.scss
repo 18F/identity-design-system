@@ -1,13 +1,2 @@
-@use 'uswds-core' as *;
 @forward 'usa-error-message/src/styles/index';
-
-.usa-error-message {
-  @include add-background-svg('alerts/error');
-  @include u-padding-y(0.5);
-  background-position: 0 0.5em;
-  background-size: units(2);
-  display: block;
-  font-weight: font-weight('bold');
-  padding-left: units(3);
-  color: color('error');
-}
+@forward './overrides';

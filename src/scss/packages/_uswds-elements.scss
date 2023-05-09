@@ -1,5 +1,5 @@
 @use 'uswds-core' as *;
-@forward './uswds-elements/index';
+@forward 'uswds-elements/index';
 
 // Overscroll background color to match header and footer
 html {
