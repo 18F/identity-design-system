@@ -1,12 +1,13 @@
 /* eslint-disable no-await-in-loop */
 
 import path from 'path';
-import { getURLsFromSitemap } from './support/sitemap';
 
+const LOCAL_HOST = `http://localhost:${process.env.JEST_PORT}`;
 const MESSAGE_TYPE_ERROR = 1;
 
 test('accessibility', async () => {
-  const urls = await getURLsFromSitemap();
+  await page.goto(LOCAL_HOST);
+  const urls = await page.$$eval('.usa-nav__link', (links) => links.map((link) => link.href));
 
   for (const url of urls) {
     await page.goto(url);

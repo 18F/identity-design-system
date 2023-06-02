@@ -1,9 +1,5 @@
 {% for link in include.links -%}
-  {% if link.href -%}
-    {% assign jekyll_page = link.href | resolve_permalink %}
-  {% else -%}
-    {% assign jekyll_page = nil %}
-  {% endif %}
+  {% assign jekyll_page = link.href | resolve_permalink %}
   <li class="{{ include.li_class }}">
     {% if jekyll_page -%}
       {%
