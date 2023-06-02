@@ -5,7 +5,6 @@ const { join } = require('path');
 const assert = require('assert');
 const { PNG } = require('pngjs');
 const match = require('pixelmatch');
-const { getURLsFromSitemap } = require('./support/sitemap');
 
 const { writeFile, mkdir } = fsPromises;
 
@@ -80,7 +79,9 @@ function fillImageToSize(image, width, height) {
 }
 
 test('screenshot visual regression', async () => {
-  const paths = (await getURLsFromSitemap()).map(getURLPath);
+  await page.goto(LOCAL_HOST);
+  const urls = await page.$$eval('.usa-nav__link', (links) => links.map((link) => link.href));
+  const paths = urls.map(getURLPath);
 
   for (const path of paths) {
     const local = await getScreenshot(LOCAL_HOST + path);
