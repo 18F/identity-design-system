@@ -1,0 +1,7 @@
+@use 'uswds-core' as *;
+
+@include override-prose {
+  .usa-input-list {
+    margin-top: units(1);
+  }
+}

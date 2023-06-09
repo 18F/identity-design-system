@@ -55,7 +55,7 @@ $site-palette: (
   'site-white': #ffffff
 );
 
-@forward './uswds-core/index' with (
+@forward 'uswds-core/index' with (
   // ----------------------------------------
   // Colors
   // ----------------------------------------
@@ -237,7 +237,7 @@ $site-palette: (
     !default
 );
 
-@use './uswds-core/index' as *;
+@use 'uswds-core/index' as *;
 
 $theme-input-tile-background-color-selected: 'primary-lightest';
 $theme-input-tile-border-color: 'primary-light';

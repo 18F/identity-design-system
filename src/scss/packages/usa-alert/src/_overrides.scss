@@ -1,0 +1,36 @@
+@use 'uswds-core' as *;
+
+$alerts: 'success', 'warning', 'error', 'info', 'emergency';
+
+.usa-alert {
+  &,
+  & .usa-alert__body {
+    border-radius: radius('lg');
+  }
+
+  .usa-alert__body {
+    @include u-padding-x($theme-alert-padding-x); // See: https://github.com/uswds/uswds/issues/5252
+
+    &::before {
+      background-color: transparent;
+      background-position: center;
+      mask: none;
+    }
+  }
+}
+
+@each $name in $alerts {
+  .usa-alert--#{$name} .usa-alert__body {
+    &::before {
+      @include add-background-svg('alerts/#{$name}');
+      left: $alert-icon-optical-padding;
+      top: units($theme-alert-padding-y) + units(0.5);
+    }
+
+    padding-left: units($theme-alert-icon-size) + (1.5 * $alert-icon-optical-padding);
+  }
+}
+
+.usa-alert--other {
+  background-color: color('primary-lighter');
+}

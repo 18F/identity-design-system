@@ -59,7 +59,7 @@ build-sass-and-js:
 build-sass-packages:
 	mkdir -p packages
 	cp -r node_modules/@uswds/uswds/packages/* packages
-	cp src/scss/packages/* packages
+	cp -r src/scss/packages/* packages
 
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts

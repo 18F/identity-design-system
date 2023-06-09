@@ -1,6 +1,2 @@
-@use 'uswds-core' as *;
-@forward './usa-memorable-date/index';
-
-.usa-memorable-date {
-  margin-bottom: units(1);
-}
+@forward 'usa-memorable-date/index';
+@forward 'usa-memorable-date/src/overrides';

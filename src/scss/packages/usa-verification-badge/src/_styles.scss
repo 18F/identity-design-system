@@ -1,0 +1,16 @@
+@use 'uswds-core' as *;
+
+.lg-verification-badge {
+  @include u-radius('pill');
+  background-color: color('white');
+  border: units(1px) solid color('success');
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  padding: units(1) units(2);
+  white-space: nowrap;
+
+  img {
+    margin-right: units(1);
+  }
+}

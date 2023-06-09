@@ -1,0 +1,74 @@
+@use 'uswds-core' as *;
+@use 'usa-nav/src/styles/index' as usa-nav;
+
+// Primary navigation
+// ---------------------------------
+
+.usa-nav__primary {
+  @include at-media-max($theme-header-min-width) {
+    a:not(.usa-button) {
+      padding: units(2);
+
+      &:hover {
+        background-color: color('primary-lightest');
+      }
+    }
+
+    .usa-current {
+      color: color('primary-dark');
+
+      &::after {
+        background-color: color('secondary');
+        border-radius: 0;
+      }
+    }
+  }
+
+  > .usa-nav__primary-item {
+    @include at-media($theme-header-min-width) {
+      font-size: 0.875rem;
+    }
+
+    > a {
+      @include at-media($theme-header-min-width) {
+        @include u-padding-x(1.5);
+        color: color('primary-dark');
+        font-weight: font-weight('normal');
+
+        &.usa-current {
+          font-weight: font-weight('bold');
+        }
+      }
+    }
+  }
+
+  button {
+    &:hover {
+      background-color: color('primary-lightest');
+    }
+
+    // Upstream: https://github.com/uswds/uswds/pull/5267
+    &[aria-expanded] span::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+// Navigation dropdowns
+// ---------------------------------
+
+.usa-nav__submenu {
+  @include at-media-max($theme-header-min-width) {
+    .usa-nav__submenu-item + .usa-nav__submenu-item {
+      border-top: none;
+    }
+  }
+}
+
+// Navigation close button
+// ---------------------------------
+
+.usa-nav__close img {
+  width: units(1.5);
+}

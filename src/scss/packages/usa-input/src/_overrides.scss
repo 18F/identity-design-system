@@ -1,0 +1,21 @@
+@use 'uswds-core' as *;
+
+$input-padding: 1;
+
+.usa-input {
+  @include u-border-color('primary-light');
+  font-weight: font-weight('bold');
+  background-color: color('primary-lightest');
+  border-radius: radius('md');
+}
+
+.usa-input--error {
+  @include u-border-color('error');
+}
+
+.usa-input.usa-input--big {
+  @include u-padding-x(2);
+  font-size: units(2.5);
+  line-height: 1.5;
+  height: auto;
+}

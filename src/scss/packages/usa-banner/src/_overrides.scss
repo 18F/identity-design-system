@@ -1,0 +1,65 @@
+@use 'uswds-core' as *;
+
+.usa-banner__header {
+  @include set-text-from-bg('primary-darker');
+  background-color: color('primary-darker');
+  padding: units(1) 0;
+
+  @include at-media('tablet') {
+    padding: units(1) 0;
+  }
+}
+
+.usa-banner__header--expanded {
+  @include at-media('tablet') {
+    background-color: color('primary-darker');
+    padding: units(1) 0;
+  }
+}
+
+.usa-accordion__button.usa-banner__button {
+  // Reset default accordion button border styling for banner button.
+  @include u-border(0);
+  @include u-radius(0);
+  line-height: line-height($theme-banner-font-family, 2);
+}
+
+.usa-accordion__button.usa-banner__button,
+.usa-banner__header-action {
+  color: currentColor;
+
+  &:hover,
+  &:active {
+    background-color: color('transparent');
+    color: currentColor;
+  }
+}
+
+.usa-banner__button {
+  &[aria-expanded='false'],
+  &[aria-expanded='true'] {
+    background-image: none;
+  }
+
+  &[aria-expanded='true'] {
+    @include at-media-max('tablet') {
+      &::before {
+        background-color: color('primary-lighter');
+      }
+    }
+  }
+
+  &,
+  &[aria-expanded='true'] {
+    @include at-media('tablet') {
+      &::after,
+      &:hover::after {
+        background-color: currentColor;
+      }
+    }
+  }
+}
+
+.usa-banner__header-action::after {
+  background-color: currentColor;
+}

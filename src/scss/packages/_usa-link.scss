@@ -1,6 +1,2 @@
-@use 'uswds-core' as *;
-@forward './usa-link/index';
-
-.usa-link--external {
-  margin-right: units(2px);
-}
+@forward 'usa-link/index';
+@forward 'usa-link/src/overrides';

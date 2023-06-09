@@ -1,3 +1,5 @@
-@forward './uswds-form-controls/index';
+// Default U.S. Web Design System form controls
+@forward 'uswds-form-controls/index';
 
-@forward 'usa-success-message';
+// Custom Login.gov Design System form controls
+@forward 'usa-success-message/src/styles';
