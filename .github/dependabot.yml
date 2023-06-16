@@ -5,4 +5,4 @@ updates:
     schedule:
       interval: 'daily'
     allow:
-      - dependency-name: 'uswds'
+      - dependency-name: '@uswds/uswds'

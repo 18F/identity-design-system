@@ -1,3 +1,13 @@
+## Unreleased
+
+### Breaking Changes
+
+- Update USWDS from 3.4.1 to 3.6.0
+  - See release notes:
+    - https://github.com/uswds/uswds/releases/tag/v3.5.0
+    - https://github.com/uswds/uswds/releases/tag/v3.6.0
+  - Note "Breaking" changes in the above minor release. Additionally, the `inputPrefixSuffix` JavaScript named export has been removed.
+
 ## 7.1.0
 
 ### New Features

@@ -6,7 +6,6 @@ import datePicker from '@uswds/uswds/js/usa-date-picker';
 import dateRangePicker from '@uswds/uswds/js/usa-date-range-picker';
 import fileInput from '@uswds/uswds/js/usa-file-input';
 import footer from '@uswds/uswds/js/usa-footer';
-import inputPrefixSuffix from '@uswds/uswds/js/usa-input-prefix-suffix';
 import modal from '@uswds/uswds/js/usa-modal';
 import header from '@uswds/uswds/js/usa-header';
 import password from '@uswds/uswds/js/_usa-password';
@@ -26,7 +25,6 @@ export {
   dateRangePicker,
   fileInput,
   footer,
-  inputPrefixSuffix,
   modal,
   header,
   password,
