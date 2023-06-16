@@ -51,7 +51,6 @@ $theme-process-list-counter-size-big: 3.125rem;
 
   .usa-process-list__item {
     padding-left: units(6);
-    border-left-width: units(1);
 
     &::before {
       margin-top: #{(
@@ -62,5 +61,9 @@ $theme-process-list-counter-size-big: 3.125rem;
       height: $theme-process-list-counter-size-big;
       font-size: units(3);
     }
+  }
+
+  &.usa-process-list--connected .usa-process-list__item {
+    border-left-width: units(1);
   }
 }
