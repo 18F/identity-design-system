@@ -40,7 +40,7 @@ async function toggleHiddenContent() {
 async function getScreenshot(url) {
   await page.goto(url, { waitUntil: 'networkidle0' });
   await Promise.all([stubAnimations(), toggleHiddenContent()]);
-  return page.screenshot({ fullPage: true });
+  return page.screenshot({ fullPage: true, optimizeForSpeed: true });
 }
 
 function getURLPath(url) {
