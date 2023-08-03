@@ -3,7 +3,7 @@ version: 2.1
 executors:
   ruby_browsers:
     docker:
-      - image: cimg/ruby:2.7-browsers
+      - image: cimg/ruby:3.1-browsers
         environment:
           BUNDLER_VERSION: 2.2.20
 
@@ -25,7 +25,7 @@ commands:
     steps:
       - node-install
       - restore_cache:
-          key: dependency-cache-ruby-2-7-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
+          key: dependency-cache-ruby-3-1-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
       - run:
           name: Update Bundler
           command: gem install bundler --version $BUNDLER_VERSION
@@ -36,7 +36,7 @@ commands:
           name: Install dependencies
           command: npm ci
       - save_cache:
-          key: dependency-cache-ruby-2-7-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
+          key: dependency-cache-ruby-3-1-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.npm
             - ~/.bundler
