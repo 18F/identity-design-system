@@ -16,7 +16,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
       </svg>
     </div>
     <div class="usa-icon-list__content">
-      <h3 class="usa-icon-list__title">Donate cash when possible.</h3>
+      <h2 class="usa-icon-list__title">Donate cash when possible.</h2>
       <p>
         Financial contributions to recognized disaster relief organizations are
         the fastest, most flexible and most effective method of donating.
@@ -33,7 +33,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
       </svg>
     </div>
     <div class="usa-icon-list__content">
-      <h3 class="usa-icon-list__title">Confirm what donations are needed.</h3>
+      <h2 class="usa-icon-list__title">Confirm what donations are needed.</h2>
       <p>
         Unneeded and unsolicited goods burden local organizations’ ability to
         meet survivors’ confirmed needs, drawing away valuable volunteer labor,
@@ -48,9 +48,9 @@ lead: An icon list reinforces the meaning and visibility of individual list item
       </svg>
     </div>
     <div class="usa-icon-list__content">
-      <h3 class="usa-icon-list__title">
+      <h2 class="usa-icon-list__title">
         Talk to trusted organizations about volunteering.
-      </h3>
+      </h2>
       <p>
         Financial contributions to recognized disaster relief organizations are
         the fastest, most flexible and most effective method of donating.
