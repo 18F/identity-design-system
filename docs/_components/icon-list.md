@@ -8,7 +8,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
 ## Default
 
 {% capture example %}
-<h3 class="site-preview-heading border-top-1px border-base-light padding-top-1">Rich content</h3>
+<h3 class="site-preview-heading border-top-1px border-base-light padding-top-1">Default</h3>
     <ul class="usa-icon-list">
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
