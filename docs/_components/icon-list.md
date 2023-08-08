@@ -8,7 +8,6 @@ lead: An icon list reinforces the meaning and visibility of individual list item
 ## Default
 
 {% capture example %}
-<h3 class="site-preview-heading border-top-1px border-base-light padding-top-1">Default</h3>
     <ul class="usa-icon-list">
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
@@ -68,7 +67,6 @@ lead: An icon list reinforces the meaning and visibility of individual list item
 ## Simple 
 
 {% capture example %}
-<h3 class="site-preview-heading border-top-1px border-base-light padding-top-1 margin-top-0">Simple</h3>
     <ul class="usa-icon-list">
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
