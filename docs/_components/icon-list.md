@@ -12,7 +12,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -29,7 +29,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -44,7 +44,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -71,7 +71,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -81,7 +81,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-green">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">Stay six feet away from others</div>
@@ -89,7 +89,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-red">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="/assets/img/sprite.svg#cancel"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#cancel"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">Avoid large gatherings</div>
