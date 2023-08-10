@@ -7,9 +7,16 @@ This is not a component in the USWDS design system.
 
 ## Image Example Do
 
+
 {% capture example %}
-<div>
-  <img style="border-bottom: .5rem solid green;" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
+<div class="image-example">
+  <div class='grid-row flex-row flex-align-center'>
+    <div class='tablet:grid-col-5'>
+      <img class="bottom-border-green" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
+    </div>
+  </div>
+  <div class='grid-row flex-row flex-align-center'>
+    <div class='tablet:grid-col-5'>
   <ul class="usa-icon-list usa-icon-list--size-md">
     <li class="usa-icon-list__item">
       <div class="usa-icon-list__icon text-green">
@@ -18,7 +25,29 @@ This is not a component in the USWDS design system.
         </svg>
       </div>
       <div class="usa-icon-list__content">
-        <span style="color: green">DO: </span><span>Use a solid, dark background</span>
+        <span class="text-green">DO: </span><span>Use a solid, dark background. Make the text longer for testing the way the word wrap behaves.</span>
+      </div>
+    </li>
+  </ul>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+
+{% capture example %}
+<div class="image-example">
+  <img class="bottom-border-green" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
+  <ul class="usa-icon-list usa-icon-list--size-md">
+    <li class="usa-icon-list__item">
+      <div class="usa-icon-list__icon text-green">
+        <svg class="usa-icon" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#check_circle"></use>
+        </svg>
+      </div>
+      <div class="usa-icon-list__content">
+        <span class="text-green">DO: </span><span>Use a solid, dark background. Make the text longer for testing the way the word wrap behaves.</span>
       </div>
     </li>
   </ul>
@@ -29,8 +58,8 @@ This is not a component in the USWDS design system.
 ## Image Example Dont
 
 {% capture example %}
-<div>
-  <img style="border-bottom: .5rem solid red;" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
+<div class="image-example">
+  <img class="bottom-border-red" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
   <ul class="usa-icon-list usa-icon-list--size-md">
     <li class="usa-icon-list__item">
       <div class="usa-icon-list__icon text-red">
@@ -39,7 +68,7 @@ This is not a component in the USWDS design system.
         </svg>
       </div>
       <div class="usa-icon-list__content">
-        <span style="color: red">DON'T: </span><span>Use a white background</span>
+        <span class="text-red">DON'T: </span><span>Use a white background. Make the text longer for testing the way the word wrap behaves.</span>
       </div>
     </li>
   </ul>
