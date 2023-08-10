@@ -1,0 +1,17 @@
+@use 'uswds-core' as *;
+
+.image-example .bottom-border-green {
+    border-bottom: .5rem solid $theme-color-success;
+}
+
+.image-example .bottom-border-red{
+    border-bottom: .5rem solid $theme-color-error;
+}
+
+.image-example .text-green {
+    color: $theme-color-success;
+}
+
+.image-example .text-red {
+    color: $theme-color-error;
+}
