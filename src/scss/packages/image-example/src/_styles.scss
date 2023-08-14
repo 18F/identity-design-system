@@ -15,3 +15,11 @@
 .image-example .text-red {
     color: $theme-color-error;
 }
+
+.image-example figure {
+  display:table;
+}
+.image-example figcaption {
+  display:table-caption;
+  caption-side:bottom;
+}
