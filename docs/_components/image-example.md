@@ -11,7 +11,7 @@ This is not a component in the USWDS design system.
 {% capture example %}
 <div class="image-example">
   <figure>
-    <img class="bottom-border-green" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
+    <img alt="correct example, use dark background" class="bottom-border-green" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
     <figcaption>
       <ul class="usa-icon-list usa-icon-list--size-md">
         <li class="usa-icon-list__item">
@@ -36,7 +36,7 @@ This is not a component in the USWDS design system.
 {% capture example %}
 <div class="image-example">
   <figure>
-    <img class="bottom-border-red" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
+    <img alt="incorrect example, dont use light colored background" class="bottom-border-red" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
     <figcaption>
       <ul class="usa-icon-list usa-icon-list--size-md">
         <li class="usa-icon-list__item">
