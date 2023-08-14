@@ -1,25 +1,26 @@
 @use 'uswds-core' as *;
 
 .image-example .bottom-border-green {
-    border-bottom: .5rem solid $theme-color-success;
+  border-bottom: 0.5rem solid $theme-color-success;
 }
 
-.image-example .bottom-border-red{
-    border-bottom: .5rem solid $theme-color-error;
+.image-example .bottom-border-red {
+  border-bottom: 0.5rem solid $theme-color-error;
 }
 
 .image-example .text-green {
-    color: $theme-color-success;
+  color: $theme-color-success;
 }
 
 .image-example .text-red {
-    color: $theme-color-error;
+  color: $theme-color-error;
 }
 
 .image-example figure {
-  display:table;
+  display: table;
 }
+
 .image-example figcaption {
-  display:table-caption;
-  caption-side:bottom;
+  display: table-caption;
+  caption-side: bottom;
 }
