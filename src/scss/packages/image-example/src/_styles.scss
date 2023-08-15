@@ -1,26 +1,42 @@
 @use 'uswds-core' as *;
 
-.image-example .bottom-border-green {
-  border-bottom: 0.5rem solid $theme-color-success;
+.image-example {
+  figure {
+    margin: 0;
+    display: table;
+  }
+
+  figcaption {
+    display: table-caption;
+    caption-side: bottom;
+  }
+  
+  .img--bordered {
+    border-top: units(1px) solid color('base-lighter');
+    border-right: units(1px) solid color('base-lighter');
+    border-left: units(1px) solid color('base-lighter');
+  }
 }
 
-.image-example .bottom-border-red {
-  border-bottom: 0.5rem solid $theme-color-error;
+@mixin image-example($color) {
+  img {
+    border-bottom: units(1) solid color($color)
+  }
+  .usa-icon-list__icon {
+    color: color($color);
+  }
+  .usa-icon-list__content {
+    span:first-of-type {
+      color: color($color);
+      font-weight: bold;
+    }
+  }
 }
 
-.image-example .text-green {
-  color: $theme-color-success;
+.image-example--correct {
+  @include image-example("success");
 }
 
-.image-example .text-red {
-  color: $theme-color-error;
-}
-
-.image-example figure {
-  display: table;
-}
-
-.image-example figcaption {
-  display: table-caption;
-  caption-side: bottom;
+.image-example--incorrect {
+  @include image-example("error");
 }
