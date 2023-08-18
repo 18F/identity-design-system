@@ -17,7 +17,7 @@ This is not a component in the USWDS design system.
         <li class="usa-icon-list__item">
           <div class="usa-icon-list__icon">
             <svg class="usa-icon" aria-hidden="true" role="img">
-              <use xlink:href="/assets/img/sprite.svg#check_circle"></use>
+              <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
             </svg>
           </div>
           <div class="usa-icon-list__content">
@@ -42,7 +42,7 @@ This is not a component in the USWDS design system.
         <li class="usa-icon-list__item">
           <div class="usa-icon-list__icon">
             <svg class="usa-icon" aria-hidden="true" role="img">
-              <use xlink:href="/assets/img/sprite.svg#cancel"></use>
+              <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#cancel"></use>
             </svg>
           </div>
           <div class="usa-icon-list__content">
