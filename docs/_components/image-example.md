@@ -46,7 +46,7 @@ This is not a component in the USWDS design system.
             </svg>
           </div>
           <div class="usa-icon-list__content">
-            <span>DON'T: </span><span>Use a white background, but make the text longer for testing the way the word wrap behaves.</span>
+            <span class="image-example__do-dont">DON'T:</span> Use a white background, but make the text longer for testing the way the word wrap behaves.
           </div>
         </li>
       </ul>
