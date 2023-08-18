@@ -31,7 +31,7 @@ This is not a component in the USWDS design system.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Image Example Dont
+## Image Example Don't
 
 {% capture example %}
 <div class="image-example image-example--incorrect">
