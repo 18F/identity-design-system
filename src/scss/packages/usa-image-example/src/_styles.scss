@@ -1,6 +1,6 @@
 @use 'uswds-core' as *;
 
-.image-example {
+.usa-image-example {
   figure {
     margin: 0;
     display: table;
@@ -18,7 +18,7 @@
   }
 }
 
-@mixin image-example($color) {
+@mixin usa-image-example($color) {
   img {
     border-bottom: units(1) solid color($color);
   }
@@ -33,10 +33,10 @@
   }
 }
 
-.image-example--correct {
-  @include image-example('success');
+.usa-image-example--correct {
+  @include usa-image-example('success');
 }
 
-.image-example--incorrect {
-  @include image-example('error');
+.usa-image-example--incorrect {
+  @include usa-image-example('error');
 }

@@ -9,7 +9,7 @@ This is not a component in the USWDS design system.
 
 
 {% capture example %}
-<div class="image-example image-example--correct">
+<div class="usa-image-example usa-image-example--correct">
   <figure>
     <img alt="correct example, use dark background" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
     <figcaption>
@@ -34,7 +34,7 @@ This is not a component in the USWDS design system.
 ## Image Example Don't
 
 {% capture example %}
-<div class="image-example image-example--incorrect">
+<div class="usa-image-example usa-image-example--incorrect">
   <figure>
     <img alt="incorrect example, dont use light colored background" class="img--bordered" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
     <figcaption>
