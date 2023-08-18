@@ -21,7 +21,7 @@ This is not a component in the USWDS design system.
             </svg>
           </div>
           <div class="usa-icon-list__content">
-            <span>DO: </span><span>Use a solid, dark background, but make the text longer for testing the way the word wrap behaves.</span>
+            <span class="image-example__do-dont">DO: </span><span>Use a solid, dark background, but make the text longer for testing the way the word wrap behaves.</span>
           </div>
         </li>
       </ul>
