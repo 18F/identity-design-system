@@ -7,6 +7,7 @@
   }
 
   figcaption {
+    margin-top: units(1.5);
     display: table-caption;
     caption-side: bottom;
   }
@@ -20,7 +21,7 @@
 
 @mixin usa-image-example($color) {
   img {
-    border-bottom: units(1) solid color($color);
+    box-shadow: 0 units(1) 0 0 color($color);
   }
   .usa-icon-list__icon {
     color: color($color);
