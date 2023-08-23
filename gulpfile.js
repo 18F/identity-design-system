@@ -116,6 +116,7 @@ gulp.task('lint-sass', async function (callback) {
   const { errored, output } = await stylelint.lint({
     files: [`${PROJECT_SASS_SRC}/**/*.scss`, `!${PROJECT_SASS_SRC}/uswds/**/*.scss`],
     formatter: 'string',
+    fix: true,
   });
 
   callback(errored ? new Error(output) : null);
