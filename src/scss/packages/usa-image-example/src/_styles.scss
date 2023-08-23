@@ -1,24 +1,5 @@
 @use 'uswds-core' as *;
 
-.usa-image-example {
-  figure {
-    margin: 0;
-    display: table;
-  }
-
-  figcaption {
-    margin-top: units(1.5);
-    display: table-caption;
-    caption-side: bottom;
-  }
-
-  .img--bordered {
-    border-top: units(1px) solid color('base-lighter');
-    border-right: units(1px) solid color('base-lighter');
-    border-left: units(1px) solid color('base-lighter');
-  }
-}
-
 @mixin usa-image-example($color) {
   img {
     box-shadow: 0 units(1) 0 0 color($color);
@@ -32,6 +13,23 @@
       font-weight: bold;
     }
   }
+}
+
+.usa-image-example__figure {
+  margin: 0;
+  display: table;
+}
+
+.usa-image-example__figcaption {
+  margin-top: units(1.5);
+  display: table-caption;
+  caption-side: bottom;
+}
+
+.usa-image-example__img--bordered {
+  border-top: units(1px) solid color('base-lighter');
+  border-right: units(1px) solid color('base-lighter');
+  border-left: units(1px) solid color('base-lighter');
 }
 
 .usa-image-example--correct {

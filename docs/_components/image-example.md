@@ -9,10 +9,10 @@ This is not a component in the USWDS design system.
 
 
 {% capture example %}
-<div class="usa-image-example usa-image-example--correct">
-  <figure>
+<div class="usa-image-example--correct">
+  <figure class="usa-image-example__figure">
     <img alt="correct example, use dark background" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
-    <figcaption>
+    <figcaption class="usa-image-example__figcaption">
       <ul class="usa-icon-list usa-icon-list--size-md">
         <li class="usa-icon-list__item">
           <div class="usa-icon-list__icon">
@@ -35,9 +35,9 @@ This is not a component in the USWDS design system.
 
 {% capture example %}
 <div class="usa-image-example usa-image-example--incorrect">
-  <figure>
-    <img alt="incorrect example, dont use light colored background" class="img--bordered" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
-    <figcaption>
+  <figure class="usa-image-example__figure">
+    <img alt="incorrect example, dont use light colored background" class="usa-image-example__img--bordered" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
+    <figcaption class="usa-image-example__figcaption">
       <ul class="usa-icon-list usa-icon-list--size-md">
         <li class="usa-icon-list__item">
           <div class="usa-icon-list__icon">
