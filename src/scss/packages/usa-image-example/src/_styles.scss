@@ -1,7 +1,7 @@
 @use 'uswds-core' as *;
 
 @mixin usa-image-example($color) {
-  img {
+  .usa-image-example__image {
     box-shadow: 0 units(1) 0 0 color($color);
   }
   .usa-icon-list__icon {
