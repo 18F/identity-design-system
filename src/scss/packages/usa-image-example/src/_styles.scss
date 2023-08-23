@@ -1,0 +1,41 @@
+@use 'uswds-core' as *;
+
+@mixin usa-image-example($color) {
+  .usa-image-example__image {
+    box-shadow: 0 units(1) 0 0 color($color);
+  }
+  .usa-icon-list__icon {
+    color: color($color);
+  }
+  .usa-icon-list__content {
+    .image-example__do-dont {
+      color: color($color);
+      font-weight: bold;
+    }
+  }
+}
+
+.usa-image-example__figure {
+  margin: 0;
+  display: table;
+}
+
+.usa-image-example__figcaption {
+  margin-top: units(1.5);
+  display: table-caption;
+  caption-side: bottom;
+}
+
+.usa-image-example__image--bordered {
+  border-top: units(1px) solid color('base-lighter');
+  border-right: units(1px) solid color('base-lighter');
+  border-left: units(1px) solid color('base-lighter');
+}
+
+.usa-image-example--correct {
+  @include usa-image-example('success');
+}
+
+.usa-image-example--incorrect {
+  @include usa-image-example('error');
+}
