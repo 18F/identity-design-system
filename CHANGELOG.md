@@ -1,14 +1,14 @@
-## Unreleased
-- 
-
 ## 7.1.0
+
+### New Features
+
+- Add custom styling for the Icon List component. ([#368](https://github.com/18F/identity-design-system/pull/368))
+- Add new Image Example component. ([#369](https://github.com/18F/identity-design-system/pull/369))
+
 ### Improvements
 
 - Fix appearance of borders in segmented "Big" button groups. ([#359](https://github.com/18F/identity-design-system/pull/359))
 - Improve compilation time for default package by upwards of 50%. ([#356](https://github.com/18F/identity-design-system/pull/356))
-- Upgrade Ruby and Puppeteer ([#367](https://github.com/18F/identity-design-system/pull/367) and [#364](https://github.com/18F/identity-design-system/pull/364))
-- LG-10522: Add Icon List Component ([#368](https://github.com/18F/identity-design-system/pull/368))
-- LG-10523: Add Image Example Component ([#369](https://github.com/18F/identity-design-system/pull/369))
 
 ### Bug Fixes
 
