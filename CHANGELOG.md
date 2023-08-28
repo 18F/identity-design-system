@@ -1,13 +1,19 @@
 ## Unreleased
+- 
 
+## 7.1.0
 ### Improvements
 
 - Fix appearance of borders in segmented "Big" button groups. ([#359](https://github.com/18F/identity-design-system/pull/359))
 - Improve compilation time for default package by upwards of 50%. ([#356](https://github.com/18F/identity-design-system/pull/356))
+- Upgrade Ruby and Puppeteer ([#367](https://github.com/18F/identity-design-system/pull/367) and [#364](https://github.com/18F/identity-design-system/pull/364))
+- LG-10522: Add Icon List Component ([#368](https://github.com/18F/identity-design-system/pull/368))
+- LG-10523: Add Image Example Component ([#369](https://github.com/18F/identity-design-system/pull/369))
 
 ### Bug Fixes
 
-- Fix issue where the Process List "Big" variant would show with the connected line when not rendered in prose content.
+- Fix issue where the Process List "Big" variant would show with the connected line when not rendered in prose content. ([#357](https://github.com/18F/identity-design-system/pull/357))
+- Add meta charset to documentation layout to fix visual regressions tests ([#361](https://github.com/18F/identity-design-system/pull/361))
 
 ## 7.0.1
 
