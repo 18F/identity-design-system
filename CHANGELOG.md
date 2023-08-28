@@ -1,4 +1,9 @@
-## Unreleased
+## 7.1.0
+
+### New Features
+
+- Add custom styling for the Icon List component. ([#368](https://github.com/18F/identity-design-system/pull/368))
+- Add new Image Example component. ([#369](https://github.com/18F/identity-design-system/pull/369))
 
 ### Improvements
 
@@ -7,7 +12,8 @@
 
 ### Bug Fixes
 
-- Fix issue where the Process List "Big" variant would show with the connected line when not rendered in prose content.
+- Fix issue where the Process List "Big" variant would show with the connected line when not rendered in prose content. ([#357](https://github.com/18F/identity-design-system/pull/357))
+- Add meta charset to documentation layout to fix visual regressions tests ([#361](https://github.com/18F/identity-design-system/pull/361))
 
 ## 7.0.1
 
