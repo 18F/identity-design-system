@@ -34,7 +34,6 @@ $site-palette: (
   'site-lighter-grey': #dedede,
   'site-lightest-grey': #f0f0f0,
   'site-ink': #454545,
-  'site-disabled-grey': #767676,
   // Yellow
   'site-darkest-yellow': #504332,
   'site-darker-yellow': #847122,
@@ -127,10 +126,10 @@ $site-palette: (
   $theme-color-info-dark: map.get($site-palette, 'site-darker-teal') !default,
   $theme-color-info-darker: map.get($site-palette, 'site-darkest-teal') !default,
   // Disabled colors
-  $theme-color-disabled-lighter: map.get($site-palette, 'site-grey') !default,
-  $theme-color-disabled-light: map.get($site-palette, 'site-dark-grey') !default,
-  $theme-color-disabled: map.get($site-palette, 'site-darker-grey') !default,
-  $theme-color-disabled-dark: map.get($site-palette, 'site-white') !default,
+  $theme-color-disabled-lighter: map.get($site-palette, 'site-lighter-grey') !default,
+  $theme-color-disabled-light: map.get($site-palette, 'site-light-grey') !default,
+  $theme-color-disabled: map.get($site-palette, 'site-grey') !default,
+  $theme-color-disabled-dark: map.get($site-palette, 'site-dark-grey') !default,
   // Links
   $theme-link-reverse-color: 'white' !default,
   $theme-link-reverse-hover-color: 'primary-light' !default,
