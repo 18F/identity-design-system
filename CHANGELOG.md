@@ -2,6 +2,7 @@
 
 ### Breaking Changes
 
+- Serif fonts are disabled by default. This should not have a noticeable impact in most cases, since the Serif fonts were already previously assigned to Public Sans (a Sans Serif font).
 - Update USWDS from 3.4.1 to 3.6.0
   - See release notes:
     - https://github.com/uswds/uswds/releases/tag/v3.5.0

@@ -186,9 +186,12 @@ $site-palette: (
   $theme-root-font-size: 16px !default,
   // Font path
   $theme-font-path: if(variable-exists(font-path), $font-path, '../fonts') !default,
+  //  Font role
+  $theme-font-role-heading: 'sans',
+  $theme-font-role-alt: 'sans',
   // Font type
   $theme-font-type-sans: 'public-sans' !default,
-  $theme-font-type-serif: 'public-sans' !default,
+  $theme-font-type-serif: false !default,
   // Type scale
   $theme-type-scale-3xs: 'micro' !default,
   $theme-type-scale-2xs: 2 !default,
