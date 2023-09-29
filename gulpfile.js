@@ -43,10 +43,10 @@ const notificationOptions = {
     message: '💔 Failed to build <%= file.relative %>',
   },
   handler(err) {
+    console.error(err.toString()); // eslint-disable-line no-console
     notify(notificationOptions.error).write({
       relative: path.basename(err.file || err.filename),
     });
-    console.error(err.toString()); // eslint-disable-line no-console
     this.emit('end');
   },
 };

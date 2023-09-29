@@ -1,7 +1,5 @@
 @use 'uswds-core' as *;
 
-$input-padding: 1;
-
 .usa-input {
   @include u-border-color('primary-light');
   font-weight: font-weight('bold');
