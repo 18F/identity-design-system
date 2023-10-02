@@ -187,8 +187,8 @@ $site-palette: (
   // Font path
   $theme-font-path: if(variable-exists(font-path), $font-path, '../fonts') !default,
   //  Font role
-  $theme-font-role-heading: 'sans',
-  $theme-font-role-alt: 'sans',
+  $theme-font-role-heading: 'sans' !default,
+  $theme-font-role-alt: 'sans' !default,
   // Font type
   $theme-font-type-sans: 'public-sans' !default,
   $theme-font-type-serif: false !default,
