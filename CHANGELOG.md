@@ -8,7 +8,7 @@
     - https://github.com/uswds/uswds/releases/tag/v3.5.0
     - https://github.com/uswds/uswds/releases/tag/v3.6.0
     - https://github.com/uswds/uswds/releases/tag/v3.6.1
-  - Note "Breaking" changes in the above minor release. Additionally, the `inputPrefixSuffix` JavaScript named export has been removed.
+  - Note "Breaking" changes in the above minor releases. Additionally, the `inputPrefixSuffix` JavaScript named export has been removed.
 
 ## 7.1.0
 
