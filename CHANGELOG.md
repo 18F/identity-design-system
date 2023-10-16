@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bug Fixes
+
+- Fix an issue where accordion icons appear smaller when hovering the expander button.
+
 ## 8.0.0
 
 ### Breaking Changes
