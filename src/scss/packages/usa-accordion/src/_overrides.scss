@@ -4,11 +4,15 @@
   @include u-border($theme-accordion-border-width, $theme-accordion-border-color);
   @include u-radius('lg');
   @include u-text('normal');
-  @include add-background-svg('minus');
   background-color: color('transparent');
   background-size: units(2);
   color: color('primary');
   line-height: line-height($theme-body-font-family, $theme-body-line-height);
+
+  &,
+  &:hover {
+    @include add-background-svg('minus');
+  }
 
   &:hover {
     background-color: color('primary-lightest');
@@ -21,8 +25,12 @@
   }
 
   &[aria-expanded='false'] {
-    @include add-background-svg('plus');
     background-size: units(2);
+
+    &,
+    &:hover {
+      @include add-background-svg('plus');
+    }
   }
 }
 

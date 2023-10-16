@@ -1,9 +1,15 @@
+## 8.0.1
+
+### Bug Fixes
+
+- Fix an issue where accordion icons appear smaller when hovering the expander button. ([#379](https://github.com/18F/identity-design-system/pull/379))
+
 ## 8.0.0
 
 ### Breaking Changes
 
-- Serif fonts are disabled by default. This should not have a noticeable impact in most cases, since the Serif fonts were already previously assigned to Public Sans (a Sans Serif font).
-- Update USWDS from 3.4.1 to 3.6.1
+- Serif fonts are disabled by default. This should not have a noticeable impact in most cases, since the Serif fonts were already previously assigned to Public Sans (a Sans Serif font). ([#374](https://github.com/18F/identity-design-system/pull/374))
+- Update USWDS from 3.4.1 to 3.6.1 ([#362](https://github.com/18F/identity-design-system/pull/362), [#375](https://github.com/18F/identity-design-system/pull/375))
   - See release notes:
     - https://github.com/uswds/uswds/releases/tag/v3.5.0
     - https://github.com/uswds/uswds/releases/tag/v3.6.0
