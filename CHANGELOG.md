@@ -1,3 +1,10 @@
+## Unreleased
+
+### Dependencies
+
+- Update USWDS from v3.6.1 to v3.7.0. ([#381](https://github.com/18F/identity-style-guide/pull/381))
+  - See release notes: https://github.com/uswds/uswds/releases/tag/v3.7.0
+
 ## 8.0.1
 
 ### Bug Fixes
