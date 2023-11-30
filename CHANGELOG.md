@@ -1,5 +1,9 @@
 ## Unreleased
 
+### New Features
+
+- Add variant support for danger outline buttons.
+
 ### Dependencies
 
 - Update USWDS from v3.6.1 to v3.7.0. ([#381](https://github.com/18F/identity-style-guide/pull/381))

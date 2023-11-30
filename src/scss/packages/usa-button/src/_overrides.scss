@@ -94,6 +94,27 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   &.usa-button--active {
     background-color: color('secondary-darkest');
   }
+
+  &.usa-button--outline:not(:disabled, .usa-button--disabled) {
+    background-color: color('white');
+    box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary');
+    color: color('secondary');
+
+    &.usa-button--big {
+      box-shadow: $button-stroke-big color('secondary');
+    }
+
+    &:hover,
+    &.usa-button--hover {
+      background-color: color('secondary-lightest');
+    }
+
+    &:active,
+    &.usa-button--active {
+      background-color: color('secondary-lighter');
+      color: color('secondary-dark');
+    }
+  }
 }
 
 .usa-button--inverse {
