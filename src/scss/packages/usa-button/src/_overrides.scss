@@ -43,7 +43,7 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   }
 
   &:disabled,
-  &.usa-button--disabled {
+  &[aria-disabled='true'] {
     background-color: color('white');
     color: color('disabled');
   }
@@ -62,7 +62,7 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
     }
 
     &:disabled,
-    &.usa-button--disabled {
+    &[aria-disabled='true'] {
       box-shadow: $button-stroke-big color('disabled');
     }
 
@@ -95,25 +95,37 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
     background-color: color('secondary-darkest');
   }
 
-  &.usa-button--outline:not(:disabled, .usa-button--disabled) {
-    background-color: color('white');
-    box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary');
-    color: color('secondary');
+  &.usa-button--outline {
+    &:not(:disabled, [aria-disabled='true']) {
+      background-color: color('white');
+      box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary');
+      color: color('secondary');
 
-    &.usa-button--big {
-      box-shadow: $button-stroke-big color('secondary');
-    }
+      &.usa-button--big {
+        box-shadow: $button-stroke-big color('secondary');
+      }
 
-    &:hover,
-    &.usa-button--hover {
-      background-color: color('secondary-lightest');
+      &:hover,
+      &.usa-button--hover {
+        background-color: color('secondary-lightest');
+      }
     }
 
     &:active,
     &.usa-button--active {
-      background-color: color('secondary-lighter');
-      box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary-dark');
-      color: color('secondary-dark');
+      &,
+      &:focus,
+      &.usa-button--focus,
+      &:hover,
+      &.usa-button--hover {
+        background-color: color('secondary-lighter');
+        box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary-dark');
+        color: color('secondary-dark');
+
+        &.usa-button--big {
+          box-shadow: $button-stroke-big color('secondary');
+        }
+      }
     }
   }
 }
@@ -139,7 +151,7 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   }
 
   &:disabled,
-  &.usa-button--disabled {
+  &[aria-disabled='true'] {
     background-color: color('disabled');
     color: color('white');
   }
