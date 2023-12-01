@@ -108,6 +108,12 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
       &:hover,
       &.usa-button--hover {
         background-color: color('secondary-lightest');
+        box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary-dark');
+        color: color('secondary-dark');
+
+        &.usa-button--big {
+          box-shadow: $button-stroke-big color('secondary-dark');
+        }
       }
     }
 
@@ -119,11 +125,11 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
       &:hover,
       &.usa-button--hover {
         background-color: color('secondary-lighter');
-        box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary-dark');
-        color: color('secondary-dark');
+        box-shadow: inset 0 0 0 $theme-button-stroke-width color('secondary-darker');
+        color: color('secondary-darker');
 
         &.usa-button--big {
-          box-shadow: $button-stroke-big color('secondary');
+          box-shadow: $button-stroke-big color('secondary-darker');
         }
       }
     }
