@@ -57,6 +57,20 @@ subnav:
   <button class="usa-button usa-button--danger" disabled>Disabled</button>
 </div>
 
+### Danger Outline
+
+```html
+<button class="usa-button usa-button--danger usa-button--outline">
+```
+
+<div>
+  <button class="usa-button usa-button--danger usa-button--outline">Default</button>
+  <button class="usa-button usa-button--danger usa-button--outline usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--danger usa-button--outline usa-button--active">Active</button>
+  <button class="usa-button usa-button--danger usa-button--outline usa-focus">Focus</button>
+  <button class="usa-button usa-button--danger usa-button--outline" disabled>Disabled</button>
+</div>
+
 ### Unstyled
 
 ```html
@@ -113,6 +127,20 @@ subnav:
   <button class="usa-button usa-button--big usa-button--danger usa-button--active">Active</button>
   <button class="usa-button usa-button--big usa-button--danger usa-focus">Focus</button>
   <button class="usa-button usa-button--big usa-button--danger" disabled>Disabled</button>
+</div>
+
+### Danger Outline
+
+```html
+<button class="usa-button usa-button--big usa-button--danger usa-button--outline">
+```
+
+<div>
+  <button class="usa-button usa-button--big usa-button--danger usa-button--outline">Default</button>
+  <button class="usa-button usa-button--big usa-button--danger usa-button--outline usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--big usa-button--danger usa-button--outline usa-button--active">Active</button>
+  <button class="usa-button usa-button--big usa-button--danger usa-button--outline usa-focus">Focus</button>
+  <button class="usa-button usa-button--big usa-button--danger usa-button--outline" disabled>Disabled</button>
 </div>
 
 ### Unstyled

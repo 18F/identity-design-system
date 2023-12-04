@@ -1,5 +1,14 @@
 ## Unreleased
 
+### New Features
+
+- Add variant support for danger outline buttons. ([#383](https://github.com/18F/identity-style-guide/pull/383))
+
+### Bug Fixes
+
+- Improve consistency with USWDS disabled buttons styles. ([#383](https://github.com/18F/identity-style-guide/pull/383))
+  - [USWDS v3.5.0](https://github.com/uswds/uswds/releases/tag/v3.5.0) removed `.usa-button--disabled` styling in favor of `[aria-disabled="true"]`. This wasn't documented as a breaking change, and it's expected the any `.usa-button--disabled` usage would not be stylized correctly since those changes. You should replace any usage of `usa-button--disabled` with either the `[disabled]` or `[aria-disabled="true"]` attributes.
+
 ### Dependencies
 
 - Update USWDS from v3.6.1 to v3.7.0. ([#381](https://github.com/18F/identity-style-guide/pull/381))
