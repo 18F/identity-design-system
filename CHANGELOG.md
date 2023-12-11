@@ -11,8 +11,10 @@
 
 ### Dependencies
 
-- Update USWDS from v3.6.1 to v3.7.0. ([#381](https://github.com/18F/identity-style-guide/pull/381))
-  - See release notes: https://github.com/uswds/uswds/releases/tag/v3.7.0
+- Update USWDS from v3.6.1 to v3.7.1. ([#381](https://github.com/18F/identity-style-guide/pull/381), [#384](https://github.com/18F/identity-design-system/pull/384))
+  - See release notes:
+    - https://github.com/uswds/uswds/releases/tag/v3.7.0
+    - https://github.com/uswds/uswds/releases/tag/v3.7.1
 
 ## 8.0.1
 
