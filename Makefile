@@ -51,7 +51,6 @@ build-package:
 
 build-sass-and-js:
 	NODE_ENV=production \
-	DISABLE_NOTIFIER=true \
 	OUTPUT_DIR=$(OUTPUT_DIR) \
 	npm run build
 
