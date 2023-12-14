@@ -52,7 +52,7 @@ build-package:
 build-sass-and-js:
 	NODE_ENV=production \
 	OUTPUT_DIR=$(OUTPUT_DIR) \
-	npm run build
+	npm run build:docs
 
 build-sass-packages:
 	mkdir -p packages
