@@ -1,4 +1,3 @@
-MAKEFLAGS += --jobs=6
 TMP_DIR = ./tmp
 OUTPUT_DIR = ./dist
 PACKAGE_DIR = ./build
