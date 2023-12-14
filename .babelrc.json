@@ -3,10 +3,26 @@
     [
       "@babel/preset-env",
       {
+        "modules": false,
         "targets": {
           "node": "current"
         }
       }
     ]
-  ]
+  ],
+  "env": {
+    "cjs": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": "cjs",
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  }
 }

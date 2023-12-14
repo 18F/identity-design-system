@@ -15,7 +15,7 @@ start-docs:
 	bundle exec jekyll serve --watch
 
 start-assets: build-fonts build-images
-	NODE_ENV=development $(NODE_BIN)/gulp watch
+	npm run watch:docs
 
 validate-gemfile-lock: Gemfile Gemfile.lock
 	@echo "Validating Gemfile.lock..."
@@ -38,7 +38,7 @@ lint-optimized-assets: optimize-assets
 	(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize-assets'"; exit 1)
 
 lint: build-package validate-lockfiles lint-optimized-assets
-	$(NODE_BIN)/gulp lint
+	npm run lint
 
 build: build-docs build-assets build-package
 
@@ -48,13 +48,13 @@ build-docs:
 build-assets: build-sass-and-js build-fonts build-images build-sass-packages
 
 build-package:
-	$(NODE_BIN)/gulp build-package
+	npm run build:pkg
 
 build-sass-and-js:
 	NODE_ENV=production \
 	DISABLE_NOTIFIER=true \
 	OUTPUT_DIR=$(OUTPUT_DIR) \
-	$(NODE_BIN)/gulp build
+	npm run build
 
 build-sass-packages:
 	mkdir -p packages
