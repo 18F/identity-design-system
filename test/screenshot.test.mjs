@@ -1,13 +1,13 @@
 /* eslint-disable no-restricted-syntax, no-await-in-loop, no-param-reassign */
 
-import { describe, before, after, it } from 'node:test';
+import { describe, before, after, test } from 'node:test';
 import { createServer } from 'node:http';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import assert from 'node:assert';
 import { join } from 'node:path';
 import serveStatic from 'serve-static';
 import puppeteer from 'puppeteer';
-import assert from 'assert';
 import { PNG } from 'pngjs';
 import match from 'pixelmatch';
 
@@ -105,35 +105,48 @@ describe('screenshot visual regression', { skip: process.env.SKIP_VISUAL_REGRESS
     server.close();
   });
 
-  it('is visually identical to the live preview', async () => {
+  test('visually identical to the live preview', async (t) => {
     const localURL = `http://localhost:${server.address().port}`;
     await page.goto(localURL);
     const urls = await page.$$eval('.usa-nav__link', (links) => links.map((link) => link.href));
     const paths = urls.map(getURLPath);
 
-    for (const path of paths) {
-      const local = await getScreenshot(localURL + path);
-      const remote = await getScreenshot(REMOTE_HOST + path);
-      const localPNG = PNG.sync.read(local);
-      const remotePNG = PNG.sync.read(remote);
-      const width = Math.max(localPNG.width, remotePNG.width);
-      const height = Math.max(localPNG.height, remotePNG.height);
-      const resizedLocalPNG = fillImageToSize(localPNG, width, height);
-      const resizedRemotePNG = fillImageToSize(remotePNG, width, height);
-      const diff = new PNG({ width, height });
-      const diffs = match(resizedLocalPNG.data, resizedRemotePNG.data, diff.data, width, height, {
-        threshold: 0.2,
-      });
-      if (diffs > 0) {
-        const diffOutputBase = getDiffOutputBaseFileName(path);
-        await mkdir(DIFF_DIRECTORY, { recursive: true });
-        await Promise.all([
-          writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(resizedLocalPNG)),
-          writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(resizedRemotePNG)),
-          writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
-        ]);
-      }
-      assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the live site.`);
-    }
+    assert(paths.length);
+
+    await Promise.all(
+      paths.map((path) =>
+        t.test(path, async () => {
+          const local = await getScreenshot(localURL + path);
+          const remote = await getScreenshot(REMOTE_HOST + path);
+          const localPNG = PNG.sync.read(local);
+          const remotePNG = PNG.sync.read(remote);
+          const width = Math.max(localPNG.width, remotePNG.width);
+          const height = Math.max(localPNG.height, remotePNG.height);
+          const resizedLocalPNG = fillImageToSize(localPNG, width, height);
+          const resizedRemotePNG = fillImageToSize(remotePNG, width, height);
+          const diff = new PNG({ width, height });
+          const diffs = match(
+            resizedLocalPNG.data,
+            resizedRemotePNG.data,
+            diff.data,
+            width,
+            height,
+            {
+              threshold: 0.2,
+            },
+          );
+          if (diffs > 0) {
+            const diffOutputBase = getDiffOutputBaseFileName(path);
+            await mkdir(DIFF_DIRECTORY, { recursive: true });
+            await Promise.all([
+              writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(resizedLocalPNG)),
+              writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(resizedRemotePNG)),
+              writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
+            ]);
+          }
+          assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the live site.`);
+        }),
+      ),
+    );
   });
 });
