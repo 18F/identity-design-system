@@ -37,7 +37,7 @@
     "build:pkg:cjs": "babel src/js --out-dir build/cjs",
     "build:pkg:esm": "BABEL_ENV=esm babel src/js --out-dir build/esm",
     "build:pkg": "run-p build:pkg:*",
-    "lint:js": "eslint src/js test",
+    "lint:js": "eslint src/js test --ext .js,.mjs",
     "lint:css": "stylelint src/scss",
     "watch:docs:css": "npm run build:docs:css -- --watch",
     "watch:docs:js": "npm run build:docs:js -- --watch",
