@@ -1,5 +1,6 @@
 TMP_DIR = ./tmp
-OUTPUT_DIR = ./dist
+DEFAULT_OUTPUT_DIR = ./dist
+OUTPUT_DIR = $(DEFAULT_OUTPUT_DIR)
 PACKAGE_DIR = ./build
 NODE_BIN = ./node_modules/.bin
 
@@ -50,9 +51,11 @@ build-package:
 	npm run build:pkg
 
 build-sass-and-js:
-	NODE_ENV=production \
-	OUTPUT_DIR=$(OUTPUT_DIR) \
+	mkdir -p $(OUTPUT_DIR)/assets
 	npm run build:docs
+ifneq ($(OUTPUT_DIR),$(DEFAULT_OUTPUT_DIR))
+	mv dist/assets/{js,css} $(OUTPUT_DIR)/assets
+endif
 
 build-sass-packages:
 	mkdir -p packages
