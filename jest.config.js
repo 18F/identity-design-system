@@ -5,6 +5,9 @@ module.exports = {
   errorOnDeprecated: true,
   notify: true,
   preset: 'jest-puppeteer',
+  transform: {
+    '\\.[jt]sx?$': 'babel-jest',
+  },
   testMatch: [
     'ONLY_VISUAL_REGRESSION_TEST' in process.env
       ? '**/test/screenshot.test.js'
