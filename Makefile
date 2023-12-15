@@ -72,7 +72,11 @@ build-images:
 	cp -r src/img $(OUTPUT_DIR)/assets
 
 test: build
+ifdef ONLY_VISUAL_REGRESSION_TEST
+	node --test test/screenshot.test.mjs
+else
 	node --test test/
+endif
 
 clean:
 	rm -rf $(OUTPUT_DIR)

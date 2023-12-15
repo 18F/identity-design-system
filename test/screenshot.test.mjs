@@ -85,7 +85,7 @@ function fillImageToSize(image, width, height) {
   return resizedImage;
 }
 
-describe('screenshot visual regression', () => {
+describe('screenshot visual regression', { skip: process.env.SKIP_VISUAL_REGRESSION_TEST }, () => {
   /** @type {import('node:http').Server} */
   let server;
 
