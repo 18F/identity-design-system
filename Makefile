@@ -71,10 +71,7 @@ build-images:
 	cp -r node_modules/@uswds/uswds/dist/img $(OUTPUT_DIR)/assets
 	cp -r src/img $(OUTPUT_DIR)/assets
 
-test:
-ifndef SKIP_BUILD
-	make build
-endif
+test: build
 ifdef ONLY_VISUAL_REGRESSION_TEST
 	node --test test/screenshot.test.mjs
 else

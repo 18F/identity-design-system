@@ -58,24 +58,20 @@ jobs:
   integration:
     executor: ruby_browsers
     environment:
-      SKIP_BUILD: true
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
       - checkout
       - bundle-npm-install
-      - build
       - run:
           name: Run integration tests
           command: npm test
   visual-regression:
     executor: ruby_browsers
     environment:
-      SKIP_BUILD: true
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
       - checkout
       - bundle-npm-install
-      - build
       - run:
           name: Run visual regression test
           command: npm test
