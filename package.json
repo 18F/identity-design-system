@@ -45,6 +45,7 @@
     "start": "make start",
     "clean": "make clean",
     "lint": "run-p lint:*",
+    "pretest": "npm run build:pkg",
     "test": "make test",
     "build": "run-p build:docs build:pkg",
     "pages": "make build-assets",
