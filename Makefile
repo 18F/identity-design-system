@@ -85,3 +85,25 @@ clean:
 	rm -rf $(OUTPUT_DIR)
 	rm -rf $(TMP_DIR)
 	rm -rf $(PACKAGE_DIR)
+
+.PHONY: \
+	start \
+	start-docs \
+	start-assets \
+	validate-gemfile-lock \
+	validate-package-lock \
+	validate-lockfiles \
+	optimize-svg \
+	optimize-assets \
+	lint-optimized-assets \
+	lint \
+	build \
+	build-docs \
+	build-assets \
+	build-package \
+	build-sass-and-js \
+	build-sass-packages \
+	build-fonts \
+	build-images \
+	test \
+	clean
