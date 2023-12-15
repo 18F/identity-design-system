@@ -64,7 +64,7 @@ jobs:
       - bundle-npm-install
       - build
       - run:
-          name: Run jest integration test
+          name: Run integration tests
           command: npm test
   visual-regression:
     executor: ruby_browsers

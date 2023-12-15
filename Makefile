@@ -72,7 +72,7 @@ build-images:
 	cp -r src/img $(OUTPUT_DIR)/assets
 
 test: build
-	npm exec jest
+	node --test test/
 
 clean:
 	rm -rf $(OUTPUT_DIR)
