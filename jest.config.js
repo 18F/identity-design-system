@@ -6,7 +6,7 @@ module.exports = {
   notify: true,
   preset: 'jest-puppeteer',
   transform: {
-    '\\.[jt]sx?$': 'babel-jest',
+    '\\.js$': 'babel-jest',
   },
   testMatch: [
     'ONLY_VISUAL_REGRESSION_TEST' in process.env
