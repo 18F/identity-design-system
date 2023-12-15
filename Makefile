@@ -54,7 +54,7 @@ build-sass-and-js:
 	mkdir -p $(OUTPUT_DIR)/assets
 	npm run build:docs
 ifneq ($(OUTPUT_DIR),$(DEFAULT_OUTPUT_DIR))
-	mv $(DEFAULT_OUTPUT_DIR)/assets/{js,css} $(OUTPUT_DIR)/assets
+	mv $(DEFAULT_OUTPUT_DIR)/assets/js $(DEFAULT_OUTPUT_DIR)/assets/css $(OUTPUT_DIR)/assets
 endif
 
 build-sass-packages:
