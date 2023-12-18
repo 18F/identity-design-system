@@ -1,12 +1,11 @@
 /* eslint-disable no-restricted-syntax, no-await-in-loop, no-param-reassign */
 
 import { describe, before, after, test } from 'node:test';
-import { createServer } from 'node:http';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert';
 import { join } from 'node:path';
-import serveStatic from 'serve-static';
+import * as esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
 import { PNG } from 'pngjs';
 import match from 'pixelmatch';
@@ -86,27 +85,28 @@ function fillImageToSize(image, width, height) {
 }
 
 describe('screenshot visual regression', { skip: process.env.SKIP_VISUAL_REGRESSION_TEST }, () => {
-  /** @type {import('node:http').Server} */
-  let server;
+  /** @type {import('esbuild').BuildContext} */
+  let esbuildContext;
+
+  /** @type {number} */
+  let port;
 
   /** @type {import('puppeteer').Browser} */
   let browser;
 
   before(async () => {
-    const serve = serveStatic('dist');
-    server = createServer((req, res) => serve(req, res, () => res.end()));
-    server.listen();
+    esbuildContext = await esbuild.context({});
+    port = (await esbuildContext.serve({ servedir: 'dist' })).port;
     browser = await puppeteer.launch({ headless: 'new' });
     page = await browser.newPage();
   });
 
   after(async () => {
-    await browser.close();
-    server.close();
+    await Promise.all([browser.close(), esbuildContext.dispose()]);
   });
 
   test('visually identical to the live preview', async (t) => {
-    const localURL = `http://localhost:${server.address().port}`;
+    const localURL = `http://localhost:${port}`;
     await page.goto(localURL);
     const urls = await page.$$eval('.usa-nav__link', (links) => links.map((link) => link.href));
     const paths = urls.map(getURLPath);
