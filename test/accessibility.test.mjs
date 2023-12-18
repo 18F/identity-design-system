@@ -2,9 +2,8 @@
 
 import { describe, before, after, test } from 'node:test';
 import assert from 'node:assert';
-import { createServer } from 'node:http';
 import { createRequire } from 'node:module';
-import serveStatic from 'serve-static';
+import * as esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
 
 const require = createRequire(import.meta.url);
@@ -12,8 +11,11 @@ const require = createRequire(import.meta.url);
 const MESSAGE_TYPE_ERROR = 1;
 
 describe('accessibility', () => {
-  /** @type {import('node:http').Server} */
-  let server;
+  /** @type {import('esbuild').BuildContext} */
+  let esbuildContext;
+
+  /** @type {number} */
+  let port;
 
   /** @type {import('puppeteer').Browser} */
   let browser;
@@ -22,20 +24,18 @@ describe('accessibility', () => {
   let page;
 
   before(async () => {
-    const serve = serveStatic('dist');
-    server = createServer((req, res) => serve(req, res, () => res.end()));
-    server.listen();
+    esbuildContext = await esbuild.context({});
+    port = (await esbuildContext.serve({ servedir: 'dist' })).port;
     browser = await puppeteer.launch({ headless: 'new' });
     page = await browser.newPage();
   });
 
   after(async () => {
-    await browser.close();
-    server.close();
+    await Promise.all([browser.close(), esbuildContext.dispose()]);
   });
 
   test('passes automated accessibility test', async (t) => {
-    await page.goto(`http://localhost:${server.address().port}`);
+    await page.goto(`http://localhost:${port}`);
     const urls = await page.$$eval('.usa-nav__link', (links) => links.map((link) => link.href));
 
     assert(urls.length);
