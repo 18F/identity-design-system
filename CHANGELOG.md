@@ -1,3 +1,10 @@
+## Unreleased
+
+### Internal
+
+- Replace code compiler Babel with ESBuild. ([#387](https://github.com/18F/identity-style-guide/pull/381))
+  - This is not expected to have a downstream impact, but there may be subtle differences in the compiled code due to this change.
+
 ## 8.1.0
 
 ### New Features
