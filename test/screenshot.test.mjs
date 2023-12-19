@@ -1,25 +1,22 @@
 /* eslint-disable no-restricted-syntax, no-await-in-loop, no-param-reassign */
 
-import { describe, before, after, test } from 'node:test';
+import { describe, before, after, it, test } from 'node:test';
 import { writeFile, mkdir } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
 import assert from 'node:assert';
-import { join } from 'node:path';
+import { join, dirname, resolve, relative } from 'node:path';
 import * as esbuild from 'esbuild';
+import glob from 'fast-glob';
 import puppeteer from 'puppeteer';
 import { PNG } from 'pngjs';
 import match from 'pixelmatch';
 
-/** @type {import('puppeteer').Page} */
-let page;
-
-const dirname = fileURLToPath(new URL('.', import.meta.url));
+const paths = glob.sync('dist/*/index.html').map((path) => `/${dirname(relative('dist', path))}/`);
 
 const REMOTE_HOST =
   'https://federalist-340d8801-aa16-4df5-ad22-b1e3e731098e.sites.pages.cloud.gov/site/18f/identity-design-system';
-const DIFF_DIRECTORY = join(dirname, '../tmp/results/screenshot-diff');
+const DIFF_DIRECTORY = resolve('tmp/results/screenshot-diff');
 
-async function stubAnimations() {
+async function stubAnimations(page) {
   await page.evaluate(() => {
     const isGif = (img) => img.src.endsWith('.gif');
     function stubGif(img) {
@@ -37,20 +34,16 @@ async function stubAnimations() {
   });
 }
 
-async function toggleHiddenContent() {
+async function toggleHiddenContent(page) {
   await page.$$eval('.usa-accordion__container', (containers) =>
     containers.forEach((container) => container.removeAttribute('hidden')),
   );
 }
 
-async function getScreenshot(url) {
+async function getScreenshot(page, url) {
   await page.goto(url, { waitUntil: 'networkidle0' });
-  await Promise.all([stubAnimations(), toggleHiddenContent()]);
+  await Promise.all([stubAnimations(page), toggleHiddenContent(page)]);
   return page.screenshot({ fullPage: true, optimizeForSpeed: true });
-}
-
-function getURLPath(url) {
-  return new URL(url).pathname;
 }
 
 function getDiffOutputBaseFileName(pathname) {
@@ -84,7 +77,9 @@ function fillImageToSize(image, width, height) {
   return resizedImage;
 }
 
-describe('screenshot visual regression', { skip: process.env.SKIP_VISUAL_REGRESSION_TEST }, () => {
+const skip = !!process.env.SKIP_VISUAL_REGRESSION_TEST;
+
+describe('screenshot visual regression', { skip, concurrency: true }, () => {
   /** @type {import('esbuild').BuildContext} */
   let esbuildContext;
 
@@ -98,55 +93,42 @@ describe('screenshot visual regression', { skip: process.env.SKIP_VISUAL_REGRESS
     esbuildContext = await esbuild.context({});
     port = (await esbuildContext.serve({ servedir: 'dist' })).port;
     browser = await puppeteer.launch({ headless: 'new' });
-    page = await browser.newPage();
   });
 
   after(async () => {
     await Promise.all([browser.close(), esbuildContext.dispose()]);
   });
 
-  test('visually identical to the live preview', async (t) => {
-    const localURL = `http://localhost:${port}`;
-    await page.goto(localURL);
-    const urls = await page.$$eval('.usa-nav__link', (links) => links.map((link) => link.href));
-    const paths = urls.map(getURLPath);
-
+  it('has pages to test', () => {
     assert(paths.length);
+  });
 
-    await Promise.all(
-      paths.map((path) =>
-        t.test(path, async () => {
-          const local = await getScreenshot(localURL + path);
-          const remote = await getScreenshot(REMOTE_HOST + path);
-          const localPNG = PNG.sync.read(local);
-          const remotePNG = PNG.sync.read(remote);
-          const width = Math.max(localPNG.width, remotePNG.width);
-          const height = Math.max(localPNG.height, remotePNG.height);
-          const resizedLocalPNG = fillImageToSize(localPNG, width, height);
-          const resizedRemotePNG = fillImageToSize(remotePNG, width, height);
-          const diff = new PNG({ width, height });
-          const diffs = match(
-            resizedLocalPNG.data,
-            resizedRemotePNG.data,
-            diff.data,
-            width,
-            height,
-            {
-              threshold: 0.2,
-            },
-          );
-          if (diffs > 0) {
-            const diffOutputBase = getDiffOutputBaseFileName(path);
-            await mkdir(DIFF_DIRECTORY, { recursive: true });
-            await Promise.all([
-              writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(resizedLocalPNG)),
-              writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(resizedRemotePNG)),
-              writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
-            ]);
-          }
-          assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the live site.`);
-        }),
-      ),
-    );
+  paths.forEach((path) => {
+    test(path, async () => {
+      const localURL = `http://localhost:${port}`;
+      const page = await browser.newPage();
+      const local = await getScreenshot(page, localURL + path);
+      const remote = await getScreenshot(page, REMOTE_HOST + path);
+      const localPNG = PNG.sync.read(local);
+      const remotePNG = PNG.sync.read(remote);
+      const width = Math.max(localPNG.width, remotePNG.width);
+      const height = Math.max(localPNG.height, remotePNG.height);
+      const resizedLocalPNG = fillImageToSize(localPNG, width, height);
+      const resizedRemotePNG = fillImageToSize(remotePNG, width, height);
+      const diff = new PNG({ width, height });
+      const diffs = match(resizedLocalPNG.data, resizedRemotePNG.data, diff.data, width, height, {
+        threshold: 0.2,
+      });
+      if (diffs > 0) {
+        const diffOutputBase = getDiffOutputBaseFileName(path);
+        await mkdir(DIFF_DIRECTORY, { recursive: true });
+        await Promise.all([
+          writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(resizedLocalPNG)),
+          writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(resizedRemotePNG)),
+          writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
+        ]);
+      }
+      assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the live site.`);
+    });
   });
 });
