@@ -15,11 +15,11 @@ Write a brief description of what you changed.
 <!--
 ## 📜 Testing Plan
 
-Provide a checklist of steps to confirm the changes.
+Provide a list of steps to confirm the changes.
 
-- [ ] Step 1
-- [ ] Step 2
-- [ ] Step 3
+1. Step 1
+2. Step 2
+3. Step 3
 -->
 
 <!--
