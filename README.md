@@ -37,7 +37,7 @@ The only requirements for Sass compilation are:
 If you're using `@18f/identity-build-sass`, the following command will compile a CSS file to `build/styles.css`:
 
 ```
-npx build-sass path/to/styles.css.scss --out-dir=build --load-path=node_modules/@18f/identity-design-system/packages
+npx build-sass path/to/styles.css.scss --out-dir=build
 ```
 
 ### JavaScript
