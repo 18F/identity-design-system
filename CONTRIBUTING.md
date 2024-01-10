@@ -50,16 +50,17 @@ When a pull request is submitted, a visual regression test will be automatically
 
 A failure of this status check only indicates that a visual change was detected. Depending on the types of changes being proposed, this may be expected. Anyone with access to the CircleCI dashboard can review the specific changes by following the status check "Details" link and comparing the set of screenshots under the "Artifacts" tab. If the visual changes are acceptable, the pull request can be merged, even if the status check is reported as a failure.
 
-## Deploying documentation updates
+## Branch documentation previews
 
-Documentation deploys are performed automatically upon merging to `main` by [Cloud.gov Pages](https://cloud.gov/pages/). Cloud.gov Pages performs the following steps:
+A copy of the local development documentation is published for opened pull requests, which can be shared with stakeholders as part of the review process.
 
-- `npm install --production` (a no-op, as this package has no production dependencies)
-- `npm run pages`
-- `bundle install`
-- `bundle exec jekyll build`
+When a pull request is opened, a branch preview is created automatically, and should be available within a few minutes from the most recent commit.
 
-More information can be found in Cloud.gov Pages' [How Builds Work](https://cloud.gov/pages/documentation/how-builds-work/).
+You can find the branch preview link by expanding the "All checks have passed" section of your pull request, and clicking the "Details" link for the successful `pages/build` check.
+
+![Screenshot with arrow pointing to the GitHub checks Cloud.gov Pages "Details" link](https://github.com/18F/identity-design-system/assets/1779930/345e9177-d915-429c-b2da-949d75fa86be)
+
+For security reasons, note that this feature is only available for pull requests submitted by contributors with write access to the repository.
 
 ## Releases
 
