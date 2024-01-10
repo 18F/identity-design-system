@@ -16,6 +16,10 @@
     - https://github.com/uswds/uswds/releases/tag/v3.7.0
     - https://github.com/uswds/uswds/releases/tag/v3.7.1
 
+### Internal
+
+- The package is now distributed using native ES Modules as the default output. This should not impact downstream CommonJS projects, as a CommonJS distributable is still included for now. ([#395](https://github.com/18F/identity-design-system/pull/395))
+
 ## 8.0.1
 
 ### Bug Fixes

@@ -74,7 +74,7 @@ build-images:
 
 test: build
 ifdef ONLY_VISUAL_REGRESSION_TEST
-	node --test test/screenshot.test.mjs
+	node --test test/screenshot.test.js
 else
 	node --test test/
 endif
