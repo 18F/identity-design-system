@@ -9,7 +9,8 @@ ifdef SITE_PREFIX
 	OUTPUT_DIR = ./_site
 endif
 
-start: start-docs start-assets
+start:
+	$(MAKE) -j2 start-docs start-assets
 
 start-docs:
 	bundle exec jekyll serve --watch
