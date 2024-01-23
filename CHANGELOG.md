@@ -1,5 +1,10 @@
 ## Unreleased
 
+### Breaking Changes
+
+- Drop support for Internet Explorer. ([#387](https://github.com/18F/identity-style-guide/pull/381))
+  - Support was indirectly dropped in [v7.0.0](https://github.com/18F/identity-design-system/releases/tag/v7.0.0) via the upgrade to USWDS [v3.0.0](https://designsystem.digital.gov/about/releases/#version-uswds-300), which similarly ended explicit support for Internet Explorer. This package had continued to include Internet Explorer in its [Browserslist](https://browsersl.ist/) configuration, but this has now been removed.
+
 ### Internal
 
 - Replace code compiler Babel with ESBuild. ([#387](https://github.com/18F/identity-style-guide/pull/381))
