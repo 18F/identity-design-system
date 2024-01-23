@@ -44,7 +44,7 @@ lint: build-package validate-lockfiles lint-optimized-assets
 build: build-docs build-assets build-package
 
 build-docs:
-	JEKYLL_ENV=production bundle exec jekyll build
+	JEKYLL_ENV=production RUBY_YJIT_ENABLE=1 bundle exec jekyll build
 
 build-assets: build-sass-and-js build-fonts build-images build-sass-packages
 
