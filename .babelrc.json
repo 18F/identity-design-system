@@ -1,8 +1,0 @@
-{
-  "presets": [["@babel/preset-env", { "modules": false }]],
-  "env": {
-    "cjs": {
-      "presets": [["@babel/preset-env", { "modules": "cjs" }]]
-    }
-  }
-}
