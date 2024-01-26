@@ -1,6 +1,6 @@
 {
   "name": "@18f/identity-design-system",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "description": "The global style of Login.gov",
   "main": "./build/esm/index.js",
   "type": "module",
