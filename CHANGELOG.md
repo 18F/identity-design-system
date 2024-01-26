@@ -1,3 +1,9 @@
+## 8.1.1
+
+### Bug Fixes
+
+- Fix strict ES Module import errors due to lack of fully-qualified file path.
+
 ## 8.1.0
 
 ### New Features
