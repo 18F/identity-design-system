@@ -89,14 +89,18 @@ describe('screenshot visual regression', { skip, concurrency: true }, () => {
   /** @type {import('puppeteer').Browser} */
   let browser;
 
+  /** @type {import('puppeteer').BrowserContext} */
+  let browserContext;
+
   before(async () => {
     esbuildContext = await esbuild.context({});
     port = (await esbuildContext.serve({ servedir: 'dist' })).port;
     browser = await puppeteer.launch({ headless: 'new' });
+    browserContext = await browser.createIncognitoBrowserContext();
   });
 
   after(async () => {
-    await Promise.all([browser.close(), esbuildContext.dispose()]);
+    await Promise.all([browserContext.close(), browser.close(), esbuildContext.dispose()]);
   });
 
   it('has pages to test', () => {
@@ -106,7 +110,7 @@ describe('screenshot visual regression', { skip, concurrency: true }, () => {
   paths.forEach((path) => {
     test(path, async () => {
       const localURL = `http://localhost:${port}`;
-      const page = await browser.newPage();
+      const page = await browserContext.newPage();
       const local = await getScreenshot(page, localURL + path);
       const remote = await getScreenshot(page, REMOTE_HOST + path);
       const localPNG = PNG.sync.read(local);
