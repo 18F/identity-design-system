@@ -1,3 +1,9 @@
+## 8.1.2
+
+### Bug Fixes
+
+- Fix issue with dual export backwards-compatibility resulting in errors loading in CommonJS projects. ([#401](https://github.com/18F/identity-design-system/pull/401))
+
 ## 8.1.1
 
 ### Bug Fixes

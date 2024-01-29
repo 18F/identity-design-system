@@ -35,6 +35,7 @@
     "build:docs": "run-p build:docs:*",
     "build:pkg:css": "npm run build:css",
     "build:pkg:cjs": "BABEL_ENV=cjs babel src/js --out-dir build/cjs",
+    "postbuild:pkg:cjs": "echo '{\"type\":\"commonjs\"}' > build/cjs/package.json",
     "build:pkg:esm": "babel src/js --out-dir build/esm",
     "build:pkg": "run-p build:pkg:*",
     "lint:js": "eslint src/js test",
