@@ -45,9 +45,7 @@ This is an unordered list
 
 This is a [text link](?{{ site.time | date: "%s%N" }}) on a light background, using the LDGS primary-blue color
 
-This is a <a href="{{ site.baseurl }}" class="usa-link usa-link--visited">visited text link</a>, using the USWDS setting (#54278F)
-
-This is a link that goes to an <a href="{{ site.baseurl }}" class="usa-link usa-link--external">external website</a>.
+This is a link that goes to an <a href="?{{ site.time | date: '%s%N' }}" class="usa-link usa-link--external">external website</a>.
 
 <div class="usa-section--dark padding-1">
   This is a <a href="?{{ site.time | date: '%s%N' }}" class="usa-link">text link</a> on a dark background
