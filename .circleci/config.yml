@@ -45,6 +45,11 @@ commands:
       - run:
           name: Build assets and site
           command: npm run build
+  snapshot:
+    steps:
+      - run:
+          name: Generate snapshots
+          command: scripts/snapshot.js
 
 jobs:
   lints:
@@ -65,6 +70,22 @@ jobs:
       - run:
           name: Run integration tests
           command: npm test
+  snapshot-main:
+    executor: ruby_browsers
+    steps:
+      - run:
+          name: Checkout main
+          command: git checkout main
+      - bundle-npm-install
+      - build
+      - snapshot
+  snapshot-branch:
+    executor: ruby_browsers
+    steps:
+      - checkout
+      - bundle-npm-install
+      - build
+      - snapshot
   visual-regression:
     executor: ruby_browsers
     environment:
@@ -87,4 +108,14 @@ workflows:
     jobs:
       - lints
       - integration
-      - visual-regression
+  visual_regression:
+    filters:
+      branches:
+        ignore: main
+    jobs:
+      - snapshot-main
+      - snapshot-branch
+      - visual-regression:
+        requires:
+          - snapshot-main
+          - snapshot-branch
