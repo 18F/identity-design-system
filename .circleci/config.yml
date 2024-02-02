@@ -53,7 +53,7 @@ commands:
       - persist_to_workspace:
           root: tmp/screenshot/branches
           paths:
-            - *
+            - '*'
 
 jobs:
   lints:
