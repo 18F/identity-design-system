@@ -51,8 +51,9 @@ commands:
           name: Generate snapshots
           command: scripts/snapshot.js
       - persist_to_workspace:
+          root: tmp/screenshot/branches
           paths:
-            - tmp/screenshot/branches
+            - *
 
 jobs:
   lints:
