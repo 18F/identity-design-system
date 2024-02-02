@@ -79,7 +79,7 @@ jobs:
     steps:
       - run:
           name: Checkout main
-          command: git clone -b main "$CIRCLE_REPOSITORY_URL"
+          command: git clone -b main << pipeline.trigger_parameters.github_app.repo_url >>
       - bundle-npm-install
       - build
       - snapshot
