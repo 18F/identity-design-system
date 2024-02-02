@@ -65,11 +65,12 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
         threshold: 0.2,
       });
       if (diffs > 0) {
+        const diffOutputBase = join(DIFF_DIRECTORY, path);
         await mkdir(DIFF_DIRECTORY, { recursive: true });
         await Promise.all([
-          writeFile(`${path}-local.png`, PNG.sync.write(resizedBranchPNG)),
-          writeFile(`${path}-remote.png`, PNG.sync.write(resizedMainPNG)),
-          writeFile(`${path}-diff.png`, PNG.sync.write(diff)),
+          writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(resizedBranchPNG)),
+          writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(resizedMainPNG)),
+          writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
         ]);
       }
       assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the live site.`);
