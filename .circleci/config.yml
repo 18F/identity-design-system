@@ -44,7 +44,16 @@ commands:
     steps:
       - run:
           name: Build assets and site
-          command: npm run build
+          command: make build
+  snapshot:
+    steps:
+      - run:
+          name: Generate snapshots
+          command: scripts/snapshot.js
+      - persist_to_workspace:
+          root: tmp/screenshot/branches
+          paths:
+            - '*'
 
 jobs:
   lints:
@@ -65,6 +74,26 @@ jobs:
       - run:
           name: Run integration tests
           command: npm test
+  snapshot-main:
+    executor: ruby_browsers
+    steps:
+      - checkout
+      - run:
+          name: Checkout main
+          command: git checkout main
+      - run:
+          name: Restore snapshot script
+          command: git checkout "$CIRCLE_BRANCH" -- scripts/snapshot.js
+      - bundle-npm-install
+      - build
+      - snapshot
+  snapshot-branch:
+    executor: ruby_browsers
+    steps:
+      - checkout
+      - bundle-npm-install
+      - build
+      - snapshot
   visual-regression:
     executor: ruby_browsers
     environment:
@@ -72,14 +101,22 @@ jobs:
     steps:
       - checkout
       - bundle-npm-install
+      - attach_workspace:
+          at: tmp/screenshot/branches
       - run:
           name: Run visual regression test
           command: npm test
       - store_artifacts:
-          path: tmp/results
+          path: tmp/screenshot/diff
           destination: results
       - store_test_results:
-          path: tmp/results
+          path: tmp/screenshot/diff
+
+ignore_main: &ignore_main
+  filters:
+    branches:
+      ignore:
+        - main
 
 workflows:
   version: 2
@@ -87,4 +124,14 @@ workflows:
     jobs:
       - lints
       - integration
-      - visual-regression
+  visual_regression:
+    jobs:
+      - snapshot-main:
+          <<: *ignore_main
+      - snapshot-branch:
+          <<: *ignore_main
+      - visual-regression:
+          <<: *ignore_main
+          requires:
+            - snapshot-main
+            - snapshot-branch
