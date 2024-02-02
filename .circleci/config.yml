@@ -81,9 +81,6 @@ jobs:
       - run:
           name: Checkout main
           command: git checkout main
-      - run:
-          name: Restore snapshot script
-          command: git checkout "$CIRCLE_BRANCH" -- scripts/snapshot.js
       - bundle-npm-install
       - build
       - snapshot
