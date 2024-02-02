@@ -114,7 +114,8 @@ workflows:
   visual_regression:
     filters:
       branches:
-        ignore: main
+        ignore:
+          - main
     jobs:
       - snapshot-main
       - snapshot-branch
