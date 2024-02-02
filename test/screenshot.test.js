@@ -73,7 +73,7 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
           writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
         ]);
       }
-      assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the live site.`);
+      assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the main branch.`);
     });
   });
 });
