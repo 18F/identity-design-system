@@ -120,6 +120,6 @@ workflows:
       - snapshot-main
       - snapshot-branch
       - visual-regression:
-        requires:
-          - snapshot-main
-          - snapshot-branch
+          requires:
+            - snapshot-main
+            - snapshot-branch
