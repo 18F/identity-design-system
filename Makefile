@@ -4,11 +4,6 @@ OUTPUT_DIR = $(DEFAULT_OUTPUT_DIR)
 PACKAGE_DIR = ./build
 NODE_BIN = ./node_modules/.bin
 
-# Cloud.gov Pages builds overwrite the output directory.
-ifdef SITE_PREFIX
-	OUTPUT_DIR = ./_site
-endif
-
 start:
 	$(MAKE) -j2 start-docs start-assets
 
