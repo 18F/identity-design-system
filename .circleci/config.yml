@@ -50,6 +50,9 @@ commands:
       - run:
           name: Generate snapshots
           command: scripts/snapshot.js
+      - persist_to_workspace:
+          paths:
+            - tmp/screenshot/branches
 
 jobs:
   lints:
