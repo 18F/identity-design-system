@@ -6,8 +6,6 @@ lead: >
 
 {% include helpers/base-component.html component="accordion" %}
 
-Before using an accordion, consider if their use would hinder usability. If there is not enough content to warrant condensing or if visitors need to see most or all of the information on a page, use well-formatted text instead.
-
 {% capture example %}
 <div class="usa-accordion usa-accordion--bordered" data-test="accordion">
   <!-- Use the accurate heading level to maintain the document outline -->
