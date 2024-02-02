@@ -18,8 +18,6 @@ const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';
 const MAIN_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, 'main');
 const BRANCH_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, branch);
 
-const paths = await readdir(MAIN_SNAPSHOTS_DIRECTORY);
-
 function fillImageToSize(image, width, height) {
   if (image.width === width && image.height === height) {
     return image;
@@ -44,7 +42,12 @@ function fillImageToSize(image, width, height) {
 
 const skip = !!process.env.SKIP_VISUAL_REGRESSION_TEST;
 
-describe('screenshot visual regression', { skip, concurrency: true }, () => {
+describe('screenshot visual regression', { skip, concurrency: true }, async () => {
+  let paths = [];
+  try {
+    paths = await readdir(MAIN_SNAPSHOTS_DIRECTORY);
+  } catch {}
+
   it('has pages to test', () => {
     assert(paths.length);
   });
