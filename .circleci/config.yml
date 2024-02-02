@@ -79,7 +79,7 @@ jobs:
     steps:
       - run:
           name: Checkout main
-          command: git checkout main
+          command: git clone -b main "$CIRCLE_REPOSITORY_URL"
       - bundle-npm-install
       - build
       - snapshot
