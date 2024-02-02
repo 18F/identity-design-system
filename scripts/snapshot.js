@@ -35,6 +35,7 @@ await Promise.all(
     const page = await browserContext.newPage();
     const screenshot = await getScreenshot(page, localURL + path);
     const filename = join(outputDirectory, `${basename(path, extname(path))}.png`);
+    process.stdout.write(`Writing ${filename}...\n`);
     await writeFile(filename, screenshot);
   }),
 );
