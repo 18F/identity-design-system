@@ -44,7 +44,7 @@ commands:
     steps:
       - run:
           name: Build assets and site
-          command: npm run build
+          command: make build
   snapshot:
     steps:
       - run:
