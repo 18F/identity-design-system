@@ -77,9 +77,10 @@ jobs:
   snapshot-main:
     executor: ruby_browsers
     steps:
+      - checkout
       - run:
           name: Checkout main
-          command: git clone -b main << pipeline.trigger_parameters.github_app.repo_url >>
+          command: git checkout main
       - bundle-npm-install
       - build
       - snapshot
