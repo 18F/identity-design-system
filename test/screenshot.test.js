@@ -54,21 +54,21 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
 
   paths.forEach((path) => {
     test(path, async () => {
-      const localPNG = PNG.sync.read(await readFile(join(BRANCH_SNAPSHOTS_DIRECTORY, path)));
-      const remotePNG = PNG.sync.read(await readFile(join(MAIN_SNAPSHOTS_DIRECTORY, path)));
-      const width = Math.max(localPNG.width, remotePNG.width);
-      const height = Math.max(localPNG.height, remotePNG.height);
-      const resizedLocalPNG = fillImageToSize(localPNG, width, height);
-      const resizedRemotePNG = fillImageToSize(remotePNG, width, height);
+      const branchPNG = PNG.sync.read(await readFile(join(BRANCH_SNAPSHOTS_DIRECTORY, path)));
+      const mainPNG = PNG.sync.read(await readFile(join(MAIN_SNAPSHOTS_DIRECTORY, path)));
+      const width = Math.max(branchPNG.width, mainPNG.width);
+      const height = Math.max(branchPNG.height, mainPNG.height);
+      const resizedBranchPNG = fillImageToSize(branchPNG, width, height);
+      const resizedMainPNG = fillImageToSize(mainPNG, width, height);
       const diff = new PNG({ width, height });
-      const diffs = match(resizedLocalPNG.data, resizedRemotePNG.data, diff.data, width, height, {
+      const diffs = match(resizedBranchPNG.data, resizedMainPNG.data, diff.data, width, height, {
         threshold: 0.2,
       });
       if (diffs > 0) {
         await mkdir(DIFF_DIRECTORY, { recursive: true });
         await Promise.all([
-          writeFile(`${path}-local.png`, PNG.sync.write(resizedLocalPNG)),
-          writeFile(`${path}-remote.png`, PNG.sync.write(resizedRemotePNG)),
+          writeFile(`${path}-local.png`, PNG.sync.write(resizedBranchPNG)),
+          writeFile(`${path}-remote.png`, PNG.sync.write(resizedMainPNG)),
           writeFile(`${path}-diff.png`, PNG.sync.write(diff)),
         ]);
       }
