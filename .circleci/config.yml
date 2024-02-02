@@ -102,10 +102,10 @@ jobs:
           name: Run visual regression test
           command: npm test
       - store_artifacts:
-          path: tmp/results
+          path: tmp/screenshot/diff
           destination: results
       - store_test_results:
-          path: tmp/results
+          path: tmp/screenshot/diff
 
 ignore_main: &ignore_main
   filters:
