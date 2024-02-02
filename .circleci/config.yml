@@ -105,6 +105,12 @@ jobs:
       - store_test_results:
           path: tmp/results
 
+ignore_main:
+  filters:
+    branches:
+      ignore:
+        - main
+
 workflows:
   version: 2
   test:
@@ -112,14 +118,13 @@ workflows:
       - lints
       - integration
   visual_regression:
-    filters:
-      branches:
-        ignore:
-          - main
     jobs:
-      - snapshot-main
-      - snapshot-branch
+      - snapshot-main:
+          <<: *ignore_main
+      - snapshot-branch:
+          <<: *ignore_main
       - visual-regression:
+          <<: *ignore_main
           requires:
             - snapshot-main
             - snapshot-branch
