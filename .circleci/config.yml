@@ -80,7 +80,7 @@ jobs:
       - checkout
       - run:
           name: Checkout main
-          command: git checkout main
+          command: git checkout main -- docs src package.json package-lock.json Gemfile Gemfile.lock
       - bundle-npm-install
       - build
       - snapshot
