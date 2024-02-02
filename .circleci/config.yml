@@ -101,6 +101,8 @@ jobs:
     steps:
       - checkout
       - bundle-npm-install
+      - attach_workspace:
+          at: tmp/screenshot/branches
       - run:
           name: Run visual regression test
           command: npm test
