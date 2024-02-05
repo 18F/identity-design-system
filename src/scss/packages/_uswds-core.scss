@@ -59,7 +59,8 @@ $site-palette: (
   // Colors
   // ----------------------------------------
   // Palettes
-  $global-color-palettes: ('palette-color-default', 'palette-color-state') !default,
+  $global-color-palettes: ('palette-color-required', 'palette-color-theme', 'palette-color-state')
+    !default,
   // Base colors
   $theme-color-base-family: 'grey' !default,
   $theme-color-base-lightest: map.get($site-palette, 'site-lightest-grey') !default,

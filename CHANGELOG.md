@@ -2,9 +2,35 @@
 
 ### Breaking Changes
 
-- [Prose](https://designsystem.digital.gov/components/prose/) styling overrides have been removed. Text formatting should now adhere to the defaults from the U.S. Web Design System.
-- Drop support for Internet Explorer. ([#387](https://github.com/18F/identity-style-guide/pull/381))
+- [Prose](https://designsystem.digital.gov/components/prose/) styling overrides have been removed. Text formatting should now adhere to the defaults from the U.S. Web Design System. ([#390](https://github.com/18F/identity-design-system/pull/390))
+- Drop support for Internet Explorer. ([#387](https://github.com/18F/identity-style-guide/pull/387))
   - Support was indirectly dropped in [v7.0.0](https://github.com/18F/identity-design-system/releases/tag/v7.0.0) via the upgrade to USWDS [v3.0.0](https://designsystem.digital.gov/about/releases/#version-uswds-300), which similarly ended explicit support for Internet Explorer. This package had continued to include Internet Explorer in its [Browserslist](https://browsersl.ist/) configuration, but this has now been removed.
+- Remove utility classes for raw color tokens. ([#405](https://github.com/18F/identity-style-guide/pull/405))
+  - These colors were usually incorrect because they were using U.S. Web Design System defaults instead of the Login.gov Design System color set.
+  - In most common cases, these should be replaced with stateful equivalents ("success" instead of "green") or theme colors ("base" instead of "gray-50").
+  - Applies to the following utilities:
+    - Background color (`bg-*`)
+    - Border color (`border-*`)
+    - Text color (`text-*`)
+    - Outline color (`outline-*`)
+    - Text underline color (`underline-*`)
+  - The following colors are removed:
+    - `red` (use `error` instead)
+    - `orange`
+    - `gold`
+    - `yellow` (use `warning` instead)
+    - `green` (use `success` instead)
+    - `mint`
+    - `cyan`
+    - `blue` (use `primary` instead)
+    - `indigo`
+    - `violet`
+    - `magenta`
+    - `gray-10` (use `base-lighter` instead)
+    - `gray-30` (use `base-light` instead)
+    - `gray-50` (use `base` instead)
+    - `gray-70` (use `base-darker` instead)
+    - `gray-90` (use `base-darkest` instead)
 
 ### Internal
 
