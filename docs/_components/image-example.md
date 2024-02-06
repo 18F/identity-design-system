@@ -9,7 +9,7 @@ This is not a component in the USWDS design system.
 
 
 {% capture example %}
-<div class="usa-image-example--correct">
+<div class="usa-image-example usa-image-example--correct">
   <figure class="usa-image-example__figure">
     <img class="usa-image-example__image" alt="correct example, use dark background" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
     <figcaption class="usa-image-example__figcaption">
