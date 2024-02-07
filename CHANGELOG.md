@@ -32,6 +32,10 @@
     - `gray-70` (use `base-darker` instead)
     - `gray-90` (use `base-darkest` instead)
 
+### Bug Fixes
+
+- Add missing JavaScript exports for `button`, `inPageNavigation`, `inputMask`, `languageSelector`, and `range`.
+
 ### Internal
 
 - Replace code compiler Babel with ESBuild. ([#387](https://github.com/18F/identity-style-guide/pull/381))

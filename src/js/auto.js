@@ -3,7 +3,7 @@ import * as components from './components';
 function initComponents() {
   const target = document.body;
   Object.keys(components).forEach((key) => {
-    const behavior = components[key];
+    const behavior = components[/** @type {keyof components} */ (key)];
     behavior.on(target);
   });
 }
