@@ -34,7 +34,7 @@
 
 ### Bug Fixes
 
-- Add missing JavaScript exports for `button`, `inPageNavigation`, `inputMask`, `languageSelector`, and `range`.
+- Add missing JavaScript exports for `button`, `inPageNavigation`, `inputMask`, `languageSelector`, and `range`. ([#407](https://github.com/18F/identity-design-system/pull/407))
 
 ### Internal
 
