@@ -25,6 +25,9 @@ validate-package-lock: package.json package-lock.json
 
 validate-lockfiles: validate-gemfile-lock validate-package-lock
 
+typecheck:
+	npm run typecheck
+
 optimize-svg:
 	$(NODE_BIN)/svgo --config svgo.config.js -f src/img
 
@@ -33,7 +36,7 @@ optimize-assets: optimize-svg
 lint-optimized-assets: optimize-assets
 	(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize-assets'"; exit 1)
 
-lint: build-package validate-lockfiles lint-optimized-assets
+lint: build-package validate-lockfiles lint-optimized-assets typecheck
 	npm run lint
 
 build: build-docs build-assets build-package
@@ -87,6 +90,7 @@ clean:
 	validate-gemfile-lock \
 	validate-package-lock \
 	validate-lockfiles \
+	typecheck \
 	optimize-svg \
 	optimize-assets \
 	lint-optimized-assets \
