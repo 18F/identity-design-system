@@ -40,11 +40,11 @@ commands:
           paths:
             - ~/.npm
             - ~/.bundler
-  build:
+  build-docs:
     steps:
       - run:
           name: Build assets and site
-          command: make build
+          command: make -j2 build-assets build-docs
   snapshot:
     steps:
       - run:
@@ -82,14 +82,14 @@ jobs:
           name: Checkout main
           command: git checkout main
       - bundle-npm-install
-      - build
+      - build-docs
       - snapshot
   snapshot-branch:
     executor: ruby_browsers
     steps:
       - checkout
       - bundle-npm-install
-      - build
+      - build-docs
       - snapshot
   visual-regression:
     executor: ruby_browsers
