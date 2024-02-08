@@ -5,9 +5,11 @@ import { basename, dirname } from 'node:path';
 import glob from 'fast-glob';
 
 /**
+ * Converts a string to camel case.
+ *
  * @param {string} str
  *
- * @returns {string}
+ * @return {string}
  */
 const camelCase = (str) => str.replace(/-([a-z])/g, (_match, character) => character.toUpperCase());
 

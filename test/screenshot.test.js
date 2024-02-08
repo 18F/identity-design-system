@@ -19,6 +19,8 @@ const MAIN_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, 'main');
 const BRANCH_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, branch);
 
 /**
+ * Resizes an image to the given dimensions.
+ *
  * @param {import('pngjs').PNGWithMetadata} image
  * @param {number} width
  * @param {number} height
