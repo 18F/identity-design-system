@@ -46,6 +46,7 @@
     "start": "make start",
     "clean": "make clean",
     "lint": "run-p lint:*",
+    "typecheck": "tsc",
     "test": "make test",
     "build": "run-p build:docs build:pkg",
     "pages": "make build-assets",
@@ -78,6 +79,10 @@
     "@18f/eslint-plugin-identity": "^2.0.0",
     "@18f/identity-build-sass": "^2.0.0",
     "@18f/identity-stylelint-config": "^2.0.0",
+    "@types/html_codesniffer": "^2.5.4",
+    "@types/pixelmatch": "^5.2.6",
+    "@types/pngjs": "^6.0.4",
+    "@types/uswds__uswds": "^3.3.3",
     "browserslist": "^4.22.2",
     "esbuild": "^0.19.9",
     "eslint": "^8.39.0",
@@ -91,6 +96,7 @@
     "prettier": "^2.8.8",
     "puppeteer": "^21.6.1",
     "stylelint": "^15.6.1",
-    "svgo": "^3.0.2"
+    "svgo": "^3.0.2",
+    "typescript": "^5.3.3"
   }
 }

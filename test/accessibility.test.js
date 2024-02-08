@@ -45,13 +45,9 @@ describe('accessibility', () => {
       await page.addScriptTag({ path: require.resolve('html_codesniffer/build/HTMLCS.js') });
       const messages = await page.evaluate(
         () =>
-          new Promise((resolve, reject) => {
-            window.HTMLCS.process('WCAG2AA', window.document, (error) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(window.HTMLCS.getMessages());
-              }
+          new Promise((resolve) => {
+            window.HTMLCS.process('WCAG2AA', window.document.body, () => {
+              resolve(window.HTMLCS.getMessages());
             });
           }),
       );

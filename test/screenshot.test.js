@@ -18,6 +18,15 @@ const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';
 const MAIN_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, 'main');
 const BRANCH_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, branch);
 
+/**
+ * Resizes an image to the given dimensions.
+ *
+ * @param {import('pngjs').PNGWithMetadata} image
+ * @param {number} width
+ * @param {number} height
+ *
+ * @return {import('pngjs').PNG}
+ */
 function fillImageToSize(image, width, height) {
   if (image.width === width && image.height === height) {
     return image;
@@ -43,6 +52,7 @@ function fillImageToSize(image, width, height) {
 const skip = !!process.env.SKIP_VISUAL_REGRESSION_TEST;
 
 describe('screenshot visual regression', { skip, concurrency: true }, async () => {
+  /** @type {string[]} */
   let paths = [];
   try {
     paths = await readdir(MAIN_SNAPSHOTS_DIRECTORY);
