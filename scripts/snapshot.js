@@ -25,14 +25,13 @@ async function getScreenshot(page, url) {
 const esbuildContext = await esbuild.context({});
 const { port } = await esbuildContext.serve({ servedir: 'dist' });
 const browser = await puppeteer.launch({ headless: 'new' });
-const browserContext = await browser.createIncognitoBrowserContext();
 const localURL = `http://localhost:${port}/`;
 const outputDirectory = join('tmp/screenshot/branches', branch);
 
 await mkdir(outputDirectory, { recursive: true });
 await Promise.all(
   paths.map(async (path) => {
-    const page = await browserContext.newPage();
+    const page = await browser.newPage();
     const screenshot = await getScreenshot(page, localURL + path);
     const filename = join(outputDirectory, `${basename(path, extname(path))}.png`);
     process.stdout.write(`Writing ${filename}...\n`);
@@ -40,4 +39,4 @@ await Promise.all(
     await page.close();
   }),
 );
-await Promise.all([browserContext.close(), browser.close(), esbuildContext.dispose()]);
+await Promise.all([browser.close(), esbuildContext.dispose()]);
