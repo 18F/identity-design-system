@@ -31,18 +31,23 @@
     - `gray-50` (use `base` instead)
     - `gray-70` (use `base-darker` instead)
     - `gray-90` (use `base-darkest` instead)
-- Remove images not integral to the design system. If you use any of these images, consider proposed alternatives below, or copy [the image from the previous release](https://github.com/18F/identity-design-system/tree/v8.1.2/src/img) into your project:
-  - `illustrations/fail.svg` (legacy alert icon, new alert icons will be introduced in a future release)
-  - `illustrations/security-key.svg`
-  - `angle-arrow-down-white-hover.svg` (use `expand_more` icon instead)
-  - `angle-arrow-down-white.svg` (use `expand_more` icon instead)
-  - `angle-arrow-down.svg` (use `expand_more` icon instead)
-  - `angle-arrow-up-white-hover.svg` (use `expand_less` icon instead)
-  - `angle-arrow-up-white.svg` (use `expand_less` icon instead)
-  - `angle-arrow-up.svg` (use `expand_less` icon instead)
-  - `close-primary.svg` (use `close` icon instead)
-  - `close.svg` (use `close` icon instead)
-  - `hero.png`
+- Remove images not integral to the design system. ([#410](https://github.com/18F/identity-design-system/pull/410))
+  - If you use any of these images, consider proposed alternatives below, or copy [the image from the previous release](https://github.com/18F/identity-design-system/tree/v8.1.2/src/img) into your project:
+    - `illustrations/fail.svg` (legacy alert icon, new alert icons will be introduced in a future release)
+    - `illustrations/security-key.svg`
+    - `angle-arrow-down-white-hover.svg` (use `expand_more` icon instead)
+    - `angle-arrow-down-white.svg` (use `expand_more` icon instead)
+    - `angle-arrow-down.svg` (use `expand_more` icon instead)
+    - `angle-arrow-up-white-hover.svg` (use `expand_less` icon instead)
+    - `angle-arrow-up-white.svg` (use `expand_less` icon instead)
+    - `angle-arrow-up.svg` (use `expand_less` icon instead)
+    - `close-primary.svg` (use `close` icon instead)
+    - `close.svg` (use `close` icon instead)
+    - `hero.png`
+
+### Improvements
+
+- Optimize images to reduce their size. ([#411](https://github.com/18F/identity-design-system/pull/411))
 
 ### Bug Fixes
 
