@@ -29,7 +29,7 @@ typecheck:
 	npm run typecheck
 
 optimize-svg:
-	$(NODE_BIN)/svgo --config svgo.config.js -r -f src/img
+	$(NODE_BIN)/svgo --config svgo.config.js --recursive --folder src/img
 
 optimize-assets: optimize-svg
 
