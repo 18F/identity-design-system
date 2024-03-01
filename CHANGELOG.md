@@ -46,7 +46,7 @@
 
 ### New Features
 
-- Add TypeScript types for JavaScript components.
+- Add TypeScript types for JavaScript components. ([#413](https://github.com/18F/identity-design-system/pull/413))
 
 ### Bug Fixes
 
