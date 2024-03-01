@@ -53,6 +53,7 @@
     "prepublishOnly": "make lint && make clean && make build-assets build-package"
   },
   "files": [
+    "index.d.ts",
     "build",
     "dist/assets/**/*",
     "packages",
