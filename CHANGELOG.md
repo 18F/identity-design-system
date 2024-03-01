@@ -44,6 +44,10 @@
   - `close.svg` (use `close` icon instead)
   - `hero.png`
 
+### New Features
+
+- Add TypeScript types for JavaScript components. ([#413](https://github.com/18F/identity-design-system/pull/413))
+
 ### Bug Fixes
 
 - Add missing JavaScript exports for `button`, `inPageNavigation`, `inputMask`, `languageSelector`, and `range`. ([#407](https://github.com/18F/identity-design-system/pull/407))
