@@ -1,17 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import { readFile } from 'node:fs/promises';
-import { basename, dirname } from 'node:path';
-import glob from 'fast-glob';
-
-/**
- * Converts a string to camel case.
- *
- * @param {string} str
- *
- * @return {string}
- */
-const camelCase = (str) => str.replace(/-([a-z])/g, (_match, character) => character.toUpperCase());
 
 describe('components', () => {
   it('re-exports all uswds components', async () => {
@@ -19,9 +8,15 @@ describe('components', () => {
     const localComponentKeys = Array.from(localComponentsFileContent.matchAll(/import ([a-z]+)/gi))
       .map((match) => match[1])
       .sort();
-    const uswdsComponentKeys = glob
-      .sync('./node_modules/@uswds/uswds/packages/*/src/index.js')
-      .map((path) => camelCase(basename(dirname(dirname(path))).replace(/^_?usa-/, '')))
+    const uswdsComponentsIndex = await readFile(
+      'node_modules/@uswds/uswds/packages/uswds-core/src/js/index.js',
+      'utf-8',
+    );
+    const [, exports] = /** @type {RegExpMatchArray} */ (
+      uswdsComponentsIndex.match(/module\.exports = \{([\s\S]+)\};/)
+    );
+    const uswdsComponentKeys = Array.from(exports.matchAll(/(?:\s+([a-zA-Z]+)),/g))
+      .map(([, capturedKey]) => capturedKey)
       .sort();
 
     assert(uswdsComponentKeys.length);

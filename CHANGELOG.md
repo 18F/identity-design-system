@@ -44,6 +44,9 @@
     - `close-primary.svg` (use `close` icon instead)
     - `close.svg` (use `close` icon instead)
     - `hero.png`
+- Align JavaScript component names with U.S. Web Design System. ([#414](https://github.com/18F/identity-design-system/pull/414))
+  - `header` is now named `navigation`
+  - `validation` is now named `validator`
 
 ### Improvements
 
