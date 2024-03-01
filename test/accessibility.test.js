@@ -27,7 +27,7 @@ describe('accessibility', () => {
   before(async () => {
     esbuildContext = await esbuild.context({});
     port = (await esbuildContext.serve({ servedir: 'dist' })).port;
-    browser = await puppeteer.launch({ headless: 'new' });
+    browser = await puppeteer.launch();
   });
 
   after(async () => {
