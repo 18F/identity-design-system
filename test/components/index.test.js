@@ -16,7 +16,7 @@ describe('components', () => {
       uswdsComponentsIndex.match(/module\.exports = \{([\s\S]+)\};/)
     );
     const uswdsComponentKeys = Array.from(exports.matchAll(/(?:\s+([a-zA-Z]+)),/g))
-      .map((match) => match[1])
+      .map(([, capturedKey]) => capturedKey)
       .sort();
 
     assert(uswdsComponentKeys.length);
