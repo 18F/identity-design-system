@@ -73,6 +73,7 @@
   },
   "homepage": "https://github.com/18F/identity-design-system#readme",
   "dependencies": {
+    "@types/uswds__uswds": "^3.3.3",
     "@uswds/uswds": "^3.7.1"
   },
   "devDependencies": {
@@ -82,7 +83,6 @@
     "@types/html_codesniffer": "^2.5.4",
     "@types/pixelmatch": "^5.2.6",
     "@types/pngjs": "^6.0.4",
-    "@types/uswds__uswds": "^3.3.3",
     "browserslist": "^4.22.2",
     "esbuild": "^0.19.9",
     "eslint": "^8.39.0",
