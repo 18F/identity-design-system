@@ -11,7 +11,7 @@ import inPageNavigation from '@uswds/uswds/js/usa-in-page-navigation';
 import inputMask from '@uswds/uswds/js/usa-input-mask';
 import languageSelector from '@uswds/uswds/js/usa-language-selector';
 import modal from '@uswds/uswds/js/usa-modal';
-import header from '@uswds/uswds/js/usa-header';
+import navigation from '@uswds/uswds/js/usa-header';
 import password from '@uswds/uswds/js/_usa-password';
 import range from '@uswds/uswds/js/usa-range';
 import search from '@uswds/uswds/js/usa-search';
@@ -19,7 +19,7 @@ import skipnav from '@uswds/uswds/js/usa-skipnav';
 import timePicker from '@uswds/uswds/js/usa-time-picker';
 import table from '@uswds/uswds/js/usa-table';
 import tooltip from '@uswds/uswds/js/usa-tooltip';
-import validation from '@uswds/uswds/js/usa-validation';
+import validator from '@uswds/uswds/js/usa-validation';
 
 export {
   accordion,
@@ -35,7 +35,7 @@ export {
   inputMask,
   languageSelector,
   modal,
-  header,
+  navigation,
   password,
   range,
   search,
@@ -43,5 +43,5 @@ export {
   timePicker,
   table,
   tooltip,
-  validation,
+  validator,
 };

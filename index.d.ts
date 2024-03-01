@@ -11,14 +11,14 @@ import {
   inputMask as baseInputMask,
   languageSelector as baseLanguageSelector,
   modal as baseModal,
-  navigation as baseHeader,
+  navigation as baseNavigation,
   password as basePassword,
   search as baseSearch,
   skipnav as baseSkipnav,
   timePicker as baseTimePicker,
   table as baseTable,
   tooltip as baseTooltip,
-  validator as baseValidation,
+  validator as baseValidator,
 } from '@uswds/uswds';
 
 type ComponentLifecycle = (target?: HTMLElement) => any;
@@ -56,7 +56,7 @@ export const inPageNavigation: typeof baseInPageNavigation & BaseComponent;
 export const inputMask: typeof baseInputMask & BaseComponent;
 export const languageSelector: typeof baseLanguageSelector & BaseComponent;
 export const modal: typeof baseModal & BaseComponent;
-export const header: typeof baseHeader & BaseComponent;
+export const navigation: typeof baseNavigation & BaseComponent;
 export const password: typeof basePassword & BaseComponent;
 export const range: Range;
 export const search: typeof baseSearch & BaseComponent;
@@ -64,4 +64,4 @@ export const skipnav: typeof baseSkipnav & BaseComponent;
 export const timePicker: typeof baseTimePicker & BaseComponent;
 export const table: typeof baseTable & BaseComponent;
 export const tooltip: Tooltip;
-export const validation: typeof baseValidation & BaseComponent;
+export const validator: typeof baseValidator & BaseComponent;
