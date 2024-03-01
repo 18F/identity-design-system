@@ -24,6 +24,7 @@
     "./dist/assets/js/main": "./dist/assets/js/main.js",
     "./dist/assets/js/main.js": "./dist/assets/js/main.js"
   },
+  "types": "./index.d.ts",
   "sideEffects": [
     "./dist/assets/js/main.js",
     "./build/*/auto.js"
