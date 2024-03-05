@@ -1,0 +1,39 @@
+
+<div class="mobile-embed">
+  <noscript>
+    {{ include.markup }}
+  </noscript>
+  <iframe
+    title="Mobile Preview"
+    src="{{ site.baseurl }}/mobile-embed-frame.html"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    class="border-y border-base-lightest"
+  ></iframe>
+  <script>
+    (() => {
+      const wrapper = document.currentScript.closest('.mobile-embed');
+      const markup = wrapper.querySelector('noscript').innerHTML;
+      const iframe = wrapper.querySelector('iframe');
+
+      function sendMessage() {
+        iframe.contentWindow.postMessage(JSON.stringify({ markup }), window.location.origin);
+      }
+
+      if (iframe.readyState === 'complete') {
+        sendMessage();
+      } else {
+        iframe.addEventListener('load', sendMessage);
+      }
+    })();
+  </script>
+</div>
+<style>
+.mobile-embed {
+  background-image: url('{{ site.baseurl }}/img/phone.svg');
+  width: 417px;
+  height: 876px;
+  padding: 66px 12px 95px;
+}
+</style>
