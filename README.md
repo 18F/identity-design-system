@@ -40,6 +40,24 @@ If you're using `@18f/identity-build-sass`, the following command will compile a
 npx build-sass path/to/styles.css.scss --out-dir=build
 ```
 
+#### Browser-Ready CSS Bundles
+
+While it's recommended to import the Login.gov Design System as a Sass module to support [optimization options](#optimization), a precompiled CSS bundle is made available for convenience or for projects where it's not possible to include a Sass build process.
+
+These files are found within `dist/assets/css` of [the published NPM package](https://www.npmjs.com/package/@18f/identity-design-system?activeTab=code). When installed locally, this is found at `node_modules/@18f/identity-design-system`.
+
+```html
+<html>
+  <head>
+    <!-- ... -->
+    <link rel="stylesheet" href="/path/to/identity-design-system/dist/assets/css/styles.css">
+  </head>
+  <body>
+    <!-- ... -->
+  </body>
+</html>
+```
+
 ### JavaScript
 
 As an NPM package, you can import the Login.gov Design System anywhere in your projects imports:
@@ -49,6 +67,25 @@ import '@18f/identity-design-system';
 ```
 
 By default, this will include JavaScript for _every_ component, which can increase load times for users and build times for developers. Refer to [the Options section below](#optimization) to learn how to optimize JavaScript imports.
+
+#### Browser-Ready JavaScript Bundles
+
+While it's recommended to import the Login.gov Design System as an NPM package to support [optimization options](#optimization), a precompiled JavaScript bundle is made available for convenience or for projects where it's not possible to include a JavaScript build process.
+
+These files are found within `dist/assets/js` of [the published NPM package](https://www.npmjs.com/package/@18f/identity-design-system?activeTab=code). When installed locally, this is found at `node_modules/@18f/identity-design-system`.
+
+```html
+<html>
+  <head>
+    <!-- ... -->
+    <script src="/path/to/identity-design-system/dist/assets/js/init.js"></script>
+  </head>
+  <body>
+    <!-- ... -->
+    <script src="/path/to/identity-design-system/dist/assets/js/main.js"></script>
+  </body>
+</html>
+```
 
 ## Options
 
