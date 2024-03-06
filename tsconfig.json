@@ -9,10 +9,7 @@
     "moduleResolution": "node",
     "module": "ESNext",
     "target": "ESNext",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["typings/*"]
-    }
+    "baseUrl": "."
   },
   "exclude": ["build", "dist", "packages"]
 }
