@@ -51,14 +51,17 @@
 ### Improvements
 
 - Optimize images to reduce their size. ([#411](https://github.com/18F/identity-design-system/pull/411))
+- Browser-ready JavaScript bundles are now minified. ([#421](https://github.com/18F/identity-design-system/pull/421))
 
 ### New Features
 
 - Add TypeScript types for JavaScript components. ([#413](https://github.com/18F/identity-design-system/pull/413))
+- Include `init.js` as both a package entrypoint and precompiled asset within `dist/assets/js`, which provides the functionality of [U.S. Web Design System's `uswds-init.js` script](https://designsystem.digital.gov/components/banner/#using-the-banner-component-2) to reduce the appearance of flashing content during page load. See README Browser-Ready JavaScript Bundles for usage instructions. ([#421](https://github.com/18F/identity-design-system/pull/421))
 
 ### Bug Fixes
 
 - Add missing JavaScript exports for `button`, `inPageNavigation`, `inputMask`, `languageSelector`, and `range`. ([#407](https://github.com/18F/identity-design-system/pull/407))
+- Fix `dist/assets/js/main.js` compilation to properly consider browser support. ([#421](https://github.com/18F/identity-design-system/pull/421))
 
 ### Internal
 

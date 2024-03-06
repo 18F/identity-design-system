@@ -13,6 +13,10 @@
       "require": "./build/cjs/auto.js",
       "import": "./build/esm/auto.js"
     },
+    "./init": {
+      "require": "./build/cjs/init.js",
+      "import": "./build/esm/init.js"
+    },
     "./build/cjs/auto": "./build/cjs/auto.js",
     "./build/cjs/auto.js": "./build/cjs/auto.js",
     "./build/cjs/index": "./build/cjs/index.js",
@@ -27,17 +31,20 @@
   "types": "./index.d.ts",
   "sideEffects": [
     "./dist/assets/js/main.js",
-    "./build/*/auto.js"
+    "./build/*/auto.js",
+    "./build/*/init.js"
   ],
   "scripts": {
+    "build:js": "esbuild src/js/auto.js src/js/init.ts --bundle --minify --outdir=dist/assets/js --target=`./scripts/esbuild-targets.mjs`",
+    "postbuild:js": "mv dist/assets/js/auto.js dist/assets/js/main.js",
     "build:css": "build-sass src/scss/*.scss --load-path=./src/scss/packages --out-dir=dist/assets/css",
     "build:docs:css": "npm run build:css",
-    "build:docs:js": "esbuild src/js/auto.js --bundle --outfile=dist/assets/js/main.js",
+    "build:docs:js": "npm run build:js",
     "build:docs": "run-p build:docs:*",
     "build:pkg:css": "npm run build:css",
-    "build:pkg:cjs": "esbuild `find src/js -name '*.js'` --outdir=build/cjs --format=cjs --target=`./scripts/esbuild-targets.mjs`",
+    "build:pkg:cjs": "esbuild `find src/js -type f` --outdir=build/cjs --format=cjs --target=`./scripts/esbuild-targets.mjs`",
     "postbuild:pkg:cjs": "echo '{\"type\":\"commonjs\"}' > build/cjs/package.json",
-    "build:pkg:esm": "esbuild `find src/js -name '*.js'` --outdir=build/esm --format=esm --target=`./scripts/esbuild-targets.mjs`",
+    "build:pkg:esm": "esbuild `find src/js -type f` --outdir=build/esm --format=esm --target=`./scripts/esbuild-targets.mjs`",
     "build:pkg": "run-p build:pkg:*",
     "lint:js": "eslint src/js test",
     "lint:css": "stylelint src/scss",
