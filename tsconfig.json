@@ -5,6 +5,7 @@
     "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "module": "ESNext",
     "target": "ESNext",
