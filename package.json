@@ -89,6 +89,7 @@
     "@18f/eslint-plugin-identity": "^2.0.0",
     "@18f/identity-build-sass": "^3.0.0",
     "@18f/identity-stylelint-config": "^4.0.0",
+    "@happy-dom/global-registrator": "^13.6.2",
     "@types/html_codesniffer": "^2.5.4",
     "@types/pixelmatch": "^5.2.6",
     "@types/pngjs": "^6.0.4",
