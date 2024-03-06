@@ -62,6 +62,7 @@
 
 - Add missing JavaScript exports for `button`, `inPageNavigation`, `inputMask`, `languageSelector`, and `range`. ([#407](https://github.com/18F/identity-design-system/pull/407))
 - Fix `dist/assets/js/main.js` compilation to properly consider browser support. ([#421](https://github.com/18F/identity-design-system/pull/421))
+- Fix strict ES Module import errors due to lack of fully-qualified file path when importing `auto` entrypoint. ([#422](https://github.com/18F/identity-design-system/pull/422))
 
 ### Internal
 
