@@ -1,5 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
-import { describe, before, after, test, it } from 'node:test';
+import { describe, before, after, it } from 'node:test';
 import assert from 'node:assert';
 import * as esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
