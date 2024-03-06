@@ -24,7 +24,12 @@ async function getScreenshot(page, url) {
 
 const esbuildContext = await esbuild.context({});
 const { port } = await esbuildContext.serve({ servedir: 'dist' });
-const browser = await puppeteer.launch();
+const browser = await puppeteer.launch({
+  defaultViewport: {
+    width: 1024,
+    height: 768,
+  },
+});
 const localURL = `http://localhost:${port}/`;
 const outputDirectory = join('tmp/screenshot/branches', branch);
 
