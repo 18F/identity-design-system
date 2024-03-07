@@ -42,9 +42,11 @@
     }
   }
 
-  button {
-    &:hover {
-      background-color: color('primary-lightest');
+  @include at-media-max($theme-header-min-width) {
+    button {
+      &:hover {
+        background-color: color('primary-lightest');
+      }
     }
   }
 }
