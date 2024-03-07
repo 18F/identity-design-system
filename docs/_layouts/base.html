@@ -1,41 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
-    <script src="{{ site.baseurl }}/assets/js/init.js"></script>
-  </head>
-  <body>
-    <main class="padding-y-4">
-      <div class="grid-container">
-        <div class="grid-row grid-gap">
-          <aside class="tablet:grid-col-3">
-            <nav>
-              <ul class="usa-sidenav">
-                {%
-                  include nav/list.html
-                  links = site.data.nav
-                  li_class = 'usa-sidenav__item'
-                  ul_class = 'usa-sidenav__sublist'
-                %}
-              </ul>
-            </nav>
-          </aside>
+{% include layout/header.html %}
 
-          <div class="tablet:grid-col-9 usa-prose">
-            <h1>{{ page.title }}</h1>
+{{ content }}
 
-            {% if page.lead %}
-              <p class="usa-intro">{{ page.lead }}</p>
-            {% endif %}
-
-            {{ content }}
-          </div>
-        </div>
-      </div>
-    </main>
-    <script src="{{ site.baseurl }}/assets/js/main.js"></script>
-  </body>
-</html>
+{% include layout/footer.html %}
