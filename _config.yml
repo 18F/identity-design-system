@@ -11,6 +11,9 @@ collections:
   components:
     output: true
     permalink: /:name/
+  embeds:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   - scope:

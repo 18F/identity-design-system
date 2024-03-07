@@ -1,14 +1,8 @@
 ---
-title: Header
-lead: >
-  A header helps users identify where they are and provides a quick, organized way to reach the main sections of a website.
+title: Mobile Embed
+layout: base
 ---
 
-{% include helpers/base-component.html component="header" %}
-
-## Default
-
-{% capture example %}
 <div class="usa-overlay"></div>
 <div class="usa-header usa-header--extended">
   <div class="usa-nav-container">
@@ -105,9 +99,18 @@ lead: >
     </nav>
   </div>
 </div>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
 
-## Mobile
+<style>
+.usa-nav.is-visible {
+  animation: none !important;
+}
 
-{% include helpers/mobile-embed.html embed="header/mobile" %}
+.usa-overlay {
+  transition: none !important;
+}
+</style>
+<script>
+window.addEventListener('load', () => {
+  document.querySelector('.usa-menu-btn').click();
+});
+</script>
