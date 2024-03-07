@@ -49,7 +49,7 @@ layout: base
             >
               <span>Section</span>
             </button>
-            <ul id="nav-section" class="usa-nav__submenu" hidden>
+            <ul id="nav-section" class="usa-nav__submenu">
               <li class="usa-nav__submenu-item">
                 <a href="{{ site.baseurl }}">
                   <span>Navigation Link</span>
@@ -76,7 +76,7 @@ layout: base
             >
               <span>Current Section</span>
             </button>
-            <ul id="current-nav-section" class="usa-nav__submenu" hidden>
+            <ul id="current-nav-section" class="usa-nav__submenu">
               <li class="usa-nav__submenu-item">
                 <a href="{{ site.baseurl }}">
                   <span>Navigation Link</span>
