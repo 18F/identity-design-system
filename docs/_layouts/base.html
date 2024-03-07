@@ -9,10 +9,6 @@
   </head>
   <body>
     {{ content }}
-    {% if page.load_script != false %}
-      <script src="{{ site.baseurl }}/assets/js/main.js"></script>
-    {% else %}
-      <div data-script-src="{{ site.baseurl }}/assets/js/main.js"></div>
-    {% endif %}
+    <script src="{{ site.baseurl }}/assets/js/main.js"></script>
   </body>
 </html>
