@@ -1,3 +1,9 @@
+## Unreleased
+
+### New Features
+
+- Add SVG format option for favicon image. ([#424](https://github.com/18F/identity-design-system/pull/424))
+
 ## 9.0.0
 
 ### Breaking Changes
