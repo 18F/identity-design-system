@@ -4,6 +4,10 @@
 
 - Add SVG format option for favicon image. ([#424](https://github.com/18F/identity-design-system/pull/424))
 
+### Dependencies
+
+- Upgrade USWDS from v3.7.1 to v3.8.0 (see [release notes](https://github.com/uswds/uswds/releases/tag/v3.8.0)) ([#425](https://github.com/18F/identity-design-system/pull/425))
+
 ## 9.0.0
 
 ### Breaking Changes
