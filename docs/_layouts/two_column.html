@@ -9,16 +9,7 @@ layout: base
   <div class="grid-container">
     <div class="grid-row grid-gap">
       <aside class="tablet:grid-col-3">
-        <nav>
-          <ul class="usa-sidenav">
-            {%
-              include nav/list.html
-              links = site.data.nav
-              li_class = 'usa-sidenav__item'
-              ul_class = 'usa-sidenav__sublist'
-            %}
-          </ul>
-        </nav>
+        {% include sidenav.html %}
       </aside>
 
       <div class="tablet:grid-col-9 usa-prose">

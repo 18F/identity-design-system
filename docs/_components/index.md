@@ -1,4 +1,0 @@
----
-permalink: /
-title: Components
----
