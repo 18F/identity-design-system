@@ -3,6 +3,7 @@
 ### New Features
 
 - Add SVG format option for favicon image. ([#424](https://github.com/18F/identity-design-system/pull/424))
+- Add "centered" variant for banner component. ([#429](https://github.com/18F/identity-design-system/pull/429))
 
 ### Improvements
 
