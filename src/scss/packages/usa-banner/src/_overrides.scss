@@ -17,6 +17,12 @@
   }
 }
 
+.usa-banner--centered .usa-banner__inner {
+  @include at-media('tablet') {
+    justify-content: center;
+  }
+}
+
 .usa-accordion__button.usa-banner__button {
   // Reset default accordion button border styling for banner button.
   @include u-border(0);
