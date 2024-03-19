@@ -20,4 +20,4 @@ defaults:
   - scope:
       path: ''
     values:
-      layout: component
+      layout: two_column
