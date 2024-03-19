@@ -13,7 +13,7 @@ lead: >
 <div class="usa-header usa-header--extended">
   <div class="usa-navbar">
     <div class="usa-logo">
-      <a href="{{ site.baseurl }}">
+      <a href="{{ site.baseurl }}/">
         <img
           src="{{ site.baseurl }}/assets/img/login-gov-logo.svg"
           class="usa-logo__img"
