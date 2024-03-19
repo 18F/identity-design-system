@@ -10,6 +10,7 @@ keep_files:
 collections:
   components:
     output: true
+    show_in_navigation: true
     permalink: /:name/
   embeds:
     output: true

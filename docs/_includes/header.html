@@ -1,0 +1,41 @@
+<div class="usa-overlay"></div>
+<div class="usa-header usa-header--extended">
+  <div class="usa-navbar">
+    <div class="usa-logo">
+      <a href="{{ site.baseurl }}/">
+        <img
+          src="{{ site.baseurl }}/assets/img/login-gov-logo.svg"
+          class="usa-logo__img"
+          alt="Login.gov Homepage"
+          width="179"
+          height="24"
+        />
+      </a>
+    </div>
+
+    <button class="usa-menu-btn">Menu</button>
+  </div>
+
+  <nav class="usa-nav" aria-label="Primary links">
+    <div class="usa-nav__inner">
+      <button class="usa-nav__close" aria-label="Close">
+        <svg class="usa-icon usa-icon--size-3" aria-hidden="true" role="img">
+          <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use>
+        </svg>
+      </button>
+      <ul class="usa-nav__primary usa-accordion">
+        {% assign navigation_collections = site.collections | where: 'show_in_navigation', true %}
+        {% for collection in navigation_collections %}
+          <li class="usa-nav__primary-item">
+            <a
+              href="{{ site[collection.label][0].url }}"
+              class="usa-nav__link {% if page.collection == collection.label %}usa-current{% endif %}"
+            >
+              {{ collection.label | capitalize }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+</div>
