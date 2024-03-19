@@ -21,9 +21,9 @@ describe('initializer script', () => {
     esbuildContext = await esbuild.context({});
     port = (await esbuildContext.serve({ servedir: 'dist' })).port;
     browser = await puppeteer.launch();
-    originalPageMarkup = await readFile('dist/index.html', 'utf-8');
+    originalPageMarkup = await readFile('dist/accordions/index.html', 'utf-8');
     await writeFile(
-      'dist/index.html',
+      'dist/accordions/index.html',
       originalPageMarkup.replace(
         '<body>',
         `<body>
@@ -39,13 +39,13 @@ describe('initializer script', () => {
     await Promise.all([
       browser.close(),
       esbuildContext.dispose(),
-      writeFile('dist/index.html', originalPageMarkup),
+      writeFile('dist/accordions/index.html', originalPageMarkup),
     ]);
   });
 
   it('assigns loading class until page is loaded', async () => {
     const page = await browser.newPage();
-    await page.goto(`http://localhost:${port}`);
+    await page.goto(`http://localhost:${port}/accordions/`);
 
     const hadClass = await page.evaluate(
       () => document.documentElement.dataset.hadClass === 'true',

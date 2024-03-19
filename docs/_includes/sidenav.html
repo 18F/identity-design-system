@@ -1,0 +1,17 @@
+<nav aria-label="Side navigation">
+  <ul class="usa-sidenav">
+    {% for link in site[page.collection] %}
+      {% assign resolved_page = link.url | resolve_permalink %}
+      <li class="usa-sidenav__item">
+        <a
+          href="{{ link.url | relative_url }}"
+          class="usa-nav__link {% if page.url == resolved_page.url %}usa-current{% endif %}"
+        >
+          <span>
+            {{ resolved_page.title }}
+          </span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
