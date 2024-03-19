@@ -1,5 +1,11 @@
+{% comment %}
+include
+- id (optional, default "gov-banner")
+- centered (optional, default false)
+{% endcomment %}
+{% assign banner_id = include.id | default: 'gov-banner' %}
 <section
-  class="usa-banner"
+  class="usa-banner{% if include.centered %} usa-banner--centered{% endif %}"
   aria-label="Official website of the United States government"
 >
   <div class="usa-accordion">
@@ -25,13 +31,13 @@
           type="button"
           class="usa-accordion__button usa-banner__button"
           aria-expanded="false"
-          aria-controls="gov-banner"
+          aria-controls="{{ banner_id }}"
         >
           <span class="usa-banner__button-text">Here’s how you know</span>
         </button>
       </div>
     </header>
-    <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+    <div class="usa-banner__content usa-accordion__content" id="{{ banner_id }}">
       <div class="grid-row grid-gap-lg">
         <div class="usa-banner__guidance tablet:grid-col-6">
           <img
