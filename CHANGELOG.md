@@ -8,6 +8,7 @@
 ### Improvements
 
 - Update styling for Tag component for consistency with U.S. Web Design System. ([#426](https://github.com/18F/identity-design-system/pull/426))
+- Hide collapsed Accordion component content while JavaScript loads. ([#434](https://github.com/18F/identity-design-system/pull/434))
 
 ### Dependencies
 

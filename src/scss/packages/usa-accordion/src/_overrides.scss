@@ -43,3 +43,15 @@
     @include u-radius-bottom('lg');
   }
 }
+
+// Upstream: https://github.com/uswds/uswds/pull/5826
+.usa-js-loading {
+  .usa-accordion {
+    .usa-accordion__heading:has(.usa-accordion__button:not([aria-expanded='true'])),
+    .usa-accordion__button:not([aria-expanded='true']) {
+      & + .usa-accordion__content {
+        @include add-sr-only;
+      }
+    }
+  }
+}

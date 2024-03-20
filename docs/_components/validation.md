@@ -40,15 +40,13 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
       Textarea (multiline) input
     </button>
   </h3>
-  <div id="errored-textarea" class="usa-accordion__container">
-    <div class="usa-accordion__content">
+  <div id="errored-textarea" class="usa-accordion__content">
 {% capture example %}
 <label for="a37c" class="usa-label">Textarea (multiline) input</label>
 <textarea id="a37c" type="text" class="usa-textarea usa-input--error"></textarea>
 <span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-    </div>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -56,8 +54,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
       Dates
     </button>
   </h3>
-  <div id="errored-dates" class="usa-accordion__container">
-    <div class="usa-accordion__content">
+  <div id="errored-dates" class="usa-accordion__content">
 {% capture example %}
 
 <fieldset class="usa-fieldset">
@@ -115,7 +112,6 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-    </div>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -123,8 +119,7 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
       Dropdowns
     </button>
   </h3>
-  <div id="errored-dropdowns" class="usa-accordion__container">
-    <div class="usa-accordion__content">
+  <div id="errored-dropdowns" class="usa-accordion__content">
 {% capture example %}
 <label for="d8e1" class="usa-label">Dropdown label</label>
 <select id="d8e1" class="usa-select usa-input--error">
@@ -136,7 +131,6 @@ Follow the same pattern of applying `.usa-input--error` to the effected input an
 <span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-    </div>
   </div>
 </div>
 
@@ -150,8 +144,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Radio buttons
     </button>
   </h3>
-  <div id="errored-radio-small" class="usa-accordion__container">
-    <div class="usa-accordion__content">
+  <div id="errored-radio-small" class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-legend">Group label</legend>
@@ -173,7 +166,6 @@ For radio buttons and checkboxes, simply add an error message directly after the
 <span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-    </div>
   </div>
 
   <h3 class="usa-accordion__heading">
@@ -181,8 +173,7 @@ For radio buttons and checkboxes, simply add an error message directly after the
       Checkboxes
     </button>
   </h3>
-  <div id="errored-checkbox-small" class="usa-accordion__container">
-    <div class="usa-accordion__content">
+  <div id="errored-checkbox-small" class="usa-accordion__content">
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-legend">Group label</legend>
@@ -204,6 +195,5 @@ For radio buttons and checkboxes, simply add an error message directly after the
 <span class="usa-error-message" role="alert">Error message text</span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-    </div>
   </div>
 </div>
