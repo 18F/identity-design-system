@@ -10,7 +10,7 @@ lead: >
 
 {% capture example %}
 <div class="usa-overlay"></div>
-<div class="usa-header usa-header--extended">
+<header class="usa-header usa-header--extended">
   <div class="usa-navbar">
     <div class="usa-logo">
       <a href="{{ site.baseurl }}/">
@@ -102,7 +102,7 @@ lead: >
       </ul>
     </div>
   </nav>
-</div>
+</header>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 

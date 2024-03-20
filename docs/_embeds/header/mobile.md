@@ -4,7 +4,7 @@ layout: base
 ---
 
 <div class="usa-overlay"></div>
-<div class="usa-header usa-header--extended">
+<header class="usa-header usa-header--extended">
   <div class="usa-nav-container">
     <div class="usa-navbar">
       <div class="usa-logo">
@@ -98,7 +98,7 @@ layout: base
       </div>
     </nav>
   </div>
-</div>
+</header>
 
 <style>
 .usa-nav.is-visible {
