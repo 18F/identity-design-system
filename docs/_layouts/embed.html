@@ -1,0 +1,15 @@
+---
+layout: base
+---
+
+{{ content }}
+
+<script>
+  function sendHeight() {
+    const { offsetHeight: height } = document.body;
+    window.parent?.postMessage(height, window.location.origin);
+  }
+
+  sendHeight();
+  new ResizeObserver(sendHeight).observe(document.body);
+</script>

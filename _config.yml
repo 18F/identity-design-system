@@ -21,3 +21,7 @@ defaults:
       path: ''
     values:
       layout: two_column
+  - scope:
+      type: embeds
+    values:
+      layout: embed

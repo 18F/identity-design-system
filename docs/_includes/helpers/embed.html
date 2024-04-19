@@ -1,0 +1,33 @@
+{% assign include_path = include.embed | prepend: '_embeds/' | append: '.md' %}
+{% for embed in site.embeds %}
+  {% if embed.path == include_path %}
+    {% assign embed_code = embed.content %}
+    {% assign embed_title = embed.title %}
+  {% endif %}
+{% endfor %}
+
+<iframe
+  title="{{ embed_title | default: 'Component Preview' }}"
+  src="{{ site.baseurl }}/embeds/{{ include.embed }}"
+  width="100%"
+  height="400"
+  frameborder="0"
+></iframe>
+<script>
+  /** @type {HTMLIFrameElement} */
+  const iframe = document.currentScript.previousElementSibling;
+  window.addEventListener('message', (event) => {
+    if (event.origin !== window.location.origin || event.source !== iframe.contentWindow) {
+      return;
+    }
+
+    const height = Number(event.data);
+    iframe.height = height;
+  });
+</script>
+
+<div markdown="1">
+```html
+{{ embed_code | replace: site.baseurl, '' | strip }}
+```
+</div>
