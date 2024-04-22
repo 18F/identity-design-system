@@ -15,16 +15,18 @@
   class="display-block margin-y-3"
 ></iframe>
 <script>
-  /** @type {HTMLIFrameElement} */
-  const iframe = document.currentScript.previousElementSibling;
-  window.addEventListener('message', (event) => {
-    if (event.origin !== window.location.origin || event.source !== iframe.contentWindow) {
-      return;
-    }
+  (() => {
+    /** @type {HTMLIFrameElement} */
+    const iframe = document.currentScript.previousElementSibling;
+    window.addEventListener('message', (event) => {
+      if (event.origin !== window.location.origin || event.source !== iframe.contentWindow) {
+        return;
+      }
 
-    const height = Number(event.data);
-    iframe.height = height;
-  });
+      const height = Number(event.data);
+      iframe.height = height;
+    });
+  })();
 </script>
 
 <div markdown="1">
