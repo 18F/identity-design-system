@@ -8,34 +8,8 @@ title: Button Groups
 
 ### Default
 
-{% capture example %}
-<ul class="usa-button-group usa-button-group--segmented">
-  <li class="usa-button-group__item">
-    <button type="button" class="usa-button">Button</button>
-  </li>
-  <li class="usa-button-group__item">
-    <button type="button" class="usa-button usa-button--outline">Button</button>
-  </li>
-  <li class="usa-button-group__item">
-    <button type="button" class="usa-button usa-button--outline">Button</button>
-  </li>
-</ul>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+{% include helpers/embed.html embed="button-groups/default-segmented" %}
 
 ### Big
 
-{% capture example %}
-<ul class="usa-button-group usa-button-group--segmented">
-  <li class="usa-button-group__item">
-    <button type="button" class="usa-button usa-button--big">Button</button>
-  </li>
-  <li class="usa-button-group__item">
-    <button type="button" class="usa-button usa-button--big usa-button--outline">Button</button>
-  </li>
-  <li class="usa-button-group__item">
-    <button type="button" class="usa-button usa-button--big usa-button--outline">Button</button>
-  </li>
-</ul>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+{% include helpers/embed.html embed="button-groups/big-segmented" %}

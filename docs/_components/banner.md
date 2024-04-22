@@ -7,14 +7,8 @@ lead: Banners identify official websites of government organizations in the Unit
 
 ## Default
 
-{% capture example %}
-{% include banner.html id="gov-banner-default" %}
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+{% include helpers/embed.html embed="banner/default" %}
 
 ## Centered
 
-{% capture example %}
-{% include banner.html centered=true id="gov-banner-centered" %}
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+{% include helpers/embed.html embed="banner/centered" %}

@@ -12,22 +12,10 @@ Badges are comprised with a div using the `lg-verification-badge` class and a sm
 
 The unphishable badge is used to indicate that an account is only using security keys as its MFA method.
 
-{% capture example %}
-<div class="lg-verification-badge">
-  <img src="{{ site.baseurl }}/assets/img/alerts/unphishable.svg" role="img" width="16" height="16" alt="" />
-  Unphishable
-</div>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+{% include helpers/embed.html embed="badges/unphishable" %}
 
 ## A verified account badge example
 
 A verfied account badge is used to indicate that an account has completed the identity verification process.
 
-{% capture example %}
-<div class="lg-verification-badge">
-  <img src="{{ site.baseurl }}/assets/img/alerts/success.svg" role="img" width="16" height="16" alt="" />
-  Verified Account
-</div>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+{% include helpers/embed.html embed="badges/verified-account" %}

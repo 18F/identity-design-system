@@ -1,0 +1,9 @@
+---
+title: Warning Alert
+---
+
+<div class="usa-alert usa-alert--warning">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Banner text</p>
+  </div>
+</div>
