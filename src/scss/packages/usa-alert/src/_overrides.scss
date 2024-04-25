@@ -24,4 +24,8 @@ $alerts: 'success', 'warning', 'error', 'info', 'emergency';
 .usa-alert--other {
   background-color: color('primary-lighter');
   border-left-color: color('primary-light');
+
+  .usa-alert__body {
+    padding-left: units($theme-alert-padding-x);
+  }
 }
