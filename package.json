@@ -35,8 +35,7 @@
     "./build/*/init.js"
   ],
   "scripts": {
-    "build:js": "esbuild src/js/auto.js src/js/init.ts --bundle --minify --outdir=dist/assets/js --target=`./scripts/esbuild-targets.mjs`",
-    "postbuild:js": "mv dist/assets/js/auto.js dist/assets/js/main.js",
+    "build:js": "esbuild main=src/js/auto.js src/js/init.ts --bundle --minify --outdir=dist/assets/js --target=`./scripts/esbuild-targets.mjs`",
     "build:css": "build-sass src/scss/*.scss --load-path=./src/scss/packages --out-dir=dist/assets/css",
     "build:docs:css": "npm run build:css --",
     "build:docs:js": "npm run build:js --",
