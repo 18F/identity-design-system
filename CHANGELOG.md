@@ -1,3 +1,9 @@
+## Unreleased
+
+### Improvements
+
+- Update styling for Alert component for increased contrast and consistency with U.S. Web Design System. ([#439](https://github.com/18F/identity-design-system/pull/439))
+
 ## 9.1.0
 
 ### New Features
