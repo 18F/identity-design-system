@@ -1,5 +1,10 @@
 ## Unreleased
 
+### Breaking Changes
+
+- Remove support for deprecation notices in v9.2.0:
+  - Badge component markup has been updated. ([#442](https://github.com/18F/identity-design-system/pull/442))
+
 ### Dependencies
 
 - Upgrade USWDS from v3.8.0 to v3.8.1 (see [release notes](https://github.com/uswds/uswds/releases/tag/v3.8.1)) ([#448](https://github.com/18F/identity-design-system/pull/448))
