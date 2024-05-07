@@ -4,6 +4,15 @@
 
 - Update styling for Alert component for increased contrast and consistency with U.S. Web Design System. ([#439](https://github.com/18F/identity-design-system/pull/439))
 
+### Deprecations
+
+- Custom alert icons will be removed in the next major release, use U.S. Web Design System alerts instead.
+  - `alerts/error.svg`
+  - `alerts/info.svg`
+  - `alerts/success.svg`
+  - `alerts/unphishable.svg`
+  - `alerts/warning.svg`
+
 ## 9.1.0
 
 ### New Features
