@@ -14,7 +14,9 @@ The unphishable badge is used to indicate that an account is only using security
 
 {% capture example %}
 <div class="lg-verification-badge">
-  <img src="{{ site.baseurl }}/assets/img/alerts/unphishable.svg" role="img" width="16" height="16" alt="" />
+  <svg class="usa-icon text-success" aria-hidden="true" focusable="false" role="img">
+    <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#lock"></use>
+  </svg>
   Unphishable
 </div>
 {% endcapture %}
@@ -26,7 +28,9 @@ A verfied account badge is used to indicate that an account has completed the id
 
 {% capture example %}
 <div class="lg-verification-badge">
-  <img src="{{ site.baseurl }}/assets/img/alerts/success.svg" role="img" width="16" height="16" alt="" />
+  <svg class="usa-icon text-success" aria-hidden="true" focusable="false" role="img">
+    <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+  </svg>
   Verified Account
 </div>
 {% endcapture %}
