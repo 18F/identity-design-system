@@ -3,6 +3,7 @@
 ### Improvements
 
 - Update styling for Alert component for increased contrast and consistency with U.S. Web Design System. ([#439](https://github.com/18F/identity-design-system/pull/439))
+- Update styling for Validation component icons for consistency with U.S. Web Design System. ([#441](https://github.com/18F/identity-design-system/pull/441))
 - Update markup for badge component to use U.S. Web Design System icons. ([#442](https://github.com/18F/identity-design-system/pull/442))
   - Existing usage will not be affected until the next major release (see "Deprecations").
 
