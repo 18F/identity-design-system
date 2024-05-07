@@ -1,3 +1,10 @@
+## Unreleased
+
+### Breaking Changes
+
+- Remove support for deprecation notices in v9.2.0:
+  - Badge component markup has been updated. ([#442](https://github.com/18F/identity-design-system/pull/442))
+
 ## 9.2.0
 
 ### Improvements

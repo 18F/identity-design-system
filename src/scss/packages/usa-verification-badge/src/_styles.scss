@@ -10,8 +10,7 @@
   padding: units(1) units(2);
   white-space: nowrap;
 
-  img, // BREAKING: Remove `img` in next major release
-  svg {
+  .usa-icon {
     margin-right: units(1);
   }
 }
