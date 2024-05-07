@@ -1,12 +1,27 @@
 @use 'uswds-core' as *;
 
 .usa-error-message {
-  @include add-background-svg('alerts/error');
   @include u-padding-y(0.5);
-  background-position: 0 0.5em;
-  background-size: units(2);
+  position: relative;
   display: block;
   font-weight: font-weight('bold');
   padding-left: units(3);
   color: color('error');
+
+  &::before {
+    @include add-color-icon(
+      (
+        'name': 'error',
+        'color': currentColor,
+        'svg-height': 24,
+        'svg-width': 24,
+        'height': 2.5,
+      )
+    );
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
