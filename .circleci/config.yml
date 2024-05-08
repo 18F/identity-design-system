@@ -57,6 +57,9 @@ jobs:
       - browser-tools/install-chromedriver
       - node/install
       - node/install-packages
+      - run:
+          name: Print Rubygems version
+          command: gem -v
       - ruby/install-deps
       - build-docs
       - snapshot
