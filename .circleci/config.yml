@@ -23,7 +23,6 @@ commands:
 
 jobs:
   lints:
-    executor: ruby_browsers
     steps:
       - checkout
       - node/install
@@ -32,7 +31,6 @@ jobs:
           name: Lint JavaScript, Sass, and lockfiles
           command: make lint
   integration:
-    executor: ruby_browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
@@ -44,7 +42,6 @@ jobs:
           name: Run integration tests
           command: npm test
   snapshot-main:
-    executor: ruby_browsers
     steps:
       - checkout
       - run:
@@ -57,7 +54,6 @@ jobs:
       - build-docs
       - snapshot
   snapshot-branch:
-    executor: ruby_browsers
     steps:
       - checkout
       - browser-tools/install-chromedriver
@@ -67,7 +63,6 @@ jobs:
       - build-docs
       - snapshot
   visual-regression:
-    executor: ruby_browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
