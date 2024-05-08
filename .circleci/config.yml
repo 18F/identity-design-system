@@ -50,6 +50,7 @@ jobs:
       - run:
           name: Checkout main
           command: git checkout main
+      - browser-tools/install-chromedriver
       - node/install
       - node/install-packages
       - ruby/install-deps
@@ -59,6 +60,7 @@ jobs:
     executor: ruby_browsers
     steps:
       - checkout
+      - browser-tools/install-chromedriver
       - node/install
       - node/install-packages
       - ruby/install-deps
@@ -70,6 +72,7 @@ jobs:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
       - checkout
+      - browser-tools/install-chromedriver
       - node/install
       - node/install-packages
       - attach_workspace:
