@@ -29,6 +29,7 @@ jobs:
       - checkout
       - node/install
       - node/install-packages
+      - ruby/install-deps
       - run:
           name: Lint JavaScript, Sass, and lockfiles
           command: make lint
