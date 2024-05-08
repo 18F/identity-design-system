@@ -1,45 +1,11 @@
 version: 2.1
 
-executors:
-  ruby_browsers:
-    docker:
-      - image: cimg/ruby:3.1-browsers
-        environment:
-          BUNDLER_VERSION: 2.2.20
+orbs:
+  browser-tools: circleci/browser-tools@1.4.8
+  node: circleci/node@5.2.0
+  ruby: circleci/ruby@2.1.2
 
 commands:
-  node-install:
-    steps:
-      - run:
-          name: Switch Node.js version
-          command: |
-            wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            . "$NVM_DIR/nvm.sh" --install --latest-npm
-            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV;
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV;
-      - run:
-          name: Print Node.js version
-          command: node -v
-  bundle-npm-install:
-    steps:
-      - node-install
-      - restore_cache:
-          key: dependency-cache-ruby-{{ checksum ".ruby-version" }}-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Update Bundler
-          command: gem install bundler --version $BUNDLER_VERSION
-      - run:
-          name: Install bundle dependencies
-          command: bundle check --path ~/.bundler || bundle install --path ~/.bundler
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - save_cache:
-          key: dependency-cache-ruby-{{ checksum ".ruby-version" }}-{{ checksum "package-lock.json" }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ~/.npm
-            - ~/.bundler
   build-docs:
     steps:
       - run:
@@ -60,7 +26,8 @@ jobs:
     executor: ruby_browsers
     steps:
       - checkout
-      - bundle-npm-install
+      - node/install
+      - node/install-packages
       - run:
           name: Lint JavaScript, Sass, and lockfiles
           command: make lint
@@ -70,7 +37,9 @@ jobs:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
       - checkout
-      - bundle-npm-install
+      - node/install
+      - node/install-packages
+      - ruby/install-deps
       - run:
           name: Run integration tests
           command: npm test
@@ -81,14 +50,18 @@ jobs:
       - run:
           name: Checkout main
           command: git checkout main
-      - bundle-npm-install
+      - node/install
+      - node/install-packages
+      - ruby/install-deps
       - build-docs
       - snapshot
   snapshot-branch:
     executor: ruby_browsers
     steps:
       - checkout
-      - bundle-npm-install
+      - node/install
+      - node/install-packages
+      - ruby/install-deps
       - build-docs
       - snapshot
   visual-regression:
@@ -97,7 +70,8 @@ jobs:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
       - checkout
-      - bundle-npm-install
+      - node/install
+      - node/install-packages
       - attach_workspace:
           at: tmp/screenshot/branches
       - run:
