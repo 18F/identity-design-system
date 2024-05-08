@@ -24,7 +24,7 @@ commands:
 jobs:
   lints:
     docker:
-      - image: cimg/ruby:3.3-browsers
+      - image: cimg/ruby:3.2-browsers
     steps:
       - checkout
       - node/install
@@ -35,7 +35,7 @@ jobs:
           command: make lint
   integration:
     docker:
-      - image: cimg/ruby:3.3-browsers
+      - image: cimg/ruby:3.2-browsers
     environment:
       SKIP_VISUAL_REGRESSION_TEST: true
     steps:
@@ -48,7 +48,7 @@ jobs:
           command: npm test
   snapshot-main:
     docker:
-      - image: cimg/ruby:3.3-browsers
+      - image: cimg/ruby:3.2-browsers
     steps:
       - checkout
       - run:
@@ -65,7 +65,7 @@ jobs:
       - snapshot
   snapshot-branch:
     docker:
-      - image: cimg/ruby:3.3-browsers
+      - image: cimg/ruby:3.2-browsers
     steps:
       - checkout
       - browser-tools/install-chromedriver
@@ -76,7 +76,7 @@ jobs:
       - snapshot
   visual-regression:
     docker:
-      - image: cimg/ruby:3.3-browsers
+      - image: cimg/ruby:3.2-browsers
     environment:
       ONLY_VISUAL_REGRESSION_TEST: true
     steps:
