@@ -14,7 +14,6 @@ default:
   image: cimg/ruby:3.1-browsers
 
 before_script:
-  script:
     - gem install bundler --version $BUNDLER_VERSION
     - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
     - export NVM_DIR="$HOME/.nvm"
