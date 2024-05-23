@@ -40,7 +40,8 @@ cache:
     - .bundler
 
 before_cache:
-  - rm -f .bundler/ruby/2.6.0/cache/*.gem
+  script:
+    - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
 .bundle_npm_install: &bundle_npm_install
   - bundle check --path ~/.bundler || bundle install --path ~/.bundler
