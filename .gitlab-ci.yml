@@ -1,3 +1,15 @@
+# Jobs defined here use the idp/ci docker image from ECR by default. 
+# Images are built via the identity-devops GitLab pipeline.
+
+variables:
+  BUNDLER_VERSION: "2.3.13"
+  NVM_VERSION: "v0.39.0"
+  NODE_VERSION: "latest"
+  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+  IDP_WORKER_IMAGE_TAG: 'main'
+  IDP_IMAGE_TAG: 'main'
+  PKI_IMAGE_TAG: 'main'
+
 stages:
   - lint
   - test
@@ -5,20 +17,17 @@ stages:
   - snapshot
   - visual_regression
 
-variables:
-  BUNDLER_VERSION: "2.2.20"
-  NVM_VERSION: "v0.39.0"
-  NODE_VERSION: "latest"
+
 
 default:
-  image: cimg/ruby:3.1-browsers
+  image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
 before_script:
   - gem install bundler --version $BUNDLER_VERSION
   - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
   - . "$NVM_DIR/nvm.sh" --install --latest-npm
-  - ECHO_TRACE=1 echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+  - echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
   - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
   - node -v
 
@@ -29,8 +38,7 @@ cache:
     - .bundler
 
 before_cache:
-  script:
-    - rm -f .bundler/ruby/2.6.0/cache/*.gem
+  - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
 bundle-npm-install:
   script:
@@ -105,14 +113,14 @@ test:
 #   rules:
 #     - if: $CI_COMMIT_BRANCH == "main"
 #       when: never
-  # jobs:
-  #   - lints
-  #   - integration
-  #   - snapshot-main:
-  #       needs: []
-  #   - snapshot-branch:
-  #       needs: []
-  #   - visual-regression:
-  #       needs:
-  #         - snapshot-main
-  #         - snapshot-branch
+#   jobs:
+#     - lints
+#     - integration
+#     - snapshot-main:
+#         needs: []
+#     - snapshot-branch:
+#         needs: []
+#     - visual-regression:
+#         needs:
+#           - snapshot-main
+#           - snapshot-branch
