@@ -42,7 +42,7 @@ cache:
 before_cache:
   - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
-.bundle-npm-install: &bundle_npm_install
+.bundle_npm_install: &bundle_npm_install
   - bundle check --path ~/.bundler || bundle install --path ~/.bundler
   - npm ci
 
@@ -61,13 +61,13 @@ snapshot:
 lints:
   stage: lint
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - make lint
 
 integration:
   stage: test
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - npm test
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
@@ -75,7 +75,7 @@ integration:
 snapshot-main:
   stage: snapshot
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - build-docs
     - snapshot
   except:
@@ -84,7 +84,7 @@ snapshot-main:
 snapshot-branch:
   stage: snapshot
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - build-docs
     - snapshot
   except:
@@ -93,7 +93,7 @@ snapshot-branch:
 visual-regression:
   stage: visual_regression
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
     - npm test
   except:
@@ -107,7 +107,7 @@ visual-regression:
 test:
   stage: test
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - npm test
 
 # workflow:
