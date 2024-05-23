@@ -21,6 +21,7 @@ default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
 before_script:
+  - export BASH_ENV="$HOME/.bash.env"
   - gem install bundler --version $BUNDLER_VERSION
   - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
