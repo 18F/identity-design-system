@@ -14,13 +14,14 @@ default:
   image: cimg/ruby:3.1-browsers
 
 before_script:
-  - gem install bundler --version $BUNDLER_VERSION
-  - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
-  - export NVM_DIR="$HOME/.nvm"
-  - . "$NVM_DIR/nvm.sh" --install --latest-npm
-  - echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-  - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-  - node -v
+  script:
+    - gem install bundler --version $BUNDLER_VERSION
+    - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
+    - export NVM_DIR="$HOME/.nvm"
+    - . "$NVM_DIR/nvm.sh" --install --latest-npm
+    - echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+    - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+    - node -v
 
 cache:
   key: "$CI_COMMIT_REF_SLUG"
@@ -29,7 +30,8 @@ cache:
     - .bundler
 
 before_cache:
-  - rm -f .bundler/ruby/2.6.0/cache/*.gem
+  script:
+    - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
 bundle-npm-install:
   script:
