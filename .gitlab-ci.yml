@@ -1,3 +1,15 @@
+# Jobs defined here use the idp/ci docker image from ECR by default. 
+# Images are built via the identity-devops GitLab pipeline.
+
+variables:
+  BUNDLER_VERSION: "2.3.13"
+  NVM_VERSION: "v0.39.0"
+  NODE_VERSION: "latest"
+  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+  IDP_WORKER_IMAGE_TAG: 'main'
+  IDP_IMAGE_TAG: 'main'
+  PKI_IMAGE_TAG: 'main'
+
 stages:
   - lint
   - test
@@ -5,13 +17,10 @@ stages:
   - snapshot
   - visual_regression
 
-variables:
-  BUNDLER_VERSION: "2.2.20"
-  NVM_VERSION: "v0.39.0"
-  NODE_VERSION: "latest"
+
 
 default:
-  image: cimg/ruby:3.1-browsers
+  image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
 before_script:
   - gem install bundler --version $BUNDLER_VERSION
@@ -100,18 +109,18 @@ test:
     - bundle-npm-install
     - npm test
 
-workflow:
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      when: never
-  jobs:
-    - lints
-    - integration
-    - snapshot-main:
-        needs: []
-    - snapshot-branch:
-        needs: []
-    - visual-regression:
-        needs:
-          - snapshot-main
-          - snapshot-branch
+# workflow:
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == "main"
+#       when: never
+#   jobs:
+#     - lints
+#     - integration
+#     - snapshot-main:
+#         needs: []
+#     - snapshot-branch:
+#         needs: []
+#     - visual-regression:
+#         needs:
+#           - snapshot-main
+#           - snapshot-branch
