@@ -18,7 +18,7 @@ before_script:
   - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
   - . "$NVM_DIR/nvm.sh" --install --latest-npm
-  - echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+  - ECHO_TRACE=1 echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
   - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
   - node -v
 
