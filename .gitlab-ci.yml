@@ -17,8 +17,6 @@ stages:
   - snapshot
   - visual_regression
 
-
-
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
@@ -38,7 +36,8 @@ cache:
     - .bundler
 
 before_cache:
-  - rm -f .bundler/ruby/2.6.0/cache/*.gem
+  script:
+    - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
 bundle-npm-install:
   script:
