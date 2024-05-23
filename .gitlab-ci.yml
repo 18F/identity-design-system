@@ -22,7 +22,9 @@ stages:
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
+
 before_script:
+  - export BASH_ENV="$HOME/.bash.env"
   - gem install bundler --version $BUNDLER_VERSION
   - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
@@ -40,13 +42,13 @@ cache:
 before_cache:
   - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
-bundle-npm-install:
-  script:
-    - bundle check --path ~/.bundler || bundle install --path ~/.bundler
-    - npm ci
+.bundle-npm-install: &bundle_npm_install
+  - bundle check --path ~/.bundler || bundle install --path ~/.bundler
+  - npm ci
 
 build-docs:
   script:
+    - *bundle_npm_install
     - make -j2 build-assets build-docs
 
 snapshot:
@@ -59,13 +61,13 @@ snapshot:
 lints:
   stage: lint
   script:
-    - bundle-npm-install
+    - *bundle-npm-install
     - make lint
 
 integration:
   stage: test
   script:
-    - bundle-npm-install
+    - *bundle-npm-install
     - npm test
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
@@ -73,8 +75,7 @@ integration:
 snapshot-main:
   stage: snapshot
   script:
-    - git checkout main
-    - bundle-npm-install
+    - *bundle-npm-install
     - build-docs
     - snapshot
   except:
@@ -83,7 +84,7 @@ snapshot-main:
 snapshot-branch:
   stage: snapshot
   script:
-    - bundle-npm-install
+    - *bundle-npm-install
     - build-docs
     - snapshot
   except:
@@ -92,7 +93,7 @@ snapshot-branch:
 visual-regression:
   stage: visual_regression
   script:
-    - bundle-npm-install
+    - *bundle-npm-install
     - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
     - npm test
   except:
@@ -106,7 +107,7 @@ visual-regression:
 test:
   stage: test
   script:
-    - bundle-npm-install
+    - *bundle-npm-install
     - npm test
 
 # workflow:
