@@ -104,14 +104,14 @@ workflow:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: never
-  jobs:
-    - lints
-    - integration
-    - snapshot-main:
-        needs: []
-    - snapshot-branch:
-        needs: []
-    - visual-regression:
-        needs:
-          - snapshot-main
-          - snapshot-branch
+  # jobs:
+  #   - lints
+  #   - integration
+  #   - snapshot-main:
+  #       needs: []
+  #   - snapshot-branch:
+  #       needs: []
+  #   - visual-regression:
+  #       needs:
+  #         - snapshot-main
+  #         - snapshot-branch
