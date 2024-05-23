@@ -101,10 +101,10 @@ test:
     - bundle-npm-install
     - npm test
 
-workflow:
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      when: never
+# workflow:
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == "main"
+#       when: never
   # jobs:
   #   - lints
   #   - integration
