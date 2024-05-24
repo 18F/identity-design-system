@@ -69,7 +69,7 @@ integration:
   stage: test
   script:
     - *bundle_npm_install
-    - npm test
+    - npm test --no-sandbox
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
 
