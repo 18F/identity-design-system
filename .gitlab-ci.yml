@@ -1,14 +1,8 @@
-# Jobs defined here use the idp/ci docker image from ECR by default. 
-# Images are built via the identity-devops GitLab pipeline.
-
 variables:
-  BUNDLER_VERSION: "2.3.13"
+  BUNDLER_VERSION: "2.2.20"
   NVM_VERSION: "v0.39.0"
   NODE_VERSION: "latest"
-  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
-  IDP_WORKER_IMAGE_TAG: 'main'
-  IDP_IMAGE_TAG: 'main'
-  PKI_IMAGE_TAG: 'main'
+  NVM_DIR: "$HOME/.nvm"
 
 stages:
   - lint
@@ -17,29 +11,18 @@ stages:
   - snapshot
   - visual_regression
 
-
-
 default:
-  image: '${ECR_REGISTRY}/dashboard/ci:latest'
-
+  image: cimg/ruby:3.1-browsers
 
 before_script:
-  - apt-get update
-  - apt-get update && apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 
-    libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 
-    libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 
-    libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 
-    libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 
-    libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
-  - export BASH_ENV="$HOME/.bash.env"
-  - gem install bundler --version $BUNDLER_VERSION
-  - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
+  - apt-get update && apt-get install -y wget
+  - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
   - . "$NVM_DIR/nvm.sh" --install --latest-npm
   - echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
   - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
   - node -v
-
+  - gem install bundler --version $BUNDLER_VERSION
 
 cache:
   key: "$CI_COMMIT_REF_SLUG"
@@ -48,10 +31,10 @@ cache:
     - .bundler
 
 before_cache:
-  script:
-    - rm -f .bundler/ruby/2.6.0/cache/*.gem
+  - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
-.bundle_npm_install: &bundle_npm_install
+.bundle-npm-install: &bundle_npm_install
+  - gem install bundler --version $BUNDLER_VERSION
   - bundle check --path ~/.bundler || bundle install --path ~/.bundler
   - npm ci
 
@@ -77,17 +60,19 @@ integration:
   stage: test
   script:
     - *bundle_npm_install
-    - npm test --trace
+    - npm test
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
 
 snapshot-main:
   stage: snapshot
   script:
+    - git checkout main
     - *bundle_npm_install
     - build-docs
     - snapshot
-
+  except:
+    - main
 
 snapshot-branch:
   stage: snapshot
@@ -95,15 +80,17 @@ snapshot-branch:
     - *bundle_npm_install
     - build-docs
     - snapshot
-
+  except:
+    - main
 
 visual-regression:
   stage: visual_regression
   script:
     - *bundle_npm_install
     - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
-    - npm test --trace
-
+    - npm test
+  except:
+    - main
   artifacts:
     paths:
       - tmp/screenshot/diff
@@ -114,20 +101,26 @@ test:
   stage: test
   script:
     - *bundle_npm_install
-    - npm test --trace
+    - npm test
 
-# workflow:
-#   rules:
-#     - if: $CI_COMMIT_BRANCH == "main"
-#       when: never
-#   jobs:
-#     - lints
-#     - integration
-#     - snapshot-main:
-#         needs: []
-#     - snapshot-branch:
-#         needs: []
-#     - visual-regression:
-#         needs:
-#           - snapshot-main
-#           - snapshot-branch
+# Workflows
+workflows:
+  version: 2
+  test:
+    jobs:
+      - lints
+      - integration
+  visual_regression:
+    jobs:
+      - snapshot-main:
+          rules:
+            - if: $CI_COMMIT_REF_NAME != "migration"
+      - snapshot-branch:
+          rules:
+            - if: $CI_COMMIT_REF_NAME != "migration"
+      - visual-regression:
+          rules:
+            - if: $CI_COMMIT_REF_NAME != "migration"
+          needs:
+            - snapshot-main
+            - snapshot-branch
