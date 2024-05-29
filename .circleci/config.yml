@@ -49,7 +49,7 @@ commands:
     steps:
       - run:
           name: Generate snapshots
-          command: scripts/snapshot.js
+          command: scripts/snapshot.js 
       - persist_to_workspace:
           root: tmp/screenshot/branches
           paths:

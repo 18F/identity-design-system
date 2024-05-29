@@ -53,10 +53,13 @@ build-docs:
 
 snapshot:
   script:
-    - scripts/snapshot.js
+    - scripts/
   artifacts:
     paths:
+      - '*'
+    root: 
       - tmp/screenshot/branches
+
 
 lints:
   stage: lint
@@ -79,7 +82,7 @@ snapshot-main:
     - build-docs
     - snapshot
   except:
-    - main
+    - migation
 
 snapshot-branch:
   stage: snapshot
@@ -88,7 +91,7 @@ snapshot-branch:
     - build-docs
     - snapshot
   except:
-    - main
+    - migation
 
 visual-regression:
   stage: visual_regression
@@ -97,7 +100,7 @@ visual-regression:
     - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
     - npm test
   except:
-    - main
+    - migation
   artifacts:
     paths:
       - tmp/screenshot/diff
