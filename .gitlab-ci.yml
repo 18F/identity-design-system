@@ -105,25 +105,24 @@ test:
     - npm test
 
 # Workflows
-workflows:
-  version: 2
-  test:
-    jobs:
-      scripts:
-        - lints
-        - integration
-  visual_regression:
-    jobs:
-      - snapshot-main:
-          rules:
-            - if: $CI_COMMIT_REF_NAME != "migration"
-      - snapshot-branch:
-          rules:
-            - if: $CI_COMMIT_REF_NAME != "migration"
-      - visual-regression:
-          rules:
-            - if: $CI_COMMIT_REF_NAME != "migration"
-          needs:
-            - snapshot-main
-            - snapshot-branch
+# workflows:
+#   version: 2
+#   test:
+#     jobs:
+#       - lints
+#       - integration
+#   visual_regression:
+#     jobs:
+#       - snapshot-main:
+#           rules:
+#             - if: $CI_COMMIT_REF_NAME != "migration"
+#       - snapshot-branch:
+#           rules:
+#             - if: $CI_COMMIT_REF_NAME != "migration"
+#       - visual-regression:
+#           rules:
+#             - if: $CI_COMMIT_REF_NAME != "migration"
+#           needs:
+#             - snapshot-main
+#             - snapshot-branch
 
