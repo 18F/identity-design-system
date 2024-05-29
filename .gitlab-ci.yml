@@ -77,7 +77,7 @@ integration:
   stage: test
   script:
     - *bundle_npm_install
-    - make test -- --no-sandbox
+    - npm test 
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
 
@@ -87,8 +87,7 @@ snapshot-main:
     - *bundle_npm_install
     - build-docs
     - snapshot
-  except:
-    - main
+
 
 snapshot-branch:
   stage: snapshot
@@ -96,8 +95,7 @@ snapshot-branch:
     - *bundle_npm_install
     - build-docs
     - snapshot
-  except:
-    - main
+
 
 visual-regression:
   stage: visual_regression
@@ -105,8 +103,7 @@ visual-regression:
     - *bundle_npm_install
     - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
     - npm test -- --no-sandbox
-  except:
-    - main
+
   artifacts:
     paths:
       - tmp/screenshot/diff
@@ -117,7 +114,7 @@ test:
   stage: test
   script:
     - *bundle_npm_install
-    - npm test -- --no-sandbox
+    - npm test 
 
 # workflow:
 #   rules:
