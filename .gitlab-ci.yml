@@ -46,10 +46,12 @@ build-docs:
 
 snapshot:
   script:
-    - scripts/snapshot.js
+    - snapshot
   artifacts:
-    paths:
+    root: 
       - tmp/screenshot/branches
+    paths:
+      - '*'
 
 lints:
   stage: lint
