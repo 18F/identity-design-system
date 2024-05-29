@@ -43,15 +43,15 @@ build-docs:
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
-
+    
 snapshot:
   script:
     - snapshot
   artifacts:
-    root: 
-      - tmp/screenshot/branches
     paths:
       - '*'
+      - tmp/screenshot/branches
+
 
 lints:
   stage: lint
