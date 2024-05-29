@@ -27,8 +27,8 @@ before_script:
 cache:
   key: "$CI_COMMIT_REF_SLUG"
   paths:
-    - .npm
-    - .bundler
+    - ~/.npm
+    - ~/.bundler
 
 before_cache:
   script:
