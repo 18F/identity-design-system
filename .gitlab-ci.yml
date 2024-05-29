@@ -2,7 +2,6 @@ variables:
   BUNDLER_VERSION: "2.2.20"
   NVM_VERSION: "v0.39.0"
   NODE_VERSION: "latest"
-  NVM_DIR: "$HOME/.nvm"
 
 stages:
   - lint
