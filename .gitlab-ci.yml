@@ -109,8 +109,9 @@ workflows:
   version: 2
   test:
     jobs:
-      - lints
-      - integration
+      scripts:
+        - lints
+        - integration
   visual_regression:
     jobs:
       - snapshot-main:
@@ -125,3 +126,4 @@ workflows:
           needs:
             - snapshot-main
             - snapshot-branch
+
