@@ -73,12 +73,12 @@ integration:
     - npm test 
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
+
 snapshot-main:
   stage: snapshot
   script:
-    - git checkout main
     - *bundle_npm_install
-    - build-docs
+    - make -j2 build-assets build-docs
     - scripts/snapshot.js
   except:
     - main
@@ -87,7 +87,7 @@ snapshot-branch:
   stage: snapshot
   script:
     - *bundle_npm_install
-    - build-docs
+    - make -j2 build-assets build-docs
     - scripts/snapshot.js
   except:
     - main
