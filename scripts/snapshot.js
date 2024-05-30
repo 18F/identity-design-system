@@ -4,7 +4,7 @@ import { promisify } from 'node:util';
 import { exec as _exec } from 'node:child_process';
 import { dirname, relative, join, extname, basename } from 'node:path';
 import { mkdir, writeFile } from 'node:fs/promises';
-/*import glob from 'fast-glob';*/
+import glob from 'fast-glob';
 import esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
 
