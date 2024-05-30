@@ -96,7 +96,7 @@ visual-regression:
   stage: visual_regression
   script:
     - *bundle_npm_install
-    - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
+    #- cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
     - npm test 
   except:
     - main
