@@ -64,8 +64,8 @@ integration:
   script:
     - *bundle_npm_install
     - npm test 
-  SKIP_VISUAL_REGRESSION_TEST: "true"
-
+  variables:
+    SKIP_VISUAL_REGRESSION_TEST: "true"
 snapshot-main:
   stage: snapshot
   script:
