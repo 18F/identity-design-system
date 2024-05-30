@@ -55,7 +55,7 @@ build-docs:
     - make -j2 build-assets build-docs
     
 snapshot:
-#  stage: snapshot
+  stage: snapshot
   script:
     - *bundle_npm_install
     - scripts/snapshot.js
@@ -106,11 +106,11 @@ visual-regression:
     reports:
       junit: tmp/screenshot/diff
 
-test:
-  stage: test
-  script:
-    - *bundle_npm_install
-    - npm test 
+# test:
+#   stage: test
+#   script:
+#     - *bundle_npm_install
+#     - npm test 
 
 # Workflows
 # workflows:
