@@ -60,3 +60,4 @@ describe('initializer script', () => {
     assert(!hasClass);
   });
 });
+
