@@ -1,14 +1,7 @@
-# Jobs defined here use the idp/ci docker image from ECR by default. 
-# Images are built via the identity-devops GitLab pipeline.
-
 variables:
-  BUNDLER_VERSION: "2.3.13"
+  BUNDLER_VERSION: "2.2.20"
   NVM_VERSION: "v0.39.0"
   NODE_VERSION: "latest"
-  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
-  IDP_WORKER_IMAGE_TAG: 'main'
-  IDP_IMAGE_TAG: 'main'
-  PKI_IMAGE_TAG: 'main'
 
 stages:
   - lint
@@ -17,11 +10,8 @@ stages:
   - snapshot
   - visual_regression
 
-
-
 default:
-  image: '${ECR_REGISTRY}/dashboard/ci:latest'
-
+  image: cimg/ruby:3.1-browsers
 
 before_script:
   - export BASH_ENV="$HOME/.bash.env"
@@ -33,16 +23,19 @@ before_script:
   - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
   - node -v
 
+
 cache:
   key: "$CI_COMMIT_REF_SLUG"
   paths:
-    - .npm
-    - .bundler
+    - ~/.npm
+    - ~/.bundler
 
 before_cache:
-  - rm -f .bundler/ruby/2.6.0/cache/*.gem
+  script:
+    - rm -f .bundler/ruby/2.6.0/cache/*.gem
 
 .bundle-npm-install: &bundle_npm_install
+  - gem install bundler --version $BUNDLER_VERSION
   - bundle check --path ~/.bundler || bundle install --path ~/.bundler
   - npm ci
 
@@ -50,57 +43,56 @@ build-docs:
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
-
+    
 snapshot:
   script:
-    - scripts/
+    - scripts/snapshot.js
   artifacts:
     paths:
       - '*'
-    root: 
       - tmp/screenshot/branches
 
 
 lints:
   stage: lint
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - make lint
 
 integration:
   stage: test
   script:
-    - *bundle-npm-install
-    - npm test
+    - *bundle_npm_install
+    - npm test 
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
-
 snapshot-main:
   stage: snapshot
   script:
-    - *bundle-npm-install
+    - git checkout main
+    - *bundle_npm_install
     - build-docs
-    - snapshot
+    - scripts/snapshot.js
   except:
-    - migation
+    - main
 
 snapshot-branch:
   stage: snapshot
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - build-docs
-    - snapshot
+    - scripts/snapshot.js
   except:
-    - migation
+    - main
 
 visual-regression:
   stage: visual_regression
   script:
-    - *bundle-npm-install
+    - *bundle_npm_install
     - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
-    - npm test
+    - npm test 
   except:
-    - migation
+    - main
   artifacts:
     paths:
       - tmp/screenshot/diff
@@ -110,21 +102,28 @@ visual-regression:
 test:
   stage: test
   script:
-    - *bundle-npm-install
-    - npm test
+    - *bundle_npm_install
+    - npm test 
 
-# workflow:
-#   rules:
-#     - if: $CI_COMMIT_BRANCH == "main"
-#       when: never
-#   jobs:
-#     - lints
-#     - integration
-#     - snapshot-main:
-#         needs: []
-#     - snapshot-branch:
-#         needs: []
-#     - visual-regression:
-#         needs:
-#           - snapshot-main
-#           - snapshot-branch
+# Workflows
+# workflows:
+#   version: 2
+#   test:
+#     jobs:
+#       - lints
+#       - integration
+#   visual_regression:
+#     jobs:
+#       - snapshot-main:
+#           rules:
+#             - if: $CI_COMMIT_REF_NAME != "migration"
+#       - snapshot-branch:
+#           rules:
+#             - if: $CI_COMMIT_REF_NAME != "migration"
+#       - visual-regression:
+#           rules:
+#             - if: $CI_COMMIT_REF_NAME != "migration"
+#           needs:
+#             - snapshot-main
+#             - snapshot-branch
+

@@ -29,6 +29,7 @@ const browser = await puppeteer.launch({
     width: 1024,
     height: 768,
   },
+  args: ['--no-sandbox']
 });
 const localURL = `http://localhost:${port}/`;
 const outputDirectory = join('tmp/screenshot/branches', branch);
