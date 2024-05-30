@@ -45,7 +45,7 @@ build-docs:
     - make -j2 build-assets build-docs
     
 snapshot:
-  stage: snapshot
+  #stage: snapshot
   script:
     - scripts/snapshot.js
 
