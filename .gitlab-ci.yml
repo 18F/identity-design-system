@@ -46,7 +46,7 @@ build-docs:
     
 snapshot:
   script:
-    - snapshot
+    - scripts/snapshot.js
   artifacts:
     paths:
       - '*'
