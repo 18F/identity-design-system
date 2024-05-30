@@ -56,6 +56,7 @@
     "lint": "run-p lint:*",
     "typecheck": "tsc",
     "test": "make test",
+    "snapshot": "node scripts/snapshot.js",
     "build": "run-p build:docs build:pkg",
     "pages": "make build-assets",
     "prepublishOnly": "make lint && make clean && make build-assets build-package"
