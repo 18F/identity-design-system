@@ -48,11 +48,6 @@ snapshot:
   stage: snapshot
   script:
     - scripts/snapshot.js
-  artifacts:
-    paths:
-      - '*'
-      - tmp/screenshot/branches
-
 
 lints:
   stage: lint
