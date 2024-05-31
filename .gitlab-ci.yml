@@ -1,7 +1,14 @@
+# Jobs defined here use the idp/ci docker image from ECR by default. 
+# Images are built via the identity-devops GitLab pipeline.
+
 variables:
-  BUNDLER_VERSION: "2.2.20"
+  BUNDLER_VERSION: "2.3.13"
   NVM_VERSION: "v0.39.0"
   NODE_VERSION: "latest"
+  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+  IDP_WORKER_IMAGE_TAG: 'main'
+  IDP_IMAGE_TAG: 'main'
+  PKI_IMAGE_TAG: 'main'
 
 stages:
   - lint
@@ -10,8 +17,11 @@ stages:
   - snapshot
   - visual_regression
 
+
+
 default:
-  image: cimg/ruby:3.1-browsers
+  image: '${ECR_REGISTRY}/dashboard/ci:latest'
+
 
 before_script:
   - export BASH_ENV="$HOME/.bash.env"
@@ -45,13 +55,10 @@ build-docs:
     - make -j2 build-assets build-docs
     
 snapshot:
+  stage: snapshot
   script:
+    - *bundle_npm_install
     - scripts/snapshot.js
-  artifacts:
-    paths:
-      - '*'
-      - tmp/screenshot/branches
-
 
 lints:
   stage: lint
@@ -66,12 +73,12 @@ integration:
     - npm test 
   variables:
     SKIP_VISUAL_REGRESSION_TEST: "true"
+
 snapshot-main:
   stage: snapshot
   script:
-    - git checkout main
     - *bundle_npm_install
-    - build-docs
+    - make -j2 build-assets build-docs
     - scripts/snapshot.js
   except:
     - main
@@ -80,7 +87,7 @@ snapshot-branch:
   stage: snapshot
   script:
     - *bundle_npm_install
-    - build-docs
+    - make -j2 build-assets build-docs
     - scripts/snapshot.js
   except:
     - main
@@ -89,7 +96,7 @@ visual-regression:
   stage: visual_regression
   script:
     - *bundle_npm_install
-    - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
+    #- cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
     - npm test 
   except:
     - main
@@ -99,11 +106,11 @@ visual-regression:
     reports:
       junit: tmp/screenshot/diff
 
-test:
-  stage: test
-  script:
-    - *bundle_npm_install
-    - npm test 
+# test:
+#   stage: test
+#   script:
+#     - *bundle_npm_install
+#     - npm test 
 
 # Workflows
 # workflows:
