@@ -1,3 +1,9 @@
+## Unreleased
+
+### Dependencies
+
+- Upgrade USWDS from v3.8.0 to v3.8.1 (see [release notes](https://github.com/uswds/uswds/releases/tag/v3.8.1)) ([#448](https://github.com/18F/identity-design-system/pull/448))
+
 ## 9.2.0
 
 ### Improvements
