@@ -59,6 +59,9 @@ snapshot:
   script:
     - *bundle_npm_install
     - scripts/snapshot.js
+  artifacts:
+    paths:
+      - tmp/screenshot/branches
 
 lints:
   stage: lint
@@ -96,7 +99,7 @@ visual-regression:
   stage: visual_regression
   script:
     - *bundle_npm_install
-    #- cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
+    - cp -r tmp/screenshot/branches/* tmp/screenshot/branches/
     - npm test 
   except:
     - main
