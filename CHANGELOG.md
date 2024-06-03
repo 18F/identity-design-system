@@ -1,9 +1,8 @@
 ## Unreleased
 
-### Breaking Changes
+### Bug Fixes
 
-- Remove support for deprecation notices in v9.2.0:
-  - Badge component markup has been updated. ([#442](https://github.com/18F/identity-design-system/pull/442))
+- Improve compatibility of badge icon styling for inner Icon component. ([#445](https://github.com/18F/identity-design-system/pull/445))
 
 ### Dependencies
 
