@@ -97,10 +97,11 @@ snapshot-branch:
 
 visual-regression:
   stage: visual_regression
+  variables:
+    ONLY_VISUAL_REGRESSION_TEST: "true"
   script:
     - *bundle_npm_install
-    - ls -la tmp/screenshot/branches/
-    - cp -r 'tmp/screenshot/branches/*' tmp/screenshot/branches/
+    #- 'tmp/screenshot/branches/* cp -r {} tmp/screenshot/branches/
     - npm test 
   except:
     - main
@@ -110,31 +111,30 @@ visual-regression:
     reports:
       junit: tmp/screenshot/diff
 
-# test:
-#   stage: test
-#   script:
-#     - *bundle_npm_install
-#     - npm test 
+test:
+  stage: test
+  script:
+    - *bundle_npm_install
+    - npm test 
 
-# Workflows
-# workflows:
-#   version: 2
-#   test:
-#     jobs:
-#       - lints
-#       - integration
-#   visual_regression:
-#     jobs:
-#       - snapshot-main:
-#           rules:
-#             - if: $CI_COMMIT_REF_NAME != "migration"
-#       - snapshot-branch:
-#           rules:
-#             - if: $CI_COMMIT_REF_NAME != "migration"
-#       - visual-regression:
-#           rules:
-#             - if: $CI_COMMIT_REF_NAME != "migration"
-#           needs:
-#             - snapshot-main
-#             - snapshot-branch
+workflows:
+  version: 2
+  test:
+    jobs:
+      - lints
+      - integration
+  visual_regression:
+    jobs:
+      - snapshot-main:
+          rules:
+            - if: $CI_COMMIT_REF_NAME != "migration"
+      - snapshot-branch:
+          rules:
+            - if: $CI_COMMIT_REF_NAME != "migration"
+      - visual-regression:
+          rules:
+            - if: $CI_COMMIT_REF_NAME != "migration"
+          needs:
+            - snapshot-main
+            - snapshot-branch
 
