@@ -111,12 +111,6 @@ visual-regression:
     reports:
       junit: tmp/screenshot/diff
 
-test:
-  stage: test
-  script:
-    - *bundle_npm_install
-    - npm test 
-
 # workflows:
 #   version: 2
 #   test:
