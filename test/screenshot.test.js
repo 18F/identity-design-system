@@ -5,7 +5,7 @@ import { promisify } from 'node:util';
 import { exec as _exec } from 'node:child_process';
 //import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import assert from 'node:assert';
-//import { join } from 'node:path';
+import { join } from 'node:path';
 //import { PNG } from 'pngjs';
 import match from 'pixelmatch';
 
@@ -13,7 +13,7 @@ const exec = promisify(_exec);
 
 const branch = (await exec('git branch --show-current')).stdout.trim();
 
-const { join } = require('path');
+//const { join } = require('path');
 const { readdir, readFile, writeFile, mkdir } = require('fs').promises;
 const { PNG } = require('pngjs');
 //const { match } = require('pixelmatch');
