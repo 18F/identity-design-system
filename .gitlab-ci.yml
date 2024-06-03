@@ -97,11 +97,10 @@ snapshot-branch:
 
 visual-regression:
   stage: visual_regression
-  variables:
-    ONLY_VISUAL_REGRESSION_TEST: "true"
   script:
     - *bundle_npm_install
-    #- 'tmp/screenshot/branches/* cp -r {} tmp/screenshot/branches/
+    - ls -la tmp/screenshot/branches/
+    - find tmp/screenshot/branches/ -mindepth 1 -maxdepth 1 -type d -exec cp -r {} tmp/screenshot/branches/ \;
     - npm test 
   except:
     - main
@@ -111,6 +110,13 @@ visual-regression:
     reports:
       junit: tmp/screenshot/diff
 
+# test:
+#   stage: test
+#   script:
+#     - *bundle_npm_install
+#     - npm test 
+
+# Workflows
 # workflows:
 #   version: 2
 #   test:
@@ -131,4 +137,3 @@ visual-regression:
 #           needs:
 #             - snapshot-main
 #             - snapshot-branch
-
