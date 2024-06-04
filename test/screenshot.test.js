@@ -23,9 +23,9 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
   let paths = [];
   try {
     paths = await readdir(MAIN_SNAPSHOTS_DIRECTORY);
-    console.log('Main snapshots directory contents:', paths);  // Log the contents of the main snapshots directory
+    console.log('Main snapshots directory contents:', paths);
   } catch (error) {
-    console.error('Error reading main snapshots directory:', error);  // Log any error while reading the directory
+    console.error('Error reading main snapshots directory:', error);
   }
 
   it('has pages to test', () => {
@@ -56,7 +56,7 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
         }
         assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the main branch.`);
       } catch (error) {
-        console.error(`Error processing ${path}:`, error);  // Log any error during the processing of images
+        console.error(`Error processing ${path}:`, error);
       }
     });
   });
