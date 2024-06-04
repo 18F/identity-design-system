@@ -13,12 +13,12 @@ const exec = promisify(_exec);
 
 const branch = (await exec('git branch --show-current')).stdout.trim();
 
+const DIFF_DIRECTORY = 'tmp/screenshot/diff';
 const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';
-const MAIN_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, 'migation-to-gl');
+const MAIN_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, 'main');
 const BRANCH_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, branch);
 
 const skip = !!process.env.SKIP_VISUAL_REGRESSION_TEST;
-
 
 describe('screenshot visual regression', { skip, concurrency: true }, async () => {
   /** @type {string[]} */
