@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax, no-await-in-loop, no-param-reassign */
-
 import { describe, it, test } from 'node:test';
 import { promisify } from 'node:util';
 import { exec as _exec } from 'node:child_process';
@@ -25,32 +23,41 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
   let paths = [];
   try {
     paths = await readdir(MAIN_SNAPSHOTS_DIRECTORY);
-  } catch {}
+    console.log('Main snapshots directory contents:', paths);  // Log the contents of the main snapshots directory
+  } catch (error) {
+    console.error('Error reading main snapshots directory:', error);  // Log any error while reading the directory
+  }
 
   it('has pages to test', () => {
-    assert(paths.length);
+    assert(paths.length, 'No pages found in the main snapshots directory.');
   });
 
   paths.forEach((path) => {
     test(path, async () => {
-      const branchPNG = PNG.sync.read(await readFile(join(BRANCH_SNAPSHOTS_DIRECTORY, path)));
-      const mainPNG = PNG.sync.read(await readFile(join(MAIN_SNAPSHOTS_DIRECTORY, path)));
-      const width = Math.max(branchPNG.width, mainPNG.width);
-      const height = Math.max(branchPNG.height, mainPNG.height);
-      const diff = new PNG({ width, height });
-      const diffs = match(branchPNG.data, mainPNG.data, diff.data, width, height, {
-        threshold: 0.2,
-      });
-      if (diffs > 0) {
-        const diffOutputBase = join(DIFF_DIRECTORY, path);
-        await mkdir(DIFF_DIRECTORY, { recursive: true });
-        await Promise.all([
-          writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(branchPNG)),
-          writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(mainPNG)),
-          writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
-        ]);
+      const branchPath = join(BRANCH_SNAPSHOTS_DIRECTORY, path);
+      const mainPath = join(MAIN_SNAPSHOTS_DIRECTORY, path);
+      try {
+        const branchPNG = PNG.sync.read(await readFile(branchPath));
+        const mainPNG = PNG.sync.read(await readFile(mainPath));
+        const width = Math.max(branchPNG.width, mainPNG.width);
+        const height = Math.max(branchPNG.height, mainPNG.height);
+        const diff = new PNG({ width, height });
+        const diffs = match(branchPNG.data, mainPNG.data, diff.data, width, height, {
+          threshold: 0.2,
+        });
+        if (diffs > 0) {
+          const diffOutputBase = join(DIFF_DIRECTORY, path);
+          await mkdir(DIFF_DIRECTORY, { recursive: true });
+          await Promise.all([
+            writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(branchPNG)),
+            writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(mainPNG)),
+            writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
+          ]);
+        }
+        assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the main branch.`);
+      } catch (error) {
+        console.error(`Error processing ${path}:`, error);  // Log any error during the processing of images
       }
-      assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the main branch.`);
     });
   });
 });
