@@ -60,9 +60,10 @@ snapshot:
     - *bundle_npm_install
     - scripts/snapshot.js
     - pwd
+    - ls -la
   artifacts:
     paths:
-      - /tmp/screenshot/branches/
+      - tmp/screenshot/branches/
 
 lints:
   stage: lint
