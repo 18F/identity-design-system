@@ -23,12 +23,7 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
   let paths = [];
   try {
     paths = await readdir(MAIN_SNAPSHOTS_DIRECTORY);
-    // eslint-disable-next-line no-console
-    console.log('Main snapshots directory contents:', paths);  // Log the contents of the main snapshots directory
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Error reading main snapshots directory:', error);  // Log any error while reading the directory
-  }
+  } catch {}
 
   it('has pages to test', () => {
     assert(paths.length, 'No pages found in the main snapshots directory.');
