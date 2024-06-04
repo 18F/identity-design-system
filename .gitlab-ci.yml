@@ -59,7 +59,7 @@ snapshot:
   script:
     - *bundle_npm_install
     - scripts/snapshot.js
-    - ls -l /tmp/screenshot/branches/
+    - pwd
   artifacts:
     paths:
       - /tmp/screenshot/branches/
