@@ -52,10 +52,7 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
           ]);
         }
         assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the main branch.`);
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(`Error processing ${path}:`, error);  // Log any error during the processing of images
-      }
+      } catch {}
     });
   });
 });
