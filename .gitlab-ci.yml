@@ -54,16 +54,6 @@ build-docs:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     
-snapshot:
-  stage: snapshot
-  script:
-    - *bundle_npm_install
-    - scripts/snapshot.js
-    - pwd
-    - ls -la
-  artifacts:
-    paths:
-      - tmp/screenshot/branches/
 
 lints:
   stage: lint
@@ -94,6 +84,9 @@ snapshot-branch:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
+  artifacts:
+    paths:
+      - tmp/screenshot/branches/
   except:
     - main
 
@@ -109,7 +102,7 @@ visual-regression:
   except:
     - main
   dependencies:
-    - snapshot
+    - snapshot-branch
 # test:
 #   stage: test
 #   script:
