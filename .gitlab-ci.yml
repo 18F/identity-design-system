@@ -78,8 +78,7 @@ snapshot-main:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
     - mkdir tmp/screenshot/branches/main
-    - cp -R tmp/screenshot/branches/* tmp/screenshot/branches/main/
-
+    - find tmp/screenshot/branches/ -mindepth 1 -maxdepth 1 -type d -exec cp -r {} tmp/screenshot/branches/main/ \;
   artifacts:
     paths:
       - tmp/screenshot/branches/main
