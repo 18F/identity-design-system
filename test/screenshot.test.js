@@ -1,14 +1,20 @@
 import { describe, it, test } from 'node:test';
+import { promisify } from 'node:util';
+import { exec as _exec } from 'node:child_process';
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import assert from 'node:assert';
 import { join } from 'node:path';
 import { PNG } from 'pngjs';
 import match from 'pixelmatch';
 
+const exec = promisify(_exec);
+
+const branch = (await exec('git branch --show-current')).stdout.trim();
+
 const DIFF_DIRECTORY = 'tmp/screenshot/diff';
 const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';
 const MAIN_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, 'main');
-const BRANCH_SNAPSHOTS_DIRECTORY = 'tmp/screenshot/branches';
+const BRANCH_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, branch);
 
 const skip = !!process.env.SKIP_VISUAL_REGRESSION_TEST;
 

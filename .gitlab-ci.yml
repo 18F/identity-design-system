@@ -72,9 +72,14 @@ integration:
 snapshot-main:
   stage: snapshot
   script:
+    - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov:lg/identity-design-system.git
+    - cd identity-design-system
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
+  artifacts:
+    paths:
+      - tmp/screenshot/branches/main
   except:
     - main
 
@@ -86,7 +91,7 @@ snapshot-branch:
     - scripts/snapshot.js
   artifacts:
     paths:
-      - tmp/screenshot/branches/
+      - tmp/screenshot/branches
   except:
     - main
 
@@ -94,7 +99,7 @@ visual-regression:
   stage: visual_regression
   script:
     - *bundle_npm_install
-    - ls -la tmp/screenshot/branches/
+    - ls -la tmp/screenshot/branches/test
     #- find tmp/screenshot/branches/ -mindepth 1 -maxdepth 1 -type d -exec cp -r {} tmp/screenshot/branches/ \;
     - npm test 
   variables:
