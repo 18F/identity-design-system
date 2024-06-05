@@ -7,9 +7,6 @@ import { join } from 'node:path';
 import { PNG } from 'pngjs';
 import match from 'pixelmatch';
 
-const exec = promisify(_exec);
-
-
 const DIFF_DIRECTORY = 'tmp/screenshot/diff';
 const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';
 const MAIN_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, 'main');
