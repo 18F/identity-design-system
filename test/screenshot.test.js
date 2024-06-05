@@ -9,7 +9,6 @@ import match from 'pixelmatch';
 
 const exec = promisify(_exec);
 
-const branch = (await exec('git branch --show-current')).stdout.trim();
 
 const DIFF_DIRECTORY = 'tmp/screenshot/diff';
 const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';
