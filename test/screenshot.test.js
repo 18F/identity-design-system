@@ -1,6 +1,4 @@
 import { describe, it, test } from 'node:test';
-import { promisify } from 'node:util';
-import { exec as _exec } from 'node:child_process';
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import assert from 'node:assert';
 import { join } from 'node:path';
