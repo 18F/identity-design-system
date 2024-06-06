@@ -72,13 +72,11 @@ integration:
 snapshot-main:
   stage: snapshot
   script:
-    - git clone -b migation-to-gl --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
+    - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
     - cd identity-design-system
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
-    - mkdir tmp/screenshot/branches/main
-    - find tmp/screenshot/branches/migation-to-gl -mindepth 1 -maxdepth 1 -type d -exec cp -r {} tmp/screenshot/branches/main/ \;
   artifacts:
     paths:
       - tmp/screenshot/branches/main
