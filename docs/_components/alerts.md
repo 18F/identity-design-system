@@ -63,10 +63,10 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Other
+### Default
 
 {% capture example %}
-<div class="usa-alert usa-alert--other">
+<div class="usa-alert">
   <div class="usa-alert__body">
     <p class="usa-alert__text">Banner text</p>
   </div>
