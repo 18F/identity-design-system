@@ -1,5 +1,10 @@
 ## Unreleased
 
+### Improvements
+
+- Update styling for Default (previously "Other") Alert component variant, for greater distinction from other variants and consistency with U.S. Web Design System. ([#449](https://github.com/18F/identity-design-system/pull/449))
+  - It is no longer necessary to assign the `usa-alert--other` class to use these styles, and it can be safely removed. Existing code assigning `usa-alert--other` should continue to display the updated default styles as expected.
+
 ### Bug Fixes
 
 - Improve compatibility of badge icon styling for inner Icon component. ([#445](https://github.com/18F/identity-design-system/pull/445))
