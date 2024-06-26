@@ -70,13 +70,15 @@ build-images:
 	cp -r node_modules/@uswds/uswds/dist/img $(OUTPUT_DIR)/assets
 	cp -r src/img $(OUTPUT_DIR)/assets
 
-test:
+create-snapshots:
 	node scripts/snapshot.js
+
+test:
 ifdef ONLY_VISUAL_REGRESSION_TEST
 	node --test test/screenshot.test.js
 else
 	make build
-	node --test test/**.js
+	node --test "test"
 endif
 
 clean:
