@@ -71,11 +71,12 @@ build-images:
 	cp -r src/img $(OUTPUT_DIR)/assets
 
 test:
+	node scripts/snapshot.js
 ifdef ONLY_VISUAL_REGRESSION_TEST
 	node --test test/screenshot.test.js
 else
 	make build
-	node --test test/
+	node --test test/**.js
 endif
 
 clean:
