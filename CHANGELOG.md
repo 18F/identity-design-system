@@ -8,7 +8,7 @@
 ### Bug Fixes
 
 - Improve compatibility of badge icon styling for inner Icon component. ([#445](https://github.com/18F/identity-design-system/pull/445))
-- Improve text contrast for code syntax highlighting. ([#2](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/2))
+- Improve text contrast for code syntax highlighting. ([!2](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/2))
 
 ### Dependencies
 
