@@ -115,8 +115,10 @@ visual-regression:
     - <<: *ruby_cache
     - <<: *npm_cache
   needs:
-    - snapshot-main
-    - snapshot-branch
+    - job: snapshot-main
+      artifacts: true
+    - job: snapshot-branch
+      artifacts: true
   script:
     - *bundle_npm_install
     - npm test
@@ -124,9 +126,6 @@ visual-regression:
     ONLY_VISUAL_REGRESSION_TEST: 'true'
   except:
     - main
-  dependencies:
-    - snapshot-branch
-    - snapshot-main
   artifacts:
     paths:
       - tmp/screenshot/diff
