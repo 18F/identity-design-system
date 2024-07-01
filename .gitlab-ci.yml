@@ -10,10 +10,31 @@ variables:
   IDP_IMAGE_TAG: 'main'
   PKI_IMAGE_TAG: 'main'
 
+stages:
+  - build
+  - test
+
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
-.bundle-npm-install: &bundle_npm_install
+.build_cache:
+  - &ruby_cache
+    key:
+      files:
+        - Gemfile.lock
+    paths:
+      - vendor/ruby
+    policy: pull
+
+  - &yarn_cache
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - .yarn-cache/
+    policy: pull
+
+.bundle_npm_install: &bundle_npm_install
   - export BASH_ENV="$HOME/.bash.env"
   - gem install bundler --version $BUNDLER_VERSION
   - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
@@ -25,29 +46,39 @@ default:
   - bundle check --path ~/.bundler || bundle install --path ~/.bundler
   - npm ci
 
-bundle-npm-install:
+install:
+  stage: build
+  cache:
+    - <<: *ruby_cache
+      policy: pull-push
+    - <<: *yarn_cache
+      policy: pull-push
   script:
     - *bundle_npm_install
-  cache:
-    paths:
-      - ~/.npm
-      - ~/.bundler
 
 lints:
-  needs:
-    - bundle-npm-install
+  stage: test
+  cache:
+    - <<: *ruby_cache
+    - <<: *yarn_cache
   script:
     - make lint
 
 integration:
-  needs:
-    - bundle-npm-install
+  stage: test
+  cache:
+    - <<: *ruby_cache
+    - <<: *yarn_cache
   script:
     - npm test
   variables:
     SKIP_VISUAL_REGRESSION_TEST: 'true'
 
 snapshot-main:
+  stage: test
+  cache:
+    - <<: *ruby_cache
+    - <<: *yarn_cache
   script:
     - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
     - cd identity-design-system
@@ -61,8 +92,10 @@ snapshot-main:
     - main
 
 snapshot-branch:
-  needs:
-    - bundle-npm-install
+  stage: test
+  cache:
+    - <<: *ruby_cache
+    - <<: *yarn_cache
   script:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
@@ -73,11 +106,14 @@ snapshot-branch:
     - main
 
 visual-regression:
+  stage: test
+  cache:
+    - <<: *ruby_cache
+    - <<: *yarn_cache
   needs:
     - snapshot-main
     - snapshot-branch
   script:
-    - *bundle_npm_install
     - npm test
   variables:
     ONLY_VISUAL_REGRESSION_TEST: 'true'
