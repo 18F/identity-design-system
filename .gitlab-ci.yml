@@ -81,7 +81,7 @@ snapshot-main:
     - <<: *ruby_cache
     - <<: *npm_cache
   script:
-    - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
+    - git clone -b main --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
     - cd identity-design-system
     - *bundle_npm_install
     - make -j2 build-assets build-docs
