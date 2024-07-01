@@ -10,10 +10,6 @@ variables:
   IDP_IMAGE_TAG: 'main'
   PKI_IMAGE_TAG: 'main'
 
-stages:
-  - build
-  - test
-
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
@@ -40,7 +36,6 @@ default:
   - npm ci --cache .npm-cache --prefer-offline
 
 install:
-  stage: build
   cache:
     - <<: *dependency_cache
       policy: pull-push
@@ -48,7 +43,8 @@ install:
     - *bundle_npm_install
 
 lints:
-  stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -56,7 +52,8 @@ lints:
     - make lint
 
 integration:
-  stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -66,7 +63,8 @@ integration:
     SKIP_VISUAL_REGRESSION_TEST: 'true'
 
 snapshot-main:
-  stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -85,7 +83,8 @@ snapshot-main:
     - main
 
 snapshot-branch:
-  stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
