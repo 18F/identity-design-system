@@ -29,22 +29,21 @@ default:
   - &yarn_cache
     key:
       files:
-        - yarn.lock
+        - package-lock.json
     paths:
-      - .yarn-cache/
+      - .npm-cache/
     policy: pull
 
 .bundle_npm_install: &bundle_npm_install
   - export BASH_ENV="$HOME/.bash.env"
-  - gem install bundler --version $BUNDLER_VERSION
   - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
   - . "$NVM_DIR/nvm.sh" --install --latest-npm
   - echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
   - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
   - gem install bundler --version $BUNDLER_VERSION
-  - bundle check --path ~/.bundler || bundle install --path ~/.bundler
-  - npm ci
+  - bundle check || bundle install --deployment --jobs=4 --retry=3 --without deploy development doc production --path vendor/ruby
+  - npm ci --cache .npm-cache
 
 install:
   stage: build
