@@ -81,15 +81,14 @@ snapshot-main:
     - <<: *ruby_cache
     - <<: *npm_cache
   script:
-    - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
-    - cd identity-design-system
+    - git checkout main
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
     - find tmp/screenshot -type f
   artifacts:
     paths:
-      - 'tmp/screenshot/branches/main/*.png'
+      - tmp/screenshot/branches/main/*.png
   except:
     - main
 
