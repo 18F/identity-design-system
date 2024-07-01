@@ -44,9 +44,8 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
         threshold: 0.2,
       });
       if (diffs > 0) {
-        const diffOutputBase = join(DIFF_DIRECTORY, path);
         await mkdir(DIFF_DIRECTORY, { recursive: true });
-        await writeFile(`${diffOutputBase}.png`, PNG.sync.write(diff));
+        await writeFile(join(DIFF_DIRECTORY, path), PNG.sync.write(diff));
       }
       assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the main branch.`);
     });
