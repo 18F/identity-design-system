@@ -129,6 +129,4 @@ visual-regression:
   artifacts:
     expose_as: Visual regression
     paths:
-      - tmp/screenshot/diff/*.png
-      - tmp/screenshot/branches/$CI_COMMIT_REF_SLUG/*.png
-      - tmp/screenshot/branches/main/*.png
+      - tmp/screenshot
