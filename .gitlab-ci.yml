@@ -88,7 +88,6 @@ snapshot-main:
     - scripts/snapshot.js
     - mkdir -p ../tmp/screenshot/branches
     - mv tmp/screenshot/branches/main ../tmp/screenshot/branches/main
-    - find tmp/screenshot -type f
   artifacts:
     paths:
       - 'tmp/screenshot/branches/main/*.png'
