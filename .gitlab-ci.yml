@@ -37,7 +37,7 @@ default:
   - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
   - gem install bundler --version $BUNDLER_VERSION
   - bundle check || bundle install --deployment --jobs=4 --retry=3 --without deploy development doc production --path vendor/ruby
-  - npm ci --cache .npm-cache
+  - npm ci --cache .npm-cache --prefer-offline
 
 install:
   stage: build
