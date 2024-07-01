@@ -87,9 +87,8 @@ snapshot-main:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
-    untracked: true
     paths:
-      - tmp/screenshot/branches
+      - tmp/screenshot/branches/main/*.png
   except:
     - main
 
@@ -103,9 +102,8 @@ snapshot-branch:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
-    untracked: true
     paths:
-      - tmp/screenshot/branches
+      - 'tmp/screenshot/branches/$CI_COMMIT_REF_SLUG/*.png'
   except:
     - main
 
