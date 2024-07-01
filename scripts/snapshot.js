@@ -12,7 +12,7 @@ const exec = promisify(_exec);
 
 const paths = (await glob('dist/*/index.html')).map((path) => dirname(relative('dist', path)));
 const branch =
-  process.env.CI_COMMIT_BRANCH ?? (await exec('git branch --show-current')).stdout.trim();
+  process.env.CI_COMMIT_REF_NAME ?? (await exec('git branch --show-current')).stdout.trim();
 
 /**
  * @param {import('puppeteer').Page} page
