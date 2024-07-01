@@ -14,7 +14,6 @@ stages:
   - lint
   - test
   - build
-  - snapshot
   - visual_regression
 
 default:
@@ -65,7 +64,7 @@ integration:
     SKIP_VISUAL_REGRESSION_TEST: 'true'
 
 snapshot-main:
-  stage: snapshot
+  stage: visual_regression
   script:
     - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
     - cd identity-design-system
@@ -79,7 +78,7 @@ snapshot-main:
     - main
 
 snapshot-branch:
-  stage: snapshot
+  stage: visual_regression
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
