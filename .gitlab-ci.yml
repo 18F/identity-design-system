@@ -80,7 +80,7 @@ visual-regression:
     - *bundle_npm_install
     - npm test
   variables:
-    only_VISUAL_REGRESSION_TEST: 'true'
+    ONLY_VISUAL_REGRESSION_TEST: 'true'
   except:
     - main
   dependencies:
