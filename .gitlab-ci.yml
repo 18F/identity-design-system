@@ -87,6 +87,7 @@ snapshot-main:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
+    untracked: true
     paths:
       - tmp/screenshot/branches
   except:
@@ -102,6 +103,7 @@ snapshot-branch:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
+    untracked: true
     paths:
       - tmp/screenshot/branches
   except:
