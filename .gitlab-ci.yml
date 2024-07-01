@@ -88,7 +88,7 @@ snapshot-main:
     - scripts/snapshot.js
   artifacts:
     paths:
-      - tmp/screenshot/branches/main/*.png
+      - 'tmp/screenshot/branches/main/*.png'
   except:
     - main
 
