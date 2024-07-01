@@ -86,8 +86,8 @@ snapshot-main:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
-    - mkdir -p tmp/screenshot/branches
-    - mv identity-design-system/tmp/screenshot/branches/main tmp/screenshot/branches/main
+    - mkdir -p ../tmp/screenshot/branches
+    - mv tmp/screenshot/branches/main ../tmp/screenshot/branches/main
     - find tmp/screenshot -type f
   artifacts:
     paths:
