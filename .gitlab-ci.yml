@@ -61,6 +61,7 @@ lints:
     - <<: *ruby_cache
     - <<: *npm_cache
   script:
+    - *bundle_npm_install
     - make lint
 
 integration:
@@ -69,6 +70,7 @@ integration:
     - <<: *ruby_cache
     - <<: *npm_cache
   script:
+    - *bundle_npm_install
     - npm test
   variables:
     SKIP_VISUAL_REGRESSION_TEST: 'true'
@@ -96,6 +98,7 @@ snapshot-branch:
     - <<: *ruby_cache
     - <<: *npm_cache
   script:
+    - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
@@ -113,6 +116,7 @@ visual-regression:
     - snapshot-main
     - snapshot-branch
   script:
+    - *bundle_npm_install
     - npm test
   variables:
     ONLY_VISUAL_REGRESSION_TEST: 'true'
