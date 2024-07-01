@@ -18,19 +18,13 @@ default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
 .build_cache:
-  - &ruby_cache
+  - &dependency_cache
     key:
       files:
         - Gemfile.lock
-    paths:
-      - vendor/ruby
-    policy: pull
-
-  - &npm_cache
-    key:
-      files:
         - package-lock.json
     paths:
+      - vendor/ruby
       - .npm-cache/
     policy: pull
 
@@ -48,9 +42,7 @@ default:
 install:
   stage: build
   cache:
-    - <<: *ruby_cache
-      policy: pull-push
-    - <<: *npm_cache
+    - <<: *dependency_cache
       policy: pull-push
   script:
     - *bundle_npm_install
@@ -58,8 +50,7 @@ install:
 lints:
   stage: test
   cache:
-    - <<: *ruby_cache
-    - <<: *npm_cache
+    - <<: *dependency_cache
   script:
     - *bundle_npm_install
     - make lint
@@ -67,8 +58,7 @@ lints:
 integration:
   stage: test
   cache:
-    - <<: *ruby_cache
-    - <<: *npm_cache
+    - <<: *dependency_cache
   script:
     - *bundle_npm_install
     - npm test
@@ -78,8 +68,7 @@ integration:
 snapshot-main:
   stage: test
   cache:
-    - <<: *ruby_cache
-    - <<: *npm_cache
+    - <<: *dependency_cache
   script:
     - git clone -b main --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
     - cd identity-design-system
@@ -98,8 +87,7 @@ snapshot-main:
 snapshot-branch:
   stage: test
   cache:
-    - <<: *ruby_cache
-    - <<: *npm_cache
+    - <<: *dependency_cache
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
@@ -114,8 +102,7 @@ snapshot-branch:
 visual-regression:
   stage: test
   cache:
-    - <<: *ruby_cache
-    - <<: *npm_cache
+    - <<: *dependency_cache
   needs:
     - job: snapshot-main
       artifacts: true
