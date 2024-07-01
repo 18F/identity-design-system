@@ -149,7 +149,7 @@ pre.highlight {
   color: color('secondary');
 } /* keyword.type */
 .highlight .m {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.number */
 .highlight .s {
   color: color('secondary-dark');
@@ -194,19 +194,19 @@ pre.highlight {
   color: color('base-light');
 } /* text.whitespace */
 .highlight .mb {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.number.bin */
 .highlight .mf {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.number.float */
 .highlight .mh {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.number.hex */
 .highlight .mi {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.number.integer */
 .highlight .mo {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.number.oct */
 .highlight .sa {
   color: color('secondary-dark');
@@ -239,7 +239,7 @@ pre.highlight {
   color: color('secondary-dark');
 } /* literal.string.other */
 .highlight .sr {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.string.regex */
 .highlight .s1 {
   color: color('secondary-dark');
@@ -266,5 +266,5 @@ pre.highlight {
   color: color('secondary-dark');
 } /* name.variable.magic */
 .highlight .il {
-  color: color('accent-cool-dark');
+  color: color('accent-cool-darker');
 } /* literal.number.integer.long */

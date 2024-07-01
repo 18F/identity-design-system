@@ -1,113 +1,122 @@
-# Jobs defined here use the idp/ci docker image from ECR by default. 
+# Jobs defined here use the idp/ci docker image from ECR by default.
 # Images are built via the identity-devops GitLab pipeline.
 
 variables:
-  BUNDLER_VERSION: "2.3.13"
-  NVM_VERSION: "v0.39.0"
-  NODE_VERSION: "latest"
+  BUNDLER_VERSION: '2.3.13'
+  NVM_VERSION: 'v0.39.0'
+  NODE_VERSION: 'latest'
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
   IDP_WORKER_IMAGE_TAG: 'main'
   IDP_IMAGE_TAG: 'main'
   PKI_IMAGE_TAG: 'main'
 
-stages:
-  - lint
-  - test
-  - build
-  - snapshot
-  - visual_regression
-
-
-
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
+.build_cache:
+  - &dependency_cache
+    key:
+      files:
+        - Gemfile.lock
+        - package-lock.json
+    paths:
+      - vendor/ruby
+      - .npm-cache/
+    policy: pull
 
-before_script:
+.bundle_npm_install: &bundle_npm_install
   - export BASH_ENV="$HOME/.bash.env"
-  - gem install bundler --version $BUNDLER_VERSION
   - wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
   - . "$NVM_DIR/nvm.sh" --install --latest-npm
   - echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
   - echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-  - node -v
-
-
-cache:
-  key: "$CI_COMMIT_REF_SLUG"
-  paths:
-    - ~/.npm
-    - ~/.bundler
-
-before_cache:
-  script:
-    - rm -f .bundler/ruby/2.6.0/cache/*.gem
-
-.bundle-npm-install: &bundle_npm_install
   - gem install bundler --version $BUNDLER_VERSION
-  - bundle check --path ~/.bundler || bundle install --path ~/.bundler
-  - npm ci
+  - bundle check || bundle install --deployment --jobs=4 --retry=3 --without deploy development doc production --path vendor/ruby
+  - npm ci --cache .npm-cache --prefer-offline
 
-build-docs:
+install:
+  cache:
+    - <<: *dependency_cache
+      policy: pull-push
   script:
     - *bundle_npm_install
-    - make -j2 build-assets build-docs
-    
 
 lints:
-  stage: lint
+  needs:
+    - install
+  cache:
+    - <<: *dependency_cache
   script:
     - *bundle_npm_install
     - make lint
 
 integration:
-  stage: test
+  needs:
+    - install
+  cache:
+    - <<: *dependency_cache
   script:
     - *bundle_npm_install
-    - npm test 
+    - npm test
   variables:
-    SKIP_VISUAL_REGRESSION_TEST: "true"
+    SKIP_VISUAL_REGRESSION_TEST: 'true'
 
 snapshot-main:
-  stage: snapshot
+  needs:
+    - install
+  cache:
+    - <<: *dependency_cache
   script:
-    - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
+    - git clone -b main --depth 1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
     - cd identity-design-system
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
+    - mkdir -p ../tmp/screenshot/branches
+    - mv tmp/screenshot/branches/main ../tmp/screenshot/branches/main
   artifacts:
+    expire_in: 1h
     paths:
-      - tmp/screenshot/branches/main
+      - tmp/screenshot/branches/main/*.png
   except:
     - main
 
 snapshot-branch:
-  stage: snapshot
+  needs:
+    - install
+  cache:
+    - <<: *dependency_cache
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
+    expire_in: 1h
     paths:
-      - tmp/screenshot/branches
+      - tmp/screenshot/branches/$CI_COMMIT_REF_SLUG/*.png
   except:
     - main
 
 visual-regression:
-  stage: visual_regression
+  stage: test
+  cache:
+    - <<: *dependency_cache
+  needs:
+    - job: snapshot-main
+      artifacts: true
+    - job: snapshot-branch
+      artifacts: true
   script:
     - *bundle_npm_install
-    - mkdir tmp/screenshot/branches/main
-    - find tmp/screenshot/branches/ -mindepth 1 -maxdepth 1 -type d -exec cp -r {} tmp/screenshot/branches/main/ \;
-    - ls -la tmp/screenshot/branches/
-    - ls -la tmp/screenshot/branches/main
-    - npm test 
+    - npm test
   variables:
-    only_VISUAL_REGRESSION_TEST: "true"
+    ONLY_VISUAL_REGRESSION_TEST: 'true'
   except:
     - main
-  dependencies:
-    - snapshot-branch
-    - snapshot-main
+  artifacts:
+    expose_as: Visual regression
+    when: on_failure
+    expire_in: 30d
+    paths:
+      - tmp/screenshot

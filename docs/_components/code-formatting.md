@@ -19,3 +19,14 @@ Output:
 ```html
 <div contenteditable>A HTML code sample.</div>
 ```
+
+A more complex block, which can be used for automated color-contrast checking:
+
+```json
+{
+  "text": "This is a string",
+  "integer": 12345,
+  "float": 12.345,
+  "literal": "This is a string ${literal}",
+}
+```

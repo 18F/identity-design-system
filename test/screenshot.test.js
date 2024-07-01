@@ -11,7 +11,9 @@ import match from 'pixelmatch';
 
 const exec = promisify(_exec);
 
-const branch = (await exec('git branch --show-current')).stdout.trim();
+const branch =
+  process.env.CI_COMMIT_REF_SLUG ??
+  (await exec('git branch --show-current')).stdout.replace(/\W/g, '-');
 
 const DIFF_DIRECTORY = 'tmp/screenshot/diff';
 const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';
@@ -42,13 +44,8 @@ describe('screenshot visual regression', { skip, concurrency: true }, async () =
         threshold: 0.2,
       });
       if (diffs > 0) {
-        const diffOutputBase = join(DIFF_DIRECTORY, path);
         await mkdir(DIFF_DIRECTORY, { recursive: true });
-        await Promise.all([
-          writeFile(`${diffOutputBase}-local.png`, PNG.sync.write(branchPNG)),
-          writeFile(`${diffOutputBase}-remote.png`, PNG.sync.write(mainPNG)),
-          writeFile(`${diffOutputBase}-diff.png`, PNG.sync.write(diff)),
-        ]);
+        await writeFile(join(DIFF_DIRECTORY, path), PNG.sync.write(diff));
       }
       assert.strictEqual(diffs, 0, `Expected "${path}" to visually match the main branch.`);
     });
