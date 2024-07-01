@@ -127,3 +127,6 @@ visual-regression:
   dependencies:
     - snapshot-branch
     - snapshot-main
+  artifacts:
+    paths:
+      - tmp/screenshot/diff
