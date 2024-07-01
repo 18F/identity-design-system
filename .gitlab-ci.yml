@@ -10,12 +10,6 @@ variables:
   IDP_IMAGE_TAG: 'main'
   PKI_IMAGE_TAG: 'main'
 
-stages:
-  - lint
-  - test
-  - build
-  - visual_regression
-
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
@@ -44,27 +38,25 @@ before_cache:
   - bundle check --path ~/.bundler || bundle install --path ~/.bundler
   - npm ci
 
-build-docs:
+bundle-npm-install:
   script:
     - *bundle_npm_install
-    - make -j2 build-assets build-docs
 
 lints:
-  stage: lint
+  needs:
+    - bundle-npm-install
   script:
-    - *bundle_npm_install
     - make lint
 
 integration:
-  stage: test
+  needs:
+    - bundle-npm-install
   script:
-    - *bundle_npm_install
     - npm test
   variables:
     SKIP_VISUAL_REGRESSION_TEST: 'true'
 
 snapshot-main:
-  stage: visual_regression
   script:
     - git clone -b main --single-branch https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.login.gov/lg/identity-design-system.git
     - cd identity-design-system
@@ -78,9 +70,9 @@ snapshot-main:
     - main
 
 snapshot-branch:
-  stage: visual_regression
+  needs:
+    - bundle-npm-install
   script:
-    - *bundle_npm_install
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
@@ -90,7 +82,9 @@ snapshot-branch:
     - main
 
 visual-regression:
-  stage: visual_regression
+  needs:
+    - snapshot-main
+    - snapshot-branch
   script:
     - *bundle_npm_install
     - npm test
