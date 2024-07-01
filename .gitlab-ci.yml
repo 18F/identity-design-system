@@ -94,10 +94,6 @@ visual-regression:
   stage: visual_regression
   script:
     - *bundle_npm_install
-    - mkdir tmp/screenshot/branches/main
-    - find tmp/screenshot/branches/ -mindepth 1 -maxdepth 1 -type d -exec cp -r {} tmp/screenshot/branches/main/ \;
-    - ls -la tmp/screenshot/branches/
-    - ls -la tmp/screenshot/branches/main
     - npm test
   variables:
     only_VISUAL_REGRESSION_TEST: 'true'
