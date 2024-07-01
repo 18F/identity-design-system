@@ -89,6 +89,7 @@ snapshot-main:
     - mkdir -p ../tmp/screenshot/branches
     - mv tmp/screenshot/branches/main ../tmp/screenshot/branches/main
   artifacts:
+    expire_in: 1h
     paths:
       - tmp/screenshot/branches/main/*.png
   except:
@@ -104,6 +105,7 @@ snapshot-branch:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
   artifacts:
+    expire_in: 1h
     paths:
       - tmp/screenshot/branches/$CI_COMMIT_REF_SLUG/*.png
   except:
@@ -129,5 +131,6 @@ visual-regression:
   artifacts:
     expose_as: Visual regression
     when: on_failure
+    expire_in: 30d
     paths:
       - tmp/screenshot
