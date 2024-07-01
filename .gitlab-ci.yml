@@ -128,5 +128,6 @@ visual-regression:
     - main
   artifacts:
     expose_as: Visual regression
+    when: on_failure
     paths:
       - tmp/screenshot
