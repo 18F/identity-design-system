@@ -4,6 +4,7 @@ import { promisify } from 'node:util';
 import { exec as _exec } from 'node:child_process';
 import { dirname, relative, join, extname, basename } from 'node:path';
 import { mkdir, writeFile } from 'node:fs/promises';
+import assert from 'node:assert';
 import glob from 'fast-glob';
 import esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
@@ -12,7 +13,10 @@ const exec = promisify(_exec);
 
 const paths = (await glob('dist/*/index.html')).map((path) => dirname(relative('dist', path)));
 const branch =
-  process.env.CI_COMMIT_REF_NAME ?? (await exec('git branch --show-current')).stdout.trim();
+  process.env.CI_COMMIT_REF_SLUG ?? (await exec('git branch --show-current')).stdout.trim();
+
+console.log(branch);
+assert(branch.length > 0);
 
 /**
  * @param {import('puppeteer').Page} page
