@@ -11,5 +11,5 @@
     "target": "ESNext",
     "baseUrl": "."
   },
-  "exclude": ["build", "dist", "packages"]
+  "exclude": ["build", "dist", "packages", "vendor"]
 }
