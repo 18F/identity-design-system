@@ -11,7 +11,8 @@ import puppeteer from 'puppeteer';
 const exec = promisify(_exec);
 
 const paths = (await glob('dist/*/index.html')).map((path) => dirname(relative('dist', path)));
-const branch = (await exec('git branch --show-current')).stdout.trim();
+const branch =
+  process.env.CI_COMMIT_BRANCH ?? (await exec('git branch --show-current')).stdout.trim();
 
 /**
  * @param {import('puppeteer').Page} page
@@ -24,13 +25,12 @@ async function getScreenshot(page, url) {
 
 const esbuildContext = await esbuild.context({});
 const { port } = await esbuildContext.serve({ servedir: 'dist' });
-const browser = await puppeteer.launch({ 
+const browser = await puppeteer.launch({
   args: ['--no-sandbox'],
   defaultViewport: {
     width: 1024,
     height: 768,
-  }
-  
+  },
 });
 const localURL = `http://localhost:${port}/`;
 const outputDirectory = join('tmp/screenshot/branches', branch);
