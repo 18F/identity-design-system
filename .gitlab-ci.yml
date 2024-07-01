@@ -90,7 +90,7 @@ snapshot-main:
     - mv tmp/screenshot/branches/main ../tmp/screenshot/branches/main
   artifacts:
     paths:
-      - 'tmp/screenshot/branches/main/*.png'
+      - tmp/screenshot/branches/main/*.png
   except:
     - main
 
@@ -105,7 +105,7 @@ snapshot-branch:
     - scripts/snapshot.js
   artifacts:
     paths:
-      - 'tmp/screenshot/branches/$CI_COMMIT_REF_SLUG/*.png'
+      - tmp/screenshot/branches/$CI_COMMIT_REF_SLUG/*.png
   except:
     - main
 
@@ -127,5 +127,8 @@ visual-regression:
   except:
     - main
   artifacts:
+    expose_as: Visual regression
     paths:
-      - tmp/screenshot/diff
+      - tmp/screenshot/diff/*.png
+      - tmp/screenshot/branches/$CI_COMMIT_REF_SLUG/*.png
+      - tmp/screenshot/branches/main/*.png
