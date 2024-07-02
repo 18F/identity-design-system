@@ -74,7 +74,7 @@ snapshot-main:
     - make -j2 build-assets build-docs
     - scripts/snapshot.js
     - mkdir -p ../tmp/screenshot/branches
-    - mv tmp/screenshot/branches/main ../tmp/screenshot/branches/main
+    - mv tmp/screenshot/branches/$CI_COMMIT_REF_SLUG ../tmp/screenshot/branches/main
   artifacts:
     expire_in: 1h
     paths:
