@@ -8,6 +8,10 @@ variables:
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
+stages:
+  - build
+  - test
+
 .build_cache:
   - &dependency_cache
     key:
@@ -31,6 +35,7 @@ default:
   - npm ci --cache .npm-cache --prefer-offline
 
 install:
+  stage: build
   cache:
     - <<: *dependency_cache
       policy: pull-push
@@ -38,8 +43,7 @@ install:
     - *bundle_npm_install
 
 lints:
-  needs:
-    - install
+  stage: test
   cache:
     - <<: *dependency_cache
   script:
@@ -47,8 +51,7 @@ lints:
     - make lint
 
 integration:
-  needs:
-    - install
+  stage: test
   cache:
     - <<: *dependency_cache
   script:
@@ -58,8 +61,7 @@ integration:
     SKIP_VISUAL_REGRESSION_TEST: 'true'
 
 snapshot-main:
-  needs:
-    - install
+  stage: test
   cache:
     - <<: *dependency_cache
   script:
@@ -78,8 +80,7 @@ snapshot-main:
     - main
 
 snapshot-branch:
-  needs:
-    - install
+  stage: test
   cache:
     - <<: *dependency_cache
   script:
