@@ -11,6 +11,7 @@ default:
 stages:
   - build
   - test
+  - deploy
 
 .build_cache:
   - &dependency_cache
@@ -116,3 +117,35 @@ visual-regression:
     expire_in: 30d
     paths:
       - tmp/screenshot
+
+pages:
+  stage: deploy
+  cache:
+    - <<: *dependency_cache
+  script:
+    - *bundle_npm_install
+    - make -j2 build-assets build-docs
+  artifacts:
+    paths:
+      - docs
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  variables:
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
+
+preview:
+  stage: deploy
+  cache:
+    - <<: *dependency_cache
+  script:
+    - *bundle_npm_install
+    - make -j2 build-assets build-docs
+    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}index.html'
+  artifacts:
+    paths:
+      - docs
+  variables:
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
+    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/preview/
