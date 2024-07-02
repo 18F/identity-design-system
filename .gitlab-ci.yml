@@ -4,6 +4,7 @@
 variables:
   BUNDLER_VERSION: '2.3.13'
   NVM_VERSION: 'v0.39.0'
+  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
 
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
