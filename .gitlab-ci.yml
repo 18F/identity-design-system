@@ -46,6 +46,8 @@ install:
 
 lints:
   stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -54,6 +56,8 @@ lints:
 
 integration:
   stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -64,6 +68,8 @@ integration:
 
 snapshot-main:
   stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -83,6 +89,8 @@ snapshot-main:
 
 snapshot-branch:
   stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -98,6 +106,8 @@ snapshot-branch:
 
 visual-regression:
   stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   needs:
@@ -121,6 +131,8 @@ visual-regression:
 
 pages:
   stage: deploy
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -138,6 +150,8 @@ pages:
 
 preview:
   stage: deploy
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   script:
