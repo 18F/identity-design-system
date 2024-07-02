@@ -140,7 +140,7 @@ pages:
     - make -j2 build-assets build-docs
   artifacts:
     paths:
-      - docs
+      - dist
   rules:
     # This ensures that only pushes to the default branch will trigger
     # a pages deploy
@@ -160,7 +160,7 @@ preview:
     - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}index.html'
   artifacts:
     paths:
-      - docs
+      - dist
   variables:
     PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
-    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/preview/
+    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist/
