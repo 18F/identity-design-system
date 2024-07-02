@@ -4,11 +4,6 @@
 variables:
   BUNDLER_VERSION: '2.3.13'
   NVM_VERSION: 'v0.39.0'
-  NODE_VERSION: 'latest'
-  ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
-  IDP_WORKER_IMAGE_TAG: 'main'
-  IDP_IMAGE_TAG: 'main'
-  PKI_IMAGE_TAG: 'main'
 
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
