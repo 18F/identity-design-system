@@ -132,30 +132,16 @@ pages:
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
-    - 'echo Preview URL: ${PREVIEW_URL}'
+    - 'echo Preview URL: ${CI_PAGES_URL}/${PAGES_PREFIX}'
   artifacts:
     paths:
       - dist
   publish: dist
   rules:
-    # This ensures that only pushes to the default branch will trigger a pages deploy
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+      variables:
+        PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID'
+        PREVIEW_BASEURL: /mr-$CI_MERGE_REQUEST_IID
   variables:
     PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
-
-preview:
-  stage: deploy
-  needs:
-    - install
-  cache:
-    - <<: *dependency_cache
-  script:
-    - *bundle_npm_install
-    - make -j2 build-assets build-docs
-    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}/index.html'
-  artifacts:
-    paths:
-      - dist
-  variables:
-    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov
-    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist
