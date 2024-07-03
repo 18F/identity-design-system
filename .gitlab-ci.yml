@@ -138,6 +138,7 @@ pages:
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
+    - 'echo Preview URL: ${PREVIEW_URL}'
   artifacts:
     paths:
       - dist
