@@ -132,7 +132,7 @@ pages:
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
-    - 'echo Preview URL: ${CI_PAGES_URL}/${PAGES_PREFIX}'
+    - 'echo Preview URL: ${PREVIEW_URL}/${PAGES_PREFIX}'
   artifacts:
     paths:
       - dist
@@ -141,6 +141,8 @@ pages:
   publish: dist
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      variables:
+        PAGES_PREFIX: ''
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
       variables:
         PAGES_PREFIX: 'branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME'
