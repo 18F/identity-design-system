@@ -26,7 +26,8 @@ stages:
     policy: pull
 
 .bundle_npm_install: &bundle_npm_install
-  - bundle install --deployment --jobs=4 --retry=3
+  - bundle config set deployment true
+  - bundle install --jobs=4 --retry=3
   - npm ci --cache .npm-cache --prefer-offline
 
 install:
