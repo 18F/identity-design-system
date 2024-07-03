@@ -20,7 +20,6 @@ stages:
       files:
         - Gemfile.lock
         - package-lock.json
-        - .gitlab-ci.yml
     paths:
       - vendor/bundle
       - .npm-cache/
