@@ -146,7 +146,8 @@ pages:
     # a pages deploy
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   variables:
-    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov
+    PREVIEW_BASEURL: /identity-design-system
 
 preview:
   stage: deploy
@@ -162,5 +163,5 @@ preview:
     paths:
       - dist
   variables:
-    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
-    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov
+    PREVIEW_BASEURL: /identity-design-system/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist
