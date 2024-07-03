@@ -158,7 +158,7 @@ preview:
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
-    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}index.html'
+    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}/index.html'
   artifacts:
     paths:
       - dist
