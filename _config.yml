@@ -11,10 +11,10 @@ collections:
   components:
     output: true
     show_in_navigation: true
-    permalink: /:name/
+    permalink: /:name/index.html
   embeds:
     output: true
-    permalink: /:collection/:path/
+    permalink: /:collection/:path/index.html
 
 defaults:
   - scope:

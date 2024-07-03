@@ -4,14 +4,15 @@
 variables:
   BUNDLER_VERSION: '2.3.13'
   NVM_VERSION: 'v0.39.0'
-  NODE_VERSION: 'latest'
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
-  IDP_WORKER_IMAGE_TAG: 'main'
-  IDP_IMAGE_TAG: 'main'
-  PKI_IMAGE_TAG: 'main'
 
 default:
   image: '${ECR_REGISTRY}/dashboard/ci:latest'
+
+stages:
+  - build
+  - test
+  - deploy
 
 .build_cache:
   - &dependency_cache
@@ -36,6 +37,7 @@ default:
   - npm ci --cache .npm-cache --prefer-offline
 
 install:
+  stage: build
   cache:
     - <<: *dependency_cache
       policy: pull-push
@@ -43,6 +45,7 @@ install:
     - *bundle_npm_install
 
 lints:
+  stage: test
   needs:
     - install
   cache:
@@ -52,6 +55,7 @@ lints:
     - make lint
 
 integration:
+  stage: test
   needs:
     - install
   cache:
@@ -63,6 +67,7 @@ integration:
     SKIP_VISUAL_REGRESSION_TEST: 'true'
 
 snapshot-main:
+  stage: test
   needs:
     - install
   cache:
@@ -83,6 +88,7 @@ snapshot-main:
     - main
 
 snapshot-branch:
+  stage: test
   needs:
     - install
   cache:
@@ -100,6 +106,8 @@ snapshot-branch:
 
 visual-regression:
   stage: test
+  needs:
+    - install
   cache:
     - <<: *dependency_cache
   needs:
@@ -120,3 +128,40 @@ visual-regression:
     expire_in: 30d
     paths:
       - tmp/screenshot
+
+pages:
+  stage: deploy
+  needs:
+    - install
+  cache:
+    - <<: *dependency_cache
+  script:
+    - *bundle_npm_install
+    - make -j2 build-assets build-docs
+    - 'echo Preview URL: ${PREVIEW_URL}'
+  artifacts:
+    paths:
+      - dist
+  publish: dist
+  rules:
+    # This ensures that only pushes to the default branch will trigger a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  variables:
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
+
+preview:
+  stage: deploy
+  needs:
+    - install
+  cache:
+    - <<: *dependency_cache
+  script:
+    - *bundle_npm_install
+    - make -j2 build-assets build-docs
+    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}/index.html'
+  artifacts:
+    paths:
+      - dist
+  variables:
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov
+    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist
