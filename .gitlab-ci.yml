@@ -144,6 +144,5 @@ pages:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
       variables:
         PAGES_PREFIX: 'branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME'
-        PREVIEW_BASEURL: /branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
   variables:
     PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
