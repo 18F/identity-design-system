@@ -21,20 +21,20 @@ stages:
         - Gemfile.lock
         - package-lock.json
     paths:
-      - vendor/bundle
+      - vendor/ruby
       - .npm-cache/
     policy: pull
 
 .bundle_npm_install: &bundle_npm_install
   - bundle config set deployment true
-  - bundle install --jobs=4 --retry=3
+  - bundle install --jobs=4 --retry=3 --path vendor/ruby
   - npm ci --cache .npm-cache --prefer-offline
 
 install:
   stage: build
   cache:
     - <<: *dependency_cache
-      policy: push
+      policy: pull-push
   script:
     - *bundle_npm_install
 
