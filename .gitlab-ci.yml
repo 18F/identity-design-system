@@ -1,4 +1,4 @@
-# Jobs defined here use the idp/ci docker image from ECR by default.
+# Jobs defined here use the dashboard/ci docker image from ECR by default.
 # Images are built via the identity-devops GitLab pipeline.
 
 variables:
@@ -7,7 +7,7 @@ variables:
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
 
 default:
-  image: '${ECR_REGISTRY}/idp/ci:latest'
+  image: '${ECR_REGISTRY}/dashboard/ci:latest'
 
 stages:
   - build
@@ -21,13 +21,13 @@ stages:
         - Gemfile.lock
         - package-lock.json
     paths:
-      - vendor/ruby
+      - vendor/bundle
       - .npm-cache/
     policy: pull
 
 .bundle_npm_install: &bundle_npm_install
   - bundle config set deployment true
-  - bundle install --jobs=4 --retry=3 --path vendor/ruby
+  - bundle install --jobs=4 --retry=3
   - npm ci --cache .npm-cache --prefer-offline
 
 install:
