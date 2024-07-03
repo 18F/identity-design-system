@@ -34,7 +34,7 @@ install:
   stage: build
   cache:
     - <<: *dependency_cache
-      policy: pull-push
+      policy: push
   script:
     - *bundle_npm_install
 
