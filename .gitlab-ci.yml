@@ -163,4 +163,4 @@ preview:
       - dist
   variables:
     PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
-    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist/
+    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist
