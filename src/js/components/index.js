@@ -1,4 +1,4 @@
-import accordion from '@uswds/uswds/js/usa-accordion';
+import accordion from './accordion';
 import banner from '@uswds/uswds/js/usa-banner';
 import button from '@uswds/uswds/js/usa-button';
 import characterCount from '@uswds/uswds/js/usa-character-count';
