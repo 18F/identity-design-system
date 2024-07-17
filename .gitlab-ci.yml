@@ -131,3 +131,7 @@ pages:
   pages:
     path_prefix: '$PAGES_PREFIX'
   publish: dist
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+      variables:
+        PAGES_PREFIX: 'branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME'
