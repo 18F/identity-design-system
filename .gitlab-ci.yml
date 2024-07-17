@@ -120,7 +120,7 @@ pages:
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
-    - 'echo Preview URL: ${PREVIEW_URL}/${PAGES_PREFIX}'
+    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}'
   variables:
     PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov
     PAGES_PREFIX: ''
