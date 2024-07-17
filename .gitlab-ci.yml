@@ -122,9 +122,9 @@ pages:
     - make -j2 build-assets build-docs
     - 'echo Preview URL: ${PREVIEW_URL}/${PAGES_PREFIX}'
   variables:
-    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov
     PAGES_PREFIX: ''
-    PREVIEW_BASEURL: /$PAGES_PREFIX
+    PREVIEW_BASEURL: /identity-design-system/$PAGES_PREFIX
   artifacts:
     paths:
       - dist
