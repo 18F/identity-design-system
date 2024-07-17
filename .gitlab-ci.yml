@@ -121,6 +121,9 @@ pages:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
     - 'echo Preview URL: ${PREVIEW_URL}/${PAGES_PREFIX}'
+  variables:
+    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
+    PAGES_PREFIX: ''
   artifacts:
     paths:
       - dist
@@ -128,11 +131,6 @@ pages:
     path_prefix: '$PAGES_PREFIX'
   publish: dist
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-      variables:
-        PAGES_PREFIX: ''
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
       variables:
         PAGES_PREFIX: 'branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME'
-  variables:
-    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
