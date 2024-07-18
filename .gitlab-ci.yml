@@ -40,8 +40,6 @@ install:
 
 lints:
   stage: test
-  needs:
-    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -50,8 +48,6 @@ lints:
 
 integration:
   stage: test
-  needs:
-    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -62,8 +58,6 @@ integration:
 
 snapshot-main:
   stage: test
-  needs:
-    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -83,8 +77,6 @@ snapshot-main:
 
 snapshot-branch:
   stage: test
-  needs:
-    - install
   cache:
     - <<: *dependency_cache
   script:
@@ -100,8 +92,6 @@ snapshot-branch:
 
 visual-regression:
   stage: test
-  needs:
-    - install
   cache:
     - <<: *dependency_cache
   needs:
@@ -125,37 +115,24 @@ visual-regression:
 
 pages:
   stage: deploy
-  needs:
-    - install
   cache:
     - <<: *dependency_cache
   script:
     - *bundle_npm_install
     - make -j2 build-assets build-docs
-    - 'echo Preview URL: ${PREVIEW_URL}'
-  artifacts:
-    paths:
-      - dist
-  publish: dist
-  rules:
-    # This ensures that only pushes to the default branch will trigger a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-  variables:
-    PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov/identity-design-system
-
-preview:
-  stage: deploy
-  needs:
-    - install
-  cache:
-    - <<: *dependency_cache
-  script:
-    - *bundle_npm_install
-    - make -j2 build-assets build-docs
-    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}/index.html'
-  artifacts:
-    paths:
-      - dist
+    - 'echo Preview URL: ${PREVIEW_URL}${PREVIEW_BASEURL}'
   variables:
     PREVIEW_URL: https://$CI_PROJECT_NAMESPACE.pages.production.gitlab.login.gov
-    PREVIEW_BASEURL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/dist
+    PAGES_PREFIX: ''
+    PREVIEW_BASEURL: /identity-design-system
+  artifacts:
+    paths:
+      - dist
+  pages:
+    path_prefix: '$PAGES_PREFIX'
+  publish: dist
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+      variables:
+        PAGES_PREFIX: 'branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME'
+        PREVIEW_BASEURL: /identity-design-system/branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
