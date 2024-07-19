@@ -1,27 +1,18 @@
-<!-- Uncomment and update the sections you need for your merge request! -->
-
-<!--
 ## 🎫 Ticket
-Link to the relevant ticket.
--->
 
-<!--
+[Link to the relevant ticket]
+
 ## 🛠 Summary of changes
-Write a brief description of what you changed.
--->
 
-<!--
+[Write a brief description of what you changed]
+
 ## 📜 Testing Plan
-Provide a list of steps to confirm the changes.
-1. Step 1
-2. Step 2
-3. Step 3
--->
 
-<!--
+[Provide a list of steps to confirm the changes]
+
 ## 👀 Screenshots
-If relevant, include a screenshot or screen capture of the changes.
--->
+
+[If relevant, include a screenshot or screen capture of the changes]
 
 ## 🔍 Preview URL
 
