@@ -134,5 +134,5 @@ pages:
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
       variables:
-        PAGES_PREFIX: 'branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME'
-        PREVIEW_BASEURL: /identity-design-system/branch-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+        PAGES_PREFIX: 'branch-$CI_COMMIT_REF_SLUG'
+        PREVIEW_BASEURL: /identity-design-system/branch-$CI_COMMIT_REF_SLUG
