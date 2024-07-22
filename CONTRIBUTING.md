@@ -12,8 +12,10 @@ If you have any questions or want to read more, check out the [18F Open Source P
 
 The following dependencies are required to build the documentation and assets within this repository:
 
-- [Ruby](.ruby-version)
-- [Node.js](.nvmrc)
+- [Ruby](https://www.ruby-lang.org/en/) ([version as defined in `.ruby-version`](.ruby-version))
+- [Node.js](https://nodejs.org/en) ([version as defined in `.nvmrc`](.nvmrc))
+
+We recommend using [Homebrew](https://brew.sh/), [rbenv](https://github.com/rbenv/rbenv), [nvm](https://github.com/nvm-sh/nvm) or other version management tooling to install these dependencies; while we don't anticipate changing these frequently, this will ensure that you will be able to easily switch to different versions as needed.
 
 After satisfying the above language dependencies and cloning this repository, install package dependencies:
 
