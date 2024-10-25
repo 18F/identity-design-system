@@ -22,11 +22,9 @@ lead: Stating validation requirements up front, with live feedback, means users 
 {% include helpers/code-example.html code=example %}
 
 {% capture example %}
-
 <label for="e9a4" class="usa-label">Text input validation example</label>
 <input id="e9a4" type="text" class="usa-input usa-input--error">
 <span class="usa-error-message" role="alert">Error message text</span>
-
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 

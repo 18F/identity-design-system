@@ -1,5 +1,9 @@
 ## Unreleased
 
+### Bug Fixes
+
+- Align Validation component message icons with the first line of the message text.
+
 ### Dependencies
 
 - Upgrade USWDS from v3.8.1 to v3.9.0 (see [release notes](https://github.com/uswds/uswds/releases/)) ([!14](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/14), [!17](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/17))
