@@ -45,7 +45,7 @@
     "postbuild:pkg:cjs": "echo '{\"type\":\"commonjs\"}' > build/cjs/package.json",
     "build:pkg:esm": "esbuild `find src/js -type f` --outdir=build/esm --format=esm --target=`./scripts/esbuild-targets.mjs`",
     "build:pkg": "run-p build:pkg:*",
-    "lint:js": "eslint src/js test",
+    "lint:js": "eslint src/js test --ext .js,.ts",
     "lint:css": "stylelint src/scss",
     "watch:docs:css": "npm run build:docs:css -- --watch",
     "watch:docs:js": "npm run build:docs:js -- --watch",
