@@ -7,7 +7,7 @@ import puppeteer from 'puppeteer';
 import { AxePuppeteer } from '@axe-core/puppeteer';
 
 const pages = await Array.fromAsync(glob('dist/*/index.html'));
-const paths = pages.map((page) => dirname(relative('dist', page)));
+const paths = pages.map((page) => `/${dirname(relative('dist', page))}/`);
 
 describe('accessibility', () => {
   /** @type {import('esbuild').BuildContext} */
