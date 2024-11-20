@@ -3,14 +3,15 @@
 import { promisify } from 'node:util';
 import { exec as _exec } from 'node:child_process';
 import { dirname, relative, join, extname, basename } from 'node:path';
-import { mkdir, writeFile } from 'node:fs/promises';
-import glob from 'fast-glob';
+import { glob, mkdir, writeFile } from 'node:fs/promises';
 import esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
 
 const exec = promisify(_exec);
 
-const paths = (await glob('dist/*/index.html')).map((path) => dirname(relative('dist', path)));
+const pages = await Array.fromAsync(glob('dist/*/index.html'));
+const paths = pages.map((page) => dirname(relative('dist', page)));
+
 const branch =
   process.env.CI_COMMIT_REF_SLUG ??
   (await exec('git branch --show-current')).stdout.replace(/\W/g, '-');
