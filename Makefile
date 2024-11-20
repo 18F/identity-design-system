@@ -78,7 +78,7 @@ ifdef ONLY_VISUAL_REGRESSION_TEST
 	node --test test/screenshot.test.js
 else
 	make build
-	node --test "test"
+	node --test "test/**/*"
 endif
 
 clean:
