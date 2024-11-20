@@ -1,23 +1,20 @@
 import { describe, before, after, test, it } from 'node:test';
 import assert from 'node:assert';
 import { relative, dirname } from 'node:path';
-import * as esbuild from 'esbuild';
 import { glob } from 'node:fs/promises';
+import * as esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
 import { AxePuppeteer } from '@axe-core/puppeteer';
+import type { BuildContext } from 'esbuild';
+import type { Browser } from 'puppeteer';
 
 const pages = await Array.fromAsync(glob('dist/*/index.html'));
 const paths = pages.map((page) => `/${dirname(relative('dist', page))}/`);
 
 describe('accessibility', () => {
-  /** @type {import('esbuild').BuildContext} */
-  let esbuildContext;
-
-  /** @type {number} */
-  let port;
-
-  /** @type {import('puppeteer').Browser} */
-  let browser;
+  let esbuildContext: BuildContext;
+  let port: number;
+  let browser: Browser;
 
   before(async () => {
     esbuildContext = await esbuild.context({});
