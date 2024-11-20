@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax, no-await-in-loop, no-param-reassign */
-
 import { describe, it, test } from 'node:test';
 import { promisify } from 'node:util';
 import { exec as _exec } from 'node:child_process';
@@ -23,8 +21,7 @@ const BRANCH_SNAPSHOTS_DIRECTORY = join(SNAPSHOT_DIRECTORY, branch);
 const skip = !!process.env.SKIP_VISUAL_REGRESSION_TEST;
 
 describe('screenshot visual regression', { skip, concurrency: true }, async () => {
-  /** @type {string[]} */
-  let paths = [];
+  let paths: string[] = [];
   try {
     paths = await readdir(MAIN_SNAPSHOTS_DIRECTORY);
   } catch {}

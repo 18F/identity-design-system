@@ -3,19 +3,14 @@ import { describe, before, after, it } from 'node:test';
 import assert from 'node:assert';
 import * as esbuild from 'esbuild';
 import puppeteer from 'puppeteer';
+import type { BuildContext } from 'esbuild';
+import type { Browser } from 'puppeteer';
 
 describe('initializer script', () => {
-  /** @type {import('esbuild').BuildContext} */
-  let esbuildContext;
-
-  /** @type {number} */
-  let port;
-
-  /** @type {import('puppeteer').Browser} */
-  let browser;
-
-  /** @type {string} */
-  let originalPageMarkup;
+  let esbuildContext: BuildContext;
+  let port: number;
+  let browser: Browser;
+  let originalPageMarkup: string;
 
   before(async () => {
     esbuildContext = await esbuild.context({});

@@ -12,9 +12,7 @@ describe('components', () => {
       'node_modules/@uswds/uswds/packages/uswds-core/src/js/index.js',
       'utf-8',
     );
-    const [, exports] = /** @type {RegExpMatchArray} */ (
-      uswdsComponentsIndex.match(/module\.exports = \{([\s\S]+)\};/)
-    );
+    const [, exports] = uswdsComponentsIndex.match(/module\.exports = \{([\s\S]+)\};/)!;
     const uswdsComponentKeys = Array.from(exports.matchAll(/(?:\s+([a-zA-Z]+)),/g))
       .map(([, capturedKey]) => capturedKey)
       .sort();

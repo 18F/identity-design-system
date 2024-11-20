@@ -75,10 +75,10 @@ create-snapshots:
 
 test:
 ifdef ONLY_VISUAL_REGRESSION_TEST
-	node --test test/screenshot.test.js
+	node --test --experimental-strip-types test/screenshot.test.ts
 else
 	make build
-	node --test "test/**/*.test.{js,ts}"
+	node --test --experimental-strip-types "test/**/*.test.ts"
 endif
 
 clean:
