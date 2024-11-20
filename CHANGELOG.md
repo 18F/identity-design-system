@@ -2,7 +2,7 @@
 
 ### Dependencies
 
-- Upgrade USWDS from v3.9.0 to v3.10.0 (see [release notes](https://github.com/uswds/uswds/releases/tag/v3.10.0)) ([!22](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/22))
+- Upgrade USWDS from v3.9.0 to v3.10.0 (see [release notes](https://github.com/uswds/uswds/releases/tag/v3.10.0)) ([!25](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/25))
 
 ## 9.4.0
 
