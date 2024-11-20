@@ -2,11 +2,12 @@ import { describe, before, after, test, it } from 'node:test';
 import assert from 'node:assert';
 import { relative, dirname } from 'node:path';
 import * as esbuild from 'esbuild';
-import glob from 'fast-glob';
+import { glob } from 'node:fs/promises';
 import puppeteer from 'puppeteer';
 import { AxePuppeteer } from '@axe-core/puppeteer';
 
-const paths = glob.sync('dist/*/index.html').map((path) => `/${dirname(relative('dist', path))}/`);
+const pages = await Array.fromAsync(glob('dist/*/index.html'));
+const paths = pages.map((page) => dirname(relative('dist', page)));
 
 describe('accessibility', () => {
   /** @type {import('esbuild').BuildContext} */
