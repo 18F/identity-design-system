@@ -10,6 +10,10 @@
   },
   "rules": {
     "import/no-unresolved": ["error", { "ignore": ["^@uswds/uswds/js/_?usa-[a-z-]+$"] }],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["test/**", "scripts/**"] }]
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["test/**", "scripts/**"] }
+    ],
+    "no-restricted-globals": "off"
   }
 }
