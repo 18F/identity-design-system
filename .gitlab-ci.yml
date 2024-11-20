@@ -2,12 +2,11 @@
 # Images are built via the identity-devops GitLab pipeline.
 
 variables:
-  BUNDLER_VERSION: '2.3.13'
-  NVM_VERSION: 'v0.39.0'
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+  CI_SHA: 'sha256:60cd46939b9fca7aefd5c5803f44d86a0ac463e138991b3fa7b26a571f970d24'
 
 default:
-  image: '${ECR_REGISTRY}/dashboard/ci:latest'
+  image: '${ECR_REGISTRY}/dashboard/ci@${CI_SHA}'
 
 workflow:
   rules:
