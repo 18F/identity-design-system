@@ -3,6 +3,7 @@
 ### Dependencies
 
 - Upgrade USWDS from v3.9.0 to v3.11.0 (see [release notes](https://github.com/uswds/uswds/releases/)) ([!25](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/25), [!27](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/27))
+- Updated dependencies specifier for USWDS to only allow patch-level USWDS version increases. Unlike the Login.gov Design System, USWDS does not follow semantic versioning, and therefore it is not safe to assume that USWDS minor versions contain backwards-compatible changes.
 
 ## 9.4.0
 
