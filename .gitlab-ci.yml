@@ -141,3 +141,4 @@ pages:
       variables:
         PAGES_PREFIX: 'branch-$CI_COMMIT_REF_SLUG'
         PREVIEW_BASEURL: /identity-design-system/branch-$CI_COMMIT_REF_SLUG
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
