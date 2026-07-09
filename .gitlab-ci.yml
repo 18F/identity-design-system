@@ -9,6 +9,8 @@ variables:
 
 default:
   image: '${ECR_REGISTRY}/portal/ci@${CI_SHA}' 
+  tags:
+    - test-pool
 
 workflow:
   rules:
