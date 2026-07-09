@@ -1,3 +1,4 @@
+
 TMP_DIR = ./tmp
 DEFAULT_OUTPUT_DIR = ./dist
 OUTPUT_DIR = $(DEFAULT_OUTPUT_DIR)
@@ -36,7 +37,7 @@ optimize-assets: optimize-svg
 lint-optimized-assets: optimize-assets
 	(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize-assets'"; exit 1)
 
-lint: build-package validate-lockfiles lint-optimized-assets typecheck
+lint: build-package lint-optimized-assets typecheck
 	npm run lint
 
 build: build-docs build-assets build-package
