@@ -54,7 +54,7 @@ lints:
   script:
     - *bundle_npm_install
     - make lint
-    - validate_lockfiles
+    - make validate_lockfiles
 
 integration:
   stage: test
