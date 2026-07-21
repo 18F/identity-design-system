@@ -57,7 +57,8 @@
     "test": "make test",
     "build": "run-p build:docs build:pkg",
     "pages": "make build-assets",
-    "prepublishOnly": "make lint && make clean && make build-assets build-package"
+    "prepublishOnly": "make lint && make clean && make build-assets build-package",
+    "postinstall": "npx puppeteer browsers install"
   },
   "files": [
     "index.d.ts",
