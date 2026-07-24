@@ -15,7 +15,10 @@ describe('initializer script', () => {
   before(async () => {
     esbuildContext = await esbuild.context({});
     port = (await esbuildContext.serve({ servedir: 'dist' })).port;
-    browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+    browser = await puppeteer.launch({
+      executablePath: './.cache/puppeteer',
+      args: ['--no-sandbox'],
+    });
     originalPageMarkup = await readFile('dist/accordions/index.html', 'utf-8');
     await writeFile(
       'dist/accordions/index.html',
