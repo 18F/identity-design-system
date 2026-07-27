@@ -27,7 +27,7 @@ async function getScreenshot(page, url) {
 const esbuildContext = await esbuild.context({});
 const { port } = await esbuildContext.serve({ servedir: 'dist' });
 const browser = await puppeteer.launch({
-  executablePath: './.cache/puppeteer',
+  executablePath: './.cache/puppeteer/chrome',
   args: ['--no-sandbox'],
   defaultViewport: {
     width: 1024,

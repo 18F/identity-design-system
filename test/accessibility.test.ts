@@ -20,7 +20,7 @@ describe('accessibility', () => {
     esbuildContext = await esbuild.context({});
     port = (await esbuildContext.serve({ servedir: 'dist' })).port;
     browser = await puppeteer.launch({
-      executablePath: './.cache/puppeteer',
+      executablePath: './.cache/puppeteer/chrome',
       args: ['--no-sandbox'],
     });
   });

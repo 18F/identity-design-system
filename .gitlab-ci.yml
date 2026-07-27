@@ -32,7 +32,7 @@ stages:
     paths:
       - vendor/bundle
       - .npm-cache/
-      - .cache/puppeteer
+      - .cache/
     policy: pull
 
 .bundle_npm_install: &bundle_npm_install
