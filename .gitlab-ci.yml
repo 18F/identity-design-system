@@ -5,7 +5,7 @@ variables:
   ECR_REGISTRY: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
   CI_SHA: 'sha256:27d86d55aad5d29d821ce792436054763269c32835d47675cca8397bb70c2227'
   PUPPETEER_SKIP_DOWNLOAD: "true"
-  PUPPETEER_EXECUTABLE_PATH: "/usr/bin/goole-chrome-stable"
+  PUPPETEER_EXECUTABLE_PATH: "/usr/bin/google-chrome-stable"
 
 default:
   image: '${ECR_REGISTRY}/portal/ci@${CI_SHA}'

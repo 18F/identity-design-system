@@ -19,11 +19,7 @@ describe('accessibility', () => {
   before(async () => {
     esbuildContext = await esbuild.context({});
     port = (await esbuildContext.serve({ servedir: 'dist' })).port;
-    const launchOpts = { args: ['--no-sandbox'] };
-    if (typeof __dirname !== 'undefined') {
-      launchOpts.executablePath = join(__dirname, '.cache', 'puppeteer');
-    }
-    browser = await puppeteer.launch(launchOpts);
+    browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   });
 
   after(async () => {

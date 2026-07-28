@@ -34,7 +34,7 @@ optimize-svg:
 optimize-assets: optimize-svg
 
 lint-optimized-assets: optimize-assets
-	(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize-assets'"; exit 1)
+	@(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize-assets'"; exit 1)
 
 lint: build-package lint-optimized-assets typecheck
 	npm run lint
