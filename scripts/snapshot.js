@@ -16,34 +16,21 @@ const branch =
   (await exec('git branch --show-current')).stdout.trim().replace(/\W/g, '-');
 
 // Kills the concurrency-dependent focus ring on the mobile header embed's
-// close button, and any in-flight animations/transitions. Injected as a
-// document-start script so it applies to the top frame *and* every iframe
-// without any per-frame await plumbing.
-const SETTLE_SCRIPT = `
-(() => {
-  const css = \`
-    *, *::before, *::after {
-      animation-duration: 0s !important;
-      animation-delay: 0s !important;
-      transition-duration: 0s !important;
-      transition-delay: 0s !important;
-      caret-color: transparent !important;
-    }
-    :focus, :focus-visible, :focus-within {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-  \`;
-  const inject = () => {
-    if (!document.documentElement) return;
-    const s = document.createElement('style');
-    s.textContent = css;
-    (document.head || document.documentElement).appendChild(s);
-  };
-  if (document.documentElement) inject();
-  else new MutationObserver((_, o) => { if (document.documentElement) { inject(); o.disconnect(); } })
-    .observe(document, { childList: true, subtree: true });
-})();
+// close button, plus any in-flight animations/transitions. The close button
+// only paints a focus ring in some containers/concurrencies, which makes the
+// snapshot-main vs snapshot-branch comparison flaky.
+const SETTLE_CSS = `
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    caret-color: transparent !important;
+  }
+  :focus, :focus-visible, :focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 `;
 
 // CI containers can't sustain many parallel Chrome pages; screenshots start
@@ -52,12 +39,41 @@ const SETTLE_SCRIPT = `
 const CONCURRENCY = Number(process.env.SNAPSHOT_CONCURRENCY ?? 2);
 
 /**
+ * Inject the settle CSS into a frame and clear any focused element. Wrapped so
+ * a detached frame can't throw. evaluateOnNewDocument does NOT reliably reach
+ * same-origin iframe embeds (e.g. the mobile header preview), so we walk the
+ * iframes explicitly.
+ *
+ * @param {import('puppeteer').Frame} frame
+ */
+async function settleFrame(frame) {
+  try {
+    await frame.addStyleTag({ content: SETTLE_CSS });
+    await frame.evaluate(() => {
+      const active = document.activeElement;
+      if (active && active !== document.body && 'blur' in active) {
+        /** @type {HTMLElement} */ (active).blur();
+      }
+    });
+  } catch {
+    // Frame detached or navigated away; nothing to settle.
+  }
+}
+
+/**
  * @param {import('puppeteer').Page} page
  * @param {string} url
  */
 async function getScreenshot(page, url) {
-  await page.evaluateOnNewDocument(SETTLE_SCRIPT);
   await page.goto(url);
+  await settleFrame(page.mainFrame());
+  const iframeHandles = await page.$$('iframe');
+  await Promise.all(
+    iframeHandles.map(async (handle) => {
+      const frame = await handle.contentFrame();
+      if (frame) await settleFrame(frame);
+    }),
+  );
   return page.screenshot({ fullPage: true, optimizeForSpeed: true });
 }
 
