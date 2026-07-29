@@ -23,7 +23,38 @@ const DISABLE_ANIMATIONS_CSS = `
     transition-delay: 0s !important;
     caret-color: transparent !important;
   }
+  :focus, :focus-visible, :focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 `;
+
+/**
+ * Wait for every same-origin iframe on the page to be attached and to have
+ * finished loading its own document. Without this, page.frames() below may
+ * miss embeds that hadn't attached yet at the moment goto()'s 'load' event
+ * fired (e.g. the mobile header embed).
+ *
+ * @param {import('puppeteer').Page} page
+ */
+async function waitForFrames(page) {
+  const handles = await page.$$('iframe');
+  await Promise.all(
+    handles.map(async (handle) => {
+      try {
+        const frame = await handle.contentFrame();
+        if (!frame) return;
+        await frame
+          .waitForFunction(() => document.readyState === 'complete', {
+            timeout: 5_000,
+          })
+          .catch(() => {});
+      } catch {
+        // Detached; ignore.
+      }
+    }),
+  );
+}
 
 /**
  * @param {import('puppeteer').Page} page
@@ -39,15 +70,6 @@ async function settle(page) {
           .waitForSelector('.usa-nav.is-visible', { timeout: 2_000 })
           .catch(() => {});
         await frame.addStyleTag({ content: DISABLE_ANIMATIONS_CSS });
-        // Whether a focus ring paints depends on which frame currently has
-        // browser focus, which varies with page concurrency. Blur any focused
-        // element so the capture doesn't depend on that.
-        await frame.evaluate(() => {
-          const active = document.activeElement;
-          if (active && active !== document.body && 'blur' in active) {
-            /** @type {HTMLElement} */ (active).blur();
-          }
-        });
       } catch {
         // Frame may have been detached; ignore.
       }
@@ -61,6 +83,7 @@ async function settle(page) {
  */
 async function getScreenshot(page, url) {
   await page.goto(url);
+  await waitForFrames(page);
   await settle(page);
   return page.screenshot({ fullPage: true, optimizeForSpeed: true });
 }
