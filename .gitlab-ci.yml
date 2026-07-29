@@ -22,6 +22,7 @@ stages:
   - build
   - test
   - deploy
+  - verify
 
 .build_cache:
   - &dependency_cache
@@ -101,29 +102,6 @@ snapshot-branch:
   except:
     - main
 
-visual-regression:
-  stage: test
-  cache:
-    - <<: *dependency_cache
-  needs:
-    - job: snapshot-main
-      artifacts: true
-    - job: snapshot-branch
-      artifacts: true
-  script:
-    - *bundle_npm_install
-    - npm test
-  variables:
-    ONLY_VISUAL_REGRESSION_TEST: 'true'
-  except:
-    - main
-  artifacts:
-    expose_as: Visual regression
-    when: on_failure
-    expire_in: 30d
-    paths:
-      - tmp/screenshot
-
 pages:
   stage: deploy
   cache:
@@ -148,3 +126,26 @@ pages:
         PAGES_PREFIX: 'branch-$CI_COMMIT_REF_SLUG'
         PREVIEW_BASEURL: /identity-design-system/branch-$CI_COMMIT_REF_SLUG
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
+visual-regression:
+  stage: verify
+  cache:
+    - <<: *dependency_cache
+  needs:
+    - job: snapshot-main
+      artifacts: true
+    - job: snapshot-branch
+      artifacts: true
+  script:
+    - *bundle_npm_install
+    - npm test
+  variables:
+    ONLY_VISUAL_REGRESSION_TEST: 'true'
+  except:
+    - main
+  artifacts:
+    expose_as: Visual regression
+    when: on_failure
+    expire_in: 30d 
+    paths:
+      - tmp/screenshot
