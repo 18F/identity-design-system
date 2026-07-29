@@ -20,7 +20,7 @@ const branch =
  * @param {string} url
  */
 async function getScreenshot(page, url) {
-  await page.goto(url);
+  await page.goto(url, { waitUntil: 'networkidle0' });
   return page.screenshot({ fullPage: true, optimizeForSpeed: true });
 }
 
