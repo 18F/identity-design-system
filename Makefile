@@ -16,13 +16,12 @@ start-assets: build-fonts build-images
 
 validate-gemfile-lock: Gemfile Gemfile.lock
 	@echo "Validating Gemfile.lock..."
-	@bundle check
-	@git diff-index --quiet HEAD Gemfile.lock || (echo "Error: There are uncommitted changes after running 'bundle install'"; exit 1)
+	@bundle check || (echo "Error: There are uncommitted changes after running 'bundle install'"; exit 1)
 
 validate-package-lock: package.json package-lock.json
 	@echo "Validating package-lock.json..."
 	@npm install --ignore-scripts
-	@(! git diff --name-only | grep package-lock.json) || (echo "Error: There are uncommitted changes after running 'npm install'"; exit 1)
+	@(! git diff-index --quiet HEAD package-lock.json) || (echo "Error: There are uncommitted changes after running 'npm install'"; exit 1)
 
 validate-lockfiles: validate-gemfile-lock validate-package-lock
 
@@ -35,7 +34,7 @@ optimize-svg:
 optimize-assets: optimize-svg
 
 lint-optimized-assets: optimize-assets
-	(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize-assets'"; exit 1)
+	@(! git diff --name-only | grep "\.svg$$") || (echo "Error: Optimize assets using 'make optimize-assets'"; exit 1)
 
 lint: build-package lint-optimized-assets typecheck
 	npm run lint

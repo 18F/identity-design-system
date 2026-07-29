@@ -11,7 +11,7 @@ const exec = promisify(_exec);
 
 const branch =
   process.env.CI_COMMIT_REF_SLUG ??
-  (await exec('git branch --show-current')).stdout.replace(/\W/g, '-');
+  (await exec('git branch --show-current')).stdout.trim().replace(/\W/g, '-');
 
 const DIFF_DIRECTORY = 'tmp/screenshot/diff';
 const SNAPSHOT_DIRECTORY = 'tmp/screenshot/branches';

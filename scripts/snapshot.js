@@ -11,10 +11,9 @@ const exec = promisify(_exec);
 
 const pages = await Array.fromAsync(glob('dist/*/index.html'));
 const paths = pages.map((page) => dirname(relative('dist', page)));
-
 const branch =
   process.env.CI_COMMIT_REF_SLUG ??
-  (await exec('git branch --show-current')).stdout.replace(/\W/g, '-');
+  (await exec('git branch --show-current')).stdout.trim().replace(/\W/g, '-');
 
 /**
  * @param {import('puppeteer').Page} page
@@ -32,7 +31,7 @@ const browser = await puppeteer.launch({
   defaultViewport: {
     width: 1024,
     height: 768,
-  },
+  }
 });
 const localURL = `http://localhost:${port}/`;
 const outputDirectory = join('tmp/screenshot/branches', branch);
