@@ -1,7 +1,7 @@
 @use 'uswds-core' as *;
 
 .usa-input {
-  @include u-border-color('primary-light');
+  @include u-border-color('base');
   font-weight: font-weight('bold');
   background-color: color('primary-lightest');
   border-radius: radius('md');
