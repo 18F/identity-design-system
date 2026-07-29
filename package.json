@@ -69,7 +69,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.login.gov/lg/identity-design-system.git"
+    "url": "git+https://github.com/18F/identity-design-system.git"
   },
   "author": "18F",
   "license": "CC0-1.0",
@@ -78,9 +78,9 @@
     "npm": ">6"
   },
   "bugs": {
-    "url": "https://gitlab.login.gov/lg/identity-design-system/-/issues"
+    "url": "https://github.com/18F/identity-design-system/issues"
   },
-  "homepage": "https://gitlab.login.gov/lg/identity-design-system#readme",
+  "homepage": "https://github.com/18F/identity-design-system#readme",
   "dependencies": {
     "@types/uswds__uswds": "~3.11.0",
     "@uswds/uswds": "~3.11.0",

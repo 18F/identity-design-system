@@ -8,6 +8,10 @@ We encourage you to read this project's CONTRIBUTING policy (you are here), its 
 
 If you have any questions or want to read more, check out the [18F Open Source Policy GitHub repository](https://github.com/18f/open-source-policy), or just [shoot us an email](mailto:18f@gsa.gov).
 
+## Where to contribute
+
+This project is developed on GitLab at [`gitlab.login.gov/lg/identity-design-system`](https://gitlab.login.gov/lg/identity-design-system), which is the source of truth, with a public read-only mirror on GitHub at [`github.com/18F/identity-design-system`](https://github.com/18F/identity-design-system). Members of the Login.gov team should open merge requests on GitLab. External contributors are welcome to open issues and pull requests on GitHub; the team will review them and bring accepted changes over to GitLab.
+
 ## Installation (Local)
 
 The following dependencies are required to build the documentation and assets within this repository:
@@ -56,7 +60,7 @@ A failure of this job only indicates that a visual change was detected. Dependin
 
 When you're ready to release a new version of the `@18f/identity-design-system` package there are just a few steps to take.
 
-The source of truth for this project is GitLab at [`gitlab.login.gov/lg/identity-design-system`](https://gitlab.login.gov/lg/identity-design-system); the GitHub repository is a read-only mirror. All changes and releases go through GitLab merge requests. The package itself is still published to npm manually from your local machine — there is no CI job that publishes to npm.
+The source of truth for this project is GitLab at [`gitlab.login.gov/lg/identity-design-system`](https://gitlab.login.gov/lg/identity-design-system), which is where the Login.gov team does its work and where releases are cut. A public read-only mirror is available on GitHub at [`github.com/18F/identity-design-system`](https://github.com/18F/identity-design-system); external contributors can open issues and pull requests there, which the team triages and brings over to GitLab. All internal changes and releases go through GitLab merge requests. The package itself is still published to npm manually from your local machine — there is no CI job that publishes to npm.
 
 Before starting, make sure that all changes intended for release are merged into the `main` branch. You will need permissions to publish the package to npm. Check current package owners by running `npm owner ls @18f/identity-design-system` or by consulting the list of admins through the [Services and Accounts handbook page](https://handbook.login.gov/articles/accounts.html). If you do not have access, contact an owner to have access granted or to publish on your behalf. Confirm you are logged in with `npm whoami` (log in with `npm login` if needed); publishing requires npm two-factor authentication.
 
