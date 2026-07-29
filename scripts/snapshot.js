@@ -70,13 +70,13 @@ async function getScreenshot(page, url) {
   return page.screenshot({ fullPage: true, optimizeForSpeed: true });
 }
 
-const CONCURRENCY = Number(process.env.SNAPSHOT_CONCURRENCY ?? 4);
+const CONCURRENCY = Number(process.env.SNAPSHOT_CONCURRENCY ?? 2);
 
 const esbuildContext = await esbuild.context({});
 const { port } = await esbuildContext.serve({ servedir: 'dist' });
 const browser = await puppeteer.launch({
   args: ['--no-sandbox'],
-  protocolTimeout: 120_000,
+  protocolTimeout: 300_000,
   defaultViewport: {
     width: 1024,
     height: 768,
@@ -87,6 +87,9 @@ const outputDirectory = join('tmp/screenshot/branches', branch);
 
 await mkdir(outputDirectory, { recursive: true });
 
+/**
+ * @param {string} path
+ */
 async function snapshotPath(path) {
   const page = await browser.newPage();
   try {
