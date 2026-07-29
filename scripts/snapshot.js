@@ -30,9 +30,28 @@ const DISABLE_ANIMATIONS_CSS = `
  */
 async function settle(page) {
   await Promise.all(
-    page.frames().map((frame) =>
-      frame.addStyleTag({ content: DISABLE_ANIMATIONS_CSS }).catch(() => {}),
-    ),
+    page.frames().map(async (frame) => {
+      try {
+        // The mobile header embed opens its nav menu on load; wait for it to
+        // reach the open state so the capture is deterministic. Frames without
+        // an auto-opening menu just skip this after a short timeout.
+        await frame
+          .waitForSelector('.usa-nav.is-visible', { timeout: 2_000 })
+          .catch(() => {});
+        await frame.addStyleTag({ content: DISABLE_ANIMATIONS_CSS });
+        // Whether a focus ring paints depends on which frame currently has
+        // browser focus, which varies with page concurrency. Blur any focused
+        // element so the capture doesn't depend on that.
+        await frame.evaluate(() => {
+          const active = document.activeElement;
+          if (active && active !== document.body && 'blur' in active) {
+            /** @type {HTMLElement} */ (active).blur();
+          }
+        });
+      } catch {
+        // Frame may have been detached; ignore.
+      }
+    }),
   );
 }
 
