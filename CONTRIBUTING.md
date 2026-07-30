@@ -4,9 +4,13 @@ We're so glad you're thinking about contributing to an 18F open source project! 
 
 We want to ensure a welcoming environment for all of our projects. Our staff follow the [18F Code of Conduct](https://github.com/18F/code-of-conduct/blob/master/code-of-conduct.md) and all contributors should do the same.
 
-We encourage you to read this project's CONTRIBUTING policy (you are here), its [LICENSE](LICENSE.md), and its [README](README.md).
+We encourage you to read this project's CONTRIBUTING policy (you are here), its [LICENSE](LICENSE), and its [README](README.md).
 
-If you have any questions or want to read more, check out the [18F Open Source Policy GitHub repository](https://github.com/18f/open-source-policy), or just [shoot us an email](mailto:18f@gsa.gov).
+If you have any questions or want to read more, check out the [18F Open Source Policy GitHub repository](https://github.com/18f/open-source-policy).
+
+## Where to contribute
+
+This project is developed by the Login.gov team on GitLab at [`gitlab.login.gov/lg/identity-design-system`](https://gitlab.login.gov/lg/identity-design-system), which is the source of truth. A public read-only mirror is available on GitHub at [`github.com/18F/identity-design-system`](https://github.com/18F/identity-design-system). Login.gov team members should open merge requests on GitLab.
 
 ## Installation (Local)
 
@@ -34,7 +38,7 @@ npm start
 
 ### Linting
 
-[Lint](https://en.wikipedia.org/wiki/Lint_(software)) JavaScript and Sass files in `src/` by running:
+Lint JavaScript and Sass files in `src/` by running:
 
 ```
 npm run lint
@@ -48,36 +52,37 @@ npm run lint -- --fix
 
 ### Visual regression testing
 
-When a pull request is submitted, a visual regression test will be automatically run to check for any visual changes between the working copy of the branch and the live documentation site. These will be reported as the `ci/circleci: visual-regression` GitHub status check.
+When a merge request is submitted, the `visual-regression` job in the GitLab CI pipeline will automatically run to check for any visual changes between the working copy of the branch and the `main` documentation site.
 
-A failure of this status check only indicates that a visual change was detected. Depending on the types of changes being proposed, this may be expected. Anyone with access to the CircleCI dashboard can review the specific changes by following the status check "Details" link and comparing the set of screenshots under the "Artifacts" tab. If the visual changes are acceptable, the pull request can be merged, even if the status check is reported as a failure.
+A failure of this job only indicates that a visual change was detected. Depending on the types of changes being proposed, this may be expected. You can review the specific changes from the merge request pipeline by opening the `visual-regression` job's "Visual regression" exposed artifacts and comparing the set of screenshots. If the visual changes are acceptable, the merge request can be merged, even if the job is reported as a failure.
 
 ## Releases
 
 When you're ready to release a new version of the `@18f/identity-design-system` package there are just a few steps to take.
 
-Before starting, make sure that all changes intended for release should be merged into the `main` branch. You will need permissions to publish the package to npm. Check current package owners by running `npm owner ls` or by consulting the list of admins through the [Services and Accounts handbook page](https://handbook.login.gov/articles/accounts.html). If you do not have access, contact an owner to have access granted or to publish on your behalf.
+The Login.gov team does its work and cuts releases on GitLab at [`gitlab.login.gov/lg/identity-design-system`](https://gitlab.login.gov/lg/identity-design-system). All changes and releases go through GitLab merge requests. The package itself is still published to npm manually from your local machine — there is no CI job that publishes to npm.
+
+Before starting, make sure that all changes intended for release are merged into the `main` branch. You will need permissions to publish the package to npm. Check current package owners by running `npm owner ls @18f/identity-design-system` or by consulting the list of admins through the [Services and Accounts handbook page](https://handbook.login.gov/articles/accounts.html). If you do not have access, contact an owner to have access granted or to publish on your behalf. Confirm you are logged in with `npm whoami` (log in with `npm login` if needed); publishing requires npm two-factor authentication.
 
 1. Check out the latest main branch on your local machine by running `git checkout main`, followed by `git pull`.
 2. Decide the version number for the new release.
    - The `CHANGELOG.md` should ideally include all pending changes under an "Unreleased" heading.
    - This project uses [semantic versioning](https://semver.org/): breaking changes should bump the major version, backwards-compatible changes should bump the minor version, and bug fixes should bump the patch version.
-3. Since the main branch is protected, you will need to bump the version in a new branch and open a pull request. Start by creating a new branch.
+3. Since the main branch is protected, you will need to bump the version in a new branch and open a merge request. Start by creating a new branch.
    - Example: `git checkout -b release-4-3-1`
-4. Change the "Unreleased" heading in `CHANGELOG.md` to the version you decided in Step 3. Commit this change to your new branch.
-5. Run `npm version` to bump the package version, passing one of `patch`, `minor`, or `major` depending on what you had decided in Step 3 for the next version.
+4. Change the "Unreleased" heading in `CHANGELOG.md` to the version you decided in Step 2. Commit this change to your new branch.
+5. Run `npm version` to bump the package version, passing one of `patch`, `minor`, or `major` depending on what you had decided in Step 2 for the next version.
    - Example: `npm version patch`
-   - A new version will be created. This will update `package.json` and `package-lock.json` automatically and create a commit.
+   - A new version will be created. This will update `package.json` and `package-lock.json` automatically and create a commit and a `vX.Y.Z` tag.
 6. Do a trial publish by running `npm publish --dry-run`.
    - No need to run any special build steps — the publish script will lint the source JavaScript and Sass files, and clean and re-build all assets before including them in the published package.
    - Consider: In the files listed, are there any that should or shouldn't be included? Does the version match what you expect?
-7. If everything looks alright, continue with publishing by running `npm publish`.
-8. Push your release branch to the GitHub repository and open a pull request.
-9. Once approved and merged, create a new release on the [GitHub "Releases" page](https://github.com/18F/identity-design-system/releases).
-   - Use `main` as the target.
-   - The release version should match the version just published to `npm` (for example, `v2.1.5`).
+7. If everything looks alright, continue with publishing by running `npm publish`. You will be prompted for your npm one-time password.
+8. Push your release branch and the tag to GitLab (`git push -u origin <branch>` followed by `git push --tags`) and open a merge request. Fill out the merge request template and get the required approval before merging.
+9. Once approved and merged, create a new release on the [GitLab "Releases" page](https://gitlab.login.gov/lg/identity-design-system/-/releases).
+   - Target the tag created by `npm version` (for example, `v2.1.5`); it should match the version just published to npm.
    - Use the version name as the release title.
-   - Use the release notes to link to any important issues or pull requests that were addressed in the release. You may copy this from `CHANGELOG.md`.
+   - Use the release notes to link to any important issues or merge requests that were addressed in the release. You may copy this from `CHANGELOG.md`.
 
 ## Coding Standards
 
