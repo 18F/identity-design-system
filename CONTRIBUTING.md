@@ -56,6 +56,12 @@ When a merge request is submitted, the `visual-regression` job in the GitLab CI 
 
 A failure of this job only indicates that a visual change was detected. Depending on the types of changes being proposed, this may be expected. You can review the specific changes from the merge request pipeline by opening the `visual-regression` job's "Visual regression" exposed artifacts and comparing the set of screenshots. If the visual changes are acceptable, the merge request can be merged, even if the job is reported as a failure.
 
+To run the visual regression and accessibility tests locally, first install the browser used by Puppeteer:
+
+```
+npm run install-browser
+```
+
 ## Releases
 
 When you're ready to release a new version of the `@18f/identity-design-system` package there are just a few steps to take.
