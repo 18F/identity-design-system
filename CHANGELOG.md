@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 9.5.0
+
 ### Dependencies
 
 - Upgrade USWDS from v3.9.0 to v3.11.0 (see [release notes](https://github.com/uswds/uswds/releases/)) ([!25](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/25), [!27](https://gitlab.login.gov/lg/identity-design-system/-/merge_requests/27))
