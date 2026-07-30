@@ -1,5 +1,10 @@
 ## Unreleased
 
+### Bug Fixes
+
+- Move `puppeteer` from `dependencies` to `devDependencies`. It is only used for visual regression and accessibility testing and should not be installed by consumers of the package.
+- Remove the `postinstall` script that ran `puppeteer browsers install`. This previously ran on every install, including for consumers of the package, downloading a browser they do not need. Developers who run the visual regression or accessibility tests locally can install the browser with `npm run install-browser`.
+
 ## 9.5.0
 
 ### Dependencies
