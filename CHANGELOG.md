@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 9.5.1
+
 ### Bug Fixes
 
 - Move `puppeteer` from `dependencies` to `devDependencies`. It is only used for visual regression and accessibility testing and should not be installed by consumers of the package.
