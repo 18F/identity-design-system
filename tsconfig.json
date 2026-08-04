@@ -6,10 +6,13 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "ESNext",
     "target": "ESNext",
-    "baseUrl": "."
+    "paths": {
+      "@18f/identity-design-system": ["./src/js/index.js"],
+      "@18f/identity-design-system/auto": ["./src/js/auto.js"]
+    }
   },
   "exclude": ["build", "dist", "packages", "vendor"]
 }

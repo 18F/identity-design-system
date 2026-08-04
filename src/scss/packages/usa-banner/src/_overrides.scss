@@ -32,12 +32,12 @@
 
 .usa-accordion__button.usa-banner__button,
 .usa-banner__header-action {
-  color: currentColor;
+  color: currentcolor;
 
   &:hover,
   &:active {
     background-color: color('transparent');
-    color: currentColor;
+    color: currentcolor;
   }
 }
 
@@ -60,12 +60,12 @@
     @include at-media('tablet') {
       &::after,
       &:hover::after {
-        background-color: currentColor;
+        background-color: currentcolor;
       }
     }
   }
 }
 
 .usa-banner__header-action::after {
-  background-color: currentColor;
+  background-color: currentcolor;
 }
