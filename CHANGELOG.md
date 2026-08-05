@@ -1,3 +1,5 @@
+## Unreleased
+
 ## 9.6.0
 
 ### Dependencies
@@ -260,7 +262,7 @@ _Note:_ While these are backwards-incompatible changes, the major version is not
   - Refer to README.md for updated usage instructions, as well as the [U.S. Web Design System migration guide](https://designsystem.digital.gov/documentation/migration/).
 - Sass artifacts now require Dart Sass. The Ruby Sass and LibSass (C) compilers are no longer supported. ([#298](https://github.com/18F/identity-style-guide/pull/298))
 - To improve performance of the default CSS bundle, responsive utility breakpoints other than `tablet:` have been disabled by default. Previously, `mobile-lg:` and `desktop:` utilities were also enabled. You can restore the original settings by overriding [the `$theme-utility-breakpoints` Sass variable](https://designsystem.digital.gov/documentation/settings/#utilities-settings). ([#298](https://github.com/18F/identity-style-guide/pull/298))
-   - Component styling which previously responded to now-disabled breakpoints have been updated to standardize on the `tablet` breakpoint. This affects `usa-button--wide`, `usa-search--big`, and `usa-intro` CSS classes.
+  - Component styling which previously responded to now-disabled breakpoints have been updated to standardize on the `tablet` breakpoint. This affects `usa-button--wide`, `usa-search--big`, and `usa-intro` CSS classes.
 - Image URLs in stylesheets are no longer processed by `asset-path-if-exists`. For Rails integrations, consider using [the `$theme-image-path` Sass variable](https://designsystem.digital.gov/documentation/settings/#general-settings) in combination with [Sprockets `resolve_assets_in_css_urls` option](https://github.com/rails/sprockets-rails#initializer-options). ([#298](https://github.com/18F/identity-style-guide/pull/298))
 - The deprecated `$image-path` Sass variable setting has been removed. Use `$theme-image-path` instead. ([#298](https://github.com/18F/identity-style-guide/pull/298))
 - The deprecated `alerts/success-badge.svg` image has been removed. Use `alerts/success.svg` instead. ([#298](https://github.com/18F/identity-style-guide/pull/298))
