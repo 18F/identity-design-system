@@ -50,7 +50,7 @@
     .usa-accordion__heading:has(.usa-accordion__button:not([aria-expanded='true'])),
     .usa-accordion__button:not([aria-expanded='true']) {
       & + .usa-accordion__content {
-        @include add-sr-only;
+        @include add-sr-only();
       }
     }
   }

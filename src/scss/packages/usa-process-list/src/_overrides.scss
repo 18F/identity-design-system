@@ -2,7 +2,7 @@
 
 $theme-process-list-counter-size-big: 3.125rem;
 
-@include override-prose {
+@include override-prose() {
   .usa-process-list {
     padding-top: 0;
     padding-left: (units($theme-process-list-counter-size) * 0.5) - (0.3125rem * 0.5);

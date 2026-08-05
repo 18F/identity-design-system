@@ -1,5 +1,24 @@
 ## Unreleased
 
+## 9.6.0
+
+### Dependencies
+
+- Upgrade USWDS from v3.11.0 to v3.13.0 (see [release notes](https://github.com/uswds/uswds/releases/)). Notable inherited USWDS changes:
+  - `usa-tooltip` now enhances non-`<button>` elements that have a `title` attribute
+  - `usa-checkbox` and `usa-radio` interactive areas now match the width of their content rather than their container
+  - `usa-combo-box` results are re-ordered so options starting with the query appear before options that only contain it
+  - `usa-date-picker` calendar labels are automatically localized from the document's `lang` attribute
+  - `usa-range` now visually displays the slider's current value
+  - `usa-table` header styles are unified across `thead`, `tbody`, and `tfoot` cells
+  - `usa-in-page-navigation` gains a `data-minimum-heading-count` opt-out
+  - the `xlink:href` sprite references in several components were replaced with `href`
+  - `usa-step-indicator` no longer accepts `aria-label` on its wrapper element
+  - `usa-time-picker` hint text was updated for clarity.
+  - `@uswds/uswds` 3.13 pulls in `lit` as a new runtime dependency. It is only used by the optional `<usa-banner>` Web Component variant. Consumers importing individual component behaviors will not bundle it.
+- Upgrade `@18f/identity-stylelint-config` from v4 to v6, which enables `stylelint@17` and `stylelint-config-standard-scss@17`. New stricter rules were auto-fixed across the SCSS overrides in this repository.
+- Refresh the rest of the dev-dependency toolchain, including `typescript` (5 → 6), `puppeteer`, `@typescript-eslint`, `stylelint-scss`, and related packages. `tsconfig.json` was switched to `moduleResolution: "bundler"` and a `paths` mapping so `tsc` type-checks against `src/` instead of the compiled `build/` output.
+
 ## 9.5.1
 
 ### Bug Fixes

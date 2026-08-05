@@ -1,6 +1,6 @@
 {
   "name": "@18f/identity-design-system",
-  "version": "9.5.1",
+  "version": "9.6.0",
   "description": "The global style of Login.gov",
   "main": "./build/esm/index.js",
   "type": "module",
@@ -82,32 +82,32 @@
   },
   "homepage": "https://github.com/18F/identity-design-system#readme",
   "dependencies": {
-    "@types/uswds__uswds": "~3.11.0",
-    "@uswds/uswds": "~3.11.0"
+    "@types/uswds__uswds": "~3.11.1",
+    "@uswds/uswds": "~3.13.0"
   },
   "devDependencies": {
-    "@18f/identity-build-sass": "^3.1.0",
-    "@18f/identity-stylelint-config": "^4.1.0",
+    "@18f/identity-build-sass": "^3.2.0",
+    "@18f/identity-stylelint-config": "^6.0.0",
     "@axe-core/puppeteer": "^4.12.1",
-    "@happy-dom/global-registrator": "^20.10.6",
-    "@types/node": "^26.1.0",
+    "@happy-dom/global-registrator": "^20.11.1",
+    "@types/node": "^26.1.2",
     "@types/pixelmatch": "^5.2.6",
     "@types/pngjs": "^6.0.5",
-    "@typescript-eslint/eslint-plugin": "^8.63.0",
-    "browserslist": "^4.28.5",
+    "@typescript-eslint/eslint-plugin": "^8.66.0",
+    "browserslist": "^4.28.7",
     "esbuild": "^0.28.1",
-    "eslint": "^9.39.4",
+    "eslint": "^9.39.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
-    "globals": "^17.7.0",
+    "globals": "^17.9.0",
     "npm-run-all": "^4.1.5",
     "pixelmatch": "^7.2.0",
     "pngjs": "^7.0.0",
-    "prettier": "^3.9.4",
-    "puppeteer": "^25.3.0",
-    "stylelint": "^16.10.0",
-    "svgo": "^4.0.1",
-    "typescript": "^5.6.3",
-    "typescript-eslint": "^8.63.0"
+    "prettier": "^3.9.6",
+    "puppeteer": "^25.4.0",
+    "stylelint": "^17.14.1",
+    "svgo": "^4.0.2",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.66.0"
   }
 }
