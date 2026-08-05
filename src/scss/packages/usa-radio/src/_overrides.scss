@@ -47,12 +47,12 @@ $input-select-margin-right: 1;
 
 .usa-radio__input.usa-focus + .usa-radio__label::before,
 .usa-radio__input:focus + .usa-radio__label::before {
-  @include focus-outline;
+  @include focus-outline();
 }
 
 .usa-radio__input:checked.usa-focus + .usa-radio__label::before,
 .usa-radio__input:checked:focus + .usa-radio__label::before {
-  @include focus-outline;
+  @include focus-outline();
 }
 
 .usa-radio__input--tile + .usa-radio__label {

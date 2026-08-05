@@ -32,7 +32,7 @@
 }
 
 .usa-sidenav__sublist .usa-current {
-  @include remove-bar;
+  @include remove-bar();
 }
 
 .usa-sidenav__sublist .usa-sidenav__item {

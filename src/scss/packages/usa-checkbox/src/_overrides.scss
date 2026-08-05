@@ -47,12 +47,12 @@ $input-select-margin-right: 1;
 
 .usa-checkbox__input.usa-focus + .usa-checkbox__label::before,
 .usa-checkbox__input:focus + .usa-checkbox__label::before {
-  @include focus-outline;
+  @include focus-outline();
 }
 
 .usa-checkbox__input:checked.usa-focus + .usa-checkbox__label::before,
 .usa-checkbox__input:checked:focus + .usa-checkbox__label::before {
-  @include focus-outline;
+  @include focus-outline();
 }
 
 .usa-checkbox__input--tile + .usa-checkbox__label {
