@@ -1,5 +1,23 @@
 ## Unreleased
 
+- Add a transitional **dual CSS overlay** to support the Phase-1 NDS (New
+  Design System) look-and-feel migration. `make build-sass-packages` now emits
+  two Sass load-path roots from the same USWDS core:
+  - `packages-uswds/` — the legacy USWDS overlay (byte-identical to the
+    previous `packages/`).
+  - `packages-nds/` — the NDS overlay, configured from a sibling
+    `_uswds-core.scss` and NDS design tokens. In this release the NDS token
+    stubs are empty, so both overlays compile **byte-identical** output; the
+    first visual divergence lands in a follow-up.
+  - `packages/` continues to be published as a back-compat alias of
+    `packages-uswds/`, so existing `--load-path=.../packages` consumers are
+    unaffected.
+
+  Both overlays style the same `.usa-*` class names; consumers opt into the NDS
+  look by pointing their Sass load path at `packages-nds/` instead of
+  `packages-uswds/`. This is a transitional arrangement for the Phase-1
+  migration and is expected to consolidate in a future release.
+
 ## 9.6.0
 
 ### Dependencies

@@ -56,10 +56,27 @@ ifneq ($(OUTPUT_DIR),$(DEFAULT_OUTPUT_DIR))
 	mv $(DEFAULT_OUTPUT_DIR)/assets/js $(DEFAULT_OUTPUT_DIR)/assets/css $(OUTPUT_DIR)/assets
 endif
 
-build-sass-packages:
-	mkdir -p packages
-	cp -r node_modules/@uswds/uswds/packages/* packages
-	cp -r src/scss/packages/* packages
+build-sass-packages: build-sass-packages-uswds build-sass-packages-nds build-sass-packages-legacy-alias
+
+# Back-compat: `packages/` was the single published overlay root before the
+# dual-build split. Keep publishing it as an alias of the legacy (uswds)
+# overlay so existing `--load-path=.../packages` consumers do not break.
+build-sass-packages-legacy-alias: build-sass-packages-uswds
+	rm -rf packages
+	cp -r packages-uswds packages
+
+build-sass-packages-uswds:
+	mkdir -p packages-uswds
+	cp -r node_modules/@uswds/uswds/packages/* packages-uswds
+	cp -r src/scss/packages/* packages-uswds
+	cp -r src/scss/tokens packages-uswds/tokens
+
+build-sass-packages-nds:
+	mkdir -p packages-nds
+	cp -r node_modules/@uswds/uswds/packages/* packages-nds
+	cp -r src/scss/packages/* packages-nds
+	cp -r src/scss/packages-nds/* packages-nds
+	cp -r src/scss/tokens packages-nds/tokens
 
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts
@@ -104,6 +121,8 @@ clean:
 	build-package \
 	build-sass-and-js \
 	build-sass-packages \
+	build-sass-packages-uswds \
+	build-sass-packages-nds \
 	build-fonts \
 	build-images \
 	test \

@@ -2,6 +2,8 @@
 /dist
 /build
 /packages
+/packages-uswds
+/packages-nds
 /node_modules
 /tmp
 .DS_Store

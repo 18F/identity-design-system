@@ -14,5 +14,5 @@
       "@18f/identity-design-system/auto": ["./src/js/auto.js"]
     }
   },
-  "exclude": ["build", "dist", "packages", "vendor"]
+  "exclude": ["build", "dist", "packages", "packages-uswds", "packages-nds", "vendor"]
 }

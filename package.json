@@ -1,6 +1,6 @@
 {
   "name": "@18f/identity-design-system",
-  "version": "9.6.0",
+  "version": "9.7.0",
   "description": "The global style of Login.gov",
   "main": "./build/esm/index.js",
   "type": "module",
@@ -36,7 +36,9 @@
   ],
   "scripts": {
     "build:js": "esbuild main=src/js/auto.js src/js/init.ts --bundle --minify --outdir=dist/assets/js --target=`./scripts/esbuild-targets.mjs`",
-    "build:css": "build-sass src/scss/*.scss --load-path=./src/scss/packages --out-dir=dist/assets/css",
+    "build:css:legacy": "build-sass src/scss/styles.scss --load-path=./packages-uswds --out-dir=dist/assets/css",
+    "build:css:nds": "build-sass src/scss/nds/styles.scss --load-path=./packages-nds --out-dir=dist/assets/css/nds",
+    "build:css": "run-s build:css:legacy build:css:nds",
     "build:docs:css": "npm run build:css --",
     "build:docs:js": "npm run build:js --",
     "build:docs": "run-p build:docs:*",
@@ -65,6 +67,8 @@
     "build",
     "dist/assets/**/*",
     "packages",
+    "packages-uswds",
+    "packages-nds",
     "!node_modules"
   ],
   "repository": {
