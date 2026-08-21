@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    <link id="site-stylesheet" rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    <script>
+      // Swap to the alternate stylesheet bucket before render when requested.
+      if (new URLSearchParams(location.search).get('ui_test_bucket') === 'nds') {
+        document.getElementById('site-stylesheet').href = '{{ site.baseurl }}/assets/css/nds/styles.css';
+      }
+    </script>
     <script src="{{ site.baseurl }}/assets/js/init.js"></script>
   </head>
   <body>
