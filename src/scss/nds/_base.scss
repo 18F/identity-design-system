@@ -1,0 +1,77 @@
+@use 'tokens/nds' as nds;
+
+// Register the Inter faces referenced by nds.$font-family. URLs resolve
+// relative to the compiled bundle at dist/assets/css/nds/styles.css:
+// ../../fonts/inter/... → dist/assets/fonts/inter/...
+@font-face {
+  font-display: swap;
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  src:
+    url('../../fonts/inter/InterVariable.woff2') format('woff2-variations'),
+    url('../../fonts/inter/InterVariable.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter Variable';
+  font-style: italic;
+  font-weight: 100 900;
+  src:
+    url('../../fonts/inter/InterVariable-Italic.woff2') format('woff2-variations'),
+    url('../../fonts/inter/InterVariable-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter Web';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/inter/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter Web';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../../fonts/inter/Inter-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter Web';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../fonts/inter/Inter-Bold.woff2') format('woff2');
+}
+
+html,
+body {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block: 0;
+}
+
+p,
+ul {
+  margin-block-start: 0;
+}
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
