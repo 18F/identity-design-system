@@ -86,6 +86,9 @@
   // Components
   // ----------------------------------------
   // Accordion
+  // uswds 3.14 flipped the icon to the leading edge by default; pin to the
+  // trailing edge to preserve the pre-3.14 look.
+  $theme-accordion-icon-position: 'end' !default,
   $theme-accordion-border-width: '1px' !default,
   $theme-accordion-border-color: 'primary-light' !default,
   // Alert
