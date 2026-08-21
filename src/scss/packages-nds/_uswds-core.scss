@@ -1,5 +1,10 @@
 @use 'sass:map';
 @use 'tokens/legacy/palette' as legacy;
+@use 'tokens/nds/color' as nds-color;
+
+// Point USWDS's primary color anchors at the NDS blue scale and register the
+// Inter typeface. Shades the NDS palette does not define fall through to the
+// legacy palette so the rest of the bundle stays stable until later work.
 
 @forward 'uswds-core/index' with (
   // ----------------------------------------
@@ -17,16 +22,17 @@
   $theme-color-base-dark: map.get(legacy.$site-palette, 'site-dark-grey') !default,
   $theme-color-base-darker: map.get(legacy.$site-palette, 'site-darker-grey') !default,
   $theme-color-base-darkest: map.get(legacy.$site-palette, 'site-darkest-grey') !default,
-  $theme-color-base-ink: map.get(legacy.$site-palette, 'site-ink') !default,
-  // Primary colors
+  $theme-color-base-ink: nds-color.$off-black !default,
+  // Primary colors — NDS blue scale. Lightest/lighter/light shades the NDS
+  // palette does not define are kept on the legacy palette for now.
   $theme-color-primary-lightest: map.get(legacy.$site-palette, 'site-lightest-blue') !default,
   $theme-color-primary-lighter: map.get(legacy.$site-palette, 'site-lighter-blue') !default,
   $theme-color-primary-light: map.get(legacy.$site-palette, 'site-light-blue') !default,
-  $theme-color-primary: map.get(legacy.$site-palette, 'site-blue') !default,
-  $theme-color-primary-vivid: map.get(legacy.$site-palette, 'site-blue') !default,
-  $theme-color-primary-dark: map.get(legacy.$site-palette, 'site-dark-blue') !default,
-  $theme-color-primary-darker: map.get(legacy.$site-palette, 'site-darker-blue') !default,
-  $theme-color-primary-darkest: map.get(legacy.$site-palette, 'site-darkest-blue') !default,
+  $theme-color-primary: nds-color.$blue-700 !default,
+  $theme-color-primary-vivid: nds-color.$blue-600 !default,
+  $theme-color-primary-dark: nds-color.$blue-800 !default,
+  $theme-color-primary-darker: nds-color.$blue-900 !default,
+  $theme-color-primary-darkest: nds-color.$blue-900 !default,
   // Secondary colors
   $theme-color-secondary-lightest: map.get(legacy.$site-palette, 'site-lightest-red') !default,
   $theme-color-secondary-lighter: map.get(legacy.$site-palette, 'site-lighter-red') !default,
@@ -147,8 +153,24 @@
   //  Font role
   $theme-font-role-heading: 'sans' !default,
   $theme-font-role-alt: 'sans' !default,
-  // Font type
-  $theme-font-type-sans: 'public-sans' !default,
+  // Font type — register Inter and point USWDS's sans anchor at it.
+  // `$theme-typeface-tokens` is user-additions only; USWDS merges it with
+  // its built-in typeface tokens.
+  $theme-typeface-tokens: (
+      'inter': (
+        'display-name': 'Inter Variable',
+        // Matches USWDS's public-sans cap-height. USWDS normalizes rem font
+        // sizes by the sans cap-height ratio; keeping this equal to the legacy
+        // value keeps the type scale aligned with the legacy overlay. Inter's
+        // measured cap-height is ~364px — the 2px delta is traded for parity.
+        'cap-height': 362px,
+      )
+    )
+    !default,
+  $theme-font-type-sans: 'inter' !default,
+  $theme-font-sans-custom-stack:
+    '"Inter Web", -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, helvetica, arial, sans-serif'
+    !default,
   $theme-font-type-serif: false !default,
   // Type scale
   $theme-type-scale-3xs: 'micro' !default,
