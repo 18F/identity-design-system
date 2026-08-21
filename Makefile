@@ -76,7 +76,10 @@ build-sass-packages-nds:
 	cp -r node_modules/@uswds/uswds/packages/* packages-nds
 	cp -r src/scss/packages/* packages-nds
 	cp -r src/scss/packages-nds/* packages-nds
+	rm -rf packages-nds/tokens
 	cp -r src/scss/tokens packages-nds/tokens
+	rm -rf packages-nds/nds
+	cp -r src/scss/nds packages-nds/nds
 
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts

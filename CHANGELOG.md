@@ -1,4 +1,17 @@
-## Unreleased
+## 9.8.0
+
+- Upgrade USWDS from 3.13.0 to 3.14.0. The accordion icon default, which
+  3.14 moved to the leading edge, is pinned back to the trailing edge
+  (`$theme-accordion-icon-position: 'end'`) to preserve the prior look;
+  3.14's new `.usa-accordion--icon-start` / `.usa-accordion--icon-end`
+  modifiers are available for opt-in. Other 3.14 changes flow through,
+  notably breadcrumbs now wrap by default (opt into truncation with
+  `.usa-breadcrumb--truncate`) and `box-sizing: border-box` is applied to
+  block inputs.
+- Ship the `packages-nds/nds/` source tree (previously omitted) so the NDS
+  overlay entry point `nds/components/index` resolves for consumers pointing
+  a Sass load path at `packages-nds/`. The overlay index is an empty
+  placeholder in this release; per-component NDS overlays land in follow-ups.
 
 ## 9.7.0
 
