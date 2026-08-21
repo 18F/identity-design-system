@@ -121,6 +121,14 @@
   // ----------------------------------------
   // General
   // ----------------------------------------
+  // Border radius. The NDS radius scale is applied per component via
+  // radius(); map USWDS's three radius slots to the three smallest NDS radii
+  // so components that are not yet overlaid pick up the rounder default.
+  // USWDS pipes these through units(), which expects spacing-unit multiples
+  // (1 unit = 8px): 8px -> 1, 12px -> 1.5, 16px -> 2.
+  $theme-border-radius-sm: 1 !default,
+  $theme-border-radius-md: 1.5 !default,
+  $theme-border-radius-lg: 2 !default,
   // Notifications
   $theme-show-compile-warnings: false !default,
   $theme-show-notifications: false !default,
