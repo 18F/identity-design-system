@@ -16,5 +16,34 @@
   <body>
     {{ content }}
     <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+    <script>
+      // Keep the active stylesheet bucket when navigating within the docs site.
+      (function () {
+        var bucket = new URLSearchParams(location.search).get('ui_test_bucket');
+        if (!bucket) return;
+        function apply() {
+          var links = document.querySelectorAll('a[href]');
+          for (var i = 0; i < links.length; i++) {
+            var raw = links[i].getAttribute('href');
+            if (!raw || raw.charAt(0) === '#') continue;
+            var url;
+            try {
+              url = new URL(raw, location.href);
+            } catch (e) {
+              continue;
+            }
+            if (url.origin !== location.origin) continue;
+            if (url.searchParams.get('ui_test_bucket') === bucket) continue;
+            url.searchParams.set('ui_test_bucket', bucket);
+            links[i].setAttribute('href', url.pathname + url.search + url.hash);
+          }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', apply);
+        } else {
+          apply();
+        }
+      })();
+    </script>
   </body>
 </html>
