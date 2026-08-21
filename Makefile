@@ -44,12 +44,12 @@ build: build-docs build-assets build-package
 build-docs:
 	JEKYLL_ENV=production RUBY_YJIT_ENABLE=1 bundle exec jekyll build
 
-build-assets: build-sass-and-js build-fonts build-images build-sass-packages
+build-assets: build-sass-and-js build-fonts build-images
 
-build-package:
+build-package: build-sass-packages
 	npm run build:pkg
 
-build-sass-and-js:
+build-sass-and-js: build-sass-packages
 	npm run build:docs
 ifneq ($(OUTPUT_DIR),$(DEFAULT_OUTPUT_DIR))
 	mkdir -p $(OUTPUT_DIR)/assets
