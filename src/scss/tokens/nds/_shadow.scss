@@ -1,1 +1,7 @@
-// NDS shadow tokens. Populated in a follow-up; empty here so the NDS overlay compiles byte-identical to the legacy overlay.
+@use 'color' as *;
+
+$shadow-compact: 0 10px 20px alpha($black, 8%);
+$shadow-large: 0 10px 40px alpha($black, 8%);
+$shadow-focus:
+  0 0 0 2px $white,
+  0 0 0 4px $off-black;
