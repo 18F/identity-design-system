@@ -1,0 +1,264 @@
+// Button overlay. Restyles the standard USWDS `.usa-button` selector and the
+// modifiers the markup emits (`--big --wide --full-width --outline --unstyled
+// --danger`) so the markup is identical across bundles. Pure component CSS: it
+// does not reconfigure the core settings.
+//
+// Loaded after `@forward 'uswds'` (see styles.scss) so these rules win on
+// equal specificity by source order.
+//
+// Specificity note: USWDS re-applies its disabled treatment on interactive
+// disabled states via `:disabled:hover` etc. (0,3,0), which would otherwise
+// defeat an equal-or-lower-specificity disabled rule. The button-disabled
+// mixin below emits the base disabled selector plus the interactive-disabled
+// combinations so this look wins at matching (0,3,0) by source order. USWDS
+// also re-declares its outline `inset` border via box-shadow on
+// `:hover`/`:active`; those blocks explicitly reset `box-shadow: none`.
+
+@use 'tokens/nds' as nds;
+
+// Size helper: sets height and inline padding.
+@mixin nds-button-size($height, $pad-x) {
+  height: $height;
+  min-height: $height;
+  padding-inline: $pad-x;
+}
+
+// Emit disabled declarations for the base disabled selector and every
+// interactive-disabled combination USWDS styles, so the disabled look is not
+// defeated by USWDS's higher-specificity `:disabled:hover` rules.
+@mixin nds-button-disabled {
+  &:is(:disabled, [aria-disabled='true'], .usa-button--disabled),
+  &:is(:disabled, [aria-disabled='true'], .usa-button--disabled):is(
+      :hover,
+      :active,
+      :focus,
+      :focus-visible,
+      .usa-button--hover,
+      .usa-button--active,
+      .usa-focus
+    ) {
+    @content;
+  }
+
+  // Preserve a visible keyboard focus indicator on focusable disabled controls
+  // (`[aria-disabled="true"]` stays in the tab order, unlike real `:disabled`).
+  // Re-assert the focus ring after the disabled block above so its box-shadow
+  // wins over the disabled `box-shadow: none` at matching specificity, while
+  // the disabled background/color still apply. WCAG 2.4.7.
+  &:is(:disabled, [aria-disabled='true'], .usa-button--disabled):is(:focus-visible, .usa-focus) {
+    @include nds.focus-ring();
+  }
+}
+
+// Base and default (primary) look. USWDS's default `.usa-button` is the primary
+// button, so the base rule carries the primary treatment.
+.usa-button {
+  align-items: center;
+  appearance: none;
+  background: nds.$blue-700;
+  border: 0;
+  border-radius: nds.radius(pill);
+  box-shadow: nds.$shadow-compact;
+  box-sizing: border-box;
+  color: nds.$off-white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(4);
+  justify-content: center;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  transition: nds.$transition;
+
+  @include nds-button-size(nds.space(44), nds.space(20));
+
+  &:is(:link, :visited) {
+    color: nds.$off-white;
+  }
+
+  &:hover,
+  &.usa-button--hover {
+    background: nds.$blue-800;
+    box-shadow: nds.$shadow-compact;
+    color: nds.$off-white;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.usa-button--active {
+    background: nds.$blue-700;
+    box-shadow: none;
+    color: nds.$off-white;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+    background: nds.$blue-700;
+    color: nds.$off-white;
+  }
+
+  @include nds-button-disabled() {
+    background: nds.alpha(nds.$off-white, 85%);
+    box-shadow: none;
+    color: nds.alpha(nds.$midnight, 25%);
+    cursor: not-allowed;
+  }
+}
+
+// --big → large size (56px) plus the larger primary shadow.
+.usa-button--big {
+  box-shadow: nds.$shadow-large;
+
+  @include nds-button-size(nds.space(56), nds.space(24));
+}
+
+// --danger → destructive (red-600).
+.usa-button--danger {
+  background: nds.$red-600;
+  box-shadow: nds.$shadow-compact;
+  color: nds.$off-white;
+
+  &.usa-button--big {
+    box-shadow: nds.$shadow-large;
+  }
+
+  &:is(:link, :visited) {
+    color: nds.$off-white;
+  }
+
+  &:hover,
+  &.usa-button--hover {
+    background: nds.alpha(nds.$red-600, 85%);
+    box-shadow: nds.$shadow-compact;
+    color: nds.$off-white;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.usa-button--active {
+    background: nds.$red-600;
+    box-shadow: none;
+    color: nds.$off-white;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+    background: nds.$red-600;
+    color: nds.$off-white;
+  }
+
+  @include nds-button-disabled() {
+    background: nds.alpha(nds.$off-white, 85%);
+    box-shadow: none;
+    color: nds.alpha(nds.$midnight, 25%);
+  }
+}
+
+// --outline → bordered, transparent fill, ink text. USWDS renders the outline
+// stroke as an `inset` box-shadow and re-declares it on :hover/:active — reset
+// box-shadow in every state so only the 1px border shows.
+.usa-button--outline {
+  background: transparent;
+  border: 1px solid nds.alpha(nds.$midnight, 45%);
+  box-shadow: none;
+  color: nds.$midnight;
+
+  &:is(:link, :visited) {
+    color: nds.$midnight;
+  }
+
+  &:hover,
+  &.usa-button--hover {
+    background: transparent;
+    border-color: nds.alpha(nds.$midnight, 85%);
+    box-shadow: none;
+    color: nds.$midnight;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.usa-button--active {
+    background: transparent;
+    border-color: nds.alpha(nds.$midnight, 85%);
+    box-shadow: none;
+    color: nds.$midnight;
+    outline: 1.5px solid nds.alpha(nds.$midnight, 85%);
+    outline-offset: -1.5px;
+    text-decoration: none;
+  }
+
+  // focus-ring draws a box-shadow ring which itself replaces USWDS's inset
+  // stroke — do not add `box-shadow: none` here or it would erase the ring.
+  &:focus-visible {
+    @include nds.focus-ring();
+    border-color: nds.alpha(nds.$midnight, 85%);
+    color: nds.$midnight;
+  }
+
+  @include nds-button-disabled() {
+    background: transparent;
+    border-color: nds.alpha(nds.$midnight, 25%);
+    box-shadow: none;
+    color: nds.alpha(nds.$midnight, 25%);
+  }
+}
+
+// --unstyled → transparent, ink text, subtle wash on hover. USWDS `--unstyled`
+// keeps a link-like underline in hover/active/disabled and strips box-shadow;
+// this variant is a sized, non-underlined button, so reset text-decoration and
+// box-shadow in every state (incl. disabled). The base rule already supplies
+// the button box (height/padding), which is kept intentionally.
+.usa-button--unstyled {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: nds.$midnight;
+
+  &:is(:link, :visited) {
+    color: nds.$midnight;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active,
+  &.usa-button--hover,
+  &.usa-button--active {
+    background: nds.alpha(nds.$midnight, 12%);
+    box-shadow: none;
+    color: nds.$midnight;
+    text-decoration: none;
+  }
+
+  // focus-ring draws the box-shadow ring; no `box-shadow: none` (would erase
+  // the ring). USWDS unstyled has no inset stroke to reset here anyway.
+  &:focus-visible {
+    @include nds.focus-ring();
+    background: nds.alpha(nds.$midnight, 8%);
+    color: nds.$midnight;
+    text-decoration: none;
+  }
+
+  @include nds-button-disabled() {
+    background: transparent;
+    box-shadow: none;
+    color: nds.alpha(nds.$midnight, 25%);
+    text-decoration: none;
+  }
+}
+
+// --wide / --full-width → full-bleed sizing.
+.usa-button--wide,
+.usa-button--full-width {
+  display: flex;
+  width: 100%;
+}
