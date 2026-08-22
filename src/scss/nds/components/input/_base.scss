@@ -1,0 +1,149 @@
+// NDS form-input overlay. Restyles the standard USWDS form controls
+// (`.usa-input`, `.usa-textarea`, `.usa-select`, `.usa-label`, `.usa-hint`,
+// the error state `.usa-input--error` + `.usa-error-message`, and the group
+// `.usa-form-group`) with the NDS look.
+//
+// Loaded AFTER `@forward 'uswds'` (see nds/styles.scss). Pure component CSS.
+//
+// Covers the core control look (surface, border, radius, height, type,
+// placeholder, hover, focus ring, error, disabled/readonly) plus label/hint/
+// error text.
+
+@use 'tokens/nds' as nds;
+
+$nds-input-border-width: 1px;
+$nds-input-height: nds.space(56);
+$nds-input-pad-x: 15px;
+
+// Focus ring for inputs: a 1px box-shadow ring in the border color.
+@mixin nds-input-focus-ring($color: nds.alpha(nds.$midnight, 85%)) {
+  border-color: $color;
+  box-shadow: 0 0 0 $nds-input-border-width $color;
+  outline: 0;
+}
+
+// Control surface.
+.usa-input,
+.usa-textarea,
+.usa-select {
+  background-color: nds.$white;
+  border: $nds-input-border-width solid nds.alpha(nds.$midnight, 45%);
+  border-radius: nds.radius(16);
+  box-sizing: border-box;
+  color: nds.$midnight;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  height: $nds-input-height;
+  letter-spacing: 0;
+  line-height: 1.5;
+  max-width: none;
+  padding: 0 $nds-input-pad-x;
+  transition:
+    border-color nds.$tr-duration-md nds.$tr-easing-cubic,
+    box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
+  width: 100%;
+
+  &::placeholder {
+    color: nds.alpha(nds.$midnight, 65%);
+    opacity: 1;
+  }
+
+  // Hover (only when not focused/disabled/readonly). `:hover` un-wrapped so it
+  // carries real (0,2,0) specificity.
+  &:hover:not(:focus, :focus-visible, :disabled, [readonly], [aria-disabled='true']) {
+    border-color: nds.alpha(nds.$midnight, 85%);
+  }
+
+  // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
+  // stock USWDS focus rule and zero the USWDS outline.
+  &:is(.usa-input, .usa-textarea, .usa-select):is(:focus, :focus-visible) {
+    @include nds-input-focus-ring();
+
+    outline: 0;
+  }
+
+  // Disabled / readonly — un-wrapped so `:disabled`/`[aria-disabled]` reach
+  // (0,2,0) and beat the stock `.usa-input:disabled` (0,2,0) by source order.
+  &:is([readonly], :disabled, [aria-disabled='true']) {
+    background-color: nds.alpha(nds.$midnight, 5%);
+  }
+
+  &:is(:disabled, [aria-disabled='true']) {
+    -webkit-text-fill-color: nds.$midnight;
+    color: nds.$midnight;
+    cursor: not-allowed;
+    opacity: 1;
+  }
+}
+
+// textarea is multi-line: let it grow instead of a fixed control height.
+.usa-textarea {
+  height: auto;
+  min-height: $nds-input-height;
+  padding: nds.space(8) $nds-input-pad-x;
+}
+
+// Select chevron.
+.usa-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 9.486 3.766 5.251 2.634 6.383 8 11.749l5.366-5.366-1.132-1.132L8 9.486Z' fill='%23000c1f'/%3E%3C/svg%3E");
+  background-position: right #{$nds-input-pad-x} center;
+  background-repeat: no-repeat;
+  background-size: nds.space(16);
+  padding-right: nds.space(40);
+}
+
+// Error state.
+.usa-input--error,
+.usa-textarea--error,
+.usa-select--error,
+.usa-input[aria-invalid='true'],
+.usa-textarea[aria-invalid='true'],
+.usa-select[aria-invalid='true'] {
+  border-color: nds.$red-600;
+
+  // Boost past the stock focus rule: the error class (0,1,0) + `:is(...)`
+  // (0,1,0) + `:focus` (0,1,0) = (0,3,0).
+  &:is(.usa-input, .usa-textarea, .usa-select, [aria-invalid='true']):is(:focus, :focus-visible) {
+    @include nds-input-focus-ring(nds.$red-600);
+
+    outline: 0;
+  }
+}
+
+// Label.
+.usa-label {
+  color: nds.$midnight;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  line-height: 1.5;
+  margin: 0 0 nds.space(8);
+}
+
+// Hint.
+.usa-hint {
+  color: nds.alpha(nds.$midnight, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: nds.space(8) 0 0;
+}
+
+// Error message (red, semibold, with leading icon gap).
+.usa-error-message {
+  align-items: center;
+  color: nds.$red-600;
+  display: flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(4);
+  letter-spacing: 0;
+  line-height: 1.5;
+  padding: nds.space(8) 0 0;
+  text-wrap: pretty;
+}
