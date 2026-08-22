@@ -1,0 +1,318 @@
+// NDS card — flat `.card` surface.
+//
+// A flat card where the link/button/div itself is the surface: no
+// `.usa-card__container` or `.usa-card__heading` wrapper. Loaded after
+// `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+// The card box — the link/button/div itself.
+.card {
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  color: nds.$off-black;
+  display: block;
+  font-family: nds.$font-family;
+  max-width: 100%;
+  padding: nds.space(24);
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+// Absolute status pill.
+.card__badge {
+  background: nds.alpha(nds.$blue-600, 10%);
+  border-radius: nds.radius(pill);
+  color: nds.$blue-600;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-semibold;
+  line-height: 1;
+  padding: nds.space(8) nds.space(12);
+  pointer-events: none;
+  position: absolute;
+  right: nds.space(12);
+  top: nds.space(12);
+  z-index: 1;
+}
+
+.card__badge--success {
+  background: nds.alpha(nds.$green-300, 10%);
+  color: nds.$green-600;
+}
+
+// MFA option list.
+.mfa-options {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(12);
+}
+
+.mfa-options__item--extra {
+  display: none;
+}
+
+.mfa-options--expanded .mfa-options__item--extra {
+  animation: page-enter-up nds.$tr-duration-lg nds.$tr-easing-cubic both;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mfa-options--expanded .mfa-options__item--extra {
+    animation: none;
+  }
+}
+
+.mfa-options__more.usa-button {
+  align-self: center;
+  width: auto;
+}
+
+.mfa-options--expanded .mfa-options__more {
+  display: none;
+}
+
+// MFA card.
+.card--mfa {
+  border-color: nds.alpha(nds.$midnight, 10%);
+  color: nds.$midnight;
+  padding-inline-end: nds.space(16);
+
+  .card__inner {
+    align-items: flex-start;
+    gap: nds.space(12);
+  }
+
+  .card__body {
+    gap: nds.space(16);
+  }
+
+  .card__row > .usa-icon {
+    color: nds.$midnight;
+    flex: 0 0 auto;
+  }
+
+  .card__title {
+    color: nds.$midnight;
+  }
+
+  .card__description {
+    color: nds.alpha(nds.$midnight, 65%);
+  }
+
+  .card__trailing {
+    align-self: center;
+    color: nds.alpha(nds.$midnight, 65%);
+  }
+
+  &.card--interactive:hover {
+    border-color: nds.$midnight;
+  }
+}
+
+.card--mfa .card__badge {
+  background: nds.alpha(nds.$blue-600, 8%);
+  border-radius: nds.radius(8);
+  color: nds.$blue-500;
+  padding: nds.space(4) nds.space(8);
+  right: nds.space(16);
+  top: nds.space(16);
+}
+
+// Density / elevation / alignment modifiers (on the root box).
+.card--compact {
+  padding: nds.space(20) nds.space(24);
+}
+
+.card--spacious {
+  padding: nds.space(32);
+}
+
+.card--elevated {
+  box-shadow: nds.$shadow-compact;
+}
+
+.card--centered {
+  text-align: center;
+
+  .card__body {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+// Interactive card: the box IS the link/button.
+.card--interactive {
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+  text-decoration: none;
+  transition: nds.$transition;
+
+  &:is(:link, :visited) {
+    color: nds.$off-black;
+  }
+
+  &:hover {
+    border-color: nds.$off-black;
+    color: nds.$off-black;
+    text-decoration: none;
+  }
+
+  &:active {
+    background: nds.alpha(nds.$off-black, 5%);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+
+  &:is(:disabled, [aria-disabled='true']) {
+    background: nds.alpha(nds.$off-white, 85%);
+    border-color: nds.alpha(nds.$off-black, 10%);
+    color: nds.$off-black;
+    cursor: not-allowed;
+
+    .card__title,
+    .card__description,
+    .usa-icon {
+      color: inherit;
+    }
+  }
+}
+
+// Card-embedded form.
+.card-form {
+  margin: 0;
+  width: 100%;
+}
+
+// Layout scaffolding.
+.card__inner {
+  align-items: center;
+  display: flex;
+  gap: nds.space(16);
+  width: 100%;
+}
+
+// Body is a flex-column layout container, not description text.
+.card__body {
+  @include nds.stack($gap: nds.space(24), $width: 100%, $box-border: true);
+
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.card__trailing {
+  align-items: center;
+  color: nds.alpha(nds.$off-black, 65%);
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.card__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  width: 100%;
+}
+
+.card__row {
+  align-items: center;
+  display: flex;
+  gap: nds.space(8);
+  width: 100%;
+
+  > .card__stack {
+    flex: 1 1 auto;
+  }
+}
+
+.card__stack--divided {
+  @include nds.stack($gap: nds.space(16), $width: 100%, $box-border: true);
+}
+
+// Backup codes (and similar secret lists).
+.card__code-grid {
+  display: grid;
+  gap: nds.space(16) nds.space(24);
+  grid-template-columns: max-content;
+  justify-content: center;
+  justify-items: start;
+  width: 100%;
+
+  @media (width >= 768px) {
+    grid-template-columns: repeat(2, max-content);
+  }
+}
+
+.card__code-grid-col {
+  @include nds.stack($align: flex-start, $gap: nds.space(16), $box-border: true);
+}
+
+.card__media {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+// Text roles.
+.card__title,
+.card__description,
+.card__label,
+.card__value,
+.card__meta {
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.card__title {
+  color: nds.$off-black;
+  font-weight: nds.$font-semibold;
+}
+
+.card__description,
+.card__label,
+.card__meta {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-weight: 400;
+}
+
+.card__description .link {
+  color: inherit;
+
+  &:is(:link, :visited),
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: inherit;
+  }
+}
+
+.card__value {
+  color: nds.$off-black;
+  font-weight: 400;
+}
+
+.card__divider {
+  background: nds.alpha(nds.$off-black, 10%);
+  border: 0;
+  height: 1px;
+  margin: 0;
+  width: 100%;
+}
