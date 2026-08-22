@@ -1,0 +1,245 @@
+// NDS alert overlay.
+//
+// Restyles the standard USWDS `.usa-alert` selector, its status modifiers
+// (`--info --warning --error --success --slim --no-icon`) and inner elements
+// (`.usa-alert__body`, `.usa-alert__heading`, `.usa-alert__text`), plus
+// extensions `.usa-alert--with-action`, `.usa-alert--single-line`,
+// `.usa-alert__action`, `.usa-alert__close`, and the dismiss mount wrapper
+// `.usa-alert-mount` / `.usa-alert-mount__inner`.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+// Status → (background, foreground, close-hover) driven by CSS vars, so a
+// single body/close rule reads them. `--info` is the neutral/informational
+// status and takes the blue neutral treatment.
+.usa-alert {
+  --nds-alert-bg: #{nds.alpha(nds.$blue-700, 5%)};
+  --nds-alert-color: #{nds.$midnight};
+  --nds-alert-close-hover: #{nds.alpha(nds.$blue-700, 25%)};
+
+  align-items: flex-start;
+  background: var(--nds-alert-bg);
+  border: 0;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  color: var(--nds-alert-color);
+  display: flex;
+  gap: nds.space(4);
+  padding: nds.space(20);
+  position: relative;
+  text-align: start;
+  width: 100%;
+
+  // USWDS draws a left status bar / icon block via ::before on the body; the
+  // flat tinted card look neutralizes it.
+  &::before,
+  .usa-alert__body::before {
+    content: none;
+    display: none;
+  }
+
+  .usa-alert__body {
+    background: transparent;
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    gap: nds.space(8);
+    max-width: none;
+    min-width: 0;
+    padding: 0;
+
+    // USWDS status modifiers indent every body child by the icon width. The
+    // flat card has no icon, so reset the indent on all direct children to
+    // avoid empty left gutters.
+    > * {
+      margin-left: 0;
+    }
+  }
+
+  .usa-alert__heading,
+  .usa-alert__text {
+    color: inherit;
+    font-family: nds.$font-family;
+    font-size: nds.$text-body-m;
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: 1.5;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .usa-alert__heading {
+    font-weight: nds.$font-semibold;
+  }
+
+  .usa-alert__text {
+    font-weight: 400;
+
+    > * {
+      margin: 0;
+    }
+
+    > * + * {
+      margin-top: nds.space(8);
+    }
+
+    strong,
+    b {
+      font-weight: inherit;
+    }
+  }
+
+  a:not(.usa-button),
+  .usa-link {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: from-font;
+
+    &:is(:link, :visited),
+    &:hover,
+    &:active,
+    &:focus-visible {
+      color: inherit;
+    }
+  }
+}
+
+// Status modifiers — background tint / foreground / close-hover per status.
+.usa-alert--info {
+  --nds-alert-bg: #{nds.alpha(nds.$blue-700, 5%)};
+  --nds-alert-color: #{nds.$midnight};
+  --nds-alert-close-hover: #{nds.alpha(nds.$blue-700, 25%)};
+}
+
+.usa-alert--warning {
+  --nds-alert-bg: #{nds.alpha(nds.$yellow-300, 10%)};
+  --nds-alert-color: #{nds.$yellow-900};
+  --nds-alert-close-hover: #{nds.alpha(nds.$yellow-300, 25%)};
+}
+
+.usa-alert--success {
+  --nds-alert-bg: #{nds.alpha(nds.$green-300, 10%)};
+  --nds-alert-color: #{nds.$green-600};
+  --nds-alert-close-hover: #{nds.alpha(nds.$green-300, 25%)};
+}
+
+.usa-alert--error {
+  --nds-alert-bg: #{nds.alpha(nds.$red-300, 10%)};
+  --nds-alert-color: #{nds.$red-600};
+  --nds-alert-close-hover: #{nds.alpha(nds.$red-300, 25%)};
+}
+
+// --slim → tighter vertical padding; keep the flat card look.
+.usa-alert--slim {
+  padding-block: nds.space(12);
+
+  .usa-alert__body {
+    padding: 0;
+  }
+}
+
+// --no-icon is already icon-less in the flat treatment; explicit no-op anchor
+// so the modifier resolves against the bundle.
+.usa-alert--no-icon .usa-alert__body {
+  padding-inline-start: 0;
+}
+
+// --with-action → stack the copy above a full-width action row.
+.usa-alert--with-action {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: nds.space(20);
+
+  .usa-alert__body,
+  .usa-alert__text {
+    flex: none;
+    width: 100%;
+  }
+}
+
+// Action button inside an alert inherits the alert's foreground color; this
+// rebinds color to currentColor.
+.usa-alert .usa-alert__action {
+  border-color: currentColor;
+  color: inherit;
+  flex: none;
+
+  &:is(:link, :visited) {
+    color: inherit;
+  }
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    border-color: currentColor;
+    color: inherit;
+    outline-color: currentColor;
+  }
+}
+
+// Dismiss/close control. Positioned top-right; reserves inline-end padding on
+// the alert so text never runs under it.
+.usa-alert:has(.usa-alert__close) {
+  padding-inline-end: calc(#{nds.space(12)} + #{nds.space(36)} + #{nds.space(8)});
+}
+
+.usa-alert .usa-alert__close {
+  color: inherit;
+  position: absolute;
+  right: nds.space(12);
+  top: nds.space(12);
+
+  &:is(:link, :visited) {
+    color: inherit;
+  }
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    background: var(--nds-alert-close-hover);
+    color: inherit;
+  }
+}
+
+// Single-line alerts vertically center the close control.
+.usa-alert--single-line .usa-alert__close {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// Dismiss mount/collapse animation. Grid-rows 0fr→1fr collapse with an opacity
+// fade. `--nds-alert-stack-gap` cancels the parent stack gap while collapsed so
+// removal doesn't snap; it defaults to 0 so a standalone mount is safe.
+.usa-alert-mount {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-block-end: calc(-1 * var(--nds-alert-stack-gap, 0px));
+  transition:
+    grid-template-rows nds.$tr-duration-lg nds.$tr-easing-cubic,
+    margin-block-end nds.$tr-duration-lg nds.$tr-easing-cubic;
+  width: 100%;
+
+  &[data-open='true'] {
+    grid-template-rows: 1fr;
+    margin-block-end: 0;
+
+    .usa-alert-mount__inner {
+      opacity: 1;
+    }
+  }
+}
+
+.usa-alert-mount__inner {
+  min-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity nds.$tr-duration-lg nds.$tr-easing-cubic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usa-alert-mount,
+  .usa-alert-mount__inner {
+    transition: none;
+  }
+}
