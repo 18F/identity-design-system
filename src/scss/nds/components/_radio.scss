@@ -99,3 +99,15 @@ $nds-radio-size: nds.space(16);
     box-shadow: inset 0 0 0 3px Canvas;
   }
 }
+
+// Bordered and tile variants wrap the label in a bordered surface and reserve
+// space for an absolutely-positioned circle. This overlay lays the circle out
+// as a flex child instead, so restore the flex row on those variants and
+// reserve inline space for the circle rather than the variants' left padding.
+.usa-radio__input--bordered + .usa-radio__label,
+.usa-radio__input--tile + .usa-radio__label {
+  align-items: center;
+  display: flex;
+  gap: nds.space(8);
+  padding-left: nds.space(16);
+}
