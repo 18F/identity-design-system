@@ -1,0 +1,127 @@
+// NDS toast — transient notification pinned to the viewport.
+//
+// A `.toast` surface that slides in from the top (or bottom on small
+// viewports) and fades out. Includes an icon chip and announcement text.
+// Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+$nds-toast-duration: nds.$tr-duration-lg;
+$nds-toast-easing: nds.$tr-easing-cubic;
+$nds-toast-enter-offset: nds.space(32);
+$nds-toast-viewport-inset: nds.space(16);
+$nds-toast-z-index: 400;
+$nds-toast-mobile-breakpoint: 40em;
+
+.toast {
+  align-items: center;
+  backdrop-filter: blur(25px);
+  background: nds.alpha(nds.$off-black, 85%);
+  border: 0;
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  color: nds.$off-white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(12);
+  left: 50%;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+  margin: 0;
+  max-width: calc(100vw - #{nds.space(32)});
+  opacity: 0;
+  padding: nds.space(16) nds.space(20) nds.space(16) nds.space(16);
+  pointer-events: none;
+  position: fixed;
+  // Positioned below the official banner and sticky nav via :root chrome vars.
+  top: calc(
+    var(--nds-official-banner-height, #{nds.space(40)}) + var(--nds-nav-height, #{nds.space(80)}) +
+      #{$nds-toast-viewport-inset}
+  );
+  transform: translate(-50%, calc(-1 * #{$nds-toast-enter-offset}));
+  transition:
+    opacity $nds-toast-duration $nds-toast-easing,
+    transform $nds-toast-duration $nds-toast-easing;
+  width: max-content;
+  z-index: $nds-toast-z-index;
+
+  &[data-open='true'] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+}
+
+// Account shell header is not sticky, so pin the toast tighter beneath it.
+@media (width >= #{$nds-toast-mobile-breakpoint}) {
+  body:has(.account-shell) .toast {
+    top: calc(
+      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(80)} + #{nds.space(8)}
+    );
+  }
+}
+
+@media (width >= #{$nds-toast-mobile-breakpoint}) and (width < 48em) {
+  body:has(.account-shell) .toast {
+    top: calc(
+      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(64)} + #{nds.space(8)}
+    );
+  }
+}
+
+.toast__icon {
+  align-items: center;
+  background: nds.$green-500;
+  border-radius: nds.radius(pill);
+  color: nds.$white;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: nds.space(20);
+  justify-content: center;
+  width: nds.space(20);
+
+  .usa-icon {
+    color: inherit;
+    display: block;
+    height: nds.space(16);
+    width: nds.space(16);
+  }
+}
+
+.toast__announcement {
+  align-items: center;
+  display: inline-flex;
+  gap: nds.space(12);
+}
+
+.toast__text {
+  color: inherit;
+  margin: 0;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: #{$nds-toast-mobile-breakpoint - 0.01em}) {
+  .toast {
+    bottom: $nds-toast-viewport-inset;
+    top: auto;
+    transform: translate(-50%, $nds-toast-enter-offset);
+
+    &[data-open='true'] {
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .toast__text {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: none;
+  }
+}
