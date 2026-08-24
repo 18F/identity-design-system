@@ -1,0 +1,149 @@
+// File input overlay. Restyles the standard USWDS file-input structure:
+// `.usa-file-input__target/__box/__instructions/__choose/__preview*/
+// __accepted-files-message` and the `.usa-file-input__input` field.
+// Loaded after `@forward 'uswds'`. Pure component CSS — it does not
+// reconfigure the core settings.
+//
+// Scope: surface, layout, typography, colors, focus, invalid, and disabled
+// states. The preview file-type icon background-images are not included here
+// because their assets are not part of this bundle.
+
+@use 'tokens/nds' as nds;
+
+$nds-file-border-width: 1px;
+$nds-file-border-width-focus: 2px;
+
+.usa-file-input {
+  display: block;
+  max-width: 27rem;
+  width: 100%;
+}
+
+// Drop target: white card, hairline border, 16px radius, generous padding,
+// centered.
+.usa-file-input__target {
+  background-color: nds.$white;
+  border: $nds-file-border-width solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(16);
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  padding: nds.space(24);
+  position: relative;
+  text-align: center;
+  transition: border-color nds.$tr-duration-md nds.$tr-easing-cubic;
+  width: 100%;
+
+  &:hover {
+    border-color: nds.alpha(nds.$off-black, 45%);
+  }
+}
+
+// Drag state and invalid target get a stronger / red border.
+.usa-file-input--drag .usa-file-input__target {
+  border-color: nds.alpha(nds.$off-black, 45%);
+}
+
+.usa-file-input__target.has-invalid-file,
+.usa-form-group--error .usa-file-input__target {
+  border-color: nds.$red-600;
+}
+
+// Instructions / choose link.
+.usa-file-input__instructions {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  pointer-events: none;
+  position: relative;
+  z-index: 3;
+}
+
+.usa-file-input__choose {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+}
+
+.usa-file-input__accepted-files-message {
+  color: nds.$red-600;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  line-height: 1.5;
+  pointer-events: none;
+  position: relative;
+  z-index: 3;
+}
+
+// The decorative box overlay (drawn above the target, below the real input).
+.usa-file-input__box {
+  border-radius: inherit;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.usa-file-input__input {
+  &:not([disabled]):focus-visible {
+    outline: $nds-file-border-width-focus solid nds.$off-black;
+    outline-offset: -#{$nds-file-border-width-focus};
+  }
+}
+
+// Preview list.
+.usa-file-input__preview-heading {
+  align-items: center;
+  color: nds.$off-black;
+  display: flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  justify-content: space-between;
+  line-height: 1.5;
+  margin-bottom: nds.space(16);
+  pointer-events: none;
+  position: relative;
+  text-align: left;
+  z-index: 3;
+}
+
+.usa-file-input__preview {
+  align-items: center;
+  color: nds.alpha(nds.$off-black, 65%);
+  display: flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  padding: nds.space(4) 0;
+  pointer-events: none;
+  position: relative;
+  text-align: left;
+  overflow-wrap: anywhere;
+  z-index: 3;
+}
+
+// Disabled state.
+.usa-file-input--disabled {
+  .usa-file-input__instructions,
+  .usa-file-input__choose {
+    color: nds.alpha(nds.$off-black, 65%);
+  }
+
+  .usa-file-input__box {
+    background-color: nds.alpha(nds.$off-black, 5%);
+  }
+
+  .usa-file-input__target {
+    background-color: nds.alpha(nds.$off-black, 5%);
+    border-color: nds.alpha(nds.$off-black, 45%);
+
+    &:hover {
+      border-color: nds.alpha(nds.$off-black, 45%);
+    }
+  }
+}
