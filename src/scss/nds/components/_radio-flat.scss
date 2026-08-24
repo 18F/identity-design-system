@@ -1,0 +1,93 @@
+// NDS flat radio — `.radio` and its subelements.
+//
+// A bordered radio group rendered with `.radio-group` / `.radio` /
+// `.radio__label` + `.radio__input` state combinators. This is distinct from
+// the `.usa-radio` restyle in `_radio.scss`; the two target different markup
+// and coexist.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+.radio-group {
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: nds.space(24);
+  width: 100%;
+}
+
+.radio {
+  min-width: 0;
+  position: relative;
+
+  & + & {
+    border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+    margin-top: nds.space(24);
+    padding-top: nds.space(24);
+  }
+}
+
+.radio__label {
+  align-items: center;
+  color: nds.$off-black;
+  cursor: pointer;
+  display: flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: 400;
+  gap: nds.space(8);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  text-align: left;
+  width: 100%;
+
+  &::before {
+    background: nds.$white;
+    border: 2px solid nds.alpha(nds.$off-black, 45%);
+    border-radius: nds.radius(pill);
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    flex: 0 0 nds.space(16);
+    height: nds.space(16);
+    transition:
+      background nds.$tr-duration-md nds.$tr-easing-cubic,
+      border-color nds.$tr-duration-md nds.$tr-easing-cubic,
+      box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
+    width: nds.space(16);
+  }
+}
+
+.radio__input:not(:disabled, [aria-disabled='true']) + .radio__label:hover::before {
+  border-color: nds.alpha(nds.$off-black, 85%);
+}
+
+.radio__input:checked + .radio__label::before {
+  background-image: radial-gradient(
+    circle,
+    nds.$off-black 0 nds.space(4),
+    transparent nds.space(4)
+  );
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: nds.alpha(nds.$off-black, 85%);
+}
+
+.radio__input:focus-visible + .radio__label::before {
+  @include nds.focus-ring();
+}
+
+.radio__input:is(:disabled, [aria-disabled='true']) + .radio__label {
+  color: nds.alpha(nds.$off-black, 45%);
+  cursor: not-allowed;
+}
+
+.radio__input:is(:disabled, [aria-disabled='true']) + .radio__label::before {
+  background: nds.alpha(nds.$off-black, 5%);
+  border-color: nds.alpha(nds.$off-black, 25%);
+}
