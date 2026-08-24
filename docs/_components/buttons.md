@@ -5,6 +5,8 @@ lead: >
 subnav:
   - text: Button sizes and states
     href: "#button-sizes-and-states"
+  - text: Button sizes
+    href: "#button-sizes"
   - text: Button widths
     href: "#button-widths"
 ---
@@ -155,6 +157,106 @@ subnav:
   {% include helpers/unstyled-button.html text="Active" extra_classes="usa-button--active usa-button--big" %}
   {% include helpers/unstyled-button.html text="Focus" extra_classes="usa-focus usa-button--big" %}
   {% include helpers/unstyled-button.html text="Disabled" extra_attributes="disabled" extra_classes="usa-button--big" %}
+</div>
+
+### Secondary
+
+```html
+<button class="usa-button usa-button--secondary">
+```
+
+<div>
+  <button class="usa-button usa-button--secondary">Default</button>
+  <button class="usa-button usa-button--secondary usa-focus">Focus</button>
+  <button class="usa-button usa-button--secondary" disabled>Disabled</button>
+</div>
+
+### Tertiary
+
+```html
+<button class="usa-button usa-button--tertiary">
+```
+
+<div>
+  <button class="usa-button usa-button--tertiary">Default</button>
+  <button class="usa-button usa-button--tertiary usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--tertiary usa-button--active">Active</button>
+  <button class="usa-button usa-button--tertiary usa-focus">Focus</button>
+  <button class="usa-button usa-button--tertiary" disabled>Disabled</button>
+</div>
+
+### Quaternary
+
+```html
+<button class="usa-button usa-button--quaternary">
+```
+
+<div>
+  <button class="usa-button usa-button--quaternary">Default</button>
+  <button class="usa-button usa-button--quaternary usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--quaternary usa-button--active">Active</button>
+  <button class="usa-button usa-button--quaternary usa-focus">Focus</button>
+  <button class="usa-button usa-button--quaternary" disabled>Disabled</button>
+</div>
+
+### Ghost
+
+```html
+<button class="usa-button usa-button--ghost">
+```
+
+<div>
+  <button class="usa-button usa-button--ghost">Default</button>
+  <button class="usa-button usa-button--ghost usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--ghost usa-button--active">Active</button>
+  <button class="usa-button usa-button--ghost usa-focus">Focus</button>
+  <button class="usa-button usa-button--ghost" disabled>Disabled</button>
+</div>
+
+## Button sizes
+
+The `usa-button--big` modifier is equivalent to `usa-button--lg`.
+
+### Small
+
+```html
+<button class="usa-button usa-button--sm">
+```
+
+<div>
+  <button class="usa-button usa-button--sm">Default</button>
+  <button class="usa-button usa-button--sm usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--sm usa-button--active">Active</button>
+  <button class="usa-button usa-button--sm usa-focus">Focus</button>
+  <button class="usa-button usa-button--sm" disabled>Disabled</button>
+</div>
+
+### Medium
+
+```html
+<button class="usa-button usa-button--md">
+```
+
+<div>
+  <button class="usa-button usa-button--md">Default</button>
+  <button class="usa-button usa-button--md usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--md usa-button--active">Active</button>
+  <button class="usa-button usa-button--md usa-focus">Focus</button>
+  <button class="usa-button usa-button--md" disabled>Disabled</button>
+</div>
+
+### Large
+
+```html
+<button class="usa-button usa-button--lg">
+```
+
+<div>
+  <button class="usa-button usa-button--lg">Default</button>
+  <button class="usa-button usa-button--lg usa-button--hover">Hover</button>
+  <button class="usa-button usa-button--lg usa-button--active">Active</button>
+  <button class="usa-button usa-button--lg usa-focus">Focus</button>
+  <button class="usa-button usa-button--lg" disabled>Disabled</button>
 </div>
 
 ## Button widths
