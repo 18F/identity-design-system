@@ -5,80 +5,58 @@ lead: >
   an element.
 ---
 
+{% include helpers/base-component.html component="tooltip" %}
+
 ## Tooltip
 
-A tooltip pairs a trigger with a bubble. The bubble becomes visible when the
-`is-set` and `is-visible` classes are applied to `.usa-tooltip__body`; the
-examples below add those classes so the bubble paints statically.
+A tooltip pairs a trigger with a short message. Add the `usa-tooltip` class and
+a `title` to the trigger; the message appears when the trigger is hovered or
+focused. Use `data-position` to choose which side the message appears on.
 
 ### Top
 
 {% capture example %}
-<span class="usa-tooltip">
-  <button type="button" class="usa-tooltip__trigger" aria-describedby="tooltip-top">
-    Hover for details
-  </button>
-  <span id="tooltip-top" class="usa-tooltip__body usa-tooltip__body--top is-set is-visible" role="tooltip">
-    Additional context appears here.
-  </span>
-</span>
+<button type="button" class="usa-button usa-tooltip" data-position="top" title="Additional context appears here.">
+  Hover for details
+</button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ### Bottom
 
 {% capture example %}
-<span class="usa-tooltip">
-  <button type="button" class="usa-tooltip__trigger" aria-describedby="tooltip-bottom">
-    Hover for details
-  </button>
-  <span id="tooltip-bottom" class="usa-tooltip__body usa-tooltip__body--bottom is-set is-visible" role="tooltip">
-    Additional context appears here.
-  </span>
-</span>
+<button type="button" class="usa-button usa-tooltip" data-position="bottom" title="Additional context appears here.">
+  Hover for details
+</button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ### Left
 
 {% capture example %}
-<span class="usa-tooltip">
-  <button type="button" class="usa-tooltip__trigger" aria-describedby="tooltip-left">
-    Hover for details
-  </button>
-  <span id="tooltip-left" class="usa-tooltip__body usa-tooltip__body--left is-set is-visible" role="tooltip">
-    Additional context appears here.
-  </span>
-</span>
+<button type="button" class="usa-button usa-tooltip" data-position="left" title="Additional context appears here.">
+  Hover for details
+</button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ### Right
 
 {% capture example %}
-<span class="usa-tooltip">
-  <button type="button" class="usa-tooltip__trigger" aria-describedby="tooltip-right">
-    Hover for details
-  </button>
-  <span id="tooltip-right" class="usa-tooltip__body usa-tooltip__body--right is-set is-visible" role="tooltip">
-    Additional context appears here.
-  </span>
-</span>
+<button type="button" class="usa-button usa-tooltip" data-position="right" title="Additional context appears here.">
+  Hover for details
+</button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Wrapping long text
+## Wrapping long text
 
-Add `usa-tooltip__body--wrap` to let a longer message wrap onto multiple lines.
+A longer message wraps onto multiple lines automatically when the tooltip would
+otherwise extend past the edge of the screen.
 
 {% capture example %}
-<span class="usa-tooltip">
-  <button type="button" class="usa-tooltip__trigger" aria-describedby="tooltip-wrap">
-    Hover for details
-  </button>
-  <span id="tooltip-wrap" class="usa-tooltip__body usa-tooltip__body--top usa-tooltip__body--wrap is-set is-visible" role="tooltip">
-    This message is long enough to wrap onto more than one line inside the tooltip bubble.
-  </span>
-</span>
+<button type="button" class="usa-button usa-tooltip" data-position="top" title="This message is long enough to wrap onto more than one line inside the tooltip bubble.">
+  Hover for details
+</button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
