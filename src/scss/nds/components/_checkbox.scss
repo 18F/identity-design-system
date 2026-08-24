@@ -1,0 +1,109 @@
+// NDS checkbox overlay.
+//
+// Restyles the USWDS checkbox BEM: the visually-hidden `.usa-checkbox__input`
+// plus the box drawn on `.usa-checkbox__label::before`.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss).
+//
+// SPECIFICITY: USWDS styles the box on selectors like
+// `.usa-checkbox__input:checked + .usa-checkbox__label::before` at specificity
+// (0,3,1). Each rule here uses the SAME selector shape so it ties USWDS and
+// wins by source order (this file loads afterward). The state pseudo-classes
+// are intentionally not wrapped in `:where()`, which would zero their
+// specificity and lose to USWDS.
+//
+// GLYPH: the blue box is applied here; the white checkmark glyph is left as
+// USWDS's own, which reads correctly on the blue fill.
+
+@use 'tokens/nds' as nds;
+
+$nds-checkbox-size: nds.space(20);
+$nds-checkbox-border-width: 1px;
+
+// Label — Inter semibold, ink color, gap reserved for the box.
+.usa-checkbox__label {
+  color: nds.$midnight;
+  cursor: pointer;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding-left: calc(#{nds.space(12)} + #{$nds-checkbox-size});
+
+  &::before {
+    background-color: nds.$white;
+    border-radius: nds.radius(8);
+    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$midnight, 45%);
+    box-sizing: border-box;
+    height: $nds-checkbox-size;
+    // Override USWDS's computed vertical-centering margin (sized for its own
+    // box size) so the 20px box aligns to the label text.
+    margin-top: 2px;
+    transition: nds.$transition;
+    width: $nds-checkbox-size;
+  }
+}
+
+// Hover (not disabled): blue tint fill + blue-500 border.
+.usa-checkbox__input:not(:disabled, [aria-disabled='true']) + .usa-checkbox__label:hover::before {
+  background-color: nds.alpha(nds.$blue-700, 5%);
+  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$blue-500;
+}
+
+// Checked: solid blue-500 fill (USWDS supplies the white check glyph).
+.usa-checkbox__input:checked + .usa-checkbox__label::before {
+  background-color: nds.$blue-500;
+  box-shadow: none;
+}
+
+// Checked hover stays solid (don't revert to the hover tint).
+.usa-checkbox__input:checked:not(:disabled, [aria-disabled='true'])
+  + .usa-checkbox__label:hover::before {
+  background-color: nds.$blue-500;
+  box-shadow: none;
+}
+
+// Focus ring (keyboard) on the box. USWDS draws a blue `outline` on plain
+// `:focus` (mouse too); the design shows the ring on keyboard focus only.
+// Clear USWDS's outline on `:focus`, then draw the ring on
+// `:focus-visible`/`.usa-focus` (both later at matching (0,3,1)).
+.usa-checkbox__input:focus + .usa-checkbox__label::before {
+  outline: 0;
+}
+
+.usa-checkbox__input:is(:focus-visible, .usa-focus) + .usa-checkbox__label::before {
+  @include nds.focus-ring();
+}
+
+// Error: red border, no fill.
+.usa-checkbox__input:is(.usa-input--error, [aria-invalid='true']) + .usa-checkbox__label::before {
+  background-color: nds.$white;
+  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$red-600;
+}
+
+// Disabled: muted fill + text.
+.usa-checkbox__input:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label {
+  color: nds.alpha(nds.$midnight, 25%);
+  cursor: not-allowed;
+
+  &::before {
+    background-color: nds.alpha(nds.$midnight, 5%);
+    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$midnight, 45%);
+  }
+}
+
+// Disabled + checked: muted fill, keep the glyph.
+.usa-checkbox__input:is(:disabled, [aria-disabled='true']):checked + .usa-checkbox__label::before {
+  background-color: nds.alpha(nds.$midnight, 25%);
+  box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$midnight, 45%);
+}
+
+// Forced-colors safety: the blue fill overrides USWDS's system-color checked
+// background; restore a system color so the checked state stays visible in
+// Windows High Contrast.
+@media (forced-colors: active) {
+  .usa-checkbox__input:checked + .usa-checkbox__label::before {
+    background-color: SelectedItem;
+  }
+}
