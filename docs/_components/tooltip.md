@@ -48,15 +48,3 @@ focused. Use `data-position` to choose which side the message appears on.
 </button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-
-## Wrapping long text
-
-A longer message wraps onto multiple lines automatically when the tooltip would
-otherwise extend past the edge of the screen.
-
-{% capture example %}
-<button type="button" class="usa-button usa-tooltip" data-position="top" title="This message is long enough to wrap onto more than one line inside the tooltip bubble.">
-  Hover for details
-</button>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
