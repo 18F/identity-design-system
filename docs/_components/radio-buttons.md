@@ -119,3 +119,35 @@ lead: Radio buttons allow users to select exactly one choice from a group.
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
+
+## Flat radio group
+
+The flat radio group wraps its options in a single bordered surface with a
+divider between each choice. It uses its own `.radio-group` / `.radio` /
+`.radio__label` / `.radio__input` classes and is separate from the
+`.usa-radio` styles above.
+
+{% capture example %}
+<fieldset class="usa-fieldset">
+  <legend class="usa-legend">How should we contact you?</legend>
+  <div class="radio-group">
+    <div class="radio">
+      <input id="rf-email" class="radio__input usa-sr-only" type="radio" name="rf-contact" checked>
+      <label for="rf-email" class="radio__label">Email</label>
+    </div>
+    <div class="radio">
+      <input id="rf-text" class="radio__input usa-sr-only" type="radio" name="rf-contact">
+      <label for="rf-text" class="radio__label">Text message</label>
+    </div>
+    <div class="radio">
+      <input id="rf-phone" class="radio__input usa-sr-only" type="radio" name="rf-contact">
+      <label for="rf-phone" class="radio__label">Phone call</label>
+    </div>
+    <div class="radio">
+      <input id="rf-none" class="radio__input usa-sr-only" type="radio" name="rf-contact" disabled>
+      <label for="rf-none" class="radio__label">Do not contact me</label>
+    </div>
+  </div>
+</fieldset>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
