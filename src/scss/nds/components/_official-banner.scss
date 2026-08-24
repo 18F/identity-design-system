@@ -1,0 +1,222 @@
+// NDS official website banner — the flat government banner shown at the top of
+// the page, emitting `.official-banner` and its subelements.
+//
+// This is a standalone banner, separate from the `.usa-banner` accordion. Its
+// explainer content renders inside the `.modal` component, so the rules below
+// also style the modal chrome for the banner's explainer.
+//
+// Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+$nds-banner-mobile-max: 639px;
+
+.official-banner {
+  align-items: center;
+  background: nds.$blue-800;
+  box-sizing: border-box;
+  color: nds.$off-white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: nds.space(4) nds.space(16);
+  justify-content: flex-start;
+  padding: nds.space(12) nds.space(48);
+  position: relative;
+  width: 100%;
+}
+
+.official-banner__content {
+  align-items: center;
+  display: flex;
+  gap: nds.space(12);
+  min-width: 0;
+}
+
+.official-banner__flag {
+  background: linear-gradient(
+    to bottom,
+    transparent 17.5%,
+    nds.$white 17.5% 82.5%,
+    transparent 82.5%
+  );
+  display: block;
+  flex: 0 0 auto;
+  height: nds.space(16);
+  width: nds.space(16);
+
+  .usa-icon {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.official-banner__text,
+.official-banner__test-notice {
+  color: nds.$off-white;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: start;
+}
+
+.official-banner__how {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: nds.$off-white;
+  cursor: pointer;
+  display: inline;
+  font: inherit;
+  padding: 0;
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+
+  &:is(:link, :visited),
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: nds.$off-white;
+  }
+}
+
+.official-banner__test-notice {
+  inset-inline-end: nds.space(48);
+  position: absolute;
+  text-align: end;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// Explainer modal content — renders inside the `.modal` component. These style
+// the modal chrome plus the banner-specific inner blocks.
+.official-banner-modal {
+  .modal__close {
+    background: nds.alpha(nds.$blue-700, 5%);
+    color: nds.$midnight;
+    height: nds.space(44);
+    width: nds.space(44);
+
+    &:hover {
+      background: nds.alpha(nds.$blue-700, 10%);
+    }
+
+    &:focus-visible {
+      outline-color: nds.$midnight;
+    }
+  }
+
+  .modal__body {
+    border-radius: nds.radius(40);
+    box-shadow: 0 nds.space(4) nds.space(24) nds.alpha(nds.$midnight, 16%);
+    gap: nds.space(24);
+    padding: nds.space(16) nds.space(48) nds.space(48);
+    scrollbar-gutter: auto;
+  }
+
+  .modal__heading {
+    display: block;
+    min-height: nds.space(44);
+    padding-inline: 0;
+    position: relative;
+  }
+
+  .modal__title {
+    color: nds.$midnight;
+    font-size: nds.$text-label-m;
+    font-weight: nds.$font-semibold;
+    left: 50%;
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: nds.$text-line-height-none;
+    margin: 0;
+    max-width: calc(100% - #{nds.space(112)});
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+  }
+
+  .modal__content {
+    color: nds.alpha(nds.$midnight, 65%);
+    gap: nds.space(24);
+  }
+}
+
+.official-banner-modal__item {
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(16);
+}
+
+.official-banner-modal__header {
+  align-items: center;
+  display: flex;
+  gap: nds.space(8);
+
+  > .usa-icon {
+    color: nds.$midnight;
+    flex: 0 0 auto;
+    height: nds.space(24);
+    width: nds.space(24);
+  }
+}
+
+.official-banner-modal__heading {
+  color: nds.$midnight;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.official-banner-modal__description {
+  letter-spacing: nds.$text-letter-spacing-label;
+  margin: 0;
+}
+
+.modal__content .official-banner-modal__rule {
+  background: nds.alpha(nds.$midnight, 10%);
+  border: 0;
+  height: 1px;
+  margin: 0;
+  width: 100%;
+}
+
+@media (width <= #{$nds-banner-mobile-max}) {
+  .official-banner {
+    padding: nds.space(16) nds.space(24);
+  }
+
+  .official-banner__content {
+    align-items: center;
+    flex: 1 1 auto;
+    gap: nds.space(16);
+  }
+
+  .official-banner__text {
+    text-align: start;
+  }
+
+  .official-banner__test-notice {
+    flex: 1 0 100%;
+    inset-inline-end: auto;
+    position: static;
+    text-align: start;
+    top: auto;
+    transform: none;
+  }
+}
+
+@media (width <= 40em) {
+  .official-banner-modal .modal__body {
+    border-radius: nds.radius(40) nds.radius(40) 0 0;
+    padding-inline: nds.space(24);
+  }
+}
