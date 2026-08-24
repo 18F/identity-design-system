@@ -1,0 +1,213 @@
+// NDS one-time-code input — slotted entry for a one-time passcode.
+//
+// A net-new component with no USWDS base equivalent. Loaded after
+// `@forward 'uswds'`. Token-only dependencies.
+//
+// The custom element `lg-nds-input-otp` wraps a visually-hidden real input
+// (carrying the enhanced control class `.usa-input__control`) and renders the
+// visible per-character slots; the visual state lives on the slots.
+
+@use 'tokens/nds' as nds;
+
+lg-nds-input-otp {
+  display: block;
+}
+
+// Visually-hidden label.
+.input-otp__label {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.input-otp__shell {
+  position: relative;
+}
+
+.input-otp__slots {
+  display: none;
+}
+
+.input-otp__group {
+  display: flex;
+  flex: var(--nds-input-otp-group-size, 1) 1 0;
+  gap: nds.space(12);
+  min-width: 0;
+}
+
+.input-otp__slot {
+  align-items: center;
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$midnight, 45%);
+  border-radius: nds.radius(16);
+  box-sizing: border-box;
+  color: nds.$midnight;
+  display: inline-flex;
+  flex: 1 1 0;
+  font-family: nds.$font-family;
+  font-size: nds.$text-heading-section;
+  font-weight: nds.$font-semibold;
+  height: nds.space(80);
+  justify-content: center;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: 1.2;
+  min-width: 0;
+  padding: nds.space(12) nds.space(16);
+  position: relative;
+  transition:
+    border-color nds.$tr-duration-md nds.$tr-easing-cubic,
+    box-shadow nds.$tr-duration-md nds.$tr-easing-cubic,
+    color nds.$tr-duration-md nds.$tr-easing-cubic;
+}
+
+.input-otp__separator {
+  background: nds.alpha(nds.$midnight, 45%);
+  border-radius: nds.radius(pill);
+  display: inline-block;
+  flex: 0 0 nds.space(12);
+  height: nds.space(4);
+  width: nds.space(12);
+}
+
+.input-otp__separator--text {
+  background: transparent;
+  border-radius: 0;
+  color: nds.$midnight;
+  flex: 0 0 auto;
+  font-size: nds.$text-heading-section;
+  font-weight: nds.$font-semibold;
+  height: auto;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: 1.2;
+  width: auto;
+}
+
+.input-otp__slot--active {
+  border-color: nds.alpha(nds.$midnight, 85%);
+  box-shadow: 0 0 0 1px nds.alpha(nds.$midnight, 85%);
+  outline: 0;
+}
+
+.input-otp__slot--caret::after {
+  animation: input-otp-caret 1s step-end infinite;
+  background: nds.$midnight;
+  border-radius: nds.radius(pill);
+  content: '';
+  height: nds.space(24);
+  width: 1px;
+}
+
+.input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot {
+  border-color: nds.$red-600;
+}
+
+.input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot--active {
+  box-shadow: 0 0 0 1px nds.$red-600;
+}
+
+.input-otp:has(.input-otp__input:disabled) .input-otp__slot,
+.input-otp:has(.input-otp__input[readonly]) .input-otp__slot {
+  background: nds.alpha(nds.$midnight, 5%);
+  color: nds.alpha(nds.$midnight, 65%);
+}
+
+.input-otp__hint {
+  color: nds.alpha(nds.$midnight, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  line-height: 1.35;
+  margin: nds.space(8) 0 0;
+}
+
+lg-nds-input-otp[data-enhanced='true'] {
+  .input-otp__shell {
+    display: block;
+    max-width: 100%;
+    width: nds.$form-width;
+  }
+
+  .input-otp__input {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    caret-color: transparent;
+    color: transparent;
+    height: 100%;
+    inset: 0;
+    letter-spacing: 0;
+    outline: 0;
+    padding: 0;
+    position: absolute;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+
+    &::selection {
+      background: transparent;
+      color: transparent;
+    }
+
+    // The real input carries the enhanced control class `.usa-input__control`.
+    // Clear its interactive-state rings since the visual state lives on the
+    // slots; the declarations above already zero the control surface.
+    &.usa-input__control:is(
+        :focus,
+        :focus-visible,
+        :active,
+        :invalid,
+        :user-invalid,
+        [aria-invalid='true']
+      ) {
+      border: 0;
+      box-shadow: none;
+      outline: 0;
+      outline-offset: 0;
+    }
+  }
+
+  &[data-push-password-manager-strategy='increase_width'] .input-otp__input {
+    width: calc(100% + #{nds.space(56)});
+  }
+
+  .input-otp__slots {
+    align-items: center;
+    display: flex;
+    gap: nds.space(12);
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (width <= calc(#{nds.$form-width} + #{nds.space(56)})) {
+  lg-nds-input-otp[data-enhanced='true'][data-push-password-manager-strategy='increase_width']
+    .input-otp__input {
+    width: 100%;
+  }
+
+  .input-otp__slot {
+    height: nds.space(64);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .input-otp__slot--caret::after {
+    animation: none;
+  }
+}
+
+@keyframes input-otp-caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
