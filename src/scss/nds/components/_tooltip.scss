@@ -47,9 +47,10 @@ $nds-tooltip-gap: nds.space(8);
 
 .usa-tooltip__body--wrap {
   max-width: 16rem;
+  min-width: 0;
   text-align: center;
   white-space: normal;
-  width: 100%;
+  width: max-content;
 }
 
 .usa-tooltip__body.is-set {
