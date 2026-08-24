@@ -1,0 +1,123 @@
+// NDS badge — status pill, distinct from `.usa-tag`.
+//
+// A `.badge` inline-flex pill with color levels (primary, secondary, success,
+// error, warning, info, tertiary), a `--dark` surface variant, and an
+// `--icon-only` square form. Loaded after `@forward 'uswds'`.
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'tokens/nds' as nds;
+
+// level → (light: (bg, fg), dark: (bg, fg))
+$nds-badge-states: (
+  primary: (
+    light: (
+      nds.$blue-800,
+      nds.$off-white,
+    ),
+    dark: (
+      nds.$white,
+      nds.$midnight,
+    ),
+  ),
+  secondary: (
+    light: (
+      nds.alpha(nds.$blue-700, 10%),
+      nds.$midnight,
+    ),
+    dark: (
+      nds.$blue-700,
+      nds.$off-white,
+    ),
+  ),
+  success: (
+    light: (
+      nds.alpha(nds.$green-300, 10%),
+      nds.$green-600,
+    ),
+    dark: (
+      nds.alpha(nds.$green-300, 20%),
+      nds.$green-500,
+    ),
+  ),
+  error: (
+    light: (
+      nds.alpha(nds.$red-300, 10%),
+      nds.$red-600,
+    ),
+    dark: (
+      nds.alpha(nds.$red-300, 20%),
+      nds.$red-500,
+    ),
+  ),
+  warning: (
+    light: (
+      nds.alpha(nds.$yellow-300, 10%),
+      nds.$yellow-900,
+    ),
+    dark: (
+      nds.alpha(nds.$yellow-300, 20%),
+      nds.$yellow-500,
+    ),
+  ),
+  info: (
+    light: (
+      nds.alpha(nds.$blue-500, 8%),
+      nds.$blue-500,
+    ),
+    dark: (
+      nds.alpha(nds.$off-white, 5%),
+      nds.$blue-500,
+    ),
+  ),
+);
+
+.badge {
+  align-items: center;
+  backdrop-filter: blur(25px);
+  border: 1px solid transparent;
+  border-radius: nds.radius(8);
+  display: inline-flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(4);
+  justify-content: center;
+  line-height: nds.$text-line-height-none;
+  padding: nds.space(4) nds.space(8);
+
+  .usa-icon svg {
+    height: 0.75rem;
+    width: 0.75rem;
+  }
+
+  &.badge--icon-only {
+    box-sizing: border-box;
+    height: nds.space(20);
+    padding: nds.space(4);
+    width: nds.space(20);
+  }
+
+  @each $name, $bg in $nds-badge-states {
+    &.badge--#{$name} {
+      background: list.nth(map.get($bg, light), 1);
+      color: list.nth(map.get($bg, light), 2);
+    }
+
+    &.badge--#{$name}.badge--dark {
+      background: list.nth(map.get($bg, dark), 1);
+      color: list.nth(map.get($bg, dark), 2);
+    }
+  }
+
+  &.badge--tertiary {
+    background: transparent;
+    border-color: nds.alpha(nds.$midnight, 10%);
+    color: nds.$midnight;
+
+    &.badge--dark {
+      border-color: nds.alpha(nds.$off-white, 10%);
+      color: nds.$off-white;
+    }
+  }
+}
