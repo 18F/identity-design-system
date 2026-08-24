@@ -84,6 +84,7 @@ build-sass-packages-nds:
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts
 	cp -r node_modules/@uswds/uswds/dist/fonts $(OUTPUT_DIR)/assets
+	cp -r src/fonts $(OUTPUT_DIR)/assets
 
 build-images:
 	mkdir -p $(OUTPUT_DIR)/assets/img
