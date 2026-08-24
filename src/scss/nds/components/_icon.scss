@@ -1,0 +1,11 @@
+// NDS icon base overlay — adds alignment props to `.usa-icon`.
+//
+// Adds flex/overflow/vertical-align so icons stay aligned in flex rows; the
+// USWDS sizing contract (width/height/fill) is untouched. Loaded after
+// `@forward 'uswds'` so these win by source order.
+
+.usa-icon {
+  flex: none;
+  overflow: visible;
+  vertical-align: middle;
+}

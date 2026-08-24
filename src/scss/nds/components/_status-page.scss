@@ -1,0 +1,9 @@
+// NDS status-page icon — a large centered status illustration.
+
+@use 'tokens/nds' as nds;
+
+.status-page__icon {
+  display: block;
+  height: nds.space(88);
+  width: nds.space(88);
+}
