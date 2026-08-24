@@ -1,0 +1,15 @@
+// NDS date-fields — `.date-fields`.
+//
+// A three-column grid layout for a month/day/year date entry. Distinct from
+// the USWDS `.usa-memorable-date` / `.usa-date` layout, which is unchanged.
+//
+// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+.date-fields {
+  display: grid;
+  gap: nds.space(12);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+}
