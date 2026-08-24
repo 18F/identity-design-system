@@ -150,6 +150,9 @@
   $theme-root-font-size: 16px !default,
   // Font path
   $theme-font-path: if(variable-exists(font-path), $font-path, '../../fonts') !default,
+  // Image path. The NDS bundle compiles one directory deeper than the default
+  // bundle, so relative asset URLs need an extra level to resolve.
+  $theme-image-path: '../../img' !default,
   //  Font role
   $theme-font-role-heading: 'sans' !default,
   $theme-font-role-alt: 'sans' !default,
