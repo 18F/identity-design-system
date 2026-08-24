@@ -111,3 +111,18 @@ $nds-radio-size: nds.space(16);
   gap: nds.space(8);
   padding-left: nds.space(16);
 }
+
+// Tile variant: the label holds a title followed by a description that should
+// stack, so keep the label as a block (illustrated tiles keep their own
+// layout) and place the circle in the left gutter reserved by the tile
+// padding rather than as an inline flex child.
+.usa-radio__input--tile + .usa-radio__label:not(.usa-radio__label--illustrated) {
+  display: block;
+  position: relative;
+}
+
+.usa-radio__input--tile + .usa-radio__label::before {
+  left: nds.space(12);
+  position: absolute;
+  top: nds.space(24);
+}
