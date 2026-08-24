@@ -1,0 +1,189 @@
+// NDS progress — a pill stepper emitting `.progress` and its subelements.
+//
+// This is a standalone stepper (not the USWDS dot-line step indicator); the
+// `.progress` class and its subelements have no USWDS equivalent.
+//
+// Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+// Match the layout breakpoint: @media (width < 768px)
+$nds-progress-breakpoint-m: 768px;
+
+.progress {
+  --nds-progress-pill-height: #{nds.space(40) + nds.space(4)};
+
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  max-width: 100%;
+  min-height: var(--nds-progress-pill-height);
+  min-width: 0;
+  padding-block: nds.space(8);
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.progress__scroll {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+  overflow: auto visible;
+  overscroll-behavior-x: contain;
+  padding-block: nds.space(8);
+  scroll-padding-inline: nds.space(16);
+  scrollbar-width: none;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.progress__stepper {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: nds.space(24);
+  justify-content: center;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: max-content;
+}
+
+.progress__stepper > li {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.progress__step {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  min-height: var(--nds-progress-pill-height);
+  padding-block: nds.space(4);
+  position: relative;
+}
+
+.progress__step-surface {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  color: nds.alpha(nds.$midnight, 65%);
+  display: inline-flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-variant-numeric: tabular-nums;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(8);
+  height: var(--nds-progress-pill-height);
+  justify-content: center;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+  min-width: var(--nds-progress-pill-height);
+  padding: nds.space(8) nds.space(20);
+  transition:
+    background-color nds.$tr-duration-md nds.$tr-easing-cubic,
+    color nds.$tr-duration-md nds.$tr-easing-cubic,
+    padding nds.$tr-duration-lg nds.$tr-easing-cubic;
+  white-space: nowrap;
+}
+
+.progress__step[aria-current='step'] .progress__step-surface {
+  background: nds.alpha(nds.$blue-700, 5%);
+  color: nds.$midnight;
+}
+
+.progress__step[data-complete='true'] .progress__step-surface {
+  background: transparent;
+  color: nds.alpha(nds.$midnight, 65%);
+  min-width: 0;
+  padding: nds.space(8) nds.space(20) nds.space(8) nds.space(12);
+}
+
+.progress__step-check {
+  display: block;
+  flex: 0 0 auto;
+  height: nds.space(20);
+  width: nds.space(20);
+}
+
+.progress__step[data-complete='true'] .progress__step-check {
+  align-items: center;
+  background: nds.$green-600;
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  color: nds.$off-white;
+  display: inline-flex;
+  height: nds.space(20);
+  justify-content: center;
+  padding: nds.space(4);
+  width: nds.space(20);
+
+  &.usa-icon {
+    height: nds.space(20);
+    width: nds.space(20);
+  }
+}
+
+.progress__step-counter {
+  align-items: center;
+  color: nds.alpha(nds.$midnight, 65%);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-variant-numeric: tabular-nums;
+  font-weight: normal;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+}
+
+@media (width < #{$nds-progress-breakpoint-m}) {
+  .progress__scroll {
+    --nds-progress-scroll-fade-size: #{nds.space(40) + nds.space(4)};
+
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      nds.$black var(--nds-progress-scroll-fade-size),
+      nds.$black calc(100% - var(--nds-progress-scroll-fade-size)),
+      transparent
+    );
+    padding-block: nds.space(4);
+    scroll-snap-type: x mandatory;
+  }
+
+  // CSS-only end slack so first/last pills can sit near center (no JS insets).
+  .progress__stepper {
+    justify-content: flex-start;
+    padding-inline: calc(50% - #{nds.space(48)});
+  }
+
+  .progress__step {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress__step-surface {
+    transition: none;
+  }
+}
