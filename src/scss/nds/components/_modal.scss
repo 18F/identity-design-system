@@ -1,0 +1,284 @@
+// Modal overlay. Restyles the `<dialog class="modal">` structure and its
+// `.modal__*` elements. Loaded after `@forward 'uswds'`. Pure component CSS —
+// it does not reconfigure the core settings.
+//
+// State mechanism: a native `<dialog>` with the `open` attribute; scripting
+// toggles `.is-open` then `.is-closing` for the enter/exit transitions, and
+// adds `.modal--active` to the body to lock scrolling while a modal is open.
+
+@use 'tokens/nds' as nds;
+
+// Body scroll-lock while a modal is active.
+.modal--active {
+  overflow: hidden;
+}
+
+.modal {
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  inset: 50% auto auto 50%;
+  margin: auto;
+  max-height: calc(100vh - #{nds.space(48)});
+  max-width: 27rem;
+  opacity: 0;
+  overflow: visible;
+  padding: 0;
+  transform: translate(-50%, calc(-50% + #{nds.space(16)})) scale(0.98);
+  transition:
+    opacity nds.$tr-duration-md nds.$tr-easing-cubic,
+    transform nds.$tr-duration-md nds.$tr-easing-cubic;
+  width: calc(100% - #{nds.space(32)});
+
+  // Tinted, blurred scrim behind the dialog.
+  &::backdrop {
+    backdrop-filter: blur(#{nds.space(12)});
+    background: nds.alpha(nds.$off-black, 25%);
+    opacity: 0;
+    transition:
+      opacity nds.$tr-duration-md nds.$tr-easing-cubic,
+      backdrop-filter nds.$tr-duration-md nds.$tr-easing-cubic;
+  }
+
+  &[open].is-open {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+
+    &::backdrop {
+      opacity: 1;
+    }
+  }
+
+  &[open].is-closing {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + #{nds.space(8)})) scale(0.99);
+
+    &::backdrop {
+      backdrop-filter: blur(0);
+      opacity: 0;
+    }
+  }
+}
+
+.modal--wide {
+  max-width: 660px;
+}
+
+// Circular icon close button: frosted pill, top-right.
+.modal__close {
+  align-items: center;
+  backdrop-filter: blur(25px);
+  background: nds.alpha(nds.$off-black, 5%);
+  border: 0;
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  color: nds.$off-black;
+  cursor: pointer;
+  display: flex;
+  height: nds.space(40);
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: nds.space(16);
+  top: nds.space(16);
+  transition: background-color nds.$tr-duration-md nds.$tr-easing-cubic;
+  width: nds.space(40);
+  z-index: 1;
+
+  .usa-icon {
+    color: inherit;
+    display: block;
+  }
+
+  &:hover {
+    background: nds.alpha(nds.$off-black, 10%);
+  }
+
+  &:focus-visible {
+    outline: 1px solid nds.$off-black;
+    outline-offset: 0;
+  }
+}
+
+// Body surface: white rounded card, large shadow, scroll panel.
+.modal__body {
+  background: nds.$white;
+  border-radius: nds.radius(32);
+  box-shadow: nds.$shadow-large;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(32);
+  max-height: calc(100vh - #{nds.space(48)});
+  padding: nds.space(64) nds.space(32) nds.space(32);
+  width: 100%;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: nds.alpha(nds.$off-black, 16%) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: nds.space(8);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: nds.space(24);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: nds.alpha(nds.$off-black, 16%);
+    border: 2px solid transparent;
+    border-radius: nds.radius(pill);
+  }
+}
+
+// Media modal variant.
+.modal__body--media {
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.modal__media {
+  align-self: stretch;
+  border-bottom: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(32) nds.radius(32) 0 0;
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    border-radius: inherit;
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.modal__body-inner {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(20);
+  padding: nds.space(40);
+  text-align: center;
+  width: 100%;
+}
+
+.modal__body--media .modal__heading {
+  align-items: center;
+  padding-inline-end: 0;
+}
+
+.modal__body--media .modal__title {
+  font-size: nds.$text-heading-m;
+  letter-spacing: nds.$text-letter-spacing-heading;
+  line-height: 1.1;
+}
+
+.modal__body--media .modal__description {
+  max-width: 432px;
+}
+
+.modal__body--media .modal__actions {
+  align-items: center;
+  width: auto;
+}
+
+// Bottom-sheet on mobile.
+@media (width <= 40em) {
+  .modal {
+    inset: auto 0 0;
+    margin: 0;
+    max-height: none;
+    max-width: none;
+    transform: translateY(100%);
+    transition:
+      opacity nds.$tr-duration-lg nds.$tr-easing-cubic,
+      transform nds.$tr-duration-lg nds.$tr-easing-cubic;
+    width: 100%;
+
+    &::backdrop {
+      transition-duration: nds.$tr-duration-lg;
+    }
+
+    &[open].is-open {
+      transform: translateY(0);
+    }
+
+    &[open].is-closing {
+      transform: translateY(100%);
+    }
+  }
+
+  .modal__body {
+    border-radius: nds.radius(32) nds.radius(32) 0 0;
+    max-height: calc(100dvh - env(safe-area-inset-top) - #{nds.space(24)});
+    padding-bottom: calc(#{nds.space(32)} + env(safe-area-inset-bottom));
+  }
+}
+
+// Heading, title, description, content, and actions.
+.modal__heading {
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(12);
+  // Clear the absolutely-positioned close control.
+  padding-inline-end: nds.space(48);
+  width: 100%;
+}
+
+.modal__title {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-heading-section;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: 1.2;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.modal__description,
+.modal__content {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  line-height: 1.5;
+  margin: 0;
+  width: 100%;
+
+  > * {
+    margin: 0;
+  }
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(16);
+}
+
+.modal__body .modal__content {
+  padding: 0;
+  width: 100%;
+  max-width: none;
+}
+
+.modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(12);
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal::backdrop {
+    transition: none;
+  }
+}
