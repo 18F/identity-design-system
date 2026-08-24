@@ -1,0 +1,105 @@
+// Tooltip overlay. Restyles the standard USWDS tooltip classes
+// (`.usa-tooltip`, `.usa-tooltip__trigger`, `.usa-tooltip__body` and its
+// placement modifiers). Loaded after `@forward 'uswds'`. Pure component CSS —
+// it does not reconfigure the core settings.
+
+@use 'tokens/nds' as nds;
+
+$nds-tooltip-gap: nds.space(8);
+
+.usa-tooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.usa-tooltip__trigger {
+  cursor: pointer;
+
+  > svg {
+    display: inline;
+    pointer-events: none;
+  }
+}
+
+// Tooltip bubble: dark frosted ink surface, off-white text, 12px radius,
+// compact shadow, inheriting the body font.
+.usa-tooltip__body,
+.usa-tooltip__body--top {
+  background-color: nds.alpha(nds.$off-black, 85%);
+  border-radius: nds.radius(12);
+  box-shadow: nds.$shadow-compact;
+  color: nds.$off-white;
+  display: none;
+  font-family: inherit;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  max-width: 16rem;
+  opacity: 0;
+  padding: nds.space(4) nds.space(8);
+  position: absolute;
+  transition: opacity 0.08s ease-in-out;
+  white-space: nowrap;
+  width: max-content;
+  z-index: 100000;
+}
+
+.usa-tooltip__body--wrap {
+  max-width: 16rem;
+  text-align: center;
+  white-space: normal;
+  width: 100%;
+}
+
+.usa-tooltip__body.is-set {
+  display: block;
+}
+
+.usa-tooltip__body.is-visible {
+  opacity: 1;
+}
+
+// Invisible hover-gap spacers so the bubble does not flicker when the pointer
+// crosses the gap between trigger and bubble. The spacer extends toward the
+// trigger: a top-placed bubble has its trigger below it, so the gap-filler
+// sits at the bubble's bottom edge (top: 100%).
+.usa-tooltip__body--top::before {
+  content: '';
+  display: block;
+  height: $nds-tooltip-gap;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
+}
+
+.usa-tooltip__body--bottom::before {
+  bottom: 100%;
+  content: '';
+  display: block;
+  height: $nds-tooltip-gap;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.usa-tooltip__body--right::before {
+  bottom: 0;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  width: $nds-tooltip-gap;
+}
+
+.usa-tooltip__body--left::before {
+  bottom: 0;
+  content: '';
+  display: block;
+  left: 100%;
+  position: absolute;
+  top: 0;
+  width: $nds-tooltip-gap;
+}
