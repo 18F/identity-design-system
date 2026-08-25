@@ -1,1 +1,284 @@
-// NDS primitives layout module. Populated in a follow-up.
+// Layout flow / content primitives. The reusable layout and content
+// primitives the page shell composes: the vertical flow container, auth
+// header/intro/media, copy blocks, lists, section headings, dividers, the
+// labelled separator, and small helpers. Loaded after `@forward 'uswds'`.
+// Pure component CSS — it does not reconfigure the core settings.
+
+@use 'tokens/nds' as nds;
+
+// The vertical flow container. Drives section/form/action/intro gaps via
+// custom properties so nested primitives inherit them.
+.auth,
+.flow {
+  --nds-section-gap: #{nds.space(40)};
+  --nds-form-gap: #{nds.space(32)};
+  --nds-action-gap: #{nds.space(12)};
+  --nds-intro-gap: #{nds.space(12)};
+  --nds-flow-align: var(--nds-layout-align, center);
+  --nds-flow-width: var(--nds-page-content-width, #{nds.$form-width});
+  --nds-flow-text-align: var(--nds-layout-text-align, center);
+
+  @include nds.stack(
+    $align: var(--nds-flow-align),
+    $gap: var(--nds-section-gap),
+    $margin: 0 auto,
+    $max-width: var(--nds-flow-width),
+    $reset-flow: true,
+    $width: 100%,
+    $box-border: true
+  );
+
+  min-width: 0;
+  text-align: var(--nds-flow-text-align);
+}
+
+.auth > *:not(.toast),
+.flow > *:not(.toast) {
+  margin-inline: auto;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+}
+
+// Form-page density overrides.
+.auth--form-page {
+  --nds-section-gap: #{nds.space(32)};
+  --nds-action-gap: #{nds.space(12)};
+  --nds-intro-gap: #{nds.space(12)};
+}
+
+// simple_form stamps a global default `margin-top-4` class on every form.
+// This bundle loads the utilities, so neutralize that margin inside the auth
+// flow — spacing here comes from the stack/section gaps.
+/* stylelint-disable-next-line selector-class-pattern -- simple_form is a framework-generated class name */
+.auth .simple_form {
+  margin-top: 0;
+}
+
+.auth__header {
+  width: 100%;
+}
+
+.auth__header--with-media {
+  @include nds.stack($align: center, $gap: nds.space(32), $width: 100%, $text-align: center);
+}
+
+.auth__media {
+  display: block;
+  height: nds.space(96);
+  margin-inline: auto;
+  object-fit: contain;
+  width: nds.space(96);
+}
+
+.auth__intro {
+  @include nds.stack($align: center, $gap: var(--nds-intro-gap), $width: 100%, $text-align: center);
+}
+
+.auth__intro h1 {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-heading-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: -0.0675rem;
+  line-height: 1.1;
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.auth__intro-description {
+  color: nds.alpha(nds.$black, 60%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: -0.01rem;
+  line-height: 1.5;
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-align: center;
+  text-wrap: pretty;
+
+  p {
+    margin: 0;
+  }
+
+  strong,
+  b {
+    font-weight: inherit;
+  }
+}
+
+.auth__form-page-body {
+  @include nds.stack($gap: var(--nds-form-gap), $width: 100%, $reset-flow: true);
+}
+
+.auth__actions {
+  @include nds.stack(
+    $gap: var(--nds-action-gap),
+    $max-width: 100%,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  margin: 0;
+}
+
+.auth__inline-link {
+  padding-inline: nds.space(16);
+  text-align: start;
+
+  .link {
+    font-size: nds.$text-label-s;
+  }
+}
+
+// Links inside the auth flow are blue, except muted-copy links which inherit
+// the muted color.
+.auth .link {
+  color: nds.$blue-500;
+
+  &:is(:link, :visited, :hover, :active, :focus-visible) {
+    color: nds.$blue-500;
+  }
+}
+
+.auth .copy--muted .link {
+  color: inherit;
+
+  &:is(:link, :visited, :hover, :active, :focus-visible) {
+    color: inherit;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.list {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  padding-left: nds.space(24);
+  text-align: left;
+}
+
+.list > li + li {
+  margin-top: nds.space(8);
+}
+
+// Prose block.
+.copy {
+  @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
+
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  text-align: left;
+  text-wrap: pretty;
+
+  strong,
+  b {
+    font-weight: inherit;
+  }
+}
+
+.copy > * {
+  margin: 0;
+}
+
+.copy--centered {
+  text-align: center;
+}
+
+.copy--muted {
+  color: nds.alpha(nds.$off-black, 65%);
+}
+
+.heading-s,
+.copy h2 {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-heading-section;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+
+.copy.copy--centered h2 {
+  text-align: center;
+}
+
+.copy a {
+  color: nds.$off-black;
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  overflow-wrap: break-word;
+
+  &:is(:link, :visited),
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: nds.$off-black;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.copy--muted a {
+  color: nds.alpha(nds.$off-black, 65%);
+
+  &:is(:link, :visited),
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: nds.alpha(nds.$off-black, 65%);
+  }
+}
+
+// Horizontal rule.
+.divider {
+  background: nds.alpha(nds.$off-black, 10%);
+  border: 0;
+  height: 1px;
+  margin: 0;
+  width: 100%;
+}
+
+// Labelled "or" separator.
+.separator {
+  align-items: center;
+  color: nds.alpha(nds.$off-black, 60%);
+  display: flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  gap: nds.space(12);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+
+  &::before,
+  &::after {
+    background: nds.alpha(nds.$off-black, 10%);
+    content: '';
+    flex: 1 1 0;
+    height: 1px;
+    min-width: nds.space(24);
+  }
+}
