@@ -65,24 +65,9 @@ $nds-banner-mobile-max: 639px;
   text-align: start;
 }
 
-.official-banner__how {
-  appearance: none;
-  background: none;
-  border: 0;
+.official-banner__how.link,
+.official-banner__how.link:is(:link, :visited, :hover, :active, :focus-visible) {
   color: nds.$off-white;
-  cursor: pointer;
-  display: inline;
-  font: inherit;
-  padding: 0;
-  text-decoration-line: underline;
-  text-decoration-thickness: from-font;
-
-  &:is(:link, :visited),
-  &:hover,
-  &:active,
-  &:focus-visible {
-    color: nds.$off-white;
-  }
 }
 
 .official-banner__test-notice {

@@ -18,7 +18,7 @@ government site, and a link that opens an explainer.
     </span>
     <p class="official-banner__text">
       An official website of the United States government.
-      <button type="button" class="official-banner__how" data-open-modal="official-banner-explainer">Here's how you know</button>
+      <button type="button" class="official-banner__how link" data-open-modal="official-banner-explainer">Here's how you know</button>
     </p>
   </div>
 </section>
