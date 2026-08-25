@@ -1,0 +1,34 @@
+// NDS clipboard-button copy animation.
+//
+// Plays a brief copy-confirmation animation on the button inside the
+// `lg-clipboard-button` custom element when it gains `data-copied`. Loaded
+// after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+$nds-clipboard-copied-blur: nds.space(4);
+$nds-clipboard-copied-scale: 1.02;
+
+@keyframes nds-clipboard-copied {
+  from {
+    filter: blur($nds-clipboard-copied-blur);
+    opacity: 0;
+    transform: scale($nds-clipboard-copied-scale);
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+lg-clipboard-button[data-copied] .usa-button {
+  animation: nds-clipboard-copied nds.$tr-duration-md nds.$tr-easing-cubic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  lg-clipboard-button[data-copied] .usa-button {
+    animation: none;
+  }
+}
