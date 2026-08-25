@@ -1,0 +1,185 @@
+// NDS link, block-link, skipnav, sr-only, and troubleshooting-options.
+//
+// Semantic utility classes with no USWDS equivalent. Loaded after
+// `@forward 'uswds'`.
+//
+// This module emits `.sr-only`; the visually-hidden `.usa-sr-only` ships with
+// USWDS already, so only the `.sr-only` form is defined here.
+
+@use 'tokens/nds' as nds;
+
+// Inline text link.
+.link {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  overflow-wrap: break-word;
+
+  &:is(:link, :visited),
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: nds.$off-black;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.link[target='_blank']::after {
+  background-color: currentColor;
+  block-size: 0.75em;
+  content: '';
+  display: inline-block;
+  inline-size: 0.75em;
+  margin-inline-start: nds.space(4);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+  vertical-align: -0.075em;
+}
+
+button.link {
+  appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: inline;
+  padding: 0;
+}
+
+.link--nowrap {
+  white-space: nowrap;
+}
+
+// Full-row link with trailing chevron.
+.block-link {
+  border-block: 1px solid nds.alpha(nds.$off-black, 10%);
+  color: nds.$off-black;
+  display: block;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding-block: nds.space(16);
+  padding-inline-end: nds.space(32);
+  position: relative;
+  text-decoration: none;
+
+  // Stacked rows share a single divider via border-top removal on adjacent items.
+  li + li &:only-child {
+    border-top: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.block-link__icon {
+  color: nds.$off-black;
+  display: block;
+  height: nds.space(16);
+  position: absolute;
+  right: nds.space(8);
+  top: 50%;
+  transform: translateY(-50%);
+  width: nds.space(16);
+}
+
+// Skip-to-content link.
+.skipnav {
+  background: nds.$white;
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  left: nds.space(16);
+  padding: nds.space(8) nds.space(12);
+  position: absolute;
+  text-decoration: none;
+  top: -5rem;
+  z-index: 1000;
+
+  &:focus {
+    @include nds.focus-ring();
+    top: nds.space(16);
+  }
+}
+
+// Visually-hidden.
+.sr-only {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+// Troubleshooting options list.
+.troubleshooting-options {
+  @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
+
+  margin: 0;
+  text-align: left;
+}
+
+.troubleshooting-options__heading {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-heading-s;
+  font-weight: nds.$font-semibold;
+  letter-spacing: -0.02rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.troubleshooting-options__options {
+  @include nds.stack($gap: 0, $reset-flow: true, $width: 100%);
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.troubleshooting-options--cards {
+  .troubleshooting-options__options {
+    gap: nds.space(12);
+  }
+
+  .block-link {
+    background: nds.$white;
+    border: 1px solid nds.alpha(nds.$off-black, 10%);
+    border-radius: nds.radius(24);
+    padding-block: nds.space(20);
+    padding-inline: nds.space(24) nds.space(40);
+    transition: nds.$transition;
+
+    &:hover {
+      border-color: nds.$off-black;
+    }
+  }
+
+  li + li .block-link:only-child {
+    border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+
+    // Keep the top border in sync with the other edges on hover.
+    &:hover {
+      border-top-color: nds.$off-black;
+    }
+  }
+}
