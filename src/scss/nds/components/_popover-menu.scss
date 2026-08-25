@@ -21,6 +21,24 @@
   z-index: var(--nds-popover-menu-z, 10);
 }
 
+// Horizontal alignment relative to the trigger. The default panel is
+// right-aligned; `--right` states that explicitly and `--left` flips it.
+.popover-menu--right {
+  left: auto;
+  right: 0;
+}
+
+.popover-menu--left {
+  left: 0;
+  right: auto;
+}
+
+// Opens upward, growing from the trigger's top edge instead of its bottom.
+.popover-menu--up {
+  bottom: calc(100% + #{nds.space(4)});
+  top: auto;
+}
+
 .popover-menu__item {
   border-radius: nds.radius(8);
   color: nds.$off-black;
