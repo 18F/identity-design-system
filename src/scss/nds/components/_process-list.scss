@@ -1,1 +1,85 @@
-// NDS process-list overlay. Populated in a follow-up.
+// NDS process-list — `.process-list`, `.process-list__item`,
+// `.process-list__marker`, `.process-list__body`, `.process-list__heading`.
+//
+// A numbered step list with a connecting line between markers. The step number
+// is generated with a CSS counter. Distinct from the USWDS `.usa-process-list`,
+// which is unchanged.
+//
+// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+.process-list {
+  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+
+  counter-reset: nds-process-list;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.process-list__item {
+  align-items: flex-start;
+  counter-increment: nds-process-list;
+  display: grid;
+  gap: nds.space(16);
+  grid-template-columns: nds.space(32) minmax(0, 1fr);
+  min-width: 0;
+  position: relative;
+}
+
+.process-list__item:not(:last-child)::before {
+  background: nds.alpha(nds.$off-black, 10%);
+  content: '';
+  inset: nds.space(40) auto calc(-1 * nds.space(16)) nds.space(15);
+  position: absolute;
+  width: 2px;
+}
+
+.process-list__marker {
+  align-items: center;
+  background: nds.$off-black;
+  border-radius: nds.radius(pill);
+  color: nds.$white;
+  display: inline-flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  font-weight: nds.$font-semibold;
+  height: nds.space(32);
+  justify-content: center;
+  line-height: 1;
+  position: relative;
+  width: nds.space(32);
+  z-index: 1;
+
+  &::before {
+    content: counter(nds-process-list);
+  }
+}
+
+.process-list__body {
+  @include nds.stack($gap: nds.space(12), $reset-flow: true, $width: 100%);
+
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  line-height: 1.5;
+  min-width: 0;
+  padding-top: nds.space(2);
+
+  > p {
+    margin: 0;
+  }
+}
+
+.process-list__heading {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
