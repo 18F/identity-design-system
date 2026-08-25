@@ -1,1 +1,87 @@
-// NDS transition layout module. Populated in a follow-up.
+// NDS layout — page view-transition.
+//
+// Opts into cross-document view transitions and animates the page main and
+// footer regions. The `view-transition-name` assignments are gated on
+// `[data-nds-page-transition]` and stay inert until that attribute is set on
+// the `.auth-page` element (the `>` combinators require it to be the direct
+// parent).
+//
+// Note: the `@view-transition { navigation: auto }` opt-in and the
+// `::view-transition-*(root)` rules are document-global and take effect
+// whenever this bundle loads, giving these pages smooth cross-document
+// navigation. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+@view-transition {
+  navigation: auto;
+}
+
+[data-nds-page-transition] > .auth-page__main {
+  view-transition-name: page-main;
+}
+
+[data-nds-page-transition] > .auth-page__footer-wrapper {
+  view-transition-name: page-footer;
+}
+
+[data-nds-page-transition] > .auth-page__top-chrome,
+[data-nds-page-transition] .progress {
+  view-transition-name: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 1ms;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(page-main) {
+  animation: page-exit-up nds.$tr-duration-md nds.$tr-easing-cubic forwards;
+}
+
+::view-transition-new(page-main) {
+  animation: page-enter-up nds.$tr-duration-lg nds.$tr-easing-cubic nds.$tr-duration-md both;
+}
+
+::view-transition-old(page-footer),
+::view-transition-new(page-footer) {
+  animation-duration: nds.$tr-duration-md;
+  animation-timing-function: nds.$tr-easing-cubic;
+}
+
+@keyframes page-exit-up {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes page-enter-up {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+}

@@ -1,1 +1,93 @@
-// NDS stack layout module. Populated in a follow-up.
+// NDS layout — stack utilities.
+//
+// Vertical flex-column layout helpers emitting `.stack`, `.form`, `.actions`,
+// `.links` and their `--gap-*` / `--align-*` modifiers, plus `.action-row`.
+// These layer gap and alignment modifiers onto the `.flow` base.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+$nds-stack-gaps: 4, 8, 12, 16, 20, 24, 32, 40, 48;
+
+// Form spacing convention:
+// - Within a group (title+body, fields, buttons): 12
+// - Between groups (fields → actions, intro → body): 32
+// Stack kinds encode that: stack/actions = 12, form = 32, links = 32.
+.stack,
+.form,
+.actions,
+.links {
+  @include nds.stack($reset-flow: true, $width: 100%);
+}
+
+.stack {
+  gap: nds.space(12);
+}
+
+.form {
+  gap: nds.space(32);
+}
+
+.actions {
+  gap: nds.space(12);
+}
+
+.links {
+  gap: nds.space(32);
+}
+
+@each $gap in $nds-stack-gaps {
+  .stack--gap-#{$gap},
+  .flow--gap-#{$gap},
+  .form--gap-#{$gap},
+  .actions--gap-#{$gap},
+  .links--gap-#{$gap} {
+    gap: nds.space($gap);
+  }
+}
+
+.stack--align-center,
+.flow--align-center,
+.form--align-center,
+.actions--align-center,
+.links--align-center {
+  align-items: center;
+}
+
+.stack--align-start,
+.flow--align-start,
+.form--align-start,
+.actions--align-start,
+.links--align-start {
+  align-items: flex-start;
+}
+
+.stack--align-stretch,
+.flow--align-stretch,
+.form--align-stretch,
+.actions--align-stretch,
+.links--align-stretch {
+  align-items: stretch;
+}
+
+.action-row {
+  @media (width < 48rem) {
+    .usa-tooltip {
+      display: block;
+    }
+  }
+
+  @media (width >= 48rem) {
+    flex-direction: row;
+
+    > * {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    > lg-click-observer {
+      display: block;
+    }
+  }
+}
