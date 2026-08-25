@@ -1,1 +1,293 @@
-// NDS account-navigation layout module. Populated in a follow-up.
+// NDS layout — account navigation.
+//
+// The signed-in account chrome: a top `.account-header` (logo + a `<details>`
+// user menu), the `.account-shell` grid (side `.account-nav` + main content),
+// and a `.account-mobile-menu` `<details>` disclosure for narrow viewports.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+$account-nav-breakpoint-m: 768px;
+$account-nav-width: 252px;
+
+.account-header {
+  align-items: center;
+  background: nds.$white;
+  border-bottom: 1px solid nds.alpha(nds.$off-black, 10%);
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 nds.space(80);
+  gap: nds.space(24);
+  height: nds.space(80);
+  justify-content: space-between;
+  padding-inline: nds.space(48);
+}
+
+.account-header__logo-link {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-width: 0;
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.account-header__logo {
+  display: block;
+  height: nds.space(20);
+  max-width: 100%;
+  width: auto;
+}
+
+.account-header__actions {
+  align-items: center;
+  display: flex;
+  flex: 0 1 auto;
+  gap: nds.space(8);
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.account-header__menu {
+  min-width: 0;
+  position: relative;
+}
+
+.account-header__menu-button {
+  align-items: center;
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  color: nds.$off-black;
+  cursor: pointer;
+  display: flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(8);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+  list-style: none;
+  min-height: nds.space(40);
+  min-width: 0;
+  padding: nds.space(8) nds.space(16);
+  transition: nds.$transition;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover,
+  &:active {
+    background: nds.alpha(nds.$off-black, 5%);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+    background: nds.alpha(nds.$off-black, 5%);
+  }
+}
+
+.account-header__menu-email {
+  line-height: 1.2;
+  max-width: 128ch;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-header__menu-chevron {
+  flex: 0 0 auto;
+  transition: nds.$transition;
+
+  .account-header__menu[open] & {
+    transform: rotate(180deg);
+  }
+}
+
+.account-header__menu-form {
+  margin: 0;
+}
+
+.account-header__menu-item {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.account-shell {
+  display: grid;
+  grid-template-columns: $account-nav-width minmax(0, 1fr);
+  min-height: 100%;
+  width: 100%;
+}
+
+.account-shell__nav {
+  border-right: 1px solid nds.alpha(nds.$off-black, 10%);
+  box-sizing: border-box;
+}
+
+.account-shell__main {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: nds.space(64) nds.space(24) nds.space(96);
+}
+
+.account-shell__flash {
+  margin-block-end: nds.space(24);
+  width: 100%;
+}
+
+.account-nav {
+  box-sizing: border-box;
+  font-family: nds.$font-family;
+  padding: nds.space(24);
+  width: 100%;
+}
+
+.account-nav__list {
+  @include nds.stack($gap: nds.space(4), $reset-flow: true, $width: 100%);
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.account-nav__item {
+  min-width: 0;
+}
+
+.account-nav__link {
+  gap: nds.space(8);
+  height: auto;
+  justify-content: flex-start;
+  min-height: nds.space(56);
+  overflow-wrap: anywhere;
+  padding-block: nds.space(8);
+  padding-inline: nds.space(16) nds.space(24);
+  width: 100%;
+
+  .usa-icon {
+    height: nds.space(16);
+    width: nds.space(16);
+  }
+}
+
+.account-nav__link--current,
+.account-nav__link--current:is(:link, :visited) {
+  background: nds.alpha(nds.$off-black, 5%);
+  color: nds.$off-black;
+}
+
+.account-mobile-menu {
+  display: none;
+  position: relative;
+}
+
+.account-mobile-menu__summary {
+  align-items: center;
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  color: nds.$off-black;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(4);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+  list-style: none;
+  min-height: nds.space(40);
+  padding-inline: nds.space(12);
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    background: nds.alpha(nds.$off-black, 5%);
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+
+  .usa-icon {
+    height: nds.space(16);
+    width: nds.space(16);
+  }
+}
+
+.account-mobile-menu__panel {
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(24);
+  box-shadow: nds.$shadow-large;
+  box-sizing: border-box;
+  max-height: calc(100vh - #{nds.space(120)});
+  min-width: min(20rem, calc(100vw - #{nds.space(32)}));
+  overflow: auto;
+  padding: nds.space(8);
+  position: absolute;
+  right: 0;
+  top: calc(100% + #{nds.space(8)});
+  z-index: 10;
+}
+
+.account-nav--mobile {
+  padding: 0;
+}
+
+.account-mobile-menu__logout {
+  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  margin-top: nds.space(8);
+  padding-top: nds.space(8);
+}
+
+.account-mobile-menu__logout-form {
+  margin: 0;
+}
+
+.account-mobile-menu__logout-button {
+  justify-content: flex-start;
+  width: 100%;
+}
+
+@media (width < #{$account-nav-breakpoint-m}) {
+  .account-header {
+    flex-basis: nds.space(64);
+    height: nds.space(64);
+    padding-inline: nds.space(16);
+  }
+
+  .account-header__menu {
+    display: none;
+  }
+
+  .account-shell {
+    display: block;
+  }
+
+  .account-shell__nav {
+    display: none;
+  }
+
+  .account-shell__main {
+    padding: nds.space(48) nds.space(24) nds.space(80);
+  }
+
+  .account-mobile-menu {
+    display: block;
+  }
+}
