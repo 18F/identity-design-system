@@ -1,1 +1,287 @@
-// NDS page-shell layout module. Populated in a follow-up.
+// NDS page shell and chrome.
+//
+// The full-width page-level shell (`.auth-page`) that owns page layout, plus
+// the sticky top chrome (logo banner, viewport-centered progress slot) and a
+// fixed skip link. Emits the `--nds-*` custom properties consumed by other
+// components. Loaded after `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+$nds-layout-breakpoint-m: 768px;
+
+html,
+body {
+  margin: 0;
+}
+
+// The shared footer partial compiled into the NDS bundle emits the USWDS
+// sticky-footer scaffold — `html, body { height: 100% }` + `.site { display:
+// flex; flex-direction: column }` — which pins `body.site` to the viewport and
+// stops `.auth-page` from growing with its content, so the footer can overlap
+// the card on short viewports. Here the `.auth-page` shell owns full-height
+// layout and the document flows normally, so neutralize that scaffold in the
+// NDS bundle (loaded after the shared partial). `body.site` (0,1,1) beats the
+// leaked `.site` (0,1,0); the shell's `.site.auth-page` div keeps its own
+// `.auth-page { display: flex }` and is unaffected.
+html,
+body {
+  height: auto;
+}
+
+body.site {
+  display: block;
+}
+
+// ----------------------------------------
+// Page shell
+// ----------------------------------------
+.auth-page {
+  --nds-page-main-align: center;
+  --nds-page-main-block-start: #{nds.space(48)};
+  --nds-page-main-block-end: #{nds.space(96)};
+  --nds-page-main-inline: var(--nds-screen-inline-padding, #{nds.space(24)});
+  --nds-page-main-justify: flex-start;
+  --nds-page-main-gap: #{nds.space(32)};
+  --nds-page-background: #{nds.$white};
+  // From the chrome layer:
+  --nds-screen-inline-padding: #{nds.space(48)};
+
+  background: var(--nds-page-background);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  @media (width >= #{$nds-layout-breakpoint-m}) {
+    --nds-page-main-block-start: #{nds.space(96)};
+    --nds-page-main-justify: center;
+  }
+}
+
+.auth-page--align-start,
+.auth-page--align-stretch {
+  --nds-layout-align: stretch;
+  --nds-page-main-align: stretch;
+}
+
+.auth-page--align-start {
+  --nds-layout-text-align: left;
+}
+
+.auth-page--density-spacious {
+  --nds-page-main-gap: #{nds.space(48)};
+}
+
+.auth-page--density-fullscreen {
+  --nds-page-main-block-start: 0;
+  --nds-page-main-block-end: 0;
+  --nds-page-main-inline: 0;
+  --nds-page-main-justify: stretch;
+}
+
+.auth-page--surface-overlay {
+  --nds-page-background: #{nds.alpha(nds.$white, 95%)};
+}
+
+.auth-page--width-form {
+  --nds-page-content-width: #{nds.$form-width};
+}
+
+.auth-page--width-wide {
+  --nds-page-content-width: 64rem;
+}
+
+.auth-page__main {
+  @include nds.stack(
+    $align: var(--nds-page-main-align),
+    $gap: var(--nds-page-main-gap),
+    $max-width: 100%,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  box-sizing: border-box;
+  flex: 1;
+  justify-content: var(--nds-page-main-justify);
+  margin-inline: auto;
+  min-height: 0;
+  padding: var(--nds-page-main-block-start) var(--nds-page-main-inline)
+    var(--nds-page-main-block-end);
+}
+
+.auth-page__main > * {
+  box-sizing: border-box;
+  margin-inline: auto;
+  max-width: var(--nds-page-content-width, #{nds.$form-width});
+  min-width: 0;
+  width: 100%;
+}
+
+@media (width < #{$nds-layout-breakpoint-m}) {
+  .auth-page--align-mobile-start {
+    --nds-layout-align: stretch;
+    --nds-layout-text-align: left;
+    --nds-page-main-align: stretch;
+  }
+
+  .auth-page--density-mobile-compact {
+    --nds-page-main-block-start: #{nds.space(32)};
+    --nds-page-main-block-end: #{nds.space(32)};
+    --nds-page-main-gap: #{nds.space(32)};
+  }
+}
+
+// ----------------------------------------
+// Chrome
+// ----------------------------------------
+:root {
+  --nds-nav-height: #{nds.space(80)};
+  // Matches the official-banner block padding (12×2) + body-s line box.
+  --nds-official-banner-height: #{nds.space(48)};
+  --nds-chrome-z: 15;
+}
+
+// Fixed skip link, distinct from the `.skipnav` variant in the link layer;
+// this is the fixed-position form.
+.skip-link {
+  background: nds.$white;
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  inset-block-start: nds.space(8);
+  inset-inline-start: nds.space(8);
+  padding: nds.space(12) nds.space(16);
+  position: fixed;
+  transform: translateY(calc(-100% - #{nds.space(8)}));
+  transition: transform nds.$tr-duration-md nds.$tr-easing-cubic;
+  z-index: 20;
+
+  &:focus {
+    @include nds.focus-ring();
+    transform: translateY(0);
+  }
+}
+
+.auth-page__top-chrome {
+  align-items: center;
+  backdrop-filter: blur(25px);
+  background: nds.alpha(nds.$white, 75%);
+  border-bottom: 1px solid nds.alpha(nds.$black, 10%);
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 var(--nds-nav-height);
+  gap: nds.space(16);
+  height: var(--nds-nav-height);
+  justify-content: flex-start;
+  min-width: 0;
+  overflow-x: clip;
+  padding-block: 0;
+  padding-inline: var(--nds-screen-inline-padding);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: var(--nds-chrome-z);
+}
+
+.auth-page__logo-banner {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+
+  // Soft mask for viewport-centered progress under the logo.
+  &::before {
+    background: linear-gradient(
+      to right,
+      nds.$white 0%,
+      nds.$white 55%,
+      nds.alpha(nds.$white, 85%) 70%,
+      nds.alpha(nds.$white, 0%) 100%
+    );
+    content: '';
+    inset-block: 0;
+    inset-inline-start: 0;
+    pointer-events: none;
+    position: absolute;
+    width: calc(100% + #{nds.space(120)});
+    z-index: 0;
+  }
+}
+
+.auth-page__logo-banner-link {
+  align-items: center;
+  display: inline-flex;
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-page__logo-banner-image {
+  display: block;
+  height: nds.space(20);
+  max-width: 100%;
+  width: auto;
+}
+
+// Viewport-centered progress slot. The `.progress` child is a separate
+// component; the slot positioning is shipped here so the shell is ready.
+.auth-page__top-chrome-progress {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  min-width: 0;
+  padding-inline: var(--nds-screen-inline-padding);
+  pointer-events: none;
+  position: absolute;
+}
+
+.auth-page__top-chrome-progress .progress {
+  max-width: 100%;
+  min-width: 0;
+  pointer-events: auto;
+  width: auto;
+}
+
+// Footer wrapper — a flex slot; the footer content is a separate component.
+.auth-page__footer-wrapper {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@media (width < #{$nds-layout-breakpoint-m}) {
+  .auth-page {
+    --nds-screen-inline-padding: #{nds.space(16)};
+  }
+
+  .auth-page__top-chrome {
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: nds.space(12);
+    height: auto;
+    padding: nds.space(16) var(--nds-screen-inline-padding);
+    position: static;
+  }
+
+  .auth-page__logo-banner {
+    justify-content: center;
+    width: 100%;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .auth-page__top-chrome-progress {
+    flex: 0 0 auto;
+    padding-inline: 0;
+    pointer-events: auto;
+    position: static;
+    width: 100%;
+  }
+
+  .auth-page__top-chrome-progress .progress {
+    width: 100%;
+  }
+}
