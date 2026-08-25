@@ -1,0 +1,38 @@
+// NDS fieldset — `.fieldset`, `.fieldset__legend`, `.fieldset__hint`.
+//
+// A flat fieldset primitive with its own legend and hint elements. Distinct
+// from the USWDS `.usa-fieldset` / `.usa-legend` pairing, which is unchanged.
+//
+// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+.fieldset {
+  border: 0;
+  margin: 0;
+  min-inline-size: 0;
+  padding: 0;
+}
+
+.fieldset__legend {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0 0 nds.space(8);
+  padding: 0;
+  text-align: left;
+}
+
+.fieldset__hint {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0 0 nds.space(12);
+  text-align: left;
+}

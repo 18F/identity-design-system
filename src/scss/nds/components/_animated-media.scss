@@ -1,0 +1,88 @@
+// NDS animated-media — play/pause media with a toggle overlay.
+//
+// Composed of `.animated-media` (positioning context), `.animated-media__image`
+// and `.animated-media__frame` (the static and animated frames),
+// `.animated-media__toggle` (the overlay button), and `.animated-media__icon`
+// (`--play`/`--pause`). The `data-playing` attribute selects which icon shows.
+// The `--desktop` and `--mobile` modifiers swap sources at the 768px breakpoint.
+//
+// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+.animated-media {
+  display: block;
+  position: relative;
+}
+
+.animated-media__image,
+.animated-media__frame {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.animated-media__image[hidden],
+.animated-media__frame[hidden] {
+  display: none;
+}
+
+.animated-media__toggle {
+  align-items: center;
+  appearance: none;
+  backdrop-filter: blur(25px);
+  background: nds.alpha(nds.$off-white, 92%);
+  border: 0;
+  border-radius: nds.radius(pill);
+  box-shadow: nds.$shadow-compact;
+  color: nds.$off-black;
+  cursor: pointer;
+  display: inline-flex;
+  height: nds.space(32);
+  inset-block-end: nds.space(8);
+  inset-inline-end: nds.space(8);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: nds.space(32);
+
+  &:hover,
+  &:active {
+    background: nds.$off-white;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.animated-media__icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.animated-media[data-playing='true'] .animated-media__icon--play,
+.animated-media[data-playing='false'] .animated-media__icon--pause {
+  display: none;
+}
+
+.animated-media.animated-media--mobile {
+  display: none;
+}
+
+@media (width < 768px) {
+  .animated-media.animated-media--desktop {
+    display: none;
+  }
+
+  .animated-media.animated-media--mobile {
+    display: block;
+  }
+}

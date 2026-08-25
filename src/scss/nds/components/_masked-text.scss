@@ -1,0 +1,49 @@
+// NDS masked-text — `.masked-text`, `.masked-text--toggleable`, and the
+// `__value` / `__icon-toggle` / `__toggle` / `__icon` (`--masked`/`--revealed`)
+// elements.
+//
+// Displays a value that can be revealed or hidden. A checkbox `.masked-text__toggle`
+// swaps the masked and revealed icons via sibling selectors, so the control
+// works without JavaScript. The icon uses the `.usa-icon` class.
+//
+// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+.masked-text {
+  display: inline;
+}
+
+.masked-text--toggleable {
+  align-items: center;
+  display: inline-flex;
+  gap: nds.space(12);
+}
+
+.masked-text__value {
+  white-space: nowrap;
+}
+
+.masked-text__icon-toggle {
+  align-items: center;
+  color: nds.$off-black;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin: 0;
+}
+
+.masked-text__icon.usa-icon {
+  display: none;
+}
+
+.masked-text__toggle:not(:checked) + .masked-text__icon-toggle .masked-text__icon--masked,
+.masked-text__toggle:checked + .masked-text__icon-toggle .masked-text__icon--revealed {
+  display: inline-block;
+}
+
+.masked-text__icon-toggle:focus-within {
+  @include nds.focus-ring();
+  border-radius: nds.radius(8);
+}
