@@ -1,2 +1,15 @@
 // NDS layout utilities, layered after uswds.
+@forward 'primitives';
+@forward 'stack';
 @forward 'link';
+@forward 'page-shell';
+@forward 'page-footer';
+@forward 'auth-entry';
+@forward 'account-navigation';
+@forward 'account';
+@forward 'authentication-methods';
+@forward 'history';
+@forward 'dashboard-home';
+@forward 'connected-services';
+@forward 'totp-setup';
+@forward 'transition';
