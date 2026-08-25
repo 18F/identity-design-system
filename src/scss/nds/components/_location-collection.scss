@@ -1,0 +1,191 @@
+// NDS location collection — a scrollable list of locations shown inside the
+// locations modal.
+//
+// The `.location-collection` list scrolls independently with soft fade edges;
+// `.locations-modal` is the modal variant that hosts it. Loaded after
+// `@forward 'uswds'`. The `.location-collection*` list classes can also be
+// used on their own, outside the modal.
+
+@use 'tokens/nds' as nds;
+
+$nds-locations-fade: nds.space(80);
+$nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
+
+.usa-modal:has(.locations-modal) > .usa-modal__close {
+  top: calc((#{$nds-locations-fade} - #{nds.space(40)}) / 2);
+  z-index: 3;
+}
+
+.locations-modal {
+  gap: 0;
+  height: min(40rem, calc(100vh - #{nds.space(48)}));
+  max-height: calc(100vh - #{nds.space(48)});
+  overflow: hidden;
+  padding: 0 0 env(safe-area-inset-bottom);
+  position: relative;
+  text-align: left;
+
+  @media (width <= 40em) {
+    height: calc(100dvh - env(safe-area-inset-top) - #{nds.space(24)});
+    max-height: calc(100dvh - env(safe-area-inset-top) - #{nds.space(24)});
+  }
+
+  &::after {
+    background: linear-gradient(0deg, nds.$white 0%, nds.alpha(nds.$white, 0%) 100%);
+    bottom: 0;
+    content: '';
+    height: $nds-locations-fade;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+  }
+}
+
+.locations-modal__header {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: $nds-locations-fade;
+  justify-content: center;
+  left: 0;
+  padding: nds.space(16) nds.space(64);
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+
+  &::before {
+    background: linear-gradient(
+      180deg,
+      nds.$white 0%,
+      nds.$white 45%,
+      nds.alpha(nds.$white, 90%) 70%,
+      nds.alpha(nds.$white, 0%) 100%
+    );
+    content: '';
+    height: $nds-locations-fade-top;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+.locations-modal__title {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+}
+
+.location-collection {
+  // Independent scroll panel with a stable thin scrollbar.
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: nds.alpha(nds.$off-black, 16%) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+
+  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  list-style: none;
+  margin: 0 nds.space(24);
+  max-height: none;
+  min-height: 0;
+  padding: $nds-locations-fade-top nds.space(24) $nds-locations-fade;
+  scroll-padding-block: $nds-locations-fade-top $nds-locations-fade;
+  text-align: left;
+  width: auto;
+
+  @media (width > 40em) {
+    margin-inline: nds.space(48);
+  }
+
+  &::-webkit-scrollbar {
+    width: nds.space(8);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: nds.space(24);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: nds.alpha(nds.$off-black, 16%);
+    border: 2px solid transparent;
+    border-radius: nds.radius(pill);
+  }
+}
+
+.location-collection__item {
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(16);
+  text-align: left;
+
+  & + & {
+    border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+    margin-top: nds.space(24);
+    padding-top: nds.space(24);
+  }
+}
+
+.location-collection__top {
+  align-items: flex-start;
+  display: flex;
+  gap: nds.space(12);
+  justify-content: space-between;
+  width: 100%;
+}
+
+.location-collection__details {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  text-align: left;
+}
+
+.location-collection__distance {
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.location-collection__address,
+.location-collection__hours {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+
+  strong {
+    color: nds.$off-black;
+    font-weight: nds.$font-semibold;
+  }
+}
+
+.location-collection__top .usa-button {
+  flex-shrink: 0;
+}
