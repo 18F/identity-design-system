@@ -1,1 +1,175 @@
-// NDS account layout module. Populated in a follow-up.
+// NDS account layout module — the account dashboard page: stacked sections,
+// panels, and rows of settings with labels, values, badges, and actions.
+
+@use 'tokens/nds' as nds;
+
+$account-breakpoint-m: 768px;
+
+.account {
+  @include nds.stack(
+    $gap: nds.space(64),
+    $margin: 0 auto,
+    $max-width: nds.$dashboard-width,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  text-align: left;
+}
+
+.account__alerts,
+.account__section {
+  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+}
+
+.account__heading {
+  color: nds.$off-black;
+  font-size: nds.$text-heading-section;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: 1.2;
+  margin: 0;
+  overflow-wrap: anywhere;
+  padding-inline: nds.space(24);
+}
+
+.account__panel {
+  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  padding: nds.space(24);
+}
+
+.account__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.account__rule {
+  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  width: 100%;
+}
+
+.account__rows > li + li {
+  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  margin-top: nds.space(12);
+  padding-top: nds.space(12);
+}
+
+.account__row {
+  align-items: center;
+  display: flex;
+  gap: nds.space(24);
+  justify-content: space-between;
+  min-width: 0;
+  width: 100%;
+}
+
+.account__row-main {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.account__row-text {
+  color: nds.alpha(nds.$off-black, 65%);
+  flex: 1 1 auto;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.account__row-text--strong {
+  color: nds.$off-black;
+}
+
+.account__row-value {
+  display: inline-block;
+  max-width: min(128ch, 100%);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.account__badge {
+  align-items: center;
+  background: nds.alpha(nds.$blue-600, 10%);
+  border-radius: nds.radius(pill);
+  color: nds.$blue-600;
+  display: inline-flex;
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-semibold;
+  letter-spacing: 0;
+  line-height: nds.$text-line-height-none;
+  margin-left: nds.space(8);
+  overflow-wrap: anywhere;
+  padding: nds.space(4) nds.space(8);
+  vertical-align: middle;
+}
+
+.account__badge--warning {
+  background: nds.alpha(nds.$yellow-300, 10%);
+  color: nds.$yellow-900;
+}
+
+.account__row-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: nds.space(8);
+  justify-content: flex-end;
+}
+
+.account__panel-action {
+  display: flex;
+}
+
+.account__danger-action,
+.account__danger-action:is(:link, :visited) {
+  color: nds.$red-600;
+}
+
+.account__danger-action:hover,
+.account__danger-action:active,
+.account__danger-action:focus-visible {
+  color: nds.$red-600;
+}
+
+@media (width < #{$account-breakpoint-m}) {
+  .account {
+    gap: nds.space(48);
+  }
+
+  .account__heading {
+    padding-inline: 0;
+  }
+
+  .account__panel {
+    padding: nds.space(20);
+  }
+
+  .account__row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: nds.space(12);
+  }
+
+  .account__row-actions {
+    justify-content: flex-start;
+  }
+}

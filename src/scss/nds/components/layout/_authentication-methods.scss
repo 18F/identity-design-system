@@ -1,1 +1,115 @@
-// NDS authentication-methods layout module. Populated in a follow-up.
+// NDS authentication methods layout module — the list of a user's sign-in
+// methods: stacked sections and panels with rows describing each method and
+// its actions.
+
+@use 'tokens/nds' as nds;
+
+$auth-methods-breakpoint-m: 768px;
+
+.auth-methods {
+  @include nds.stack(
+    $gap: nds.space(64),
+    $margin: 0 auto,
+    $max-width: nds.$dashboard-width,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  text-align: left;
+}
+
+.auth-methods__section {
+  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+}
+
+.auth-methods__heading {
+  color: nds.$off-black;
+  font-size: nds.$text-heading-section;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: 1.2;
+  margin: 0;
+  overflow-wrap: anywhere;
+  padding-inline: nds.space(24);
+}
+
+.auth-methods__panel {
+  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+  align-items: flex-start;
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  padding: nds.space(24);
+}
+
+.auth-methods__rows {
+  @include nds.stack($gap: 0, $reset-flow: true, $width: 100%);
+}
+
+.auth-methods__rows > * + * {
+  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  margin-top: nds.space(12);
+  padding-top: nds.space(12);
+}
+
+.auth-methods__rule {
+  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  width: 100%;
+}
+
+.auth-methods__row {
+  align-items: center;
+  display: flex;
+  gap: nds.space(20);
+  justify-content: space-between;
+  min-width: 0;
+  width: 100%;
+}
+
+.auth-methods__row-text {
+  color: nds.alpha(nds.$off-black, 65%);
+  flex: 1 1 auto;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.auth-methods__row-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: nds.space(8);
+  justify-content: flex-end;
+}
+
+@media (width < #{$auth-methods-breakpoint-m}) {
+  .auth-methods {
+    gap: nds.space(48);
+  }
+
+  .auth-methods__heading {
+    padding-inline: 0;
+  }
+
+  .auth-methods__panel {
+    padding: nds.space(20);
+  }
+
+  .auth-methods__row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: nds.space(12);
+  }
+
+  .auth-methods__row-actions {
+    justify-content: flex-start;
+  }
+}
