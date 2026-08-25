@@ -1,1 +1,152 @@
-// NDS dashboard-home layout module. Populated in a follow-up.
+// NDS dashboard-home layout — the signed-in dashboard landing layout.
+//
+// `.dashboard-home` stacks the greeting and the service discovery section.
+// The `.discovery*` and `.discovery-service*` selectors build the service
+// list using the shared mixins from the service-list module.
+
+@use 'tokens/nds' as nds;
+@use 'service-list' as service;
+
+$dashboard-home-breakpoint-m: 768px;
+
+.dashboard-home {
+  @include nds.stack(
+    $gap: nds.space(80),
+    $margin: 0 auto,
+    $max-width: nds.$dashboard-width,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  text-align: left;
+}
+
+.dashboard-home__greeting {
+  color: nds.$off-black;
+  font-size: nds.$text-heading-l;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading;
+  line-height: 1.1;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.js .dashboard-home__greeting[data-greeting] {
+  opacity: 0;
+  transform: translateY(#{nds.space(8)});
+  transition:
+    opacity nds.$tr-duration-md nds.$tr-easing-cubic,
+    transform nds.$tr-duration-md nds.$tr-easing-cubic;
+}
+
+.js .dashboard-home__greeting[data-greeting].is-resolved {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .dashboard-home__greeting[data-greeting] {
+    transform: none;
+    transition: opacity nds.$tr-duration-md nds.$tr-easing-cubic;
+  }
+}
+
+.discovery {
+  @include nds.stack($gap: nds.space(32), $reset-flow: true, $width: 100%);
+
+  width: 100%;
+}
+
+.discovery__header {
+  @include service.section-header();
+}
+
+.discovery__heading,
+.discovery__description {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.discovery__heading {
+  @include service.section-heading();
+}
+
+.discovery__description {
+  @include service.section-description();
+}
+
+.discovery__list {
+  @include service.panel();
+}
+
+.discovery__rows {
+  @include service.rows();
+}
+
+.discovery__rows > li + li {
+  @include service.rows-divider();
+}
+
+.discovery__empty {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.discovery-service {
+  @include service.row();
+}
+
+.discovery-service__mark {
+  @include service.mark();
+
+  background: nds.alpha(nds.$off-black, 5%);
+  overflow: hidden;
+}
+
+.discovery-service__logo {
+  @include service.logo();
+}
+
+.discovery-service__content {
+  @include service.content();
+}
+
+.discovery-service__title,
+.discovery-service__description {
+  @include service.text();
+}
+
+.discovery-service__title {
+  @include service.title();
+}
+
+.discovery-service__description {
+  @include service.muted();
+}
+
+.discovery-service__actions {
+  @include service.actions();
+}
+
+@media (width < #{$dashboard-home-breakpoint-m}) {
+  .dashboard-home__greeting {
+    font-size: nds.$text-heading-l-mobile;
+  }
+
+  .discovery__list {
+    @include service.panel-mobile();
+  }
+
+  .discovery-service {
+    @include service.row-mobile();
+  }
+
+  .discovery-service__actions {
+    @include service.actions-mobile();
+  }
+}

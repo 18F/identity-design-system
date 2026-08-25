@@ -1,1 +1,126 @@
-// NDS service-list layout module. Populated in a follow-up.
+// NDS service-list layout module — shared mixins for service row layouts.
+//
+// Provides the section header, panel, row, mark, logo, content, and action
+// mixins consumed by the dashboard home and connected services layouts via
+// `@use 'service-list'`. This module emits no selectors on its own.
+
+@use 'tokens/nds' as nds;
+
+@mixin section-header {
+  @include nds.stack($gap: nds.space(4), $reset-flow: true, $width: 100%);
+}
+
+@mixin section-heading {
+  color: nds.$off-black;
+  font-size: nds.$text-heading-section;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: 1.2;
+}
+
+@mixin section-description {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+}
+
+@mixin panel {
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  padding: nds.space(24);
+  width: 100%;
+}
+
+@mixin rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin rows-divider {
+  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  margin-top: nds.space(24);
+  padding-top: nds.space(24);
+}
+
+@mixin row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: nds.space(20);
+  min-width: 0;
+  width: 100%;
+}
+
+@mixin mark {
+  align-items: center;
+  border-radius: nds.radius(pill);
+  color: nds.alpha(nds.$off-black, 65%);
+  display: inline-flex;
+  flex: 0 0 nds.space(48);
+  font-size: nds.$text-body-s;
+  font-weight: nds.$font-semibold;
+  height: nds.space(48);
+  justify-content: center;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1;
+  width: nds.space(48);
+}
+
+@mixin logo {
+  border-radius: nds.radius(pill);
+  display: block;
+  height: nds.space(48);
+  object-fit: contain;
+  width: nds.space(48);
+}
+
+@mixin content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@mixin text {
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@mixin title {
+  color: nds.$off-black;
+  font-weight: nds.$font-semibold;
+}
+
+@mixin muted {
+  color: nds.alpha(nds.$off-black, 65%);
+  font-weight: 400;
+}
+
+@mixin actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+}
+
+@mixin panel-mobile {
+  padding: nds.space(20);
+}
+
+@mixin row-mobile {
+  align-items: start;
+  display: grid;
+  gap: nds.space(12) nds.space(20);
+  grid-template-columns: nds.space(48) minmax(0, 1fr);
+}
+
+@mixin actions-mobile {
+  grid-column: 2;
+  justify-content: flex-start;
+  justify-self: start;
+}

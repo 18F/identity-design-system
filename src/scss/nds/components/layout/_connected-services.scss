@@ -1,1 +1,168 @@
-// NDS connected-services layout module. Populated in a follow-up.
+// NDS connected-services layout — the account page listing connected apps.
+//
+// `.connected-services` stacks the section header and the list of
+// `.connected-service` entries. Each entry uses the shared service-list mixins
+// and adds a per-item actions menu built from a `<details>` disclosure.
+
+@use 'tokens/nds' as nds;
+@use 'service-list' as service;
+
+$connected-services-breakpoint-m: 768px;
+
+.connected-services {
+  @include nds.stack(
+    $gap: nds.space(32),
+    $margin: 0 auto,
+    $max-width: nds.$dashboard-width,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  color: nds.$off-black;
+  font-family: nds.$font-family;
+  text-align: left;
+}
+
+.connected-services__header {
+  @include service.section-header();
+}
+
+.connected-services__heading,
+.connected-services__description {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.connected-services__heading {
+  @include service.section-heading();
+}
+
+.connected-services__description {
+  @include service.section-description();
+}
+
+.connected-services__list {
+  @include service.panel();
+}
+
+.connected-services__rows {
+  @include service.rows();
+}
+
+.connected-services__rows > li + li {
+  @include service.rows-divider();
+}
+
+.connected-service {
+  @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
+}
+
+.connected-service__row {
+  @include service.row();
+}
+
+.connected-service__mark {
+  @include service.mark();
+}
+
+.connected-service__logo {
+  @include service.logo();
+}
+
+.connected-service__content {
+  @include service.content();
+}
+
+.connected-service__title,
+.connected-service__meta,
+.connected-service__email {
+  @include service.text();
+}
+
+.connected-service__title {
+  @include service.title();
+}
+
+.connected-service__meta,
+.connected-service__email {
+  @include service.muted();
+}
+
+.connected-service__actions {
+  @include service.actions();
+
+  flex-wrap: wrap;
+  gap: nds.space(4);
+}
+
+.connected-service__menu {
+  position: relative;
+}
+
+.connected-service__menu-button {
+  align-items: center;
+  border-radius: nds.radius(pill);
+  color: nds.$off-black;
+  cursor: pointer;
+  display: flex;
+  height: nds.space(40);
+  justify-content: center;
+  list-style: none;
+  transition: nds.$transition;
+  width: nds.space(40);
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover,
+  &:active {
+    background: nds.alpha(nds.$off-black, 5%);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+    background: nds.alpha(nds.$off-black, 5%);
+  }
+}
+
+.connected-service__menu-panel {
+  @include service.panel();
+
+  position: absolute;
+  right: 0;
+  top: calc(100% + #{nds.space(4)});
+  z-index: 2;
+}
+
+.connected-service__menu-item--danger {
+  &,
+  &:is(:link, :visited),
+  &:hover,
+  &:active {
+    color: nds.$red-600;
+  }
+}
+
+@media (width < #{$connected-services-breakpoint-m}) {
+  .connected-services__list {
+    @include service.panel-mobile();
+  }
+
+  .connected-service__row {
+    @include service.row-mobile();
+  }
+
+  .connected-service__actions {
+    @include service.actions-mobile();
+  }
+
+  .connected-service__menu-panel {
+    left: 0;
+    right: auto;
+  }
+}
