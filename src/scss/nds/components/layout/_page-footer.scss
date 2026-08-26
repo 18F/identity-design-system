@@ -1,1 +1,165 @@
-// NDS page-footer layout module. Populated in a follow-up.
+// NDS page footer chrome — the `.page-footer` bar emitted by the
+// `lg-nds-page-footer` custom element, with an agency identifier and footer
+// actions (links and a select control). Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+$nds-footer-breakpoint-m: 768px;
+$nds-footer-border: nds.alpha(nds.$black, 10%);
+$nds-footer-text-tertiary: nds.alpha(nds.$off-black, 45%);
+$nds-footer-text-secondary: nds.alpha(nds.$off-black, 65%);
+
+lg-nds-page-footer {
+  display: block;
+  width: 100%;
+}
+
+.page-footer {
+  align-items: center;
+  backdrop-filter: blur(25px);
+  background: nds.alpha(nds.$white, 20%);
+  border-top: 1px solid $nds-footer-border;
+  box-sizing: border-box;
+  display: flex;
+  font-family: nds.$font-family;
+  font-feature-settings:
+    'cv10' 1,
+    'cv01' 1,
+    'ss07' 1,
+    'ss08' 1,
+    'case' 1;
+  justify-content: space-between;
+  min-height: nds.space(56);
+  padding: nds.space(8) nds.space(24);
+  width: 100%;
+}
+
+.page-footer__agency {
+  align-items: center;
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  color: $nds-footer-text-tertiary;
+  display: inline-flex;
+  flex: 0 1 auto;
+  gap: nds.space(8);
+  min-height: nds.space(40);
+  min-width: 0;
+  padding-inline: nds.space(8);
+  text-decoration: none;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $nds-footer-text-tertiary;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+
+  img {
+    display: block;
+    flex: 0 0 nds.space(20);
+    height: nds.space(20);
+    width: nds.space(20);
+  }
+}
+
+.page-footer__agency-name {
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-semibold;
+  line-height: nds.$text-line-height-none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 336px;
+}
+
+.page-footer__actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: nds.space(8);
+}
+
+.page-footer__actions .usa-button {
+  color: $nds-footer-text-secondary;
+  font-weight: 400;
+  overflow: visible;
+
+  &:is(:link, :visited) {
+    color: $nds-footer-text-secondary;
+  }
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: $nds-footer-text-secondary;
+  }
+}
+
+.page-footer__control {
+  position: relative;
+}
+
+.page-footer__select-face {
+  pointer-events: none;
+}
+
+.page-footer__select {
+  cursor: pointer;
+  height: 100%;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.page-footer__control:hover .usa-button {
+  background: nds.alpha(nds.$off-black, 5%);
+}
+
+.page-footer__control:has(.page-footer__select:focus-visible) .usa-button {
+  @include nds.focus-ring();
+  background: nds.alpha(nds.$off-black, 5%);
+}
+
+.page-footer__select-label {
+  // stylelint-disable-next-line property-no-deprecated -- retained for older browser support alongside clip-path
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (width < #{$nds-footer-breakpoint-m}) {
+  .page-footer {
+    flex-direction: column;
+    gap: nds.space(8);
+    justify-content: center;
+    min-height: 108px;
+    padding: nds.space(12) nds.space(24);
+  }
+
+  .page-footer__actions {
+    order: -1;
+  }
+
+  .page-footer__agency {
+    flex: 0 1 auto;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .page-footer__agency-name {
+    width: auto;
+  }
+}
