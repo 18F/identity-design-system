@@ -1,20 +1,25 @@
-// NDS fieldset — `.fieldset`, `.fieldset__legend`, `.fieldset__hint`.
+// NDS fieldset overlay — `.usa-fieldset`, `.usa-legend--label`.
 //
-// A flat fieldset primitive with its own legend and hint elements. Distinct
-// from the USWDS `.usa-fieldset` / `.usa-legend` pairing, which is unchanged.
+// Restyles the USWDS fieldset BEM rather than shipping a separate flat
+// primitive. `.usa-legend` defaults to the uppercase micro-legend; the
+// `.usa-legend--label` variant renders a bold, sentence-case legend styled like
+// a form label, for grouped controls that read better with a plain heading. The
+// `.usa-hint` treatment (see components/input/_base.scss) covers group hint text.
 //
-// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+// Loaded after `@forward 'uswds'`, so these ties win by source order.
 
 @use 'tokens/nds' as nds;
 
-.fieldset {
-  border: 0;
-  margin: 0;
+// Prevent the fieldset from establishing a min-content floor so it can shrink
+// within narrow columns.
+.usa-fieldset {
   min-inline-size: 0;
-  padding: 0;
 }
 
-.fieldset__legend {
+// Label legend: a bold, sentence-case legend styled like a form label. Overrides
+// the uppercase micro-legend treatment (text-transform, border, sizing).
+.usa-legend--label {
+  border-bottom: 0;
   color: nds.$off-black;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
@@ -22,17 +27,9 @@
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin: 0 0 nds.space(8);
+  max-width: none;
   padding: 0;
   text-align: left;
-}
-
-.fieldset__hint {
-  color: nds.alpha(nds.$off-black, 65%);
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-s;
-  font-weight: 400;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  margin: 0 0 nds.space(12);
-  text-align: left;
+  text-transform: none;
+  width: auto;
 }
