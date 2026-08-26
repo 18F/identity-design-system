@@ -75,6 +75,33 @@ lead: Checkboxes allow users to select one or more options from a list.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+## Indeterminate
+
+Use the `data-indeterminate` attribute (or set `element.indeterminate = true` in
+JavaScript) to render a tri-state checkbox — for example, a "select all" that
+reflects a partial selection below it.
+
+{% capture example %}
+<fieldset class="usa-fieldset">
+  <legend class="usa-legend">Group label</legend>
+  <ul class="usa-input-list">
+    <li>
+      <input id="ind-1" class="usa-checkbox__input" type="checkbox" name="ind-1" data-indeterminate>
+      <label for="ind-1" class="usa-checkbox__label">Select all</label>
+    </li>
+    <li>
+      <input id="ind-2" class="usa-checkbox__input usa-focus" type="checkbox" name="ind-2" data-indeterminate>
+      <label for="ind-2" class="usa-checkbox__label">Indeterminate - Focus</label>
+    </li>
+    <li>
+      <input id="ind-3" class="usa-checkbox__input" type="checkbox" name="ind-3" data-indeterminate disabled>
+      <label for="ind-3" class="usa-checkbox__label">Indeterminate - Disabled</label>
+    </li>
+  </ul>
+</fieldset>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Tile
 
 {% capture example %}

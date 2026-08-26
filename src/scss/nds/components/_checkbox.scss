@@ -65,8 +65,19 @@ $nds-checkbox-border-width: 1px;
   box-shadow: none;
 }
 
-// Checked hover stays solid (don't revert to the hover tint).
+// Indeterminate: same blue-500 fill as checked. USWDS supplies the
+// indeterminate glyph (`checkbox-indeterminate.svg`) and defaults to a midnight
+// fill; restyle to match the checked treatment. Handle both the native pseudo
+// and the `[data-indeterminate]` attribute variant USWDS supports.
+.usa-checkbox__input:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label::before {
+  background-color: nds.$blue-500;
+  box-shadow: none;
+}
+
+// Checked/indeterminate hover stays solid (don't revert to the hover tint).
 .usa-checkbox__input:checked:not(:disabled, [aria-disabled='true'])
+  + .usa-checkbox__label:hover::before,
+.usa-checkbox__input:is(:indeterminate, [data-indeterminate]):not(:disabled, [aria-disabled='true'])
   + .usa-checkbox__label:hover::before {
   background-color: nds.$blue-500;
   box-shadow: none;
@@ -111,7 +122,30 @@ $nds-checkbox-border-width: 1px;
 // background; restore a system color so the checked state stays visible in
 // Windows High Contrast.
 @media (forced-colors: active) {
-  .usa-checkbox__input:checked + .usa-checkbox__label::before {
+  .usa-checkbox__input:checked + .usa-checkbox__label::before,
+  .usa-checkbox__input:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label::before {
     background-color: SelectedItem;
   }
+}
+
+// --- Selection variants -----------------------------------------------------
+//
+// USWDS ships tile/bordered variants with a light-blue selected background
+// (`$theme-input-tile/bordered-background-color-selected`). The design uses a
+// neutral midnight tint so the selected card reads as "chosen" without adding
+// a second accent color next to the blue-500 control.
+
+.usa-checkbox__input--tile:checked + .usa-checkbox__label,
+.usa-checkbox__input--tile:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label,
+.usa-checkbox__input--bordered:checked + .usa-checkbox__label,
+.usa-checkbox__input--bordered:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label {
+  background-color: nds.alpha(nds.$midnight, 5%);
+  border-color: nds.$midnight;
+}
+
+// Bordered + checked + disabled: keep USWDS's transparent fill but use the
+// muted midnight border so it lines up with the disabled control color.
+.usa-checkbox__input--bordered:checked:is(:disabled, [aria-disabled='true'])
+  + .usa-checkbox__label {
+  border-color: nds.alpha(nds.$midnight, 25%);
 }
