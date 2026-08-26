@@ -28,16 +28,9 @@ it is open.
         <svg class="usa-icon account-header__menu-chevron" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#expand_more"></use></svg>
       </summary>
       <div class="account-mobile-menu__panel">
-        <ul class="account-nav account-nav--mobile">
-          <li class="account-nav__item">
-            <a href="#" class="usa-button usa-button--unstyled account-nav__link">Your account</a>
-          </li>
-          <li class="account-nav__item account-mobile-menu__logout">
-            <form class="account-mobile-menu__logout-form" action="#" method="post">
-              <button type="submit" class="usa-button usa-button--unstyled account-mobile-menu__logout-button">Sign out</button>
-            </form>
-          </li>
-        </ul>
+        <form class="account-mobile-menu__logout-form" action="#" method="post">
+          <button type="submit" class="account-nav__link account-mobile-menu__logout-button">Sign out</button>
+        </form>
       </div>
     </details>
   </div>
@@ -54,19 +47,19 @@ it is open.
 <nav class="account-nav" aria-label="Account">
   <ul class="account-nav__list">
     <li class="account-nav__item">
-      <a href="#" class="usa-button usa-button--unstyled account-nav__link account-nav__link--current" aria-current="page">
+      <a href="#" class="account-nav__link account-nav__link--current" aria-current="page">
         <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#home"></use></svg>
         Your account
       </a>
     </li>
     <li class="account-nav__item">
-      <a href="#" class="usa-button usa-button--unstyled account-nav__link">
+      <a href="#" class="account-nav__link">
         <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#security"></use></svg>
         Your authentication methods
       </a>
     </li>
     <li class="account-nav__item">
-      <a href="#" class="usa-button usa-button--unstyled account-nav__link">
+      <a href="#" class="account-nav__link">
         <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#account_circle"></use></svg>
         Connected accounts
       </a>

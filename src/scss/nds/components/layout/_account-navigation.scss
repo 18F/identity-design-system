@@ -168,14 +168,48 @@ $account-nav-width: 252px;
 }
 
 .account-nav__link {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: nds.radius(pill);
+  color: nds.$off-black;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
   gap: nds.space(8);
   height: auto;
   justify-content: flex-start;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
   min-height: nds.space(56);
   overflow-wrap: anywhere;
   padding-block: nds.space(8);
   padding-inline: nds.space(16) nds.space(24);
+  text-decoration: none;
+  transition: nds.$transition;
   width: 100%;
+
+  &:is(:link, :visited),
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: nds.$off-black;
+  }
+
+  &:hover {
+    background: nds.alpha(nds.$off-black, 5%);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
 
   .usa-icon {
     height: nds.space(16);
