@@ -137,7 +137,9 @@ visual-regression:
     - job: snapshot-branch
       artifacts: true
   script:
-    - *bundle_npm_install
+    - bundle config set deployment true
+    - bundle install --jobs=4 --retry=3
+    - npm ci --cache .npm-cache --prefer-offline --ignore-scripts
     - npm test
   variables:
     ONLY_VISUAL_REGRESSION_TEST: 'true'

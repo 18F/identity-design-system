@@ -60,6 +60,7 @@
     "build": "run-p build:docs build:pkg",
     "pages": "make build-assets",
     "prepublishOnly": "make lint && make clean && make build-assets build-package",
+    "prepare": "make clean && make build-assets build-package",
     "install-browser": "puppeteer browsers install"
   },
   "files": [
