@@ -40,7 +40,7 @@ The marketing column pairs a headline with body copy.
 ## Card
 
 The `auth-entry__card` is the sign-in surface. It styles the layout primitives
-placed inside it.
+and form controls placed inside it.
 
 {% capture example %}
 <div class="auth-entry__card">
@@ -48,13 +48,51 @@ placed inside it.
     <div class="auth__intro">
       <h1>Sign in</h1>
     </div>
-    <div class="copy copy--muted">
-      <p>Enter your email address and password to continue.</p>
+    <form class="usa-form">
+      <label class="usa-label" for="auth-entry-email">Email</label>
+      <input class="usa-input" id="auth-entry-email" name="email" type="email" autocomplete="username">
+      <label class="usa-label" for="auth-entry-password">Password</label>
+      <input class="usa-input" id="auth-entry-password" name="password" type="password" autocomplete="current-password">
+      <p><a class="link" href="#">Forgot password?</a></p>
+    </form>
+    <div class="actions">
+      <button type="submit" class="usa-button">Sign in</button>
+      <a class="usa-button usa-button--secondary" href="#">Create an account</a>
     </div>
     <hr class="divider">
-    <div class="actions">
-      <a class="usa-button" href="#">Continue</a>
+    <p class="copy copy--muted"><a class="link" href="#">Sign in with your government employee ID</a></p>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+## Card with seal
+
+Add an `auth__media` image inside `auth__header--with-media` above the intro to
+show an agency seal at the top of the card.
+
+{% capture example %}
+<div class="auth-entry__card">
+  <div class="auth">
+    <div class="auth__header auth__header--with-media">
+      <img class="auth__media" src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="">
+      <div class="auth__intro">
+        <h1>Sign in</h1>
+      </div>
     </div>
+    <form class="usa-form">
+      <label class="usa-label" for="auth-entry-seal-email">Email</label>
+      <input class="usa-input" id="auth-entry-seal-email" name="email" type="email" autocomplete="username">
+      <label class="usa-label" for="auth-entry-seal-password">Password</label>
+      <input class="usa-input" id="auth-entry-seal-password" name="password" type="password" autocomplete="current-password">
+      <p><a class="link" href="#">Forgot password?</a></p>
+    </form>
+    <div class="actions">
+      <button type="submit" class="usa-button">Sign in</button>
+      <a class="usa-button usa-button--secondary" href="#">Create an account</a>
+    </div>
+    <hr class="divider">
+    <p class="copy copy--muted"><a class="link" href="#">Sign in with your government employee ID</a></p>
   </div>
 </div>
 {% endcapture %}
