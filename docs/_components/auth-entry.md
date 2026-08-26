@@ -48,19 +48,19 @@ and form controls placed inside it.
     <div class="auth__intro">
       <h1>Sign in</h1>
     </div>
-    <form class="usa-form">
+    <form class="usa-form margin-top-3">
       <label class="usa-label" for="auth-entry-email">Email</label>
       <input class="usa-input" id="auth-entry-email" name="email" type="email" autocomplete="username">
       <label class="usa-label" for="auth-entry-password">Password</label>
       <input class="usa-input" id="auth-entry-password" name="password" type="password" autocomplete="current-password">
-      <p><a class="link" href="#">Forgot password?</a></p>
+      <p class="margin-top-2"><a class="link" href="#">Forgot password?</a></p>
     </form>
-    <div class="actions">
+    <div class="actions display-flex flex-column margin-top-4" style="gap:0.75rem;">
       <button type="submit" class="usa-button">Sign in</button>
       <a class="usa-button usa-button--secondary" href="#">Create an account</a>
     </div>
-    <hr class="divider">
-    <p class="copy copy--muted"><a class="link" href="#">Sign in with your government employee ID</a></p>
+    <hr class="divider margin-top-4">
+    <p class="copy copy--muted margin-top-3"><a class="link" href="#">Sign in with your government employee ID</a></p>
   </div>
 </div>
 {% endcapture %}
@@ -80,19 +80,19 @@ show an agency seal at the top of the card.
         <h1>Sign in</h1>
       </div>
     </div>
-    <form class="usa-form">
+    <form class="usa-form margin-top-3">
       <label class="usa-label" for="auth-entry-seal-email">Email</label>
       <input class="usa-input" id="auth-entry-seal-email" name="email" type="email" autocomplete="username">
       <label class="usa-label" for="auth-entry-seal-password">Password</label>
       <input class="usa-input" id="auth-entry-seal-password" name="password" type="password" autocomplete="current-password">
-      <p><a class="link" href="#">Forgot password?</a></p>
+      <p class="margin-top-2"><a class="link" href="#">Forgot password?</a></p>
     </form>
-    <div class="actions">
+    <div class="actions display-flex flex-column margin-top-4" style="gap:0.75rem;">
       <button type="submit" class="usa-button">Sign in</button>
       <a class="usa-button usa-button--secondary" href="#">Create an account</a>
     </div>
-    <hr class="divider">
-    <p class="copy copy--muted"><a class="link" href="#">Sign in with your government employee ID</a></p>
+    <hr class="divider margin-top-4">
+    <p class="copy copy--muted margin-top-3"><a class="link" href="#">Sign in with your government employee ID</a></p>
   </div>
 </div>
 {% endcapture %}
