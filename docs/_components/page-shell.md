@@ -16,10 +16,19 @@ inside the documentation's constrained content column, so it appears inset
 rather than spanning the full viewport; in a real page it fills the browser
 width and its top chrome sticks to the top of the screen.
 
-Modifiers on `.auth-page` adjust alignment, density, surface, and content width
-— for example `.auth-page--align-start`, `.auth-page--density-spacious`,
-`.auth-page--surface-overlay`, `.auth-page--width-wide`, and
-`.auth-page--width-form`.
+Modifiers on `.auth-page` adjust alignment, density, surface, and content width:
+
+- **Alignment** — `.auth-page--align-start` (top-aligns the main content instead
+  of centering it), `.auth-page--align-stretch`, and `.auth-page--align-mobile-start`.
+- **Density** — controls the vertical spacing around and between the main
+  content. `.auth-page--density-spacious` increases the gap between stacked
+  content blocks; `.auth-page--density-fullscreen` removes the surrounding
+  padding so the content fills the shell; `.auth-page--density-mobile-compact`
+  tightens spacing on small screens.
+- **Surface** — `.auth-page--surface-overlay` renders the shell on an overlay
+  background rather than the default page surface.
+- **Content width** — `.auth-page--width-wide` and `.auth-page--width-form`
+  set the maximum width of the main content column.
 
 {% capture example %}
 <a class="skip-link" href="#page-shell-main">Skip to main content</a>
