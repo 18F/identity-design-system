@@ -1,1 +1,333 @@
-// NDS auth-entry layout module. Populated in a follow-up.
+// Auth-entry route layout. A two-column entry page: a marketing column
+// (logo, headline/body copy, and a "what's new" callout) beside the sign-in
+// card, with a decorative blur image and responsive reflow to a single column
+// on narrow viewports. Composes with the page shell and the layout primitives
+// (`.auth`, `.copy`, `.divider`). The `__blurs-image` is an `<img>` set in
+// markup, so there is no url() here. Loaded after `@forward 'uswds'`. Pure
+// component CSS — it does not reconfigure the core settings.
+
+@use 'tokens/nds' as nds;
+
+$nds-auth-entry-breakpoint: 1024px;
+
+.auth-entry {
+  align-items: center;
+  display: flex;
+  gap: nds.space(48);
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.auth-entry__blurs {
+  display: none;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.auth-entry__blurs-image {
+  display: block;
+  height: auto;
+  inset-block-start: -10.5rem;
+  inset-inline-end: -15%;
+  max-width: none;
+  position: absolute;
+  width: 57rem;
+}
+
+.auth-entry__marketing {
+  @include nds.stack($align: flex-start, $gap: nds.space(40), $width: 100%);
+
+  flex: 1 1 0;
+  max-width: 37.5rem;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-entry__logo {
+  display: inline-flex;
+}
+
+.auth-entry__whats-new {
+  background: nds.alpha(nds.$blue-600, 8%);
+  border: 1px solid nds.alpha(nds.$blue-700, 5%);
+  border-radius: nds.radius(16);
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  gap: nds.space(20);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1;
+  margin-block-start: nds.space(12);
+  padding: nds.space(20) nds.space(24);
+  text-decoration: none;
+  white-space: nowrap;
+  width: fit-content;
+
+  &:is(:link, :visited, :hover, :active, :focus-visible) {
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.auth-entry__whats-new-intro {
+  color: nds.$midnight;
+}
+
+.auth-entry__whats-new-link {
+  color: nds.$blue-500;
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+
+  .auth-entry__whats-new:hover & {
+    text-decoration: none;
+  }
+}
+
+.auth-entry__logo-image {
+  display: block;
+  height: nds.space(20);
+  width: auto;
+}
+
+.auth-entry__copy {
+  @include nds.stack($align: flex-start, $gap: nds.space(8), $width: 100%);
+}
+
+.auth-entry__headline,
+.auth-entry__body {
+  font-family: nds.$font-family;
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.auth-entry__headline {
+  color: nds.$midnight;
+  font-size: nds.$text-heading-l;
+  font-weight: nds.$font-semibold;
+  letter-spacing: -1.44px;
+  line-height: 1.05;
+}
+
+.auth-entry__body {
+  color: nds.alpha(nds.$midnight, 65%);
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+}
+
+.auth-entry__card {
+  background: nds.$white;
+  border: 1px solid nds.alpha(nds.$midnight, 5%);
+  border-radius: nds.radius(24);
+  box-shadow: nds.$shadow-compact;
+  box-sizing: border-box;
+  flex: 1 1 0;
+  max-width: nds.$form-width;
+  min-width: 0;
+  padding: nds.space(48) nds.space(40);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  .auth {
+    --nds-flow-width: 100%;
+    margin: 0;
+    max-width: none;
+  }
+
+  .actions > .copy--muted {
+    margin-block-start: nds.space(20);
+  }
+
+  .auth__intro h1 {
+    color: nds.$midnight;
+    font-size: nds.$text-heading-section;
+    letter-spacing: nds.$text-letter-spacing-heading-section;
+    line-height: 1.2;
+  }
+
+  .copy--muted,
+  .copy--muted a {
+    color: nds.alpha(nds.$midnight, 65%);
+  }
+
+  .divider {
+    background: nds.alpha(nds.$midnight, 10%);
+  }
+
+  .auth__title--mobile {
+    display: none;
+  }
+
+  .auth__media {
+    border-radius: nds.radius(pill);
+    height: nds.space(96);
+    object-fit: contain;
+    overflow: hidden;
+    width: nds.space(96);
+  }
+}
+
+.auth-page__main:has(> .auth-entry) > .auth-entry {
+  margin-inline: auto;
+  max-width: none;
+}
+
+@media (width >= #{$nds-auth-entry-breakpoint}) {
+  .auth-entry {
+    align-items: flex-start;
+  }
+
+  .auth-page:has(.auth-entry) {
+    .auth-page__top-chrome {
+      display: none;
+    }
+
+    .auth-page__main {
+      --nds-page-main-block-end: 0;
+      --nds-page-main-block-start: 0;
+      --nds-page-main-inline: 0;
+      --nds-page-main-justify: center;
+    }
+  }
+
+  // Top-aligned stack: logo + copy, then the callout below.
+  .auth-entry__logo {
+    order: 1;
+  }
+
+  .auth-entry__copy {
+    order: 2;
+  }
+
+  .auth-entry__whats-new {
+    margin-block-start: nds.space(40);
+    order: 3;
+  }
+
+  .auth-page__main:has(> .auth-entry) > .auth-entry {
+    flex: 0 0 auto;
+    padding: nds.space(80) nds.space(48);
+    width: 100%;
+  }
+
+  .auth-entry__blurs {
+    display: block;
+  }
+}
+
+@media (width >= 1200px) {
+  .auth-page:has(.auth-entry) .auth-page__main > .auth-entry {
+    padding-inline: nds.space(120);
+  }
+}
+
+@media (width < #{$nds-auth-entry-breakpoint}) {
+  // Mobile order: the callout, card, then headline and copy below. The logo
+  // comes from the page chrome, so the marketing logo is hidden.
+  .auth-entry {
+    display: flex;
+    flex-direction: column;
+    gap: nds.space(32);
+  }
+
+  .auth-entry__blurs {
+    display: none;
+  }
+
+  .auth-entry__marketing {
+    display: contents;
+  }
+
+  .auth-entry__logo {
+    display: none;
+  }
+
+  .auth-entry__whats-new {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-block-start: 0;
+    order: 1;
+    text-align: center;
+    white-space: normal;
+    width: 100%;
+  }
+
+  .auth-entry__card {
+    order: 2;
+  }
+
+  .auth-entry__copy {
+    align-items: flex-start;
+    order: 3;
+  }
+
+  .auth-entry__headline {
+    font-size: nds.$text-heading-l-mobile;
+    letter-spacing: -1.08px;
+    line-height: 1.1;
+  }
+
+  .auth-entry__card .divider {
+    display: none;
+  }
+
+  .auth-entry__card .auth--form-page {
+    --nds-section-gap: #{nds.space(8)};
+  }
+
+  .auth-entry__card .auth__title--mobile {
+    display: inline;
+  }
+
+  .auth-entry__card .auth__title--desktop,
+  .auth-entry__card .auth__subtitle--desktop {
+    display: none;
+  }
+
+  .auth-page:has(.auth-entry) {
+    --nds-screen-inline-padding: #{nds.space(24)};
+    --nds-page-background: #{linear-gradient(
+        to bottom,
+        nds.alpha(nds.$blue-500, 4%),
+        nds.alpha(nds.$blue-500, 0%)
+      )};
+    --nds-page-main-block-start: #{nds.space(32)};
+    --nds-page-main-block-end: #{nds.space(32)};
+
+    .auth-page__top-chrome {
+      background: transparent;
+      border-block-end: 0;
+      padding-block: nds.space(32) 0;
+    }
+
+    .auth-page__logo-banner {
+      justify-content: center;
+      width: 100%;
+
+      &::before {
+        content: none;
+      }
+    }
+
+    .auth-page__main > .auth-entry {
+      max-width: none;
+    }
+  }
+
+  .auth-entry__card {
+    margin-inline: auto;
+    padding: nds.space(32) nds.space(24) nds.space(16);
+  }
+}
