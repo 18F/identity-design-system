@@ -12,7 +12,7 @@
 
 @use 'tokens/nds' as nds;
 
-$nds-radio-size: nds.space(16);
+$nds-radio-size: nds.space(20);
 
 .usa-radio__label {
   align-items: center;
@@ -31,7 +31,7 @@ $nds-radio-size: nds.space(16);
 
   &::before {
     background: nds.$white;
-    border: 2px solid nds.alpha(nds.$black, 45%);
+    border: 2px solid nds.$base-darkest;
     border-radius: nds.radius(pill);
     // Override USWDS's absolute box-shadow circle: draw our own flex-child.
     box-shadow: none;
@@ -51,15 +51,15 @@ $nds-radio-size: nds.space(16);
 }
 
 .usa-radio__input:not(:disabled, [aria-disabled='true']) + .usa-radio__label:hover::before {
-  border-color: nds.alpha(nds.$black, 85%);
+  border-color: nds.$primary;
 }
 
 .usa-radio__input:checked + .usa-radio__label::before {
   background-color: nds.$white;
-  background-image: radial-gradient(circle, nds.$black 0 nds.space(4), transparent nds.space(4));
+  background-image: radial-gradient(circle, nds.$primary 0 nds.space(6), transparent nds.space(6));
   background-position: center;
   background-repeat: no-repeat;
-  border-color: nds.alpha(nds.$black, 85%);
+  border-color: nds.$primary;
   box-shadow: none;
 }
 
@@ -74,13 +74,18 @@ $nds-radio-size: nds.space(16);
 }
 
 .usa-radio__input:is(:disabled, [aria-disabled='true']) + .usa-radio__label {
-  color: nds.alpha(nds.$black, 45%);
+  color: nds.$disabled;
   cursor: not-allowed;
 
   &::before {
-    background: nds.alpha(nds.$black, 5%);
-    border-color: nds.alpha(nds.$black, 25%);
+    background: nds.$white;
+    border-color: nds.$disabled;
   }
+}
+
+// Disabled + selected: keep the dot but tint it to the muted disabled color.
+.usa-radio__input:is(:disabled, [aria-disabled='true']):checked + .usa-radio__label::before {
+  background-image: radial-gradient(circle, nds.$disabled 0 nds.space(6), transparent nds.space(6));
 }
 
 // Forced-colors safety: the checked dot is a background-image radial-gradient,
@@ -96,29 +101,30 @@ $nds-radio-size: nds.space(16);
   }
 }
 
-// Bordered and tile variants wrap the label in a bordered surface and reserve
-// space for an absolutely-positioned circle. This overlay lays the circle out
-// as a flex child instead, so restore the flex row on those variants and
-// reserve inline space for the circle rather than the variants' left padding.
+// Bordered and illustrated-tile variants wrap the label in a bordered surface.
+// This overlay lays the circle out as a flex child (USWDS reserves space for an
+// absolute circle); restore the flex row and use the design's 24px inset and
+// 12px gap so the circle clears the label text.
 .usa-radio__input--bordered + .usa-radio__label,
-.usa-radio__input--tile + .usa-radio__label {
+.usa-radio__input--tile + .usa-radio__label--illustrated {
   align-items: center;
   display: flex;
-  gap: nds.space(8);
-  padding-left: nds.space(16);
+  gap: nds.space(12);
+  padding-left: nds.space(24);
 }
 
-// Tile variant: the label holds a title followed by a description that should
-// stack, so keep the label as a block (illustrated tiles keep their own
-// layout) and place the circle in the left gutter reserved by the tile
-// padding rather than as an inline flex child.
+// Non-illustrated tile: the label holds a title followed by a description that
+// should stack, so keep the label as a block and place the circle absolutely in
+// the left gutter. Reserve enough left padding for the circle (24px inset +
+// 20px circle + 12px gap) so the title/description clear it.
 .usa-radio__input--tile + .usa-radio__label:not(.usa-radio__label--illustrated) {
   display: block;
+  padding-left: calc(#{nds.space(24)} + #{nds.space(20)} + #{nds.space(12)});
   position: relative;
 }
 
-.usa-radio__input--tile + .usa-radio__label::before {
-  left: nds.space(12);
+.usa-radio__input--tile + .usa-radio__label:not(.usa-radio__label--illustrated)::before {
+  left: nds.space(24);
   position: absolute;
   top: nds.space(24);
 }

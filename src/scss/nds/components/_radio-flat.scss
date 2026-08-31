@@ -11,36 +11,43 @@
 
 .radio-group {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 10%);
+  border: 1px solid nds.$base-lighter;
   border-radius: nds.radius(24);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   margin-top: nds.space(8);
-  padding: nds.space(24);
+  padding: 0;
   width: 100%;
 }
 
 .radio {
   min-width: 0;
+  padding: nds.space(24);
   position: relative;
 
-  & + & {
-    border-top: 1px solid nds.alpha(nds.$black, 10%);
-    margin-top: nds.space(24);
-    padding-top: nds.space(24);
+  // Divider between adjacent rows: a 1px rule inset from the group edges by the
+  // row padding, sitting on the shared boundary of the two rows.
+  & + &::before {
+    background: nds.$base-lighter;
+    content: '';
+    height: 1px;
+    left: nds.space(24);
+    position: absolute;
+    right: nds.space(24);
+    top: 0;
   }
 }
 
 .radio__label {
-  align-items: center;
+  align-items: flex-start;
   color: nds.$black;
   cursor: pointer;
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-weight: 400;
-  gap: nds.space(8);
+  gap: nds.space(12);
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   overflow-wrap: anywhere;
@@ -49,30 +56,34 @@
 
   &::before {
     background: nds.$white;
-    border: 2px solid nds.alpha(nds.$black, 45%);
+    border: 2px solid nds.$base-darkest;
     border-radius: nds.radius(pill);
     box-sizing: border-box;
     content: '';
     display: block;
-    flex: 0 0 nds.space(16);
-    height: nds.space(16);
+    flex: 0 0 nds.space(20);
+    height: nds.space(20);
+    // Align the circle to the label text: the design offsets it 2px below the
+    // text top within the left rail.
+    margin-top: nds.space(2);
     transition:
       background nds.$tr-duration-md nds.$tr-easing-cubic,
       border-color nds.$tr-duration-md nds.$tr-easing-cubic,
       box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
-    width: nds.space(16);
+    width: nds.space(20);
   }
 }
 
 .radio__input:not(:disabled, [aria-disabled='true']) + .radio__label:hover::before {
-  border-color: nds.alpha(nds.$black, 85%);
+  border-color: nds.$primary;
 }
 
 .radio__input:checked + .radio__label::before {
-  background-image: radial-gradient(circle, nds.$black 0 nds.space(4), transparent nds.space(4));
+  background-color: nds.$white;
+  background-image: radial-gradient(circle, nds.$primary 0 nds.space(6), transparent nds.space(6));
   background-position: center;
   background-repeat: no-repeat;
-  border-color: nds.alpha(nds.$black, 85%);
+  border-color: nds.$primary;
 }
 
 .radio__input:focus-visible + .radio__label::before {
@@ -80,11 +91,27 @@
 }
 
 .radio__input:is(:disabled, [aria-disabled='true']) + .radio__label {
-  color: nds.alpha(nds.$black, 45%);
+  color: nds.$disabled;
   cursor: not-allowed;
 }
 
 .radio__input:is(:disabled, [aria-disabled='true']) + .radio__label::before {
-  background: nds.alpha(nds.$black, 5%);
-  border-color: nds.alpha(nds.$black, 25%);
+  background: nds.$white;
+  border-color: nds.$disabled;
+}
+
+// Disabled + selected: keep the dot but tint it to the muted disabled color.
+.radio__input:is(:disabled, [aria-disabled='true']):checked + .radio__label::before {
+  background-image: radial-gradient(circle, nds.$disabled 0 nds.space(6), transparent nds.space(6));
+}
+
+// Forced-colors safety: the checked dot is a background-image radial-gradient,
+// which is dropped in forced-colors mode. Draw the dot with a system-color ring
+// so the checked state stays visible in Windows High Contrast.
+@media (forced-colors: active) {
+  .radio__input:checked + .radio__label::before {
+    background-color: SelectedItem;
+    border-color: SelectedItem;
+    box-shadow: inset 0 0 0 4px Canvas;
+  }
 }
