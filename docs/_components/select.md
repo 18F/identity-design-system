@@ -9,7 +9,7 @@ lead: A select component allows users to choose one option from a temporary moda
 
 {% capture example %}
 <label for="ab84" class="usa-label">Dropdown label</label>
-<div class="usa-combo-box">
+<div class="usa-combo-box" data-placeholder="- Select -">
   <select id="ab84" class="usa-select">
     <option value>- Select -</option>
     <option value="value1">Option A</option>
