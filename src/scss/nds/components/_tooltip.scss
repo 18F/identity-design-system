@@ -7,6 +7,10 @@
 
 $nds-tooltip-gap: nds.space(8);
 
+// Pointer triangle: 12px base x 8px height, matching the bubble surface.
+$nds-tooltip-arrow-base: 6px;
+$nds-tooltip-arrow-height: 8px;
+
 .usa-tooltip {
   display: inline-block;
   position: relative;
@@ -21,14 +25,15 @@ $nds-tooltip-gap: nds.space(8);
   }
 }
 
-// Tooltip bubble: dark frosted ink surface, off-white text, 12px radius,
+// Tooltip bubble: dark frosted ink surface, white text, 12px radius,
 // compact shadow, inheriting the body font.
 .usa-tooltip__body,
 .usa-tooltip__body--top {
-  background-color: nds.alpha(nds.$black, 85%);
+  backdrop-filter: blur(25px);
+  background-color: nds.$base-darker;
   border-radius: nds.radius(12);
   box-shadow: nds.$shadow-compact;
-  color: nds.$primary-lightest;
+  color: nds.$white;
   display: none;
   font-family: inherit;
   font-size: nds.$text-body-m;
@@ -95,4 +100,66 @@ $nds-tooltip-gap: nds.space(8);
   position: absolute;
   top: 0;
   width: $nds-tooltip-gap;
+}
+
+// Pointer triangle per placement, colored to match the bubble surface and
+// nudged flush against the trigger-facing edge.
+.usa-tooltip__body::after,
+.usa-tooltip__body--top::after {
+  border-left: $nds-tooltip-arrow-base solid transparent;
+  border-right: $nds-tooltip-arrow-base solid transparent;
+  border-top: $nds-tooltip-arrow-height solid nds.$base-darker;
+  content: '';
+  display: block;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0;
+}
+
+.usa-tooltip__body--bottom::after {
+  border-bottom: $nds-tooltip-arrow-height solid nds.$base-darker;
+  border-left: $nds-tooltip-arrow-base solid transparent;
+  border-right: $nds-tooltip-arrow-base solid transparent;
+  border-top: 0;
+  bottom: 100%;
+  content: '';
+  display: block;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: auto;
+  transform: translateX(-50%);
+  width: 0;
+}
+
+.usa-tooltip__body--right::after {
+  border-bottom: $nds-tooltip-arrow-base solid transparent;
+  border-right: $nds-tooltip-arrow-height solid nds.$base-darker;
+  border-top: $nds-tooltip-arrow-base solid transparent;
+  content: '';
+  display: block;
+  height: 0;
+  left: auto;
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+}
+
+.usa-tooltip__body--left::after {
+  border-bottom: $nds-tooltip-arrow-base solid transparent;
+  border-left: $nds-tooltip-arrow-height solid nds.$base-darker;
+  border-top: $nds-tooltip-arrow-base solid transparent;
+  content: '';
+  display: block;
+  height: 0;
+  left: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
 }
