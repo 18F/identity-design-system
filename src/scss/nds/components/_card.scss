@@ -9,7 +9,7 @@
 // The card box — the link/button/div itself.
 .card {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 10%);
+  border: 1px solid nds.$base-lighter;
   border-radius: nds.radius(24);
   box-sizing: border-box;
   color: nds.$black;
@@ -24,14 +24,14 @@
 
 // Absolute status pill.
 .card__badge {
-  background: nds.alpha(nds.$primary-dark, 10%);
-  border-radius: nds.radius(pill);
-  color: nds.$primary-dark;
+  background: nds.$primary-lighter;
+  border-radius: nds.radius(8);
+  color: nds.$primary;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
   font-weight: nds.$font-semibold;
   line-height: 1;
-  padding: nds.space(8) nds.space(12);
+  padding: nds.space(4) nds.space(8);
   pointer-events: none;
   position: absolute;
   right: nds.space(12);
@@ -40,7 +40,7 @@
 }
 
 .card__badge--success {
-  background: nds.alpha(nds.$success-light, 10%);
+  background: nds.$success-lighter;
   color: nds.$success-dark;
 }
 
@@ -78,7 +78,7 @@
 
 // MFA card.
 .card--mfa {
-  border-color: nds.alpha(nds.$black, 10%);
+  border-color: nds.$base-lighter;
   color: nds.$black;
   padding-inline-end: nds.space(16);
 
@@ -110,15 +110,11 @@
   }
 
   &.card--interactive:hover {
-    border-color: nds.$black;
+    border-color: nds.$base;
   }
 }
 
 .card--mfa .card__badge {
-  background: nds.alpha(nds.$primary-dark, 8%);
-  border-radius: nds.radius(8);
-  color: nds.$primary;
-  padding: nds.space(4) nds.space(8);
   right: nds.space(16);
   top: nds.space(16);
 }
@@ -133,7 +129,7 @@
 }
 
 .card--elevated {
-  box-shadow: nds.$shadow-compact;
+  box-shadow: nds.$shadow-large;
 }
 
 .card--centered {
@@ -158,7 +154,7 @@
   }
 
   &:hover {
-    border-color: nds.$black;
+    border-color: nds.$base;
     color: nds.$black;
     text-decoration: none;
   }
@@ -283,7 +279,10 @@
 
 .card__title {
   color: nds.$black;
+  font-size: nds.$text-heading-s;
   font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading;
+  line-height: 1.2;
 }
 
 .card__description,
@@ -310,7 +309,7 @@
 }
 
 .card__divider {
-  background: nds.alpha(nds.$black, 10%);
+  background: nds.$base-lighter;
   border: 0;
   height: 1px;
   margin: 0;
