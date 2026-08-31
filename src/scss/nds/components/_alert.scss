@@ -4,63 +4,77 @@
 // (`--info --warning --error --success --slim --no-icon`) and inner elements
 // (`.usa-alert__body`, `.usa-alert__heading`, `.usa-alert__text`), plus
 // extensions `.usa-alert--with-action`, `.usa-alert--single-line`,
-// `.usa-alert__action`, `.usa-alert__close`, and the dismiss mount wrapper
+// `.usa-alert--with-callout`, `.usa-alert__action`, `.usa-alert__divider`,
+// `.usa-alert__callout`, `.usa-alert__close`, and the dismiss mount wrapper
 // `.usa-alert-mount` / `.usa-alert-mount__inner`.
 //
 // Loaded after `@forward 'uswds'` (see nds/styles.scss).
 
 @use 'tokens/nds' as nds;
 
-// Status → (background, foreground, close-hover) driven by CSS vars, so a
-// single body/close rule reads them. `--info` is the neutral/informational
-// status and takes the blue neutral treatment.
+// The card is a vertical stack: status icon, then the heading/body content
+// column, then an optional footer (callout or action). `--nds-alert-bg` is the
+// only per-status difference; foreground ink is constant across statuses.
 .usa-alert {
-  --nds-alert-bg: #{nds.alpha(nds.$primary-darker, 5%)};
-  --nds-alert-color: #{nds.$black};
-  --nds-alert-close-hover: #{nds.alpha(nds.$primary-darker, 25%)};
+  --nds-alert-bg: #{nds.$info-lighter};
+  --nds-alert-close-hover: #{nds.$base-lighter};
 
   align-items: flex-start;
   background: var(--nds-alert-bg);
-  border: 0;
+  border: 1px solid nds.$base-lightest;
   border-radius: nds.radius(24);
   box-sizing: border-box;
-  color: var(--nds-alert-color);
+  color: nds.$text-primary;
   display: flex;
-  gap: nds.space(4);
+  flex-direction: column;
+  gap: nds.space(12);
   padding: nds.space(20);
   position: relative;
   text-align: start;
   width: 100%;
 
-  // USWDS draws a left status bar / icon block via ::before on the body; the
-  // flat tinted card look neutralizes it.
-  &::before,
-  .usa-alert__body::before {
+  // USWDS draws a left status bar via the alert's own ::before; the flat
+  // tinted card look neutralizes it.
+  &::before {
     content: none;
     display: none;
   }
 
   .usa-alert__body {
     background: transparent;
+    color: nds.$text-primary;
     display: flex;
-    flex: 1 0 0;
+    flex: none;
     flex-direction: column;
-    gap: nds.space(8);
     max-width: none;
+    min-height: 0;
     min-width: 0;
     padding: 0;
+    width: 100%;
 
-    // USWDS status modifiers indent every body child by the icon width. The
-    // flat card has no icon, so reset the indent on all direct children to
-    // avoid empty left gutters.
+    // USWDS indents every body child by the icon width for its left-aligned
+    // icon. The stacked layout puts the icon above the copy, so reset it.
     > * {
       margin-left: 0;
     }
   }
 
+  // The status icon is USWDS' generated `.usa-alert__body::before`, lifted out
+  // of the left gutter into a 24px block at the top of the column and recolored
+  // to primary ink so every status shares the same mark.
+  .usa-alert__body::before {
+    background-color: nds.$text-primary;
+    background-size: 1.5rem 1.5rem;
+    display: block;
+    height: 1.5rem;
+    margin: 0 0 nds.space(12);
+    mask-size: 1.5rem 1.5rem;
+    position: static;
+    width: 1.5rem;
+  }
+
   .usa-alert__heading,
   .usa-alert__text {
-    color: inherit;
     font-family: nds.$font-family;
     font-size: nds.$text-body-m;
     letter-spacing: nds.$text-letter-spacing-label;
@@ -70,10 +84,12 @@
   }
 
   .usa-alert__heading {
+    color: nds.$text-primary;
     font-weight: nds.$font-semibold;
   }
 
   .usa-alert__text {
+    color: nds.alpha(nds.$text-primary, 65%);
     font-weight: 400;
 
     > * {
@@ -88,6 +104,12 @@
     b {
       font-weight: inherit;
     }
+  }
+
+  // Heading → body copy gap is spacing/2; the icon → content gap is spacing/12
+  // (the icon's own margin-block-end).
+  .usa-alert__heading + .usa-alert__text {
+    margin-top: nds.space(2);
   }
 
   a:not(.usa-button),
@@ -105,29 +127,21 @@
   }
 }
 
-// Status modifiers — background tint / foreground / close-hover per status.
+// Status modifiers — background tint only; foreground ink is shared.
 .usa-alert--info {
-  --nds-alert-bg: #{nds.alpha(nds.$primary-darker, 5%)};
-  --nds-alert-color: #{nds.$black};
-  --nds-alert-close-hover: #{nds.alpha(nds.$primary-darker, 25%)};
+  --nds-alert-bg: #{nds.$info-lighter};
 }
 
 .usa-alert--warning {
-  --nds-alert-bg: #{nds.alpha(nds.$warning-light, 10%)};
-  --nds-alert-color: #{nds.$warning-darker};
-  --nds-alert-close-hover: #{nds.alpha(nds.$warning-light, 25%)};
+  --nds-alert-bg: #{nds.$warning-lighter};
 }
 
 .usa-alert--success {
-  --nds-alert-bg: #{nds.alpha(nds.$success-light, 10%)};
-  --nds-alert-color: #{nds.$success-dark};
-  --nds-alert-close-hover: #{nds.alpha(nds.$success-light, 25%)};
+  --nds-alert-bg: #{nds.$success-lighter};
 }
 
 .usa-alert--error {
-  --nds-alert-bg: #{nds.alpha(nds.$secondary-lighter, 10%)};
-  --nds-alert-color: #{nds.$secondary};
-  --nds-alert-close-hover: #{nds.alpha(nds.$secondary-lighter, 25%)};
+  --nds-alert-bg: #{nds.$error-lighter};
 }
 
 // --slim → tighter vertical padding; keep the flat card look.
@@ -139,18 +153,19 @@
   }
 }
 
-// --no-icon is already icon-less in the flat treatment; explicit no-op anchor
-// so the modifier resolves against the bundle.
+// --no-icon → drop the status mark and its reserved space.
 .usa-alert--no-icon .usa-alert__body {
   padding-inline-start: 0;
+
+  &::before {
+    display: none;
+    margin: 0;
+  }
 }
 
-// --with-action → stack the copy above a full-width action row.
-.usa-alert--with-action {
-  align-items: flex-start;
-  flex-direction: column;
-  gap: nds.space(20);
-
+// --with-action / --with-callout keep the copy full width above the footer.
+.usa-alert--with-action,
+.usa-alert--with-callout {
   .usa-alert__body,
   .usa-alert__text {
     flex: none;
@@ -158,23 +173,57 @@
   }
 }
 
-// Action button inside an alert inherits the alert's foreground color; this
-// rebinds color to currentColor.
+// Divider above a supplemental callout.
+.usa-alert__divider {
+  background: nds.$base-lighter;
+  border: 0;
+  height: 1px;
+  margin: 0;
+  width: 100%;
+}
+
+// Supplemental callout — Body/M Emphasis in primary ink.
+.usa-alert__callout {
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+// Frosted pill action — base-lightest surface with a backdrop blur, Label/M
+// Emphasis text in primary ink.
 .usa-alert .usa-alert__action {
-  border-color: currentColor;
-  color: inherit;
+  align-items: center;
+  backdrop-filter: blur(25px);
+  background: nds.$base-lightest;
+  border: 0;
+  border-radius: nds.radius(pill);
+  color: nds.$text-primary;
+  display: inline-flex;
   flex: none;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(4);
+  height: nds.space(36);
+  justify-content: center;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+  min-height: nds.space(36);
+  padding-block: 0;
+  padding-inline: nds.space(12);
+  text-align: center;
+  white-space: nowrap;
 
-  &:is(:link, :visited) {
-    color: inherit;
-  }
-
+  &:is(:link, :visited),
   &:hover,
   &:active,
   &:focus-visible {
-    border-color: currentColor;
-    color: inherit;
-    outline-color: currentColor;
+    color: nds.$text-primary;
   }
 }
 
@@ -185,20 +234,20 @@
 }
 
 .usa-alert .usa-alert__close {
-  color: inherit;
+  color: nds.$text-primary;
   position: absolute;
   right: nds.space(12);
   top: nds.space(12);
 
   &:is(:link, :visited) {
-    color: inherit;
+    color: nds.$text-primary;
   }
 
   &:hover,
   &:active,
   &:focus-visible {
     background: var(--nds-alert-close-hover);
-    color: inherit;
+    color: nds.$text-primary;
   }
 }
 
