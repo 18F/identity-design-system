@@ -2,29 +2,29 @@
 @use 'sass:math';
 @use 'sass:meta';
 
-$black: #000000;
-$off-black: #0c0c0c;
+$black: #000c1f;
+$off-black: #000c1f;
 $midnight: #000c1f;
-$off-white: #f7f7f7;
+$off-white: #f5f9fc;
 $white: #ffffff;
 
-$red-600: #d80007;
-$red-500: #ff5252;
-$red-300: #ff7f7b;
+$red-600: #e21d3e;
+$red-500: #f6889c;
+$red-300: #fec7d2;
 
-$yellow-900: #8e5e00;
+$yellow-900: #754400;
 $yellow-500: #e99b00;
-$yellow-300: #e7a800;
+$yellow-300: #f7c34a;
 
-$green-600: #007f26;
+$green-600: #077e23;
 $green-500: #0aa93a;
-$green-300: #6eb385;
+$green-300: #3dd164;
 
 $blue-500: #0066c5;
-$blue-600: #004ac3;
-$blue-700: #002664;
+$blue-600: #003980;
+$blue-700: #00163b;
 $blue-800: #00163b;
-$blue-900: #182d4e;
+$blue-900: #001c48;
 
 @function alpha($color, $opacity) {
   @if meta.type-of($opacity) != 'number' {
