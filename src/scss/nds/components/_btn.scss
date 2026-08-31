@@ -238,40 +238,44 @@
   }
 }
 
-// --tertiary → bordered, transparent fill, ink text.
+// --tertiary → borderless text button, primary-blue label, subtle wash on
+// interaction.
 .usa-button--tertiary {
   background: transparent;
-  border: 1px solid nds.alpha(nds.$black, 45%);
+  border: 0;
   box-shadow: none;
-  color: nds.$black;
+  color: nds.$primary;
 
   &:is(:link, :visited) {
-    color: nds.$black;
+    color: nds.$primary;
   }
 
   &:hover,
-  &:active,
-  &.usa-button--hover,
-  &.usa-button--active {
-    border-color: nds.alpha(nds.$black, 85%);
+  &.usa-button--hover {
+    background: nds.$base-lightest;
     box-shadow: none;
-    color: nds.$black;
-    outline: 1.5px solid nds.alpha(nds.$black, 85%);
-    outline-offset: -1.5px;
+    color: nds.$primary;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.usa-button--active {
+    background: nds.$base-lighter;
+    box-shadow: none;
+    color: nds.$primary;
     text-decoration: none;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    border-color: nds.alpha(nds.$black, 85%);
-    color: nds.$black;
+    background: nds.$base-lightest;
+    color: nds.$primary;
   }
 
   @include nds-button-disabled() {
     background: transparent;
-    border-color: nds.alpha(nds.$black, 25%);
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
   }
 }
 
@@ -342,6 +346,80 @@
   }
 }
 
+// --outline → bordered, transparent fill, ink text. USWDS ships an
+// `.usa-button--outline` (1px inset box-shadow border); without an override the
+// base primary fill wins the cascade and the outline collapses into a solid
+// button. Give it the same bordered treatment as `--tertiary`.
+.usa-button--outline {
+  background: transparent;
+  border: 1px solid nds.alpha(nds.$black, 45%);
+  box-shadow: none;
+  color: nds.$black;
+
+  &:is(:link, :visited) {
+    color: nds.$black;
+  }
+
+  &:hover,
+  &:active,
+  &.usa-button--hover,
+  &.usa-button--active {
+    background: transparent;
+    border-color: nds.alpha(nds.$black, 85%);
+    box-shadow: none;
+    color: nds.$black;
+    outline: 1.5px solid nds.alpha(nds.$black, 85%);
+    outline-offset: -1.5px;
+    text-decoration: none;
+  }
+
+  &:is(:focus-visible, .usa-focus) {
+    @include nds.focus-ring();
+    border-color: nds.alpha(nds.$black, 85%);
+    color: nds.$black;
+  }
+
+  @include nds-button-disabled() {
+    background: transparent;
+    border-color: nds.alpha(nds.$black, 25%);
+    box-shadow: none;
+    color: nds.alpha(nds.$black, 25%);
+  }
+
+  // Danger outline → error ink and border.
+  &.usa-button--danger {
+    border-color: nds.alpha(nds.$error, 60%);
+    color: nds.$error-dark;
+
+    &:is(:link, :visited) {
+      color: nds.$error-dark;
+    }
+
+    &:hover,
+    &:active,
+    &.usa-button--hover,
+    &.usa-button--active {
+      background: transparent;
+      border-color: nds.$error;
+      color: nds.$error-dark;
+      outline: 1.5px solid nds.$error;
+      outline-offset: -1.5px;
+    }
+
+    &:is(:focus-visible, .usa-focus) {
+      @include nds.focus-ring();
+      border-color: nds.$error;
+      color: nds.$error-dark;
+    }
+
+    @include nds-button-disabled() {
+      background: transparent;
+      border-color: nds.alpha(nds.$black, 25%);
+      color: nds.alpha(nds.$black, 25%);
+    }
+  }
+}
+
 // Flat variants never take the primary/danger large-size resting shadow.
 // This resets the base `.usa-button.usa-button--lg` (0,2,0) shadow. Scoped
 // with `:not(:focus-visible):not(.usa-focus)` so it does not clobber the
@@ -351,6 +429,7 @@
 .usa-button--secondary,
 .usa-button--tertiary,
 .usa-button--quaternary,
+.usa-button--outline,
 .usa-button--ghost {
   &.usa-button--lg:not(:focus-visible, .usa-focus),
   &.usa-button--big:not(:focus-visible, .usa-focus) {
@@ -391,6 +470,7 @@
       .usa-button--secondary,
       .usa-button--tertiary,
       .usa-button--quaternary,
+      .usa-button--outline,
       .usa-button--ghost
     ),
     .usa-button--danger
