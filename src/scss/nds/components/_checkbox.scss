@@ -34,7 +34,7 @@ $nds-checkbox-border-width: 1px;
   &::before {
     background-color: nds.$white;
     border-radius: nds.radius(8);
-    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
+    box-shadow: 0 0 0 $nds-checkbox-border-width nds.$base-darkest;
     box-sizing: border-box;
     height: $nds-checkbox-size;
     // Override USWDS's computed vertical-centering margin (sized for its own
@@ -148,4 +148,98 @@ $nds-checkbox-border-width: 1px;
 .usa-checkbox__input--bordered:checked:is(:disabled, [aria-disabled='true'])
   + .usa-checkbox__label {
   border-color: nds.alpha(nds.$black, 25%);
+}
+
+// --- Switch variant ---------------------------------------------------------
+//
+// `.usa-checkbox__input--switch` renders the control as a pill track with a
+// sliding thumb instead of the check box. Pair with `role="switch"` and
+// `aria-checked` on the input for the correct semantics; the label still
+// supplies the accessible name.
+//
+// Track sits on `::before` (USWDS positions it absolutely, `left: 0`, inside
+// the `position: relative` label); the thumb sits on `::after`. The check
+// glyph background image USWDS paints on `::before` when checked is cleared so
+// only the track color shows.
+
+$nds-switch-width: nds.space(40);
+$nds-switch-height: nds.space(24);
+$nds-switch-thumb: nds.space(16);
+$nds-switch-inset: nds.space(4);
+
+.usa-checkbox__input--switch + .usa-checkbox__label {
+  padding-left: calc(#{nds.space(12)} + #{$nds-switch-width});
+
+  &::before {
+    background-color: nds.$base-light;
+    background-image: none;
+    border-radius: nds.radius(pill);
+    box-shadow: none;
+    height: $nds-switch-height;
+    margin-top: 0;
+    width: $nds-switch-width;
+  }
+
+  &::after {
+    background-color: nds.$white;
+    border-radius: nds.radius(pill);
+    content: '';
+    height: $nds-switch-thumb;
+    left: $nds-switch-inset;
+    position: absolute;
+    top: calc(#{$nds-switch-height} / 2);
+    transform: translateY(-50%);
+    transition: nds.$transition;
+    width: $nds-switch-thumb;
+  }
+}
+
+// Checked: primary track, thumb slides to the trailing edge.
+.usa-checkbox__input--switch:checked + .usa-checkbox__label {
+  &::before {
+    background-color: nds.$primary;
+    background-image: none;
+    box-shadow: none;
+  }
+
+  &::after {
+    background-color: nds.$white;
+    left: calc(#{$nds-switch-width} - #{$nds-switch-thumb} - #{$nds-switch-inset});
+  }
+}
+
+// Hover (not disabled) keeps the track colors solid — no box tint.
+.usa-checkbox__input--switch:not(:disabled, [aria-disabled='true'])
+  + .usa-checkbox__label:hover::before {
+  background-color: nds.$base-light;
+  box-shadow: none;
+}
+
+.usa-checkbox__input--switch:checked:not(:disabled, [aria-disabled='true'])
+  + .usa-checkbox__label:hover::before {
+  background-color: nds.$primary;
+  box-shadow: none;
+}
+
+// Focus ring on the track (keyboard only), reusing the shared ring geometry.
+.usa-checkbox__input--switch:is(:focus-visible, .usa-focus) + .usa-checkbox__label::before {
+  @include nds.focus-ring();
+}
+
+// Disabled: muted track, keep the thumb readable.
+.usa-checkbox__input--switch:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label::before {
+  background-color: nds.$disabled;
+  box-shadow: none;
+}
+
+.usa-checkbox__input--switch:checked:is(:disabled, [aria-disabled='true'])
+  + .usa-checkbox__label::before {
+  background-color: nds.$disabled;
+}
+
+// Forced-colors: keep the ON track visible with a system color.
+@media (forced-colors: active) {
+  .usa-checkbox__input--switch:checked + .usa-checkbox__label::before {
+    background-color: SelectedItem;
+  }
 }
