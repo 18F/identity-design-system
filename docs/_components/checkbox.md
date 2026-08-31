@@ -148,3 +148,42 @@ reflects a partial selection below it.
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
+
+## Switch
+
+Add `usa-checkbox__input--switch` to render the control as a toggle. Set
+`role="switch"` and keep `aria-checked` in sync so assistive technology
+announces the on/off state; the label supplies the accessible name.
+
+{% capture example %}
+<fieldset class="usa-fieldset">
+  <legend class="usa-sr-only">Group label</legend>
+  <ul class="usa-input-list">
+    <li>
+      <input id="sw01" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="false" name="sw01">
+      <label for="sw01" class="usa-checkbox__label">Option - Off</label>
+    </li>
+    <li>
+      <input id="sw02" class="usa-checkbox__input usa-checkbox__input--switch usa-focus" type="checkbox" role="switch" aria-checked="false" name="sw02">
+      <label for="sw02" class="usa-checkbox__label">Option - Off Focus</label>
+    </li>
+    <li>
+      <input id="sw03" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="true" name="sw03" checked>
+      <label for="sw03" class="usa-checkbox__label">Option - On</label>
+    </li>
+    <li>
+      <input id="sw04" class="usa-checkbox__input usa-checkbox__input--switch usa-focus" type="checkbox" role="switch" aria-checked="true" name="sw04" checked>
+      <label for="sw04" class="usa-checkbox__label">Option - On Focus</label>
+    </li>
+    <li>
+      <input id="sw05" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="false" name="sw05" disabled>
+      <label for="sw05" class="usa-checkbox__label">Option - Disabled</label>
+    </li>
+    <li>
+      <input id="sw06" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="true" name="sw06" disabled checked>
+      <label for="sw06" class="usa-checkbox__label">Option - Disabled and On</label>
+    </li>
+  </ul>
+</fieldset>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
