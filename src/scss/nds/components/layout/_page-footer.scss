@@ -6,8 +6,8 @@
 
 $nds-footer-breakpoint-m: 768px;
 $nds-footer-border: nds.alpha(nds.$black, 10%);
-$nds-footer-text-tertiary: nds.alpha(nds.$off-black, 45%);
-$nds-footer-text-secondary: nds.alpha(nds.$off-black, 65%);
+$nds-footer-text-tertiary: nds.alpha(nds.$black, 45%);
+$nds-footer-text-secondary: nds.alpha(nds.$black, 65%);
 
 lg-nds-page-footer {
   display: block;
@@ -121,12 +121,12 @@ lg-nds-page-footer {
 }
 
 .page-footer__control:hover .usa-button {
-  background: nds.alpha(nds.$off-black, 5%);
+  background: nds.alpha(nds.$black, 5%);
 }
 
 .page-footer__control:has(.page-footer__select:focus-visible) .usa-button {
   @include nds.focus-ring();
-  background: nds.alpha(nds.$off-black, 5%);
+  background: nds.alpha(nds.$black, 5%);
 }
 
 .page-footer__select-label {

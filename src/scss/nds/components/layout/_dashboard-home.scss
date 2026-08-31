@@ -18,13 +18,13 @@ $dashboard-home-breakpoint-m: 768px;
     $width: 100%
   );
 
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   text-align: left;
 }
 
 .dashboard-home__greeting {
-  color: nds.$off-black;
+  color: nds.$black;
   font-size: nds.$text-heading-l;
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-heading;
@@ -90,7 +90,7 @@ $dashboard-home-breakpoint-m: 768px;
 }
 
 .discovery__empty {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
@@ -104,7 +104,7 @@ $dashboard-home-breakpoint-m: 768px;
 .discovery-service__mark {
   @include service.mark();
 
-  background: nds.alpha(nds.$off-black, 5%);
+  background: nds.alpha(nds.$black, 5%);
   overflow: hidden;
 }
 

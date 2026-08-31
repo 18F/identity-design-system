@@ -15,9 +15,9 @@
 // single body/close rule reads them. `--info` is the neutral/informational
 // status and takes the blue neutral treatment.
 .usa-alert {
-  --nds-alert-bg: #{nds.alpha(nds.$blue-700, 5%)};
-  --nds-alert-color: #{nds.$midnight};
-  --nds-alert-close-hover: #{nds.alpha(nds.$blue-700, 25%)};
+  --nds-alert-bg: #{nds.alpha(nds.$primary-darker, 5%)};
+  --nds-alert-color: #{nds.$black};
+  --nds-alert-close-hover: #{nds.alpha(nds.$primary-darker, 25%)};
 
   align-items: flex-start;
   background: var(--nds-alert-bg);
@@ -107,27 +107,27 @@
 
 // Status modifiers — background tint / foreground / close-hover per status.
 .usa-alert--info {
-  --nds-alert-bg: #{nds.alpha(nds.$blue-700, 5%)};
-  --nds-alert-color: #{nds.$midnight};
-  --nds-alert-close-hover: #{nds.alpha(nds.$blue-700, 25%)};
+  --nds-alert-bg: #{nds.alpha(nds.$primary-darker, 5%)};
+  --nds-alert-color: #{nds.$black};
+  --nds-alert-close-hover: #{nds.alpha(nds.$primary-darker, 25%)};
 }
 
 .usa-alert--warning {
-  --nds-alert-bg: #{nds.alpha(nds.$yellow-300, 10%)};
-  --nds-alert-color: #{nds.$yellow-900};
-  --nds-alert-close-hover: #{nds.alpha(nds.$yellow-300, 25%)};
+  --nds-alert-bg: #{nds.alpha(nds.$warning-light, 10%)};
+  --nds-alert-color: #{nds.$warning-darker};
+  --nds-alert-close-hover: #{nds.alpha(nds.$warning-light, 25%)};
 }
 
 .usa-alert--success {
-  --nds-alert-bg: #{nds.alpha(nds.$green-300, 10%)};
-  --nds-alert-color: #{nds.$green-600};
-  --nds-alert-close-hover: #{nds.alpha(nds.$green-300, 25%)};
+  --nds-alert-bg: #{nds.alpha(nds.$success-light, 10%)};
+  --nds-alert-color: #{nds.$success-dark};
+  --nds-alert-close-hover: #{nds.alpha(nds.$success-light, 25%)};
 }
 
 .usa-alert--error {
-  --nds-alert-bg: #{nds.alpha(nds.$red-300, 10%)};
-  --nds-alert-color: #{nds.$red-600};
-  --nds-alert-close-hover: #{nds.alpha(nds.$red-300, 25%)};
+  --nds-alert-bg: #{nds.alpha(nds.$secondary-lighter, 10%)};
+  --nds-alert-color: #{nds.$secondary};
+  --nds-alert-close-hover: #{nds.alpha(nds.$secondary-lighter, 25%)};
 }
 
 // --slim → tighter vertical padding; keep the flat card look.

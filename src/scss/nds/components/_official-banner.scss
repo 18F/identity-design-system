@@ -13,9 +13,9 @@ $nds-banner-mobile-max: 639px;
 
 .official-banner {
   align-items: center;
-  background: nds.$blue-800;
+  background: nds.$primary-darker;
   box-sizing: border-box;
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
   display: flex;
   flex-wrap: wrap;
   gap: nds.space(4) nds.space(16);
@@ -53,7 +53,7 @@ $nds-banner-mobile-max: 639px;
 
 .official-banner__text,
 .official-banner__test-notice {
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
   font-weight: 400;
@@ -67,7 +67,7 @@ $nds-banner-mobile-max: 639px;
 
 .official-banner__how.link,
 .official-banner__how.link:is(:link, :visited, :hover, :active, :focus-visible) {
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
 }
 
 .official-banner__test-notice {
@@ -82,23 +82,23 @@ $nds-banner-mobile-max: 639px;
 // the modal chrome plus the banner-specific inner blocks.
 .official-banner-modal {
   .modal__close {
-    background: nds.alpha(nds.$blue-700, 5%);
-    color: nds.$midnight;
+    background: nds.alpha(nds.$primary-darker, 5%);
+    color: nds.$black;
     height: nds.space(44);
     width: nds.space(44);
 
     &:hover {
-      background: nds.alpha(nds.$blue-700, 10%);
+      background: nds.alpha(nds.$primary-darker, 10%);
     }
 
     &:focus-visible {
-      outline-color: nds.$midnight;
+      outline-color: nds.$black;
     }
   }
 
   .modal__body {
     border-radius: nds.radius(40);
-    box-shadow: 0 nds.space(4) nds.space(24) nds.alpha(nds.$midnight, 16%);
+    box-shadow: 0 nds.space(4) nds.space(24) nds.alpha(nds.$black, 16%);
     gap: nds.space(24);
     padding: nds.space(16) nds.space(48) nds.space(48);
     scrollbar-gutter: auto;
@@ -112,7 +112,7 @@ $nds-banner-mobile-max: 639px;
   }
 
   .modal__title {
-    color: nds.$midnight;
+    color: nds.$black;
     font-size: nds.$text-label-m;
     font-weight: nds.$font-semibold;
     left: 50%;
@@ -128,7 +128,7 @@ $nds-banner-mobile-max: 639px;
   }
 
   .modal__content {
-    color: nds.alpha(nds.$midnight, 65%);
+    color: nds.alpha(nds.$black, 65%);
     gap: nds.space(24);
   }
 }
@@ -145,7 +145,7 @@ $nds-banner-mobile-max: 639px;
   gap: nds.space(8);
 
   > .usa-icon {
-    color: nds.$midnight;
+    color: nds.$black;
     flex: 0 0 auto;
     height: nds.space(24);
     width: nds.space(24);
@@ -153,7 +153,7 @@ $nds-banner-mobile-max: 639px;
 }
 
 .official-banner-modal__heading {
-  color: nds.$midnight;
+  color: nds.$black;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-label;
@@ -167,7 +167,7 @@ $nds-banner-mobile-max: 639px;
 }
 
 .modal__content .official-banner-modal__rule {
-  background: nds.alpha(nds.$midnight, 10%);
+  background: nds.alpha(nds.$black, 10%);
   border: 0;
   height: 1px;
   margin: 0;

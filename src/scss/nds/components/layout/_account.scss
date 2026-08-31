@@ -14,7 +14,7 @@ $account-breakpoint-m: 768px;
     $width: 100%
   );
 
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   text-align: left;
 }
@@ -25,7 +25,7 @@ $account-breakpoint-m: 768px;
 }
 
 .account__heading {
-  color: nds.$off-black;
+  color: nds.$black;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-heading-section;
@@ -39,7 +39,7 @@ $account-breakpoint-m: 768px;
   @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
 
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-sizing: border-box;
   padding: nds.space(24);
@@ -53,12 +53,12 @@ $account-breakpoint-m: 768px;
 }
 
 .account__rule {
-  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-top: 1px solid nds.alpha(nds.$black, 10%);
   width: 100%;
 }
 
 .account__rows > li + li {
-  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-top: 1px solid nds.alpha(nds.$black, 10%);
   margin-top: nds.space(12);
   padding-top: nds.space(12);
 }
@@ -80,7 +80,7 @@ $account-breakpoint-m: 768px;
 }
 
 .account__row-text {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   flex: 1 1 auto;
   font-size: nds.$text-body-m;
   font-weight: 400;
@@ -92,7 +92,7 @@ $account-breakpoint-m: 768px;
 }
 
 .account__row-text--strong {
-  color: nds.$off-black;
+  color: nds.$black;
 }
 
 .account__row-value {
@@ -107,9 +107,9 @@ $account-breakpoint-m: 768px;
 
 .account__badge {
   align-items: center;
-  background: nds.alpha(nds.$blue-600, 10%);
+  background: nds.alpha(nds.$primary-dark, 10%);
   border-radius: nds.radius(pill);
-  color: nds.$blue-600;
+  color: nds.$primary-dark;
   display: inline-flex;
   font-size: nds.$text-label-s;
   font-weight: nds.$font-semibold;
@@ -122,8 +122,8 @@ $account-breakpoint-m: 768px;
 }
 
 .account__badge--warning {
-  background: nds.alpha(nds.$yellow-300, 10%);
-  color: nds.$yellow-900;
+  background: nds.alpha(nds.$warning-light, 10%);
+  color: nds.$warning-darker;
 }
 
 .account__row-actions {
@@ -141,13 +141,13 @@ $account-breakpoint-m: 768px;
 
 .account__danger-action,
 .account__danger-action:is(:link, :visited) {
-  color: nds.$red-600;
+  color: nds.$secondary;
 }
 
 .account__danger-action:hover,
 .account__danger-action:active,
 .account__danger-action:focus-visible {
-  color: nds.$red-600;
+  color: nds.$secondary;
 }
 
 @media (width < #{$account-breakpoint-m}) {

@@ -22,7 +22,7 @@ $nds-checkbox-border-width: 1px;
 
 // Label — Inter semibold, ink color, gap reserved for the box.
 .usa-checkbox__label {
-  color: nds.$midnight;
+  color: nds.$black;
   cursor: pointer;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
@@ -34,7 +34,7 @@ $nds-checkbox-border-width: 1px;
   &::before {
     background-color: nds.$white;
     border-radius: nds.radius(8);
-    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$midnight, 45%);
+    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
     box-sizing: border-box;
     height: $nds-checkbox-size;
     // Override USWDS's computed vertical-centering margin (sized for its own
@@ -55,13 +55,13 @@ $nds-checkbox-border-width: 1px;
 
 // Hover (not disabled): blue tint fill + blue-500 border.
 .usa-checkbox__input:not(:disabled, [aria-disabled='true']) + .usa-checkbox__label:hover::before {
-  background-color: nds.alpha(nds.$blue-700, 5%);
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$blue-500;
+  background-color: nds.alpha(nds.$primary-darker, 5%);
+  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$primary;
 }
 
 // Checked: solid blue-500 fill (USWDS supplies the white check glyph).
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
-  background-color: nds.$blue-500;
+  background-color: nds.$primary;
   box-shadow: none;
 }
 
@@ -70,7 +70,7 @@ $nds-checkbox-border-width: 1px;
 // fill; restyle to match the checked treatment. Handle both the native pseudo
 // and the `[data-indeterminate]` attribute variant USWDS supports.
 .usa-checkbox__input:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label::before {
-  background-color: nds.$blue-500;
+  background-color: nds.$primary;
   box-shadow: none;
 }
 
@@ -79,7 +79,7 @@ $nds-checkbox-border-width: 1px;
   + .usa-checkbox__label:hover::before,
 .usa-checkbox__input:is(:indeterminate, [data-indeterminate]):not(:disabled, [aria-disabled='true'])
   + .usa-checkbox__label:hover::before {
-  background-color: nds.$blue-500;
+  background-color: nds.$primary;
   box-shadow: none;
 }
 
@@ -98,24 +98,24 @@ $nds-checkbox-border-width: 1px;
 // Error: red border, no fill.
 .usa-checkbox__input:is(.usa-input--error, [aria-invalid='true']) + .usa-checkbox__label::before {
   background-color: nds.$white;
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$red-600;
+  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$secondary;
 }
 
 // Disabled: muted fill + text.
 .usa-checkbox__input:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label {
-  color: nds.alpha(nds.$midnight, 25%);
+  color: nds.alpha(nds.$black, 25%);
   cursor: not-allowed;
 
   &::before {
-    background-color: nds.alpha(nds.$midnight, 5%);
-    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$midnight, 45%);
+    background-color: nds.alpha(nds.$black, 5%);
+    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
   }
 }
 
 // Disabled + checked: muted fill, keep the glyph.
 .usa-checkbox__input:is(:disabled, [aria-disabled='true']):checked + .usa-checkbox__label::before {
-  background-color: nds.alpha(nds.$midnight, 25%);
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$midnight, 45%);
+  background-color: nds.alpha(nds.$black, 25%);
+  box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
 }
 
 // Forced-colors safety: the blue fill overrides USWDS's system-color checked
@@ -139,13 +139,13 @@ $nds-checkbox-border-width: 1px;
 .usa-checkbox__input--tile:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label,
 .usa-checkbox__input--bordered:checked + .usa-checkbox__label,
 .usa-checkbox__input--bordered:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label {
-  background-color: nds.alpha(nds.$midnight, 5%);
-  border-color: nds.$midnight;
+  background-color: nds.alpha(nds.$black, 5%);
+  border-color: nds.$black;
 }
 
 // Bordered + checked + disabled: keep USWDS's transparent fill but use the
 // muted midnight border so it lines up with the disabled control color.
 .usa-checkbox__input--bordered:checked:is(:disabled, [aria-disabled='true'])
   + .usa-checkbox__label {
-  border-color: nds.alpha(nds.$midnight, 25%);
+  border-color: nds.alpha(nds.$black, 25%);
 }

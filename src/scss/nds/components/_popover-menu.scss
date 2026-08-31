@@ -9,7 +9,7 @@
   @include nds.stack($gap: nds.space(4), $reset-flow: true, $width: max-content);
 
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(12);
   box-shadow: nds.$shadow-compact;
   min-width: nds.space(160);
@@ -41,7 +41,7 @@
 
 .popover-menu__item {
   border-radius: nds.radius(8);
-  color: nds.$off-black;
+  color: nds.$black;
   display: block;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
@@ -53,13 +53,13 @@
   white-space: nowrap;
 
   &:is(:link, :visited) {
-    color: nds.$off-black;
+    color: nds.$black;
   }
 
   &:hover,
   &:active {
-    background: nds.alpha(nds.$off-black, 5%);
-    color: nds.$off-black;
+    background: nds.alpha(nds.$black, 5%);
+    color: nds.$black;
     text-decoration: none;
   }
 

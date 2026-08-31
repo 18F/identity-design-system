@@ -76,7 +76,7 @@
 }
 
 .auth__intro h1 {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-m;
   font-weight: nds.$font-semibold;
@@ -139,10 +139,10 @@
 // Links inside the auth flow are blue, except muted-copy links which inherit
 // the muted color.
 .auth .link {
-  color: nds.$blue-500;
+  color: nds.$primary;
 
   &:is(:link, :visited, :hover, :active, :focus-visible) {
-    color: nds.$blue-500;
+    color: nds.$primary;
   }
 }
 
@@ -159,7 +159,7 @@
 }
 
 .list {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: 400;
@@ -178,7 +178,7 @@
 .copy {
   @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
 
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: 400;
@@ -202,12 +202,12 @@
 }
 
 .copy--muted {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
 }
 
 .heading-s,
 .copy h2 {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-semibold;
@@ -222,7 +222,7 @@
 }
 
 .copy a {
-  color: nds.$off-black;
+  color: nds.$black;
   text-decoration-line: underline;
   text-decoration-thickness: from-font;
   overflow-wrap: break-word;
@@ -231,7 +231,7 @@
   &:hover,
   &:active,
   &:focus-visible {
-    color: nds.$off-black;
+    color: nds.$black;
   }
 
   &:focus-visible {
@@ -240,19 +240,19 @@
 }
 
 .copy--muted a {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
 
   &:is(:link, :visited),
   &:hover,
   &:active,
   &:focus-visible {
-    color: nds.alpha(nds.$off-black, 65%);
+    color: nds.alpha(nds.$black, 65%);
   }
 }
 
 // Horizontal rule.
 .divider {
-  background: nds.alpha(nds.$off-black, 10%);
+  background: nds.alpha(nds.$black, 10%);
   border: 0;
   height: 1px;
   margin: 0;
@@ -262,7 +262,7 @@
 // Labelled "or" separator.
 .separator {
   align-items: center;
-  color: nds.alpha(nds.$off-black, 60%);
+  color: nds.alpha(nds.$black, 60%);
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
@@ -275,7 +275,7 @@
 
   &::before,
   &::after {
-    background: nds.alpha(nds.$off-black, 10%);
+    background: nds.alpha(nds.$black, 10%);
     content: '';
     flex: 1 1 0;
     height: 1px;

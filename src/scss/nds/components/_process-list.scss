@@ -30,7 +30,7 @@
 }
 
 .process-list__item:not(:last-child)::before {
-  background: nds.alpha(nds.$off-black, 10%);
+  background: nds.alpha(nds.$black, 10%);
   content: '';
   inset: nds.space(40) auto calc(-1 * nds.space(16)) nds.space(15);
   position: absolute;
@@ -39,7 +39,7 @@
 
 .process-list__marker {
   align-items: center;
-  background: nds.$off-black;
+  background: nds.$black;
   border-radius: nds.radius(pill);
   color: nds.$white;
   display: inline-flex;
@@ -61,7 +61,7 @@
 .process-list__body {
   @include nds.stack($gap: nds.space(12), $reset-flow: true, $width: 100%);
 
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   line-height: 1.5;
@@ -74,7 +74,7 @@
 }
 
 .process-list__heading {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-weight: nds.$font-semibold;
