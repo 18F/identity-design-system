@@ -1,1 +1,425 @@
-// NDS checkbox-flat overlay. Populated in a follow-up.
+// NDS flat checkbox (net-new) — `.checkbox*`.
+//
+// A net-new flat checkbox family (`.checkbox` with `__input`/`__label`/
+// `__error`/`__image` subelements and `--tile`/`--bordered`/`--illustrated`/
+// `--regular`/`--text` variants). It is distinct from the `.usa-checkbox`
+// restyle in `_checkbox.scss`, which stays. This ships CSS only; the markup is
+// emitted inline in views.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss). Pure component CSS.
+
+@use 'tokens/nds' as nds;
+
+$flat-checkbox-size: nds.space(20);
+$flat-checkbox-border-width: 1px;
+$flat-checkbox-checkmark-size: nds.space(16);
+$flat-checkbox-label-gap: nds.space(12);
+$flat-checkbox-label-margin-top: nds.space(12);
+$flat-checkbox-max-width: 20rem;
+$flat-checkbox-tile-padding: nds.space(24);
+$flat-checkbox-bordered-padding-y: nds.space(8);
+$flat-checkbox-bordered-padding-x: nds.space(16);
+$flat-checkbox-tablet-breakpoint: 40em;
+$flat-checkbox-checkmark: url('../../img/correct8.svg');
+$flat-checkbox-indeterminate: url('../../img/checkbox-indeterminate.svg');
+
+@mixin flat-checkbox-control-default {
+  background-color: nds.$white;
+  box-shadow: 0 0 0 $flat-checkbox-border-width nds.$base-darkest;
+}
+
+@mixin flat-checkbox-control-hover {
+  background-color: nds.alpha(nds.$primary-darker, 5%);
+  box-shadow: 0 0 0 $flat-checkbox-border-width nds.$primary;
+}
+
+@mixin flat-checkbox-control-checked {
+  background-color: nds.$primary;
+  background-image: $flat-checkbox-checkmark;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: $flat-checkbox-checkmark-size;
+  box-shadow: none;
+}
+
+@mixin flat-checkbox-control-indeterminate {
+  @include flat-checkbox-control-checked();
+  background-image: $flat-checkbox-indeterminate;
+}
+
+@mixin flat-checkbox-control-error {
+  background-color: nds.$white;
+  background-image: none;
+  box-shadow: 0 0 0 $flat-checkbox-border-width nds.$secondary;
+}
+
+@mixin flat-checkbox-control-disabled {
+  background-color: nds.alpha(nds.$black, 5%);
+  background-image: none;
+  box-shadow: 0 0 0 $flat-checkbox-border-width nds.alpha(nds.$black, 45%);
+}
+
+@mixin flat-checkbox-control-disabled-checked {
+  background-color: nds.alpha(nds.$black, 25%);
+  background-image: $flat-checkbox-checkmark;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: $flat-checkbox-checkmark-size;
+  box-shadow: 0 0 0 $flat-checkbox-border-width nds.alpha(nds.$black, 45%);
+}
+
+@mixin flat-checkbox-format-input {
+  & + .checkbox__label::before {
+    @content;
+  }
+}
+
+@mixin flat-checkbox-format-label {
+  & + .checkbox__label {
+    @content;
+  }
+}
+
+@mixin flat-checkbox-sr-only {
+  border: 0;
+  // stylelint-disable-next-line property-no-deprecated -- faithful sr-only recipe
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Standalone acknowledgment checkboxes (remember browser, save codes, consent)
+// sit as a compact unit centered in the auth/form column. The label stays
+// left-aligned within itself (checkbox control on the left of its text).
+.checkbox {
+  position: relative;
+  text-align: center;
+
+  // Inline validated-field errors share the same horizontal centering.
+  .usa-input__error-inner {
+    justify-content: center;
+  }
+}
+
+// Full-bleed selection patterns keep left alignment.
+.checkbox:has(.checkbox__input--tile),
+.checkbox:has(.checkbox__input--bordered),
+.checkbox-group .checkbox {
+  text-align: left;
+
+  .usa-input__error-inner {
+    justify-content: flex-start;
+  }
+}
+
+.checkbox-group {
+  @include nds.stack($gap: nds.space(12), $reset-flow: true, $width: 100%);
+}
+
+.checkbox__input {
+  @include flat-checkbox-sr-only();
+
+  &:focus {
+    @include flat-checkbox-format-input() {
+      outline: 0;
+    }
+  }
+
+  &:checked {
+    @include flat-checkbox-format-input() {
+      @include flat-checkbox-control-checked();
+
+      @media print {
+        background-color: nds.$white;
+        background-image: none;
+        content: '\2714';
+        text-align: center;
+      }
+
+      @media (forced-colors: active) {
+        background-color: SelectedItem;
+      }
+    }
+  }
+
+  &:indeterminate,
+  &[data-indeterminate] {
+    @include flat-checkbox-format-input() {
+      @include flat-checkbox-control-indeterminate();
+
+      @media (forced-colors: active) {
+        background-color: SelectedItem;
+      }
+    }
+  }
+
+  &:not(:disabled, [aria-disabled='true']) {
+    &:hover {
+      @include flat-checkbox-format-input() {
+        @include flat-checkbox-control-hover();
+      }
+    }
+
+    &:checked:hover {
+      @include flat-checkbox-format-input() {
+        @include flat-checkbox-control-checked();
+      }
+    }
+
+    &:indeterminate:hover,
+    &[data-indeterminate]:hover {
+      @include flat-checkbox-format-input() {
+        @include flat-checkbox-control-indeterminate();
+      }
+    }
+  }
+
+  &:not(:disabled, [aria-disabled='true']) + .checkbox__label:hover::before {
+    @include flat-checkbox-control-hover();
+  }
+
+  &:checked:not(:disabled, [aria-disabled='true']) + .checkbox__label:hover::before {
+    @include flat-checkbox-control-checked();
+  }
+
+  &:indeterminate:not(:disabled, [aria-disabled='true']) + .checkbox__label:hover::before,
+  &[data-indeterminate]:not(:disabled, [aria-disabled='true']) + .checkbox__label:hover::before {
+    @include flat-checkbox-control-indeterminate();
+  }
+
+  &:focus-visible,
+  &.usa-focus {
+    @include flat-checkbox-format-input() {
+      @include nds.focus-ring();
+    }
+
+    &:checked {
+      @include flat-checkbox-format-input() {
+        @include nds.focus-ring();
+        background-color: nds.$primary;
+        background-image: $flat-checkbox-checkmark;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: $flat-checkbox-checkmark-size;
+      }
+    }
+
+    &:indeterminate,
+    &[data-indeterminate] {
+      @include flat-checkbox-format-input() {
+        @include nds.focus-ring();
+        background-color: nds.$primary;
+        background-image: $flat-checkbox-indeterminate;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: $flat-checkbox-checkmark-size;
+      }
+    }
+  }
+
+  &.usa-input--error,
+  &[aria-invalid='true'] {
+    @include flat-checkbox-format-input() {
+      @include flat-checkbox-control-error();
+    }
+
+    &:checked {
+      @include flat-checkbox-format-input() {
+        @include flat-checkbox-control-checked();
+      }
+    }
+
+    &:indeterminate,
+    &[data-indeterminate] {
+      @include flat-checkbox-format-input() {
+        @include flat-checkbox-control-indeterminate();
+      }
+    }
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    @include flat-checkbox-format-label() {
+      color: nds.alpha(nds.$black, 25%);
+      cursor: not-allowed;
+
+      @media (forced-colors: active) {
+        color: GrayText;
+      }
+    }
+
+    @include flat-checkbox-format-input() {
+      @include flat-checkbox-control-disabled();
+    }
+
+    &:checked {
+      @include flat-checkbox-format-input() {
+        @include flat-checkbox-control-disabled-checked();
+      }
+    }
+
+    &:indeterminate,
+    &[data-indeterminate] {
+      @include flat-checkbox-format-input() {
+        @include flat-checkbox-control-disabled-checked();
+        background-image: $flat-checkbox-indeterminate;
+      }
+    }
+  }
+}
+
+.checkbox__label {
+  color: nds.$black;
+  cursor: pointer;
+  display: inline-block;
+  text-align: left;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin-top: $flat-checkbox-label-margin-top;
+  padding-left: calc(#{$flat-checkbox-label-gap} + #{$flat-checkbox-size});
+  position: relative;
+
+  &::before {
+    @include flat-checkbox-control-default();
+    border-radius: nds.radius(8);
+    box-sizing: border-box;
+    content: ' ';
+    display: block;
+    height: $flat-checkbox-size;
+    left: 0;
+    margin-top: 2px;
+    position: absolute;
+    transition: nds.$transition;
+    width: $flat-checkbox-size;
+  }
+}
+
+.checkbox__label--regular {
+  font-weight: 400;
+}
+
+.checkbox__label-description {
+  color: nds.alpha(nds.$black, 65%);
+  display: block;
+  font-size: nds.$text-body-s;
+  font-weight: 400;
+  margin-top: nds.space(8);
+}
+
+.checkbox__label-text {
+  display: block;
+  min-width: 0;
+}
+
+.checkbox__label-heading {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: nds.space(8);
+  min-width: 0;
+}
+
+.checkbox__error {
+  color: nds.$secondary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  line-height: 1.5;
+  margin: nds.space(8) 0 0;
+}
+
+.checkbox__input--tile + .checkbox__label {
+  border: $flat-checkbox-border-width solid nds.alpha(nds.$black, 10%);
+  border-radius: nds.radius(16);
+  color: nds.$black;
+  display: block;
+  font-size: nds.$text-heading-s;
+  font-weight: nds.$font-semibold;
+  margin-top: nds.space(8);
+  max-width: $flat-checkbox-max-width;
+  padding: $flat-checkbox-tile-padding;
+  padding-left: calc(
+    #{$flat-checkbox-tile-padding} + #{$flat-checkbox-size} + #{$flat-checkbox-label-gap}
+  );
+
+  &::before {
+    left: $flat-checkbox-tile-padding;
+    margin-top: nds.space(4);
+  }
+}
+
+.checkbox__input--tile:checked + .checkbox__label {
+  background-color: nds.alpha(nds.$black, 5%);
+  border-color: nds.$black;
+}
+
+.checkbox__input--tile:disabled + .checkbox__label--illustrated .checkbox__image {
+  opacity: 0.45;
+}
+
+.checkbox__input--tile + .checkbox__label--illustrated {
+  align-items: flex-start;
+
+  @media (min-width: $flat-checkbox-tablet-breakpoint) {
+    display: flex;
+  }
+
+  .checkbox__image {
+    float: left;
+    margin-right: nds.space(8);
+    width: 1.5rem;
+
+    @media (min-width: $flat-checkbox-tablet-breakpoint) {
+      padding-top: nds.space(4);
+      width: 2.625rem;
+    }
+  }
+
+  .checkbox__label--text {
+    @media (min-width: $flat-checkbox-tablet-breakpoint) {
+      flex: 1;
+      padding-left: nds.space(8);
+    }
+  }
+}
+
+.checkbox-group .checkbox__input--tile + .checkbox__label {
+  margin-top: 0;
+}
+
+.checkbox-group--stretch .checkbox__input--tile + .checkbox__label {
+  max-width: none;
+  width: 100%;
+}
+
+.checkbox__input--bordered + .checkbox__label {
+  border: $flat-checkbox-border-width solid nds.alpha(nds.$black, 10%);
+  border-radius: nds.radius(16);
+  display: table;
+  margin: nds.space(8) 0;
+  max-width: $flat-checkbox-max-width;
+  padding: $flat-checkbox-bordered-padding-y $flat-checkbox-bordered-padding-x;
+  padding-left: calc(
+    #{$flat-checkbox-bordered-padding-x} + #{$flat-checkbox-size} + #{$flat-checkbox-label-gap}
+  );
+
+  &::before {
+    left: $flat-checkbox-bordered-padding-x;
+  }
+}
+
+.checkbox__input--bordered:checked + .checkbox__label {
+  background-color: nds.alpha(nds.$black, 5%);
+  border-color: nds.$black;
+}
+
+.checkbox__input--bordered:checked:disabled + .checkbox__label {
+  background-color: transparent;
+  border-color: nds.alpha(nds.$black, 25%);
+}
