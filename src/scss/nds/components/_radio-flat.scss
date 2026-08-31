@@ -11,7 +11,7 @@
 
 .radio-group {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-sizing: border-box;
   display: flex;
@@ -26,7 +26,7 @@
   position: relative;
 
   & + & {
-    border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+    border-top: 1px solid nds.alpha(nds.$black, 10%);
     margin-top: nds.space(24);
     padding-top: nds.space(24);
   }
@@ -34,7 +34,7 @@
 
 .radio__label {
   align-items: center;
-  color: nds.$off-black;
+  color: nds.$black;
   cursor: pointer;
   display: flex;
   font-family: nds.$font-family;
@@ -49,7 +49,7 @@
 
   &::before {
     background: nds.$white;
-    border: 2px solid nds.alpha(nds.$off-black, 45%);
+    border: 2px solid nds.alpha(nds.$black, 45%);
     border-radius: nds.radius(pill);
     box-sizing: border-box;
     content: '';
@@ -65,18 +65,14 @@
 }
 
 .radio__input:not(:disabled, [aria-disabled='true']) + .radio__label:hover::before {
-  border-color: nds.alpha(nds.$off-black, 85%);
+  border-color: nds.alpha(nds.$black, 85%);
 }
 
 .radio__input:checked + .radio__label::before {
-  background-image: radial-gradient(
-    circle,
-    nds.$off-black 0 nds.space(4),
-    transparent nds.space(4)
-  );
+  background-image: radial-gradient(circle, nds.$black 0 nds.space(4), transparent nds.space(4));
   background-position: center;
   background-repeat: no-repeat;
-  border-color: nds.alpha(nds.$off-black, 85%);
+  border-color: nds.alpha(nds.$black, 85%);
 }
 
 .radio__input:focus-visible + .radio__label::before {
@@ -84,11 +80,11 @@
 }
 
 .radio__input:is(:disabled, [aria-disabled='true']) + .radio__label {
-  color: nds.alpha(nds.$off-black, 45%);
+  color: nds.alpha(nds.$black, 45%);
   cursor: not-allowed;
 }
 
 .radio__input:is(:disabled, [aria-disabled='true']) + .radio__label::before {
-  background: nds.alpha(nds.$off-black, 5%);
-  border-color: nds.alpha(nds.$off-black, 25%);
+  background: nds.alpha(nds.$black, 5%);
+  border-color: nds.alpha(nds.$black, 25%);
 }

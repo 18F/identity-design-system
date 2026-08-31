@@ -12,62 +12,62 @@
 $nds-badge-states: (
   primary: (
     light: (
-      nds.$blue-800,
-      nds.$off-white,
+      nds.$primary-darker,
+      nds.$primary-lightest,
     ),
     dark: (
       nds.$white,
-      nds.$midnight,
+      nds.$black,
     ),
   ),
   secondary: (
     light: (
-      nds.alpha(nds.$blue-700, 10%),
-      nds.$midnight,
+      nds.alpha(nds.$primary-darker, 10%),
+      nds.$black,
     ),
     dark: (
-      nds.$blue-700,
-      nds.$off-white,
+      nds.$primary-darker,
+      nds.$primary-lightest,
     ),
   ),
   success: (
     light: (
-      nds.alpha(nds.$green-300, 10%),
-      nds.$green-600,
+      nds.alpha(nds.$success-light, 10%),
+      nds.$success-dark,
     ),
     dark: (
-      nds.alpha(nds.$green-300, 20%),
-      nds.$green-500,
+      nds.alpha(nds.$success-light, 20%),
+      nds.$success,
     ),
   ),
   error: (
     light: (
-      nds.alpha(nds.$red-300, 10%),
-      nds.$red-600,
+      nds.alpha(nds.$secondary-lighter, 10%),
+      nds.$secondary,
     ),
     dark: (
-      nds.alpha(nds.$red-300, 20%),
-      nds.$red-500,
+      nds.alpha(nds.$secondary-lighter, 20%),
+      nds.$secondary-light,
     ),
   ),
   warning: (
     light: (
-      nds.alpha(nds.$yellow-300, 10%),
-      nds.$yellow-900,
+      nds.alpha(nds.$warning-light, 10%),
+      nds.$warning-darker,
     ),
     dark: (
-      nds.alpha(nds.$yellow-300, 20%),
-      nds.$yellow-500,
+      nds.alpha(nds.$warning-light, 20%),
+      nds.$warning,
     ),
   ),
   info: (
     light: (
-      nds.alpha(nds.$blue-500, 8%),
-      nds.$blue-500,
+      nds.alpha(nds.$primary, 8%),
+      nds.$primary,
     ),
     dark: (
-      nds.alpha(nds.$off-white, 5%),
-      nds.$blue-500,
+      nds.alpha(nds.$primary-lightest, 5%),
+      nds.$primary,
     ),
   ),
 );
@@ -112,12 +112,12 @@ $nds-badge-states: (
 
   &.badge--tertiary {
     background: transparent;
-    border-color: nds.alpha(nds.$midnight, 10%);
-    color: nds.$midnight;
+    border-color: nds.alpha(nds.$black, 10%);
+    color: nds.$black;
 
     &.badge--dark {
-      border-color: nds.alpha(nds.$off-white, 10%);
-      color: nds.$off-white;
+      border-color: nds.alpha(nds.$primary-lightest, 10%);
+      color: nds.$primary-lightest;
     }
   }
 }

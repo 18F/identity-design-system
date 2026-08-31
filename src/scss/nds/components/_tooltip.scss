@@ -25,10 +25,10 @@ $nds-tooltip-gap: nds.space(8);
 // compact shadow, inheriting the body font.
 .usa-tooltip__body,
 .usa-tooltip__body--top {
-  background-color: nds.alpha(nds.$off-black, 85%);
+  background-color: nds.alpha(nds.$black, 85%);
   border-radius: nds.radius(12);
   box-shadow: nds.$shadow-compact;
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
   display: none;
   font-family: inherit;
   font-size: nds.$text-body-m;

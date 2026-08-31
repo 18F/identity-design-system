@@ -44,10 +44,10 @@ lg-nds-input-otp {
 .input-otp__slot {
   align-items: center;
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$midnight, 45%);
+  border: 1px solid nds.alpha(nds.$black, 45%);
   border-radius: nds.radius(16);
   box-sizing: border-box;
-  color: nds.$midnight;
+  color: nds.$black;
   display: inline-flex;
   flex: 1 1 0;
   font-family: nds.$font-family;
@@ -67,7 +67,7 @@ lg-nds-input-otp {
 }
 
 .input-otp__separator {
-  background: nds.alpha(nds.$midnight, 45%);
+  background: nds.alpha(nds.$black, 45%);
   border-radius: nds.radius(pill);
   display: inline-block;
   flex: 0 0 nds.space(12);
@@ -78,7 +78,7 @@ lg-nds-input-otp {
 .input-otp__separator--text {
   background: transparent;
   border-radius: 0;
-  color: nds.$midnight;
+  color: nds.$black;
   flex: 0 0 auto;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-semibold;
@@ -89,14 +89,14 @@ lg-nds-input-otp {
 }
 
 .input-otp__slot--active {
-  border-color: nds.alpha(nds.$midnight, 85%);
-  box-shadow: 0 0 0 1px nds.alpha(nds.$midnight, 85%);
+  border-color: nds.alpha(nds.$black, 85%);
+  box-shadow: 0 0 0 1px nds.alpha(nds.$black, 85%);
   outline: 0;
 }
 
 .input-otp__slot--caret::after {
   animation: input-otp-caret 1s step-end infinite;
-  background: nds.$midnight;
+  background: nds.$black;
   border-radius: nds.radius(pill);
   content: '';
   height: nds.space(24);
@@ -104,21 +104,21 @@ lg-nds-input-otp {
 }
 
 .input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot {
-  border-color: nds.$red-600;
+  border-color: nds.$secondary;
 }
 
 .input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot--active {
-  box-shadow: 0 0 0 1px nds.$red-600;
+  box-shadow: 0 0 0 1px nds.$secondary;
 }
 
 .input-otp:has(.input-otp__input:disabled) .input-otp__slot,
 .input-otp:has(.input-otp__input[readonly]) .input-otp__slot {
-  background: nds.alpha(nds.$midnight, 5%);
-  color: nds.alpha(nds.$midnight, 65%);
+  background: nds.alpha(nds.$black, 5%);
+  color: nds.alpha(nds.$black, 65%);
 }
 
 .input-otp__hint {
-  color: nds.alpha(nds.$midnight, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
   line-height: 1.35;

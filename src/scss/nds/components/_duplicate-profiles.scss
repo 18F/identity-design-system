@@ -25,7 +25,7 @@
 }
 
 .duplicate-profiles__heading {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-s;
   font-weight: nds.$font-semibold;
@@ -38,7 +38,7 @@
   @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
 
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-shadow: nds.$shadow-large;
   box-sizing: border-box;
@@ -55,7 +55,7 @@
 }
 
 .duplicate-profiles__account-title {
-  color: nds.$off-black;
+  color: nds.$black;
   flex: 1 1 auto;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
@@ -76,7 +76,7 @@
 .duplicate-profiles__detail {
   @include nds.stack($gap: nds.space(4), $reset-flow: true, $width: 100%);
 
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
@@ -84,7 +84,7 @@
 }
 
 .duplicate-profiles__detail dt {
-  color: nds.$off-black;
+  color: nds.$black;
   font-weight: nds.$font-semibold;
 }
 

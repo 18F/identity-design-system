@@ -69,12 +69,12 @@
 .usa-button {
   align-items: center;
   appearance: none;
-  background: nds.$blue-700;
+  background: nds.$primary-darker;
   border: 0;
   border-radius: nds.radius(pill);
   box-shadow: nds.$shadow-compact;
   box-sizing: border-box;
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
   cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;
@@ -100,22 +100,22 @@
   }
 
   &:is(:link, :visited) {
-    color: nds.$off-white;
+    color: nds.$primary-lightest;
   }
 
   &:hover,
   &.usa-button--hover {
-    background: nds.$blue-800;
+    background: nds.$primary-darker;
     box-shadow: nds.$shadow-compact;
-    color: nds.$off-white;
+    color: nds.$primary-lightest;
     text-decoration: none;
   }
 
   &:active,
   &.usa-button--active {
-    background: nds.$blue-700;
+    background: nds.$primary-darker;
     box-shadow: none;
-    color: nds.$off-white;
+    color: nds.$primary-lightest;
   }
 
   &:focus {
@@ -124,14 +124,14 @@
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.$blue-700;
-    color: nds.$off-white;
+    background: nds.$primary-darker;
+    color: nds.$primary-lightest;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$off-white, 85%);
+    background: nds.alpha(nds.$primary-lightest, 85%);
     box-shadow: none;
-    color: nds.alpha(nds.$midnight, 25%);
+    color: nds.alpha(nds.$black, 25%);
     cursor: not-allowed;
   }
 }
@@ -158,9 +158,9 @@
 
 // --danger → destructive (red-600).
 .usa-button--danger {
-  background: nds.$red-600;
+  background: nds.$secondary;
   box-shadow: nds.$shadow-compact;
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
 
   &.usa-button--lg,
   &.usa-button--big {
@@ -168,110 +168,110 @@
   }
 
   &:is(:link, :visited) {
-    color: nds.$off-white;
+    color: nds.$primary-lightest;
   }
 
   &:hover,
   &.usa-button--hover {
-    background: nds.alpha(nds.$red-600, 85%);
+    background: nds.alpha(nds.$secondary, 85%);
     box-shadow: nds.$shadow-compact;
-    color: nds.$off-white;
+    color: nds.$primary-lightest;
     text-decoration: none;
   }
 
   &:active,
   &.usa-button--active {
-    background: nds.$red-600;
+    background: nds.$secondary;
     box-shadow: none;
-    color: nds.$off-white;
+    color: nds.$primary-lightest;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.$red-600;
-    color: nds.$off-white;
+    background: nds.$secondary;
+    color: nds.$primary-lightest;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$off-white, 85%);
+    background: nds.alpha(nds.$primary-lightest, 85%);
     box-shadow: none;
-    color: nds.alpha(nds.$midnight, 25%);
+    color: nds.alpha(nds.$black, 25%);
   }
 }
 
 // --secondary → translucent frosted fill, ink text.
 .usa-button--secondary {
   backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$midnight, 5%);
+  background: nds.alpha(nds.$black, 5%);
   box-shadow: none;
-  color: nds.$midnight;
+  color: nds.$black;
 
   &:is(:link, :visited) {
-    color: nds.$midnight;
+    color: nds.$black;
   }
 
   &:hover,
   &.usa-button--hover {
-    background: nds.alpha(nds.$off-white, 85%);
+    background: nds.alpha(nds.$primary-lightest, 85%);
     box-shadow: none;
-    color: nds.alpha(nds.$midnight, 65%);
+    color: nds.alpha(nds.$black, 65%);
     text-decoration: none;
   }
 
   &:active,
   &.usa-button--active {
-    background: nds.alpha(nds.$midnight, 5%);
+    background: nds.alpha(nds.$black, 5%);
     box-shadow: none;
-    color: nds.$midnight;
+    color: nds.$black;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.alpha(nds.$midnight, 5%);
-    color: nds.$midnight;
+    background: nds.alpha(nds.$black, 5%);
+    color: nds.$black;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$midnight, 5%);
+    background: nds.alpha(nds.$black, 5%);
     box-shadow: none;
-    color: nds.alpha(nds.$midnight, 25%);
+    color: nds.alpha(nds.$black, 25%);
   }
 }
 
 // --tertiary → bordered, transparent fill, ink text.
 .usa-button--tertiary {
   background: transparent;
-  border: 1px solid nds.alpha(nds.$midnight, 45%);
+  border: 1px solid nds.alpha(nds.$black, 45%);
   box-shadow: none;
-  color: nds.$midnight;
+  color: nds.$black;
 
   &:is(:link, :visited) {
-    color: nds.$midnight;
+    color: nds.$black;
   }
 
   &:hover,
   &:active,
   &.usa-button--hover,
   &.usa-button--active {
-    border-color: nds.alpha(nds.$midnight, 85%);
+    border-color: nds.alpha(nds.$black, 85%);
     box-shadow: none;
-    color: nds.$midnight;
-    outline: 1.5px solid nds.alpha(nds.$midnight, 85%);
+    color: nds.$black;
+    outline: 1.5px solid nds.alpha(nds.$black, 85%);
     outline-offset: -1.5px;
     text-decoration: none;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    border-color: nds.alpha(nds.$midnight, 85%);
-    color: nds.$midnight;
+    border-color: nds.alpha(nds.$black, 85%);
+    color: nds.$black;
   }
 
   @include nds-button-disabled() {
     background: transparent;
-    border-color: nds.alpha(nds.$midnight, 25%);
+    border-color: nds.alpha(nds.$black, 25%);
     box-shadow: none;
-    color: nds.alpha(nds.$midnight, 25%);
+    color: nds.alpha(nds.$black, 25%);
   }
 }
 
@@ -279,32 +279,32 @@
 .usa-button--quaternary {
   background: transparent;
   box-shadow: none;
-  color: nds.$midnight;
+  color: nds.$black;
 
   &:is(:link, :visited) {
-    color: nds.$midnight;
+    color: nds.$black;
   }
 
   &:hover,
   &:active,
   &.usa-button--hover,
   &.usa-button--active {
-    background: nds.alpha(nds.$midnight, 5%);
+    background: nds.alpha(nds.$black, 5%);
     box-shadow: none;
-    color: nds.$midnight;
+    color: nds.$black;
     text-decoration: none;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.alpha(nds.$midnight, 5%);
-    color: nds.$midnight;
+    background: nds.alpha(nds.$black, 5%);
+    color: nds.$black;
   }
 
   @include nds-button-disabled() {
     background: transparent;
     box-shadow: none;
-    color: nds.alpha(nds.$midnight, 25%);
+    color: nds.alpha(nds.$black, 25%);
   }
 }
 
@@ -313,32 +313,32 @@
   backdrop-filter: blur(25px);
   background: transparent;
   box-shadow: none;
-  color: nds.$midnight;
+  color: nds.$black;
 
   &:is(:link, :visited) {
-    color: nds.$midnight;
+    color: nds.$black;
   }
 
   &:hover,
   &:active,
   &.usa-button--hover,
   &.usa-button--active {
-    background: nds.alpha(nds.$midnight, 12%);
+    background: nds.alpha(nds.$black, 12%);
     box-shadow: none;
-    color: nds.$midnight;
+    color: nds.$black;
     text-decoration: none;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.alpha(nds.$midnight, 8%);
-    color: nds.$midnight;
+    background: nds.alpha(nds.$black, 8%);
+    color: nds.$black;
   }
 
   @include nds-button-disabled() {
     background: transparent;
     box-shadow: none;
-    color: nds.alpha(nds.$midnight, 25%);
+    color: nds.alpha(nds.$black, 25%);
   }
 }
 

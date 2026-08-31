@@ -77,7 +77,7 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
 }
 
 .locations-modal__title {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
@@ -91,11 +91,11 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
   // Independent scroll panel with a stable thin scrollbar.
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-color: nds.alpha(nds.$off-black, 16%) transparent;
+  scrollbar-color: nds.alpha(nds.$black, 16%) transparent;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
 
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-sizing: border-box;
   display: flex;
@@ -125,7 +125,7 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
 
   &::-webkit-scrollbar-thumb {
     background-clip: padding-box;
-    background-color: nds.alpha(nds.$off-black, 16%);
+    background-color: nds.alpha(nds.$black, 16%);
     border: 2px solid transparent;
     border-radius: nds.radius(pill);
   }
@@ -138,7 +138,7 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
   text-align: left;
 
   & + & {
-    border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+    border-top: 1px solid nds.alpha(nds.$black, 10%);
     margin-top: nds.space(24);
     padding-top: nds.space(24);
   }
@@ -162,7 +162,7 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
 }
 
 .location-collection__distance {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
@@ -173,7 +173,7 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
 
 .location-collection__address,
 .location-collection__hours {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
@@ -181,7 +181,7 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
   margin: 0;
 
   strong {
-    color: nds.$off-black;
+    color: nds.$black;
     font-weight: nds.$font-semibold;
   }
 }

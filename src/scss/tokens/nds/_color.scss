@@ -3,28 +3,52 @@
 @use 'sass:meta';
 
 $black: #000c1f;
-$off-black: #000c1f;
-$midnight: #000c1f;
-$off-white: #f5f9fc;
 $white: #ffffff;
 
-$red-600: #e21d3e;
-$red-500: #f6889c;
-$red-300: #fec7d2;
+$base-darkest: #000610;
+$base-darker: #000d22;
+$base-dark: #001637;
+$base: #001c48;
+$base-ink: #000d22;
 
-$yellow-900: #754400;
-$yellow-500: #e99b00;
-$yellow-300: #f7c34a;
+$primary-darkest: #00091a;
+$primary-darker: #00163b;
+$primary-dark: #003980;
+$primary: #0066c5;
+$primary-light: #61aff0;
+$primary-lighter: #ebf3fa;
+$primary-lightest: #f5f9fc;
 
-$green-600: #077e23;
-$green-500: #0aa93a;
-$green-300: #3dd164;
+$secondary-darkest: #530912;
+$secondary-darker: #810e1d;
+$secondary-dark: #ad142b;
+$secondary: #e21d3e;
+$secondary-light: #f6889c;
+$secondary-lighter: #fec7d2;
+$secondary-lightest: #ffecf1;
 
-$blue-500: #0066c5;
-$blue-600: #003980;
-$blue-700: #00163b;
-$blue-800: #00163b;
-$blue-900: #001c48;
+$success-darker: #035321;
+$success-dark: #077e23;
+$success: #0aa93a;
+$success-light: #3dd164;
+$success-lighter: #e8f7eb;
+
+$warning-darker: #754400;
+$warning-dark: #a36700;
+$warning: #e99b00;
+$warning-light: #f7c34a;
+$warning-lighter: #faf5e6;
+
+$info-dark: $primary-dark;
+$info: $primary;
+$info-light: $primary-lighter;
+$info-lighter: $primary-lightest;
+
+$error-darker: $secondary-darkest;
+$error-dark: $secondary-dark;
+$error: $secondary;
+$error-light: $secondary-lighter;
+$error-lighter: $secondary-lightest;
 
 @function alpha($color, $opacity) {
   @if meta.type-of($opacity) != 'number' {
@@ -41,3 +65,15 @@ $blue-900: #001c48;
 
   @error 'alpha() expected a percentage or unitless 0–1, got #{$opacity}';
 }
+
+$base-light: alpha($base, 50%);
+$base-lighter: alpha($base, 10%);
+$base-lightest: alpha($base, 5%);
+
+$disabled-dark: alpha($black, 45%);
+$disabled: alpha($black, 25%);
+$disabled-light: alpha($black, 5%);
+
+$text-primary: $black;
+$background-primary: $white;
+$border-tertiary: $base;

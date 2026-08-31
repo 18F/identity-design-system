@@ -9,10 +9,10 @@
 // The card box — the link/button/div itself.
 .card {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-sizing: border-box;
-  color: nds.$off-black;
+  color: nds.$black;
   display: block;
   font-family: nds.$font-family;
   max-width: 100%;
@@ -24,9 +24,9 @@
 
 // Absolute status pill.
 .card__badge {
-  background: nds.alpha(nds.$blue-600, 10%);
+  background: nds.alpha(nds.$primary-dark, 10%);
   border-radius: nds.radius(pill);
-  color: nds.$blue-600;
+  color: nds.$primary-dark;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
   font-weight: nds.$font-semibold;
@@ -40,8 +40,8 @@
 }
 
 .card__badge--success {
-  background: nds.alpha(nds.$green-300, 10%);
-  color: nds.$green-600;
+  background: nds.alpha(nds.$success-light, 10%);
+  color: nds.$success-dark;
 }
 
 // MFA option list.
@@ -78,8 +78,8 @@
 
 // MFA card.
 .card--mfa {
-  border-color: nds.alpha(nds.$midnight, 10%);
-  color: nds.$midnight;
+  border-color: nds.alpha(nds.$black, 10%);
+  color: nds.$black;
   padding-inline-end: nds.space(16);
 
   .card__inner {
@@ -92,32 +92,32 @@
   }
 
   .card__row > .usa-icon {
-    color: nds.$midnight;
+    color: nds.$black;
     flex: 0 0 auto;
   }
 
   .card__title {
-    color: nds.$midnight;
+    color: nds.$black;
   }
 
   .card__description {
-    color: nds.alpha(nds.$midnight, 65%);
+    color: nds.alpha(nds.$black, 65%);
   }
 
   .card__trailing {
     align-self: center;
-    color: nds.alpha(nds.$midnight, 65%);
+    color: nds.alpha(nds.$black, 65%);
   }
 
   &.card--interactive:hover {
-    border-color: nds.$midnight;
+    border-color: nds.$black;
   }
 }
 
 .card--mfa .card__badge {
-  background: nds.alpha(nds.$blue-600, 8%);
+  background: nds.alpha(nds.$primary-dark, 8%);
   border-radius: nds.radius(8);
-  color: nds.$blue-500;
+  color: nds.$primary;
   padding: nds.space(4) nds.space(8);
   right: nds.space(16);
   top: nds.space(16);
@@ -154,17 +154,17 @@
   transition: nds.$transition;
 
   &:is(:link, :visited) {
-    color: nds.$off-black;
+    color: nds.$black;
   }
 
   &:hover {
-    border-color: nds.$off-black;
-    color: nds.$off-black;
+    border-color: nds.$black;
+    color: nds.$black;
     text-decoration: none;
   }
 
   &:active {
-    background: nds.alpha(nds.$off-black, 5%);
+    background: nds.alpha(nds.$black, 5%);
   }
 
   &:focus {
@@ -176,9 +176,9 @@
   }
 
   &:is(:disabled, [aria-disabled='true']) {
-    background: nds.alpha(nds.$off-white, 85%);
-    border-color: nds.alpha(nds.$off-black, 10%);
-    color: nds.$off-black;
+    background: nds.alpha(nds.$primary-lightest, 85%);
+    border-color: nds.alpha(nds.$black, 10%);
+    color: nds.$black;
     cursor: not-allowed;
 
     .card__title,
@@ -213,7 +213,7 @@
 
 .card__trailing {
   align-items: center;
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   display: inline-flex;
   flex-shrink: 0;
   justify-content: center;
@@ -282,14 +282,14 @@
 }
 
 .card__title {
-  color: nds.$off-black;
+  color: nds.$black;
   font-weight: nds.$font-semibold;
 }
 
 .card__description,
 .card__label,
 .card__meta {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-weight: 400;
 }
 
@@ -305,12 +305,12 @@
 }
 
 .card__value {
-  color: nds.$off-black;
+  color: nds.$black;
   font-weight: 400;
 }
 
 .card__divider {
-  background: nds.alpha(nds.$off-black, 10%);
+  background: nds.alpha(nds.$black, 10%);
   border: 0;
   height: 1px;
   margin: 0;

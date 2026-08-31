@@ -16,7 +16,7 @@ $nds-input-height: nds.space(56);
 $nds-input-pad-x: 15px;
 
 // Focus ring for inputs: a 1px box-shadow ring in the border color.
-@mixin nds-input-focus-ring($color: nds.alpha(nds.$midnight, 85%)) {
+@mixin nds-input-focus-ring($color: nds.alpha(nds.$black, 85%)) {
   border-color: $color;
   box-shadow: 0 0 0 $nds-input-border-width $color;
   outline: 0;
@@ -27,10 +27,10 @@ $nds-input-pad-x: 15px;
 .usa-textarea,
 .usa-select {
   background-color: nds.$white;
-  border: $nds-input-border-width solid nds.alpha(nds.$midnight, 45%);
+  border: $nds-input-border-width solid nds.alpha(nds.$black, 45%);
   border-radius: nds.radius(16);
   box-sizing: border-box;
-  color: nds.$midnight;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: 400;
@@ -45,14 +45,14 @@ $nds-input-pad-x: 15px;
   width: 100%;
 
   &::placeholder {
-    color: nds.alpha(nds.$midnight, 65%);
+    color: nds.alpha(nds.$black, 65%);
     opacity: 1;
   }
 
   // Hover (only when not focused/disabled/readonly). `:hover` un-wrapped so it
   // carries real (0,2,0) specificity.
   &:hover:not(:focus, :focus-visible, :disabled, [readonly], [aria-disabled='true']) {
-    border-color: nds.alpha(nds.$midnight, 85%);
+    border-color: nds.alpha(nds.$black, 85%);
   }
 
   // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
@@ -66,12 +66,12 @@ $nds-input-pad-x: 15px;
   // Disabled / readonly — un-wrapped so `:disabled`/`[aria-disabled]` reach
   // (0,2,0) and beat the stock `.usa-input:disabled` (0,2,0) by source order.
   &:is([readonly], :disabled, [aria-disabled='true']) {
-    background-color: nds.alpha(nds.$midnight, 5%);
+    background-color: nds.alpha(nds.$black, 5%);
   }
 
   &:is(:disabled, [aria-disabled='true']) {
-    -webkit-text-fill-color: nds.$midnight;
-    color: nds.$midnight;
+    -webkit-text-fill-color: nds.$black;
+    color: nds.$black;
     cursor: not-allowed;
     opacity: 1;
   }
@@ -101,12 +101,12 @@ $nds-input-pad-x: 15px;
 .usa-input[aria-invalid='true'],
 .usa-textarea[aria-invalid='true'],
 .usa-select[aria-invalid='true'] {
-  border-color: nds.$red-600;
+  border-color: nds.$secondary;
 
   // Boost past the stock focus rule: the error class (0,1,0) + `:is(...)`
   // (0,1,0) + `:focus` (0,1,0) = (0,3,0).
   &:is(.usa-input, .usa-textarea, .usa-select, [aria-invalid='true']):is(:focus, :focus-visible) {
-    @include nds-input-focus-ring(nds.$red-600);
+    @include nds-input-focus-ring(nds.$secondary);
 
     outline: 0;
   }
@@ -114,7 +114,7 @@ $nds-input-pad-x: 15px;
 
 // Label.
 .usa-label {
-  color: nds.$midnight;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-weight: nds.$font-semibold;
@@ -124,7 +124,7 @@ $nds-input-pad-x: 15px;
 
 // Hint.
 .usa-hint {
-  color: nds.alpha(nds.$midnight, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
   font-weight: 400;
@@ -136,7 +136,7 @@ $nds-input-pad-x: 15px;
 // Error message (red, semibold, with leading icon gap).
 .usa-error-message {
   align-items: center;
-  color: nds.$red-600;
+  color: nds.$secondary;
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;

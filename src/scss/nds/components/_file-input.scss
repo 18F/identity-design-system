@@ -23,7 +23,7 @@ $nds-file-border-width-focus: 2px;
 // centered.
 .usa-file-input__target {
   background-color: nds.$white;
-  border: $nds-file-border-width solid nds.alpha(nds.$off-black, 10%);
+  border: $nds-file-border-width solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(16);
   box-sizing: border-box;
   display: block;
@@ -35,23 +35,23 @@ $nds-file-border-width-focus: 2px;
   width: 100%;
 
   &:hover {
-    border-color: nds.alpha(nds.$off-black, 45%);
+    border-color: nds.alpha(nds.$black, 45%);
   }
 }
 
 // Drag state and invalid target get a stronger / red border.
 .usa-file-input--drag .usa-file-input__target {
-  border-color: nds.alpha(nds.$off-black, 45%);
+  border-color: nds.alpha(nds.$black, 45%);
 }
 
 .usa-file-input__target.has-invalid-file,
 .usa-form-group--error .usa-file-input__target {
-  border-color: nds.$red-600;
+  border-color: nds.$secondary;
 }
 
 // Instructions / choose link.
 .usa-file-input__instructions {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: 400;
@@ -63,14 +63,14 @@ $nds-file-border-width-focus: 2px;
 }
 
 .usa-file-input__choose {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-weight: 400;
   text-decoration: underline;
   text-underline-offset: 0.1em;
 }
 
 .usa-file-input__accepted-files-message {
-  color: nds.$red-600;
+  color: nds.$secondary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
@@ -91,7 +91,7 @@ $nds-file-border-width-focus: 2px;
 
 .usa-file-input__input {
   &:not([disabled]):focus-visible {
-    outline: $nds-file-border-width-focus solid nds.$off-black;
+    outline: $nds-file-border-width-focus solid nds.$black;
     outline-offset: -#{$nds-file-border-width-focus};
   }
 }
@@ -99,7 +99,7 @@ $nds-file-border-width-focus: 2px;
 // Preview list.
 .usa-file-input__preview-heading {
   align-items: center;
-  color: nds.$off-black;
+  color: nds.$black;
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
@@ -115,7 +115,7 @@ $nds-file-border-width-focus: 2px;
 
 .usa-file-input__preview {
   align-items: center;
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
@@ -131,19 +131,19 @@ $nds-file-border-width-focus: 2px;
 .usa-file-input--disabled {
   .usa-file-input__instructions,
   .usa-file-input__choose {
-    color: nds.alpha(nds.$off-black, 65%);
+    color: nds.alpha(nds.$black, 65%);
   }
 
   .usa-file-input__box {
-    background-color: nds.alpha(nds.$off-black, 5%);
+    background-color: nds.alpha(nds.$black, 5%);
   }
 
   .usa-file-input__target {
-    background-color: nds.alpha(nds.$off-black, 5%);
-    border-color: nds.alpha(nds.$off-black, 45%);
+    background-color: nds.alpha(nds.$black, 5%);
+    border-color: nds.alpha(nds.$black, 45%);
 
     &:hover {
-      border-color: nds.alpha(nds.$off-black, 45%);
+      border-color: nds.alpha(nds.$black, 45%);
     }
   }
 }

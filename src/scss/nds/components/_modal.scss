@@ -33,7 +33,7 @@
   // Tinted, blurred scrim behind the dialog.
   &::backdrop {
     backdrop-filter: blur(#{nds.space(12)});
-    background: nds.alpha(nds.$off-black, 25%);
+    background: nds.alpha(nds.$black, 25%);
     opacity: 0;
     transition:
       opacity nds.$tr-duration-md nds.$tr-easing-cubic,
@@ -68,11 +68,11 @@
 .modal__close {
   align-items: center;
   backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$off-black, 5%);
+  background: nds.alpha(nds.$black, 5%);
   border: 0;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.$off-black;
+  color: nds.$black;
   cursor: pointer;
   display: flex;
   height: nds.space(40);
@@ -91,11 +91,11 @@
   }
 
   &:hover {
-    background: nds.alpha(nds.$off-black, 10%);
+    background: nds.alpha(nds.$black, 10%);
   }
 
   &:focus-visible {
-    outline: 1px solid nds.$off-black;
+    outline: 1px solid nds.$black;
     outline-offset: 0;
   }
 }
@@ -115,7 +115,7 @@
 
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-color: nds.alpha(nds.$off-black, 16%) transparent;
+  scrollbar-color: nds.alpha(nds.$black, 16%) transparent;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
 
@@ -130,7 +130,7 @@
 
   &::-webkit-scrollbar-thumb {
     background-clip: padding-box;
-    background-color: nds.alpha(nds.$off-black, 16%);
+    background-color: nds.alpha(nds.$black, 16%);
     border: 2px solid transparent;
     border-radius: nds.radius(pill);
   }
@@ -145,7 +145,7 @@
 
 .modal__media {
   align-self: stretch;
-  border-bottom: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-bottom: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(32) nds.radius(32) 0 0;
   overflow: hidden;
   width: 100%;
@@ -233,7 +233,7 @@
 }
 
 .modal__title {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-semibold;
@@ -245,7 +245,7 @@
 
 .modal__description,
 .modal__content {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   line-height: 1.5;

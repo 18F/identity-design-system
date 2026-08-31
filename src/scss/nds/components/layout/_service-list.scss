@@ -11,7 +11,7 @@
 }
 
 @mixin section-heading {
-  color: nds.$off-black;
+  color: nds.$black;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-heading-section;
@@ -19,7 +19,7 @@
 }
 
 @mixin section-description {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
@@ -27,7 +27,7 @@
 
 @mixin panel {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-sizing: border-box;
   padding: nds.space(24);
@@ -41,7 +41,7 @@
 }
 
 @mixin rows-divider {
-  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-top: 1px solid nds.alpha(nds.$black, 10%);
   margin-top: nds.space(24);
   padding-top: nds.space(24);
 }
@@ -58,7 +58,7 @@
 @mixin mark {
   align-items: center;
   border-radius: nds.radius(pill);
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   display: inline-flex;
   flex: 0 0 nds.space(48);
   font-size: nds.$text-body-s;
@@ -92,12 +92,12 @@
 }
 
 @mixin title {
-  color: nds.$off-black;
+  color: nds.$black;
   font-weight: nds.$font-semibold;
 }
 
 @mixin muted {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-weight: 400;
 }
 
