@@ -15,8 +15,9 @@ $nds-input-border-width: 1px;
 $nds-input-height: nds.space(56);
 $nds-input-pad-x: 15px;
 
-// Focus ring for inputs: a 1px box-shadow ring in the border color.
-@mixin nds-input-focus-ring($color: nds.alpha(nds.$black, 85%)) {
+// Focus ring for inputs: a 1px box-shadow ring in the border color. Paired with
+// the 1px border it reads as a 2px ring without shifting layout.
+@mixin nds-input-focus-ring($color: nds.$base-darkest) {
   border-color: $color;
   box-shadow: 0 0 0 $nds-input-border-width $color;
   outline: 0;
@@ -26,16 +27,16 @@ $nds-input-pad-x: 15px;
 .usa-input,
 .usa-textarea,
 .usa-select {
-  background-color: nds.$white;
-  border: $nds-input-border-width solid nds.alpha(nds.$black, 45%);
+  background-color: nds.$background-primary;
+  border: $nds-input-border-width solid nds.$base-light;
   border-radius: nds.radius(16);
   box-sizing: border-box;
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: 400;
   height: $nds-input-height;
-  letter-spacing: 0;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   max-width: none;
   padding: 0 $nds-input-pad-x;
@@ -45,14 +46,14 @@ $nds-input-pad-x: 15px;
   width: 100%;
 
   &::placeholder {
-    color: nds.alpha(nds.$black, 65%);
+    color: nds.alpha(nds.$text-primary, 65%);
     opacity: 1;
   }
 
   // Hover (only when not focused/disabled/readonly). `:hover` un-wrapped so it
   // carries real (0,2,0) specificity.
   &:hover:not(:focus, :focus-visible, :disabled, [readonly], [aria-disabled='true']) {
-    border-color: nds.alpha(nds.$black, 85%);
+    border-color: nds.$base-darkest;
   }
 
   // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
@@ -66,12 +67,12 @@ $nds-input-pad-x: 15px;
   // Disabled / readonly — un-wrapped so `:disabled`/`[aria-disabled]` reach
   // (0,2,0) and beat the stock `.usa-input:disabled` (0,2,0) by source order.
   &:is([readonly], :disabled, [aria-disabled='true']) {
-    background-color: nds.alpha(nds.$black, 5%);
+    background-color: nds.$disabled-light;
   }
 
   &:is(:disabled, [aria-disabled='true']) {
-    -webkit-text-fill-color: nds.$black;
-    color: nds.$black;
+    -webkit-text-fill-color: nds.$text-primary;
+    color: nds.$text-primary;
     cursor: not-allowed;
     opacity: 1;
   }
@@ -114,21 +115,22 @@ $nds-input-pad-x: 15px;
 
 // Label.
 .usa-label {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin: 0 0 nds.space(8);
 }
 
 // Hint.
 .usa-hint {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.alpha(nds.$text-primary, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
   font-weight: 400;
-  letter-spacing: 0;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin: nds.space(8) 0 0;
 }
@@ -142,7 +144,7 @@ $nds-input-pad-x: 15px;
   font-size: nds.$text-body-s;
   font-weight: nds.$font-semibold;
   gap: nds.space(4);
-  letter-spacing: 0;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   padding: nds.space(8) 0 0;
   text-wrap: pretty;
