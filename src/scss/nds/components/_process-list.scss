@@ -10,7 +10,7 @@
 @use 'tokens/nds' as nds;
 
 .process-list {
-  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+  @include nds.stack($gap: nds.space(32), $reset-flow: true, $width: 100%);
 
   counter-reset: nds-process-list;
   list-style: none;
@@ -23,34 +23,35 @@
   align-items: flex-start;
   counter-increment: nds-process-list;
   display: grid;
-  gap: nds.space(16);
-  grid-template-columns: nds.space(32) minmax(0, 1fr);
+  gap: nds.space(12);
+  grid-template-columns: nds.space(44) minmax(0, 1fr);
   min-width: 0;
   position: relative;
 }
 
 .process-list__item:not(:last-child)::before {
-  background: nds.alpha(nds.$black, 10%);
+  background: nds.$base-lighter;
   content: '';
-  inset: nds.space(40) auto calc(-1 * nds.space(16)) nds.space(15);
+  inset: nds.space(44) auto calc(-1 * nds.space(32)) calc(nds.space(44) / 2 - 1px);
   position: absolute;
   width: 2px;
 }
 
 .process-list__marker {
   align-items: center;
-  background: nds.$black;
+  background: nds.$base;
   border-radius: nds.radius(pill);
   color: nds.$white;
   display: inline-flex;
   font-family: nds.$font-family;
-  font-size: nds.$text-body-s;
+  font-size: nds.$text-label-m;
   font-weight: nds.$font-semibold;
-  height: nds.space(32);
+  height: nds.space(44);
   justify-content: center;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1;
   position: relative;
-  width: nds.space(32);
+  width: nds.space(44);
   z-index: 1;
 
   &::before {
@@ -59,14 +60,15 @@
 }
 
 .process-list__body {
-  @include nds.stack($gap: nds.space(12), $reset-flow: true, $width: 100%);
+  @include nds.stack($gap: nds.space(4), $reset-flow: true, $width: 100%);
 
-  color: nds.$black;
+  color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   min-width: 0;
-  padding-top: nds.space(2);
+  padding-top: nds.space(8);
 
   > p {
     margin: 0;
@@ -74,7 +76,7 @@
 }
 
 .process-list__heading {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-weight: nds.$font-semibold;
