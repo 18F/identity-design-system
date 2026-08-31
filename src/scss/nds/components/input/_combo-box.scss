@@ -1,0 +1,128 @@
+// NDS combo-box overlay.
+//
+// Restyles the USWDS combo-box (`.usa-combo-box` and its `__input`,
+// `__toggle-list`, `__clear-input`, `__list`, `__list-option`) into the NDS
+// select look: a control surface matching `.usa-select`, a 20px chevron at
+// 65% ink, and a floating rounded menu with padded, rounded option rows.
+//
+// The combo-box is used in place of the OS-native `<select>` popup so the open
+// menu can be styled to match the design in every browser (the native popup
+// cannot be styled). Loaded AFTER `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+$nds-combo-border-width: 1px;
+$nds-combo-height: nds.space(56);
+$nds-combo-pad-x: 15px;
+
+.usa-combo-box {
+  max-width: none;
+}
+
+// Control surface — mirror the `.usa-select` treatment.
+.usa-combo-box__input {
+  background-color: nds.$background-primary;
+  border: $nds-combo-border-width solid nds.$base-light;
+  border-radius: nds.radius(16);
+  box-sizing: border-box;
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  height: $nds-combo-height;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding: 0 nds.space(44) 0 $nds-combo-pad-x;
+  transition:
+    border-color nds.$tr-duration-md nds.$tr-easing-cubic,
+    box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
+
+  &::placeholder {
+    color: nds.alpha(nds.$text-primary, 65%);
+    opacity: 1;
+  }
+
+  &:hover:not(:focus, :focus-visible, :disabled, [aria-disabled='true']) {
+    border-color: nds.$base-darkest;
+  }
+
+  // Open/focused: 2px ink border (matches the active state in the design).
+  &:is(:focus, :focus-visible) {
+    border-color: nds.$base-darkest;
+    box-shadow: 0 0 0 $nds-combo-border-width nds.$base-darkest;
+    outline: 0;
+  }
+
+  &:is(:disabled, [aria-disabled='true']) {
+    background-color: nds.$disabled-light;
+    -webkit-text-fill-color: nds.$text-primary;
+    color: nds.$text-primary;
+    cursor: not-allowed;
+    opacity: 1;
+  }
+}
+
+// Toggle chevron — the 20px chevron at 65% ink, no separator.
+.usa-combo-box__toggle-list {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 12.2322L4.70711 6.93934L3.29289 8.35355L10 15.0607L16.7071 8.35355L15.2929 6.93934L10 12.2322Z' fill='%23000c1f' fill-opacity='0.65'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: nds.space(20);
+  opacity: 1;
+  right: nds.space(12);
+}
+
+.usa-combo-box__clear-input {
+  right: nds.space(44);
+}
+
+.usa-combo-box__input-button-separator {
+  display: none;
+}
+
+// Floating menu — rounded card with elevation, padded rows.
+.usa-combo-box__list {
+  background-color: nds.$background-primary;
+  border: $nds-combo-border-width solid nds.$base-lightest;
+  border-radius: nds.radius(16);
+  box-shadow: nds.$shadow-large;
+  margin-top: nds.space(4);
+  max-height: 300px;
+  padding: nds.space(4);
+}
+
+.usa-combo-box__list-option {
+  border: 0;
+  border-radius: nds.radius(12);
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding: nds.space(8) nds.space(12);
+
+  & + & {
+    margin-top: nds.space(4);
+  }
+}
+
+// Keyboard-focused row — subtle wash, no default outline.
+.usa-combo-box__list-option--focused,
+.usa-combo-box__list-option--focused:focus {
+  background-color: nds.$base-lightest;
+  outline: 0;
+}
+
+// Selected row — keep ink text on a slightly stronger wash.
+.usa-combo-box__list-option--selected,
+.usa-combo-box__list-option--selected:focus {
+  background-color: nds.$base-lighter;
+  border-color: transparent;
+  color: nds.$text-primary;
+}
+
+.usa-combo-box__list-option--no-results {
+  color: nds.alpha(nds.$text-primary, 65%);
+  padding: nds.space(8) nds.space(12);
+}

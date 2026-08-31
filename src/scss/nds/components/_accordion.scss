@@ -30,8 +30,7 @@
 
 .usa-accordion__button {
   background-color: nds.$background-primary;
-  background-size: 16px;
-  background-position: right nds.space(16) center;
+  border: 0;
   border-radius: nds.radius(16);
   color: nds.$text-primary;
   font-family: nds.$font-family;
@@ -41,10 +40,36 @@
   line-height: 1.5;
   padding: nds.space(16);
   padding-inline-end: calc(#{nds.space(16)} + #{nds.space(20)} + 16px);
+  position: relative;
   text-align: start;
 
+  // The plus/minus glyph is drawn as a masked pseudo-element so it can take a
+  // semantic ink color instead of the fixed hue baked into the shared svg.
+  &,
+  &:hover,
+  &[aria-expanded='false'],
+  &[aria-expanded='false']:hover {
+    background-image: none;
+  }
+
+  &::before {
+    background-color: nds.$text-primary;
+    content: '';
+    height: 16px;
+    mask: url('../../img/accordion-minus.svg') no-repeat center / 16px 16px;
+    position: absolute;
+    right: nds.space(16);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+  }
+
+  &[aria-expanded='false']::before {
+    mask-image: url('../../img/accordion-plus.svg');
+  }
+
   &:hover {
-    background-color: nds.$base-lighter;
+    background-color: nds.$base-lightest;
   }
 
   &:focus {
@@ -58,7 +83,7 @@
 }
 
 .usa-accordion__content {
-  background-color: nds.$base-lightest;
+  background-color: transparent;
   border-radius: 0 0 nds.radius(16) nds.radius(16);
   color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
@@ -72,7 +97,7 @@
 
 .usa-accordion--bordered {
   .usa-accordion__button {
-    border: 1px solid nds.$border-tertiary;
+    border: 1px solid nds.$base-lighter;
 
     &[aria-expanded='true'] {
       border-bottom: 1px solid nds.$base-lighter;
@@ -80,7 +105,7 @@
   }
 
   .usa-accordion__content {
-    border: 1px solid nds.$border-tertiary;
+    border: 1px solid nds.$base-lighter;
     border-top: 0;
     padding-bottom: nds.space(16);
   }

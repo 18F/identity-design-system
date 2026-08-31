@@ -64,11 +64,12 @@
   // to primary ink so every status shares the same mark.
   .usa-alert__body::before {
     background-color: nds.$text-primary;
+    background-image: none;
     background-size: 1.5rem 1.5rem;
     display: block;
     height: 1.5rem;
     margin: 0 0 nds.space(12);
-    mask-size: 1.5rem 1.5rem;
+    mask: url('../../img/nds-icons/info.svg') no-repeat center / 1.5rem 1.5rem;
     position: static;
     width: 1.5rem;
   }
@@ -130,18 +131,34 @@
 // Status modifiers — background tint only; foreground ink is shared.
 .usa-alert--info {
   --nds-alert-bg: #{nds.$info-lighter};
+
+  .usa-alert__body::before {
+    mask-image: url('../../img/nds-icons/info.svg');
+  }
 }
 
 .usa-alert--warning {
   --nds-alert-bg: #{nds.$warning-lighter};
+
+  .usa-alert__body::before {
+    mask-image: url('../../img/nds-icons/warning.svg');
+  }
 }
 
 .usa-alert--success {
   --nds-alert-bg: #{nds.$success-lighter};
+
+  .usa-alert__body::before {
+    mask-image: url('../../img/nds-icons/check-circle.svg');
+  }
 }
 
 .usa-alert--error {
   --nds-alert-bg: #{nds.$error-lighter};
+
+  .usa-alert__body::before {
+    mask-image: url('../../img/nds-icons/error.svg');
+  }
 }
 
 // --slim → tighter vertical padding; keep the flat card look.

@@ -59,18 +59,27 @@ $nds-checkbox-border-width: 1px;
   box-shadow: 0 0 0 $nds-checkbox-border-width nds.$primary;
 }
 
-// Checked: solid blue-500 fill (USWDS supplies the white check glyph).
+// Checked: solid blue-500 fill with the 16px white check glyph centered in the
+// 20px box (USWDS's own glyph is an 8px mark, too small for this box).
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
   background-color: nds.$primary;
+  background-image: url('../../img/nds-icons/checkmark.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
   box-shadow: none;
 }
 
-// Indeterminate: same blue-500 fill as checked. USWDS supplies the
-// indeterminate glyph (`checkbox-indeterminate.svg`) and defaults to a midnight
-// fill; restyle to match the checked treatment. Handle both the native pseudo
-// and the `[data-indeterminate]` attribute variant USWDS supports.
+// Indeterminate: same blue-500 fill as checked, with a 16px white bar matching
+// the check glyph's weight. USWDS ships an 8px indeterminate glyph and a
+// midnight fill; restyle to match the checked treatment. Handle both the native
+// pseudo and the `[data-indeterminate]` attribute variant USWDS supports.
 .usa-checkbox__input:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label::before {
   background-color: nds.$primary;
+  background-image: url('../../img/nds-icons/indeterminate.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
   box-shadow: none;
 }
 
@@ -112,9 +121,13 @@ $nds-checkbox-border-width: 1px;
   }
 }
 
-// Disabled + checked: muted fill, keep the glyph.
+// Disabled + checked: muted fill, keep the enlarged glyph.
 .usa-checkbox__input:is(:disabled, [aria-disabled='true']):checked + .usa-checkbox__label::before {
   background-color: nds.alpha(nds.$black, 25%);
+  background-image: url('../../img/nds-icons/checkmark.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
   box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
 }
 
