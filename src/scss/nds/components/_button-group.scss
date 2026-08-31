@@ -52,7 +52,7 @@
 // ----------------------------------------
 .usa-button-group--segmented {
   align-items: stretch;
-  border: 1px solid nds.alpha(nds.$midnight, 5%);
+  border: 1px solid nds.$base-lightest;
   border-radius: nds.radius(pill);
   box-shadow: nds.$shadow-large;
   flex-flow: row nowrap;
@@ -115,6 +115,38 @@
     // Remove the USWDS 1px separator pseudo-element; segments join seamlessly.
     > .usa-button::before {
       content: none;
+    }
+  }
+
+  // Group-level tertiary: inside a segmented group the tertiary style reads as
+  // blue link text on the shared surface (no per-segment border), rather than
+  // the bordered-ink treatment the standalone `.usa-button--tertiary` renders.
+  // The base overlay's box-shadow focus ring still applies.
+  .usa-button--tertiary {
+    border: 0;
+    color: nds.$primary;
+
+    &:is(:link, :visited) {
+      color: nds.$primary;
+    }
+
+    &:hover,
+    &:active,
+    &.usa-button--hover,
+    &.usa-button--active {
+      border: 0;
+      color: nds.$primary;
+      outline: 0;
+    }
+
+    &:is(:focus-visible, .usa-focus) {
+      border: 0;
+      color: nds.$primary;
+    }
+
+    &:is(:disabled, [aria-disabled='true'], .usa-button--disabled) {
+      border: 0;
+      color: nds.alpha(nds.$primary, 45%);
     }
   }
 }
