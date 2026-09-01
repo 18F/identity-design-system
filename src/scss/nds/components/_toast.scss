@@ -15,12 +15,12 @@ $nds-toast-mobile-breakpoint: 40em;
 
 .toast {
   align-items: center;
-  backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$black, 85%);
+  background: nds.$black;
   border: 0;
   border-radius: nds.radius(pill);
+  box-shadow: nds.$shadow-large;
   box-sizing: border-box;
-  color: nds.$primary-lightest;
+  color: nds.$white;
   cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;

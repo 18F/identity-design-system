@@ -13,7 +13,7 @@ $nds-badge-states: (
   primary: (
     light: (
       nds.$primary-darker,
-      nds.$primary-lightest,
+      nds.$white,
     ),
     dark: (
       nds.$white,
@@ -22,8 +22,8 @@ $nds-badge-states: (
   ),
   secondary: (
     light: (
-      nds.alpha(nds.$primary-darker, 10%),
-      nds.$black,
+      nds.$base-lightest,
+      nds.$text-primary,
     ),
     dark: (
       nds.$primary-darker,

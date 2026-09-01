@@ -19,34 +19,40 @@ $nds-file-border-width-focus: 2px;
   width: 100%;
 }
 
-// Drop target: white card, hairline border, 16px radius, generous padding,
-// centered.
+// Drop target: white card, dashed hairline border, 16px radius, generous
+// padding, centered.
 .usa-file-input__target {
   background-color: nds.$white;
-  border: $nds-file-border-width solid nds.alpha(nds.$black, 10%);
+  border: $nds-file-border-width dashed nds.$base-light;
   border-radius: nds.radius(16);
   box-sizing: border-box;
   display: block;
   overflow: hidden;
-  padding: nds.space(24);
+  padding: nds.space(40);
   position: relative;
   text-align: center;
-  transition: border-color nds.$tr-duration-md nds.$tr-easing-cubic;
+  transition:
+    background-color nds.$tr-duration-md nds.$tr-easing-cubic,
+    border-color nds.$tr-duration-md nds.$tr-easing-cubic;
   width: 100%;
 
   &:hover {
-    border-color: nds.alpha(nds.$black, 45%);
+    background-color: nds.$base-lightest;
+    border-color: nds.$base-darkest;
+  }
+
+  // Selected file: solid border, white surface.
+  &:has(.usa-file-input__preview-heading) {
+    background-color: nds.$white;
+    border-style: solid;
+    border-color: nds.$base-lighter;
   }
 }
 
-// Drag state and invalid target get a stronger / red border.
+// Drag state gets the tinted surface and the darkest border.
 .usa-file-input--drag .usa-file-input__target {
-  border-color: nds.alpha(nds.$black, 45%);
-}
-
-.usa-file-input__target.has-invalid-file,
-.usa-form-group--error .usa-file-input__target {
-  border-color: nds.$secondary;
+  background-color: nds.$base-lightest;
+  border-color: nds.$base-darkest;
 }
 
 // Instructions / choose link.
@@ -70,7 +76,7 @@ $nds-file-border-width-focus: 2px;
 }
 
 .usa-file-input__accepted-files-message {
-  color: nds.$secondary;
+  color: nds.$error-dark;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
@@ -127,23 +133,25 @@ $nds-file-border-width-focus: 2px;
   z-index: 3;
 }
 
-// Disabled state.
+// Disabled state: tinted surface, solid hairline border, muted text.
 .usa-file-input--disabled {
   .usa-file-input__instructions,
   .usa-file-input__choose {
-    color: nds.alpha(nds.$black, 65%);
+    color: nds.$disabled;
   }
 
   .usa-file-input__box {
-    background-color: nds.alpha(nds.$black, 5%);
+    background-color: nds.$base-lightest;
   }
 
   .usa-file-input__target {
-    background-color: nds.alpha(nds.$black, 5%);
-    border-color: nds.alpha(nds.$black, 45%);
+    background-color: nds.$base-lightest;
+    border-style: solid;
+    border-color: nds.$base-lighter;
 
     &:hover {
-      border-color: nds.alpha(nds.$black, 45%);
+      background-color: nds.$base-lightest;
+      border-color: nds.$base-lighter;
     }
   }
 }
