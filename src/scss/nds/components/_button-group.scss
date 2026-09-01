@@ -1,0 +1,152 @@
+// Button group overlay. Restyles the standard USWDS `.usa-button-group`,
+// `.usa-button-group__item`, and `.usa-button-group--segmented` selectors so
+// the markup stays identical across bundles. Pure component CSS — does not
+// reconfigure the core settings.
+//
+// The group only lays out the buttons; the buttons themselves inherit their
+// fill, text, size, and focus treatment from the merged `.usa-button` overlay
+// (see `_btn.scss`).
+//
+// Default group: a horizontal row of standalone pill buttons separated by a
+// fixed gap. Segmented group: the buttons join into a single control — the
+// outer corners keep the pill radius, the joined inner edges are squared, the
+// gap collapses to zero, and the per-button resting shadow lifts to the shared
+// container so the segments read as one elevated surface.
+//
+// Loaded after `@forward 'uswds'` (see styles.scss) so these rules win on
+// equal specificity.
+//
+// Focus notes:
+// - The container deliberately does NOT clip its overflow. Each button draws
+//   its keyboard focus ring as a box-shadow (see `nds.focus-ring`); clipping
+//   would hide that ring on the joined segments and break WCAG 2.4.7. Instead
+//   a focused/hovered/active segment is raised with `z-index` (mirroring
+//   USWDS) so its ring paints above the adjacent segments.
+
+@use 'tokens/nds' as nds;
+
+// ----------------------------------------
+// Default group
+// ----------------------------------------
+.usa-button-group {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  gap: nds.space(12);
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.usa-button-group__item {
+  margin: 0;
+
+  .usa-button {
+    height: 100%;
+    margin: 0;
+  }
+}
+
+// ----------------------------------------
+// Segmented group
+// ----------------------------------------
+.usa-button-group--segmented {
+  align-items: stretch;
+  border: 1px solid nds.$base-lightest;
+  border-radius: nds.radius(pill);
+  box-shadow: nds.$shadow-large;
+  flex-flow: row nowrap;
+  gap: 0;
+  justify-content: flex-start;
+  margin: 0;
+
+  // Segments share the row equally. Reset the USWDS stroke-based negative
+  // margins and `calc()` widths so the segments abut cleanly with no overlap.
+  .usa-button {
+    margin: 0;
+    position: relative;
+    width: 100%;
+  }
+
+  // The elevation lives on the shared container, so drop each segment's
+  // resting shadow. Scoped away from the focused state so the keyboard focus
+  // ring (drawn as a box-shadow) is preserved (WCAG 2.4.7).
+  .usa-button:not(:focus-visible, .usa-focus) {
+    box-shadow: none;
+  }
+
+  // Raise the interacting segment so its focus ring and any variant border
+  // paint above the neighbouring segments.
+  .usa-button:is(:hover, .usa-button--hover, :active, .usa-button--active) {
+    z-index: 2;
+  }
+
+  .usa-button:is(:focus, :focus-visible, .usa-focus) {
+    z-index: 3;
+  }
+
+  .usa-button-group__item {
+    flex: 1 0 0;
+    margin: 0;
+    min-width: 0;
+    width: auto;
+
+    // Inner edges are squared; outer corners keep the pill radius. Match the
+    // USWDS first-/last-child specificity so these win, and re-assert the
+    // margin/width reset the stock rules set at the same specificity.
+    &:first-child > .usa-button {
+      border-radius: nds.radius(pill) 0 0 nds.radius(pill);
+      margin: 0;
+      width: 100%;
+    }
+
+    &:last-child > .usa-button {
+      border-radius: 0 nds.radius(pill) nds.radius(pill) 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    &:where(:not(:first-child, :last-child)) > .usa-button {
+      border-radius: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    // Remove the USWDS 1px separator pseudo-element; segments join seamlessly.
+    > .usa-button::before {
+      content: none;
+    }
+  }
+
+  // Group-level tertiary: inside a segmented group the tertiary style reads as
+  // blue link text on the shared surface (no per-segment border), rather than
+  // the bordered-ink treatment the standalone `.usa-button--tertiary` renders.
+  // The base overlay's box-shadow focus ring still applies.
+  .usa-button--tertiary {
+    border: 0;
+    color: nds.$primary;
+
+    &:is(:link, :visited) {
+      color: nds.$primary;
+    }
+
+    &:hover,
+    &:active,
+    &.usa-button--hover,
+    &.usa-button--active {
+      border: 0;
+      color: nds.$primary;
+      outline: 0;
+    }
+
+    &:is(:focus-visible, .usa-focus) {
+      border: 0;
+      color: nds.$primary;
+    }
+
+    &:is(:disabled, [aria-disabled='true'], .usa-button--disabled) {
+      border: 0;
+      color: nds.alpha(nds.$primary, 45%);
+    }
+  }
+}
