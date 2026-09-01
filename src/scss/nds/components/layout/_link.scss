@@ -10,7 +10,7 @@
 
 // Inline text link.
 .link {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: inherit;
   font-weight: inherit;
@@ -24,7 +24,7 @@
   &:hover,
   &:active,
   &:focus-visible {
-    color: nds.$off-black;
+    color: nds.$black;
   }
 
   &:focus-visible {
@@ -59,8 +59,8 @@ button.link {
 
 // Full-row link with trailing chevron.
 .block-link {
-  border-block: 1px solid nds.alpha(nds.$off-black, 10%);
-  color: nds.$off-black;
+  border-block: 1px solid nds.alpha(nds.$black, 10%);
+  color: nds.$black;
   display: block;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
@@ -87,7 +87,7 @@ button.link {
 }
 
 .block-link__icon {
-  color: nds.$off-black;
+  color: nds.$black;
   display: block;
   height: nds.space(16);
   position: absolute;
@@ -100,7 +100,7 @@ button.link {
 // Skip-to-content link.
 .skipnav {
   background: nds.$white;
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
@@ -139,7 +139,7 @@ button.link {
 }
 
 .troubleshooting-options__heading {
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-s;
   font-weight: nds.$font-semibold;
@@ -163,23 +163,23 @@ button.link {
 
   .block-link {
     background: nds.$white;
-    border: 1px solid nds.alpha(nds.$off-black, 10%);
+    border: 1px solid nds.alpha(nds.$black, 10%);
     border-radius: nds.radius(24);
     padding-block: nds.space(20);
     padding-inline: nds.space(24) nds.space(40);
     transition: nds.$transition;
 
     &:hover {
-      border-color: nds.$off-black;
+      border-color: nds.$black;
     }
   }
 
   li + li .block-link:only-child {
-    border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+    border-top: 1px solid nds.alpha(nds.$black, 10%);
 
     // Keep the top border in sync with the other edges on hover.
     &:hover {
-      border-top-color: nds.$off-black;
+      border-top-color: nds.$black;
     }
   }
 }

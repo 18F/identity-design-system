@@ -18,7 +18,7 @@ $connected-services-breakpoint-m: 768px;
     $width: 100%
   );
 
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   text-align: left;
 }
@@ -102,7 +102,7 @@ $connected-services-breakpoint-m: 768px;
 .connected-service__menu-button {
   align-items: center;
   border-radius: nds.radius(pill);
-  color: nds.$off-black;
+  color: nds.$black;
   cursor: pointer;
   display: flex;
   height: nds.space(40);
@@ -117,7 +117,7 @@ $connected-services-breakpoint-m: 768px;
 
   &:hover,
   &:active {
-    background: nds.alpha(nds.$off-black, 5%);
+    background: nds.alpha(nds.$black, 5%);
   }
 
   &:focus {
@@ -126,7 +126,7 @@ $connected-services-breakpoint-m: 768px;
 
   &:focus-visible {
     @include nds.focus-ring();
-    background: nds.alpha(nds.$off-black, 5%);
+    background: nds.alpha(nds.$black, 5%);
   }
 }
 
@@ -144,7 +144,7 @@ $connected-services-breakpoint-m: 768px;
   &:is(:link, :visited),
   &:hover,
   &:active {
-    color: nds.$red-600;
+    color: nds.$secondary;
   }
 }
 

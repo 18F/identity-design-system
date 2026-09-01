@@ -32,11 +32,11 @@
   align-items: center;
   appearance: none;
   backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$off-white, 92%);
+  background: nds.alpha(nds.$primary-lightest, 92%);
   border: 0;
   border-radius: nds.radius(pill);
   box-shadow: nds.$shadow-compact;
-  color: nds.$off-black;
+  color: nds.$black;
   cursor: pointer;
   display: inline-flex;
   height: nds.space(32);
@@ -50,7 +50,7 @@
 
   &:hover,
   &:active {
-    background: nds.$off-white;
+    background: nds.$primary-lightest;
   }
 
   &:focus {

@@ -15,7 +15,7 @@ $auth-methods-breakpoint-m: 768px;
     $width: 100%
   );
 
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   text-align: left;
 }
@@ -25,7 +25,7 @@ $auth-methods-breakpoint-m: 768px;
 }
 
 .auth-methods__heading {
-  color: nds.$off-black;
+  color: nds.$black;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-heading-section;
@@ -39,7 +39,7 @@ $auth-methods-breakpoint-m: 768px;
   @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
   align-items: flex-start;
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-sizing: border-box;
   padding: nds.space(24);
@@ -50,13 +50,13 @@ $auth-methods-breakpoint-m: 768px;
 }
 
 .auth-methods__rows > * + * {
-  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-top: 1px solid nds.alpha(nds.$black, 10%);
   margin-top: nds.space(12);
   padding-top: nds.space(12);
 }
 
 .auth-methods__rule {
-  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-top: 1px solid nds.alpha(nds.$black, 10%);
   width: 100%;
 }
 
@@ -70,7 +70,7 @@ $auth-methods-breakpoint-m: 768px;
 }
 
 .auth-methods__row-text {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   flex: 1 1 auto;
   font-size: nds.$text-body-m;
   font-weight: 400;

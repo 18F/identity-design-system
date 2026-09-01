@@ -53,8 +53,8 @@ $nds-auth-entry-breakpoint: 1024px;
 }
 
 .auth-entry__whats-new {
-  background: nds.alpha(nds.$blue-600, 8%);
-  border: 1px solid nds.alpha(nds.$blue-700, 5%);
+  background: nds.alpha(nds.$primary-dark, 8%);
+  border: 1px solid nds.alpha(nds.$primary-darker, 5%);
   border-radius: nds.radius(16);
   align-items: center;
   box-sizing: border-box;
@@ -80,11 +80,11 @@ $nds-auth-entry-breakpoint: 1024px;
 }
 
 .auth-entry__whats-new-intro {
-  color: nds.$midnight;
+  color: nds.$black;
 }
 
 .auth-entry__whats-new-link {
-  color: nds.$blue-500;
+  color: nds.$primary;
   text-decoration-line: underline;
   text-decoration-thickness: from-font;
 
@@ -112,7 +112,7 @@ $nds-auth-entry-breakpoint: 1024px;
 }
 
 .auth-entry__headline {
-  color: nds.$midnight;
+  color: nds.$black;
   font-size: nds.$text-heading-l;
   font-weight: nds.$font-semibold;
   letter-spacing: -1.44px;
@@ -120,7 +120,7 @@ $nds-auth-entry-breakpoint: 1024px;
 }
 
 .auth-entry__body {
-  color: nds.alpha(nds.$midnight, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
@@ -128,7 +128,7 @@ $nds-auth-entry-breakpoint: 1024px;
 
 .auth-entry__card {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$midnight, 5%);
+  border: 1px solid nds.alpha(nds.$black, 5%);
   border-radius: nds.radius(24);
   box-shadow: nds.$shadow-compact;
   box-sizing: border-box;
@@ -151,7 +151,7 @@ $nds-auth-entry-breakpoint: 1024px;
   }
 
   .auth__intro h1 {
-    color: nds.$midnight;
+    color: nds.$black;
     font-size: nds.$text-heading-section;
     letter-spacing: nds.$text-letter-spacing-heading-section;
     line-height: 1.2;
@@ -159,11 +159,11 @@ $nds-auth-entry-breakpoint: 1024px;
 
   .copy--muted,
   .copy--muted a {
-    color: nds.alpha(nds.$midnight, 65%);
+    color: nds.alpha(nds.$black, 65%);
   }
 
   .divider {
-    background: nds.alpha(nds.$midnight, 10%);
+    background: nds.alpha(nds.$black, 10%);
   }
 
   .auth__title--mobile {
@@ -300,8 +300,8 @@ $nds-auth-entry-breakpoint: 1024px;
     --nds-screen-inline-padding: #{nds.space(24)};
     --nds-page-background: #{linear-gradient(
         to bottom,
-        nds.alpha(nds.$blue-500, 4%),
-        nds.alpha(nds.$blue-500, 0%)
+        nds.alpha(nds.$primary, 4%),
+        nds.alpha(nds.$primary, 0%)
       )};
     --nds-page-main-block-start: #{nds.space(32)};
     --nds-page-main-block-end: #{nds.space(32)};

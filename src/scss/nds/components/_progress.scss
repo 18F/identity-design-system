@@ -85,7 +85,7 @@ $nds-progress-breakpoint-m: 768px;
   border: 1px solid transparent;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.alpha(nds.$midnight, 65%);
+  color: nds.alpha(nds.$black, 65%);
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
@@ -106,13 +106,13 @@ $nds-progress-breakpoint-m: 768px;
 }
 
 .progress__step[aria-current='step'] .progress__step-surface {
-  background: nds.alpha(nds.$blue-700, 5%);
-  color: nds.$midnight;
+  background: nds.alpha(nds.$primary-darker, 5%);
+  color: nds.$black;
 }
 
 .progress__step[data-complete='true'] .progress__step-surface {
   background: transparent;
-  color: nds.alpha(nds.$midnight, 65%);
+  color: nds.alpha(nds.$black, 65%);
   min-width: 0;
   padding: nds.space(8) nds.space(20) nds.space(8) nds.space(12);
 }
@@ -126,10 +126,10 @@ $nds-progress-breakpoint-m: 768px;
 
 .progress__step[data-complete='true'] .progress__step-check {
   align-items: center;
-  background: nds.$green-600;
+  background: nds.$success-dark;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
   display: inline-flex;
   height: nds.space(20);
   justify-content: center;
@@ -144,7 +144,7 @@ $nds-progress-breakpoint-m: 768px;
 
 .progress__step-counter {
   align-items: center;
-  color: nds.alpha(nds.$midnight, 65%);
+  color: nds.alpha(nds.$black, 65%);
   display: inline-flex;
   flex: 0 0 auto;
   font-family: nds.$font-family;

@@ -16,11 +16,11 @@ $nds-toast-mobile-breakpoint: 40em;
 .toast {
   align-items: center;
   backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$off-black, 85%);
+  background: nds.alpha(nds.$black, 85%);
   border: 0;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.$off-white;
+  color: nds.$primary-lightest;
   cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;
@@ -74,7 +74,7 @@ $nds-toast-mobile-breakpoint: 40em;
 
 .toast__icon {
   align-items: center;
-  background: nds.$green-500;
+  background: nds.$success;
   border-radius: nds.radius(pill);
   color: nds.$white;
   display: inline-flex;

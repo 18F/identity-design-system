@@ -14,7 +14,7 @@ $account-nav-width: 252px;
 .account-header {
   align-items: center;
   background: nds.$white;
-  border-bottom: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-bottom: 1px solid nds.alpha(nds.$black, 10%);
   box-sizing: border-box;
   display: flex;
   flex: 0 0 nds.space(80);
@@ -60,7 +60,7 @@ $account-nav-width: 252px;
   align-items: center;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.$off-black;
+  color: nds.$black;
   cursor: pointer;
   display: flex;
   font-family: nds.$font-family;
@@ -81,7 +81,7 @@ $account-nav-width: 252px;
 
   &:hover,
   &:active {
-    background: nds.alpha(nds.$off-black, 5%);
+    background: nds.alpha(nds.$black, 5%);
   }
 
   &:focus {
@@ -90,7 +90,7 @@ $account-nav-width: 252px;
 
   &:focus-visible {
     @include nds.focus-ring();
-    background: nds.alpha(nds.$off-black, 5%);
+    background: nds.alpha(nds.$black, 5%);
   }
 }
 
@@ -133,7 +133,7 @@ $account-nav-width: 252px;
 }
 
 .account-shell__nav {
-  border-right: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-right: 1px solid nds.alpha(nds.$black, 10%);
   box-sizing: border-box;
 }
 
@@ -173,7 +173,7 @@ $account-nav-width: 252px;
   background: none;
   border: 0;
   border-radius: nds.radius(pill);
-  color: nds.$off-black;
+  color: nds.$black;
   cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;
@@ -196,11 +196,11 @@ $account-nav-width: 252px;
   &:hover,
   &:active,
   &:focus-visible {
-    color: nds.$off-black;
+    color: nds.$black;
   }
 
   &:hover {
-    background: nds.alpha(nds.$off-black, 5%);
+    background: nds.alpha(nds.$black, 5%);
   }
 
   &:focus {
@@ -219,8 +219,8 @@ $account-nav-width: 252px;
 
 .account-nav__link--current,
 .account-nav__link--current:is(:link, :visited) {
-  background: nds.alpha(nds.$off-black, 5%);
-  color: nds.$off-black;
+  background: nds.alpha(nds.$black, 5%);
+  color: nds.$black;
 }
 
 .account-mobile-menu {
@@ -232,7 +232,7 @@ $account-nav-width: 252px;
   align-items: center;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.$off-black;
+  color: nds.$black;
   cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;
@@ -250,7 +250,7 @@ $account-nav-width: 252px;
   }
 
   &:hover {
-    background: nds.alpha(nds.$off-black, 5%);
+    background: nds.alpha(nds.$black, 5%);
   }
 
   &:focus-visible {
@@ -265,7 +265,7 @@ $account-nav-width: 252px;
 
 .account-mobile-menu__panel {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$off-black, 10%);
+  border: 1px solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-shadow: nds.$shadow-large;
   box-sizing: border-box;
@@ -284,7 +284,7 @@ $account-nav-width: 252px;
 }
 
 .account-mobile-menu__logout {
-  border-top: 1px solid nds.alpha(nds.$off-black, 10%);
+  border-top: 1px solid nds.alpha(nds.$black, 10%);
   margin-top: nds.space(8);
   padding-top: nds.space(8);
 }

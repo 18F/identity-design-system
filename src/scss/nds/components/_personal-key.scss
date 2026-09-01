@@ -16,13 +16,13 @@
 .personal-key-display {
   @include nds.stack($align: center, $gap: nds.space(24), $reset-flow: true, $width: 100%);
 
-  color: nds.$off-black;
+  color: nds.$black;
   font-family: nds.$font-family;
   text-align: center;
 }
 
 .personal-key-display__meta {
-  color: nds.alpha(nds.$off-black, 65%);
+  color: nds.alpha(nds.$black, 65%);
   font-size: nds.$text-body-m;
   font-weight: 400;
   letter-spacing: nds.$text-letter-spacing-label;
@@ -37,7 +37,7 @@
 }
 
 .personal-key-display__code code {
-  color: nds.$off-black;
+  color: nds.$black;
   display: block;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;

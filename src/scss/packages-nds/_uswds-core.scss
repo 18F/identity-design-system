@@ -22,17 +22,17 @@
   $theme-color-base-dark: map.get(legacy.$site-palette, 'site-dark-grey') !default,
   $theme-color-base-darker: map.get(legacy.$site-palette, 'site-darker-grey') !default,
   $theme-color-base-darkest: map.get(legacy.$site-palette, 'site-darkest-grey') !default,
-  $theme-color-base-ink: nds-color.$off-black !default,
+  $theme-color-base-ink: nds-color.$black !default,
   // Primary colors — NDS blue scale. Lightest/lighter/light shades the NDS
   // palette does not define are kept on the legacy palette for now.
   $theme-color-primary-lightest: map.get(legacy.$site-palette, 'site-lightest-blue') !default,
   $theme-color-primary-lighter: map.get(legacy.$site-palette, 'site-lighter-blue') !default,
   $theme-color-primary-light: map.get(legacy.$site-palette, 'site-light-blue') !default,
-  $theme-color-primary: nds-color.$blue-700 !default,
-  $theme-color-primary-vivid: nds-color.$blue-600 !default,
-  $theme-color-primary-dark: nds-color.$blue-800 !default,
-  $theme-color-primary-darker: nds-color.$blue-900 !default,
-  $theme-color-primary-darkest: nds-color.$blue-900 !default,
+  $theme-color-primary: nds-color.$primary-darker !default,
+  $theme-color-primary-vivid: nds-color.$primary-dark !default,
+  $theme-color-primary-dark: nds-color.$primary-darker !default,
+  $theme-color-primary-darker: nds-color.$base !default,
+  $theme-color-primary-darkest: nds-color.$base !default,
   // Secondary colors
   $theme-color-secondary-lightest: map.get(legacy.$site-palette, 'site-lightest-red') !default,
   $theme-color-secondary-lighter: map.get(legacy.$site-palette, 'site-lighter-red') !default,
