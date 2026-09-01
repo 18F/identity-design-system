@@ -1,0 +1,112 @@
+// NDS accordion overlay.
+//
+// Restyles the standard USWDS `.usa-accordion` selector, its inner elements
+// (`.usa-accordion__heading`, `.usa-accordion__button`, `.usa-accordion__content`),
+// and the `--bordered` modifier into the flat, rounded card treatment. Each
+// item reads as its own white card: collapsed buttons are fully rounded,
+// expanded buttons keep only their top corners and gain a hairline divider
+// above the content. The plus/minus icon and its end position come from the
+// core accordion settings, so only surface, type, spacing, and radius change
+// here.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+.usa-accordion {
+  background: transparent;
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+}
+
+.usa-accordion__heading,
+.usa-prose .usa-accordion__heading {
+  margin: 0;
+
+  &:not(:first-child) {
+    margin-top: nds.space(8);
+  }
+}
+
+.usa-accordion__button {
+  background-color: nds.$background-primary;
+  border: 0;
+  border-radius: nds.radius(16);
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding: nds.space(16);
+  padding-inline-end: calc(#{nds.space(16)} + #{nds.space(20)} + 16px);
+  position: relative;
+  text-align: start;
+
+  // The plus/minus glyph is drawn as a masked pseudo-element so it can take a
+  // semantic ink color instead of the fixed hue baked into the shared svg.
+  &,
+  &:hover,
+  &[aria-expanded='false'],
+  &[aria-expanded='false']:hover {
+    background-image: none;
+  }
+
+  &::before {
+    background-color: nds.$text-primary;
+    content: '';
+    height: 16px;
+    mask: url('../../img/accordion-minus.svg') no-repeat center / 16px 16px;
+    position: absolute;
+    right: nds.space(16);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+  }
+
+  &[aria-expanded='false']::before {
+    mask-image: url('../../img/accordion-plus.svg');
+  }
+
+  &:hover {
+    background-color: nds.$base-lightest;
+  }
+
+  &:focus {
+    @include nds.focus-ring();
+  }
+
+  &[aria-expanded='true'] {
+    border-bottom: 1px solid nds.$base-lighter;
+    border-radius: nds.radius(16) nds.radius(16) 0 0;
+  }
+}
+
+.usa-accordion__content {
+  background-color: transparent;
+  border-radius: 0 0 nds.radius(16) nds.radius(16);
+  color: nds.alpha(nds.$black, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin-top: 0;
+  padding: nds.space(16);
+}
+
+.usa-accordion--bordered {
+  .usa-accordion__button {
+    border: 1px solid nds.$base-lighter;
+
+    &[aria-expanded='true'] {
+      border-bottom: 1px solid nds.$base-lighter;
+    }
+  }
+
+  .usa-accordion__content {
+    border: 1px solid nds.$base-lighter;
+    border-top: 0;
+    padding-bottom: nds.space(16);
+  }
+}

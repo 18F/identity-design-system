@@ -1,0 +1,142 @@
+// NDS search overlay. Restyles the standard USWDS search component — the
+// `.usa-search` form, its `.usa-search__input` field, the `.usa-search__submit`
+// button, the `.usa-search__submit-text` accessible label, and the
+// `.usa-search--big` size — with the NDS look.
+//
+// Loaded AFTER `@forward 'uswds'` (see nds/styles.scss). Pure component CSS.
+//
+// The NDS look is a pill-shaped field carrying a circular primary submit
+// button inset at its trailing edge. The submit shows a white search glyph
+// while its `.usa-search__submit-text` stays as a screen-reader-only
+// accessible name.
+
+@use 'tokens/nds' as nds;
+
+$nds-search-border-width: 1px;
+$nds-search-border-width-focus: 2px;
+$nds-search-height: nds.space(56);
+$nds-search-height-big: nds.space(64);
+$nds-search-submit-size: nds.space(36);
+$nds-search-submit-inset: nds.space(8);
+
+// White search glyph for the submit button.
+$nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+
+// Focus ring for the field: a box-shadow ring in the border color, matching the
+// NDS form-input overlay.
+@mixin nds-search-input-focus-ring($color: nds.alpha(nds.$black, 85%)) {
+  border-color: $color;
+  box-shadow: 0 0 0 $nds-search-border-width $color;
+  outline: 0;
+}
+
+.usa-search {
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  // Field. Full-width pill with room at the trailing edge for the submit
+  // button. Matches `[type='search']` too so the plain search input picks up
+  // the same look.
+  &__input,
+  [type='search'] {
+    background-color: nds.$white;
+    border: $nds-search-border-width solid nds.alpha(nds.$black, 45%);
+    border-radius: nds.radius(pill);
+    box-sizing: border-box;
+    color: nds.$black;
+    float: none;
+    font-family: nds.$font-family;
+    font-size: nds.$text-label-m;
+    font-weight: 400;
+    height: $nds-search-height;
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: nds.$text-line-height-none;
+    margin: 0;
+    padding-block: 0;
+    padding-inline: nds.space(16) nds.space(52);
+    transition:
+      border-color nds.$tr-duration-md nds.$tr-easing-cubic,
+      box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
+    width: 100%;
+
+    &::placeholder {
+      color: nds.alpha(nds.$black, 65%);
+      opacity: 1;
+    }
+
+    // Hover (only when not focused/disabled). `:hover` un-wrapped so it carries
+    // real (0,2,0) specificity.
+    &:hover:not(:focus, :focus-visible, :disabled, [aria-disabled='true']) {
+      border-color: nds.alpha(nds.$black, 85%);
+    }
+
+    // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
+    // stock USWDS focus rule and zeroes the USWDS outline.
+    &:is(.usa-search__input, [type='search']):is(:focus, :focus-visible) {
+      @include nds-search-input-focus-ring();
+
+      outline: 0;
+    }
+  }
+
+  // Submit button. Circular primary control inset at the trailing edge, on top
+  // of the field's trailing padding.
+  &__submit,
+  [type='submit'] {
+    align-items: center;
+    background-color: nds.$primary;
+    background-image: $nds-search-icon;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: nds.space(20);
+    border: 0;
+    border-radius: nds.radius(pill);
+    box-shadow: nds.$shadow-compact;
+    color: nds.$white;
+    cursor: pointer;
+    display: flex;
+    height: $nds-search-submit-size;
+    justify-content: center;
+    margin: 0;
+    min-width: 0;
+    padding: 0;
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: $nds-search-submit-inset;
+    transform: translateY(-50%);
+    transition: background-color nds.$tr-duration-md nds.$tr-easing-cubic;
+    width: $nds-search-submit-size;
+
+    &:hover:not(:disabled, [aria-disabled='true']) {
+      background-color: nds.$primary-dark;
+    }
+
+    &:is(.usa-search__submit, [type='submit']):is(:focus, :focus-visible) {
+      @include nds.focus-ring();
+    }
+  }
+
+  // The submit label stays available to assistive tech while the glyph carries
+  // the visual meaning.
+  &__submit-text {
+    border: 0;
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
+
+// Big variant: a taller field. The submit stays centered at the trailing edge.
+.usa-search--big {
+  .usa-search__input,
+  [type='search'] {
+    font-size: nds.$text-body-m;
+    height: $nds-search-height-big;
+  }
+}

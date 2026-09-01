@@ -22,21 +22,21 @@
   width: 100%;
 }
 
-// Absolute status pill.
+// Status label pill — sits inline at the top-left of the card, above the
+// copy, matching the "with badge" layout.
 .card__badge {
+  align-self: flex-start;
   background: nds.$primary-lighter;
   border-radius: nds.radius(8);
   color: nds.$primary;
+  display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
   font-weight: nds.$font-semibold;
   line-height: 1;
+  margin-bottom: nds.space(16);
   padding: nds.space(4) nds.space(8);
-  pointer-events: none;
-  position: absolute;
-  right: nds.space(12);
-  top: nds.space(12);
-  z-index: 1;
+  width: fit-content;
 }
 
 .card__badge--success {
@@ -112,11 +112,6 @@
   &.card--interactive:hover {
     border-color: nds.$base;
   }
-}
-
-.card--mfa .card__badge {
-  right: nds.space(16);
-  top: nds.space(16);
 }
 
 // Density / elevation / alignment modifiers (on the root box).
