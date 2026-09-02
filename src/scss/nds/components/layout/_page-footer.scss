@@ -89,6 +89,23 @@ lg-nds-page-footer {
   width: nds.space(20);
 }
 
+// Footer menu disclosure: a native <details> whose <summary> is styled as a
+// quaternary footer button and anchors a `.popover-menu` panel. Hides the
+// default disclosure marker so the summary reads as a plain button.
+.page-footer__menu {
+  display: inline-flex;
+  position: relative;
+}
+
+.page-footer__menu > summary {
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
 @media (width < #{$nds-footer-breakpoint-m}) {
   .page-footer {
     flex-direction: column;
