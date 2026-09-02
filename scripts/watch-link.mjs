@@ -19,6 +19,10 @@ const mirrors = [
   ['src/img', 'dist/assets/img'],
 ];
 
+/**
+ * @param {string} src
+ * @param {string} dest
+ */
 function sync(src, dest) {
   const from = resolve(root, src);
   const to = resolve(root, dest);
@@ -28,7 +32,12 @@ function sync(src, dest) {
   process.stdout.write(`[watch-link ${time}] ${src} -> ${dest}\n`);
 }
 
+/** @type {Map<string, ReturnType<typeof setTimeout>>} */
 const timers = new Map();
+/**
+ * @param {string} src
+ * @param {string} dest
+ */
 function scheduleSync(src, dest) {
   clearTimeout(timers.get(src));
   timers.set(
