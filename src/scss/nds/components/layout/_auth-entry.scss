@@ -177,6 +177,23 @@ $nds-auth-entry-breakpoint: 1024px;
     overflow: hidden;
     width: nds.space(96);
   }
+
+  // Back affordance pinned to the card's top-inline-start corner, sitting in
+  // the card padding above the intro. Pairs with a `--icon-only --secondary`
+  // button.
+  .auth-entry__back {
+    inset-block-start: nds.space(24);
+    inset-inline-start: nds.space(24);
+    position: absolute;
+    z-index: 2;
+  }
+
+  // When the back affordance is present it occupies the top-start corner, so
+  // push the card content down to clear it (per the auth-entry designs where
+  // the intro sits well below the back button).
+  &:has(.auth-entry__back) .auth--form-page {
+    margin-block-start: nds.space(64);
+  }
 }
 
 .auth-page__main:has(> .auth-entry) > .auth-entry {

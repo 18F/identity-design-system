@@ -446,6 +446,16 @@
   width: 100%;
 }
 
+// --icon-only → square button holding a single centered icon and no label.
+// Width tracks the active size modifier's height (md = 44px), so it renders as
+// a circle at the pill radius inherited from `.usa-button`. Pairs with a
+// variant for its color treatment (e.g. `--secondary` for the frosted back
+// affordance).
+.usa-button--icon-only {
+  aspect-ratio: 1;
+  padding-inline: 0;
+}
+
 // Action containers stretch their buttons full-width.
 .form,
 .auth__actions,
