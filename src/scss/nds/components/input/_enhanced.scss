@@ -1,0 +1,213 @@
+// NDS enhanced-input overlay. Styles the contract emitted by
+// `NDS::InputComponent`: a `.usa-input` wrapper containing a
+// `.usa-input__shell` with the real `.usa-input__control`, an aria-hidden
+// `.usa-input__floating-label` that plays the placeholder role, an optional
+// `.usa-input__toggle` password button, and a `.usa-input__error` region.
+//
+// The base overlay (`_base.scss`) styles bare `.usa-input` controls; here the
+// `.usa-input` element is only a wrapper, so its surface is neutralized and the
+// surface is applied to `.usa-input__control` instead. This is the enhanced
+// sibling of `.usa-input-group--floating` (see `_floating-label.scss`), which
+// covers the plain control-plus-`.usa-label` markup used elsewhere.
+//
+// Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+$nds-enhanced-border-width: 1px;
+$nds-enhanced-height: nds.space(56);
+$nds-enhanced-pad-x: 15px;
+$nds-enhanced-toggle-size: nds.space(20);
+
+@mixin nds-enhanced-focus-ring($color: nds.$base-darkest) {
+  border-color: $color;
+  box-shadow: 0 0 0 $nds-enhanced-border-width $color;
+  outline: 0;
+}
+
+// Wrapper: strip the base control surface so only the inner control is a box.
+.usa-input:has(.usa-input__control) {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  padding: 0;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+// Control surface (mirrors `.usa-input` in `_base.scss`).
+.usa-input__control {
+  background-color: nds.$background-primary;
+  border: $nds-enhanced-border-width solid nds.$base-light;
+  border-radius: nds.radius(16);
+  box-sizing: border-box;
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  height: $nds-enhanced-height;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  max-width: none;
+  padding: 0 $nds-enhanced-pad-x;
+  transition:
+    border-color nds.$tr-duration-md nds.$tr-easing-cubic,
+    box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
+  width: 100%;
+
+  &::placeholder {
+    color: nds.alpha(nds.$text-primary, 65%);
+    opacity: 1;
+  }
+
+  &:hover:not(:focus, :focus-visible, :disabled, [readonly], [aria-disabled='true']) {
+    border-color: nds.$base-darkest;
+  }
+
+  &:is(:focus, :focus-visible) {
+    @include nds-enhanced-focus-ring();
+  }
+
+  &[aria-invalid='true'] {
+    border-color: nds.$secondary;
+
+    &:is(:focus, :focus-visible) {
+      @include nds-enhanced-focus-ring(nds.$secondary);
+    }
+  }
+
+  &:is([readonly], :disabled, [aria-disabled='true']) {
+    background-color: nds.$disabled-light;
+  }
+
+  &:is(:disabled, [aria-disabled='true']) {
+    color: nds.$text-primary;
+    cursor: not-allowed;
+    opacity: 1;
+  }
+}
+
+// Shell positions the floating label and password toggle over the control.
+.usa-input__shell {
+  position: relative;
+}
+
+// Visible label (non-floating): a normal label above the control.
+.usa-input__label--visible {
+  color: nds.$text-primary;
+  display: block;
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0 0 nds.space(8);
+}
+
+// Floating variant: the accessible label is visually hidden and the aria-hidden
+// span reads as the placeholder, floating up on focus / fill / autofill.
+.usa-input__label:not(.usa-input__label--visible) {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.usa-input__control--floating {
+  padding-block: nds.space(24) nds.space(8);
+
+  &::placeholder {
+    color: transparent;
+  }
+}
+
+.usa-input__floating-label {
+  color: nds.alpha(nds.$text-primary, 65%);
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  inset-inline-start: calc(#{$nds-enhanced-pad-x} + 1px);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition:
+    font-size nds.$tr-duration-md nds.$tr-easing-cubic,
+    top nds.$tr-duration-md nds.$tr-easing-cubic,
+    transform nds.$tr-duration-md nds.$tr-easing-cubic;
+}
+
+.usa-input__control--floating:focus ~ .usa-input__floating-label,
+.usa-input__control--floating:not(:placeholder-shown) ~ .usa-input__floating-label,
+.usa-input__control--floating:-webkit-autofill ~ .usa-input__floating-label {
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-semibold;
+  top: nds.space(10);
+  transform: none;
+}
+
+// Password reveal toggle, centered at the trailing edge of the control.
+.usa-input__control--password {
+  padding-inline-end: nds.space(44);
+}
+
+.usa-input__toggle {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: nds.alpha(nds.$text-primary, 65%);
+  cursor: pointer;
+  display: flex;
+  height: $nds-enhanced-toggle-size;
+  inset-inline-end: $nds-enhanced-pad-x;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: $nds-enhanced-toggle-size;
+
+  &:hover {
+    color: nds.$text-primary;
+  }
+
+  // `.usa-icon` carries USWDS `display: inline-block`, which beats the bare
+  // `[hidden]` attribute; restate it so the JS-toggled icon stays hidden and
+  // only one of the show / hide states renders at a time.
+  .usa-icon[hidden] {
+    display: none;
+  }
+}
+
+// Error message: hidden until the enhancer adds `--visible`.
+.usa-input__error {
+  align-items: center;
+  color: nds.$secondary;
+  display: none;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(4);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding: nds.space(8) 0 0;
+  text-wrap: pretty;
+
+  &--visible {
+    display: flex;
+  }
+}

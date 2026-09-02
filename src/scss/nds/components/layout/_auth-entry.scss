@@ -15,8 +15,17 @@ $nds-auth-entry-breakpoint: 1024px;
   display: flex;
   gap: nds.space(48);
   justify-content: center;
-  position: relative;
+  position: static;
   width: 100%;
+}
+
+// The decorative blur is anchored to the full page (`.auth-page`, below) rather
+// than the auth-entry content box, so it spans header-to-footer with no hard
+// cutoff at the card's edges. It sits behind all page chrome via a negative
+// z-index within the page's isolated stacking context.
+.auth-page:has(.auth-entry) {
+  isolation: isolate;
+  position: relative;
 }
 
 .auth-entry__blurs {
@@ -25,7 +34,7 @@ $nds-auth-entry-breakpoint: 1024px;
   overflow: hidden;
   pointer-events: none;
   position: absolute;
-  z-index: 0;
+  z-index: -1;
 }
 
 .auth-entry__blurs-image {
