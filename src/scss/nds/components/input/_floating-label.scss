@@ -1,0 +1,53 @@
+// NDS floating-label input group. A label that sits inside the field like a
+// placeholder and floats up to the top of the control when the field is
+// focused or filled. Builds on the base `.usa-input` control surface; the
+// control must be rendered BEFORE its `.usa-label` (so the label is the
+// input's next sibling) and carry `placeholder=" "` so `:placeholder-shown`
+// tracks emptiness. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+$nds-float-pad-x: 15px;
+
+.usa-input-group--floating {
+  position: relative;
+
+  // Reserve vertical room so the floated label clears the value.
+  .usa-input {
+    padding-block: nds.space(24) nds.space(8);
+  }
+
+  // The label plays the placeholder role, so hide the real placeholder.
+  .usa-input::placeholder {
+    color: transparent;
+  }
+
+  // Resting state: label centered inside the control, reading as placeholder.
+  .usa-label {
+    color: nds.alpha(nds.$text-primary, 65%);
+    font-size: nds.$text-body-m;
+    font-weight: 400;
+    inset-inline-start: calc(#{$nds-float-pad-x} + 1px);
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: 1.5;
+    margin: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition:
+      font-size nds.$tr-duration-md nds.$tr-easing-cubic,
+      top nds.$tr-duration-md nds.$tr-easing-cubic,
+      transform nds.$tr-duration-md nds.$tr-easing-cubic;
+  }
+
+  // Floated state: focused, filled, or autofilled.
+  .usa-input:focus + .usa-label,
+  .usa-input:not(:placeholder-shown) + .usa-label,
+  .usa-input:-webkit-autofill + .usa-label {
+    font-size: nds.$text-label-s;
+    font-weight: nds.$font-semibold;
+    top: nds.space(10);
+    transform: none;
+  }
+}
