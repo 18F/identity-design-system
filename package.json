@@ -52,6 +52,7 @@
     "watch:docs:css": "run-p \"build:css:legacy -- --watch\" \"build:css:nds -- --watch\"",
     "watch:docs:js": "npm run build:docs:js -- --watch",
     "watch:docs": "run-p watch:docs:*",
+    "watch:link": "node scripts/watch-link.mjs",
     "start": "make start",
     "clean": "make clean",
     "lint": "run-p lint:*",
