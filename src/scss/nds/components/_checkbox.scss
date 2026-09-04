@@ -45,6 +45,12 @@ $nds-checkbox-border-width: 1px;
   }
 }
 
+// Regular-weight label for long-form checkbox copy (e.g. a consent paragraph)
+// where the semibold label weight reads as too heavy.
+.usa-checkbox__label--regular {
+  font-weight: 400;
+}
+
 // Bordered variant: the box is inset from the tile edge (left: nds.space(16))
 // and the label reserves horizontal space for it via padding-left. Widen that
 // reservation so the box clears the label text with the same gap as the

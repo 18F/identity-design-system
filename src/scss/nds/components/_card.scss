@@ -26,9 +26,10 @@
 // copy, matching the "with badge" layout.
 .card__badge {
   align-self: flex-start;
-  background: nds.$primary-lighter;
+  background: nds.$primary;
+  border: 1px solid nds.$base-lightest;
   border-radius: nds.radius(8);
-  color: nds.$primary;
+  color: nds.$white;
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
@@ -117,6 +118,16 @@
 // Density / elevation / alignment modifiers (on the root box).
 .card--compact {
   padding: nds.space(20) nds.space(24);
+}
+
+// Bleed the card outward by its own padding so its content aligns to the
+// surrounding content column while the card surface extends past it. Pairs with
+// the default space(24) padding: content width == column width, card == column
+// + 2 * padding.
+.card--bleed {
+  margin-inline: calc(-1 * #{nds.space(24)});
+  max-width: none;
+  width: calc(100% + #{nds.space(24)} * 2);
 }
 
 .card--spacious {

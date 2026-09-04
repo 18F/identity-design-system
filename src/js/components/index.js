@@ -9,6 +9,7 @@ import fileInput from '@uswds/uswds/js/usa-file-input';
 import footer from '@uswds/uswds/js/usa-footer';
 import inPageNavigation from '@uswds/uswds/js/usa-in-page-navigation';
 import inputMask from '@uswds/uswds/js/usa-input-mask';
+import inputOtp from './input-otp.js';
 import languageSelector from '@uswds/uswds/js/usa-language-selector';
 import modal from '@uswds/uswds/js/usa-modal';
 import navigation from '@uswds/uswds/js/usa-header';
@@ -33,6 +34,7 @@ export {
   footer,
   inPageNavigation,
   inputMask,
+  inputOtp,
   languageSelector,
   modal,
   navigation,
