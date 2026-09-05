@@ -1,0 +1,12 @@
+// NDS list overlay — stock USWDS `.usa-list` (ordered + unordered).
+//
+// USWDS core gives `.usa-list` a hanging indent (`padding-left: 3ch` with an
+// outside marker), which insets the marker from the container's content edge.
+// In NDS the marker aligns flush with the surrounding content (e.g. numbered
+// step headings sitting above inputs/media inside a card), so pull the marker
+// inside and drop the hang indent. Loaded after `@forward 'uswds'`.
+
+.usa-list {
+  list-style-position: inside;
+  padding-left: 0;
+}

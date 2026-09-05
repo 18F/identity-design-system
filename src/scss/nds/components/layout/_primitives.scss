@@ -217,6 +217,19 @@
   text-align: left;
 }
 
+// Body/M Emphasis — the emphasized body text style (16px semibold, body
+// line-height and tracking). Distinct from `.heading-s`/`.card__title`, which
+// are heading tokens with tighter tracking and line-height. Used for inline
+// emphasis such as numbered step headings inside a card.
+.text-body-emphasis {
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+}
+
 .copy.copy--centered h2 {
   text-align: center;
 }

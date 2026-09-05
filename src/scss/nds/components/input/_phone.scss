@@ -1,0 +1,218 @@
+// NDS phone-number input. A single pill-shaped control that groups a country
+// selector (a `<details>` disclosure whose panel is a styled `.popover-menu`
+// of radio options) with a floating-label telephone field, matching the
+// "phone number input" component in the Core Flows design.
+//
+// Markup contract (the input must come BEFORE its `.usa-phone-input__label`
+// so the label is the input's next sibling, and the input needs
+// `placeholder=" "` so `:placeholder-shown` tracks emptiness):
+//
+//   <div class="usa-phone-input">
+//     <details class="usa-phone-input__country">
+//       <summary class="usa-phone-input__country-toggle">
+//         <span class="usa-phone-input__country-code">+1</span>
+//         <svg class="usa-icon usa-phone-input__country-chevron">…expand_more…</svg>
+//       </summary>
+//       <div class="popover-menu popover-menu--left usa-phone-input__country-list">
+//         <label class="popover-menu__item usa-phone-input__country-option">
+//           <input type="radio" class="usa-phone-input__country-radio usa-sr-only"
+//                  name="…[international_code]" value="US" checked>
+//           United States
+//           <span class="usa-phone-input__country-option-dial">+1</span>
+//         </label>
+//         …
+//       </div>
+//     </details>
+//     <span class="usa-phone-input__field">
+//       <input id="phone" type="tel" class="usa-phone-input__input" placeholder=" ">
+//       <label for="phone" class="usa-phone-input__label">Phone number</label>
+//     </span>
+//   </div>
+//
+// Loaded AFTER `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+$nds-phone-border-width: 1px;
+$nds-phone-height: nds.space(56);
+
+// Pill container — the bordered control surface that wraps the whole group.
+.usa-phone-input {
+  align-items: center;
+  background-color: nds.$background-primary;
+  border: $nds-phone-border-width solid nds.$base-light;
+  border-radius: nds.radius(16);
+  box-sizing: border-box;
+  display: flex;
+  gap: nds.space(12);
+  height: $nds-phone-height;
+  overflow: clip;
+  padding: nds.space(12) nds.space(16) nds.space(12) 10px;
+  transition:
+    border-color nds.$tr-duration-md nds.$tr-easing-cubic,
+    box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
+  width: 100%;
+
+  // Hover the whole pill (only when nothing inside is focused).
+  &:hover:not(:focus-within) {
+    border-color: nds.$base-darkest;
+  }
+
+  // Focus ring on the pill when any child (input or country button) is focused,
+  // mirroring the `.usa-input` focus treatment: 1px border + 1px box-shadow.
+  &:focus-within {
+    border-color: nds.$base-darkest;
+    box-shadow: 0 0 0 $nds-phone-border-width nds.$base-darkest;
+  }
+}
+
+// Country selector — a `<details>`/`<summary>` disclosure styled as a compact
+// secondary button (`+1` plus a chevron). The open panel is a `.popover-menu`
+// of radio options, so the menu is design-system-styled (never the native
+// `<select>` chrome popup) and the field still submits without JavaScript.
+.usa-phone-input__country {
+  flex-shrink: 0;
+  position: relative;
+}
+
+// Trigger — the compact `+1 ⌄` button. `list-style: none` (+ the webkit
+// pseudo) removes the default disclosure triangle.
+.usa-phone-input__country-toggle {
+  align-items: center;
+  backdrop-filter: blur(25px);
+  background-color: nds.$base-lightest;
+  border-radius: nds.radius(10);
+  color: nds.$black;
+  cursor: pointer;
+  display: inline-flex;
+  gap: nds.space(4);
+  height: nds.space(36);
+  list-style: none;
+  padding: 0 nds.space(8) 0 nds.space(12);
+  white-space: nowrap;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.usa-phone-input__country[aria-disabled='true'] .usa-phone-input__country-toggle {
+  cursor: not-allowed;
+}
+
+.usa-phone-input__country-code {
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1;
+}
+
+// Chevron — 20px at 65% ink; flips when the disclosure is open.
+.usa-phone-input__country-chevron {
+  color: nds.alpha(nds.$text-primary, 65%);
+  flex-shrink: 0;
+  height: nds.space(20);
+  transition: transform nds.$tr-duration-md nds.$tr-easing-cubic;
+  width: nds.space(20);
+}
+
+.usa-phone-input__country[open] .usa-phone-input__country-chevron {
+  transform: rotate(180deg);
+}
+
+// Option list — reuses `.popover-menu`; constrain height so the full country
+// list scrolls inside the panel.
+.usa-phone-input__country-list {
+  left: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  right: auto;
+}
+
+// Each option is a label wrapping a visually-hidden radio; the radio carries
+// the submitted value so the control works with JavaScript disabled.
+.usa-phone-input__country-option {
+  align-items: baseline;
+  cursor: pointer;
+  display: flex;
+  gap: nds.space(8);
+
+  &:has(.usa-phone-input__country-radio:focus-visible) {
+    @include nds.focus-ring();
+  }
+}
+
+.usa-phone-input__country-option-dial {
+  color: nds.alpha(nds.$text-primary, 65%);
+  flex-shrink: 0;
+}
+
+// Field — the floating-label telephone input filling the rest of the pill.
+.usa-phone-input__field {
+  align-self: stretch;
+  display: block;
+  flex: 1 0 0;
+  min-width: 0;
+  position: relative;
+}
+
+.usa-phone-input__input {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  height: 100%;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  // Reserve room so the value sits below the floated label.
+  padding: nds.space(16) 0 0;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+
+  // The label plays the placeholder role, so hide the real placeholder.
+  &::placeholder {
+    color: transparent;
+  }
+}
+
+// Resting state: label vertically centered, reading as a placeholder.
+.usa-phone-input__label {
+  color: nds.alpha(nds.$text-primary, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  inset-inline-start: 0;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition:
+    font-size nds.$tr-duration-md nds.$tr-easing-cubic,
+    top nds.$tr-duration-md nds.$tr-easing-cubic,
+    transform nds.$tr-duration-md nds.$tr-easing-cubic;
+}
+
+// Floated state: focused, filled, or autofilled — label shrinks to the top.
+.usa-phone-input__input:focus + .usa-phone-input__label,
+.usa-phone-input__input:not(:placeholder-shown) + .usa-phone-input__label,
+.usa-phone-input__input:-webkit-autofill + .usa-phone-input__label {
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-semibold;
+  top: 0;
+  transform: none;
+}

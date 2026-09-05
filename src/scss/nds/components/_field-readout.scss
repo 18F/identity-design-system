@@ -1,0 +1,90 @@
+// NDS field readout. A static, read-only presentation of a labeled value that
+// mirrors the *filled* state of the floating-label input (small label on top,
+// value below) WITHOUT being a form control — it emits plain text, so
+// assistive tech announces "label, value" rather than an editable field.
+// Supports an optional trailing action (e.g. a copy button) rendered inside
+// the box on the trailing edge.
+//
+// Loaded after `@forward 'uswds'`. Pure component CSS.
+//
+//   <div class="field-readout">
+//     <span class="field-readout__body">
+//       <span class="field-readout__label" id="x-label">Setup code</span>
+//       <span class="field-readout__value" aria-labelledby="x-label">ABC123</span>
+//     </span>
+//     <button type="button" class="field-readout__action" aria-label="Copy">…</button>
+//   </div>
+
+@use 'tokens/nds' as nds;
+
+$field-readout-border-width: 1px;
+$field-readout-min-height: nds.space(56);
+$field-readout-pad-x: 15px;
+
+.field-readout {
+  align-items: center;
+  background-color: nds.$disabled-light;
+  border: $field-readout-border-width solid nds.$base-light;
+  border-radius: nds.radius(16);
+  box-sizing: border-box;
+  display: flex;
+  gap: nds.space(12);
+  min-height: $field-readout-min-height;
+  padding: nds.space(8) $field-readout-pad-x;
+  text-align: left;
+  width: 100%;
+}
+
+.field-readout__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: nds.space(2);
+  min-width: 0;
+}
+
+.field-readout__label {
+  color: nds.alpha(nds.$text-primary, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.2;
+}
+
+.field-readout__value {
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+// Bare icon action pinned to the trailing edge.
+.field-readout__action {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: nds.alpha(nds.$text-primary, 65%);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: auto;
+  justify-content: center;
+  min-height: 0;
+  padding: 0;
+  width: auto;
+
+  &::after {
+    content: none;
+  }
+
+  .usa-icon {
+    block-size: nds.space(20);
+    inline-size: nds.space(20);
+  }
+}

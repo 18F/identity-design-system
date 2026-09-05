@@ -49,6 +49,16 @@ body.site {
   background: var(--nds-page-background);
   display: flex;
   flex-direction: column;
+  // Inter Variable carries an `opsz` axis. The browser default
+  // `font-optical-sizing: auto` sets optical size = font-size, engaging Inter's
+  // heavier display cut at larger sizes so text renders bolder than the design
+  // (which uses the named instances without size-driven optical sizing). Pin it
+  // off across the page so weights match Figma at every size.
+  font-optical-sizing: none;
+  // macOS browsers default to subpixel-antialiased text, which renders visibly
+  // heavier than the design tool (Figma antialiases). Match Figma's rendering.
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 
   @media (width >= #{$nds-layout-breakpoint-m}) {

@@ -12,6 +12,7 @@
 
 $flat-checkbox-size: nds.space(20);
 $flat-checkbox-border-width: 1px;
+$flat-checkbox-control-border-width: 2px;
 $flat-checkbox-checkmark-size: nds.space(16);
 $flat-checkbox-label-gap: nds.space(12);
 $flat-checkbox-label-margin-top: nds.space(12);
@@ -20,17 +21,20 @@ $flat-checkbox-tile-padding: nds.space(24);
 $flat-checkbox-bordered-padding-y: nds.space(8);
 $flat-checkbox-bordered-padding-x: nds.space(16);
 $flat-checkbox-tablet-breakpoint: 40em;
-$flat-checkbox-checkmark: url('../../img/correct8.svg');
-$flat-checkbox-indeterminate: url('../../img/checkbox-indeterminate.svg');
+// Inline SVGs as data URIs so the control renders without depending on a
+// separately-served image asset (consuming apps do not expose the IDS `img/`
+// directory at a predictable URL).
+$flat-checkbox-checkmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='65' height='50' viewBox='0 0 65 50'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M63.268 7.063l-5.616-5.61C56.882.685 55.946.3 54.845.3s-2.038.385-2.808 1.155L24.951 28.552 12.81 16.385c-.77-.77-1.707-1.155-2.808-1.155-1.1 0-2.037.385-2.807 1.154l-5.616 5.61C.81 22.764.425 23.7.425 24.8s.385 2.035 1.155 2.805l14.947 14.93 5.616 5.61c.77.77 1.706 1.154 2.807 1.154s2.038-.384 2.808-1.154l5.616-5.61 29.894-29.86c.77-.77 1.157-1.707 1.157-2.805 0-1.101-.385-2.036-1.156-2.805l-.001-.002z'/%3E%3C/svg%3E");
+$flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M2.9 35.9c0 1.1.4 2 1.2 2.8s1.7 1.2 2.8 1.2h50.2c1.1 0 2-.4 2.8-1.2s1.2-1.7 1.2-2.8V28c0-1.1-.4-2-1.2-2.8S58.2 24 57.1 24H6.9c-1.1 0-2 .4-2.8 1.2S2.9 26.9 2.9 28z' clip-rule='evenodd'/%3E%3C/svg%3E");
 
 @mixin flat-checkbox-control-default {
   background-color: nds.$white;
-  box-shadow: 0 0 0 $flat-checkbox-border-width nds.$base-darkest;
+  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.$base-darkest;
 }
 
 @mixin flat-checkbox-control-hover {
   background-color: nds.alpha(nds.$primary-darker, 5%);
-  box-shadow: 0 0 0 $flat-checkbox-border-width nds.$primary;
+  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.$primary;
 }
 
 @mixin flat-checkbox-control-checked {
@@ -50,13 +54,13 @@ $flat-checkbox-indeterminate: url('../../img/checkbox-indeterminate.svg');
 @mixin flat-checkbox-control-error {
   background-color: nds.$white;
   background-image: none;
-  box-shadow: 0 0 0 $flat-checkbox-border-width nds.$secondary;
+  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.$secondary;
 }
 
 @mixin flat-checkbox-control-disabled {
   background-color: nds.alpha(nds.$black, 5%);
   background-image: none;
-  box-shadow: 0 0 0 $flat-checkbox-border-width nds.alpha(nds.$black, 45%);
+  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.alpha(nds.$black, 45%);
 }
 
 @mixin flat-checkbox-control-disabled-checked {
@@ -65,7 +69,7 @@ $flat-checkbox-indeterminate: url('../../img/checkbox-indeterminate.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: $flat-checkbox-checkmark-size;
-  box-shadow: 0 0 0 $flat-checkbox-border-width nds.alpha(nds.$black, 45%);
+  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.alpha(nds.$black, 45%);
 }
 
 @mixin flat-checkbox-format-input {
@@ -118,6 +122,12 @@ $flat-checkbox-indeterminate: url('../../img/checkbox-indeterminate.svg');
 
 .checkbox-group {
   @include nds.stack($gap: nds.space(12), $reset-flow: true, $width: 100%);
+
+  // Group items are separated by the group gap, so the per-label top margin
+  // (used by standalone checkboxes) must not add extra space above the row.
+  .checkbox__label {
+    margin-top: 0;
+  }
 }
 
 .checkbox__input {
@@ -311,6 +321,12 @@ $flat-checkbox-indeterminate: url('../../img/checkbox-indeterminate.svg');
   font-size: nds.$text-body-s;
   font-weight: 400;
   margin-top: nds.space(8);
+}
+
+// Standalone and bordered acknowledgment checkboxes use the larger Body/M
+// description; only the dense `--tile` selection cards keep the smaller size.
+.checkbox__input:not(.checkbox__input--tile) + .checkbox__label .checkbox__label-description {
+  font-size: nds.$text-body-m;
 }
 
 .checkbox__label-text {
