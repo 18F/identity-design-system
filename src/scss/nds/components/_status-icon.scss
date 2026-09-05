@@ -1,0 +1,29 @@
+// NDS status icon — a small variant-aware status badge: a 56px pill with a
+// centered 24px decorative glyph. Shared shell (size, border, layout); the
+// per-status modifier only swaps the background so new statuses are additive.
+
+@use 'tokens/nds' as nds;
+
+.nds-status-icon {
+  align-items: center;
+  border: 1px solid nds.$base-lightest;
+  border-radius: nds.radius(pill);
+  display: inline-flex;
+  flex-shrink: 0;
+  height: nds.space(56);
+  justify-content: center;
+  width: nds.space(56);
+
+  .usa-icon {
+    height: nds.space(24);
+    width: nds.space(24);
+  }
+}
+
+.nds-status-icon--error {
+  background: nds.$error-lighter;
+}
+
+.nds-status-icon--warning {
+  background: nds.$warning-lighter;
+}
