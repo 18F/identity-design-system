@@ -135,17 +135,37 @@ $nds-input-pad-x: 15px;
   margin: nds.space(8) 0 0;
 }
 
-// Error message (red, semibold, with leading icon gap).
+// Error message (Body/M emphasis, red, with a leading 20px status icon).
 .usa-error-message {
-  align-items: center;
+  align-items: flex-start;
   color: nds.$secondary;
   display: flex;
   font-family: nds.$font-family;
-  font-size: nds.$text-body-s;
+  font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
-  gap: nds.space(4);
+  gap: nds.space(8);
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
+  max-width: nds.$form-width;
   padding: nds.space(8) 0 0;
   text-wrap: pretty;
+
+  // The USWDS base ships a `::before` that paints a filled `error` icon as a
+  // background image. NDS supplies its own inline (outlined) status icon in the
+  // markup, so suppress the pseudo-element to avoid a doubled/filled glyph.
+  &::before {
+    content: none;
+  }
+
+  // Fixed 20px status icon, aligned to (and centered on) the first line of the
+  // message as it wraps to the width of the field above. The 2px top offset
+  // centers the 20px glyph within the 24px first-line box. The icon markup must
+  // carry `viewBox="0 0 24 24"` (standard USWDS sprite usage) so the symbol
+  // scales into this box.
+  .usa-icon {
+    flex: none;
+    height: nds.space(20);
+    margin-top: nds.space(2);
+    width: nds.space(20);
+  }
 }
