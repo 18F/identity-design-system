@@ -27,17 +27,23 @@ const SETTLE_DELAY_MS = 5000;
 const settleTimers = new WeakMap();
 
 /**
+ * Group as 123-45-6789. A dash is appended as soon as a group fills so the
+ * separator appears after the third (and fifth) digit, not once the next
+ * digit arrives.
+ *
  * @param {string} digits
- * @returns {string} digits grouped as 123-45-6789 (partial groups allowed)
+ * @returns {string}
  */
 function group(digits) {
   /** @type {string[]} */
   const parts = [];
   let index = 0;
-  GROUPS.forEach((size) => {
+  GROUPS.forEach((size, groupIndex) => {
     if (index >= digits.length) return;
-    parts.push(digits.slice(index, index + size));
+    const part = digits.slice(index, index + size);
     index += size;
+    const filled = part.length === size && groupIndex < GROUPS.length - 1;
+    parts.push(filled && index >= digits.length ? `${part}-` : part);
   });
   return parts.join('-');
 }
