@@ -17,9 +17,14 @@ const ICON_SHOW = '[data-nds-password-icon-show]';
 const ICON_HIDE = '[data-nds-password-icon-hide]';
 const ENHANCED = 'data-enhanced';
 const REVEALED = 'data-nds-ssn-revealed';
+const SETTLED = 'data-nds-ssn-settled';
 const MASK = '•';
 const MAX_DIGITS = 9;
 const GROUPS = [3, 2, 4];
+const SETTLE_DELAY_MS = 5000;
+
+/** @type {WeakMap<HTMLElement, ReturnType<typeof setTimeout>>} */
+const settleTimers = new WeakMap();
 
 /**
  * @param {string} digits
@@ -40,11 +45,12 @@ function group(digits) {
 /**
  * @param {string} digits
  * @param {boolean} revealed
+ * @param {boolean} settled
  * @returns {string}
  */
-function display(digits, revealed) {
+function display(digits, revealed, settled) {
   if (revealed || !digits) return group(digits);
-  const masked = MASK.repeat(digits.length - 1) + digits.slice(-1);
+  const masked = settled ? MASK.repeat(digits.length) : MASK.repeat(digits.length - 1) + digits.slice(-1);
   return group(masked);
 }
 
@@ -94,9 +100,10 @@ function render(container) {
   const { control, value, toggle } = found;
   const digits = value.value.replace(/\D/g, '');
   const revealed = container.hasAttribute(REVEALED);
+  const settled = container.hasAttribute(SETTLED);
 
   value.value = digits.length === MAX_DIGITS ? group(digits) : digits;
-  control.value = display(digits, revealed);
+  control.value = display(digits, revealed, settled);
   const caret = control.value.length;
   try {
     control.setSelectionRange(caret, caret);
@@ -134,7 +141,26 @@ function handleInput(event) {
 
   const previous = found.value.value.replace(/\D/g, '');
   found.value.value = reconcile(/** @type {HTMLInputElement} */ (control).value, previous);
+  container.removeAttribute(SETTLED);
   render(container);
+  scheduleSettle(container);
+}
+
+/**
+ * Hide the last visible digit once typing pauses.
+ *
+ * @param {HTMLElement} container
+ */
+function scheduleSettle(container) {
+  const pending = settleTimers.get(container);
+  if (pending) clearTimeout(pending);
+  settleTimers.set(
+    container,
+    setTimeout(() => {
+      container.setAttribute(SETTLED, 'true');
+      render(container);
+    }, SETTLE_DELAY_MS),
+  );
 }
 
 /**
