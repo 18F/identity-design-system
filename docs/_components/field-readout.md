@@ -44,3 +44,13 @@ the value.
 </lg-clipboard-button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
+
+### Inline
+
+Add `.field-readout--inline` to hug a value inside running text — for example an
+error code mid-sentence. The inline variant is label-less and takes no action.
+
+{% capture example %}
+<p>Please provide the error code <span class="field-readout field-readout--inline"><span class="field-readout__value">EFGHI</span></span>.</p>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
