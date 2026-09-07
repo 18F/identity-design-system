@@ -108,4 +108,8 @@
     block-size: nds.space(16);
     inline-size: nds.space(16);
   }
+
+  .usa-icon[hidden] {
+    display: none;
+  }
 }
