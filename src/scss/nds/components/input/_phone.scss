@@ -141,21 +141,47 @@ $nds-phone-height: nds.space(56);
 }
 
 // Each option is a label wrapping a visually-hidden radio; the radio carries
-// the submitted value so the control works with JavaScript disabled.
+// the submitted value so the control works with JavaScript disabled. The row
+// reads "Name (+N)" left-aligned, with a checkmark on the selected option.
 .usa-phone-input__country-option {
-  align-items: baseline;
+  align-items: center;
   cursor: pointer;
   display: flex;
-  gap: nds.space(8);
+  gap: nds.space(12);
+  justify-content: space-between;
+  text-align: left;
 
   &:has(.usa-phone-input__country-radio:focus-visible) {
     @include nds.focus-ring();
   }
 }
 
+.usa-phone-input__country-option-label {
+  flex: 1 1 auto;
+}
+
 .usa-phone-input__country-option-dial {
   color: nds.alpha(nds.$text-primary, 65%);
+}
+
+.usa-phone-input__country-option-check {
   flex-shrink: 0;
+  height: nds.space(16);
+  visibility: hidden;
+  width: nds.space(16);
+}
+
+.usa-phone-input__country-option:has(.usa-phone-input__country-radio:checked)
+  .usa-phone-input__country-option-check {
+  visibility: visible;
+}
+
+// Rule separating the pinned +1 countries from the alphabetical list.
+.usa-phone-input__country-rule {
+  background: nds.$base-lighter;
+  border: 0;
+  height: 1px;
+  margin: 0 nds.space(12);
 }
 
 // Field — the floating-label telephone input filling the rest of the pill.
