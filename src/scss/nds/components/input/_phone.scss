@@ -66,6 +66,12 @@ $nds-phone-height: nds.space(56);
   }
 }
 
+// The country panel is absolutely positioned below the toggle; `overflow:
+// clip` would cut it to the pill's 56px, so release the clip while open.
+.usa-phone-input:has(.usa-phone-input__country[open]) {
+  overflow: visible;
+}
+
 // Country selector — a `<details>`/`<summary>` disclosure styled as a compact
 // secondary button (`+1` plus a chevron). The open panel is a `.popover-menu`
 // of radio options, so the menu is design-system-styled (never the native
