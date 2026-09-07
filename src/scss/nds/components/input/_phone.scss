@@ -178,10 +178,14 @@ $nds-phone-height: nds.space(56);
 
 // Rule separating the pinned +1 countries from the alphabetical list.
 .usa-phone-input__country-rule {
-  background: nds.$base-lighter;
+  align-self: stretch;
+  background: nds.$base-light;
   border: 0;
+  flex: 0 0 auto;
   height: 1px;
-  margin: 0 nds.space(12);
+  margin: nds.space(4) nds.space(12);
+  min-height: 1px;
+  width: auto;
 }
 
 // Field — the floating-label telephone input filling the rest of the pill.
