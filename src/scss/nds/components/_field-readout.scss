@@ -88,3 +88,23 @@ $field-readout-pad-x: 15px;
     inline-size: nds.space(20);
   }
 }
+
+// Inline variant: hugs its value so it can sit inside running text (e.g. an
+// error code mid-sentence). Label-less by design; no trailing action.
+//
+//   <span class="field-readout field-readout--inline">
+//     <span class="field-readout__value">EFGHI</span>
+//   </span>
+.field-readout--inline {
+  border-radius: nds.radius(8);
+  display: inline-flex;
+  gap: 0;
+  min-height: 0;
+  padding: 0 nds.space(8);
+  vertical-align: baseline;
+  width: auto;
+
+  .field-readout__value {
+    line-height: 1.5;
+  }
+}
