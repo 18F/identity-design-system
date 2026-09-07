@@ -146,7 +146,15 @@ function handleInput(event) {
   if (!container || !found) return;
 
   const previous = found.value.value.replace(/\D/g, '');
-  found.value.value = reconcile(/** @type {HTMLInputElement} */ (control).value, previous);
+  const typed = /** @type {HTMLInputElement} */ (control).value;
+  let digits = reconcile(typed, previous);
+  // Backspacing over a trailing group dash removes nothing digit-wise, so the
+  // dash would just be re-rendered; treat it as deleting the digit before it.
+  const shown = display(previous, container.hasAttribute(REVEALED), container.hasAttribute(SETTLED));
+  if (digits === previous && typed.length < shown.length) {
+    digits = previous.slice(0, -1);
+  }
+  found.value.value = digits;
   container.removeAttribute(SETTLED);
   render(container);
   scheduleSettle(container);
