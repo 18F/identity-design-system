@@ -29,7 +29,7 @@ function render(container) {
 
   const option = checked.closest(OPTION);
   const dial = option ? option.querySelector(OPTION_DIAL) : null;
-  if (dial && dial.textContent) code.textContent = dial.textContent.trim();
+  if (dial && dial.textContent) code.textContent = dial.textContent.trim().replace(/^\(|\)$/g, '');
 }
 
 /**
