@@ -14,6 +14,7 @@ import languageSelector from '@uswds/uswds/js/usa-language-selector';
 import modal from '@uswds/uswds/js/usa-modal';
 import navigation from '@uswds/uswds/js/usa-header';
 import password from '@uswds/uswds/js/_usa-password';
+import phoneInput from './phone-input.js';
 import range from '@uswds/uswds/js/usa-range';
 import search from '@uswds/uswds/js/usa-search';
 import skipnav from '@uswds/uswds/js/usa-skipnav';
@@ -39,6 +40,7 @@ export {
   modal,
   navigation,
   password,
+  phoneInput,
   range,
   search,
   skipnav,
