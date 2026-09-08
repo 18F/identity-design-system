@@ -66,6 +66,12 @@ $nds-phone-height: nds.space(56);
   }
 }
 
+// The country panel is absolutely positioned below the toggle; `overflow:
+// clip` would cut it to the pill's 56px, so release the clip while open.
+.usa-phone-input:has(.usa-phone-input__country[open]) {
+  overflow: visible;
+}
+
 // Country selector — a `<details>`/`<summary>` disclosure styled as a compact
 // secondary button (`+1` plus a chevron). The open panel is a `.popover-menu`
 // of radio options, so the menu is design-system-styled (never the native
@@ -135,21 +141,51 @@ $nds-phone-height: nds.space(56);
 }
 
 // Each option is a label wrapping a visually-hidden radio; the radio carries
-// the submitted value so the control works with JavaScript disabled.
+// the submitted value so the control works with JavaScript disabled. The row
+// reads "Name (+N)" left-aligned, with a checkmark on the selected option.
 .usa-phone-input__country-option {
-  align-items: baseline;
+  align-items: center;
   cursor: pointer;
   display: flex;
-  gap: nds.space(8);
+  gap: nds.space(12);
+  justify-content: space-between;
+  text-align: left;
 
   &:has(.usa-phone-input__country-radio:focus-visible) {
     @include nds.focus-ring();
   }
 }
 
+.usa-phone-input__country-option-label {
+  flex: 1 1 auto;
+}
+
 .usa-phone-input__country-option-dial {
   color: nds.alpha(nds.$text-primary, 65%);
+}
+
+.usa-phone-input__country-option-check {
   flex-shrink: 0;
+  height: nds.space(16);
+  visibility: hidden;
+  width: nds.space(16);
+}
+
+.usa-phone-input__country-option:has(.usa-phone-input__country-radio:checked)
+  .usa-phone-input__country-option-check {
+  visibility: visible;
+}
+
+// Rule separating the pinned +1 countries from the alphabetical list.
+.usa-phone-input__country-rule {
+  align-self: stretch;
+  background: nds.$base-light;
+  border: 0;
+  flex: 0 0 auto;
+  height: 1px;
+  margin: nds.space(4) nds.space(12);
+  min-height: 1px;
+  width: auto;
 }
 
 // Field — the floating-label telephone input filling the rest of the pill.

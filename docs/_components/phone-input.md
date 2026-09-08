@@ -8,12 +8,18 @@ lead: >
 The country selector is a `<details>` disclosure whose open panel is a styled
 `.popover-menu` of radio options — so the menu matches the design system in
 every browser (never the native `<select>` popup) and the field still submits
-with JavaScript disabled. The number field uses the floating-label pattern:
+with JavaScript disabled. The `phoneInput` behavior (`phoneInput.on()`)
+progressively enhances the control: choosing a country updates the `+N` dial
+code shown on the toggle and closes the disclosure. The number field uses the
+floating-label pattern:
 render the input BEFORE its `.usa-phone-input__label` (the label must be the
 input's next sibling) and give the input `placeholder=" "` so
 `:placeholder-shown` tracks emptiness.
 
 ## Default
+
+The option list is supplied by the consuming app (login.gov renders it from its
+supported-country data), one `.usa-phone-input__country-option` per country.
 
 {% capture example %}
 <div class="usa-phone-input">

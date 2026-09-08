@@ -26,6 +26,20 @@ function render(container) {
   const slots = /** @type {HTMLElement[]} */ (Array.from(container.querySelectorAll(SLOT)));
   if (!input || !slots.length) return;
 
+  // The visible slots are the source of truth for capacity: never let the real
+  // input hold more characters than there are slots, so a paste or fast typing
+  // cannot submit an over-length code.
+  if ((input.value || '').length > slots.length) {
+    const caretBefore = input.selectionEnd;
+    input.value = input.value.slice(0, slots.length);
+    const caret = Math.min(caretBefore == null ? slots.length : caretBefore, slots.length);
+    try {
+      input.setSelectionRange(caret, caret);
+    } catch {
+      // Some input types disallow selection APIs; the value cap still applies.
+    }
+  }
+
   const value = input.value || '';
   const focused = container.ownerDocument.activeElement === input;
   const caret = Math.min(

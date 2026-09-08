@@ -211,3 +211,11 @@ $nds-enhanced-toggle-size: nds.space(20);
     display: flex;
   }
 }
+
+// SSN variant: the visible control shows the grouped, mostly-masked number
+// (•••-••-•••9) while a hidden input carries the real digits; tabular digits
+// keep the mask and the revealed number the same width.
+.usa-input__control--ssn {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}

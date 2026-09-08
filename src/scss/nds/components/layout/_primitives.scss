@@ -34,6 +34,10 @@
 
 .auth > *:not(.toast),
 .flow > *:not(.toast) {
+  // Spacing between flow sections comes from the stack `gap`. Neutralize any
+  // block margins children bring in (e.g. legacy `margin-bottom-*` utilities on
+  // stacked alerts) so they don't add to the gap and open a doubled space.
+  margin-block: 0;
   margin-inline: auto;
   max-width: 100%;
   min-width: 0;

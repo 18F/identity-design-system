@@ -1,0 +1,115 @@
+// NDS summary list — a read-only review of labeled values inside a card, one
+// row per field with a hairline between rows. Rows may carry a trailing
+// action (e.g. an Edit tertiary button) and a masked value with a reveal
+// toggle (`.nds-masked`).
+//
+//   <dl class="nds-summary">
+//     <div class="nds-summary__row">
+//       <dt class="nds-summary__label">First name</dt>
+//       <dd class="nds-summary__value">John</dd>
+//     </div>
+//     <div class="nds-summary__row">
+//       <div class="nds-summary__cell">…dt/dd…</div>
+//       <button class="usa-button usa-button--tertiary usa-button--sm">Edit</button>
+//     </div>
+//   </dl>
+
+@use 'tokens/nds' as nds;
+
+.nds-summary {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+
+  > * + * {
+    margin-top: 0;
+  }
+}
+
+.nds-summary__row {
+  align-items: center;
+  display: flex;
+  gap: nds.space(8);
+  padding: nds.space(16) 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  + .nds-summary__row {
+    border-top: 1px solid nds.$base-lighter;
+  }
+}
+
+.nds-summary__cell {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nds-summary__label,
+.nds-summary__value {
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.nds-summary__label {
+  color: nds.alpha(nds.$text-primary, 65%);
+}
+
+.nds-summary__value {
+  color: nds.$text-primary;
+  overflow-wrap: anywhere;
+}
+
+// A row without a cell wrapper stacks its dt/dd directly.
+.nds-summary__row > .nds-summary__label,
+.nds-summary__row > .nds-summary__value {
+  flex: 0 0 100%;
+}
+
+.nds-summary__row {
+  flex-wrap: wrap;
+}
+
+.nds-summary__row:has(> .nds-summary__cell) {
+  flex-wrap: nowrap;
+}
+
+// Masked value with an inline reveal toggle.
+.nds-masked {
+  align-items: center;
+  display: inline-flex;
+  gap: nds.space(8);
+}
+
+.nds-masked__toggle {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: nds.alpha(nds.$text-primary, 65%);
+  cursor: pointer;
+  display: inline-flex;
+  line-height: 0;
+  padding: 0;
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+
+  .usa-icon {
+    block-size: nds.space(16);
+    inline-size: nds.space(16);
+  }
+
+  .usa-icon[hidden] {
+    display: none;
+  }
+}

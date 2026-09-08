@@ -12,6 +12,15 @@
 
 @use 'tokens/nds' as nds;
 
+// Status icons are inlined as data-URI masks so the component is fully
+// self-contained: consumers (e.g. idp) need no companion image files on a
+// path relative to the compiled CSS. The glyph is painted via `mask` +
+// `background-color`, so the fill baked into the SVG is irrelevant.
+$alert-icon-info: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M13.2%2018h-2.4v-7.2h2.4zm.24-10.56c0%20.795-.36%201.44-1.44%201.44s-1.44-.645-1.44-1.44S10.92%206%2012%206s1.44.645%201.44%201.44'/%3E%3Cpath%20fill='%23000c1f'%20fill-rule='evenodd'%20d='M12%201.2C6%201.2%201.2%206%201.2%2012S6%2022.8%2012%2022.8%2022.8%2018%2022.8%2012%2018%201.2%2012%201.2m0%202.4c4.68%200%208.4%203.72%208.4%208.4s-3.72%208.4-8.4%208.4-8.4-3.72-8.4-8.4S7.32%203.6%2012%203.6'%20clip-rule='evenodd'/%3E%3C/svg%3E");
+$alert-icon-warning: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M11.994%204.8c.228%200%20.792.06%201.128.624l7.104%2012.012c.288.492.132.924%200%201.128a1.27%201.27%200%200%201-1.14.636H4.89a1.27%201.27%200%200%201-1.14-.636%201.11%201.11%200%200%201%200-1.128l7.116-12.012c.336-.564.9-.624%201.128-.624m0-2.4c-1.236%200-2.484.6-3.192%201.8L1.698%2016.212c-1.416%202.4.36%205.388%203.192%205.388h14.22c2.832%200%204.608-3%203.192-5.388L15.186%204.2c-.708-1.2-1.956-1.8-3.192-1.8m1.2%205.4-.024%206h-2.364l-.012-6zm-1.2%2010.2c-1.092%200-1.5-.672-1.5-1.5s.408-1.5%201.5-1.5%201.5.672%201.5%201.5-.408%201.5-1.5%201.5'/%3E%3C/svg%3E");
+$alert-icon-success: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M12%201.2C6.036%201.2%201.2%206.036%201.2%2012S6.036%2022.8%2012%2022.8%2022.8%2017.964%2022.8%2012%2017.964%201.2%2012%201.2m0%2019.2c-4.632%200-8.4-3.768-8.4-8.4S7.368%203.6%2012%203.6s8.4%203.768%208.4%208.4-3.768%208.4-8.4%208.4'/%3E%3Cpath%20fill='%23000c1f'%20d='m15.744%207.8-4.992%205.04-2.496-2.52L6.6%2012l4.152%204.2L17.4%209.48z'/%3E%3C/svg%3E");
+$alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M10.8%206h2.4v7.2h-2.4zm-.24%2010.56c0-.795.36-1.44%201.44-1.44s1.44.645%201.44%201.44c0%20.796-.36%201.44-1.44%201.44s-1.44-.645-1.44-1.44'/%3E%3Cpath%20fill='%23000c1f'%20fill-rule='evenodd'%20d='M12%2022.8c6%200%2010.8-4.8%2010.8-10.8S18%201.2%2012%201.2%201.2%206%201.2%2012%206%2022.8%2012%2022.8m0-2.4c-4.68%200-8.4-3.72-8.4-8.4S7.32%203.6%2012%203.6s8.4%203.72%208.4%208.4-3.72%208.4-8.4%208.4'%20clip-rule='evenodd'/%3E%3C/svg%3E");
+
 // The card is a vertical stack: status icon, then the heading/body content
 // column, then an optional footer (callout or action). `--nds-alert-bg` is the
 // only per-status difference; foreground ink is constant across statuses.
@@ -21,8 +30,9 @@
 
   align-items: flex-start;
   background: var(--nds-alert-bg);
-  border: 1px solid nds.$base-lightest;
+  border: 0;
   border-radius: nds.radius(24);
+  box-shadow: inset 0 0 0 1px #{nds.$base-lightest};
   box-sizing: border-box;
   color: nds.$text-primary;
   display: flex;
@@ -69,7 +79,7 @@
     display: block;
     height: 1.5rem;
     margin: 0 0 nds.space(12);
-    mask: url('../../img/nds-icons/info.svg') no-repeat center / 1.5rem 1.5rem;
+    mask: #{$alert-icon-info} no-repeat center / 1.5rem 1.5rem;
     position: static;
     width: 1.5rem;
   }
@@ -133,7 +143,7 @@
   --nds-alert-bg: #{nds.$info-lighter};
 
   .usa-alert__body::before {
-    mask-image: url('../../img/nds-icons/info.svg');
+    mask-image: #{$alert-icon-info};
   }
 }
 
@@ -141,7 +151,7 @@
   --nds-alert-bg: #{nds.$warning-lighter};
 
   .usa-alert__body::before {
-    mask-image: url('../../img/nds-icons/warning.svg');
+    mask-image: #{$alert-icon-warning};
   }
 }
 
@@ -149,7 +159,7 @@
   --nds-alert-bg: #{nds.$success-lighter};
 
   .usa-alert__body::before {
-    mask-image: url('../../img/nds-icons/check-circle.svg');
+    mask-image: #{$alert-icon-success};
   }
 }
 
@@ -157,7 +167,7 @@
   --nds-alert-bg: #{nds.$error-lighter};
 
   .usa-alert__body::before {
-    mask-image: url('../../img/nds-icons/error.svg');
+    mask-image: #{$alert-icon-error};
   }
 }
 
