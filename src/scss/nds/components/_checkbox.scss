@@ -17,6 +17,12 @@
 
 @use 'tokens/nds' as nds;
 
+// Glyphs are inlined as data URIs so the component is self-contained:
+// consumers (e.g. idp) need no companion image files at a path relative to
+// the compiled CSS.
+$nds-checkbox-glyph-check: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23fff'%20d='M14.4%204.32%2013.28%203.2l-6.96%207.36-3.6-3.36L1.6%208.32l4.8%204.48z'/%3E%3C/svg%3E");
+$nds-checkbox-glyph-indeterminate: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23fff'%20d='M1.6%207.2h12.8v1.6H1.6z'/%3E%3C/svg%3E");
+
 $nds-checkbox-size: nds.space(20);
 $nds-checkbox-border-width: 1px;
 
@@ -69,7 +75,7 @@ $nds-checkbox-border-width: 1px;
 // 20px box (USWDS's own glyph is an 8px mark, too small for this box).
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
   background-color: nds.$primary;
-  background-image: url('../../img/nds-icons/checkmark.svg');
+  background-image: $nds-checkbox-glyph-check;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -82,7 +88,7 @@ $nds-checkbox-border-width: 1px;
 // pseudo and the `[data-indeterminate]` attribute variant USWDS supports.
 .usa-checkbox__input:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label::before {
   background-color: nds.$primary;
-  background-image: url('../../img/nds-icons/indeterminate.svg');
+  background-image: $nds-checkbox-glyph-indeterminate;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -130,7 +136,7 @@ $nds-checkbox-border-width: 1px;
 // Disabled + checked: muted fill, keep the enlarged glyph.
 .usa-checkbox__input:is(:disabled, [aria-disabled='true']):checked + .usa-checkbox__label::before {
   background-color: nds.alpha(nds.$black, 25%);
-  background-image: url('../../img/nds-icons/checkmark.svg');
+  background-image: $nds-checkbox-glyph-check;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
