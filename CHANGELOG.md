@@ -13,6 +13,8 @@
 - NDS: Size the top chrome and account header to the design: 84px desktop
   (`--nds-nav-height`, which also offsets the toast), a 24px logo frame, and
   24px mobile block padding (12px below a stepper, 20px logo-to-stepper gap).
+- NDS: Drop the progress stepper's extra block padding so it is one 44px pill
+  tall (steps were 52px, the stepper 84px desktop / 76px mobile).
 
 ## 9.8.0
 
