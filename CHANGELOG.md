@@ -1,3 +1,8 @@
+## Unreleased
+
+- NDS: Add `.discovery-service--disconnected`, `--connected`, and
+  `--authorized` row states to the dashboard home layout.
+
 ## 9.8.0
 
 - Upgrade USWDS from 3.13.0 to 3.14.0. The accordion icon default, which

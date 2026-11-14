@@ -2,7 +2,11 @@
 //
 // `.dashboard-home` stacks the greeting and the service discovery section.
 // The `.discovery*` and `.discovery-service*` selectors build the service
-// list using the shared mixins from the service-list module.
+// list using the shared mixins from the service-list module. A row can carry
+// one of the design's agency row states: `--disconnected` (description plus a
+// secondary "Connect" link that collapses to an external-link icon on
+// mobile), `--connected` (connection metadata plus an icon-only menu button),
+// or `--authorized` (title only plus a switch).
 
 @use 'tokens/nds' as nds;
 @use 'service-list' as service;
@@ -133,6 +137,25 @@ $dashboard-home-breakpoint-m: 768px;
   @include service.actions();
 }
 
+// Row states. The trailing control stays inline at every width, so the
+// mobile grid reflow below does not apply to stateful rows.
+.discovery-service__connect-icon {
+  display: none;
+}
+
+// Connected: the menu trigger's glyph sits at the 20px icon size.
+.discovery-service--connected .discovery-service__actions .usa-icon {
+  height: nds.space(20);
+  width: nds.space(20);
+}
+
+// Authorized: the switch label only holds visually hidden text, so give it
+// the track's height to keep the track centered in the row.
+.discovery-service--authorized .usa-checkbox__label {
+  margin: 0;
+  min-height: nds.space(24);
+}
+
 @media (width < #{$dashboard-home-breakpoint-m}) {
   .dashboard-home__greeting {
     font-size: nds.$text-heading-l-mobile;
@@ -148,5 +171,60 @@ $dashboard-home-breakpoint-m: 768px;
 
   .discovery-service__actions {
     @include service.actions-mobile();
+  }
+
+  .discovery-service:is(
+    .discovery-service--disconnected,
+    .discovery-service--connected,
+    .discovery-service--authorized
+  ) {
+    @include service.row();
+
+    flex-wrap: nowrap;
+    gap: nds.space(16);
+
+    .discovery-service__mark,
+    .discovery-service__logo {
+      flex-basis: nds.space(40);
+      height: nds.space(40);
+      width: nds.space(40);
+    }
+
+    .discovery-service__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .discovery-service__actions {
+      grid-column: auto;
+      justify-self: auto;
+    }
+  }
+
+  // Disconnected: the "Connect" pill collapses to a bare external-link icon.
+  // The label stays in the accessibility tree so the link keeps its name.
+  .discovery-service--disconnected .discovery-service__connect {
+    background: transparent;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .discovery-service--disconnected .discovery-service__connect-label {
+    border: 0;
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .discovery-service--disconnected .discovery-service__connect-icon {
+    display: block;
+    height: nds.space(20);
+    width: nds.space(20);
   }
 }
