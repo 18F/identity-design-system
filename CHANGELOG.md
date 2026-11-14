@@ -47,6 +47,12 @@
 - Add the NDS NIST trust badge: `.nist-badge` with `__seal`, `__copy`,
   `__title`, and `__subtitle` elements, plus a single optimized
   `img/nist-badge/nist-seal.svg` exported from Figma.
+- Add the NDS consent layout (`.consent`) for the America.gov delegation
+  consent page: a card of `.consent-service` agency rows built on native
+  `<details>` disclosures (seal, name, description, chevron; expanded About /
+  permissions / shared-information sections, "Learn more", optional Remove),
+  an "Add more services" row, a bordered "remember my selection" checkbox,
+  and the Allow / Cancel actions.
 
 ### Bug Fixes
 
