@@ -1,3 +1,9 @@
+## Unreleased
+
+- Add the NDS NIST trust badge: `.nist-badge` with `__seal`, `__copy`,
+  `__title`, and `__subtitle` elements, plus a single optimized
+  `img/nist-badge/nist-seal.svg` exported from Figma.
+
 ## 9.8.0
 
 - Upgrade USWDS from 3.13.0 to 3.14.0. The accordion icon default, which

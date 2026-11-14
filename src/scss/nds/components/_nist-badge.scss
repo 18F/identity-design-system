@@ -1,0 +1,42 @@
+// NDS NIST trust badge — a centered 72px "NIST compliant" seal with two lines
+// of muted copy below it, shown under the main card on confirmation screens.
+// The seal is a single exported SVG (`img/nist-badge/nist-seal.svg`); the
+// copy is supplied by the consuming app, so this file only styles the slots.
+
+@use 'tokens/nds' as nds;
+
+$nist-badge-seal-size: 72px;
+
+.nist-badge {
+  align-items: center;
+  color: nds.alpha(nds.$black, 65%);
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(20);
+  text-align: center;
+}
+
+.nist-badge__seal {
+  display: block;
+  flex-shrink: 0;
+  height: $nist-badge-seal-size;
+  width: $nist-badge-seal-size;
+}
+
+.nist-badge__copy {
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(4);
+}
+
+.nist-badge__title,
+.nist-badge__subtitle {
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.nist-badge__title {
+  font-weight: nds.$font-semibold;
+}
