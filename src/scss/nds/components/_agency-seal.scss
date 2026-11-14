@@ -1,0 +1,55 @@
+// NDS agency seal — a circular partner-agency seal or logo.
+//
+// Crops the image to a pill and covers the circle. The fill behind the image
+// varies per agency, so it is set with `--nds-agency-seal-bg` rather than
+// per-agency classes. Size modifiers match the sizes in use: 24 (header),
+// 48 (agency rows, the default), 100 (hero), and 180 (welcome collage). Works
+// on a wrapper with an `.agency-seal__image` child, or directly on an `<img>`.
+
+@use 'tokens/nds' as nds;
+
+.agency-seal {
+  // Unset by default so it can be set on the seal or inherited from a parent.
+  background: var(--nds-agency-seal-bg, #{nds.$white});
+  border-radius: nds.radius(pill);
+  box-sizing: border-box;
+  display: block;
+  flex-shrink: 0;
+  height: nds.space(48);
+  object-fit: cover;
+  overflow: hidden;
+  width: nds.space(48);
+}
+
+.agency-seal__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+// Hairline edge for seals on a white or light fill, so the circle reads
+// against a white page.
+.agency-seal--bordered {
+  border: 1px solid nds.$base-lightest;
+}
+
+.agency-seal--24 {
+  height: nds.space(24);
+  width: nds.space(24);
+}
+
+.agency-seal--48 {
+  height: nds.space(48);
+  width: nds.space(48);
+}
+
+.agency-seal--100 {
+  height: nds.space(100);
+  width: nds.space(100);
+}
+
+.agency-seal--180 {
+  height: nds.space(180);
+  width: nds.space(180);
+}

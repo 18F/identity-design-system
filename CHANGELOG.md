@@ -1,3 +1,13 @@
+## Unreleased
+
+### New Features
+
+- Add the NDS agency seal (`.agency-seal`), a circular partner-agency seal or
+  logo. Size modifiers `--24`, `--48` (default), `--100`, and `--180` cover
+  the header, agency rows, page hero, and welcome collage. Set the per-agency
+  fill behind the image with the `--nds-agency-seal-bg` custom property, and
+  add `--bordered` for a hairline edge on light seals.
+
 ## 9.8.0
 
 - Upgrade USWDS from 3.13.0 to 3.14.0. The accordion icon default, which
