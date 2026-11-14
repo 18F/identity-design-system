@@ -144,7 +144,8 @@ body.site {
 // Chrome
 // ----------------------------------------
 :root {
-  --nds-nav-height: #{nds.space(80)};
+  // Figma header: 84px desktop (logo frame 24 + 20px block padding × 2 + 1px rule).
+  --nds-nav-height: #{nds.space(80) + nds.space(4)};
   // Matches the official-banner block padding (12×2) + body-s line box.
   --nds-official-banner-height: #{nds.space(48)};
   --nds-chrome-z: 15;
@@ -222,6 +223,8 @@ body.site {
 .auth-page__logo-banner-link {
   align-items: center;
   display: inline-flex;
+  // Figma's logo frame is 24px tall; the wordmark inside it renders 20px.
+  height: nds.space(24);
   max-width: 100%;
   position: relative;
   z-index: 1;
@@ -269,10 +272,16 @@ body.site {
   .auth-page__top-chrome {
     flex: 0 0 auto;
     flex-direction: column;
-    gap: nds.space(12);
+    gap: nds.space(20);
     height: auto;
-    padding: nds.space(16) var(--nds-screen-inline-padding);
+    padding: nds.space(24) var(--nds-screen-inline-padding);
     position: static;
+  }
+
+  // With a stepper below the logo the Figma mobile header tightens its bottom
+  // padding (24 top / 20 gap / 12 bottom).
+  .auth-page__top-chrome:has(.auth-page__top-chrome-progress) {
+    padding-block-end: nds.space(12);
   }
 
   .auth-page__logo-banner {

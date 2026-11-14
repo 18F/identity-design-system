@@ -10,6 +10,9 @@
   and rotation instead of its own copy.
 - NDS: Widen the mobile screen gutter (page shell, top chrome, account header)
   from 16px to the grid's mobile margin (`$grid-margin-mobile`, 24px).
+- NDS: Size the top chrome and account header to the design: 84px desktop
+  (`--nds-nav-height`, which also offsets the toast), a 24px logo frame, and
+  24px mobile block padding (12px below a stepper, 20px logo-to-stepper gap).
 
 ## 9.8.0
 

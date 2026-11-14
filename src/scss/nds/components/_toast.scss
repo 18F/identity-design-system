@@ -38,8 +38,8 @@ $nds-toast-mobile-breakpoint: 40em;
   position: fixed;
   // Positioned below the official banner and sticky nav via :root chrome vars.
   top: calc(
-    var(--nds-official-banner-height, #{nds.space(40)}) + var(--nds-nav-height, #{nds.space(80)}) +
-      #{$nds-toast-viewport-inset}
+    var(--nds-official-banner-height, #{nds.space(40)}) +
+      var(--nds-nav-height, #{nds.space(80) + nds.space(4)}) + #{$nds-toast-viewport-inset}
   );
   transform: translate(-50%, calc(-1 * #{$nds-toast-enter-offset}));
   transition:
@@ -59,7 +59,8 @@ $nds-toast-mobile-breakpoint: 40em;
 @media (width >= #{$nds-toast-mobile-breakpoint}) {
   body:has(.account-shell) .toast {
     top: calc(
-      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(80)} + #{nds.space(8)}
+      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(80) + nds.space(4)} +
+        #{nds.space(8)}
     );
   }
 }
@@ -67,7 +68,8 @@ $nds-toast-mobile-breakpoint: 40em;
 @media (width >= #{$nds-toast-mobile-breakpoint}) and (width < 48em) {
   body:has(.account-shell) .toast {
     top: calc(
-      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(64)} + #{nds.space(8)}
+      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(48) + nds.space(24)} +
+        #{nds.space(8)}
     );
   }
 }

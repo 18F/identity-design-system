@@ -17,9 +17,9 @@ $account-nav-width: 252px;
   border-bottom: 1px solid nds.alpha(nds.$black, 10%);
   box-sizing: border-box;
   display: flex;
-  flex: 0 0 nds.space(80);
+  flex: 0 0 nds.space(80) + nds.space(4);
   gap: nds.space(24);
-  height: nds.space(80);
+  height: nds.space(80) + nds.space(4);
   justify-content: space-between;
   padding-inline: nds.space(48);
 }
@@ -300,8 +300,9 @@ $account-nav-width: 252px;
 
 @media (width < #{$account-nav-breakpoint-m}) {
   .account-header {
-    flex-basis: nds.space(64);
-    height: nds.space(64);
+    // Figma mobile header: 24px logo frame + 24px block padding × 2.
+    flex-basis: nds.space(48) + nds.space(24);
+    height: nds.space(48) + nds.space(24);
     padding-inline: nds.$grid-margin-mobile;
   }
 
