@@ -7,6 +7,45 @@
   the header, agency rows, page hero, and welcome collage. Set the per-agency
   fill behind the image with the `--nds-agency-seal-bg` custom property, and
   add `--bordered` for a hairline edge on light seals.
+- Populate the NDS overlay (`packages-nds/`, compiled to
+  `dist/assets/css/nds/`). Consumers opt in by pointing their Sass load path
+  at `packages-nds/`; the default `packages-uswds/` output is unchanged.
+  - Tokens: spacing, radius, grid, mixins, color, typography, shadow, motion,
+    and focus. Color tokens use semantic families (`base`, `primary`,
+    `secondary`, `success`, `warning`, plus `black`, `white`, `disabled`, and
+    `info`/`error` aliases), with values aligned to the Figma source.
+  - Form controls: buttons (size and variant modifiers, `--icon-only`), text
+    input (floating-label group, enhanced input for identity-idp's
+    `NDS::InputComponent`), checkbox and radio (bordered, tile, flat, switch,
+    indeterminate), fieldset, date fields, one-time-code input, file input,
+    search, phone input, SSN input, password strength, and masked text.
+  - Components: alert, card, badge, toast, tooltip, modal, accordion,
+    progress, process list, popover menu (directional variants), icon,
+    clipboard button, status page icon, field readout, summary list, personal
+    key, duplicate profiles, location collection, official banner, animated
+    media, and link.
+  - Layouts: layout primitives, stack and transition utilities, page shell,
+    page footer, auth entry, account navigation, account and authentication
+    methods, dashboard home, connected services, and service list.
+- Add the `inputOtp`, `inputSsn`, and `phoneInput` JavaScript behaviors (with
+  types) for the NDS one-time-code, SSN, and phone inputs.
+
+### Bug Fixes
+
+- Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They
+  were referenced as files that consumers don't ship, so they 404'd.
+- Correct the font and image path depth in the NDS bundle, and include the
+  repository fonts in the build output.
+
+### Internal
+
+- Docs: load the NDS stylesheet when the URL has `?ui_test_bucket=nds`, and keep
+  the parameter when navigating between pages.
+- Add a `prepare` script so a git commit can be installed and compiled
+  (visual-regression CI skips install scripts to keep its snapshots).
+- Add `npm run watch:link` to mirror source into a linked consumer's package
+  directories.
+- Bump `json` from 2.21.1 to 2.21.2.
 
 ## 9.8.0
 
