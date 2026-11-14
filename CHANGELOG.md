@@ -53,6 +53,10 @@
   permissions / shared-information sections, "Learn more", optional Remove),
   an "Add more services" row, a bordered "remember my selection" checkbox,
   and the Allow / Cancel actions.
+- NDS: Add the `.page-footer__experience-notice` A/B opt-out strip ("You're part
+  of a group experiencing our refreshed interface." + "Switch to legacy") to the
+  page footer layout. Desktop places the copy left and the action right; mobile
+  stacks and centers them.
 
 ### Bug Fixes
 

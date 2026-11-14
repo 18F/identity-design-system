@@ -1,8 +1,10 @@
 // NDS page footer chrome — the `.page-footer` bar emitted by the
 // `lg-nds-page-footer` custom element, with the "Powered by" agency
 // identifier on one side and a row of text-button footer actions (a language
-// menu, a privacy link, a help link, and an overflow menu). Loaded after
-// `@forward 'uswds'`.
+// menu, a privacy link, a help link, and an overflow menu). Also styles the
+// `.page-footer__experience-notice` A/B opt-out notice ("You're part of a group
+// experiencing our refreshed interface." + "Switch to legacy") that sits above
+// the bar. Loaded after `@forward 'uswds'`.
 
 @use 'tokens/nds' as nds;
 
@@ -106,7 +108,97 @@ lg-nds-page-footer {
   }
 }
 
+// Experience notice: a tinted strip above the footer bar for users in the NDS
+// A/B bucket. Muted copy (with an inline "refreshed interface" link that
+// inherits the muted color) on one side and a "Switch to legacy" link-styled
+// action on the other. The action may be an `<a>` or a `.usa-button--unstyled`
+// `<button>` (identity-idp renders it with `button_to`, inside a `<form>`).
+.page-footer__experience-notice {
+  align-items: center;
+  background: nds.$info-lighter;
+  border-top: 1px solid nds.$base-lightest;
+  box-sizing: border-box;
+  color: $nds-footer-text-secondary;
+  display: flex;
+  font-family: nds.$font-family;
+  font-feature-settings:
+    'cv10' 1,
+    'cv01' 1,
+    'ss07' 1,
+    'ss08' 1,
+    'case' 1;
+  font-size: nds.$text-body-m;
+  gap: nds.space(16);
+  justify-content: space-between;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding: nds.space(16) nds.space(48);
+  text-align: left;
+  width: 100%;
+}
+
+.page-footer__experience-notice .copy {
+  color: inherit;
+  display: block;
+  flex: 0 1 auto;
+  text-align: inherit;
+  width: auto;
+}
+
+.page-footer__experience-notice form {
+  display: inline;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+// The NDS `.usa-button` overlay doesn't handle `--unstyled`, so the pill fill,
+// shadow, and sizing are reset here so the action reads as a plain link.
+.page-footer__experience-notice > a,
+.page-footer__experience-notice .usa-button--unstyled {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: nds.$primary;
+  display: inline;
+  flex: 0 0 auto;
+  font-family: inherit;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  height: auto;
+  letter-spacing: inherit;
+  line-height: 1.5;
+  min-height: 0;
+  overflow: visible;
+  padding: 0;
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  white-space: nowrap;
+
+  &:is(:link, :visited),
+  &:hover,
+  &:active {
+    background: transparent;
+    box-shadow: none;
+    color: nds.$primary;
+    text-decoration-line: underline;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+    background: transparent;
+    color: nds.$primary;
+  }
+}
+
 @media (width < #{$nds-footer-breakpoint-m}) {
+  .page-footer__experience-notice {
+    flex-direction: column;
+    justify-content: center;
+    padding: nds.space(20) nds.space(24);
+    text-align: center;
+  }
+
   .page-footer {
     flex-direction: column;
     gap: nds.space(16);
