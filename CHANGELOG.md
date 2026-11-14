@@ -41,6 +41,9 @@
   `--authorized` row states to the dashboard home layout.
 - NDS: Draw a CSS radial-progress ring before the current progress step's
   label (`--nds-progress-ring-value` sets the fill; defaults to 50%).
+- NDS: Fill in the account history layout: `.history` sections and panels of
+  `.history-row` entries (with an optional "Details" action that collapses to
+  a chevron on mobile) plus a `.history__back` header for device details.
 
 ### Bug Fixes
 
