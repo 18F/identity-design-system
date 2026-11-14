@@ -63,6 +63,9 @@
   16px gap, 12px on small viewports), and `.nds-totp-setup__step-heading`
   (numbered step heading with a hanging number), plus an "Authentication app
   setup" docs page showing the full layout.
+- Add an NDS standalone spinner (`.nds-spinner`): the 20px Figma `loader radial`
+  glyph, filled with the current text color, rotating unless the user prefers
+  reduced motion.
 
 ### Bug Fixes
 
