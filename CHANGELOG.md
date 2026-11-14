@@ -1,3 +1,12 @@
+## Unreleased
+
+- NDS: Fill in the authentication app (TOTP) setup layout. Adds
+  `.nds-totp-setup__qrcode` (the QR code block identity-idp already emits;
+  220px, 180px on small viewports), `.nds-totp-setup__steps` (step card list,
+  16px gap, 12px on small viewports), and `.nds-totp-setup__step-heading`
+  (numbered step heading with a hanging number), plus an "Authentication app
+  setup" docs page showing the full layout.
+
 ## 9.8.0
 
 - Upgrade USWDS from 3.13.0 to 3.14.0. The accordion icon default, which

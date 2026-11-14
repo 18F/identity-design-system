@@ -1,1 +1,65 @@
-// NDS totp-setup layout module. Populated in a follow-up.
+// NDS totp-setup layout — the "Set up an authentication app" page.
+//
+// The page composes shared components: numbered step cards
+// (`.card.stack.stack--gap-24`), a floating-label nickname/code input, a
+// setup-code `.field-readout` with a copy action inside `lg-clipboard-button`,
+// the "Remember this browser" `.checkbox` card, and the form-page actions. This
+// module adds only the pieces those components don't cover:
+//
+//   .nds-totp-setup__qrcode        QR code block (centered, fixed-size image)
+//   .nds-totp-setup__steps         Step card list (16 gap, 12 on mobile)
+//   .nds-totp-setup__step-heading  Single-item numbered `<ol start>` heading,
+//                                  with the number hanging outside the text
+//
+// Loaded after `@forward 'uswds'`. Pure component CSS.
+
+@use 'tokens/nds' as nds;
+
+$nds-totp-setup-qrcode-size: 220px;
+$nds-totp-setup-qrcode-size-mobile: 180px;
+$nds-totp-setup-marker-gutter: nds.space(24);
+$nds-totp-setup-mobile-breakpoint: 40em;
+
+.nds-totp-setup__steps {
+  @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// The step number sits in a gutter outside the heading text, so a wrapped
+// heading ("Scan the QR code or enter …") aligns under its first word. The
+// NDS `.usa-list` overlay (inside marker, no indent) loads after this module,
+// so the paired selector out-ranks it.
+.nds-totp-setup__step-heading,
+.usa-list.nds-totp-setup__step-heading {
+  list-style: decimal outside;
+  margin: 0;
+  padding-left: $nds-totp-setup-marker-gutter;
+}
+
+.nds-totp-setup__qrcode {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-block: nds.space(24);
+  width: 100%;
+
+  img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    width: $nds-totp-setup-qrcode-size;
+  }
+}
+
+@media (width < #{$nds-totp-setup-mobile-breakpoint}) {
+  .nds-totp-setup__steps {
+    gap: nds.space(12);
+  }
+
+  .nds-totp-setup__qrcode img {
+    width: $nds-totp-setup-qrcode-size-mobile;
+  }
+}
