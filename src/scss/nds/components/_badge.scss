@@ -2,7 +2,10 @@
 //
 // A `.badge` inline-flex pill with color levels (primary, secondary, success,
 // error, warning, info, tertiary), a `--dark` surface variant, and an
-// `--icon-only` square form. Loaded after `@forward 'uswds'`.
+// `--icon-only` square form. The level modifiers are the generic states the
+// design's `badge` component exposes (`state=primary|success|warning|error|
+// tertiary`); context classes such as `.card__badge--success` predate them.
+// Loaded after `@forward 'uswds'`.
 
 @use 'sass:list';
 @use 'sass:map';
@@ -32,7 +35,7 @@ $nds-badge-states: (
   ),
   success: (
     light: (
-      nds.alpha(nds.$success-light, 10%),
+      nds.$success-lighter,
       nds.$success-dark,
     ),
     dark: (
@@ -52,8 +55,8 @@ $nds-badge-states: (
   ),
   warning: (
     light: (
-      nds.alpha(nds.$warning-light, 10%),
-      nds.$warning-darker,
+      nds.$warning-lighter,
+      nds.$warning-dark,
     ),
     dark: (
       nds.alpha(nds.$warning-light, 20%),
@@ -75,7 +78,7 @@ $nds-badge-states: (
 .badge {
   align-items: center;
   backdrop-filter: blur(25px);
-  border: 1px solid transparent;
+  border: 1px solid nds.$base-lightest;
   border-radius: nds.radius(8);
   display: inline-flex;
   font-family: nds.$font-family;
@@ -106,6 +109,7 @@ $nds-badge-states: (
 
     &.badge--#{$name}.badge--dark {
       background: list.nth(map.get($bg, dark), 1);
+      border-color: transparent;
       color: list.nth(map.get($bg, dark), 2);
     }
   }

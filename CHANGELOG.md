@@ -3,6 +3,9 @@
 - Add an NDS standalone spinner (`.nds-spinner`): the 20px Figma `loader radial`
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
+- NDS: Align the `.badge--success` and `.badge--warning` levels with the design
+  (solid lighter-step surface, dark-step ink) and give light badges the
+  base-lightest border.
 
 ## 9.8.0
 

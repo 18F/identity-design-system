@@ -23,6 +23,16 @@ status. Pair the base `.badge` class with a color level, and optionally the
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+Prefer these generic level modifiers over context-specific badge classes. For
+example, an account summary marks the current account with a success badge and
+a possible duplicate with a warning badge.
+
+{% capture example %}
+<span class="badge badge--success">Signed in</span>
+<span class="badge badge--warning">Duplicate</span>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ### Dark surface
 
 Add `.badge--dark` to any level when the badge sits on a dark background.
