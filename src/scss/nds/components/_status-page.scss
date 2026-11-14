@@ -1,6 +1,66 @@
-// NDS status-page icon — a large centered status illustration.
+// NDS status page — the fullscreen status message (error, warning, success,
+// info) and its large status illustration.
+//
+// `.status-page` is a single centered column that sits inside the page shell
+// (`.auth-page__main`): a centered `__media` (a `.nds-status-icon` well or a
+// `.status-page__icon` illustration), a centered `__heading`, a `__rule`
+// (`.divider`), the `__body` copy (`.copy.copy--muted`) and an `__actions`
+// stack (`.actions`) of full-width buttons. It composes those primitives
+// rather than restyling them; it only owns the column, the section rhythm and
+// the heading. The status type lives on the icon modifier
+// (`.nds-status-icon--{error,warning,success,info}`).
 
 @use 'tokens/nds' as nds;
+
+$nds-status-page-breakpoint-m: 768px;
+
+.status-page {
+  @include nds.stack(
+    $gap: nds.space(32),
+    $margin: 0 auto,
+    $max-width: nds.$form-width,
+    $reset-flow: true,
+    $width: 100%,
+    $box-border: true
+  );
+
+  // Match the page shell: pin optical sizing off so the heading weight matches
+  // the design outside `.auth-page` too.
+  font-optical-sizing: none;
+  min-width: 0;
+}
+
+.status-page > * {
+  margin-block: 0;
+  min-width: 0;
+}
+
+.status-page__media {
+  align-self: center;
+}
+
+.status-page__heading {
+  color: nds.$black;
+  font-family: nds.$font-family;
+  font-size: nds.$text-heading-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-heading;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  text-align: center;
+  text-wrap: pretty;
+
+  @media (width < #{$nds-status-page-breakpoint-m}) {
+    font-size: nds.$text-heading-section;
+    letter-spacing: nds.$text-letter-spacing-heading-section;
+  }
+}
+
+.status-page__rule,
+.status-page__body,
+.status-page__actions {
+  width: 100%;
+}
 
 .status-page__icon {
   display: block;

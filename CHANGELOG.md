@@ -33,6 +33,10 @@
     methods, dashboard home, connected services, and service list.
 - Add the `inputOtp`, `inputSsn`, and `phoneInput` JavaScript behaviors (with
   types) for the NDS one-time-code, SSN, and phone inputs.
+- Add the NDS fullscreen status message: a `.status-page` layout
+  (`__media`, `__heading`, `__rule`, `__body`, `__actions`) that composes the
+  status icon, `.divider`, `.copy`, `.actions`, and buttons, plus
+  `.nds-status-icon--success` and `.nds-status-icon--info` modifiers.
 
 ### Bug Fixes
 
