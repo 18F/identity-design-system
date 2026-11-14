@@ -261,8 +261,9 @@ body.site {
 }
 
 @media (width < #{$nds-layout-breakpoint-m}) {
+  // Mobile screen gutter: the grid's mobile margin (Figma 402px frames).
   .auth-page {
-    --nds-screen-inline-padding: #{nds.space(16)};
+    --nds-screen-inline-padding: #{nds.$grid-margin-mobile};
   }
 
   .auth-page__top-chrome {

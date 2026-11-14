@@ -8,6 +8,8 @@
   base-lightest border.
 - NDS: The file input uploading state uses the spinner's `loader radial` glyph
   and rotation instead of its own copy.
+- NDS: Widen the mobile screen gutter (page shell, top chrome, account header)
+  from 16px to the grid's mobile margin (`$grid-margin-mobile`, 24px).
 
 ## 9.8.0
 

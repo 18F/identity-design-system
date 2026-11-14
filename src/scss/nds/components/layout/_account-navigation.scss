@@ -302,7 +302,7 @@ $account-nav-width: 252px;
   .account-header {
     flex-basis: nds.space(64);
     height: nds.space(64);
-    padding-inline: nds.space(16);
+    padding-inline: nds.$grid-margin-mobile;
   }
 
   .account-header__menu {
