@@ -6,6 +6,8 @@
 - NDS: Align the `.badge--success` and `.badge--warning` levels with the design
   (solid lighter-step surface, dark-step ink) and give light badges the
   base-lightest border.
+- NDS: The file input uploading state uses the spinner's `loader radial` glyph
+  and rotation instead of its own copy.
 
 ## 9.8.0
 

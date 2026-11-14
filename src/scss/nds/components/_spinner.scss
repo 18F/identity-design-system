@@ -7,19 +7,20 @@
 // in body text and white inside a primary button. Purely decorative; the
 // accessible name or status text comes from the markup (see docs).
 //
-// The glyph matches the one `_file-input.scss` inlines for its uploading
-// state; each component keeps its own copy, as elsewhere in the NDS layer.
+// This module is the single source for the glyph and the rotation keyframes;
+// `_file-input.scss` uses both for its uploading state.
 
 @use 'tokens/nds' as nds;
 
 // Figma `loader radial` (8 spokes on a 20px grid), inlined as a data URI so
-// the component is self-contained. As a mask, only its shape counts.
+// the component is self-contained. The fill only matters where the glyph is
+// used as a background image (file input); as a mask, only its shape counts.
 $nds-spinner-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M11 15H9V19H11V15Z' fill='%23000c1f'/%3E%3Cpath d='M11 1H9V5H11V1Z' fill='%23000c1f'/%3E%3Cpath d='M5.75 12.83L2.92 15.66L4.33 17.07L7.16 14.24L5.75 12.83Z' fill='%23000c1f'/%3E%3Cpath d='M15.65 2.93L12.82 5.76L14.23 7.17L17.06 4.34L15.65 2.93Z' fill='%23000c1f'/%3E%3Cpath d='M5 9H1V11H5V9Z' fill='%23000c1f'/%3E%3Cpath d='M19 9H15V11H19V9Z' fill='%23000c1f'/%3E%3Cpath d='M4.34 2.93L2.93 4.34L5.76 7.17L7.17 5.76L4.34 2.93Z' fill='%23000c1f'/%3E%3Cpath d='M14.24 12.83L12.83 14.24L15.66 17.07L17.08 15.66L14.25 12.83H14.24Z' fill='%23000c1f'/%3E%3C/svg%3E");
 $nds-spinner-size: nds.space(20);
 
 // One full turn per second, linear. The motion tokens only cover short UI
 // transitions (150ms / 300ms, cubic easing), so there is no token for a
-// continuous rotation; this value matches the file-input uploading spinner.
+// continuous rotation; this value matches the existing file-input spinner.
 $nds-spinner-duration: 1s;
 $nds-spinner-animation: nds-spinner-rotate $nds-spinner-duration linear infinite;
 
