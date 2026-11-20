@@ -40,7 +40,51 @@ lead: Radio buttons allow users to select exactly one choice from a group.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+The hovered state (blue circle) appears when the pointer is over an enabled
+option, so it can't be shown statically.
+
+## With description
+
+Add a `usa-radio__label-description` inside the label. The label text then
+reads as the option title, in the semibold weight.
+
+{% capture example %}
+<fieldset class="usa-fieldset">
+  <legend class="usa-legend">Group label</legend>
+  <ul class="usa-input-list">
+    <li>
+      <input id="rd01" class="usa-radio__input" type="radio" name="rd01">
+      <label for="rd01" class="usa-radio__label">Option - Unselected<span class="usa-radio__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="rd02" class="usa-radio__input usa-focus" type="radio" name="rd02">
+      <label for="rd02" class="usa-radio__label">Option - Unselected Focus<span class="usa-radio__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="rd03" class="usa-radio__input" type="radio" name="rd03" checked>
+      <label for="rd03" class="usa-radio__label">Option - Selected<span class="usa-radio__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="rd04" class="usa-radio__input usa-focus" type="radio" name="rd04" checked>
+      <label for="rd04" class="usa-radio__label">Option - Selected Focus<span class="usa-radio__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="rd05" class="usa-radio__input" type="radio" name="rd05" disabled>
+      <label for="rd05" class="usa-radio__label">Option - Disabled<span class="usa-radio__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="rd06" class="usa-radio__input" type="radio" name="rd06" disabled checked>
+      <label for="rd06" class="usa-radio__label">Option - Disabled and Selected<span class="usa-radio__label-description">Description text</span></label>
+    </li>
+  </ul>
+</fieldset>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Bordered
+
+A bordered option draws the radio and its label in a full-width card. The
+card keeps the same surface and hairline in every state.
 
 {% capture example %}
 <fieldset class="usa-fieldset">

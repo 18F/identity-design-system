@@ -152,6 +152,35 @@
   uses the elevation 1 shadow and caps the message at 350px. The tooltip docs
   page shows all four positions statically as well as live.
 
+### Improvements
+
+- Align the NDS fieldset with the Identity Design System library: sibling
+  `.usa-form-group`s in a `.usa-fieldset` sit 12px apart, and `.usa-input-list`
+  stacks its checkbox or radio options with the same 12px gap.
+- Align the NDS checkbox (`.usa-checkbox` and the flat `.checkbox`) with the
+  Identity Design System library: a 2px border inside the 20px box, a
+  blue-500 border on hover with no fill, a black border inside the focus ring,
+  25% midnight disabled controls with 65% labels, Body/M Regular labels that
+  turn semibold when they carry a description (4px above it, Body/M at 65%),
+  and bordered/tile cards with a 1px base-lighter hairline, 24px radius, and
+  24px inset that no longer tint when checked. The flat checkbox now uses the
+  library checkmark glyph.
+- Align the NDS switch (`.usa-checkbox__input--switch`) with the Identity
+  Design System library: when disabled and on, the track stays blue-500 and
+  the thumb fades to 45% white with a 10% white hairline, and the checkbox
+  check glyph no longer paints on the disabled track.
+- Align the NDS radio (`.usa-radio` and the flat `.radio-group`) with the
+  Identity Design System library: a 12px gap between the circle and the label,
+  the circle set 2px below the text top, 65% disabled labels, labels that turn
+  semibold when they carry a description (2px above it, Body/M at 65%), and
+  bordered/tile cards with a 1px base-lighter hairline, 24px radius, and 24px
+  inset that no longer tint when selected. The default radio now supports a
+  description.
+- Align the NDS file input with the Identity Design System library: a 40px
+  inset in a 140px drop target, a regular-weight rejection message, and a
+  transparent USWDS box overlay so the hover, drag, and disabled surfaces show
+  the library tint instead of white, light blue, or grey.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They

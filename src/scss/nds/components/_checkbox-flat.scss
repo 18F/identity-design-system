@@ -17,24 +17,32 @@ $flat-checkbox-checkmark-size: nds.space(16);
 $flat-checkbox-label-gap: nds.space(12);
 $flat-checkbox-label-margin-top: nds.space(12);
 $flat-checkbox-max-width: 20rem;
-$flat-checkbox-tile-padding: nds.space(24);
-$flat-checkbox-bordered-padding-y: nds.space(8);
-$flat-checkbox-bordered-padding-x: nds.space(16);
+// Tile and bordered cards: the library's 1px stroke sits inside the card with
+// 24px from the outer edge to the content, so the padding gives back the
+// border width.
+$flat-checkbox-tile-padding: nds.space(24) - $flat-checkbox-border-width;
 $flat-checkbox-tablet-breakpoint: 40em;
 // Inline SVGs as data URIs so the control renders without depending on a
 // separately-served image asset (consuming apps do not expose the IDS `img/`
-// directory at a predictable URL).
-$flat-checkbox-checkmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='65' height='50' viewBox='0 0 65 50'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M63.268 7.063l-5.616-5.61C56.882.685 55.946.3 54.845.3s-2.038.385-2.808 1.155L24.951 28.552 12.81 16.385c-.77-.77-1.707-1.155-2.808-1.155-1.1 0-2.037.385-2.807 1.154l-5.616 5.61C.81 22.764.425 23.7.425 24.8s.385 2.035 1.155 2.805l14.947 14.93 5.616 5.61c.77.77 1.706 1.154 2.807 1.154s2.038-.384 2.808-1.154l5.616-5.61 29.894-29.86c.77-.77 1.157-1.707 1.157-2.805 0-1.101-.385-2.036-1.156-2.805l-.001-.002z'/%3E%3C/svg%3E");
-$flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M2.9 35.9c0 1.1.4 2 1.2 2.8s1.7 1.2 2.8 1.2h50.2c1.1 0 2-.4 2.8-1.2s1.2-1.7 1.2-2.8V28c0-1.1-.4-2-1.2-2.8S58.2 24 57.1 24H6.9c-1.1 0-2 .4-2.8 1.2S2.9 26.9 2.9 28z' clip-rule='evenodd'/%3E%3C/svg%3E");
+// directory at a predictable URL). Same 16px library `checkmark` glyph
+// (741:8134) and bar as `.usa-checkbox` (see _checkbox.scss).
+$flat-checkbox-checkmark: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23fff'%20d='M14.4%204.32%2013.28%203.2l-6.96%207.36-3.6-3.36L1.6%208.32l4.8%204.48z'/%3E%3C/svg%3E");
+$flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23fff'%20d='M1.6%207.2h12.8v1.6H1.6z'/%3E%3C/svg%3E");
+
+// The library draws the 2px border inside the 20px box, so it is an inset
+// shadow (an outer one would grow the box to 24px).
+@function flat-checkbox-border($color) {
+  @return inset 0 0 0 $flat-checkbox-control-border-width $color;
+}
 
 @mixin flat-checkbox-control-default {
   background-color: nds.$white;
-  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.$base-darkest;
+  box-shadow: flat-checkbox-border(nds.$base-darkest);
 }
 
 @mixin flat-checkbox-control-hover {
-  background-color: nds.alpha(nds.$primary-darker, 5%);
-  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.$primary;
+  background-color: nds.$white;
+  box-shadow: flat-checkbox-border(nds.$primary);
 }
 
 @mixin flat-checkbox-control-checked {
@@ -54,22 +62,29 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
 @mixin flat-checkbox-control-error {
   background-color: nds.$white;
   background-image: none;
-  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.$secondary;
+  box-shadow: flat-checkbox-border(nds.$secondary);
 }
 
 @mixin flat-checkbox-control-disabled {
-  background-color: nds.alpha(nds.$black, 5%);
+  background-color: nds.$white;
   background-image: none;
-  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.alpha(nds.$black, 45%);
+  box-shadow: flat-checkbox-border(nds.$disabled);
 }
 
 @mixin flat-checkbox-control-disabled-checked {
-  background-color: nds.alpha(nds.$black, 25%);
+  background-color: nds.$disabled;
   background-image: $flat-checkbox-checkmark;
   background-position: center;
   background-repeat: no-repeat;
   background-size: $flat-checkbox-checkmark-size;
-  box-shadow: 0 0 0 $flat-checkbox-control-border-width nds.alpha(nds.$black, 45%);
+  box-shadow: none;
+}
+
+// Keyboard focus: unchecked keeps a black border inside the ring; checked and
+// indeterminate show the ring around the solid fill.
+@mixin flat-checkbox-control-focus {
+  box-shadow: flat-checkbox-border(nds.$black), nds.$shadow-focus;
+  outline: 0;
 }
 
 @mixin flat-checkbox-format-input {
@@ -204,7 +219,7 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   &:focus-visible,
   &.usa-focus {
     @include flat-checkbox-format-input() {
-      @include nds.focus-ring();
+      @include flat-checkbox-control-focus();
     }
 
     &:checked {
@@ -254,7 +269,7 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   &:disabled,
   &[aria-disabled='true'] {
     @include flat-checkbox-format-label() {
-      color: nds.alpha(nds.$black, 25%);
+      color: nds.alpha(nds.$black, 65%);
       cursor: not-allowed;
 
       @media (forced-colors: active) {
@@ -289,7 +304,7 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   text-align: left;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: 400;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin-top: $flat-checkbox-label-margin-top;
@@ -311,22 +326,24 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   }
 }
 
-.checkbox__label--regular {
+// Library label: Body/M Regular. With a description the label text reads as
+// the option title (Body/M Emphasis), and the description sits 4px below it in
+// Body/M at 65%.
+.checkbox__label:has(.checkbox__label-description) {
+  font-weight: nds.$font-semibold;
+}
+
+.checkbox__label--regular,
+.checkbox__label--regular:has(.checkbox__label-description) {
   font-weight: 400;
 }
 
 .checkbox__label-description {
   color: nds.alpha(nds.$black, 65%);
   display: block;
-  font-size: nds.$text-body-s;
-  font-weight: 400;
-  margin-top: nds.space(8);
-}
-
-// Standalone and bordered acknowledgment checkboxes use the larger Body/M
-// description; only the dense `--tile` selection cards keep the smaller size.
-.checkbox__input:not(.checkbox__input--tile) + .checkbox__label .checkbox__label-description {
   font-size: nds.$text-body-m;
+  font-weight: 400;
+  margin-top: nds.space(4);
 }
 
 .checkbox__label-text {
@@ -350,13 +367,13 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   margin: nds.space(8) 0 0;
 }
 
+// Tile: the library card (white surface, 1px base-lighter hairline, 24px
+// radius and inset). The card does not change with state.
 .checkbox__input--tile + .checkbox__label {
-  border: $flat-checkbox-border-width solid nds.alpha(nds.$black, 10%);
-  border-radius: nds.radius(16);
-  color: nds.$black;
+  background-color: nds.$white;
+  border: $flat-checkbox-border-width solid nds.$base-lighter;
+  border-radius: nds.radius(24);
   display: block;
-  font-size: nds.$text-heading-s;
-  font-weight: nds.$font-semibold;
   margin-top: nds.space(8);
   max-width: $flat-checkbox-max-width;
   padding: $flat-checkbox-tile-padding;
@@ -366,13 +383,7 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
 
   &::before {
     left: $flat-checkbox-tile-padding;
-    margin-top: nds.space(4);
   }
-}
-
-.checkbox__input--tile:checked + .checkbox__label {
-  background-color: nds.alpha(nds.$black, 5%);
-  border-color: nds.$black;
 }
 
 .checkbox__input--tile:disabled + .checkbox__label--illustrated .checkbox__image {
@@ -414,28 +425,21 @@ $flat-checkbox-indeterminate: url("data:image/svg+xml,%3Csvg xmlns='http://www.w
   width: 100%;
 }
 
+// Bordered: the same library card as the tile, still shrinking to its
+// content (`display: table`) for compact acknowledgments.
 .checkbox__input--bordered + .checkbox__label {
-  border: $flat-checkbox-border-width solid nds.alpha(nds.$black, 10%);
-  border-radius: nds.radius(16);
+  background-color: nds.$white;
+  border: $flat-checkbox-border-width solid nds.$base-lighter;
+  border-radius: nds.radius(24);
   display: table;
   margin: nds.space(8) 0;
   max-width: $flat-checkbox-max-width;
-  padding: $flat-checkbox-bordered-padding-y $flat-checkbox-bordered-padding-x;
+  padding: $flat-checkbox-tile-padding;
   padding-left: calc(
-    #{$flat-checkbox-bordered-padding-x} + #{$flat-checkbox-size} + #{$flat-checkbox-label-gap}
+    #{$flat-checkbox-tile-padding} + #{$flat-checkbox-size} + #{$flat-checkbox-label-gap}
   );
 
   &::before {
-    left: $flat-checkbox-bordered-padding-x;
+    left: $flat-checkbox-tile-padding;
   }
-}
-
-.checkbox__input--bordered:checked + .checkbox__label {
-  background-color: nds.alpha(nds.$black, 5%);
-  border-color: nds.$black;
-}
-
-.checkbox__input--bordered:checked:disabled + .checkbox__label {
-  background-color: transparent;
-  border-color: nds.alpha(nds.$black, 25%);
 }

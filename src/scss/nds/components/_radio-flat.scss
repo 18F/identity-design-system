@@ -5,6 +5,8 @@
 // the `.usa-radio` restyle in `_radio.scss`; the two target different markup
 // and coexist.
 //
+// Library: ❖ Radio Button › flat radio group (5748:1968).
+//
 // Loaded after `@forward 'uswds'` (see nds/styles.scss).
 
 @use 'tokens/nds' as nds;
@@ -86,12 +88,12 @@
   border-color: nds.$primary;
 }
 
-.radio__input:focus-visible + .radio__label::before {
+.radio__input:is(:focus-visible, .usa-focus) + .radio__label::before {
   @include nds.focus-ring();
 }
 
 .radio__input:is(:disabled, [aria-disabled='true']) + .radio__label {
-  color: nds.$disabled;
+  color: nds.alpha(nds.$black, 65%);
   cursor: not-allowed;
 }
 
