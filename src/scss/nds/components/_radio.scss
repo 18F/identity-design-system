@@ -5,43 +5,56 @@
 //
 // Loaded after `@forward 'uswds'`.
 //
-// The label is a flex row with the circle as a flex-child `::before` (USWDS
-// positions its circle absolutely); the DOM is the same (input + label), so
-// this re-authors the label's internal layout. The checked dot uses a
+// Library: Identity Design System › ❖ Radio Button (`radio button` 5721:3866,
+// `nested/radio button` 5624:405, bordered 5732:750, tile 5733:805).
+//
+// The circle stays where USWDS puts it (absolute, `left: 0`, inside the
+// `position: relative` label), so a label can hold a title and a stacked
+// description the same way `.usa-checkbox__label` does. The checked dot is a
 // radial-gradient (no asset).
 
 @use 'tokens/nds' as nds;
 
 $nds-radio-size: nds.space(20);
+$nds-radio-label-gap: nds.space(12);
+// Bordered/tile card: the library's 1px stroke sits inside the card, with 24px
+// from the outer edge to the content, so the padding gives back the border.
+$nds-radio-card-border-width: 1px;
+$nds-radio-card-padding: nds.space(24) - $nds-radio-card-border-width;
+// 12px dot inside the 20px circle.
+$nds-radio-dot-radius: nds.space(6);
 
+@function nds-radio-dot($color) {
+  @return radial-gradient(
+    circle,
+    $color 0 $nds-radio-dot-radius,
+    transparent $nds-radio-dot-radius
+  );
+}
+
+// Label: Body/M Regular, ink color, 12px gap reserved for the circle.
 .usa-radio__label {
-  align-items: center;
   color: nds.$black;
   cursor: pointer;
-  display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-weight: 400;
-  gap: nds.space(8);
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   overflow-wrap: anywhere;
-  // Reset USWDS's padding-left (its circle is absolute; ours is a flex child).
-  padding-left: 0;
+  padding-left: calc(#{$nds-radio-label-gap} + #{$nds-radio-size});
 
   &::before {
     background: nds.$white;
     border: 2px solid nds.$base-darkest;
     border-radius: nds.radius(pill);
-    // Override USWDS's absolute box-shadow circle: draw our own flex-child.
+    // USWDS draws its circle and dot with box-shadows; this overlay uses a
+    // border and a background dot instead.
     box-shadow: none;
     box-sizing: border-box;
-    content: '';
-    display: block;
-    flex: 0 0 #{$nds-radio-size};
     height: $nds-radio-size;
-    margin: 0;
-    position: static;
+    // The library's left rail sets the circle 2px below the text top.
+    margin: nds.space(2) 0 0;
     transition:
       background nds.$tr-duration-md nds.$tr-easing-cubic,
       border-color nds.$tr-duration-md nds.$tr-easing-cubic,
@@ -50,42 +63,65 @@ $nds-radio-size: nds.space(20);
   }
 }
 
+// With a description the label text reads as the option title (Body/M
+// Emphasis), and the description sits 2px below it in Body/M at 65%. (The
+// library checkbox uses a 4px gap here; the radio uses 2px.)
+.usa-radio__input + .usa-radio__label:has(.usa-radio__label-description) {
+  font-weight: nds.$font-semibold;
+}
+
+.usa-radio__label-description {
+  color: nds.alpha(nds.$black, 65%);
+  display: block;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin-top: nds.space(2);
+}
+
 .usa-radio__input:not(:disabled, [aria-disabled='true']) + .usa-radio__label:hover::before {
   border-color: nds.$primary;
 }
 
 .usa-radio__input:checked + .usa-radio__label::before {
   background-color: nds.$white;
-  background-image: radial-gradient(circle, nds.$primary 0 nds.space(6), transparent nds.space(6));
+  background-image: nds-radio-dot(nds.$primary);
   background-position: center;
   background-repeat: no-repeat;
   border-color: nds.$primary;
   box-shadow: none;
 }
 
+// USWDS draws a blue `outline` on plain `:focus` (mouse too), and again at a
+// higher specificity on `:checked:focus`; clear it so the ring shows on
+// keyboard focus only. The circle keeps its border inside the ring.
+.usa-radio__input:focus + .usa-radio__label::before,
+.usa-radio__input:checked:is(:focus, .usa-focus) + .usa-radio__label::before {
+  outline: 0;
+}
+
 .usa-radio__input:is(:focus-visible, .usa-focus) + .usa-radio__label::before {
   @include nds.focus-ring();
 }
 
-// USWDS draws a blue `outline` on plain `:focus` (mouse too); clear it so the
-// ring shows on keyboard focus only.
-.usa-radio__input:focus + .usa-radio__label::before {
-  outline: 0;
-}
-
+// Disabled: 25% midnight circle; label and description at 65%.
 .usa-radio__input:is(:disabled, [aria-disabled='true']) + .usa-radio__label {
-  color: nds.$disabled;
+  color: nds.alpha(nds.$black, 65%);
   cursor: not-allowed;
 
   &::before {
     background: nds.$white;
     border-color: nds.$disabled;
+    box-shadow: none;
   }
 }
 
 // Disabled + selected: keep the dot but tint it to the muted disabled color.
 .usa-radio__input:is(:disabled, [aria-disabled='true']):checked + .usa-radio__label::before {
-  background-image: radial-gradient(circle, nds.$disabled 0 nds.space(6), transparent nds.space(6));
+  background-image: nds-radio-dot(nds.$disabled);
+  box-shadow: none;
 }
 
 // Forced-colors safety: the checked dot is a background-image radial-gradient,
@@ -101,30 +137,56 @@ $nds-radio-size: nds.space(20);
   }
 }
 
-// Bordered and illustrated-tile variants wrap the label in a bordered surface.
-// This overlay lays the circle out as a flex child (USWDS reserves space for an
-// absolute circle); restore the flex row and use the design's 24px inset and
-// 12px gap so the circle clears the label text.
-.usa-radio__input--bordered + .usa-radio__label,
-.usa-radio__input--tile + .usa-radio__label--illustrated {
-  align-items: center;
-  display: flex;
-  gap: nds.space(12);
-  padding-left: nds.space(24);
-}
+// --- Bordered and tile variants ---------------------------------------------
+//
+// The library draws both as the same card: full width, 1px base-lighter
+// hairline, 24px radius, 24px inset, with the circle in a left rail 12px
+// before the copy. Bordered holds a single label line; tile adds a
+// description. The card does not change with state (USWDS tints the selected
+// card and recolors the disabled border, so both are reset here).
 
-// Non-illustrated tile: the label holds a title followed by a description that
-// should stack, so keep the label as a block and place the circle absolutely in
-// the left gutter. Reserve enough left padding for the circle (24px inset +
-// 20px circle + 12px gap) so the title/description clear it.
-.usa-radio__input--tile + .usa-radio__label:not(.usa-radio__label--illustrated) {
+.usa-radio__input:is(.usa-radio__input--bordered, .usa-radio__input--tile) + .usa-radio__label {
+  background-color: nds.$white;
+  border: $nds-radio-card-border-width solid nds.$base-lighter;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
   display: block;
-  padding-left: calc(#{nds.space(24)} + #{nds.space(20)} + #{nds.space(12)});
-  position: relative;
+  font-size: nds.$text-label-m;
+  margin: 0;
+  max-width: none;
+  padding: $nds-radio-card-padding;
+  padding-left: calc(#{$nds-radio-card-padding} + #{$nds-radio-size} + #{$nds-radio-label-gap});
+  width: 100%;
+
+  &::before {
+    left: $nds-radio-card-padding;
+    margin-top: nds.space(2);
+  }
 }
 
-.usa-radio__input--tile + .usa-radio__label:not(.usa-radio__label--illustrated)::before {
-  left: nds.space(24);
-  position: absolute;
-  top: nds.space(24);
+.usa-radio__input:is(.usa-radio__input--bordered, .usa-radio__input--tile):is(
+    :checked,
+    :disabled,
+    [aria-disabled='true']
+  )
+  + .usa-radio__label {
+  background-color: nds.$white;
+  border-color: nds.$base-lighter;
+}
+
+// USWDS sets a midnight color and a 700 weight on every tile label; the title
+// weight comes from the description rule above, and the disabled color from
+// the disabled rule (which this must not outrank).
+.usa-radio__input--tile + .usa-radio__label {
+  color: nds.$black;
+  font-weight: 400;
+}
+
+// Illustrated tile: USWDS lays the image and copy out as a row from 640px; the
+// card rule above resets `display`, so restore the row here.
+@media (width >= 40em) {
+  .usa-radio__input:is(.usa-radio__input--bordered, .usa-radio__input--tile)
+    + .usa-radio__label--illustrated {
+    display: flex;
+  }
 }

@@ -84,6 +84,13 @@
   Design System library: when disabled and on, the track stays blue-500 and
   the thumb fades to 45% white with a 10% white hairline, and the checkbox
   check glyph no longer paints on the disabled track.
+- Align the NDS radio (`.usa-radio` and the flat `.radio-group`) with the
+  Identity Design System library: a 12px gap between the circle and the label,
+  the circle set 2px below the text top, 65% disabled labels, labels that turn
+  semibold when they carry a description (2px above it, Body/M at 65%), and
+  bordered/tile cards with a 1px base-lighter hairline, 24px radius, and 24px
+  inset that no longer tint when selected. The default radio now supports a
+  description.
 
 ### Bug Fixes
 
