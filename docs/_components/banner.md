@@ -6,9 +6,17 @@ lead: >
 
 The banner is a full-width element shown at the very top of the page, above the
 site header. It shows a flag, a short statement that this is an official
-government site, and a link that opens an explainer.
+government site, and an info button that opens an explainer.
 
 ## Default
+
+On wide screens the banner content sits at the start, 48px from the edge. Below
+`640px` it's centered with 24px of inline padding. Resize the window to see the
+mobile layout.
+
+The info button (`.official-banner__how--icon`) has no visible label, so give it
+an `aria-label` ("Here's how you know"). It has a 24px hit area around its 16px
+icon.
 
 {% capture example %}
 <section class="official-banner" aria-label="Official government website">
@@ -16,10 +24,10 @@ government site, and a link that opens an explainer.
     <span class="official-banner__flag">
       <img class="usa-icon" src="{{ site.baseurl }}/assets/img/us_flag.svg" alt="" aria-hidden="true">
     </span>
-    <p class="official-banner__text">
-      An official website of the United States government.
-      <button type="button" class="official-banner__how link" data-open-modal="official-banner-explainer">Here's how you know</button>
-    </p>
+    <p class="official-banner__text">An official website of the United States government</p>
+    <button type="button" class="official-banner__how official-banner__how--icon" data-open-modal="official-banner-explainer" aria-haspopup="dialog" aria-label="Here's how you know">
+      <svg class="usa-icon" aria-hidden="true" focusable="false" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#error_outline"></use></svg>
+    </button>
   </div>
 </section>
 
@@ -54,6 +62,26 @@ government site, and a link that opens an explainer.
     </div>
   </div>
 </dialog>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+## Text link trigger
+
+The explainer trigger can also be an inline text link at the end of the
+statement, inside `.official-banner__text`.
+
+{% capture example %}
+<section class="official-banner" aria-label="Official government website">
+  <div class="official-banner__content">
+    <span class="official-banner__flag">
+      <img class="usa-icon" src="{{ site.baseurl }}/assets/img/us_flag.svg" alt="" aria-hidden="true">
+    </span>
+    <p class="official-banner__text">
+      An official website of the United States government.
+      <button type="button" class="official-banner__how link" data-open-modal="official-banner-explainer">Here's how you know</button>
+    </p>
+  </div>
+</section>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 

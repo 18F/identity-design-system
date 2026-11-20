@@ -77,6 +77,10 @@
   primary-blue tertiary text button, its mobile menu is a 44px icon button at
   the start of the header, and the account side navigation uses 44px rows with
   20px icons. The Header docs page shows all four header types in NDS mode.
+- Align the NDS official banner with the Identity Design System library: a
+  34px `base-dark` bar with white text, 8px between the flag, text, and
+  trigger, centered on mobile. Add `.official-banner__how--icon`, the
+  library's info-icon explainer trigger.
 
 ### Bug Fixes
 
