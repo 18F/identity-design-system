@@ -7,6 +7,10 @@
   the header, agency rows, page hero, and welcome collage. Set the per-agency
   fill behind the image with the `--nds-agency-seal-bg` custom property, and
   add `--bordered` for a hairline edge on light seals.
+- Add agency co-branding to the NDS page shell top chrome
+  (`.auth-page__logo-banner-agency`): a 1px rule and a 24px agency seal after
+  the Login.gov logo, for service-provider-initiated screens. Composes with
+  the top chrome progress slot.
 - Populate the NDS overlay (`packages-nds/`, compiled to
   `dist/assets/css/nds/`). Consumers opt in by pointing their Sass load path
   at `packages-nds/`; the default `packages-uswds/` output is unchanged.

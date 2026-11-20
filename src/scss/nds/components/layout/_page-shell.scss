@@ -1,9 +1,10 @@
 // NDS page shell and chrome.
 //
 // The full-width page-level shell (`.auth-page`) that owns page layout, plus
-// the sticky top chrome (logo banner, viewport-centered progress slot) and a
-// fixed skip link. Emits the `--nds-*` custom properties consumed by other
-// components. Loaded after `@forward 'uswds'` (see nds/styles.scss).
+// the sticky top chrome (logo banner with optional agency co-branding,
+// viewport-centered progress slot) and a fixed skip link. Emits the `--nds-*`
+// custom properties consumed by other components. Loaded after
+// `@forward 'uswds'` (see nds/styles.scss).
 
 @use 'tokens/nds' as nds;
 
@@ -232,6 +233,28 @@ body.site {
   height: nds.space(20);
   max-width: 100%;
   width: auto;
+}
+
+// Agency co-branding: on service-provider-initiated screens the partner
+// agency's seal follows the logo, separated by a 1px vertical rule. Wraps a
+// 24px `.agency-seal` (see components/_agency-seal.scss). The rule is drawn
+// here rather than on the seal, which clips its own overflow.
+.auth-page__logo-banner-agency {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: nds.space(8);
+  margin-inline-start: nds.space(8);
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    align-self: stretch;
+    background: nds.$base-lighter;
+    content: '';
+    flex: 0 0 auto;
+    width: 1px;
+  }
 }
 
 // Viewport-centered progress slot. The `.progress` child is a separate
