@@ -32,8 +32,10 @@ $nds-toast-mobile-breakpoint: 40em;
   line-height: nds.$text-line-height-none;
   margin: 0;
   max-width: calc(100vw - #{nds.space(32)});
+  // The library's toast is 52px tall with 20px inline padding.
+  min-height: nds.space(52);
   opacity: 0;
-  padding: nds.space(16) nds.space(20) nds.space(16) nds.space(16);
+  padding: nds.space(16) nds.space(20);
   pointer-events: none;
   position: fixed;
   // Positioned below the official banner and sticky nav via :root chrome vars.
@@ -52,6 +54,12 @@ $nds-toast-mobile-breakpoint: 40em;
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, 0);
+  }
+
+  // The icon chip is an extension beyond the library (which ships only the
+  // text toast); it sits 16px from the leading edge.
+  &:has(.toast__icon) {
+    padding-inline-start: nds.space(16);
   }
 }
 

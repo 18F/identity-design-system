@@ -91,6 +91,10 @@
   (`base-lighter` for tertiary), so small badges are 20px tall. Adds the 36px
   `.badge--md` size, and icon-only badges hold a 16px icon in a 20px or 36px
   square. The status badges docs page shows all 28 library variants.
+- NDS: Align the toast with the Identity Design System library: 52px tall with
+  20px inline padding (16px on the leading edge when it has an icon chip). The
+  toast docs page now previews each toast in place instead of stacking them at
+  the fixed viewport position.
 
 ### Bug Fixes
 
