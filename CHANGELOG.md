@@ -37,6 +37,10 @@
   (`__media`, `__heading`, `__rule`, `__body`, `__actions`) that composes the
   status icon, `.divider`, `.copy`, `.actions`, and buttons, plus
   `.nds-status-icon--success` and `.nds-status-icon--info` modifiers.
+- NDS: Add `.discovery-service--disconnected`, `--connected`, and
+  `--authorized` row states to the dashboard home layout.
+- NDS: Draw a CSS radial-progress ring before the current progress step's
+  label (`--nds-progress-ring-value` sets the fill; defaults to 50%).
 
 ### Bug Fixes
 

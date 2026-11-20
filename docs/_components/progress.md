@@ -6,7 +6,7 @@ lead: >
 
 The progress stepper lays out the steps of a flow as a row of pills. Mark the
 active step with `aria-current="step"` and completed steps with
-`data-complete="true"`; completed steps show a check in place of their number.
+`data-complete="true"`; completed steps show a check before their label.
 On narrow viewports the stepper scrolls horizontally.
 
 ## Default
@@ -28,7 +28,6 @@ On narrow viewports the stepper scrolls horizontally.
       <li>
         <div class="progress__step" aria-current="step">
           <span class="progress__step-surface">
-            <span class="progress__step-counter">2</span>
             Verify identity
           </span>
         </div>
@@ -36,8 +35,73 @@ On narrow viewports the stepper scrolls horizontally.
       <li>
         <div class="progress__step">
           <span class="progress__step-surface">
-            <span class="progress__step-counter">3</span>
             Secure account
+          </span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+## In progress
+
+The current step draws a radial-progress ring before its label. The ring is
+pure CSS on the step surface, so it needs no extra markup and is hidden from
+assistive technology; `aria-current="step"` already announces the step. The
+ring shows a half-filled arc by default. Set `--nds-progress-ring-value` (a
+percentage) on the step to change the fill.
+
+{% capture example %}
+<div class="progress">
+  <div class="progress__scroll">
+    <ol class="progress__stepper" aria-label="Account setup">
+      <li>
+        <div class="progress__step" aria-current="step">
+          <span class="progress__step-surface">
+            <span class="progress__step-label">Account</span>
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="progress__step">
+          <span class="progress__step-surface">
+            <span class="progress__step-label">Security</span>
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="progress__step">
+          <span class="progress__step-surface">
+            <span class="progress__step-label">Verification</span>
+          </span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+### Custom fill
+
+{% capture example %}
+<div class="progress">
+  <div class="progress__scroll">
+    <ol class="progress__stepper" aria-label="Account setup">
+      <li>
+        <div class="progress__step" aria-current="step" style="--nds-progress-ring-value: 25%">
+          <span class="progress__step-surface">
+            <span class="progress__step-label">Account</span>
+            <span class="progress__step-counter" aria-hidden="true">1 / 4</span>
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="progress__step">
+          <span class="progress__step-surface">
+            <span class="progress__step-label">Security</span>
           </span>
         </div>
       </li>

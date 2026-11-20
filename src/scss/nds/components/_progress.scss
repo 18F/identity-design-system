@@ -1,7 +1,9 @@
 // NDS progress — a pill stepper emitting `.progress` and its subelements.
 //
 // This is a standalone stepper (not the USWDS dot-line step indicator); the
-// `.progress` class and its subelements have no USWDS equivalent.
+// `.progress` class and its subelements have no USWDS equivalent. The current
+// step (`aria-current='step'`) draws a CSS radial-progress ring before its
+// label; set `--nds-progress-ring-value` on the step to change the fill.
 //
 // Loaded after `@forward 'uswds'`.
 
@@ -9,6 +11,9 @@
 
 // Match the layout breakpoint: @media (width < 768px)
 $nds-progress-breakpoint-m: 768px;
+
+// In-progress ring stroke (design: 2px track and arc on a 20px ring).
+$nds-progress-ring-stroke: 2px;
 
 .progress {
   --nds-progress-pill-height: #{nds.space(40) + nds.space(4)};
@@ -108,6 +113,22 @@ $nds-progress-breakpoint-m: 768px;
 .progress__step[aria-current='step'] .progress__step-surface {
   background: nds.alpha(nds.$primary-darker, 5%);
   color: nds.$black;
+}
+
+// In-progress ring: a 2px track with a filled arc, drawn with a conic
+// gradient masked to a ring so no markup or image asset is needed.
+.progress__step[aria-current='step'] .progress__step-surface::before {
+  background: conic-gradient(nds.$black var(--nds-progress-ring-value, 50%), nds.$base-lighter 0);
+  border-radius: nds.radius(pill);
+  content: '';
+  flex: 0 0 auto;
+  height: nds.space(20);
+  mask-image: radial-gradient(
+    farthest-side,
+    transparent calc(100% - #{$nds-progress-ring-stroke}),
+    nds.$black calc(100% - #{$nds-progress-ring-stroke})
+  );
+  width: nds.space(20);
 }
 
 .progress__step[data-complete='true'] .progress__step-surface {
