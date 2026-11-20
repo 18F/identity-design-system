@@ -12,14 +12,22 @@ $nds-float-pad-x: 15px;
 .usa-input-group--floating {
   position: relative;
 
-  // Reserve vertical room so the floated label clears the value.
+  // Reserve vertical room so the floated label clears the value. Library
+  // layout: 12px label box 12px from the top, 2px gap, value line centered
+  // 35px from the top of the 56px control.
   .usa-input {
-    padding-block: nds.space(24) nds.space(8);
+    padding-block: 22px nds.space(8);
   }
 
-  // The label plays the placeholder role, so hide the real placeholder.
+  // The label plays the placeholder role, so hide the real placeholder...
   .usa-input::placeholder {
     color: transparent;
+  }
+
+  // ...until focus, when a format placeholder (e.g. `MM / DD / YYYY`) shows
+  // under the floated label in 45% ink. A blank `placeholder=" "` stays blank.
+  .usa-input:focus::placeholder {
+    color: nds.alpha(nds.$text-primary, 45%);
   }
 
   // Resting state: label centered inside the control, reading as placeholder.
@@ -29,11 +37,13 @@ $nds-float-pad-x: 15px;
     font-weight: 400;
     inset-inline-start: calc(#{$nds-float-pad-x} + 1px);
     letter-spacing: nds.$text-letter-spacing-label;
-    line-height: 1.5;
+    line-height: nds.$text-line-height-none;
     margin: 0;
     pointer-events: none;
     position: absolute;
-    top: 50%;
+    // Center on the 56px control rather than the group, so a hint or error
+    // message below the control doesn't pull the label down.
+    top: calc(#{nds.space(56)} / 2);
     transform: translateY(-50%);
     transition:
       font-size nds.$tr-duration-md nds.$tr-easing-cubic,
@@ -47,7 +57,8 @@ $nds-float-pad-x: 15px;
   .usa-input:-webkit-autofill + .usa-label {
     font-size: nds.$text-label-s;
     font-weight: nds.$font-semibold;
-    top: nds.space(10);
+    letter-spacing: 0;
+    top: nds.space(12);
     transform: none;
   }
 }

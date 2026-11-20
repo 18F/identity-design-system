@@ -15,11 +15,12 @@ $nds-input-border-width: 1px;
 $nds-input-height: nds.space(56);
 $nds-input-pad-x: 15px;
 
-// Focus ring for inputs: a 1px box-shadow ring in the border color. Paired with
-// the 1px border it reads as a 2px ring without shifting layout.
+// Focus ring for inputs: the library's 2px inside stroke, drawn as the 1px
+// border plus a 1px inset box-shadow so the control keeps its outer size and
+// its content doesn't shift.
 @mixin nds-input-focus-ring($color: nds.$base-darkest) {
   border-color: $color;
-  box-shadow: 0 0 0 $nds-input-border-width $color;
+  box-shadow: inset 0 0 0 $nds-input-border-width $color;
   outline: 0;
 }
 
@@ -31,6 +32,7 @@ $nds-input-pad-x: 15px;
   border: $nds-input-border-width solid nds.$base-light;
   border-radius: nds.radius(16);
   box-sizing: border-box;
+  caret-color: nds.$primary;
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;

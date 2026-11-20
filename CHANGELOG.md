@@ -67,6 +67,16 @@
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
 
+### Improvements
+
+- NDS: Align the text input with the Identity Design System library. Focus is
+  now the library's 2px inside stroke (no outer outline, no layout shift), the
+  caret is `primary`, the floated label sits 12px from the top with the value
+  centered below it, a focused field shows its format placeholder in 45% ink,
+  the password toggle sits 16px from the edge, and the enhanced
+  `.usa-input__error` message matches the library (16px emphasis, 20px error
+  icon, 8px gap). The text input docs show every library variant.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They
