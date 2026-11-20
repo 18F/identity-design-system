@@ -85,6 +85,11 @@
   inline padding, a 16px regular agency name (12px semibold on mobile), and
   36px footer actions with 12px padding (8px beside a chevron). On mobile the
   actions row sits 20px above the agency and the menu triggers share the row.
+- Align the NDS progress stepper with the Identity Design System library: the
+  active pill uses `base-lightest`, the radial-progress ring takes the
+  library's 18px slot, the completed check glyph is larger, and the mobile
+  edge fades are fully opaque for their outer half. The Progress docs page
+  shows every step type, each step of the flow, and all 14 ring values.
 
 ### Bug Fixes
 
