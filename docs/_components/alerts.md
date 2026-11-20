@@ -5,6 +5,8 @@ lead: >
 subnav:
   - text: Types of Alerts
     href: "#types-of-alerts"
+  - text: Slim
+    href: "#slim"
 ---
 
 {% include helpers/base-component.html component="alert" %}
@@ -19,6 +21,43 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 
 ## Types of Alerts
 
+Each type comes with no footer, a supplemental callout footer (`usa-alert--with-callout`), or an action button footer (`usa-alert--with-action`).
+
+### Information
+
+{% capture example %}
+<div class="usa-alert usa-alert--info">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-alert usa-alert--info usa-alert--with-callout">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+  <hr class="usa-alert__divider" />
+  <p class="usa-alert__callout">Supplemental callout</p>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-alert usa-alert--info usa-alert--with-action">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+  <a class="usa-button usa-alert__action" href="#">Label</a>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ### Success
 
 {% capture example %}
@@ -27,6 +66,29 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
     <h3 class="usa-alert__heading">Emphasized headline</h3>
     <p class="usa-alert__text">Body copy</p>
   </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-alert usa-alert--success usa-alert--with-callout">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+  <hr class="usa-alert__divider" />
+  <p class="usa-alert__callout">Supplemental callout</p>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-alert usa-alert--success usa-alert--with-action">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+  <a class="usa-button usa-alert__action" href="#">Label</a>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -43,6 +105,29 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+{% capture example %}
+<div class="usa-alert usa-alert--warning usa-alert--with-callout">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+  <hr class="usa-alert__divider" />
+  <p class="usa-alert__callout">Supplemental callout</p>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-alert usa-alert--warning usa-alert--with-action">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+  <a class="usa-button usa-alert__action" href="#">Label</a>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ### Error
 
 {% capture example %}
@@ -55,19 +140,32 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Information
-
 {% capture example %}
-<div class="usa-alert usa-alert--info">
+<div class="usa-alert usa-alert--error usa-alert--with-callout">
   <div class="usa-alert__body">
     <h3 class="usa-alert__heading">Emphasized headline</h3>
     <p class="usa-alert__text">Body copy</p>
   </div>
+  <hr class="usa-alert__divider" />
+  <p class="usa-alert__callout">Supplemental callout</p>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-alert usa-alert--error usa-alert--with-action">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
+  <a class="usa-button usa-alert__action" href="#">Label</a>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ### Default
+
+An alert without a type modifier uses the information styling.
 
 {% capture example %}
 <div class="usa-alert">
@@ -79,29 +177,42 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Supplemental callout
+## Slim
+
+Add `usa-alert--slim` for a single-row alert with the icon beside a short message.
 
 {% capture example %}
-<div class="usa-alert usa-alert--info usa-alert--with-callout">
+<div class="usa-alert usa-alert--info usa-alert--slim">
   <div class="usa-alert__body">
-    <h3 class="usa-alert__heading">Emphasized headline</h3>
-    <p class="usa-alert__text">Body copy</p>
+    <p class="usa-alert__text">Emphasized headline</p>
   </div>
-  <hr class="usa-alert__divider" />
-  <p class="usa-alert__callout">Supplemental callout</p>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### With action
+{% capture example %}
+<div class="usa-alert usa-alert--success usa-alert--slim">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Emphasized headline</p>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
 
 {% capture example %}
-<div class="usa-alert usa-alert--info usa-alert--with-action">
+<div class="usa-alert usa-alert--warning usa-alert--slim">
   <div class="usa-alert__body">
-    <h3 class="usa-alert__heading">Emphasized headline</h3>
-    <p class="usa-alert__text">Body copy</p>
+    <p class="usa-alert__text">Emphasized headline</p>
   </div>
-  <a class="usa-button usa-alert__action" href="#">Label</a>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="usa-alert usa-alert--error usa-alert--slim">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">Emphasized headline</p>
+  </div>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

@@ -67,6 +67,14 @@
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
 
+### Improvements
+
+- Align the NDS alert with the Identity Design System library. The slim alert
+  (`.usa-alert--slim`) is now a single 64px row with the icon beside the
+  message in primary ink, and the action button drops the primary-button
+  shadow. The alerts docs page shows every type with each footer, and the
+  slim alerts.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They
