@@ -44,6 +44,9 @@
 - NDS: Fill in the account history layout: `.history` sections and panels of
   `.history-row` entries (with an optional "Details" action that collapses to
   a chevron on mobile) plus a `.history__back` header for device details.
+- Add the NDS NIST trust badge: `.nist-badge` with `__seal`, `__copy`,
+  `__title`, and `__subtitle` elements, plus a single optimized
+  `img/nist-badge/nist-seal.svg` exported from Figma.
 
 ### Bug Fixes
 
