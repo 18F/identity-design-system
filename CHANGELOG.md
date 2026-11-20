@@ -74,6 +74,11 @@
   message in primary ink, and the action button drops the primary-button
   shadow. The alerts docs page shows every type with each footer, and the
   slim alerts.
+- Align the NDS accordion with the Identity Design System library. Buttons
+  use 24px padding (72px tall). Expanded default items drop the divider and
+  keep the fully rounded button. Bordered items use a 24px radius and, when
+  expanded, share one outline split by an inset rule. The minus icon matches
+  the library glyph.
 
 ### Bug Fixes
 
