@@ -66,6 +66,51 @@
 - Add an NDS standalone spinner (`.nds-spinner`): the 20px Figma `loader radial`
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
+- Add the NDS neutral validation message (`.usa-error-message--neutral`): the
+  library validation message's neutral state, in 65% ink, alongside the error
+  state. The validation docs show both states.
+
+### Improvements
+
+- NDS: Align the text input with the Identity Design System library. Focus is
+  now the library's 2px inside stroke (no outer outline, no layout shift), the
+  caret is `primary`, the floated label sits 12px from the top with the value
+  centered below it, a focused field shows its format placeholder in 45% ink,
+  the password toggle sits 16px from the edge, and the enhanced
+  `.usa-input__error` message matches the library (16px emphasis, 20px error
+  icon, 8px gap). The text input docs show every library variant.
+- NDS: Align the SSN input with the Identity Design System library. The
+  control uses the library's Label/M tracking instead of the wider 0.04em, and
+  the floating label input docs show every SSN state, plus read-only and error
+  states for the floating-label group.
+- NDS: Document the library date input on the date fields page: a single
+  floating-label input whose `MM / DD / YYYY` placeholder shows once the field
+  is focused, with default, filled, read-only, and error states.
+- NDS: Align the phone number input with the Identity Design System library.
+  The pill padding accounts for its border, focus is the 2px inside stroke
+  (and the number field no longer picks up the stock focus outline), the
+  label and value sit at the library offsets, the chevron is full ink, a
+  focused field shows its `(000) 000 - 0000` placeholder, and new read-only
+  and error states. The docs show every library state.
+- NDS: Align the one-time code input with the Identity Design System library.
+  Slots use the `base-light` stroke, the error state turns the digits red as
+  well as the stroke, and the error message sits 12px below the slots. The
+  docs show the empty, filled, and error states.
+- NDS: Align the password strength meter with the Identity Design System
+  library. The weak and good fills are 22% and 51% of the track, and the
+  feedback badge is at least 56px wide with centered text, a `base-lightest`
+  hairline, and a backdrop blur. The docs label the middle strength "Good".
+- NDS: Align the select (combo-box) with the Identity Design System library
+  dropdown. The chevron is full ink, sits 16px from the edge, and flips up
+  while the menu is open; the open control keeps the 2px stroke even when
+  focus is on the toggle; and a combo-box inside `.usa-input-group--floating`
+  gets the library's floating label. The docs show the default, filled, and
+  open states.
+- NDS: Align search with the Identity Design System library. The field uses
+  the `base-light` / `base-darkest` input strokes and the 2px inside focus
+  stroke, the submit sits 10px from the edge with the library search glyph and
+  `shadow-large`, and the browser's search cancel glyph is hidden. The docs
+  add the filled state.
 
 ### Improvements
 

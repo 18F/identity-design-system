@@ -26,6 +26,23 @@ Search should be easily found. For the default search version, consider displayi
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+### Filled
+
+{% capture example %}
+<form class="usa-search" role="search">
+  <label class="usa-sr-only" for="srch-filled">Search</label>
+  <input class="usa-search__input" id="srch-filled" type="search" name="search" placeholder="Search" value="Input">
+  <button class="usa-search__submit" type="submit">
+    <span class="usa-search__submit-text">Search</span>
+  </button>
+</form>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+The interactive states can't be shown statically: **hovered** darkens the field
+border to `base-darkest`; **focused** and **filled - focus** draw a 2px
+`base-darkest` stroke with a `primary` caret.
+
 ## Big variant
 
 If searching is a primary action of the site, consider adding the big variant version to the primary hero section to reinforce that action.

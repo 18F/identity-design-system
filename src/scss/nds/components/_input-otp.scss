@@ -44,7 +44,7 @@ lg-nds-input-otp {
 .input-otp__slot {
   align-items: center;
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 45%);
+  border: 1px solid nds.$base-light;
   border-radius: nds.radius(16);
   box-sizing: border-box;
   color: nds.$black;
@@ -103,8 +103,14 @@ lg-nds-input-otp {
   width: 1px;
 }
 
+// Error (library): red stroke and red digits, with the message 12px below.
 .input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot {
   border-color: nds.$secondary;
+  color: nds.$secondary;
+}
+
+.input-otp .usa-error-message {
+  padding-top: nds.space(12);
 }
 
 .input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot--active {

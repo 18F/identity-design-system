@@ -17,16 +17,23 @@ $nds-search-border-width-focus: 2px;
 $nds-search-height: nds.space(56);
 $nds-search-height-big: nds.space(64);
 $nds-search-submit-size: nds.space(36);
-$nds-search-submit-inset: nds.space(8);
+$nds-search-submit-inset: 10px;
+// Library padding is 16px from the outer edge; subtract the 1px border. The
+// trailing side leaves room for the submit: inset + button + 8px gap.
+$nds-search-pad-x: 15px;
+$nds-search-pad-end: calc(
+  #{$nds-search-submit-inset} + #{$nds-search-submit-size} + #{nds.space(8)} -
+    #{$nds-search-border-width}
+);
 
-// White search glyph for the submit button.
-$nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+// White search glyph for the submit button (library `search` icon).
+$nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 9.00084C2 5.13038 5.13144 2 9.00322 2C12.875 2 16.0064 5.13038 16.0064 9.00084C16.0064 10.5763 15.4876 12.0291 14.6113 13.198L18 16.5856L16.5851 18L13.1956 14.6116C12.0273 15.4849 10.5764 16.0017 9.00322 16.0017C5.13144 16.0017 2 12.8713 2 9.00084ZM14.0055 9.00084C14.0055 6.24051 11.7645 4.00024 9.00322 4.00024C6.24195 4.00024 4.00092 6.24051 4.00092 9.00084C4.00092 11.7612 6.24195 14.0014 9.00322 14.0014C11.7645 14.0014 14.0055 11.7612 14.0055 9.00084Z' fill='white'/%3E%3C/svg%3E");
 
-// Focus ring for the field: a box-shadow ring in the border color, matching the
-// NDS form-input overlay.
-@mixin nds-search-input-focus-ring($color: nds.alpha(nds.$black, 85%)) {
+// Focus ring for the field: the library's 2px inside stroke as the 1px border
+// plus a 1px inset box-shadow, matching the NDS form-input overlay.
+@mixin nds-search-input-focus-ring($color: nds.$base-darkest) {
   border-color: $color;
-  box-shadow: 0 0 0 $nds-search-border-width $color;
+  box-shadow: inset 0 0 0 $nds-search-border-width $color;
   outline: 0;
 }
 
@@ -41,9 +48,10 @@ $nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   &__input,
   [type='search'] {
     background-color: nds.$white;
-    border: $nds-search-border-width solid nds.alpha(nds.$black, 45%);
+    border: $nds-search-border-width solid nds.$base-light;
     border-radius: nds.radius(pill);
     box-sizing: border-box;
+    caret-color: nds.$primary;
     color: nds.$black;
     float: none;
     font-family: nds.$font-family;
@@ -54,7 +62,7 @@ $nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     line-height: nds.$text-line-height-none;
     margin: 0;
     padding-block: 0;
-    padding-inline: nds.space(16) nds.space(52);
+    padding-inline: $nds-search-pad-x $nds-search-pad-end;
     transition:
       border-color nds.$tr-duration-md nds.$tr-easing-cubic,
       box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
@@ -65,10 +73,15 @@ $nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
       opacity: 1;
     }
 
+    // The library field has no clear button; drop the UA's search cancel glyph.
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+
     // Hover (only when not focused/disabled). `:hover` un-wrapped so it carries
     // real (0,2,0) specificity.
     &:hover:not(:focus, :focus-visible, :disabled, [aria-disabled='true']) {
-      border-color: nds.alpha(nds.$black, 85%);
+      border-color: nds.$base-darkest;
     }
 
     // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
@@ -92,7 +105,8 @@ $nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     background-size: nds.space(20);
     border: 0;
     border-radius: nds.radius(pill);
-    box-shadow: nds.$shadow-compact;
+    // Library "elevation 1".
+    box-shadow: nds.$shadow-large;
     color: nds.$white;
     cursor: pointer;
     display: flex;

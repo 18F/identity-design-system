@@ -2,8 +2,10 @@
 //
 // Restyles the USWDS combo-box (`.usa-combo-box` and its `__input`,
 // `__toggle-list`, `__clear-input`, `__list`, `__list-option`) into the NDS
-// select look: a control surface matching `.usa-select`, a 20px chevron at
-// 65% ink, and a floating rounded menu with padded, rounded option rows.
+// select look (library "Dropdown"): a control surface matching `.usa-select`,
+// a 20px full-ink chevron that flips while the menu is open, a floating
+// rounded menu with padded, rounded option rows, and an optional floating
+// label (`.usa-input-group--floating`).
 //
 // The combo-box is used in place of the OS-native `<select>` popup so the open
 // menu can be styled to match the design in every browser (the native popup
@@ -25,6 +27,7 @@ $nds-combo-pad-x: 15px;
   border: $nds-combo-border-width solid nds.$base-light;
   border-radius: nds.radius(16);
   box-sizing: border-box;
+  caret-color: nds.$primary;
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
@@ -46,10 +49,12 @@ $nds-combo-pad-x: 15px;
     border-color: nds.$base-darkest;
   }
 
-  // Open/focused: 2px ink border (matches the active state in the design).
-  &:is(:focus, :focus-visible) {
+  // Open/focused: the library's 2px inside stroke (1px border + 1px inset
+  // ring). Repeat the class via `:is()` to beat the stock
+  // `input:not([disabled]):focus` outline (0,2,1).
+  &:is(.usa-combo-box__input):is(:focus, :focus-visible) {
     border-color: nds.$base-darkest;
-    box-shadow: 0 0 0 $nds-combo-border-width nds.$base-darkest;
+    box-shadow: inset 0 0 0 $nds-combo-border-width nds.$base-darkest;
     outline: 0;
   }
 
@@ -62,14 +67,32 @@ $nds-combo-pad-x: 15px;
   }
 }
 
-// Toggle chevron — the 20px chevron at 65% ink, no separator.
+// Toggle chevron — the 20px full-ink chevron, no separator. A 32px button
+// with the glyph centered, 10px from the edge, puts the glyph at the
+// library's 16px inset.
 .usa-combo-box__toggle-list {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 12.2322L4.70711 6.93934L3.29289 8.35355L10 15.0607L16.7071 8.35355L15.2929 6.93934L10 12.2322Z' fill='%23000c1f' fill-opacity='0.65'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 12.2322L4.70711 6.93934L3.29289 8.35355L10 15.0607L16.7071 8.35355L15.2929 6.93934L10 12.2322Z' fill='%23000c1f'/%3E%3C/svg%3E");
   background-position: center;
   background-repeat: no-repeat;
   background-size: nds.space(20);
   opacity: 1;
-  right: nds.space(12);
+  padding: 0;
+  right: 10px;
+  width: nds.space(32);
+  transition: transform nds.$tr-duration-md nds.$tr-easing-cubic;
+}
+
+// Open (active): the 2px stroke (even while focus is on the toggle button)
+// and the chevron points up.
+.usa-combo-box:has(.usa-combo-box__input[aria-expanded='true']) {
+  .usa-combo-box__input {
+    border-color: nds.$base-darkest;
+    box-shadow: inset 0 0 0 $nds-combo-border-width nds.$base-darkest;
+  }
+
+  .usa-combo-box__toggle-list {
+    transform: rotate(180deg);
+  }
 }
 
 .usa-combo-box__clear-input {
@@ -125,4 +148,32 @@ $nds-combo-pad-x: 15px;
 .usa-combo-box__list-option--no-results {
   color: nds.alpha(nds.$text-primary, 65%);
   padding: nds.space(8) nds.space(12);
+}
+
+// Floating label (library "Dropdown" default / filled): inside a
+// `.usa-input-group--floating`, the `.usa-label` (rendered before the
+// combo-box) sits in the control as the placeholder, and floats to the top
+// once an option is chosen. Give the combo-box `data-placeholder=" "` so
+// `:placeholder-shown` tracks emptiness. The label stays resting while the menu
+// is open and empty, as in the library's active state.
+.usa-input-group--floating:has(.usa-combo-box) {
+  > .usa-label {
+    z-index: 1;
+  }
+
+  .usa-combo-box__input {
+    padding-block: 22px nds.space(8);
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  &:has(.usa-combo-box__input:not(:placeholder-shown)) > .usa-label {
+    font-size: nds.$text-label-s;
+    font-weight: nds.$font-semibold;
+    letter-spacing: 0;
+    top: nds.space(12);
+    transform: none;
+  }
 }

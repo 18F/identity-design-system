@@ -32,7 +32,7 @@ attributes directly so the meter renders in its open, scored state.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Medium
+### Good
 
 {% capture example %}
 <div class="password-strength" data-open="true" data-score="2">
@@ -41,7 +41,7 @@ attributes directly so the meter renders in its open, scored state.
       <span class="password-strength__track">
         <span class="password-strength__bar"></span>
       </span>
-      <p class="password-strength__feedback">Medium</p>
+      <p class="password-strength__feedback">Good</p>
     </div>
   </div>
 </div>
