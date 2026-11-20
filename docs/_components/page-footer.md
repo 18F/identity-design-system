@@ -3,7 +3,8 @@ title: Page footer
 lead: >
   The page footer is a full-width bar at the bottom of the page showing the
   "Powered by" agency identifier and a row of footer actions — a language menu,
-  a privacy link, a help link, and an overflow menu.
+  a privacy link, a help link, and an overflow menu — plus an optional
+  experience notice above it for the refreshed-interface A/B group.
 ---
 
 ## Page footer
@@ -48,6 +49,33 @@ name and a trailing chevron. The chevrons are decorative, so they carry
       </button>
     </div>
   </footer>
+</lg-nds-page-footer>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+## Experience notice
+
+Users in the refreshed-interface A/B group see a `.page-footer__experience-notice`
+strip above the `.page-footer` bar, inside the same `<lg-nds-page-footer>`. It
+holds muted copy (`.copy.copy--muted`) with an inline link back to the
+refreshed-interface page, and a "Switch to legacy" action styled as a link.
+
+The action can be an `<a>` or, when opting out needs a `POST`, a
+`.usa-button--unstyled` `<button>` inside a `<form>`. Give the notice
+`role="region"` and an `aria-label` so it's reachable as a landmark. On wide
+screens the copy sits on the left and the action on the right. Below the
+`768px` breakpoint they stack and center.
+
+{% capture example %}
+<lg-nds-page-footer>
+  <div class="page-footer__experience-notice" role="region" aria-label="Interface preference">
+    <p class="copy copy--muted margin-bottom-0">
+      You’re part of a group experiencing <a href="#" class="usa-link link--nowrap">our refreshed interface</a>.
+    </p>
+    <form class="display-inline" action="#" method="post">
+      <button type="submit" class="usa-button usa-button--unstyled">Switch to legacy</button>
+    </form>
+  </div>
 </lg-nds-page-footer>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
