@@ -67,6 +67,17 @@
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
 
+### Improvements
+
+- NDS: Align the tokens with the Identity Design System library. The focus
+  ring and USWDS focus outline use the library's base color (`#001c48`) with
+  a 2px gap; `$shadow-compact` takes the library "elevation 1" value; and
+  `$border-tertiary` is the library's 10% base. New tokens cover the library
+  values that had no equivalent: the semantic text, background, and border
+  colors, `$shadow-elevation-1`/`-2`, backdrop blurs, radius 2/4/20/28,
+  spacing 2/44, heading line heights, `$text-heading-xs`,
+  `$text-letter-spacing-heading-xl`, and `$font-family-mono`.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They

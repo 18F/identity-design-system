@@ -9,14 +9,21 @@ $font-family:
   arial,
   sans-serif;
 
+// Library text styles "Mono/M Regular" and "Mono/M Emphasis" use Commit Mono,
+// which this package does not ship; the stack falls back to system monospace.
+$font-family-mono: 'Commit Mono', ui-monospace, sfmono-regular, menlo, consolas, monospace;
+
 $text-heading-xl: 72px;
 $text-heading-xl-mobile: 44px;
 $text-heading-l: 48px;
 $text-heading-l-mobile: 36px;
 $text-heading-m: 36px;
 $text-heading-m-mobile: 32px;
+// Matches the library's "Heading/XS" (18px). The library's "Heading/S"
+// (24px) is `$text-heading-section`.
 $text-heading-s: 18px;
 $text-heading-s-mobile: 18px;
+$text-heading-xs: 18px;
 $text-heading-section: 24px;
 
 $text-body-m: 16px;
@@ -30,7 +37,14 @@ $text-label-s: 12px;
 $text-label-s-mobile: 12px;
 
 $font-semibold: 600;
+$text-letter-spacing-heading-xl: -0.04em;
 $text-letter-spacing-heading: -0.03em;
 $text-letter-spacing-heading-section: -0.02em;
 $text-letter-spacing-label: -0.01em;
-$text-line-height-none: 1;
+
+// Line heights from the library text styles.
+$text-line-height-heading-l: 1.05; // Heading/XL, Heading/L
+$text-line-height-heading-m: 1.1; // Heading/M
+$text-line-height-heading-s: 1.2; // Heading/S, Heading/XS
+$text-line-height-body: 1.5; // Body/*, Mono/*
+$text-line-height-none: 1; // Label/*
