@@ -60,19 +60,53 @@ Use `heading-s` for a standalone section heading.
 
 ## Divider
 
-A full-width horizontal rule.
+A full-width horizontal rule. The plain `divider` uses the tertiary fill. Add
+`divider--primary`, `divider--secondary`, or `divider--quaternary` for the
+other fills, from darkest to lightest.
+
+{% capture example %}
+<hr class="divider divider--primary">
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<hr class="divider divider--secondary">
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
 
 {% capture example %}
 <hr class="divider">
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+{% capture example %}
+<hr class="divider divider--quaternary">
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Separator
 
-A labelled separator, typically used between alternative actions.
+A labelled separator, typically used between alternative actions. It has the
+same fills as the divider, and the label color follows the fill. The plain
+`separator` is tertiary.
+
+{% capture example %}
+<div class="separator separator--primary">or</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="separator separator--secondary">or</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
 
 {% capture example %}
 <div class="separator">or</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<div class="separator separator--quaternary">or</div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 

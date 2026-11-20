@@ -227,6 +227,29 @@
   library's 18px slot, the completed check glyph is larger, and the mobile
   edge fades are fully opaque for their outer half. The Progress docs page
   shows every step type, each step of the flow, and all 14 ring values.
+- NDS: Add icon list styling for `.usa-icon-list`, matching the library's two
+  styles. Each item is a 16px-padded row with a 24px filled circle (primary
+  blue, or the `text-success` / `text-error` color) holding a 16px white
+  glyph. "Default" pairs a semibold `__title` with muted description text;
+  "simple" is a single line in the primary text color.
+- NDS: Add `.usa-process-list` styling for the library's three process list
+  styles: default (28px marker, semibold heading, muted description),
+  `--connected` (a 2px line joins the markers), and `--big` (44px marker with
+  the heading centered beside it). The flat `.process-list` is unchanged.
+- NDS: Add code formatting styling for `pre` and the `.highlight` token
+  classes, matching the library's Code Formatting: a 24px-padded, 24px-radius
+  block on the lightest base fill, with bold `info-dark` tags and attributes,
+  `secondary-dark` strings, and `info-dark` numbers.
+- NDS: Align the divider and "or" separator with the library's Rule. Add
+  `.divider--primary`, `--secondary`, and `--quaternary` and the matching
+  `.separator--*` fills; the plain classes stay the tertiary fill, now
+  `base-lighter`. The separator label is 16px with a line height of 1 and an
+  8px gap, and its color follows the fill.
+- NDS: Align animated media with the library's Animations. The image and
+  animated frame fill an 864 by 400 (2.16:1) frame, cropped to cover. The
+  docs page shows the security key and PIV/CAC animations, desktop and mobile.
+- NDS: Add `.agency-seal--placeholder`, the library's empty ("null") agency
+  seal: the lightest base tint over white.
 
 ### Bug Fixes
 

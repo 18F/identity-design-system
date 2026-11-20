@@ -1,0 +1,58 @@
+// NDS code formatting — restyles the Login.gov `usa-code` block (`pre`,
+// `pre code`) and its pygments-compatible `.highlight` token classes.
+//
+// The library's Code Formatting has two types, "simple" (one line of HTML)
+// and "complex" (a JSON block). Both are the same block: a 24px-padded, 24px
+// radius panel on the lightest base fill. Tokens use three colors: tags and
+// attributes are bold `info-dark`, strings are `secondary-dark`, and numbers
+// are `info-dark`; everything else, JSON keys and punctuation included, is
+// the primary text color. Token classes the library doesn't show keep the
+// Login.gov colors. Inline `code` is not in the library and is unchanged.
+//
+// The library's mono face (CommitMono) has no NDS token yet, so the block
+// keeps the Login.gov mono family.
+//
+// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+pre {
+  background-color: nds.$base-lightest;
+  border: 1px solid nds.$base-lightest;
+  border-radius: nds.radius(24);
+  color: nds.$text-primary;
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding: nds.space(24);
+
+  code {
+    color: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+  }
+}
+
+// The Login.gov edge fades are drawn in the old block fill; the NDS fill is
+// translucent, so drop them.
+.highlight::before,
+.highlight::after {
+  content: none;
+}
+
+.highlight :is(.nt, .na) {
+  color: nds.$info-dark;
+  font-weight: 700;
+}
+
+.highlight :is(.s, .s1, .s2, .sa, .sb, .sc, .dl, .sd, .se, .sh, .si, .sx) {
+  color: nds.$secondary-dark;
+}
+
+.highlight :is(.m, .mb, .mf, .mh, .mi, .mo, .il) {
+  color: nds.$info-dark;
+}
+
+.highlight :is(.nl, .p) {
+  color: nds.$text-primary;
+}

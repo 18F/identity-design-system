@@ -1,0 +1,100 @@
+// NDS icon list — restyles the stock USWDS `.usa-icon-list` (`__item`,
+// `__icon`, `__content`, `__title`).
+//
+// Each item is a 16px-padded row: a 24px filled circle holding a 16px white
+// glyph, then the content. The library has two styles, chosen by the markup:
+// "default" has a `__title` followed by muted description text; "simple" has
+// plain content in the primary text color. The circle fill is `currentColor`
+// (primary by default), so the `text-success` / `text-error` utilities on
+// `__icon` still pick the color. The library has one size, so every
+// `--size-*` modifier renders at that size.
+//
+// Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
+
+@use 'tokens/nds' as nds;
+
+.usa-icon-list {
+  @include nds.stack($reset-flow: true);
+
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  max-width: none;
+}
+
+.usa-icon-list__item {
+  align-items: flex-start;
+  border-radius: nds.radius(16);
+  gap: nds.space(12);
+  padding: nds.space(16);
+}
+
+// Beats the USWDS (and `.usa-prose`) `.75rem` top padding between items.
+.usa-icon-list .usa-icon-list__item + .usa-icon-list__item {
+  padding-top: nds.space(16);
+}
+
+.usa-icon-list__icon {
+  align-items: center;
+  background: currentColor;
+  border-radius: nds.radius(pill);
+  color: nds.$primary;
+  display: flex;
+  flex-shrink: 0;
+  height: nds.space(24);
+  justify-content: center;
+  width: nds.space(24);
+
+  &.text-success {
+    color: nds.$success-dark;
+  }
+
+  &.text-error {
+    color: nds.$error-dark;
+  }
+}
+
+// Beats `.usa-icon-list--size-* .usa-icon-list__icon .usa-icon` by source
+// order at the same specificity.
+.usa-icon-list .usa-icon-list__icon .usa-icon {
+  color: nds.$white;
+  fill: nds.$white;
+  height: nds.space(16);
+  width: nds.space(16);
+}
+
+.usa-icon-list .usa-icon-list__content {
+  @include nds.stack($gap: nds.space(4), $reset-flow: true);
+
+  flex: 1 1 0;
+  font-size: nds.$text-body-m;
+  max-width: none;
+  min-width: 0;
+  padding-left: 0;
+
+  > p,
+  > ul,
+  > ol {
+    font-family: nds.$font-family;
+    font-size: nds.$text-body-m;
+    margin: 0;
+    max-width: none;
+  }
+}
+
+.usa-icon-list .usa-icon-list__content .usa-icon-list__title {
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  padding-top: 0;
+
+  ~ * {
+    color: nds.alpha(nds.$black, 65%);
+  }
+}

@@ -267,35 +267,69 @@
   }
 }
 
-// Horizontal rule.
+// Horizontal rule. The library's Rule has four fills; the plain `.divider`
+// is the tertiary fill.
 .divider {
-  background: nds.alpha(nds.$black, 10%);
+  background: nds.$base-lighter;
   border: 0;
   height: 1px;
   margin: 0;
   width: 100%;
 }
 
-// Labelled "or" separator.
+.divider--primary {
+  background: nds.$base-darkest;
+}
+
+.divider--secondary {
+  background: nds.$base-light;
+}
+
+.divider--quaternary {
+  background: nds.$base-lightest;
+}
+
+// Labelled "or" separator: the Rule with "or" on. Same fills as `.divider`,
+// each with its own label color; the plain `.separator` is tertiary.
 .separator {
+  --nds-separator-fill: #{nds.$base-lighter};
+
   align-items: center;
-  color: nds.alpha(nds.$black, 60%);
+  color: nds.alpha(nds.$black, 45%);
   display: flex;
   font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
+  font-size: nds.$text-label-m;
   font-weight: 400;
-  gap: nds.space(12);
+  gap: nds.space(8);
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-none;
   text-align: center;
   width: 100%;
 
   &::before,
   &::after {
-    background: nds.alpha(nds.$black, 10%);
+    background: var(--nds-separator-fill);
     content: '';
     flex: 1 1 0;
     height: 1px;
     min-width: nds.space(24);
   }
+}
+
+.separator--primary {
+  --nds-separator-fill: #{nds.$base-darkest};
+
+  color: nds.$text-primary;
+}
+
+.separator--secondary {
+  --nds-separator-fill: #{nds.$base-light};
+
+  color: nds.alpha(nds.$black, 65%);
+}
+
+.separator--quaternary {
+  --nds-separator-fill: #{nds.$base-lightest};
+
+  color: nds.$disabled;
 }
