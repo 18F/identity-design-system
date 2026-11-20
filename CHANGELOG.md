@@ -96,6 +96,10 @@
   Slots use the `base-light` stroke, the error state turns the digits red as
   well as the stroke, and the error message sits 12px below the slots. The
   docs show the empty, filled, and error states.
+- NDS: Align the password strength meter with the Identity Design System
+  library. The weak and good fills are 22% and 51% of the track, and the
+  feedback badge is at least 56px wide with centered text, a `base-lightest`
+  hairline, and a backdrop blur. The docs label the middle strength "Good".
 
 ### Bug Fixes
 
