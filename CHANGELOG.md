@@ -79,6 +79,13 @@
   keep the fully rounded button. Bordered items use a 24px radius and, when
   expanded, share one outline split by an inset rule. The minus icon matches
   the library glyph.
+- Align the NDS card with the Identity Design System library's eight card
+  types. Compact cards use 16px padding and a 16px title, spacious cards use
+  40px padding, and interactive and authentication-method cards
+  (`.card--interactive`, `.card--mfa`) get a darker `base-light` outline, a
+  16px inline-end padding, and a 16px title. The badge no longer adds
+  line-box height. The cards docs page shows every type, and the legacy
+  `.lg-card` example moves to its own section.
 
 ### Bug Fixes
 

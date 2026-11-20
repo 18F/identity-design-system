@@ -23,14 +23,15 @@
 }
 
 // Status label pill — sits inline at the top-left of the card, above the
-// copy, matching the "with badge" layout.
+// copy, matching the "with badge" layout. Block-level flex (sized by
+// `fit-content`) so no inline line box adds height above the copy.
 .card__badge {
   align-self: flex-start;
   background: nds.$primary;
   border: 1px solid nds.$base-lightest;
   border-radius: nds.radius(8);
   color: nds.$white;
-  display: inline-flex;
+  display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
   font-weight: nds.$font-semibold;
@@ -77,9 +78,12 @@
   display: none;
 }
 
-// MFA card.
+// MFA card — the library's "authentication method" card. Same outline and
+// padding as the interactive card. The body stacks badge, icon + name row,
+// and description at spacing/16; the badge adds spacing/8 so the badge →
+// copy gap is the library's spacing/24.
 .card--mfa {
-  border-color: nds.$base-lighter;
+  border-color: nds.$base-light;
   color: nds.$black;
   padding-inline-end: nds.space(16);
 
@@ -90,6 +94,10 @@
 
   .card__body {
     gap: nds.space(16);
+  }
+
+  .card__body > .card__badge {
+    margin-bottom: nds.space(8);
   }
 
   .card__row > .usa-icon {
@@ -116,8 +124,14 @@
 }
 
 // Density / elevation / alignment modifiers (on the root box).
+// Compact: spacing/16 all round, a Body/M Emphasis title, and no gap between
+// title and description.
 .card--compact {
-  padding: nds.space(20) nds.space(24);
+  padding: nds.space(16);
+
+  .card__stack {
+    gap: 0;
+  }
 }
 
 // Bleed the card outward by its own padding so its content aligns to the
@@ -131,7 +145,7 @@
 }
 
 .card--spacious {
-  padding: nds.space(32);
+  padding: nds.space(40);
 }
 
 .card--elevated {
@@ -147,11 +161,14 @@
   }
 }
 
-// Interactive card: the box IS the link/button.
+// Interactive card: the box IS the link/button. A base-light outline and a
+// tighter spacing/16 inline-end padding beside the trailing chevron.
 .card--interactive {
   appearance: none;
+  border-color: nds.$base-light;
   cursor: pointer;
   margin: 0;
+  padding-inline-end: nds.space(16);
   text-decoration: none;
   transition: nds.$transition;
 
@@ -289,6 +306,16 @@
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-heading;
   line-height: 1.2;
+}
+
+// Compact, interactive, and authentication-method cards title in Body/M
+// Emphasis rather than Heading/XS.
+.card--compact .card__title,
+.card--interactive .card__title,
+.card--mfa .card__title {
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
 }
 
 .card__description,
