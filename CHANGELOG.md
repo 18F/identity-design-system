@@ -92,6 +92,10 @@
   label and value sit at the library offsets, the chevron is full ink, a
   focused field shows its `(000) 000 - 0000` placeholder, and new read-only
   and error states. The docs show every library state.
+- NDS: Align the one-time code input with the Identity Design System library.
+  Slots use the `base-light` stroke, the error state turns the digits red as
+  well as the stroke, and the error message sits 12px below the slots. The
+  docs show the empty, filled, and error states.
 
 ### Bug Fixes
 
