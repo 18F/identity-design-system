@@ -67,6 +67,17 @@
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
 
+### Improvements
+
+- Align the NDS header with the Identity Design System library. The page
+  shell top chrome and the account header are 84px tall (72px on mobile) on a
+  solid white background with a `base-lighter` border, and use a 24px logo.
+  On mobile the logo is centered with 24px above and below it, and a stepper
+  runs edge to edge 20px below the logo. The account header's email menu is a
+  primary-blue tertiary text button, its mobile menu is a 44px icon button at
+  the start of the header, and the account side navigation uses 44px rows with
+  20px icons. The Header docs page shows all four header types in NDS mode.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They

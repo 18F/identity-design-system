@@ -11,6 +11,11 @@ banner and a centered progress slot, a flexible `.auth-page__main` content area,
 and a footer slot. It also sets the `--nds-*` custom properties that other
 components read.
 
+The top chrome is the library's signed-out header: 84px tall on wide screens,
+with the logo 48px from the start edge. Below `768px` the logo is centered with
+24px above and below it. The signed-in header is the
+[account navigation]({{ site.baseurl }}/account-navigation/) header.
+
 The shell is a **full-width, page-level** element. The preview below is shown
 inside the documentation's constrained content column, so it appears inset
 rather than spanning the full viewport; in a real page it fills the browser
@@ -36,7 +41,7 @@ Modifiers on `.auth-page` adjust alignment, density, surface, and content width:
   <header class="auth-page__top-chrome">
     <div class="auth-page__logo-banner">
       <a class="auth-page__logo-banner-link" href="#" aria-label="Login.gov home">
-        <img class="auth-page__logo-banner-image" src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="Login.gov">
+        <img class="auth-page__logo-banner-image" src="{{ site.baseurl }}/assets/img/login-gov-logo-nds.svg" width="153" height="24" alt="Login.gov">
       </a>
     </div>
   </header>
@@ -82,7 +87,7 @@ set `min-height: auto` on the shell; real pages leave it out.
   <header class="auth-page__top-chrome">
     <div class="auth-page__logo-banner">
       <a class="auth-page__logo-banner-link" href="#" aria-label="Login.gov home">
-        <img class="auth-page__logo-banner-image" src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="">
+        <img class="auth-page__logo-banner-image" src="{{ site.baseurl }}/assets/img/login-gov-logo-nds.svg" width="153" height="24" alt="">
       </a>
       <span class="auth-page__logo-banner-agency">
         <span class="agency-seal agency-seal--24" style="--nds-agency-seal-bg: #151038">
@@ -106,7 +111,7 @@ small screens the stepper stacks below the logo and seal.
   <header class="auth-page__top-chrome">
     <div class="auth-page__logo-banner">
       <a class="auth-page__logo-banner-link" href="#" aria-label="Login.gov home">
-        <img class="auth-page__logo-banner-image" src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="">
+        <img class="auth-page__logo-banner-image" src="{{ site.baseurl }}/assets/img/login-gov-logo-nds.svg" width="153" height="24" alt="">
       </a>
       <span class="auth-page__logo-banner-agency">
         <span class="agency-seal agency-seal--24" style="--nds-agency-seal-bg: #151038">
@@ -141,8 +146,7 @@ small screens the stepper stacks below the logo and seal.
             <li>
               <div class="progress__step" aria-current="step">
                 <span class="progress__step-surface">
-                  <span class="progress__step-counter">3</span>
-                  Verification
+                  <span class="progress__step-label">Verification</span>
                 </span>
               </div>
             </li>
