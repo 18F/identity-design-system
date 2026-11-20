@@ -1,1 +1,201 @@
-// NDS history layout module. Populated in a follow-up.
+// NDS history layout — the account History tab and device details pages.
+//
+// `.history` stacks `.history__section` groups. Each section pairs a
+// `.history__header` (an `.history__heading` plus an optional trailing action
+// such as "Log out of all devices", or a leading `.history__back` icon button
+// on the device details page) with a `.history__panel` of `.history-row`
+// entries. A row lists a title, when it happened, and where it came from; a
+// device row adds a trailing "Details" `.history-row__action` that collapses
+// to a chevron on mobile, where the whole row becomes the link's hit area.
+// Panels, headings, and row text use the shared service-list mixins.
+
+@use 'tokens/nds' as nds;
+@use 'service-list' as service;
+
+$history-breakpoint-m: 768px;
+
+.history {
+  @include nds.stack(
+    $gap: nds.space(56),
+    $margin: 0 auto,
+    $max-width: nds.$dashboard-width,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  color: nds.$black;
+  font-family: nds.$font-family;
+  text-align: left;
+}
+
+.history__section {
+  @include nds.stack($gap: nds.space(32), $reset-flow: true, $width: 100%);
+}
+
+.history__header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: nds.space(12);
+  justify-content: space-between;
+  padding-inline: nds.space(24);
+}
+
+// Device details: the back button leads the heading, flush with the panel.
+.history__header:has(> .history__back) {
+  justify-content: flex-start;
+  padding-inline: 0;
+}
+
+// USWDS stretches buttons to full width on narrow viewports; header and row
+// actions stay at their content width.
+.history__back,
+.history__header-action,
+.history-row__action {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// The 44px header buttons overhang the heading's line box, as in the design,
+// so the header keeps the heading's height above the panel.
+.history__back,
+.history__header-action {
+  margin-block: calc(-1 * #{nds.space(8)});
+}
+
+.history__back .usa-icon {
+  height: nds.space(20);
+  width: nds.space(20);
+}
+
+.history__heading {
+  @include service.section-heading();
+
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.history__panel {
+  @include service.panel();
+
+  padding: 0;
+}
+
+.history__rows {
+  @include service.rows();
+}
+
+// Rules between rows are inset to the row's inline padding.
+.history__rows > li + li {
+  position: relative;
+
+  &::before {
+    border-top: 1px solid nds.alpha(nds.$black, 10%);
+    content: '';
+    inset-block-start: 0;
+    inset-inline: nds.space(24);
+    position: absolute;
+  }
+}
+
+.history-row {
+  align-items: center;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  display: flex;
+  gap: nds.space(20);
+  min-width: 0;
+  padding: nds.space(16) nds.space(24);
+  width: 100%;
+}
+
+.history-row__content {
+  @include service.content();
+}
+
+.history-row__title,
+.history-row__meta {
+  @include service.text();
+}
+
+.history-row__title {
+  @include service.title();
+}
+
+.history-row__meta {
+  @include service.muted();
+}
+
+.history-row__action-icon {
+  display: none;
+}
+
+@media (width < #{$history-breakpoint-m}) {
+  .history {
+    gap: nds.space(48);
+  }
+
+  .history__header {
+    padding-inline: 0;
+  }
+
+  .history__rows > li + li::before {
+    inset-inline: nds.space(20);
+  }
+
+  .history-row {
+    gap: nds.space(16);
+    padding: nds.space(20);
+    position: relative;
+  }
+
+  // "Details" collapses to a chevron. The label stays in the accessibility
+  // tree, and the link stretches over the row so the whole row is tappable.
+  .history-row__action,
+  .history-row__action:is(:link, :visited, :hover, :active) {
+    background: transparent;
+    color: nds.alpha(nds.$black, 65%);
+    min-height: 0;
+    padding: 0;
+    position: static;
+  }
+
+  .history-row__action::after {
+    border-radius: inherit;
+    content: '';
+    inset: 0;
+    position: absolute;
+  }
+
+  .history-row__action:focus-visible {
+    box-shadow: none;
+    outline: 0;
+  }
+
+  .history-row__action:focus-visible::after {
+    @include nds.focus-ring();
+  }
+
+  .history-row:has(.history-row__action:hover) {
+    background: nds.alpha(nds.$black, 5%);
+  }
+
+  .history-row__action-label {
+    border: 0;
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .history-row__action-icon {
+    display: block;
+    height: nds.space(20);
+    width: nds.space(20);
+  }
+}
