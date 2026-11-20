@@ -10,6 +10,8 @@ Before using an accordion, consider if their use would hinder usability. If ther
 
 In the examples below, replace `<h2>` with the appropriate heading level to maintain the document's outline.
 
+Each example shows expanded and collapsed items. Hover gives the button a light tinted surface, and keyboard focus draws the focus ring around the button.
+
 ## Default
 
 {% capture example %}

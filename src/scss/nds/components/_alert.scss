@@ -171,12 +171,26 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
   }
 }
 
-// --slim → tighter vertical padding; keep the flat card look.
+// --slim → a single row: icon at the inline start, then the message in
+// Body/M Regular primary ink. Padding stays spacing/20 so a one-line slim
+// alert is 64px tall.
 .usa-alert--slim {
-  padding-block: nds.space(12);
-
   .usa-alert__body {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: nds.space(12);
     padding: 0;
+  }
+
+  .usa-alert__body::before {
+    flex: none;
+    margin: 0;
+  }
+
+  .usa-alert__text {
+    color: nds.$text-primary;
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
 
@@ -221,14 +235,17 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
   text-wrap: pretty;
 }
 
-// Frosted pill action — base-lightest surface with a backdrop blur, Label/M
-// Emphasis text in primary ink.
+// Frosted pill action — the library's small secondary text button: a
+// base-lightest surface with a backdrop blur and no elevation, Label/M
+// Emphasis text in primary ink. `.usa-button` loads after this file, so the
+// shadow and hover surface are restated here to win at higher specificity.
 .usa-alert .usa-alert__action {
   align-items: center;
   backdrop-filter: blur(25px);
   background: nds.$base-lightest;
   border: 0;
   border-radius: nds.radius(pill);
+  box-shadow: none;
   color: nds.$text-primary;
   display: inline-flex;
   flex: none;
@@ -251,6 +268,12 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
   &:active,
   &:focus-visible {
     color: nds.$text-primary;
+  }
+
+  &:hover,
+  &:active {
+    background: nds.alpha(nds.$primary-lightest, 85%);
+    box-shadow: none;
   }
 }
 

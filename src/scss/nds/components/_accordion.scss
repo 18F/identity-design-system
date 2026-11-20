@@ -2,16 +2,22 @@
 //
 // Restyles the standard USWDS `.usa-accordion` selector, its inner elements
 // (`.usa-accordion__heading`, `.usa-accordion__button`, `.usa-accordion__content`),
-// and the `--bordered` modifier into the flat, rounded card treatment. Each
-// item reads as its own white card: collapsed buttons are fully rounded,
-// expanded buttons keep only their top corners and gain a hairline divider
-// above the content. The plus/minus icon and its end position come from the
-// core accordion settings, so only surface, type, spacing, and radius change
-// here.
+// and the `--bordered` modifier into the flat, rounded treatment from the
+// Identity Design System library. Default items are borderless: the button is
+// a fully rounded white surface and expanded copy sits directly below it.
+// Bordered items read as hairline-outlined cards; when expanded, the button
+// and content share one outline split by an inset rule. The plus/minus icon
+// is drawn here at the end of the button.
 //
 // Loaded after `@forward 'uswds'` (see nds/styles.scss).
 
 @use 'tokens/nds' as nds;
+
+// Library geometry (Figma 5659:422 / 5684:1308): spacing/24 padding, a 16px
+// plus/minus icon after a spacing/20 gap, Body/M Emphasis label.
+$-icon-size: 16px;
+$-padding: nds.space(24);
+$-icon-gap: nds.space(20);
 
 .usa-accordion {
   background: transparent;
@@ -38,8 +44,8 @@
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
-  padding: nds.space(16);
-  padding-inline-end: calc(#{nds.space(16)} + #{nds.space(20)} + 16px);
+  padding: $-padding;
+  padding-inline-end: calc(#{$-padding} + #{$-icon-gap} + #{$-icon-size});
   position: relative;
   text-align: start;
 
@@ -55,13 +61,13 @@
   &::before {
     background-color: nds.$text-primary;
     content: '';
-    height: 16px;
-    mask: url('../../img/accordion-minus.svg') no-repeat center / 16px 16px;
+    height: $-icon-size;
+    mask: url('../../img/accordion-minus.svg') no-repeat center / $-icon-size $-icon-size;
     position: absolute;
-    right: nds.space(16);
+    right: $-padding;
     top: 50%;
     transform: translateY(-50%);
-    width: 16px;
+    width: $-icon-size;
   }
 
   &[aria-expanded='false']::before {
@@ -75,16 +81,12 @@
   &:focus {
     @include nds.focus-ring();
   }
-
-  &[aria-expanded='true'] {
-    border-bottom: 1px solid nds.$base-lighter;
-    border-radius: nds.radius(16) nds.radius(16) 0 0;
-  }
 }
 
+// Expanded copy: spacing/16 block, spacing/24 inline, so it lines up with the
+// button label. Default items have no divider above it.
 .usa-accordion__content {
   background-color: transparent;
-  border-radius: 0 0 nds.radius(16) nds.radius(16);
   color: nds.alpha(nds.$black, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
@@ -92,21 +94,52 @@
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin-top: 0;
-  padding: nds.space(16);
+  padding: nds.space(16) $-padding;
 }
 
+// Bordered: each item is a hairline-outlined card (radius 24). Figma strokes
+// sit inside the frame, so the padding gives up 1px to the border to keep the
+// library's 72px collapsed height. When expanded, the button and the content
+// share one outline, split by a rule inset spacing/16 from each side, and the
+// copy gets the full spacing/24 padding.
 .usa-accordion--bordered {
+  $-bordered-radius: nds.radius(24);
+  $-bordered-padding: calc(#{$-padding} - 1px);
+
   .usa-accordion__button {
     border: 1px solid nds.$base-lighter;
+    border-radius: $-bordered-radius;
+    padding: $-bordered-padding;
+    padding-inline-end: calc(#{$-bordered-padding} + #{$-icon-gap} + #{$-icon-size});
+
+    &::before {
+      right: $-bordered-padding;
+    }
 
     &[aria-expanded='true'] {
-      border-bottom: 1px solid nds.$base-lighter;
+      border-bottom: 0;
+      border-radius: $-bordered-radius $-bordered-radius 0 0;
+      padding-bottom: $-padding;
     }
   }
 
   .usa-accordion__content {
     border: 1px solid nds.$base-lighter;
+    border-radius: 0 0 $-bordered-radius $-bordered-radius;
     border-top: 0;
-    padding-bottom: nds.space(16);
+    padding: $-bordered-padding;
+    // The 1px rule above the copy plus spacing/24.
+    padding-top: calc(#{$-padding} + 1px);
+    position: relative;
+
+    &::before {
+      background: nds.$base-lighter;
+      content: '';
+      height: 1px;
+      left: nds.space(16);
+      position: absolute;
+      right: nds.space(16);
+      top: 0;
+    }
   }
 }

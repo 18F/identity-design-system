@@ -181,6 +181,37 @@
   transparent USWDS box overlay so the hover, drag, and disabled surfaces show
   the library tint instead of white, light blue, or grey.
 
+### Improvements
+
+- Align the NDS alert with the Identity Design System library. The slim alert
+  (`.usa-alert--slim`) is now a single 64px row with the icon beside the
+  message in primary ink, and the action button drops the primary-button
+  shadow. The alerts docs page shows every type with each footer, and the
+  slim alerts.
+- Align the NDS accordion with the Identity Design System library. Buttons
+  use 24px padding (72px tall). Expanded default items drop the divider and
+  keep the fully rounded button. Bordered items use a 24px radius and, when
+  expanded, share one outline split by an inset rule. The minus icon matches
+  the library glyph.
+- Align the NDS card with the Identity Design System library's eight card
+  types. Compact cards use 16px padding and a 16px title, spacious cards use
+  40px padding, and interactive and authentication-method cards
+  (`.card--interactive`, `.card--mfa`) get a darker `base-light` outline, a
+  16px inline-end padding, and a 16px title. The badge no longer adds
+  line-box height. The cards docs page shows every type, and the legacy
+  `.lg-card` example moves to its own section.
+- Align the NDS modal with the Identity Design System library. The panel
+  radius is 40px, the large size (`.modal--wide`) is up to 888px wide, the
+  desktop dialog keeps a 96px block and 48px inline inset, and the mobile
+  bottom sheet stops 64px below the top. The scrim is a flat `base-lighter`
+  tint with no blur. The close button is 44px on a `base-lightest` surface
+  with a 20px icon, and content is inset 24px below a 76px header row. The
+  modal docs page adds static small, large, and bottom-sheet previews.
+- Align the NDS popover menu with the Identity Design System library menu.
+  The panel radius is 16px and long lists scroll past 300px. Items are flex
+  rows, and a selected item (`aria-current` or
+  `.popover-menu__item--selected`) shows a trailing 16px checkmark.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They
