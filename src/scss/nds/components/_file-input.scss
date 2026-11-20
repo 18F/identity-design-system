@@ -26,8 +26,8 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   width: 100%;
 }
 
-// Drop target: white card, dashed hairline border, 16px radius, generous
-// padding, centered.
+// Drop target: white card, dashed hairline border, 16px radius, 40px padding,
+// centered (library ❖ File Input 1724:786).
 .usa-file-input__target {
   align-items: center;
   background-color: nds.$white;
@@ -39,7 +39,9 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   justify-content: center;
   min-height: 8.75rem;
   overflow: hidden;
-  padding: nds.space(16) nds.space(24);
+  // The library's stroke sits inside the 140px frame; give the border width
+  // back so the content is 40px from the outer edge.
+  padding: nds.space(40) - $nds-file-border-width;
   position: relative;
   text-align: center;
   transition:
@@ -84,6 +86,9 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   font-weight: 400;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
+  // USWDS pads the instructions 2rem 1rem; the target's 40px padding is the
+  // only inset in the library.
+  padding: 0;
   pointer-events: none;
   position: relative;
   text-align: center;
@@ -165,8 +170,9 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   flex-direction: column;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: nds.$font-semibold;
+  font-weight: 400;
   gap: $nds-file-icon-gap;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin: 0;
   pointer-events: none;
@@ -207,7 +213,13 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 }
 
 // The decorative box overlay (drawn above the target, below the real input).
-.usa-file-input__box {
+// It is transparent so the target's own surface shows: USWDS paints it white
+// (which hid the hover tint), light blue while dragging, and grey when
+// disabled.
+.usa-file-input__box,
+.usa-file-input--drag .usa-file-input__box,
+.usa-file-input--disabled .usa-file-input__box {
+  background-color: transparent;
   border-radius: inherit;
   inset: 0;
   pointer-events: none;
@@ -318,10 +330,6 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   .usa-file-input__instructions,
   .usa-file-input__choose {
     color: nds.$disabled;
-  }
-
-  .usa-file-input__box {
-    background-color: nds.$base-lightest;
   }
 
   .usa-file-input__instructions::before {

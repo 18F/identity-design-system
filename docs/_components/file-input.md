@@ -27,6 +27,27 @@ a drop target with instructions, a choose link, and a preview list.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+### Hovered or dragging
+
+The drop target tints and darkens its dashed border on hover. The component
+adds `usa-file-input--drag` while a file is dragged over it, with the same look.
+
+{% capture example %}
+<div class="usa-form-group">
+  <label class="usa-label" for="file-input-drag">Upload a file</label>
+  <div class="usa-file-input usa-file-input--drag" data-enhanced="true">
+    <div class="usa-file-input__target">
+      <div class="usa-file-input__instructions" aria-hidden="true">
+        Drag files here or <span class="usa-file-input__choose">choose from folder</span>
+      </div>
+      <div class="usa-file-input__box"></div>
+      <input id="file-input-drag" class="usa-file-input__input" type="file" name="file-input-drag">
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ### With a selected file
 
 {% capture example %}
@@ -70,6 +91,26 @@ and shows the message.
 <div class="usa-form-group usa-form-group--error">
   <label class="usa-label" for="file-input-error">Upload a file</label>
   <input id="file-input-error" class="usa-file-input" type="file" name="file-input-error" accept="image/*" data-errormessage="This file type is not accepted">
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+The rejected state, as the component renders it after a disallowed file is
+dropped:
+
+{% capture example %}
+<div class="usa-form-group usa-form-group--error">
+  <label class="usa-label" for="file-input-rejected">Upload a file</label>
+  <div class="usa-file-input" data-enhanced="true">
+    <div class="usa-file-input__target has-invalid-file">
+      <div class="usa-file-input__accepted-files-message">This file type is not accepted</div>
+      <div class="usa-file-input__instructions" aria-hidden="true">
+        Drag files here or <span class="usa-file-input__choose">choose from folder</span>
+      </div>
+      <div class="usa-file-input__box"></div>
+      <input id="file-input-rejected" class="usa-file-input__input" type="file" name="file-input-rejected" accept="image/*">
+    </div>
+  </div>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

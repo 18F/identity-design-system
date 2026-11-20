@@ -91,6 +91,10 @@
   bordered/tile cards with a 1px base-lighter hairline, 24px radius, and 24px
   inset that no longer tint when selected. The default radio now supports a
   description.
+- Align the NDS file input with the Identity Design System library: a 40px
+  inset in a 140px drop target, a regular-weight rejection message, and a
+  transparent USWDS box overlay so the hover, drag, and disabled surfaces show
+  the library tint instead of white, light blue, or grey.
 
 ### Bug Fixes
 
