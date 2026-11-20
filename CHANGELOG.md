@@ -79,6 +79,11 @@
   `--icon-right` (tighter padding on the icon side, as identity-idp's
   `NDSButtonComponent` already emits) and 20px icons. The buttons docs page
   shows every variant, size, icon placement, and state, plus the icon buttons.
+- NDS: Align the segmented button group with the Identity Design System
+  library. The group drops its elevation shadow (the library clips the
+  segments) and draws its 1px `base-lightest` hairline as an inside overlay, so
+  the group is exactly one button tall. The button groups docs page shows all
+  three styles in all three sizes.
 
 ### Bug Fixes
 
