@@ -93,6 +93,10 @@
   tint with no blur. The close button is 44px on a `base-lightest` surface
   with a 20px icon, and content is inset 24px below a 76px header row. The
   modal docs page adds static small, large, and bottom-sheet previews.
+- Align the NDS popover menu with the Identity Design System library menu.
+  The panel radius is 16px and long lists scroll past 300px. Items are flex
+  rows, and a selected item (`aria-current` or
+  `.popover-menu__item--selected`) shows a trailing 16px checkmark.
 
 ### Bug Fixes
 

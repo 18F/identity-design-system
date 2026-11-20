@@ -57,3 +57,23 @@ edge of its trigger instead of the bottom.
 </details>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
+
+## Selected item
+
+Mark the current choice with `aria-current="true"` (or the
+`.popover-menu__item--selected` class) to show a trailing checkmark. Hovering
+an item gives it a light tinted surface. Long lists scroll inside the panel
+once it reaches 300px.
+
+{% capture example %}
+<details class="position-relative display-inline-block" open>
+  <summary class="usa-button">Language</summary>
+  <div class="popover-menu popover-menu--left">
+    <a class="popover-menu__item" href="#" aria-current="true">English</a>
+    <a class="popover-menu__item" href="#">Español</a>
+    <a class="popover-menu__item" href="#">Français</a>
+    <a class="popover-menu__item" href="#">中文</a>
+  </div>
+</details>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
