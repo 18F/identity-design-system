@@ -19,7 +19,8 @@
   box-sizing: border-box;
   inset: 50% auto auto 50%;
   margin: auto;
-  max-height: calc(100vh - #{nds.space(48)});
+  // Library desktop frame: spacing/96 block and spacing/48 inline inset.
+  max-height: calc(100vh - #{nds.space(96)} * 2);
   max-width: 27rem;
   opacity: 0;
   overflow: visible;
@@ -28,16 +29,13 @@
   transition:
     opacity nds.$tr-duration-md nds.$tr-easing-cubic,
     transform nds.$tr-duration-md nds.$tr-easing-cubic;
-  width: calc(100% - #{nds.space(32)});
+  width: calc(100% - #{nds.space(48)} * 2);
 
-  // Tinted, blurred scrim behind the dialog.
+  // Tinted scrim behind the dialog (background/overlay).
   &::backdrop {
-    backdrop-filter: blur(#{nds.space(12)});
-    background: nds.alpha(nds.$black, 25%);
+    background: nds.$base-lighter;
     opacity: 0;
-    transition:
-      opacity nds.$tr-duration-md nds.$tr-easing-cubic,
-      backdrop-filter nds.$tr-duration-md nds.$tr-easing-cubic;
+    transition: opacity nds.$tr-duration-md nds.$tr-easing-cubic;
   }
 
   &[open].is-open {
@@ -54,44 +52,47 @@
     transform: translate(-50%, calc(-50% + #{nds.space(8)})) scale(0.99);
 
     &::backdrop {
-      backdrop-filter: blur(0);
       opacity: 0;
     }
   }
 }
 
+// Large size.
 .modal--wide {
-  max-width: 660px;
+  max-width: 888px;
 }
 
-// Circular icon close button: frosted pill, top-right.
+// Circular secondary icon button (44px, 20px icon): frosted pill in the
+// header row, spacing/16 from the top and end edges.
 .modal__close {
   align-items: center;
   backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$black, 5%);
+  background: nds.$base-lightest;
   border: 0;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
   color: nds.$black;
   cursor: pointer;
   display: flex;
-  height: nds.space(40);
+  height: 44px;
   justify-content: center;
   padding: 0;
   position: absolute;
   right: nds.space(16);
   top: nds.space(16);
   transition: background-color nds.$tr-duration-md nds.$tr-easing-cubic;
-  width: nds.space(40);
+  width: 44px;
   z-index: 1;
 
   .usa-icon {
     color: inherit;
     display: block;
+    height: 20px;
+    width: 20px;
   }
 
   &:hover {
-    background: nds.alpha(nds.$black, 10%);
+    background: nds.$base-lighter;
   }
 
   &:focus-visible {
@@ -100,17 +101,19 @@
   }
 }
 
-// Body surface: white rounded card, large shadow, scroll panel.
+// Body surface: white rounded card (radius 40), elevation 1, scroll panel.
+// Content is inset spacing/24 at the sides and starts below the 76px header
+// row (spacing/16 + the 44px close button + spacing/16).
 .modal__body {
   background: nds.$white;
-  border-radius: nds.radius(32);
+  border-radius: nds.radius(40);
   box-shadow: nds.$shadow-large;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: nds.space(32);
-  max-height: calc(100vh - #{nds.space(48)});
-  padding: nds.space(64) nds.space(32) nds.space(32);
+  max-height: calc(100vh - #{nds.space(96)} * 2);
+  padding: calc(#{nds.space(16)} * 2 + 44px) nds.space(24) nds.space(24);
   width: 100%;
 
   overflow-y: auto;
@@ -146,7 +149,7 @@
 .modal__media {
   align-self: stretch;
   border-bottom: 1px solid nds.alpha(nds.$black, 10%);
-  border-radius: nds.radius(32) nds.radius(32) 0 0;
+  border-radius: nds.radius(40) nds.radius(40) 0 0;
   overflow: hidden;
   width: 100%;
 
@@ -215,10 +218,11 @@
     }
   }
 
+  // The sheet stops spacing/64 below the top of the viewport.
   .modal__body {
-    border-radius: nds.radius(32) nds.radius(32) 0 0;
-    max-height: calc(100dvh - env(safe-area-inset-top) - #{nds.space(24)});
-    padding-bottom: calc(#{nds.space(32)} + env(safe-area-inset-bottom));
+    border-radius: nds.radius(40) nds.radius(40) 0 0;
+    max-height: calc(100dvh - env(safe-area-inset-top) - #{nds.space(64)});
+    padding-bottom: calc(#{nds.space(24)} + env(safe-area-inset-bottom));
   }
 }
 
@@ -227,8 +231,6 @@
   display: flex;
   flex-direction: column;
   gap: nds.space(12);
-  // Clear the absolutely-positioned close control.
-  padding-inline-end: nds.space(48);
   width: 100%;
 }
 

@@ -12,6 +12,66 @@ dialog's `showModal()` method and adding the `is-open` class for the enter
 transition; the buttons below do this. Associate the dialog with its title
 using `aria-labelledby`.
 
+## Sizes
+
+The library has two desktop sizes: small (the default, up to 432px wide) and
+large (`modal--wide`, up to 888px wide). The dialog keeps at least 96px from
+the top and bottom of the viewport and 48px from its sides. At 40em and
+narrower, every modal becomes a bottom sheet that stops 64px below the top of
+the screen. The previews below render an open dialog inside a frame; at a
+mobile width they show the bottom sheet.
+
+### Small
+
+{% capture example %}
+<div class="position-relative" style="background: rgba(0, 28, 72, 0.1); height: 28rem; overflow: hidden;">
+  <dialog open class="modal is-open" aria-labelledby="modal-preview-small-title">
+    <button type="button" class="modal__close" aria-label="Close">
+      <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use></svg>
+    </button>
+    <div class="modal__body">
+      <div class="modal__heading">
+        <h2 id="modal-preview-small-title" class="modal__title">Sign out of all devices?</h2>
+        <p class="modal__description">You will need to sign in again on each device.</p>
+      </div>
+      <div class="modal__actions">
+        <button type="button" class="usa-button">Sign out</button>
+        <button type="button" class="usa-button usa-button--tertiary">Cancel</button>
+      </div>
+    </div>
+  </dialog>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+### Large
+
+{% capture example %}
+<div class="position-relative" style="background: rgba(0, 28, 72, 0.1); height: 28rem; overflow: hidden;">
+  <dialog open class="modal modal--wide is-open" aria-labelledby="modal-preview-large-title">
+    <button type="button" class="modal__close" aria-label="Close">
+      <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use></svg>
+    </button>
+    <div class="modal__body">
+      <div class="modal__heading">
+        <h2 id="modal-preview-large-title" class="modal__title">Review your information</h2>
+        <p class="modal__description">Confirm the details below before continuing.</p>
+      </div>
+      <div class="modal__content">
+        <p>Everything you enter is encrypted and stored securely.</p>
+      </div>
+      <div class="modal__actions">
+        <button type="button" class="usa-button">Continue</button>
+        <button type="button" class="usa-button usa-button--tertiary">Go back</button>
+      </div>
+    </div>
+  </dialog>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+## Live examples
+
 ### Default
 
 {% capture example %}
@@ -34,9 +94,9 @@ using `aria-labelledby`.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Wide
+### Large
 
-Add `modal--wide` to give the dialog a wider maximum width.
+Add `modal--wide` for the large size.
 
 {% capture example %}
 <button type="button" class="usa-button" data-open-modal="modal-wide">Open wide modal</button>

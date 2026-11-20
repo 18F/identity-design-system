@@ -86,6 +86,13 @@
   16px inline-end padding, and a 16px title. The badge no longer adds
   line-box height. The cards docs page shows every type, and the legacy
   `.lg-card` example moves to its own section.
+- Align the NDS modal with the Identity Design System library. The panel
+  radius is 40px, the large size (`.modal--wide`) is up to 888px wide, the
+  desktop dialog keeps a 96px block and 48px inline inset, and the mobile
+  bottom sheet stops 64px below the top. The scrim is a flat `base-lighter`
+  tint with no blur. The close button is 44px on a `base-lightest` surface
+  with a 20px icon, and content is inset 24px below a 76px header row. The
+  modal docs page adds static small, large, and bottom-sheet previews.
 
 ### Bug Fixes
 
