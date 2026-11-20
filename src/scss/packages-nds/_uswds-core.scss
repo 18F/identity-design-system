@@ -138,9 +138,10 @@
   // Notifications
   $theme-show-compile-warnings: false !default,
   $theme-show-notifications: false !default,
-  // Focus
-  $theme-focus-color: 'primary' !default,
-  $theme-focus-offset: 1px !default,
+  // Focus — the library focus ring is a 2px base ring outside a 2px gap.
+  // 'primary-darkest' resolves to the NDS base color above.
+  $theme-focus-color: 'primary-darkest' !default,
+  $theme-focus-offset: 2px !default,
   $theme-focus-width: 2px !default,
   // ----------------------------------------
   // Typography

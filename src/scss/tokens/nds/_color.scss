@@ -74,6 +74,29 @@ $disabled-dark: alpha($black, 45%);
 $disabled: alpha($black, 25%);
 $disabled-light: alpha($black, 5%);
 
+// Semantic colors — the library's text/background/border paint styles.
 $text-primary: $black;
+$text-primary-invert: $white;
+$text-secondary: alpha($black, 65%);
+$text-secondary-invert: alpha($white, 65%);
+$text-tertiary: alpha($black, 45%);
+$text-tertiary-invert: alpha($white, 45%);
+$text-disabled: $disabled;
+$text-disabled-invert: alpha($white, 65%);
+$text-link: $primary;
+
 $background-primary: $white;
-$border-tertiary: $base;
+$background-primary-invert: $black;
+$background-secondary: $base-lighter;
+$background-secondary-invert: alpha($white, 10%);
+$background-tertiary: $base-lightest;
+$background-tertiary-invert: alpha($white, 5%);
+$background-overlay: $base-lighter;
+
+$border-primary: $base-darkest;
+$border-primary-invert: alpha($white, 65%);
+$border-secondary: $base-light;
+$border-secondary-invert: alpha($white, 10%);
+$border-tertiary: $base-lighter;
+$border-tertiary-invert: alpha($white, 5%);
+$border-quaternary: $base-lightest;

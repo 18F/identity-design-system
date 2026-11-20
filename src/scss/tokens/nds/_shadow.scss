@@ -1,7 +1,20 @@
 @use 'color' as *;
 
-$shadow-compact: 0 10px 20px alpha($black, 8%);
-$shadow-large: 0 10px 40px alpha(#010e24, 8%);
+// Library effect styles "elevation 1" and "elevation 2".
+$shadow-elevation-1: 0 10px 40px alpha(#010e24, 8%);
+$shadow-elevation-2: 0 4px 24px alpha(#010e24, 16%);
+
+// The library has no separate compact shadow: every surface that used it
+// (buttons, tooltip, search, auth entry) is drawn with elevation 1.
+$shadow-compact: $shadow-elevation-1;
+$shadow-large: $shadow-elevation-1;
+
+// Library effect style "focus ring": a 2px white gap inside a 2px base ring.
 $shadow-focus:
   0 0 0 2px $white,
-  0 0 0 4px $black;
+  0 0 0 4px $base;
+
+// Library effect styles "background blur 50" and "background blur 100".
+// Figma's blur radius is twice the CSS blur() radius.
+$backdrop-blur-50: blur(25px);
+$backdrop-blur-100: blur(50px);
