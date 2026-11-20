@@ -1,19 +1,25 @@
 // NDS badge — status pill, distinct from `.usa-tag`.
 //
 // A `.badge` inline-flex pill with color levels (primary, secondary, success,
-// error, warning, info, tertiary), a `--dark` surface variant, and an
-// `--icon-only` square form. Loaded after `@forward 'uswds'`.
+// error, warning, info, tertiary), a `--md` size (small is the default), a
+// `--dark` surface variant, and an `--icon-only` square form. Loaded after
+// `@forward 'uswds'`.
+//
+// The library strokes a 1px border inside the badge without adding to its
+// size, so the border is drawn as an inset box-shadow: a small badge is 20px
+// tall and a medium one 36px.
 
 @use 'sass:list';
 @use 'sass:map';
 @use 'tokens/nds' as nds;
 
-// level → (light: (bg, fg), dark: (bg, fg))
+// level → (light: (bg, fg, border), dark: (bg, fg))
 $nds-badge-states: (
   primary: (
     light: (
-      nds.$primary-darker,
+      nds.$primary,
       nds.$white,
+      nds.$base-lightest,
     ),
     dark: (
       nds.$white,
@@ -24,6 +30,7 @@ $nds-badge-states: (
     light: (
       nds.$base-lightest,
       nds.$text-primary,
+      nds.$base-lightest,
     ),
     dark: (
       nds.$primary-darker,
@@ -32,8 +39,9 @@ $nds-badge-states: (
   ),
   success: (
     light: (
-      nds.alpha(nds.$success-light, 10%),
+      nds.$success-lighter,
       nds.$success-dark,
+      nds.$base-lightest,
     ),
     dark: (
       nds.alpha(nds.$success-light, 20%),
@@ -42,8 +50,9 @@ $nds-badge-states: (
   ),
   error: (
     light: (
-      nds.alpha(nds.$secondary-lighter, 10%),
-      nds.$secondary,
+      nds.$error-lighter,
+      nds.$error-dark,
+      nds.$base-lightest,
     ),
     dark: (
       nds.alpha(nds.$secondary-lighter, 20%),
@@ -52,8 +61,9 @@ $nds-badge-states: (
   ),
   warning: (
     light: (
-      nds.alpha(nds.$warning-light, 10%),
-      nds.$warning-darker,
+      nds.$warning-lighter,
+      nds.$warning-dark,
+      nds.$base-lightest,
     ),
     dark: (
       nds.alpha(nds.$warning-light, 20%),
@@ -62,8 +72,9 @@ $nds-badge-states: (
   ),
   info: (
     light: (
-      nds.alpha(nds.$primary, 8%),
+      nds.$primary-lighter,
       nds.$primary,
+      nds.$base-lightest,
     ),
     dark: (
       nds.alpha(nds.$primary-lightest, 5%),
@@ -75,8 +86,9 @@ $nds-badge-states: (
 .badge {
   align-items: center;
   backdrop-filter: blur(25px);
-  border: 1px solid transparent;
+  border: 0;
   border-radius: nds.radius(8);
+  box-sizing: border-box;
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
@@ -86,37 +98,50 @@ $nds-badge-states: (
   line-height: nds.$text-line-height-none;
   padding: nds.space(4) nds.space(8);
 
-  .usa-icon svg {
-    height: 0.75rem;
-    width: 0.75rem;
+  // Medium: taller pill with the full pill radius.
+  &.badge--md {
+    border-radius: nds.radius(pill);
+    padding: nds.space(12) nds.space(16);
   }
 
+  // Icon only: a 16px icon centered in a 20px (small) or 36px (medium) square.
   &.badge--icon-only {
-    box-sizing: border-box;
     height: nds.space(20);
-    padding: nds.space(4);
+    padding: 0;
     width: nds.space(20);
+
+    &.badge--md {
+      height: nds.space(36);
+      width: nds.space(36);
+    }
+
+    .usa-icon {
+      height: nds.space(16);
+      width: nds.space(16);
+    }
   }
 
   @each $name, $bg in $nds-badge-states {
     &.badge--#{$name} {
       background: list.nth(map.get($bg, light), 1);
+      box-shadow: inset 0 0 0 1px list.nth(map.get($bg, light), 3);
       color: list.nth(map.get($bg, light), 2);
     }
 
     &.badge--#{$name}.badge--dark {
       background: list.nth(map.get($bg, dark), 1);
+      box-shadow: none;
       color: list.nth(map.get($bg, dark), 2);
     }
   }
 
   &.badge--tertiary {
     background: transparent;
-    border-color: nds.alpha(nds.$black, 10%);
+    box-shadow: inset 0 0 0 1px nds.$base-lighter;
     color: nds.$black;
 
     &.badge--dark {
-      border-color: nds.alpha(nds.$primary-lightest, 10%);
+      box-shadow: inset 0 0 0 1px nds.alpha(nds.$primary-lightest, 10%);
       color: nds.$primary-lightest;
     }
   }

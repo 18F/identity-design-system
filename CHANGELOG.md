@@ -84,6 +84,13 @@
   segments) and draws its 1px `base-lightest` hairline as an inside overlay, so
   the group is exactly one button tall. The button groups docs page shows all
   three styles in all three sizes.
+- NDS: Align status badges (`.badge`) with the Identity Design System library.
+  Primary uses the `primary` fill; info, success, warning, and error use the
+  solid `-lighter` fills with `primary`, `success-dark`, `warning-dark`, and
+  `error-dark` text; every light badge gets a 1px inside `base-lightest` border
+  (`base-lighter` for tertiary), so small badges are 20px tall. Adds the 36px
+  `.badge--md` size, and icon-only badges hold a 16px icon in a 20px or 36px
+  square. The status badges docs page shows all 28 library variants.
 
 ### Bug Fixes
 
