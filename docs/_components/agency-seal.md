@@ -87,6 +87,16 @@ against a white page.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+## Placeholder
+
+Add `.agency-seal--placeholder` to an empty seal when an agency has no
+artwork. It shows the lightest base tint, matching the library's "null" seal.
+
+{% capture example %}
+<span class="agency-seal agency-seal--100 agency-seal--placeholder" aria-hidden="true"></span>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Single image
 
 When there is no need for a wrapper, apply the classes directly to the `<img>`.

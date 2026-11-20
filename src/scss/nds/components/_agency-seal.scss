@@ -34,6 +34,13 @@
   border: 1px solid nds.$base-lightest;
 }
 
+// The library's "null" seal: an empty circle with the lightest base tint
+// over white, for an agency without artwork.
+.agency-seal--placeholder {
+  background-color: nds.$white;
+  background-image: linear-gradient(nds.$base-lightest, nds.$base-lightest);
+}
+
 .agency-seal--24 {
   height: nds.space(24);
   width: nds.space(24);

@@ -90,6 +90,8 @@
 - NDS: Align animated media with the library's Animations. The image and
   animated frame fill an 864 by 400 (2.16:1) frame, cropped to cover. The
   docs page shows the security key and PIV/CAC animations, desktop and mobile.
+- NDS: Add `.agency-seal--placeholder`, the library's empty ("null") agency
+  seal: the lightest base tint over white.
 
 ### Bug Fixes
 
