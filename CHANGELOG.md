@@ -67,6 +67,19 @@
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
 
+### Improvements
+
+- NDS: Align buttons with the Identity Design System library. Primary uses the
+  `base` fill with `base-dark` hover and `base-darker` pressed; destructive
+  (`--danger`) uses `error` / `error-dark` / `error-darker`; both keep the
+  elevation 1 shadow at rest, hover, and press in every size; secondary hover and
+  pressed use `base-lighter`; tertiary focus is white; outline is white with a
+  `base-light` border (`base-darkest` when pressed); every disabled button uses
+  the `disabled-light` fill and `disabled` text. Adds `--icon-left` and
+  `--icon-right` (tighter padding on the icon side, as identity-idp's
+  `NDSButtonComponent` already emits) and 20px icons. The buttons docs page
+  shows every variant, size, icon placement, and state, plus the icon buttons.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They

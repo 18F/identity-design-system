@@ -3,6 +3,7 @@
 //   variants: (primary = base `.usa-button`), `--danger` (destructive),
 //             `--secondary`, `--tertiary`, `--quaternary`, `--ghost`
 //   sizes:    `--sm`, `--md`, `--lg`  (and legacy alias `--big` == `--lg`)
+//   icons:    `--icon-left`, `--icon-right`, `--icon-only`
 //   layout:   `--wide`, `--full-width`
 // It restyles stock USWDS classes (adding new `.usa-button--*` modifiers) so
 // the markup stays identical across bundles.
@@ -32,11 +33,15 @@
 
 @use 'tokens/nds' as nds;
 
-// Size helper: sets height and inline padding.
-@mixin nds-button-size($height, $pad-x) {
+// Size helper: sets height plus the inline padding the base rule reads from
+// custom properties. `$pad-icon` is the tighter padding on the icon side of an
+// `--icon-left` / `--icon-right` button (library: L 24/16, M 20/12, S 12/8).
+@mixin nds-button-size($height, $pad-x, $pad-icon) {
+  --nds-button-pad: #{$pad-x};
+  --nds-button-pad-icon: #{$pad-icon};
+
   height: $height;
   min-height: $height;
-  padding-inline: $pad-x;
 }
 
 // Emit disabled declarations for the base disabled selector and every
@@ -69,12 +74,12 @@
 .usa-button {
   align-items: center;
   appearance: none;
-  background: nds.$primary-darker;
+  background: nds.$base;
   border: 0;
   border-radius: nds.radius(pill);
-  box-shadow: nds.$shadow-compact;
+  box-shadow: nds.$shadow-large;
   box-sizing: border-box;
-  color: nds.$primary-lightest;
+  color: nds.$white;
   cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;
@@ -86,36 +91,33 @@
   line-height: nds.$text-line-height-none;
   margin: 0;
   overflow: hidden;
+  padding-block: 0;
+  padding-inline: var(--nds-button-pad);
   text-align: center;
   text-decoration: none;
   transition: nds.$transition;
 
-  @include nds-button-size(nds.space(44), nds.space(20));
-
-  // Primary at the large size gets the larger resting shadow. Declared before
-  // :hover so hover can drop back to the compact shadow.
-  &.usa-button--lg,
-  &.usa-button--big {
-    box-shadow: nds.$shadow-large;
-  }
+  @include nds-button-size(nds.space(44), nds.space(20), nds.space(12));
 
   &:is(:link, :visited) {
-    color: nds.$primary-lightest;
+    color: nds.$white;
   }
 
+  // Default, hovered, and pressed all carry the library's elevation 1 at every
+  // size; only focus (ring) and disabled drop it.
   &:hover,
   &.usa-button--hover {
-    background: nds.$primary-darker;
-    box-shadow: nds.$shadow-compact;
-    color: nds.$primary-lightest;
+    background: nds.$base-dark;
+    box-shadow: nds.$shadow-large;
+    color: nds.$white;
     text-decoration: none;
   }
 
   &:active,
   &.usa-button--active {
-    background: nds.$primary-darker;
-    box-shadow: none;
-    color: nds.$primary-lightest;
+    background: nds.$base-darker;
+    box-shadow: nds.$shadow-large;
+    color: nds.$white;
   }
 
   &:focus {
@@ -124,14 +126,14 @@
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.$primary-darker;
-    color: nds.$primary-lightest;
+    background: nds.$base;
+    color: nds.$white;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$primary-lightest, 85%);
+    background: nds.$disabled-light;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
     cursor: not-allowed;
   }
 }
@@ -140,69 +142,85 @@
 // Sizes
 // ----------------------------------------
 .usa-button--sm {
-  @include nds-button-size(nds.space(36), nds.space(12));
+  @include nds-button-size(nds.space(36), nds.space(12), nds.space(8));
 }
 
 .usa-button--md {
-  @include nds-button-size(nds.space(44), nds.space(20));
+  @include nds-button-size(nds.space(44), nds.space(20), nds.space(12));
 }
 
 .usa-button--lg,
 .usa-button--big {
-  @include nds-button-size(nds.space(56), nds.space(24));
+  @include nds-button-size(nds.space(56), nds.space(24), nds.space(16));
+}
+
+// ----------------------------------------
+// Icons
+// ----------------------------------------
+
+// Icons render at 20px in every size and take the label color (USWDS icons
+// fill with `currentColor`). An explicit `.usa-icon--size-*` modifier still
+// wins.
+.usa-button > .usa-icon:not([class*='usa-icon--size-']) {
+  height: nds.space(20);
+  width: nds.space(20);
+}
+
+// Icon placement tightens the padding on the icon side only.
+.usa-button--icon-left {
+  padding-inline-start: var(--nds-button-pad-icon);
+}
+
+.usa-button--icon-right {
+  padding-inline-end: var(--nds-button-pad-icon);
 }
 
 // ----------------------------------------
 // Variants
 // ----------------------------------------
 
-// --danger → destructive (red-600).
+// --danger → destructive (the library's "text button/destructive").
 .usa-button--danger {
-  background: nds.$secondary;
-  box-shadow: nds.$shadow-compact;
-  color: nds.$primary-lightest;
-
-  &.usa-button--lg,
-  &.usa-button--big {
-    box-shadow: nds.$shadow-large;
-  }
+  background: nds.$error;
+  box-shadow: nds.$shadow-large;
+  color: nds.$white;
 
   &:is(:link, :visited) {
-    color: nds.$primary-lightest;
+    color: nds.$white;
   }
 
   &:hover,
   &.usa-button--hover {
-    background: nds.alpha(nds.$secondary, 85%);
-    box-shadow: nds.$shadow-compact;
-    color: nds.$primary-lightest;
+    background: nds.$error-dark;
+    box-shadow: nds.$shadow-large;
+    color: nds.$white;
     text-decoration: none;
   }
 
   &:active,
   &.usa-button--active {
-    background: nds.$secondary;
-    box-shadow: none;
-    color: nds.$primary-lightest;
+    background: nds.$error-darker;
+    box-shadow: nds.$shadow-large;
+    color: nds.$white;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.$secondary;
-    color: nds.$primary-lightest;
+    background: nds.$error;
+    color: nds.$white;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$primary-lightest, 85%);
+    background: nds.$disabled-light;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
   }
 }
 
 // --secondary → translucent frosted fill, ink text.
 .usa-button--secondary {
   backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$black, 5%);
+  background: nds.$base-lightest;
   box-shadow: none;
   color: nds.$black;
 
@@ -211,30 +229,25 @@
   }
 
   &:hover,
-  &.usa-button--hover {
-    background: nds.alpha(nds.$primary-lightest, 85%);
-    box-shadow: none;
-    color: nds.alpha(nds.$black, 65%);
-    text-decoration: none;
-  }
-
   &:active,
+  &.usa-button--hover,
   &.usa-button--active {
-    background: nds.alpha(nds.$black, 5%);
+    background: nds.$base-lighter;
     box-shadow: none;
     color: nds.$black;
+    text-decoration: none;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.alpha(nds.$black, 5%);
+    background: nds.$base-lightest;
     color: nds.$black;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$black, 5%);
+    background: nds.$disabled-light;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
   }
 }
 
@@ -268,7 +281,7 @@
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    background: nds.$base-lightest;
+    background: nds.$white;
     color: nds.$primary;
   }
 
@@ -346,44 +359,61 @@
   }
 }
 
-// --outline → bordered, transparent fill, ink text. USWDS ships an
+// --outline → white fill, 1px base border, ink text. USWDS ships an
 // `.usa-button--outline` (1px inset box-shadow border); without an override the
 // base primary fill wins the cascade and the outline collapses into a solid
-// button. Give it the same bordered treatment as `--tertiary`.
+// button. The library strokes the border inside the button, so the inline
+// padding gives back the 1px the CSS border takes and the outline button is as
+// wide as the filled variants.
 .usa-button--outline {
-  background: transparent;
-  border: 1px solid nds.alpha(nds.$black, 45%);
+  background: nds.$white;
+  border: 1px solid nds.$base-light;
   box-shadow: none;
   color: nds.$black;
+  padding-inline: calc(var(--nds-button-pad) - 1px);
+
+  &.usa-button--icon-left {
+    padding-inline-start: calc(var(--nds-button-pad-icon) - 1px);
+  }
+
+  &.usa-button--icon-right {
+    padding-inline-end: calc(var(--nds-button-pad-icon) - 1px);
+  }
 
   &:is(:link, :visited) {
     color: nds.$black;
   }
 
   &:hover,
-  &:active,
-  &.usa-button--hover,
-  &.usa-button--active {
-    background: transparent;
-    border-color: nds.alpha(nds.$black, 85%);
+  &.usa-button--hover {
+    background: nds.$base-lightest;
+    border-color: nds.$base-light;
     box-shadow: none;
     color: nds.$black;
-    outline: 1.5px solid nds.alpha(nds.$black, 85%);
-    outline-offset: -1.5px;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.usa-button--active {
+    background: nds.$base-lightest;
+    border-color: nds.$base-darkest;
+    box-shadow: none;
+    color: nds.$black;
     text-decoration: none;
   }
 
   &:is(:focus-visible, .usa-focus) {
     @include nds.focus-ring();
-    border-color: nds.alpha(nds.$black, 85%);
+    background: nds.$white;
+    border-color: nds.$base-light;
     color: nds.$black;
   }
 
   @include nds-button-disabled() {
-    background: transparent;
-    border-color: nds.alpha(nds.$black, 25%);
+    background: nds.$white;
+    border-color: nds.$base-lighter;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
   }
 
   // Danger outline → error ink and border.
@@ -420,23 +450,6 @@
   }
 }
 
-// Flat variants never take the primary/danger large-size resting shadow.
-// This resets the base `.usa-button.usa-button--lg` (0,2,0) shadow. Scoped
-// with `:not(:focus-visible):not(.usa-focus)` so it does not clobber the
-// box-shadow-based focus ring on a focused large flat variant (WCAG 2.4.7);
-// the `:not()` args raise it to (0,4,0) which still beats the base lg shadow
-// at rest.
-.usa-button--secondary,
-.usa-button--tertiary,
-.usa-button--quaternary,
-.usa-button--outline,
-.usa-button--ghost {
-  &.usa-button--lg:not(:focus-visible, .usa-focus),
-  &.usa-button--big:not(:focus-visible, .usa-focus) {
-    box-shadow: none;
-  }
-}
-
 // ----------------------------------------
 // Layout modifiers
 // ----------------------------------------
@@ -447,7 +460,7 @@
 }
 
 // --icon-only → square button holding a single centered icon and no label.
-// Width tracks the active size modifier's height (md = 44px), so it renders as
+// Width tracks the active size modifier's height (sm 36, md 44, lg 56), so it renders as
 // a circle at the pill radius inherited from `.usa-button`. Pairs with a
 // variant for its color treatment (e.g. `--secondary` for the frosted back
 // affordance).
@@ -485,6 +498,6 @@
     ),
     .usa-button--danger
   ) {
-    @include nds-button-size(nds.space(56), nds.space(24));
+    @include nds-button-size(nds.space(56), nds.space(24), nds.space(16));
   }
 }
