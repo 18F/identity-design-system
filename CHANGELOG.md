@@ -79,6 +79,10 @@
   the password toggle sits 16px from the edge, and the enhanced
   `.usa-input__error` message matches the library (16px emphasis, 20px error
   icon, 8px gap). The text input docs show every library variant.
+- NDS: Align the SSN input with the Identity Design System library. The
+  control uses the library's Label/M tracking instead of the wider 0.04em, and
+  the floating label input docs show every SSN state, plus read-only and error
+  states for the floating-label group.
 
 ### Bug Fixes
 

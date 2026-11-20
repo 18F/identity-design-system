@@ -250,8 +250,8 @@ $nds-enhanced-error-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 
 // SSN variant: the visible control shows the grouped, mostly-masked number
 // (•••-••-•••9) while a hidden input carries the real digits; tabular digits
-// keep the mask and the revealed number the same width.
+// keep the mask and the revealed number the same width. Tracking stays the
+// library's Label/M (-1%) inherited from the control.
 .usa-input__control--ssn {
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
 }
