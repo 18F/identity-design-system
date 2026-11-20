@@ -67,6 +67,12 @@
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
 
+### Improvements
+
+- Align the NDS fieldset with the Identity Design System library: sibling
+  `.usa-form-group`s in a `.usa-fieldset` sit 12px apart, and `.usa-input-list`
+  stacks its checkbox or radio options with the same 12px gap.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They

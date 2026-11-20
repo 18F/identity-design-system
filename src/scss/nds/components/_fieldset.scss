@@ -1,4 +1,5 @@
-// NDS fieldset overlay — `.usa-fieldset`, `.usa-legend--label`.
+// NDS fieldset overlay — `.usa-fieldset`, `.usa-legend--label`, and the
+// `.usa-input-list` option group.
 //
 // Restyles the USWDS fieldset BEM rather than shipping a separate flat
 // primitive. `.usa-legend` defaults to the uppercase micro-legend; the
@@ -14,6 +15,28 @@
 // within narrow columns.
 .usa-fieldset {
   min-inline-size: 0;
+}
+
+// Grouped fields sit 12px apart (library ❖ Fieldset 5707:3067), instead of
+// USWDS's 1.5rem `.usa-form-group` top margin. The first group keeps its own
+// margin so the fieldset still clears the content above it.
+.usa-fieldset > .usa-form-group + .usa-form-group {
+  margin-top: nds.space(12);
+}
+
+// Option list for a group of checkboxes or radios. The same 12px rhythm
+// separates each option, so plain, bordered, and tile options stack evenly.
+// The gap replaces USWDS's per-label top and bottom margins.
+.usa-input-list {
+  display: flex;
+  flex-direction: column;
+  gap: nds.space(12);
+
+  .usa-checkbox__label,
+  .usa-radio__label {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 }
 
 // Label legend: a bold, sentence-case legend styled like a form label. Overrides
