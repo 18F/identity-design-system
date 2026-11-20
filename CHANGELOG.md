@@ -106,6 +106,11 @@
   focus is on the toggle; and a combo-box inside `.usa-input-group--floating`
   gets the library's floating label. The docs show the default, filled, and
   open states.
+- NDS: Align search with the Identity Design System library. The field uses
+  the `base-light` / `base-darkest` input strokes and the 2px inside focus
+  stroke, the submit sits 10px from the edge with the library search glyph and
+  `shadow-large`, and the browser's search cancel glyph is hidden. The docs
+  add the filled state.
 
 ### Bug Fixes
 
