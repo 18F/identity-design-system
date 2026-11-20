@@ -199,6 +199,10 @@ Add `usa-checkbox__input--switch` to render the control as a toggle. Set
 `role="switch"` and keep `aria-checked` in sync so assistive technology
 announces the on/off state; the label supplies the accessible name.
 
+The switch is a separate component in the design library, but in code it is a
+checkbox modifier with the same markup and behavior, so it is documented here.
+When disabled and on, the track stays blue and the thumb fades.
+
 {% capture example %}
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">Group label</legend>

@@ -256,6 +256,9 @@ $nds-checkbox-card-padding: nds.space(24) - $nds-checkbox-card-border-width;
 
 // --- Switch variant ---------------------------------------------------------
 //
+// Library: ❖ Switch (`switch` 1357:296): 40x24 pill track (base-light off,
+// blue-500 on), 16px white thumb inset 4px.
+//
 // `.usa-checkbox__input--switch` renders the control as a pill track with a
 // sliding thumb instead of the check box. Pair with `role="switch"` and
 // `aria-checked` on the input for the correct semantics; the label still
@@ -330,15 +333,28 @@ $nds-switch-inset: nds.space(4);
   @include nds.focus-ring();
 }
 
-// Disabled: muted track, keep the thumb readable.
+// Disabled (off): muted track, keep the thumb readable. The library has no
+// disabled-off state; this keeps the earlier treatment.
 .usa-checkbox__input--switch:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label::before {
   background-color: nds.$disabled;
   box-shadow: none;
 }
 
-.usa-checkbox__input--switch:checked:is(:disabled, [aria-disabled='true'])
-  + .usa-checkbox__label::before {
-  background-color: nds.$disabled;
+// Disabled + on (library `State=disabled - on`, 6180:101): the track stays
+// blue-500 and the thumb fades to 45% white with a 10% white hairline. The
+// disabled-checked box rule above paints the check glyph; clear it here.
+.usa-checkbox__input--switch:checked:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label {
+  &::before {
+    background-color: nds.$primary;
+    background-image: none;
+    box-shadow: none;
+  }
+
+  &::after {
+    background-color: nds.alpha(nds.$white, 45%);
+    border: 1px solid nds.alpha(nds.$white, 10%);
+    box-sizing: border-box;
+  }
 }
 
 // Forced-colors: keep the ON track visible with a system color.

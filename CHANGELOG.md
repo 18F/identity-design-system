@@ -80,6 +80,10 @@
   and bordered/tile cards with a 1px base-lighter hairline, 24px radius, and
   24px inset that no longer tint when checked. The flat checkbox now uses the
   library checkmark glyph.
+- Align the NDS switch (`.usa-checkbox__input--switch`) with the Identity
+  Design System library: when disabled and on, the track stays blue-500 and
+  the thumb fades to 45% white with a 10% white hairline, and the checkbox
+  check glyph no longer paints on the disabled track.
 
 ### Bug Fixes
 
