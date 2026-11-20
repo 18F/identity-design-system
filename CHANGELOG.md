@@ -83,6 +83,9 @@
   control uses the library's Label/M tracking instead of the wider 0.04em, and
   the floating label input docs show every SSN state, plus read-only and error
   states for the floating-label group.
+- NDS: Document the library date input on the date fields page: a single
+  floating-label input whose `MM / DD / YYYY` placeholder shows once the field
+  is focused, with default, filled, read-only, and error states.
 
 ### Bug Fixes
 
