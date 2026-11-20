@@ -7,12 +7,17 @@ lead: An icon list reinforces the meaning and visibility of individual list item
 
 ## Default
 
+Each item has a `.usa-icon-list__title` followed by description text. In the
+NDS stylesheet the icon sits in a 24px filled circle, primary blue unless a
+`text-success` or `text-error` utility is set on `.usa-icon-list__icon`; use a
+plain glyph such as `check` or `close`.
+
 {% capture example %}
 <ul class="usa-icon-list usa-icon-list--size-md">
   <li class="usa-icon-list__item">
-    <div class="usa-icon-list__icon text-success">
+    <div class="usa-icon-list__icon">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -27,9 +32,9 @@ lead: An icon list reinforces the meaning and visibility of individual list item
     </div>
   </li>
   <li class="usa-icon-list__item">
-    <div class="usa-icon-list__icon text-success">
+    <div class="usa-icon-list__icon">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -42,9 +47,9 @@ lead: An icon list reinforces the meaning and visibility of individual list item
     </div>
   </li>
   <li class="usa-icon-list__item">
-    <div class="usa-icon-list__icon text-success">
+    <div class="usa-icon-list__icon">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -66,12 +71,14 @@ lead: An icon list reinforces the meaning and visibility of individual list item
 
 ## Simple
 
+Without a title, the content is a single line in the primary text color.
+
 {% capture example %}
 <ul class="usa-icon-list usa-icon-list--size-md">
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-success">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -81,7 +88,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-success">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">Stay six feet away from others</div>
@@ -89,7 +96,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-error">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#cancel"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">Avoid large gatherings</div>

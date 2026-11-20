@@ -66,6 +66,11 @@
 - Add an NDS standalone spinner (`.nds-spinner`): the 20px Figma `loader radial`
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
+- NDS: Add icon list styling for `.usa-icon-list`, matching the library's two
+  styles. Each item is a 16px-padded row with a 24px filled circle (primary
+  blue, or the `text-success` / `text-error` color) holding a 16px white
+  glyph. "Default" pairs a semibold `__title` with muted description text;
+  "simple" is a single line in the primary text color.
 
 ### Bug Fixes
 
