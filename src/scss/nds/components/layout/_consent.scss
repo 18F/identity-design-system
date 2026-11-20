@@ -1,0 +1,227 @@
+// NDS consent layout — the America.gov delegation consent page.
+//
+// `.consent` stacks the page header, a `.consent__services` card listing each
+// agency service the user is about to share, the "remember my selection"
+// bordered checkbox, and the Allow / Cancel actions. Each `.consent-service`
+// row is a native `<details>` disclosure: the `<summary>` shows the agency
+// seal (`.agency-seal`), name, description, and a chevron; opening it reveals
+// the About / permissions / shared-information sections, a "Learn more" link,
+// and an optional full-width remove button. Rows are separated by rules that
+// sit inset between collapsed rows and run edge to edge beside an open row.
+// The agency name truncates to one line; the description wraps. The page
+// frames keep the 48px seal and 24px row padding at mobile widths, so there is
+// no breakpoint. Buttons, the checkbox, and the seal come from their own
+// components; this module only lays them out.
+
+@use 'tokens/nds' as nds;
+@use 'service-list' as service;
+
+$consent-row-padding: nds.space(24);
+$consent-rule: 1px solid nds.$base-lighter;
+
+.consent {
+  @include nds.stack(
+    $gap: nds.space(32),
+    $margin: 0 auto,
+    $max-width: nds.$form-width,
+    $reset-flow: true,
+    $width: 100%
+  );
+
+  color: nds.$black;
+  font-family: nds.$font-family;
+  text-align: left;
+}
+
+.consent__header {
+  @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
+
+  text-align: center;
+}
+
+.consent__heading,
+.consent__description {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.consent__heading {
+  @include service.section-heading();
+}
+
+.consent__description {
+  @include service.section-description();
+}
+
+.consent__selections {
+  @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
+}
+
+// The bordered card holding the agency rows and the "add more" row.
+.consent__services {
+  @include service.rows();
+
+  background: nds.$white;
+  border: $consent-rule;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+// Rule between rows: inset to the row padding, full width when either
+// neighbor is an open row.
+.consent__services > li + li::before {
+  border-top: $consent-rule;
+  content: '';
+  display: block;
+  margin-inline: $consent-row-padding;
+}
+
+.consent__services > li:has(> .consent-service[open]) + li::before,
+.consent__services > li + li:has(> .consent-service[open])::before {
+  margin-inline: 0;
+}
+
+.consent__add > .usa-button {
+  display: flex;
+  margin: $consent-row-padding auto;
+  width: fit-content;
+}
+
+// Bordered "remember my selection" checkbox, laid out as a full-width tile
+// with the services card's radius and padding and a muted description under
+// the label. Colors and states stay with the checkbox component.
+.consent__remember {
+  margin: 0;
+
+  .usa-checkbox__input--bordered + .usa-checkbox__label {
+    border-radius: nds.radius(24);
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    max-width: none;
+    padding: $consent-row-padding;
+    padding-left: calc(#{$consent-row-padding} + #{nds.space(20)} + #{nds.space(12)});
+    width: 100%;
+
+    &::before {
+      left: $consent-row-padding;
+    }
+  }
+
+  .usa-checkbox__label-description {
+    @include service.text();
+    @include service.muted();
+
+    display: block;
+    margin-top: nds.space(4);
+  }
+}
+
+.consent__actions {
+  @include nds.stack($gap: nds.space(12), $reset-flow: true, $width: 100%);
+}
+
+// --- Agency row -------------------------------------------------------------
+
+.consent-service {
+  width: 100%;
+}
+
+.consent-service__summary {
+  align-items: center;
+  // Rounded to the card radius so the focus ring sits inside the card corners.
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  gap: nds.space(12);
+  list-style: none;
+  padding: $consent-row-padding;
+  width: 100%;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+}
+
+.consent-service__content {
+  @include service.content();
+  @include nds.stack($gap: nds.space(2), $reset-flow: true);
+}
+
+.consent-service__title,
+.consent-service__description {
+  @include service.text();
+}
+
+.consent-service__title {
+  @include service.title();
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.consent-service__description {
+  @include service.muted();
+}
+
+.consent-service__chevron {
+  color: nds.$black;
+  flex: 0 0 auto;
+  height: nds.space(20);
+  transition: nds.$transition;
+  width: nds.space(20);
+
+  .consent-service[open] & {
+    transform: rotate(180deg);
+  }
+}
+
+// Expanded content: a rule under the summary, then the sections, link, and
+// remove button.
+.consent-service__details {
+  @include nds.stack($align: stretch, $gap: nds.space(24), $reset-flow: true);
+
+  border-top: $consent-rule;
+  margin-inline: $consent-row-padding;
+  padding-block: $consent-row-padding nds.space(32);
+}
+
+.consent-service__section {
+  @include nds.stack($gap: nds.space(2), $reset-flow: true);
+}
+
+.consent-service__label,
+.consent-service__text,
+.consent-service__link {
+  @include service.text();
+}
+
+.consent-service__label {
+  @include service.title();
+}
+
+.consent-service__text {
+  @include service.muted();
+}
+
+// The design colors this link primary blue, unlike the default black inline
+// link.
+.consent-service__link {
+  align-self: flex-start;
+
+  &,
+  &:is(:link, :visited, :hover, :active) {
+    color: nds.$primary;
+  }
+}
