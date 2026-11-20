@@ -75,6 +75,10 @@
   styles: default (28px marker, semibold heading, muted description),
   `--connected` (a 2px line joins the markers), and `--big` (44px marker with
   the heading centered beside it). The flat `.process-list` is unchanged.
+- NDS: Add code formatting styling for `pre` and the `.highlight` token
+  classes, matching the library's Code Formatting: a 24px-padded, 24px-radius
+  block on the lightest base fill, with bold `info-dark` tags and attributes,
+  `secondary-dark` strings, and `info-dark` numbers.
 
 ### Improvements
 

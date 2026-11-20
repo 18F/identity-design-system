@@ -14,13 +14,18 @@ Jekyll uses [rouge](https://github.com/jneen/rouge), which is pygments-compatibl
     <div contenteditable>A HTML code sample.</div>
     ```
 
-Output:
+### Simple
+
+A one-line sample. In the NDS stylesheet, tags and attributes are bold blue.
 
 ```html
 <div contenteditable>A HTML code sample.</div>
 ```
 
-A more complex block, which can be used for automated color-contrast checking:
+### Complex
+
+A more complex block, which can be used for automated color-contrast checking.
+In the NDS stylesheet, strings are red and numbers are blue.
 
 ```json
 {
