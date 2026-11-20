@@ -86,6 +86,12 @@
 - NDS: Document the library date input on the date fields page: a single
   floating-label input whose `MM / DD / YYYY` placeholder shows once the field
   is focused, with default, filled, read-only, and error states.
+- NDS: Align the phone number input with the Identity Design System library.
+  The pill padding accounts for its border, focus is the 2px inside stroke
+  (and the number field no longer picks up the stock focus outline), the
+  label and value sit at the library offsets, the chevron is full ink, a
+  focused field shows its `(000) 000 - 0000` placeholder, and new read-only
+  and error states. The docs show every library state.
 
 ### Bug Fixes
 

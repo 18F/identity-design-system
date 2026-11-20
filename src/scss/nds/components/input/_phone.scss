@@ -47,22 +47,41 @@ $nds-phone-height: nds.space(56);
   gap: nds.space(12);
   height: $nds-phone-height;
   overflow: clip;
-  padding: nds.space(12) nds.space(16) nds.space(12) 10px;
+  // Library padding (12px block, 16px end, 10px start) is measured from the
+  // outer edge; subtract the 1px border.
+  padding: 11px 15px 11px 9px;
   transition:
     border-color nds.$tr-duration-md nds.$tr-easing-cubic,
     box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
   width: 100%;
 
-  // Hover the whole pill (only when nothing inside is focused).
-  &:hover:not(:focus-within) {
+  // Hover the whole pill (only when nothing inside is focused and the field
+  // is editable).
+  &:hover:not(:focus-within, :has(.usa-phone-input__input:is([readonly], :disabled))) {
     border-color: nds.$base-darkest;
   }
 
   // Focus ring on the pill when any child (input or country button) is focused,
-  // mirroring the `.usa-input` focus treatment: 1px border + 1px box-shadow.
+  // mirroring the `.usa-input` focus treatment: the library's 2px inside
+  // stroke as a 1px border + 1px inset box-shadow.
   &:focus-within {
     border-color: nds.$base-darkest;
-    box-shadow: 0 0 0 $nds-phone-border-width nds.$base-darkest;
+    box-shadow: inset 0 0 0 $nds-phone-border-width nds.$base-darkest;
+  }
+
+  // Read only / disabled: the disabled-light surface.
+  &:has(.usa-phone-input__input:is([readonly], :disabled)) {
+    background-color: nds.$disabled-light;
+  }
+
+  // Error: red stroke, and a red focus ring.
+  &:has(.usa-phone-input__input[aria-invalid='true']) {
+    border-color: nds.$secondary;
+
+    &:focus-within {
+      border-color: nds.$secondary;
+      box-shadow: inset 0 0 0 $nds-phone-border-width nds.$secondary;
+    }
   }
 }
 
@@ -118,9 +137,10 @@ $nds-phone-height: nds.space(56);
   line-height: 1;
 }
 
-// Chevron — 20px at 65% ink; flips when the disclosure is open.
+// Chevron — 20px in full ink (library `chevron down`); flips when the
+// disclosure is open.
 .usa-phone-input__country-chevron {
-  color: nds.alpha(nds.$text-primary, 65%);
+  color: nds.$text-primary;
   flex-shrink: 0;
   height: nds.space(20);
   transition: transform nds.$tr-duration-md nds.$tr-easing-cubic;
@@ -202,6 +222,7 @@ $nds-phone-height: nds.space(56);
   background: transparent;
   border: 0;
   box-sizing: border-box;
+  caret-color: nds.$primary;
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
@@ -209,17 +230,26 @@ $nds-phone-height: nds.space(56);
   height: 100%;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
-  // Reserve room so the value sits below the floated label.
-  padding: nds.space(16) 0 0;
+  // Reserve room so the value sits below the floated label: the 12px label
+  // box, a 2px gap, then an 18px value line (library layout).
+  padding: 14px 0 0;
   width: 100%;
 
-  &:focus {
+  // Repeat the class via `:is()` to beat the stock
+  // `input:not([disabled]):focus` outline (0,2,1); the pill carries the ring.
+  &:is(.usa-phone-input__input):focus {
     outline: 0;
   }
 
-  // The label plays the placeholder role, so hide the real placeholder.
+  // The label plays the placeholder role, so hide the real placeholder...
   &::placeholder {
     color: transparent;
+  }
+
+  // ...until focus, when a format placeholder (e.g. `(000) 000 - 0000`) shows
+  // under the floated label in 45% ink.
+  &:focus::placeholder {
+    color: nds.alpha(nds.$text-primary, 45%);
   }
 }
 
@@ -249,6 +279,7 @@ $nds-phone-height: nds.space(56);
 .usa-phone-input__input:-webkit-autofill + .usa-phone-input__label {
   font-size: nds.$text-label-s;
   font-weight: nds.$font-semibold;
+  letter-spacing: 0;
   top: 0;
   transform: none;
 }
