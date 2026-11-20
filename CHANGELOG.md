@@ -57,6 +57,12 @@
   of a group experiencing our refreshed interface." + "Switch to legacy") to the
   page footer layout. Desktop places the copy left and the action right; mobile
   stacks and centers them.
+- NDS: Fill in the authentication app (TOTP) setup layout. Adds
+  `.nds-totp-setup__qrcode` (the QR code block identity-idp already emits;
+  220px, 180px on small viewports), `.nds-totp-setup__steps` (step card list,
+  16px gap, 12px on small viewports), and `.nds-totp-setup__step-heading`
+  (numbered step heading with a hanging number), plus an "Authentication app
+  setup" docs page showing the full layout.
 
 ### Bug Fixes
 
