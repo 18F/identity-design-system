@@ -81,6 +81,10 @@
   34px `base-dark` bar with white text, 8px between the flag, text, and
   trigger, centered on mobile. Add `.official-banner__how--icon`, the
   library's info-icon explainer trigger.
+- Align the NDS page footer with the Identity Design System library: 48px
+  inline padding, a 16px regular agency name (12px semibold on mobile), and
+  36px footer actions with 12px padding (8px beside a chevron). On mobile the
+  actions row sits 20px above the agency and the menu triggers share the row.
 
 ### Bug Fixes
 

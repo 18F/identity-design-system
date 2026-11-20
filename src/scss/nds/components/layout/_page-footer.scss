@@ -18,7 +18,8 @@ lg-nds-page-footer {
 
 .page-footer {
   align-items: center;
-  backdrop-filter: blur(50px);
+  // Figma "background blur 50" (4030:24369) is a 25px CSS blur.
+  backdrop-filter: blur(25px);
   background: nds.$background-primary;
   border-top: 1px solid nds.$base-lighter;
   box-sizing: border-box;
@@ -31,7 +32,7 @@ lg-nds-page-footer {
     'ss08' 1,
     'case' 1;
   justify-content: space-between;
-  padding: nds.space(8) nds.space(24);
+  padding: nds.space(8) nds.space(48);
   width: 100%;
 }
 
@@ -52,9 +53,11 @@ lg-nds-page-footer {
   }
 }
 
+// Desktop: Body/M Regular. Mobile drops to Body/S Emphasis (see below).
 .page-footer__agency-name {
-  font-size: nds.$text-body-s;
-  font-weight: nds.$font-semibold;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
 }
 
@@ -65,14 +68,22 @@ lg-nds-page-footer {
   gap: nds.space(8);
 }
 
+// Footer actions are 36px tertiary text buttons in the secondary text color:
+// 12px inline padding, 8px on the chevron side of the menu triggers.
 .page-footer__actions .usa-button {
   border-radius: nds.radius(40);
   color: $nds-footer-text-secondary;
   font-size: nds.$text-label-m;
   font-weight: nds.$font-semibold;
+  height: nds.space(36);
   letter-spacing: nds.$text-letter-spacing-label;
   min-height: nds.space(36);
   overflow: visible;
+  padding-inline: nds.space(12);
+
+  &.usa-button--icon-right {
+    padding-inline-end: nds.space(8);
+  }
 
   &:is(:link, :visited) {
     color: $nds-footer-text-secondary;
@@ -199,15 +210,34 @@ lg-nds-page-footer {
     text-align: center;
   }
 
+  // Mobile footer (Figma 4030:24382): actions row on top, agency below.
   .page-footer {
     flex-direction: column;
-    gap: nds.space(16);
+    gap: nds.space(20);
     justify-content: center;
-    padding: nds.space(12) nds.space(16);
+    padding: nds.space(12) nds.space(16) nds.space(20);
   }
 
+  // Wraps instead of overflowing on viewports narrower than the library's.
   .page-footer__actions {
+    flex-wrap: wrap;
+    justify-content: center;
     order: -1;
+    width: 100%;
+  }
+
+  // USWDS makes buttons full width on mobile; footer actions size to content.
+  .page-footer__actions .usa-button {
+    width: auto;
+  }
+
+  // The menu triggers share the leftover width; the link keeps its size.
+  .page-footer__actions > .usa-button--icon-right,
+  .page-footer__actions > .page-footer__menu {
+    flex: 1 0 auto;
+  }
+
+  .page-footer__actions > .page-footer__menu > .usa-button {
     width: 100%;
   }
 
@@ -219,5 +249,12 @@ lg-nds-page-footer {
     flex: 0 1 auto;
     justify-content: center;
     max-width: 100%;
+    padding-inline: nds.space(8);
+  }
+
+  .page-footer__agency-name {
+    font-size: nds.$text-body-s;
+    font-weight: nds.$font-semibold;
+    letter-spacing: 0;
   }
 }

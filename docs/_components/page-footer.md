@@ -22,8 +22,11 @@ link, and an overflow menu (`More`).
 The two menu triggers (`English` and `More`) are `<button>`s marked
 `aria-haspopup="menu"` and `aria-expanded="false"`, each with an accessible
 name and a trailing chevron. The chevrons are decorative, so they carry
-`aria-hidden="true"`. Below the `768px` breakpoint the footer stacks and the
-`.page-footer__help` link is hidden.
+`aria-hidden="true"`. Below the `768px` breakpoint the footer stacks: the
+actions move above the agency identifier, the `.page-footer__help` link is
+hidden, and the agency name drops to 12px semibold. Resize the window to see
+the mobile layout. In the narrow documentation column the agency name wraps; on
+a full-width page it fits on one line.
 
 {% capture example %}
 <lg-nds-page-footer>
