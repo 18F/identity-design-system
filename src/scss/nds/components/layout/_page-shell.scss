@@ -145,9 +145,10 @@ body.site {
 // Chrome
 // ----------------------------------------
 :root {
-  --nds-nav-height: #{nds.space(80)};
-  // Matches the official-banner block padding (12×2) + body-s line box.
-  --nds-official-banner-height: #{nds.space(48)};
+  // Header (Figma 5953:583): 84px tall on desktop.
+  --nds-nav-height: #{nds.space(80) + nds.space(4)};
+  // Matches the official-banner block padding (8×2) + body-s line box.
+  --nds-official-banner-height: #{nds.space(8) * 2 + nds.$text-body-s * 1.5};
   --nds-chrome-z: 15;
 }
 
@@ -173,13 +174,12 @@ body.site {
 
 .auth-page__top-chrome {
   align-items: center;
-  backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$white, 75%);
-  border-bottom: 1px solid nds.alpha(nds.$black, 10%);
+  background: nds.$white;
+  border-bottom: 1px solid nds.$base-lighter;
   box-sizing: border-box;
   display: flex;
   flex: 0 0 var(--nds-nav-height);
-  gap: nds.space(16);
+  gap: nds.space(8);
   height: var(--nds-nav-height);
   justify-content: flex-start;
   min-width: 0;
@@ -230,7 +230,7 @@ body.site {
 
 .auth-page__logo-banner-image {
   display: block;
-  height: nds.space(20);
+  height: nds.space(24);
   max-width: 100%;
   width: auto;
 }
@@ -288,13 +288,20 @@ body.site {
     --nds-screen-inline-padding: #{nds.space(16)};
   }
 
+  // Mobile header (Figma 5953:593 / 5953:590): the logo row is centered with
+  // 24px above and below; with a stepper, the stepper sits 20px below the logo
+  // row, runs edge to edge, and leaves 12px below it.
   .auth-page__top-chrome {
     flex: 0 0 auto;
     flex-direction: column;
-    gap: nds.space(12);
+    gap: nds.space(20);
     height: auto;
-    padding: nds.space(16) var(--nds-screen-inline-padding);
+    padding: nds.space(24) var(--nds-screen-inline-padding);
     position: static;
+  }
+
+  .auth-page__top-chrome:has(> .auth-page__top-chrome-progress) {
+    padding-block-end: nds.space(12);
   }
 
   .auth-page__logo-banner {
@@ -306,15 +313,26 @@ body.site {
     }
   }
 
+  // Full-bleed: stretch past the chrome's inline padding.
   .auth-page__top-chrome-progress {
+    align-self: stretch;
     flex: 0 0 auto;
+    margin-inline: calc(-1 * var(--nds-screen-inline-padding));
     padding-inline: 0;
     pointer-events: auto;
     position: static;
+    width: auto;
+  }
+
+  // The stepper row is exactly one 44px pill tall here; drop the standalone
+  // stepper's breathing room so the header keeps the library's spacing.
+  .auth-page__top-chrome-progress .progress {
+    min-height: 0;
+    padding-block: 0;
     width: 100%;
   }
 
-  .auth-page__top-chrome-progress .progress {
-    width: 100%;
+  .auth-page__top-chrome-progress :is(.progress__scroll, .progress__step) {
+    padding-block: 0;
   }
 }

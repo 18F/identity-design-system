@@ -89,10 +89,10 @@ inline script below shows the one matching the active stylesheet bucket
     <span class="official-banner__flag">
       <img class="usa-icon" src="{{ site.baseurl }}/assets/img/us_flag.svg" alt="" aria-hidden="true">
     </span>
-    <p class="official-banner__text">
-      An official website of the United States government.
-      <button type="button" class="official-banner__how link" data-open-modal="{{ banner_id }}-explainer">Here's how you know</button>
-    </p>
+    <p class="official-banner__text">An official website of the United States government</p>
+    <button type="button" class="official-banner__how official-banner__how--icon" data-open-modal="{{ banner_id }}-explainer" aria-haspopup="dialog" aria-label="Here's how you know">
+      <svg class="usa-icon" aria-hidden="true" focusable="false" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#error_outline"></use></svg>
+    </button>
   </div>
 </section>
 

@@ -15,6 +15,14 @@ $nds-progress-breakpoint-m: 768px;
 // In-progress ring stroke (design: 2px track and arc on a 20px ring).
 $nds-progress-ring-stroke: 2px;
 
+// The library's radial progress (Figma 6125:636) is a 20px ring in an 18px
+// layout slot, so it overhangs the slot by 1px on each side.
+$nds-progress-ring-overhang: -1px;
+
+// The completed-step check glyph sits in a 14px box inside the 20px badge,
+// matching the library checkmark's ~10.7px glyph (Figma 4001:11882).
+$nds-progress-check-inset: 3px;
+
 .progress {
   --nds-progress-pill-height: #{nds.space(40) + nds.space(4)};
 
@@ -111,7 +119,7 @@ $nds-progress-ring-stroke: 2px;
 }
 
 .progress__step[aria-current='step'] .progress__step-surface {
-  background: nds.alpha(nds.$primary-darker, 5%);
+  background: nds.$base-lightest;
   color: nds.$black;
 }
 
@@ -123,6 +131,7 @@ $nds-progress-ring-stroke: 2px;
   content: '';
   flex: 0 0 auto;
   height: nds.space(20);
+  margin-inline: $nds-progress-ring-overhang;
   mask-image: radial-gradient(
     farthest-side,
     transparent calc(100% - #{$nds-progress-ring-stroke}),
@@ -154,7 +163,7 @@ $nds-progress-ring-stroke: 2px;
   display: inline-flex;
   height: nds.space(20);
   justify-content: center;
-  padding: nds.space(4);
+  padding: $nds-progress-check-inset;
   width: nds.space(20);
 
   &.usa-icon {
@@ -180,12 +189,14 @@ $nds-progress-ring-stroke: 2px;
   .progress__scroll {
     --nds-progress-scroll-fade-size: #{nds.space(40) + nds.space(4)};
 
+    // Library edge fades (Figma 4001:11903/11904): 44px wide, fully hidden
+    // for the outer half, then fading in.
     mask-image: linear-gradient(
       90deg,
-      transparent,
+      transparent calc(var(--nds-progress-scroll-fade-size) / 2),
       nds.$black var(--nds-progress-scroll-fade-size),
       nds.$black calc(100% - var(--nds-progress-scroll-fade-size)),
-      transparent
+      transparent calc(100% - var(--nds-progress-scroll-fade-size) / 2)
     );
     padding-block: nds.space(4);
     scroll-snap-type: x mandatory;

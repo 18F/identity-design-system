@@ -1,0 +1,154 @@
+// NDS side navigation overlay.
+//
+// Restyles the standard USWDS `.usa-sidenav` selector, its items
+// (`.usa-sidenav__item`), nested lists (`.usa-sidenav__sublist`), and the
+// `.usa-current` link into the flat, rounded nav items of the Side Navigation
+// library (Figma 5871:656). Every link is a 44px row with a 24px radius,
+// separated by 8px, with no dividers or current-page rail. Nesting is shown by
+// indent only: parent 16px, child 44px, grandchild 56px.
+//
+// - Current page: `.usa-current` with no current descendant gets the wash.
+//   An ancestor that USWDS also marks `.usa-current` keeps black text but no
+//   wash, since only the page itself is highlighted.
+// - Inactive children and grandchildren use the secondary (65%) text color.
+//   A link that opens a sublist reads as expanded: black text and a trailing
+//   chevron.
+//
+// Loaded after `@forward 'uswds'` (see nds/styles.scss).
+
+@use 'tokens/nds' as nds;
+
+$nds-sidenav-text-secondary: nds.alpha(nds.$black, 65%);
+$nds-sidenav-chevron-up: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23000c1f'%20fill-rule='evenodd'%20d='M8%206.514l4.234%204.235%201.132-1.132L8%204.251%202.634%209.617l1.132%201.132z'%20clip-rule='evenodd'/%3E%3C/svg%3E");
+
+.usa-sidenav,
+.usa-sidenav__sublist {
+  border-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: nds.$text-label-m;
+  gap: nds.space(8);
+}
+
+.usa-sidenav {
+  font-family: nds.$font-family;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+}
+
+.usa-sidenav__item,
+.usa-sidenav__sublist-item,
+.usa-sidenav__sublist .usa-sidenav__item {
+  border-top: 0;
+  font-size: inherit;
+}
+
+.usa-sidenav > .usa-sidenav__item > .usa-sidenav__sublist,
+.usa-sidenav__sublist {
+  border-top: 0;
+  margin-top: nds.space(8);
+}
+
+.usa-sidenav a:not(.usa-button) {
+  align-items: center;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  display: flex;
+  font-weight: nds.$font-semibold;
+  gap: nds.space(8);
+  min-height: nds.space(44);
+  padding: nds.space(8) nds.space(16);
+  position: relative;
+  text-decoration: none;
+  transition: nds.$transition;
+
+  &:hover {
+    background-color: nds.$base-lightest;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+
+  // Drop the USWDS current-page rail.
+  &::after {
+    content: none;
+  }
+
+  > .usa-icon {
+    flex: 0 0 auto;
+    height: nds.space(20);
+    width: nds.space(20);
+  }
+}
+
+// `.usa-sidenav__item >` matches the specificity of the USWDS
+// `a:not(.usa-button):not(.usa-current)` color rules.
+.usa-sidenav .usa-sidenav__item > a:not(.usa-button, .usa-current),
+.usa-sidenav .usa-sidenav__item > a:not(.usa-button, .usa-current):hover {
+  color: nds.$black;
+}
+
+.usa-sidenav .usa-current,
+.usa-sidenav .usa-current:hover {
+  background-color: nds.$base-lightest;
+  color: nds.$black;
+  font-weight: nds.$font-semibold;
+}
+
+// Ancestor of the current page: black text, no wash.
+.usa-sidenav a.usa-current:has(+ .usa-sidenav__sublist .usa-current) {
+  background-color: transparent;
+
+  &:hover {
+    background-color: nds.$base-lightest;
+  }
+}
+
+// Child (44px) and grandchild (56px) indents.
+.usa-sidenav .usa-sidenav__sublist a:not(.usa-button) {
+  padding-inline-start: nds.space(44);
+}
+
+.usa-sidenav .usa-sidenav__sublist .usa-sidenav__sublist a:not(.usa-button) {
+  padding-inline-start: nds.space(56);
+}
+
+.usa-sidenav .usa-sidenav__sublist .usa-sidenav__item > a:not(.usa-button, .usa-current),
+.usa-sidenav .usa-sidenav__sublist .usa-sidenav__item > a:not(.usa-button, .usa-current):hover {
+  color: $nds-sidenav-text-secondary;
+}
+
+// Expanded link (followed by its sublist): black text and a trailing 16px
+// chevron pushed to the end of the row.
+.usa-sidenav a:not(.usa-button):has(+ .usa-sidenav__sublist) {
+  &::after {
+    background: currentColor;
+    content: '';
+    display: block;
+    flex: 0 0 auto;
+    height: nds.space(16);
+    margin-inline-start: auto;
+    mask: $nds-sidenav-chevron-up no-repeat center / contain;
+    position: static;
+    width: nds.space(16);
+  }
+}
+
+.usa-sidenav
+  .usa-sidenav__sublist
+  .usa-sidenav__item
+  > a:not(.usa-button, .usa-current):has(+ .usa-sidenav__sublist) {
+  color: nds.$black;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usa-sidenav a:not(.usa-button) {
+    transition: none;
+  }
+}

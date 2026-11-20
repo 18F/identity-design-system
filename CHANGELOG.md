@@ -111,9 +111,6 @@
   stroke, the submit sits 10px from the edge with the library search glyph and
   `shadow-large`, and the browser's search cancel glyph is hidden. The docs
   add the filled state.
-
-### Improvements
-
 - NDS: Align the tokens with the Identity Design System library. The focus
   ring and USWDS focus outline use the library's base color (`#001c48`) with
   a 2px gap; `$shadow-compact` takes the library "elevation 1" value; and
@@ -151,9 +148,6 @@
 - NDS: Align the tooltip with the Identity Design System library: the bubble
   uses the elevation 1 shadow and caps the message at 350px. The tooltip docs
   page shows all four positions statically as well as live.
-
-### Improvements
-
 - Align the NDS fieldset with the Identity Design System library: sibling
   `.usa-form-group`s in a `.usa-fieldset` sit 12px apart, and `.usa-input-list`
   stacks its checkbox or radio options with the same 12px gap.
@@ -180,9 +174,6 @@
   inset in a 140px drop target, a regular-weight rejection message, and a
   transparent USWDS box overlay so the hover, drag, and disabled surfaces show
   the library tint instead of white, light blue, or grey.
-
-### Improvements
-
 - Align the NDS alert with the Identity Design System library. The slim alert
   (`.usa-alert--slim`) is now a single 64px row with the icon beside the
   message in primary ink, and the action button drops the primary-button
@@ -211,6 +202,31 @@
   The panel radius is 16px and long lists scroll past 300px. Items are flex
   rows, and a selected item (`aria-current` or
   `.popover-menu__item--selected`) shows a trailing 16px checkmark.
+- Add NDS side navigation styles for `.usa-sidenav`, from the Identity Design
+  System library: 44px rounded nav items 8px apart with no dividers, a tinted
+  current page, 44px and 56px indents for child and grandchild links, muted
+  inactive children, and a chevron on links whose sublist is open.
+- Align the NDS header with the Identity Design System library. The page
+  shell top chrome and the account header are 84px tall (72px on mobile) on a
+  solid white background with a `base-lighter` border, and use a 24px logo.
+  On mobile the logo is centered with 24px above and below it, and a stepper
+  runs edge to edge 20px below the logo. The account header's email menu is a
+  primary-blue tertiary text button, its mobile menu is a 44px icon button at
+  the start of the header, and the account side navigation uses 44px rows with
+  20px icons. The Header docs page shows all four header types in NDS mode.
+- Align the NDS official banner with the Identity Design System library: a
+  34px `base-dark` bar with white text, 8px between the flag, text, and
+  trigger, centered on mobile. Add `.official-banner__how--icon`, the
+  library's info-icon explainer trigger.
+- Align the NDS page footer with the Identity Design System library: 48px
+  inline padding, a 16px regular agency name (12px semibold on mobile), and
+  36px footer actions with 12px padding (8px beside a chevron). On mobile the
+  actions row sits 20px above the agency and the menu triggers share the row.
+- Align the NDS progress stepper with the Identity Design System library: the
+  active pill uses `base-lightest`, the radial-progress ring takes the
+  library's 18px slot, the completed check glyph is larger, and the mobile
+  edge fades are fully opaque for their outer half. The Progress docs page
+  shows every step type, each step of the flow, and all 14 ring values.
 
 ### Bug Fixes
 

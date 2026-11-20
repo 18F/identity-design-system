@@ -5,22 +5,30 @@
 // explainer content renders inside the `.modal` component, so the rules below
 // also style the modal chrome for the banner's explainer.
 //
+// The library (Figma 1726:54) shows the flag, the statement, and a trailing
+// info icon that opens the explainer. Use `.official-banner__how--icon` for
+// that icon-only trigger, placed after the text inside
+// `.official-banner__content`; the inline text-link trigger is still
+// supported.
+//
 // Loaded after `@forward 'uswds'`.
 
 @use 'tokens/nds' as nds;
 
 $nds-banner-mobile-max: 639px;
+$nds-banner-text: nds.$white;
+$nds-banner-icon: nds.alpha(nds.$white, 65%);
 
 .official-banner {
   align-items: center;
-  background: nds.$primary-darker;
+  background: nds.$base-dark;
   box-sizing: border-box;
-  color: nds.$primary-lightest;
+  color: $nds-banner-text;
   display: flex;
   flex-wrap: wrap;
   gap: nds.space(4) nds.space(16);
   justify-content: flex-start;
-  padding: nds.space(12) nds.space(48);
+  padding: nds.space(8) nds.space(48);
   position: relative;
   width: 100%;
 }
@@ -28,7 +36,7 @@ $nds-banner-mobile-max: 639px;
 .official-banner__content {
   align-items: center;
   display: flex;
-  gap: nds.space(12);
+  gap: nds.space(8);
   min-width: 0;
 }
 
@@ -53,7 +61,7 @@ $nds-banner-mobile-max: 639px;
 
 .official-banner__text,
 .official-banner__test-notice {
-  color: nds.$primary-lightest;
+  color: $nds-banner-text;
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
   font-weight: 400;
@@ -67,7 +75,44 @@ $nds-banner-mobile-max: 639px;
 
 .official-banner__how.link,
 .official-banner__how.link:is(:link, :visited, :hover, :active, :focus-visible) {
-  color: nds.$primary-lightest;
+  color: $nds-banner-text;
+}
+
+// Icon-only explainer trigger: a 16px info icon in a 24px hit area, pulled
+// back by 4px on each side so the icon sits 8px after the text.
+.official-banner__how--icon {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: nds.radius(pill);
+  color: $nds-banner-icon;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: nds.space(24);
+  justify-content: center;
+  margin: calc(-1 * #{nds.space(4)});
+  padding: 0;
+  width: nds.space(24);
+
+  &:hover {
+    color: $nds-banner-text;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    @include nds.focus-ring();
+  }
+
+  .usa-icon {
+    display: block;
+    height: nds.space(16);
+    width: nds.space(16);
+  }
 }
 
 .official-banner__test-notice {
@@ -176,13 +221,14 @@ $nds-banner-mobile-max: 639px;
 
 @media (width <= #{$nds-banner-mobile-max}) {
   .official-banner {
-    padding: nds.space(16) nds.space(24);
+    justify-content: center;
+    padding: nds.space(12) nds.space(24);
   }
 
   .official-banner__content {
     align-items: center;
-    flex: 1 1 auto;
-    gap: nds.space(16);
+    flex: 0 1 auto;
+    gap: nds.space(8);
   }
 
   .official-banner__text {
