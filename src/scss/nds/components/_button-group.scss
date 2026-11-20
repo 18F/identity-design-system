@@ -8,10 +8,10 @@
 // (see `_btn.scss`).
 //
 // Default group: a horizontal row of standalone pill buttons separated by a
-// fixed gap. Segmented group: the buttons join into a single control — the
-// outer corners keep the pill radius, the joined inner edges are squared, the
-// gap collapses to zero, and the per-button resting shadow lifts to the shared
-// container so the segments read as one elevated surface.
+// fixed gap. Segmented group (the library's "Button Group"): the buttons join
+// into a single control — the outer corners keep the pill radius, the joined
+// inner edges are squared, the gap collapses to zero, the per-button shadow is
+// dropped, and a 1px hairline outlines the whole group.
 //
 // Loaded after `@forward 'uswds'` (see styles.scss) so these rules win on
 // equal specificity.
@@ -52,13 +52,28 @@
 // ----------------------------------------
 .usa-button-group--segmented {
   align-items: stretch;
-  border: 1px solid nds.$base-lightest;
+  border: 0;
   border-radius: nds.radius(pill);
-  box-shadow: nds.$shadow-large;
+  box-shadow: none;
   flex-flow: row nowrap;
   gap: 0;
   justify-content: flex-start;
   margin: 0;
+  position: relative;
+
+  // The library strokes a 1px base-lightest hairline inside the group, on top
+  // of the segments, without adding to its height. Draw it as an overlay so
+  // the group stays exactly one button tall. It sits above resting segments
+  // and below hovered/focused ones (z-index 2/3 below).
+  &::after {
+    border: 1px solid nds.$base-lightest;
+    border-radius: inherit;
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+  }
 
   // Segments share the row equally. Reset the USWDS stroke-based negative
   // margins and `calc()` widths so the segments abut cleanly with no overlap.
@@ -68,9 +83,9 @@
     width: 100%;
   }
 
-  // The elevation lives on the shared container, so drop each segment's
-  // resting shadow. Scoped away from the focused state so the keyboard focus
-  // ring (drawn as a box-shadow) is preserved (WCAG 2.4.7).
+  // The library clips the segments to the group, so neither the segments nor
+  // the group show an elevation shadow. Scoped away from the focused state so
+  // the keyboard focus ring (drawn as a box-shadow) is preserved (WCAG 2.4.7).
   .usa-button:not(:focus-visible, .usa-focus) {
     box-shadow: none;
   }
@@ -119,9 +134,8 @@
   }
 
   // Group-level tertiary: inside a segmented group the tertiary style reads as
-  // blue link text on the shared surface (no per-segment border), rather than
-  // the bordered-ink treatment the standalone `.usa-button--tertiary` renders.
-  // The base overlay's box-shadow focus ring still applies.
+  // blue link text on the shared surface, with no per-segment border or
+  // outline. The base overlay's box-shadow focus ring still applies.
   .usa-button--tertiary {
     border: 0;
     color: nds.$primary;

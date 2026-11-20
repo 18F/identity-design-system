@@ -77,6 +77,35 @@
   colors, `$shadow-elevation-1`/`-2`, backdrop blurs, radius 2/4/20/28,
   spacing 2/44, heading line heights, `$text-heading-xs`,
   `$text-letter-spacing-heading-xl`, and `$font-family-mono`.
+- NDS: Align buttons with the Identity Design System library. Primary uses the
+  `base` fill with `base-dark` hover and `base-darker` pressed; destructive
+  (`--danger`) uses `error` / `error-dark` / `error-darker`; both keep the
+  elevation 1 shadow at rest, hover, and press in every size; secondary hover and
+  pressed use `base-lighter`; tertiary focus is white; outline is white with a
+  `base-light` border (`base-darkest` when pressed); every disabled button uses
+  the `disabled-light` fill and `disabled` text. Adds `--icon-left` and
+  `--icon-right` (tighter padding on the icon side, as identity-idp's
+  `NDSButtonComponent` already emits) and 20px icons. The buttons docs page
+  shows every variant, size, icon placement, and state, plus the icon buttons.
+- NDS: Align the segmented button group with the Identity Design System
+  library. The group drops its elevation shadow (the library clips the
+  segments) and draws its 1px `base-lightest` hairline as an inside overlay, so
+  the group is exactly one button tall. The button groups docs page shows all
+  three styles in all three sizes.
+- NDS: Align status badges (`.badge`) with the Identity Design System library.
+  Primary uses the `primary` fill; info, success, warning, and error use the
+  solid `-lighter` fills with `primary`, `success-dark`, `warning-dark`, and
+  `error-dark` text; every light badge gets a 1px inside `base-lightest` border
+  (`base-lighter` for tertiary), so small badges are 20px tall. Adds the 36px
+  `.badge--md` size, and icon-only badges hold a 16px icon in a 20px or 36px
+  square. The status badges docs page shows all 28 library variants.
+- NDS: Align the toast with the Identity Design System library: 52px tall with
+  20px inline padding (16px on the leading edge when it has an icon chip). The
+  toast docs page now previews each toast in place instead of stacking them at
+  the fixed viewport position.
+- NDS: Align the tooltip with the Identity Design System library: the bubble
+  uses the elevation 1 shadow and caps the message at 350px. The tooltip docs
+  page shows all four positions statically as well as live.
 
 ### Bug Fixes
 
