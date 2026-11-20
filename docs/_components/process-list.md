@@ -7,6 +7,9 @@ lead: A process list displays the steps or stages of important instructions or p
 
 ## Default
 
+In the NDS stylesheet each step has a 28px numbered marker beside a semibold
+heading and muted description text.
+
 {% capture example %}
 <ol class="usa-process-list">
   <li class="usa-process-list__item">
@@ -51,6 +54,8 @@ lead: A process list displays the steps or stages of important instructions or p
 {% include helpers/code-example.html code=example %}
 
 ## Connected
+
+Add `usa-process-list--connected` to join the markers with a 2px line.
 
 {% capture example %}
 <ol class="usa-process-list usa-process-list--connected">
@@ -97,6 +102,9 @@ lead: A process list displays the steps or stages of important instructions or p
 
 ## Big
 
+Add `usa-process-list--big` for a 44px marker with the heading centered beside
+it.
+
 {% capture example %}
 <ol class="usa-process-list usa-process-list--big">
   <li class="usa-process-list__item">
@@ -141,6 +149,9 @@ lead: A process list displays the steps or stages of important instructions or p
 {% include helpers/code-example.html code=example %}
 
 ## Big, Connected
+
+The library doesn't define this combination. The NDS stylesheet joins the big
+markers with the connected line.
 
 {% capture example %}
 <ol class="usa-process-list usa-process-list--big usa-process-list--connected">

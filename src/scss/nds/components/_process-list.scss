@@ -1,13 +1,144 @@
-// NDS process-list — `.process-list`, `.process-list__item`,
-// `.process-list__marker`, `.process-list__body`, `.process-list__heading`.
+// NDS process lists.
 //
-// A numbered step list with a connecting line between markers. The step number
-// is generated with a CSS counter. Distinct from the USWDS `.usa-process-list`,
-// which is unchanged.
+// 1. The USWDS `.usa-process-list` (`__item`, `__heading`), restyled to the
+//    library's three styles: default (28px marker), `--connected` (28px
+//    marker with a 2px line down to the next step), and `--big` (44px marker
+//    with the heading centered beside it). The marker is the USWDS counter
+//    `::before`; the connector line is an `::after`, not the USWDS item border.
+// 2. `.process-list` (`__item`, `__marker`, `__body`, `__heading`), a flat
+//    step list with a connecting line between markers, used where the markup
+//    can carry its own marker element.
 //
 // Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
 
+@use 'sass:math';
 @use 'tokens/nds' as nds;
+
+$usa-marker-size: nds.space(28);
+$usa-marker-size-big: nds.space(44);
+$usa-item-padding: nds.space(16);
+// The connected style centers the 28px marker on a 24px column.
+$usa-connected-column: nds.space(24);
+
+// Listed out to beat the USWDS and Login.gov list insets, in and out of
+// `.usa-prose`.
+.usa-process-list,
+.usa-process-list.usa-process-list--big,
+.usa-prose .usa-process-list,
+.usa-prose .usa-process-list.usa-process-list--big {
+  margin: 0;
+  padding: 0;
+}
+
+.usa-process-list > .usa-process-list__item {
+  border: 0;
+  border-radius: nds.radius(16);
+  color: nds.alpha(nds.$black, 65%);
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  padding: $usa-item-padding $usa-item-padding $usa-item-padding
+    ($usa-item-padding + $usa-marker-size + nds.space(12));
+  position: relative;
+
+  &::before {
+    background: nds.$base;
+    box-shadow: none;
+    color: nds.$white;
+    font-family: nds.$font-family;
+    font-size: nds.$text-label-m;
+    font-weight: nds.$font-semibold;
+    height: $usa-marker-size;
+    left: $usa-item-padding;
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: nds.$text-line-height-none;
+    margin: 0;
+    top: $usa-item-padding;
+    width: $usa-marker-size;
+  }
+
+  // Beats the `.usa-prose` last-child reset.
+  &:last-child {
+    border: 0;
+    padding-bottom: $usa-item-padding;
+  }
+}
+
+.usa-process-list .usa-process-list__heading {
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-semibold;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+
+  + * {
+    margin-top: nds.space(4);
+  }
+}
+
+.usa-process-list.usa-process-list--connected > .usa-process-list__item {
+  padding: nds.space(4) $usa-item-padding nds.space(32)
+    ($usa-item-padding + $usa-connected-column + nds.space(12));
+
+  &::before {
+    left: $usa-item-padding + math.div($usa-connected-column - $usa-marker-size, 2);
+    top: nds.space(4);
+  }
+
+  &:not(:last-child)::after {
+    background: nds.$base-lighter;
+    bottom: 0;
+    content: '';
+    left: $usa-item-padding + math.div($usa-connected-column, 2) - 1px;
+    position: absolute;
+    top: nds.space(4) + $usa-marker-size + nds.space(4);
+    width: 2px;
+  }
+
+  &:last-child {
+    padding-bottom: nds.space(32);
+  }
+}
+
+.usa-process-list.usa-process-list--big > .usa-process-list__item {
+  // The heading is centered on the 44px marker; the rest of the content
+  // hangs under it, 16px past the marker.
+  padding: ($usa-item-padding + math.div($usa-marker-size-big - nds.space(24), 2)) $usa-item-padding
+    $usa-item-padding ($usa-item-padding + $usa-marker-size-big + nds.space(16));
+
+  &::before {
+    font-size: nds.$text-label-m;
+    height: $usa-marker-size-big;
+    left: $usa-item-padding;
+    margin: 0;
+    top: $usa-item-padding;
+    width: $usa-marker-size-big;
+  }
+
+  // The library pulls the content row 4px up under the marker row, which
+  // leaves 6px between the centered heading and what follows.
+  .usa-process-list__heading + * {
+    margin-top: nds.space(6);
+  }
+
+  &:last-child {
+    padding-bottom: $usa-item-padding;
+  }
+}
+
+// Not a library style: big markers joined by the connected line.
+.usa-process-list.usa-process-list--big.usa-process-list--connected > .usa-process-list__item {
+  border: 0;
+  padding-bottom: nds.space(32);
+
+  &:not(:last-child)::after {
+    left: $usa-item-padding + math.div($usa-marker-size-big, 2) - 1px;
+    top: $usa-item-padding + $usa-marker-size-big + nds.space(4);
+  }
+}
 
 .process-list {
   @include nds.stack($gap: nds.space(32), $reset-flow: true, $width: 100%);

@@ -71,6 +71,10 @@
   blue, or the `text-success` / `text-error` color) holding a 16px white
   glyph. "Default" pairs a semibold `__title` with muted description text;
   "simple" is a single line in the primary text color.
+- NDS: Add `.usa-process-list` styling for the library's three process list
+  styles: default (28px marker, semibold heading, muted description),
+  `--connected` (a 2px line joins the markers), and `--big` (44px marker with
+  the heading centered beside it). The flat `.process-list` is unchanged.
 
 ### Bug Fixes
 
