@@ -87,6 +87,9 @@
   `.separator--*` fills; the plain classes stay the tertiary fill, now
   `base-lighter`. The separator label is 16px with a line height of 1 and an
   8px gap, and its color follows the fill.
+- NDS: Align animated media with the library's Animations. The image and
+  animated frame fill an 864 by 400 (2.16:1) frame, cropped to cover. The
+  docs page shows the security key and PIV/CAC animations, desktop and mobile.
 
 ### Bug Fixes
 

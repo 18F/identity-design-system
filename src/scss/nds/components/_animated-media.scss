@@ -15,11 +15,15 @@
   position: relative;
 }
 
+// The library's Animations frame is 864 by 400 with square corners, and the
+// media fills it (cropped to cover).
 .animated-media__image,
 .animated-media__frame {
+  aspect-ratio: 864 / 400;
   display: block;
   height: auto;
   max-width: 100%;
+  object-fit: cover;
   width: 100%;
 }
 
