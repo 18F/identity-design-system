@@ -66,6 +66,10 @@
 - Add an NDS standalone spinner (`.nds-spinner`): the 20px Figma `loader radial`
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
+- Add NDS side navigation styles for `.usa-sidenav`, from the Identity Design
+  System library: 44px rounded nav items 8px apart with no dividers, a tinted
+  current page, 44px and 56px indents for child and grandchild links, muted
+  inactive children, and a chevron on links whose sublist is open.
 
 ### Improvements
 
