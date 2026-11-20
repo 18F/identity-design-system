@@ -18,6 +18,44 @@ USWDS `.usa-checkbox`, which remains available. Group related checkboxes with
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+### States
+
+The flat checkbox draws the same control as `.usa-checkbox` in every library
+state. Hover (blue border) needs a pointer and isn't shown here.
+
+{% capture example %}
+<div class="checkbox-group">
+  <div class="checkbox">
+    <input id="cf02" class="checkbox__input usa-focus" type="checkbox" name="cf02">
+    <label for="cf02" class="checkbox__label">Unchecked focus</label>
+  </div>
+  <div class="checkbox">
+    <input id="cf03" class="checkbox__input" type="checkbox" name="cf03" checked>
+    <label for="cf03" class="checkbox__label">Checked</label>
+  </div>
+  <div class="checkbox">
+    <input id="cf04" class="checkbox__input usa-focus" type="checkbox" name="cf04" checked>
+    <label for="cf04" class="checkbox__label">Checked focus</label>
+  </div>
+  <div class="checkbox">
+    <input id="cf05" class="checkbox__input" type="checkbox" name="cf05" disabled>
+    <label for="cf05" class="checkbox__label">Disabled</label>
+  </div>
+  <div class="checkbox">
+    <input id="cf06" class="checkbox__input" type="checkbox" name="cf06" disabled checked>
+    <label for="cf06" class="checkbox__label">Disabled and checked</label>
+  </div>
+  <div class="checkbox">
+    <input id="cf07" class="checkbox__input" type="checkbox" name="cf07">
+    <label for="cf07" class="checkbox__label">
+      <span class="checkbox__label-text">With description</span>
+      <span class="checkbox__label-description">Description text</span>
+    </label>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Tile
 
 Add `checkbox__input--tile` to render each option as a selectable card.

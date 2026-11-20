@@ -72,6 +72,14 @@
 - Align the NDS fieldset with the Identity Design System library: sibling
   `.usa-form-group`s in a `.usa-fieldset` sit 12px apart, and `.usa-input-list`
   stacks its checkbox or radio options with the same 12px gap.
+- Align the NDS checkbox (`.usa-checkbox` and the flat `.checkbox`) with the
+  Identity Design System library: a 2px border inside the 20px box, a
+  blue-500 border on hover with no fill, a black border inside the focus ring,
+  25% midnight disabled controls with 65% labels, Body/M Regular labels that
+  turn semibold when they carry a description (4px above it, Body/M at 65%),
+  and bordered/tile cards with a 1px base-lighter hairline, 24px radius, and
+  24px inset that no longer tint when checked. The flat checkbox now uses the
+  library checkmark glyph.
 
 ### Bug Fixes
 

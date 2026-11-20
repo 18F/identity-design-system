@@ -12,8 +12,8 @@
 // are intentionally not wrapped in `:where()`, which would zero their
 // specificity and lose to USWDS.
 //
-// GLYPH: the blue box is applied here; the white checkmark glyph is left as
-// USWDS's own, which reads correctly on the blue fill.
+// Library: Identity Design System › ❖ Checkbox (`checkbox` 5628:1046,
+// `nested/checkbox button` 5628:1040, bordered 5731:466, tile 5731:519).
 
 @use 'tokens/nds' as nds;
 
@@ -24,51 +24,73 @@ $nds-checkbox-glyph-check: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3
 $nds-checkbox-glyph-indeterminate: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23fff'%20d='M1.6%207.2h12.8v1.6H1.6z'/%3E%3C/svg%3E");
 
 $nds-checkbox-size: nds.space(20);
-$nds-checkbox-border-width: 1px;
+// The library draws a 2px border inside the 20px box. It is painted as an
+// inset box-shadow (USWDS's own box border is a box-shadow too), so each state
+// below replaces it through the one property.
+$nds-checkbox-border-width: 2px;
+$nds-checkbox-label-gap: nds.space(12);
+// Bordered/tile card: the library's 1px stroke sits inside the card, with 24px
+// from the outer edge to the content on every side. CSS draws the border
+// outside the padding, so the padding gives back the border width.
+$nds-checkbox-card-border-width: 1px;
+$nds-checkbox-card-padding: nds.space(24) - $nds-checkbox-card-border-width;
 
-// Label — Inter semibold, ink color, gap reserved for the box.
+@function nds-checkbox-border($color) {
+  @return inset 0 0 0 $nds-checkbox-border-width $color;
+}
+
+// Label: Body/M Regular, ink color, 12px gap reserved for the box.
 .usa-checkbox__label {
   color: nds.$black;
   cursor: pointer;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: 400;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
-  padding-left: calc(#{nds.space(12)} + #{$nds-checkbox-size});
+  padding-left: calc(#{$nds-checkbox-label-gap} + #{$nds-checkbox-size});
 
   &::before {
     background-color: nds.$white;
     border-radius: nds.radius(8);
-    box-shadow: 0 0 0 $nds-checkbox-border-width nds.$base-darkest;
+    box-shadow: nds-checkbox-border(nds.$base-darkest);
     box-sizing: border-box;
     height: $nds-checkbox-size;
     // Override USWDS's computed vertical-centering margin (sized for its own
-    // box size) so the 20px box aligns to the label text.
-    margin-top: 2px;
+    // box size): the library's left rail sets the box 2px below the text top.
+    margin-top: nds.space(2);
     transition: nds.$transition;
     width: $nds-checkbox-size;
   }
 }
 
-// Regular-weight label for long-form checkbox copy (e.g. a consent paragraph)
-// where the semibold label weight reads as too heavy.
-.usa-checkbox__label--regular {
+// With a description the label text reads as the option title (Body/M
+// Emphasis), and the description sits 4px below it in Body/M at 65%.
+.usa-checkbox__input + .usa-checkbox__label:has(.usa-checkbox__label-description) {
+  font-weight: nds.$font-semibold;
+}
+
+.usa-checkbox__label-description {
+  color: nds.alpha(nds.$black, 65%);
+  display: block;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin-top: nds.space(4);
+}
+
+// Regular-weight label for long-form checkbox copy (e.g. a consent paragraph).
+// Labels are regular by default; this also keeps a described label regular.
+.usa-checkbox__label--regular,
+.usa-checkbox__input + .usa-checkbox__label--regular:has(.usa-checkbox__label-description) {
   font-weight: 400;
 }
 
-// Bordered variant: the box is inset from the tile edge (left: nds.space(16))
-// and the label reserves horizontal space for it via padding-left. Widen that
-// reservation so the box clears the label text with the same gap as the
-// default checkbox.
-.usa-checkbox__input--bordered + .usa-checkbox__label {
-  padding-left: calc(#{nds.space(16)} + #{nds.space(12)} + #{$nds-checkbox-size});
-}
-
-// Hover (not disabled): blue tint fill + blue-500 border.
+// Hover (not disabled): blue-500 border, no fill.
 .usa-checkbox__input:not(:disabled, [aria-disabled='true']) + .usa-checkbox__label:hover::before {
-  background-color: nds.alpha(nds.$primary-darker, 5%);
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$primary;
+  box-shadow: nds-checkbox-border(nds.$primary);
 }
 
 // Checked: solid blue-500 fill with the 16px white check glyph centered in the
@@ -95,7 +117,7 @@ $nds-checkbox-border-width: 1px;
   box-shadow: none;
 }
 
-// Checked/indeterminate hover stays solid (don't revert to the hover tint).
+// Checked/indeterminate hover stays solid (no border).
 .usa-checkbox__input:checked:not(:disabled, [aria-disabled='true'])
   + .usa-checkbox__label:hover::before,
 .usa-checkbox__input:is(:indeterminate, [data-indeterminate]):not(:disabled, [aria-disabled='true'])
@@ -105,42 +127,61 @@ $nds-checkbox-border-width: 1px;
 }
 
 // Focus ring (keyboard) on the box. USWDS draws a blue `outline` on plain
-// `:focus` (mouse too); the design shows the ring on keyboard focus only.
-// Clear USWDS's outline on `:focus`, then draw the ring on
-// `:focus-visible`/`.usa-focus` (both later at matching (0,3,1)).
-.usa-checkbox__input:focus + .usa-checkbox__label::before {
+// `:focus` (mouse too), and again at a higher specificity on `:checked:focus`;
+// the design shows the ring on keyboard focus only. Clear USWDS's outline,
+// then draw the ring on `:focus-visible`/`.usa-focus`. Unchecked keeps a black
+// border inside the ring; checked shows the ring around the solid fill.
+.usa-checkbox__input:focus + .usa-checkbox__label::before,
+.usa-checkbox__input:checked:is(:focus, .usa-focus) + .usa-checkbox__label::before {
   outline: 0;
 }
 
 .usa-checkbox__input:is(:focus-visible, .usa-focus) + .usa-checkbox__label::before {
   @include nds.focus-ring();
+  box-shadow: nds-checkbox-border(nds.$black), nds.$shadow-focus;
+}
+
+.usa-checkbox__input:is(:checked, :indeterminate, [data-indeterminate]):is(
+    :focus-visible,
+    .usa-focus
+  )
+  + .usa-checkbox__label::before {
+  box-shadow: nds.$shadow-focus;
 }
 
 // Error: red border, no fill.
 .usa-checkbox__input:is(.usa-input--error, [aria-invalid='true']) + .usa-checkbox__label::before {
   background-color: nds.$white;
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$secondary;
+  box-shadow: nds-checkbox-border(nds.$secondary);
 }
 
-// Disabled: muted fill + text.
+// Disabled: 25% midnight border, no fill; label and description at 65%.
 .usa-checkbox__input:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label {
-  color: nds.alpha(nds.$black, 25%);
+  color: nds.alpha(nds.$black, 65%);
   cursor: not-allowed;
 
   &::before {
-    background-color: nds.alpha(nds.$black, 5%);
-    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
+    background-color: nds.$white;
+    box-shadow: nds-checkbox-border(nds.$disabled);
   }
 }
 
-// Disabled + checked: muted fill, keep the enlarged glyph.
-.usa-checkbox__input:is(:disabled, [aria-disabled='true']):checked + .usa-checkbox__label::before {
-  background-color: nds.alpha(nds.$black, 25%);
+// Disabled + checked (or indeterminate): 25% midnight fill, no border; keep
+// the enlarged glyph.
+.usa-checkbox__input:is(:disabled, [aria-disabled='true']):checked + .usa-checkbox__label::before,
+.usa-checkbox__input:is(:disabled, [aria-disabled='true']):is(:indeterminate, [data-indeterminate])
+  + .usa-checkbox__label::before {
+  background-color: nds.$disabled;
   background-image: $nds-checkbox-glyph-check;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
+  box-shadow: none;
+}
+
+.usa-checkbox__input:is(:disabled, [aria-disabled='true']):is(:indeterminate, [data-indeterminate])
+  + .usa-checkbox__label::before {
+  background-image: $nds-checkbox-glyph-indeterminate;
 }
 
 // Forced-colors safety: the blue fill overrides USWDS's system-color checked
@@ -153,26 +194,64 @@ $nds-checkbox-border-width: 1px;
   }
 }
 
-// --- Selection variants -----------------------------------------------------
+// --- Bordered and tile variants ---------------------------------------------
 //
-// USWDS ships tile/bordered variants with a light-blue selected background
-// (`$theme-input-tile/bordered-background-color-selected`). The design uses a
-// neutral midnight tint so the selected card reads as "chosen" without adding
-// a second accent color next to the blue-500 control.
+// The library draws both as the same card: full width, 1px base-lighter
+// hairline, 24px radius, 24px padding, with the box in a left rail 12px before
+// the copy. Bordered holds a single label line; tile adds a description. The
+// card itself does not change with state: checked, focused, and disabled
+// options keep the white surface and the hairline (USWDS tints the selected
+// card and recolors the disabled border, so both are reset here).
 
-.usa-checkbox__input--tile:checked + .usa-checkbox__label,
-.usa-checkbox__input--tile:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label,
-.usa-checkbox__input--bordered:checked + .usa-checkbox__label,
-.usa-checkbox__input--bordered:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label {
-  background-color: nds.alpha(nds.$black, 5%);
-  border-color: nds.$black;
+.usa-checkbox__input:is(.usa-checkbox__input--bordered, .usa-checkbox__input--tile)
+  + .usa-checkbox__label {
+  background-color: nds.$white;
+  border: $nds-checkbox-card-border-width solid nds.$base-lighter;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  display: block;
+  font-size: nds.$text-label-m;
+  margin: 0;
+  max-width: none;
+  padding: $nds-checkbox-card-padding;
+  padding-left: calc(
+    #{$nds-checkbox-card-padding} + #{$nds-checkbox-size} + #{$nds-checkbox-label-gap}
+  );
+  width: 100%;
+
+  &::before {
+    left: $nds-checkbox-card-padding;
+    margin-top: nds.space(2);
+  }
 }
 
-// Bordered + checked + disabled: keep USWDS's transparent fill but use the
-// muted midnight border so it lines up with the disabled control color.
-.usa-checkbox__input--bordered:checked:is(:disabled, [aria-disabled='true'])
+.usa-checkbox__input:is(.usa-checkbox__input--bordered, .usa-checkbox__input--tile):is(
+    :checked,
+    :indeterminate,
+    [data-indeterminate],
+    :disabled,
+    [aria-disabled='true']
+  )
   + .usa-checkbox__label {
-  border-color: nds.alpha(nds.$black, 25%);
+  background-color: nds.$white;
+  border-color: nds.$base-lighter;
+}
+
+// USWDS sets a midnight color and a 700 weight on every tile label; the
+// library title weight comes from the description rule above, and the
+// disabled color from the disabled rule (which this must not outrank).
+.usa-checkbox__input--tile + .usa-checkbox__label {
+  color: nds.$black;
+  font-weight: 400;
+}
+
+// Illustrated tile: USWDS lays the image and copy out as a row from 640px; the
+// card rule above resets `display`, so restore the row here.
+@media (width >= 40em) {
+  .usa-checkbox__input:is(.usa-checkbox__input--bordered, .usa-checkbox__input--tile)
+    + .usa-checkbox__label--illustrated {
+    display: flex;
+  }
 }
 
 // --- Switch variant ---------------------------------------------------------

@@ -40,7 +40,51 @@ lead: Checkboxes allow users to select one or more options from a list.
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+The hovered state (blue border, no fill) appears when the pointer is over an
+enabled option, so it can't be shown statically.
+
+## With description
+
+Add a `usa-checkbox__label-description` inside the label. The label text then
+reads as the option title, in the semibold weight.
+
+{% capture example %}
+<fieldset class="usa-fieldset">
+  <legend class="usa-legend">Group label</legend>
+  <ul class="usa-input-list">
+    <li>
+      <input id="cd01" class="usa-checkbox__input" type="checkbox" name="cd01">
+      <label for="cd01" class="usa-checkbox__label">Option - Unchecked<span class="usa-checkbox__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="cd02" class="usa-checkbox__input usa-focus" type="checkbox" name="cd02">
+      <label for="cd02" class="usa-checkbox__label">Option - Unchecked Focus<span class="usa-checkbox__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="cd03" class="usa-checkbox__input" type="checkbox" name="cd03" checked>
+      <label for="cd03" class="usa-checkbox__label">Option - Checked<span class="usa-checkbox__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="cd04" class="usa-checkbox__input usa-focus" type="checkbox" name="cd04" checked>
+      <label for="cd04" class="usa-checkbox__label">Option - Checked Focus<span class="usa-checkbox__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="cd05" class="usa-checkbox__input" type="checkbox" name="cd05" disabled>
+      <label for="cd05" class="usa-checkbox__label">Option - Disabled<span class="usa-checkbox__label-description">Description text</span></label>
+    </li>
+    <li>
+      <input id="cd06" class="usa-checkbox__input" type="checkbox" name="cd06" disabled checked>
+      <label for="cd06" class="usa-checkbox__label">Option - Disabled and Checked<span class="usa-checkbox__label-description">Description text</span></label>
+    </li>
+  </ul>
+</fieldset>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 ## Bordered
+
+A bordered option draws the checkbox and its label in a full-width card. The
+card keeps the same surface and hairline in every state.
 
 {% capture example %}
 <fieldset class="usa-fieldset">
