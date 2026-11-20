@@ -100,6 +100,12 @@
   library. The weak and good fills are 22% and 51% of the track, and the
   feedback badge is at least 56px wide with centered text, a `base-lightest`
   hairline, and a backdrop blur. The docs label the middle strength "Good".
+- NDS: Align the select (combo-box) with the Identity Design System library
+  dropdown. The chevron is full ink, sits 16px from the edge, and flips up
+  while the menu is open; the open control keeps the 2px stroke even when
+  focus is on the toggle; and a combo-box inside `.usa-input-group--floating`
+  gets the library's floating label. The docs show the default, filled, and
+  open states.
 
 ### Bug Fixes
 
