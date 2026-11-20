@@ -21,6 +21,29 @@ lead: Stating validation requirements up front, with live feedback, means users 
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
+### Validation message
+
+A validation message is a 20px icon followed by Body/M emphasis text. It comes
+in two states: **error** (red) and **neutral** (65% ink, for guidance that isn't
+an error yet). Add `.usa-error-message--neutral` for the neutral state. The icon
+markup carries `viewBox="0 0 24 24"` so it scales into the 20px box.
+
+{% capture example %}
+<span class="usa-error-message" role="alert">
+  <svg class="usa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M13.2 18h-2.4v-7.2h2.4zm.24-10.56c0 .795-.36 1.44-1.44 1.44s-1.44-.645-1.44-1.44S10.92 6 12 6s1.44.645 1.44 1.44"/><path fill="currentColor" fill-rule="evenodd" d="M12 1.2C6 1.2 1.2 6 1.2 12S6 22.8 12 22.8 22.8 18 22.8 12 18 1.2 12 1.2m0 2.4c4.68 0 8.4 3.72 8.4 8.4s-3.72 8.4-8.4 8.4-8.4-3.72-8.4-8.4S7.32 3.6 12 3.6" clip-rule="evenodd"/></svg>
+  Error message
+</span>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+{% capture example %}
+<span class="usa-error-message usa-error-message--neutral">
+  <svg class="usa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M13.2 18h-2.4v-7.2h2.4zm.24-10.56c0 .795-.36 1.44-1.44 1.44s-1.44-.645-1.44-1.44S10.92 6 12 6s1.44.645 1.44 1.44"/><path fill="currentColor" fill-rule="evenodd" d="M12 1.2C6 1.2 1.2 6 1.2 12S6 22.8 12 22.8 22.8 18 22.8 12 18 1.2 12 1.2m0 2.4c4.68 0 8.4 3.72 8.4 8.4s-3.72 8.4-8.4 8.4-8.4-3.72-8.4-8.4S7.32 3.6 12 3.6" clip-rule="evenodd"/></svg>
+  Neutral message
+</span>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
 {% capture example %}
 <label for="e9a4" class="usa-label">Text input validation example</label>
 <input id="e9a4" type="text" class="usa-input usa-input--error">

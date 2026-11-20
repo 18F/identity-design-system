@@ -171,3 +171,9 @@ $nds-input-pad-x: 15px;
     width: nds.space(20);
   }
 }
+
+// Neutral validation message: the same layout as the error message in 65% ink,
+// for guidance that isn't an error yet (library "validation message", neutral).
+.usa-error-message--neutral {
+  color: nds.alpha(nds.$text-primary, 65%);
+}

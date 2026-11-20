@@ -66,6 +66,9 @@
 - Add an NDS standalone spinner (`.nds-spinner`): the 20px Figma `loader radial`
   glyph, filled with the current text color, rotating unless the user prefers
   reduced motion.
+- Add the NDS neutral validation message (`.usa-error-message--neutral`): the
+  library validation message's neutral state, in 65% ink, alongside the error
+  state. The validation docs show both states.
 
 ### Improvements
 
