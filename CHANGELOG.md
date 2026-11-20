@@ -76,6 +76,14 @@
   `--connected` (a 2px line joins the markers), and `--big` (44px marker with
   the heading centered beside it). The flat `.process-list` is unchanged.
 
+### Improvements
+
+- NDS: Align the divider and "or" separator with the library's Rule. Add
+  `.divider--primary`, `--secondary`, and `--quaternary` and the matching
+  `.separator--*` fills; the plain classes stay the tertiary fill, now
+  `base-lighter`. The separator label is 16px with a line height of 1 and an
+  8px gap, and its color follows the fill.
+
 ### Bug Fixes
 
 - Inline the NDS checkbox checked and indeterminate glyphs as data URIs. They
