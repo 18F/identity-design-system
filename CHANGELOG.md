@@ -95,6 +95,9 @@
   20px inline padding (16px on the leading edge when it has an icon chip). The
   toast docs page now previews each toast in place instead of stacking them at
   the fixed viewport position.
+- NDS: Align the tooltip with the Identity Design System library: the bubble
+  uses the elevation 1 shadow and caps the message at 350px. The tooltip docs
+  page shows all four positions statically as well as live.
 
 ### Bug Fixes
 

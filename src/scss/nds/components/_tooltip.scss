@@ -26,13 +26,14 @@ $nds-tooltip-arrow-height: 8px;
 }
 
 // Tooltip bubble: dark frosted ink surface, white text, 12px radius,
-// compact shadow, inheriting the body font.
+// elevation 1 shadow, inheriting the body font. The library caps the message
+// at 350px.
 .usa-tooltip__body,
 .usa-tooltip__body--top {
   backdrop-filter: blur(25px);
   background-color: nds.$base-darker;
   border-radius: nds.radius(12);
-  box-shadow: nds.$shadow-compact;
+  box-shadow: nds.$shadow-large;
   color: nds.$white;
   display: none;
   font-family: inherit;
@@ -40,7 +41,7 @@ $nds-tooltip-arrow-height: 8px;
   font-weight: 400;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
-  max-width: 16rem;
+  max-width: 350px;
   opacity: 0;
   padding: nds.space(4) nds.space(8);
   position: absolute;
