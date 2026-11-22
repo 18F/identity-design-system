@@ -2,6 +2,34 @@
 title: Authentication methods
 lead: >
   The authentication methods layout lists a user's sign-in methods and their actions.
+methods:
+  - title: Passkey
+    action: Manage
+    footer: Add passkey
+    entries:
+      - Safari 25 on macOS · Created on April 27, 2026
+      - Safari 25 on macOS · Created on February 21, 2026
+  - title: Authentication app
+    action: Manage
+    footer: Add app
+    entries:
+      - Apple Passwords · Created on March 23, 2025
+      - 1Password · Created on March 4, 2025
+  - title: Backup codes
+    action: Delete
+    footer: Get new codes
+    entries:
+      - Generated June 29, 2026 at 10:23 PM
+  - title: Security key
+    action: Manage
+    footer: Add key
+    entries:
+      - The Little Silver Key · Created on April 27, 2026
+  - title: Government employee ID
+    action: Delete
+    footer: Add ID
+    entries:
+      - News PIV Card · Added on March 23, 2025
 ---
 
 ## Authentication methods
@@ -18,31 +46,26 @@ appear narrower than it would on a full page.
 
 {% capture example %}
 <div class="auth-methods">
+  {% for method in page.methods %}
   <section class="auth-methods__section">
-    <h2 class="auth-methods__heading">Authentication methods</h2>
+    <h2 class="auth-methods__heading">{{ method.title }}</h2>
     <div class="auth-methods__panel">
-      <div class="auth-methods__rows">
-        <div class="auth-methods__row">
-          <p class="auth-methods__row-text">Authentication application</p>
+      <ul class="auth-methods__rows">
+        {% for entry in method.entries %}
+        <li class="auth-methods__row">
+          <p class="auth-methods__row-text">{{ entry }}</p>
           <div class="auth-methods__row-actions">
-            <a href="#" class="usa-button usa-button--outline">Manage</a>
+            <button type="button" class="usa-button usa-button--tertiary usa-button--flexible-width" aria-label="{{ method.action }} {{ method.title }}: {{ entry }}">{{ method.action }}</button>
           </div>
-        </div>
-        <div class="auth-methods__row">
-          <p class="auth-methods__row-text">Security key</p>
-          <div class="auth-methods__row-actions">
-            <a href="#" class="usa-button usa-button--outline">Manage</a>
-          </div>
-        </div>
-        <div class="auth-methods__row">
-          <p class="auth-methods__row-text">Backup codes</p>
-          <div class="auth-methods__row-actions">
-            <a href="#" class="usa-button usa-button--outline">Manage</a>
-          </div>
-        </div>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="auth-methods__footer">
+        <button type="button" class="usa-button usa-button--secondary">{{ method.footer }}</button>
       </div>
     </div>
   </section>
+  {% endfor %}
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

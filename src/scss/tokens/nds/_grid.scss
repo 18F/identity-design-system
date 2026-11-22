@@ -1,10 +1,17 @@
 @use 'spacing' as *;
 
 $grid-columns-desktop: 12;
+$breakpoint-small: 40em;
+$breakpoint-medium: 768px;
 $grid-margin-desktop: space(48);
 $grid-gutter-desktop: space(24);
 $grid-columns-mobile: 4;
 $grid-margin-mobile: space(24);
 $grid-gutter-mobile: space(12);
 $form-width: 436px;
+$consent-single-width: 27rem;
+$floating-input-max-width: 27rem;
 $dashboard-width: 41.25rem;
+$modal-small-width: 27rem;
+$modal-large-width: 55.5rem;
+$auth-methods-inline-min-width: 20rem;

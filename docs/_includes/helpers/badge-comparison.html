@@ -1,0 +1,24 @@
+{% assign levels = include.levels | split: ',' %}
+{% assign forms = 'Small text,Medium text,Small icon,Medium icon' | split: ',' %}
+<div{% if include.dark %} class="bg-base-darkest text-white padding-2"{% endif %}>
+{% for level in levels %}
+  {% case level %}
+  {% when 'info' %}{% assign glyph = 'info' %}
+  {% when 'success' %}{% assign glyph = 'checkmark' %}
+  {% when 'warning' %}{% assign glyph = 'warning' %}
+  {% when 'error' %}{% assign glyph = 'error' %}
+  {% else %}{% assign glyph = 'plus-16' %}
+  {% endcase %}
+  <div class="margin-bottom-2">
+    <strong>{{ level | capitalize }}</strong>
+    <div class="grid-row">
+      {% for form in forms %}
+      <div class="grid-col-6 tablet:grid-col-3">
+        <small class="display-block">{{ form }}</small>
+        <span class="badge badge--{{ level }}{% if form contains 'Medium' %} badge--md{% endif %}{% if include.dark %} badge--dark{% endif %}{% if form contains 'icon' %} badge--icon-only{% endif %}"{% if form contains 'icon' %} role="img" aria-label="{{ level | capitalize }}"{% endif %}>{% if form contains 'icon' %}<svg class="usa-icon" aria-hidden="true" focusable="false"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#{{ glyph }}"></use></svg>{% else %}{{ level | capitalize }}{% endif %}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+</div>

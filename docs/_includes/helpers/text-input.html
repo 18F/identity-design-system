@@ -1,0 +1,6 @@
+<div class="usa-form-group usa-input-group--floating">
+  <input id="{{ include.id | escape }}" class="usa-input{% if include.modifier %} {{ include.modifier | escape }}{% endif %}" type="{% if include.icon %}password{% else %}text{% endif %}" placeholder=" "{% if include.value != blank %} value="{{ include.value | escape }}"{% endif %} {{ include.attributes }}>
+  <label for="{{ include.id | escape }}" class="usa-label">{{ include.label | escape }}</label>
+  {{ include.trailing_action }}
+  {% if include.icon %}<button class="usa-show-password usa-input__toggle" type="button" aria-label="Mask password" aria-controls="{{ include.id | escape }}" aria-pressed="true" data-show-text="" data-hide-text=""></button>{% endif %}
+</div>

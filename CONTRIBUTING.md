@@ -100,6 +100,8 @@ Since the Login.gov Design System is based upon the [U.S. Web Design System (USW
 - To limit side-effects and to clarify where styles are extended, customized USWDS styles should follow as close to the file location and CSS selector as possible. For example, if USWDS defines a selector `.usa-header` in `packages/usa-header` which defines a style `background` that we want to override, the style should be located at an identically-named selector in `src/scss/packages/_usa-header.scss` in this project.
 - Prefer color and size tokens when possible. Never use hard-coded hex colors. Instead, use the `color` SCSS function with a [color token](https://designsystem.digital.gov/design-tokens/color/theme-tokens/) as its argument.
 
+- For an elevated NDS container that also calls for a subtle outside stroke, follow the sign-in card: layer `0 0 nds.$stroke-hairline 0 nds.$border-tertiary` before the elevation shadow in the same `box-shadow`. The edge has zero offset, a hairline blur, and **zero spread**, so it adds no layout thickness. Use the stroke color and elevation tokens appropriate to the surface. Keep flat borders and keyboard focus indicators separate; use a system-color fallback in forced-colors mode if the edge is needed to distinguish the container.
+
 ## Public domain
 
 This project is in the public domain within the United States, and

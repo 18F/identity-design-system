@@ -72,7 +72,7 @@ each option with an icon or illustration.
   <div class="checkbox">
     <input id="cf30" class="checkbox__input checkbox__input--tile" type="checkbox" name="cf30">
     <label for="cf30" class="checkbox__label checkbox__label--illustrated">
-      <img class="checkbox__image" src="{{ site.baseurl }}/assets/img/sprite.svg" alt="">
+      <img class="checkbox__image" src="{{ site.baseurl }}/assets/img/nds-icons/library/fingerprint.svg" alt="">
       <span class="checkbox__label--text">
         <span class="checkbox__label-text">Authentication app</span>
         <span class="checkbox__label-description">Use an app to generate codes.</span>
@@ -82,7 +82,7 @@ each option with an icon or illustration.
   <div class="checkbox">
     <input id="cf31" class="checkbox__input checkbox__input--tile" type="checkbox" name="cf31" checked>
     <label for="cf31" class="checkbox__label checkbox__label--illustrated">
-      <img class="checkbox__image" src="{{ site.baseurl }}/assets/img/sprite.svg" alt="">
+      <img class="checkbox__image" src="{{ site.baseurl }}/assets/img/nds-icons/library/fingerprint.svg" alt="">
       <span class="checkbox__label--text">
         <span class="checkbox__label-text">Face or touch unlock</span>
         <span class="checkbox__label-description">Use your device biometrics.</span>

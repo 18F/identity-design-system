@@ -10,8 +10,8 @@ $nds-toast-duration: nds.$tr-duration-lg;
 $nds-toast-easing: nds.$tr-easing-cubic;
 $nds-toast-enter-offset: nds.space(32);
 $nds-toast-viewport-inset: nds.space(16);
-$nds-toast-z-index: 400;
-$nds-toast-mobile-breakpoint: 40em;
+$nds-toast-z-index: nds.$layer-toast;
+$nds-toast-mobile-breakpoint: nds.$breakpoint-small;
 
 .toast {
   align-items: center;
@@ -25,7 +25,7 @@ $nds-toast-mobile-breakpoint: 40em;
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$text-weight-label-m-emphasis;
   gap: nds.space(12);
   left: 50%;
   letter-spacing: nds.$text-letter-spacing-label;
@@ -38,7 +38,7 @@ $nds-toast-mobile-breakpoint: 40em;
   position: fixed;
   // Positioned below the official banner and sticky nav via :root chrome vars.
   top: calc(
-    var(--nds-official-banner-height, #{nds.space(40)}) + var(--nds-nav-height, #{nds.space(80)}) +
+    var(--nds-official-banner-height, #{nds.space(40)}) + var(--nds-nav-height, #{nds.space(84)}) +
       #{$nds-toast-viewport-inset}
   );
   transform: translate(-50%, calc(-1 * #{$nds-toast-enter-offset}));
@@ -59,15 +59,15 @@ $nds-toast-mobile-breakpoint: 40em;
 @media (width >= #{$nds-toast-mobile-breakpoint}) {
   body:has(.account-shell) .toast {
     top: calc(
-      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(80)} + #{nds.space(8)}
+      var(--nds-official-banner-height, #{nds.space(40)}) + var(--nds-nav-height) + #{nds.space(8)}
     );
   }
 }
 
-@media (width >= #{$nds-toast-mobile-breakpoint}) and (width < 48em) {
+@media (width >= #{$nds-toast-mobile-breakpoint}) and (width < #{nds.$breakpoint-medium}) {
   body:has(.account-shell) .toast {
     top: calc(
-      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(64)} + #{nds.space(8)}
+      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(72)} + #{nds.space(8)}
     );
   }
 }
@@ -104,7 +104,7 @@ $nds-toast-mobile-breakpoint: 40em;
   white-space: nowrap;
 }
 
-@media (max-width: #{$nds-toast-mobile-breakpoint - 0.01em}) {
+@media (width < #{$nds-toast-mobile-breakpoint}) {
   .toast {
     bottom: $nds-toast-viewport-inset;
     top: auto;
@@ -124,4 +124,9 @@ $nds-toast-mobile-breakpoint: 40em;
   .toast {
     transition: none;
   }
+}
+
+.toast:not(:has(.toast__icon)) {
+  min-height: nds.space(52);
+  padding-inline: nds.space(20);
 }

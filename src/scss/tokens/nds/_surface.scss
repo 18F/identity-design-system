@@ -1,0 +1,14 @@
+@use 'spacing' as *;
+
+$stroke-hairline: 1px;
+$stroke-control: 2px;
+$blur-glass: 50px;
+$blur-chrome: 25px;
+
+// Display sizes of the enrollment artwork, not dimensions of the QR modules.
+$setup-qr-size: 220px;
+$setup-qr-size-compact: 180px;
+$layer-toast: 400;
+
+// Measure the 16px text inset from the outside edge of the field.
+$field-padding-inline: space(16) - $stroke-hairline;

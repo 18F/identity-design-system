@@ -1,31 +1,23 @@
 ---
 title: Clipboard button
 lead: >
-  A clipboard button copies a value to the clipboard and plays a brief
-  confirmation when the copy succeeds.
+  Use a Primary button to copy a value to the clipboard.
 ---
 
 ## Clipboard button
 
-Wrap a `.usa-button` in the `lg-clipboard-button` element. When the element
-gains the `data-copied` attribute after a successful copy, the button plays a
-short confirmation animation.
+Use the shared Primary `.usa-button` without a clipboard style modifier.
+After a successful copy, the label briefly reads “Copied!” before returning to “Copy to clipboard”.
 
 {% capture example %}
-<lg-clipboard-button>
-  <button type="button" class="usa-button">Copy backup code</button>
-</lg-clipboard-button>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-
-### Confirmation state
-
-The `data-copied` attribute is applied by the component after a copy and drives
-the confirmation animation.
-
-{% capture example %}
-<lg-clipboard-button data-copied>
-  <button type="button" class="usa-button">Copied</button>
+<lg-clipboard-button data-nds-copy clipboard-text="1234-5678">
+  <button type="button" class="usa-button">
+    <span class="clipboard-label">
+      <span>Copy to clipboard</span>
+      <span data-copy-confirmation hidden>Copied!</span>
+    </span>
+  </button>
+  <span role="status" data-copy-status></span>
 </lg-clipboard-button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

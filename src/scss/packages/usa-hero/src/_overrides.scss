@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
 
   @include at-media('tablet') {
-    background-image: url('#{$theme-image-path}/hero.png');
+    background-image: url('#{$identity-hero-image}');
   }
 }
 

@@ -9,6 +9,7 @@
 @use 'tokens/nds' as nds;
 
 $nds-auth-entry-breakpoint: 1024px;
+$auth-entry-card-width: 27rem;
 
 .auth-entry {
   align-items: center;
@@ -62,43 +63,45 @@ $nds-auth-entry-breakpoint: 1024px;
 }
 
 .auth-entry__whats-new {
-  background: nds.alpha(nds.$primary-dark, 8%);
-  border: 1px solid nds.alpha(nds.$primary-darker, 5%);
-  border-radius: nds.radius(16);
+  background: nds.$background-tertiary;
+  border: nds.$stroke-hairline solid nds.$border-quaternary;
+  border-radius: nds.radius(24);
   align-items: center;
   box-sizing: border-box;
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   gap: nds.space(20);
+  justify-content: space-between;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1;
+  line-height: nds.$text-line-height-body;
   margin-block-start: nds.space(12);
-  padding: nds.space(20) nds.space(24);
-  text-decoration: none;
-  white-space: nowrap;
+  min-height: nds.space(56);
+  padding: nds.space(8);
+  padding-inline-start: nds.space(20);
+  max-width: 100%;
+  text-align: start;
   width: fit-content;
-
-  &:is(:link, :visited, :hover, :active, :focus-visible) {
-    text-decoration: none;
-  }
-
-  &:focus-visible {
-    @include nds.focus-ring();
-  }
 }
 
 .auth-entry__whats-new-intro {
   color: nds.$black;
+  font-weight: nds.$text-weight-body-m-emphasis;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
-.auth-entry__whats-new-link {
-  color: nds.$primary;
-  text-decoration-line: underline;
-  text-decoration-thickness: from-font;
+.auth-entry__whats-new > .usa-button {
+  flex: none;
+}
 
-  .auth-entry__whats-new:hover & {
-    text-decoration: none;
+// Earlier consumers render the entire callout as the link.
+a.auth-entry__whats-new {
+  text-decoration: none;
+
+  .auth-entry__whats-new-link {
+    color: nds.$text-link;
+    text-decoration: underline;
   }
 }
 
@@ -123,36 +126,47 @@ $nds-auth-entry-breakpoint: 1024px;
 .auth-entry__headline {
   color: nds.$black;
   font-size: nds.$text-heading-l;
-  font-weight: nds.$font-semibold;
-  letter-spacing: -1.44px;
+  font-weight: nds.$font-medium;
+  letter-spacing: nds.$text-letter-spacing-heading;
   line-height: 1.05;
 }
 
 .auth-entry__body {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
 }
 
 .auth-entry__card {
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 5%);
-  border-radius: nds.radius(24);
-  box-shadow: nds.$shadow-compact;
+  border-radius: nds.radius(32);
+  // A zero-spread edge needs a little blur to show outside the opaque card.
+  box-shadow: nds.$shadow-elevated-surface;
   box-sizing: border-box;
   flex: 1 1 0;
-  max-width: nds.$form-width;
+  max-width: $auth-entry-card-width;
   min-width: 0;
-  padding: nds.space(48) nds.space(40);
+  padding: nds.space(48) nds.space(40) nds.space(32);
   position: relative;
   width: 100%;
   z-index: 1;
 
   .auth {
+    --nds-section-gap: #{nds.space(32)};
     --nds-flow-width: 100%;
     margin: 0;
     max-width: none;
+  }
+
+  .stack > .link {
+    align-self: flex-start;
+    margin-inline-start: nds.space(16);
+  }
+
+  .stack > .usa-input-group--floating,
+  .usa-input-group--floating > .usa-input {
+    margin-block: 0;
   }
 
   .actions > .copy--muted {
@@ -168,7 +182,7 @@ $nds-auth-entry-breakpoint: 1024px;
 
   .copy--muted,
   .copy--muted a {
-    color: nds.alpha(nds.$black, 65%);
+    color: nds.$text-secondary;
   }
 
   .divider {
@@ -281,12 +295,8 @@ $nds-auth-entry-breakpoint: 1024px;
   }
 
   .auth-entry__whats-new {
-    flex-wrap: wrap;
-    justify-content: center;
     margin-block-start: 0;
     order: 1;
-    text-align: center;
-    white-space: normal;
     width: 100%;
   }
 
@@ -301,12 +311,7 @@ $nds-auth-entry-breakpoint: 1024px;
 
   .auth-entry__headline {
     font-size: nds.$text-heading-l-mobile;
-    letter-spacing: -1.08px;
     line-height: 1.1;
-  }
-
-  .auth-entry__card .divider {
-    display: none;
   }
 
   .auth-entry__card .auth--form-page {
@@ -354,6 +359,11 @@ $nds-auth-entry-breakpoint: 1024px;
 
   .auth-entry__card {
     margin-inline: auto;
-    padding: nds.space(32) nds.space(24) nds.space(16);
+  }
+}
+
+@media (width < #{$auth-entry-card-width}) {
+  .auth-entry__card {
+    padding: nds.space(32) nds.space(24);
   }
 }

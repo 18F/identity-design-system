@@ -1,6 +1,20 @@
 @use 'shadow' as *;
+@use 'color';
+@use 'surface';
 
 @mixin focus-ring {
   box-shadow: $shadow-focus;
   outline: 0;
+}
+
+// Separate the navy edge from translucent surfaces so it cannot bleed through
+// the antialiased inner edge of the white shadow.
+@mixin transparent-focus-ring {
+  box-shadow: 0 0 0 surface.$stroke-control color.$white;
+  outline: surface.$stroke-control solid color.$base;
+  outline-offset: surface.$stroke-control;
+
+  @media (forced-colors: active) {
+    outline-color: Highlight;
+  }
 }

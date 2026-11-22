@@ -2,7 +2,7 @@
 //
 // The page composes shared components: numbered step cards
 // (`.card.stack.stack--gap-24`), a floating-label nickname/code input, a
-// setup-code `.field-readout` with a copy action inside `lg-clipboard-button`,
+// read-only setup code with a copy action inside `lg-clipboard-button`,
 // the "Remember this browser" `.checkbox` card, and the form-page actions. This
 // module adds only the pieces those components don't cover:
 //
@@ -15,17 +15,22 @@
 
 @use 'tokens/nds' as nds;
 
-$nds-totp-setup-qrcode-size: 220px;
-$nds-totp-setup-qrcode-size-mobile: 180px;
-$nds-totp-setup-marker-gutter: nds.space(24);
-$nds-totp-setup-mobile-breakpoint: 40em;
-
 .nds-totp-setup__steps {
   @include nds.stack($gap: nds.space(16), $reset-flow: true, $width: 100%);
 
   list-style: none;
   margin: 0;
   padding: 0;
+
+  // Figma measures the content inset from the outer edge of the inside stroke.
+  > li > .card {
+    padding: calc(#{nds.space(24)} - #{nds.$stroke-hairline});
+  }
+
+  // The card's stack gap already separates the QR and the copy field.
+  lg-clipboard-button > .usa-form-group {
+    margin-block-start: 0;
+  }
 }
 
 // The step number sits in a gutter outside the heading text, so a wrapped
@@ -36,30 +41,43 @@ $nds-totp-setup-mobile-breakpoint: 40em;
 .usa-list.nds-totp-setup__step-heading {
   list-style: decimal outside;
   margin: 0;
-  padding-left: $nds-totp-setup-marker-gutter;
+  padding-inline-start: nds.space(24);
 }
 
 .nds-totp-setup__qrcode {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding-block: nds.space(24);
+  padding-block: nds.space(12);
   width: 100%;
 
-  img {
+  svg {
+    background-color: nds.$background-primary;
+    color: nds.$text-primary;
+    font-family: nds.$font-family;
+    font-weight: nds.$font-medium;
+  }
+
+  :is(img, svg) {
     display: block;
     height: auto;
     max-width: 100%;
-    width: $nds-totp-setup-qrcode-size;
+    width: nds.$setup-qr-size;
   }
 }
 
-@media (width < #{$nds-totp-setup-mobile-breakpoint}) {
+@media (width < #{nds.$breakpoint-small}) {
+  .nds-totp-setup .auth__intro h1 {
+    font-size: nds.$text-heading-section;
+    letter-spacing: nds.$text-letter-spacing-heading-section;
+    line-height: nds.$text-line-height-heading-section;
+  }
+
   .nds-totp-setup__steps {
     gap: nds.space(12);
   }
 
-  .nds-totp-setup__qrcode img {
-    width: $nds-totp-setup-qrcode-size-mobile;
+  .nds-totp-setup__qrcode :is(img, svg) {
+    width: nds.$setup-qr-size-compact;
   }
 }

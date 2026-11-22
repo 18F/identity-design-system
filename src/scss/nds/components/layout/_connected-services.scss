@@ -7,7 +7,7 @@
 @use 'tokens/nds' as nds;
 @use 'service-list' as service;
 
-$connected-services-breakpoint-m: 768px;
+$connected-services-breakpoint-m: nds.$breakpoint-medium;
 
 .connected-services {
   @include nds.stack(
@@ -99,6 +99,47 @@ $connected-services-breakpoint-m: 768px;
   position: relative;
 }
 
+.connected-services-page {
+  .dashboard-home__greeting,
+  .connected-services__header {
+    padding-inline: nds.space(24);
+  }
+
+  .dashboard-home__greeting {
+    line-height: nds.$text-line-height-heading-l;
+  }
+}
+
+.connected-services-page__sections {
+  @include nds.stack($gap: nds.space(56), $width: 100%);
+}
+
+.connected-services__panel {
+  // The Figma stroke sits inside the panel without consuming row space.
+  &:not(.card--elevated) {
+    border: 0;
+    outline: nds.$stroke-hairline solid nds.$border-tertiary;
+    outline-offset: -(nds.$stroke-hairline);
+  }
+
+  .connected-service__content {
+    flex: 1 1 0;
+  }
+
+  .connected-service__actions .usa-button {
+    margin: 0;
+    width: auto;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .connected-service__connect svg {
+    display: none;
+  }
+}
+
 .connected-service__menu-button {
   align-items: center;
   border-radius: nds.radius(pill);
@@ -108,8 +149,9 @@ $connected-services-breakpoint-m: 768px;
   height: nds.space(40);
   justify-content: center;
   list-style: none;
+  min-width: nds.space(40);
+  padding-inline: nds.space(12);
   transition: nds.$transition;
-  width: nds.space(40);
 
   &::-webkit-details-marker {
     display: none;
@@ -149,6 +191,97 @@ $connected-services-breakpoint-m: 768px;
 }
 
 @media (width < #{$connected-services-breakpoint-m}) {
+  .connected-services-page {
+    box-sizing: border-box;
+    padding: nds.space(32) nds.space(24);
+    gap: nds.space(48);
+
+    .dashboard-home__greeting,
+    .connected-services__header {
+      padding: 0;
+    }
+
+    .dashboard-home__greeting {
+      line-height: nds.$text-line-height-heading-m;
+    }
+    .connected-services-page__sections {
+      gap: nds.space(48);
+    }
+    .connected-services {
+      gap: nds.space(20);
+    }
+    .connected-services__header {
+      gap: nds.space(8);
+    }
+  }
+
+  .connected-services__panel {
+    container-type: inline-size;
+    padding: nds.space(20);
+
+    .connected-service__row {
+      display: grid;
+      grid-template-columns: nds.space(40) minmax(0, 1fr) auto;
+      align-items: center;
+      gap: nds.space(16);
+    }
+
+    .agency-seal {
+      width: nds.space(40);
+      height: nds.space(40);
+    }
+    .connected-service__actions {
+      grid-column: 3;
+    }
+    .connected-services__rows > li + li {
+      margin-top: nds.space(20);
+      padding-top: nds.space(20);
+    }
+
+    .connected-service__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .connected-service__actions .connected-service__connect {
+      background: transparent;
+      backdrop-filter: none;
+      color: nds.$text-secondary;
+      padding: 0;
+      width: nds.space(44);
+      height: nds.space(44);
+      // Borrow 12px on each side so the 20px icon and copy column stay put.
+      margin-inline: -(nds.space(12));
+
+      span {
+        display: none;
+      }
+      svg {
+        display: block;
+        width: nds.space(20);
+        height: nds.space(20);
+      }
+    }
+  }
+
+  // Below phone-frame widths, keep the full agency name readable.
+  @container (width < #{nds.space(240)}) {
+    .connected-services__panel .connected-service__row {
+      grid-template-columns: nds.space(40) minmax(0, 1fr);
+    }
+    .connected-services__panel .connected-service__title {
+      white-space: normal;
+    }
+    .connected-services__panel .connected-service__actions {
+      grid-column: 2;
+    }
+    .connected-service__menu .popover-menu {
+      left: 0;
+      right: auto;
+      min-width: 0;
+    }
+  }
   .connected-services__list {
     @include service.panel-mobile();
   }

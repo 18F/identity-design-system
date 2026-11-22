@@ -69,6 +69,8 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
 
 ### Default
 
+With NDS, an alert without a status modifier uses the Information icon and surface.
+
 {% capture example %}
 <div class="usa-alert">
   <div class="usa-alert__body">
@@ -101,7 +103,34 @@ Visit the [USWDS Alerts component](https://designsystem.digital.gov/components/a
     <h3 class="usa-alert__heading">Emphasized headline</h3>
     <p class="usa-alert__text">Body copy</p>
   </div>
-  <a class="usa-button usa-alert__action" href="#">Label</a>
+  <button type="button" class="usa-button usa-button--secondary usa-button--sm usa-alert__action">Label</button>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+### Slim
+
+Use `usa-alert--slim` with any status to place the message beside the icon.
+
+{% capture example %}
+<div class="usa-alert usa-alert--info usa-alert--slim">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+  </div>
+</div>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+### No icon
+
+Use `usa-alert--no-icon` to omit the status icon and its space.
+
+{% capture example %}
+<div class="usa-alert usa-alert--no-icon">
+  <div class="usa-alert__body">
+    <h3 class="usa-alert__heading">Emphasized headline</h3>
+    <p class="usa-alert__text">Body copy</p>
+  </div>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

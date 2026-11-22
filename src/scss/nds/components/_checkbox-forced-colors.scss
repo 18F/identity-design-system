@@ -1,0 +1,43 @@
+@use 'tokens/nds' as nds;
+
+// Both checkbox families draw their box on the label. Keep all high-contrast
+// painting there so it follows the row's existing placement and hit target.
+@media (forced-colors: active) {
+  input[type='checkbox']:is(.checkbox__input, .usa-checkbox__input):not(
+      .usa-checkbox__input--switch
+    ) {
+    & + :is(.checkbox__label, .usa-checkbox__label)::before {
+      border: nds.$stroke-control solid ButtonText;
+      transition: none;
+    }
+
+    &:is(:disabled, [aria-disabled='true']) + :is(.checkbox__label, .usa-checkbox__label)::before {
+      border-color: GrayText;
+    }
+
+    &:is(:checked, :indeterminate, [data-indeterminate])
+      + :is(.checkbox__label, .usa-checkbox__label)::before {
+      // System colors must win over the authored hover, error and disabled
+      // backgrounds, including USWDS's disabled checkbox image.
+      forced-color-adjust: none;
+      background: SelectedItem;
+      color: SelectedItemText;
+      border-color: SelectedItemText;
+      box-shadow: none;
+      content: '\2713' / '';
+      display: grid;
+      place-items: center;
+      font: nds.$font-medium #{nds.$text-label-m}/ 1 nds.$font-family;
+    }
+
+    &:is(:indeterminate, [data-indeterminate])
+      + :is(.checkbox__label, .usa-checkbox__label)::before {
+      content: '\2212' / '';
+    }
+
+    &:is(:focus-visible, .usa-focus) + :is(.checkbox__label, .usa-checkbox__label)::before {
+      outline: nds.$stroke-control solid Highlight;
+      outline-offset: nds.$stroke-control;
+    }
+  }
+}

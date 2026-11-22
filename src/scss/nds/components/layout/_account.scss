@@ -3,11 +3,11 @@
 
 @use 'tokens/nds' as nds;
 
-$account-breakpoint-m: 768px;
+$account-breakpoint-m: nds.$breakpoint-medium;
 
 .account {
   @include nds.stack(
-    $gap: nds.space(64),
+    $gap: nds.space(56),
     $margin: 0 auto,
     $max-width: nds.$dashboard-width,
     $reset-flow: true,
@@ -19,15 +19,18 @@ $account-breakpoint-m: 768px;
   text-align: left;
 }
 
-.account__alerts,
-.account__section {
+.account__alerts {
   @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+}
+
+.account__section {
+  @include nds.stack($gap: nds.space(32), $reset-flow: true, $width: 100%);
 }
 
 .account__heading {
   color: nds.$black;
   font-size: nds.$text-heading-section;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading-section;
   line-height: 1.2;
   margin: 0;
@@ -39,7 +42,7 @@ $account-breakpoint-m: 768px;
   @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
 
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 10%);
+  border: nds.$stroke-hairline solid nds.alpha(nds.$black, 10%);
   border-radius: nds.radius(24);
   box-sizing: border-box;
   padding: nds.space(24);
@@ -52,21 +55,37 @@ $account-breakpoint-m: 768px;
   width: 100%;
 }
 
+// Row panels have an inside stroke and no extra space between the list and
+// its footer. Standalone panels retain their own content padding.
+.account__panel:has(> .account__rows) {
+  border: 0;
+  box-shadow: inset 0 0 0 nds.$stroke-hairline nds.$border-tertiary;
+  gap: 0;
+  padding: 0 nds.space(24);
+
+  > .account__panel-action {
+    padding-bottom: nds.space(24);
+  }
+}
+
 .account__rule {
-  border-top: 1px solid nds.alpha(nds.$black, 10%);
+  border-top: nds.$stroke-hairline solid nds.alpha(nds.$black, 10%);
   width: 100%;
 }
 
-.account__rows > li + li {
-  border-top: 1px solid nds.alpha(nds.$black, 10%);
-  margin-top: nds.space(12);
-  padding-top: nds.space(12);
+.account__panel .account__rows > .account__row {
+  margin: 0;
+  padding-block: nds.space(20);
+
+  + .account__row {
+    border-top: nds.$stroke-hairline solid nds.$border-tertiary;
+  }
 }
 
 .account__row {
   align-items: center;
   display: flex;
-  gap: nds.space(24);
+  gap: nds.space(20);
   justify-content: space-between;
   min-width: 0;
   width: 100%;
@@ -76,11 +95,25 @@ $account-breakpoint-m: 768px;
   align-items: center;
   display: flex;
   flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: nds.space(8);
   min-width: 0;
 }
 
+.account__panel.account__row {
+  background: transparent;
+  border: 0;
+  box-shadow: inset 0 0 0 nds.$stroke-hairline nds.$border-tertiary;
+  flex-direction: row;
+  padding: nds.space(20) nds.space(24);
+}
+
+.account__row-main:has(> .badge) > .account__row-text {
+  flex: 0 1 auto;
+}
+
 .account__row-text {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   flex: 1 1 auto;
   font-size: nds.$text-body-m;
   font-weight: 400;
@@ -112,7 +145,7 @@ $account-breakpoint-m: 768px;
   color: nds.$primary-dark;
   display: inline-flex;
   font-size: nds.$text-label-s;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: 0;
   line-height: nds.$text-line-height-none;
   margin-left: nds.space(8);
@@ -139,15 +172,8 @@ $account-breakpoint-m: 768px;
   display: flex;
 }
 
-.account__danger-action,
-.account__danger-action:is(:link, :visited) {
-  color: nds.$secondary;
-}
-
-.account__danger-action:hover,
-.account__danger-action:active,
-.account__danger-action:focus-visible {
-  color: nds.$secondary;
+.usa-button.account__danger-action:not(:disabled, [aria-disabled='true'], .usa-button--disabled) {
+  color: nds.$text-destructive;
 }
 
 @media (width < #{$account-breakpoint-m}) {
@@ -159,17 +185,34 @@ $account-breakpoint-m: 768px;
     padding-inline: 0;
   }
 
+  .account__section {
+    gap: nds.space(20);
+  }
+
   .account__panel {
     padding: nds.space(20);
   }
 
+  .account__panel.account__row,
+  .account__panel:has(> .account__rows) {
+    padding-inline: nds.space(20);
+  }
+
+  .account__panel:has(> .account__rows) > .account__panel-action {
+    padding-inline: nds.space(4);
+
+    > .usa-button {
+      width: 100%;
+    }
+  }
+
   .account__row {
+    gap: nds.space(16);
+  }
+
+  .account__row-main {
     align-items: flex-start;
     flex-direction: column;
     gap: nds.space(12);
-  }
-
-  .account__row-actions {
-    justify-content: flex-start;
   }
 }

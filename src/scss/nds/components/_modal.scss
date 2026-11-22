@@ -9,8 +9,11 @@
 @use 'tokens/nds' as nds;
 
 // Body scroll-lock while a modal is active.
-.modal--active {
+.modal--active,
+html:has(dialog.modal:modal),
+body:has(dialog.modal:modal) {
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .modal {
@@ -19,8 +22,10 @@
   box-sizing: border-box;
   inset: 50% auto auto 50%;
   margin: auto;
-  max-height: calc(100vh - #{nds.space(48)});
-  max-width: 27rem;
+
+  --modal-max-height: calc(100dvh - min(#{nds.space(96)}, 12dvh) * 2);
+  max-height: var(--modal-max-height);
+  max-width: nds.$modal-small-width;
   opacity: 0;
   overflow: visible;
   padding: 0;
@@ -28,12 +33,11 @@
   transition:
     opacity nds.$tr-duration-md nds.$tr-easing-cubic,
     transform nds.$tr-duration-md nds.$tr-easing-cubic;
-  width: calc(100% - #{nds.space(32)});
+  width: calc(100% - #{nds.space(48)} * 2);
 
-  // Tinted, blurred scrim behind the dialog.
+  // The scrim tints the page without blurring it.
   &::backdrop {
-    backdrop-filter: blur(#{nds.space(12)});
-    background: nds.alpha(nds.$black, 25%);
+    background: nds.$base-lighter;
     opacity: 0;
     transition:
       opacity nds.$tr-duration-md nds.$tr-easing-cubic,
@@ -60,56 +64,29 @@
   }
 }
 
+.modal--large,
 .modal--wide {
-  max-width: 660px;
+  max-width: nds.$modal-large-width;
 }
 
-// Circular icon close button: frosted pill, top-right.
+// Position the shared icon-only Secondary button without overriding its states.
 .modal__close {
-  align-items: center;
-  backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$black, 5%);
-  border: 0;
-  border-radius: nds.radius(pill);
-  box-sizing: border-box;
-  color: nds.$black;
-  cursor: pointer;
-  display: flex;
-  height: nds.space(40);
-  justify-content: center;
-  padding: 0;
   position: absolute;
   right: nds.space(16);
   top: nds.space(16);
-  transition: background-color nds.$tr-duration-md nds.$tr-easing-cubic;
-  width: nds.space(40);
   z-index: 1;
-
-  .usa-icon {
-    color: inherit;
-    display: block;
-  }
-
-  &:hover {
-    background: nds.alpha(nds.$black, 10%);
-  }
-
-  &:focus-visible {
-    outline: 1px solid nds.$black;
-    outline-offset: 0;
-  }
 }
 
 // Body surface: white rounded card, large shadow, scroll panel.
 .modal__body {
   background: nds.$white;
-  border-radius: nds.radius(32);
+  border-radius: nds.radius(40);
   box-shadow: nds.$shadow-large;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: nds.space(32);
-  max-height: calc(100vh - #{nds.space(48)});
+  max-height: var(--modal-max-height);
   padding: nds.space(64) nds.space(32) nds.space(32);
   width: 100%;
 
@@ -131,7 +108,7 @@
   &::-webkit-scrollbar-thumb {
     background-clip: padding-box;
     background-color: nds.alpha(nds.$black, 16%);
-    border: 2px solid transparent;
+    border: nds.$stroke-control solid transparent;
     border-radius: nds.radius(pill);
   }
 }
@@ -139,14 +116,20 @@
 // Media modal variant.
 .modal__body--media {
   gap: 0;
-  overflow: hidden;
+  overflow: auto;
   padding: 0;
+}
+
+.modal__media-scroll {
+  min-height: 0;
+  overflow: var(--modal-content-overflow, auto);
+  overscroll-behavior: contain;
 }
 
 .modal__media {
   align-self: stretch;
-  border-bottom: 1px solid nds.alpha(nds.$black, 10%);
-  border-radius: nds.radius(32) nds.radius(32) 0 0;
+  border-bottom: nds.$stroke-hairline solid nds.alpha(nds.$black, 10%);
+  border-radius: nds.radius(40) nds.radius(40) 0 0;
   overflow: hidden;
   width: 100%;
 
@@ -190,8 +173,9 @@
 }
 
 // Bottom-sheet on mobile.
-@media (width <= 40em) {
+@media (width <= #{nds.$breakpoint-small}) {
   .modal {
+    --modal-max-height: calc(100dvh - max(env(safe-area-inset-top), #{nds.space(64)}));
     inset: auto 0 0;
     margin: 0;
     max-height: none;
@@ -216,8 +200,8 @@
   }
 
   .modal__body {
-    border-radius: nds.radius(32) nds.radius(32) 0 0;
-    max-height: calc(100dvh - env(safe-area-inset-top) - #{nds.space(24)});
+    border-radius: nds.radius(40) nds.radius(40) 0 0;
+    max-height: var(--modal-max-height);
     padding-bottom: calc(#{nds.space(32)} + env(safe-area-inset-bottom));
   }
 }
@@ -236,7 +220,7 @@
   color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading-section;
   line-height: 1.2;
   margin: 0;
@@ -245,7 +229,7 @@
 
 .modal__description,
 .modal__content {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   line-height: 1.5;
@@ -274,6 +258,102 @@
   flex-direction: column;
   gap: nds.space(12);
   width: 100%;
+}
+
+// A compact title bar for informational dialogs. Equal side tracks keep the
+// title centered independently of the close control, even when the title wraps.
+.modal__body:has(> .modal__heading > .modal__close) {
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+  scrollbar-gutter: auto;
+
+  > .modal__heading {
+    align-items: center;
+    box-sizing: border-box;
+    display: grid;
+    flex: none;
+    grid-template-columns: nds.space(44) minmax(0, 1fr) nds.space(44);
+    padding: nds.space(16);
+  }
+
+  .modal__title {
+    font-size: nds.$text-label-m;
+    grid-column: 2;
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: nds.$text-line-height-none;
+    text-align: center;
+  }
+
+  .modal__close {
+    grid-column: 3;
+    position: static;
+  }
+
+  > .modal__content {
+    box-sizing: border-box;
+    gap: nds.space(24);
+    letter-spacing: nds.$text-letter-spacing-label;
+    overflow: var(--modal-content-overflow, auto);
+    overscroll-behavior: contain;
+    padding: var(--modal-content-padding, #{nds.space(24)});
+
+    > * {
+      flex: none;
+    }
+
+    @media (width <= #{nds.$breakpoint-small}) {
+      padding-inline: nds.space(24);
+      padding-bottom: calc(#{nds.space(32)} + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+.official-banner-modal {
+  @media (width > #{nds.$breakpoint-small}) {
+    --modal-content-padding: #{nds.space(24)} #{nds.space(48)} #{nds.space(48)};
+  }
+}
+
+// A scroll cue at each edge, only when content is hidden beyond that edge.
+.modal :is([data-scroll-above], [data-scroll-below]) {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--modal-fade-top, 0),
+    black calc(100% - var(--modal-fade-bottom, 0px)),
+    transparent
+  );
+}
+.modal [data-scroll-above] {
+  --modal-fade-top: #{nds.space(24)};
+}
+.modal [data-scroll-below] {
+  --modal-fade-bottom: #{nds.space(24)};
+}
+
+.modal :is([data-scroll-above], [data-scroll-below]):focus-visible {
+  // Keep the focus indicator inside the clipped surface, clear of the edge fades.
+  mask-image: none;
+  outline: nds.$stroke-control solid nds.$base;
+  outline-offset: -(nds.space(4));
+
+  @media (forced-colors: active) {
+    outline-color: Highlight;
+  }
+}
+
+@media (forced-colors: active) {
+  .modal__body {
+    outline: nds.$stroke-hairline solid CanvasText;
+    outline-offset: -(nds.$stroke-hairline);
+  }
+}
+
+.modal .modal__body [data-content-fits] {
+  min-height: 0;
+
+  --modal-content-overflow: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {

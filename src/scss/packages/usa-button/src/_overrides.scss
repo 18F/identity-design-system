@@ -177,6 +177,12 @@ $button-stroke-big: inset 0 0 0 units($theme-button-stroke-width * 2);
   width: 100%;
 }
 
+// At phone widths the legacy button fills its row. Count its padding
+// inside that width when used in the account service layouts.
+:where(.connected-services, .consent) .usa-button {
+  box-sizing: border-box;
+}
+
 .usa-form a.usa-button.usa-button--danger {
   color: color('white');
   text-decoration: none;

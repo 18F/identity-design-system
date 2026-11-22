@@ -1,0 +1,81 @@
+<form class="auth auth--form-page nds-totp-setup" onsubmit="return false">
+  <div class="auth__header">
+    <div class="stack stack--align-center auth__intro">
+      <h1>Set up an authentication app</h1>
+    </div>
+  </div>
+  <div class="auth__form-page-body">
+    <div class="stack stack--gap-32 stack--align-stretch">
+      <ol class="nds-totp-setup__steps">
+        <li>
+          <div class="card stack stack--gap-24">
+            <ol class="usa-list nds-totp-setup__step-heading" start="1">
+              <li class="text-body-emphasis">Enter a nickname</li>
+            </ol>
+            {% assign nickname_id = include.prefix | append: '-name' %}
+            {% capture nickname_attrs %}name="{{ nickname_id }}" maxlength="20" required data-totp-nickname{% endcapture %}
+            {% capture nickname_value %}{% if include.filled %}Passwords App{% endif %}{% endcapture %}
+            {% include helpers/text-input.html id=nickname_id label="App nickname" attributes=nickname_attrs value=nickname_value %}
+          </div>
+        </li>
+        <li>
+          <div class="card stack stack--gap-24">
+            <ol class="usa-list nds-totp-setup__step-heading" start="2">
+              <li class="text-body-emphasis">Open your preferred authentication app</li>
+            </ol>
+          </div>
+        </li>
+        <li>
+          <div class="card stack stack--gap-24">
+            <ol class="usa-list nds-totp-setup__step-heading" start="3">
+              <li class="text-body-emphasis">Scan the QR code or enter the set up code manually in your authentication app</li>
+            </ol>
+            <div class="nds-totp-setup__qrcode">
+              <svg role="img" aria-label="Sample QR illustration, not scannable" viewBox="0 0 49 49"><use href="{{ site.baseurl }}/img/sample-setup-matrix.svg#sample"></use></svg>
+            </div>
+            {% assign setup_id = include.prefix | append: '-setup-code' %}
+            {% assign setup_value = 'ARUNJAYMZEMMHNXIFVSJCINMMLKFD' %}
+            {% capture copy_action %}
+            <button type="button" class="usa-input__toggle" aria-label="Copy setup code" aria-controls="{{ setup_id }}">
+              <svg class="usa-icon" aria-hidden="true"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#copy"></use></svg>
+            </button>
+            {% endcapture %}
+            <lg-clipboard-button class="display-block width-full" clipboard-text="{{ setup_value }}" data-nds-copy>
+              {% include helpers/text-input.html id=setup_id label="Setup code" attributes="readonly" value=setup_value trailing_action=copy_action %}
+              <span role="status" data-copy-error></span>
+            </lg-clipboard-button>
+          </div>
+        </li>
+        <li>
+          <div class="card stack stack--gap-24">
+            <ol class="usa-list nds-totp-setup__step-heading" start="4">
+              <li class="text-body-emphasis">Enter the temporary code from your app</li>
+            </ol>
+            {% assign code_id = include.prefix | append: '-code' %}
+            {% capture code_attrs %}name="{{ code_id }}" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required data-totp-code{% endcapture %}
+            {% capture code_value %}{% if include.filled %}492050{% endif %}{% endcapture %}
+            {% include helpers/text-input.html id=code_id label="Code" attributes=code_attrs value=code_value %}
+          </div>
+        </li>
+      </ol>
+      <div class="card">
+        <div class="checkbox-group">
+          <div class="checkbox">
+            <input class="checkbox__input" id="{{ include.prefix }}-remember" name="{{ include.prefix }}-remember" type="checkbox" aria-describedby="{{ include.prefix }}-remember-description">
+            <label class="checkbox__label" for="{{ include.prefix }}-remember">
+              <span class="checkbox__label-text">Remember this browser</span>
+              <span class="checkbox__label-description" id="{{ include.prefix }}-remember-description">Select this to skip authentication on supported sites. Do not select this if you are on a public or shared device.</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="auth__actions">
+    <div class="actions actions--align-stretch">
+      <button type="submit" class="usa-button usa-button--lg"{% unless include.filled %} disabled{% endunless %}>Continue</button>
+      <button type="button" class="usa-button usa-button--tertiary usa-button--lg">Choose another method</button>
+    </div>
+  </div>
+  <div class="toast" data-open="false" role="status"><span class="toast__text"></span></div>
+</form>

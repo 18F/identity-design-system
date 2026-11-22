@@ -1,34 +1,42 @@
-// NDS clipboard-button copy animation.
-//
-// Plays a brief copy-confirmation animation on the button inside the
-// `lg-clipboard-button` custom element when it gains `data-copied`. Loaded
-// after `@forward 'uswds'`.
-
 @use 'tokens/nds' as nds;
 
-$nds-clipboard-copied-blur: nds.space(4);
-$nds-clipboard-copied-scale: 1.02;
+// Both labels size the button; only the current one is visible and named.
+.clipboard-label {
+  display: inline-grid;
+  place-items: center;
 
-@keyframes nds-clipboard-copied {
-  from {
-    filter: blur($nds-clipboard-copied-blur);
-    opacity: 0;
-    transform: scale($nds-clipboard-copied-scale);
+  > span {
+    display: block;
+    grid-area: 1 / 1;
   }
 
-  to {
-    filter: blur(0);
-    opacity: 1;
-    transform: scale(1);
+  [data-copy-confirmation] {
+    visibility: hidden;
   }
 }
 
-lg-clipboard-button[data-copied] .usa-button {
-  animation: nds-clipboard-copied nds.$tr-duration-md nds.$tr-easing-cubic;
+lg-clipboard-button[data-copied] .clipboard-label {
+  > :first-child {
+    visibility: hidden;
+  }
+  [data-copy-confirmation] {
+    visibility: visible;
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  lg-clipboard-button[data-copied] .usa-button {
-    animation: none;
+@media (prefers-reduced-motion: no-preference) {
+  lg-clipboard-button[data-copied] .clipboard-label [data-copy-confirmation] {
+    animation: nds-copy-label-in nds.$tr-duration-md nds.$tr-easing-cubic;
+  }
+
+  @keyframes nds-copy-label-in {
+    from {
+      opacity: 0;
+      transform: translateY(nds.space(2));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

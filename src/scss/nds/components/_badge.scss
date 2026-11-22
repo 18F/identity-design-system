@@ -12,7 +12,7 @@
 $nds-badge-states: (
   primary: (
     light: (
-      nds.$primary-darker,
+      nds.$primary,
       nds.$white,
     ),
     dark: (
@@ -32,7 +32,7 @@ $nds-badge-states: (
   ),
   success: (
     light: (
-      nds.alpha(nds.$success-light, 10%),
+      nds.$success-lighter,
       nds.$success-dark,
     ),
     dark: (
@@ -42,8 +42,8 @@ $nds-badge-states: (
   ),
   error: (
     light: (
-      nds.alpha(nds.$secondary-lighter, 10%),
-      nds.$secondary,
+      nds.$error-lighter,
+      nds.$error-dark,
     ),
     dark: (
       nds.alpha(nds.$secondary-lighter, 20%),
@@ -52,7 +52,7 @@ $nds-badge-states: (
   ),
   warning: (
     light: (
-      nds.alpha(nds.$warning-light, 10%),
+      nds.$warning-lighter,
       nds.$warning-darker,
     ),
     dark: (
@@ -62,7 +62,7 @@ $nds-badge-states: (
   ),
   info: (
     light: (
-      nds.alpha(nds.$primary, 8%),
+      nds.$primary-lighter,
       nds.$primary,
     ),
     dark: (
@@ -74,28 +74,47 @@ $nds-badge-states: (
 
 .badge {
   align-items: center;
-  backdrop-filter: blur(25px);
-  border: 1px solid transparent;
+  backdrop-filter: blur(nds.$blur-glass);
+  border: nds.$stroke-hairline solid nds.$base-lightest;
   border-radius: nds.radius(8);
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   gap: nds.space(4);
   justify-content: center;
+  letter-spacing: 0;
   line-height: nds.$text-line-height-none;
-  padding: nds.space(4) nds.space(8);
+  padding: calc(#{nds.space(4)} - #{nds.$stroke-hairline})
+    calc(#{nds.space(8)} - #{nds.$stroke-hairline});
 
+  // Medium badge — taller pill per the Figma spec; the frosted blur is a
+  // small-badge treatment only.
+  &.badge--md {
+    backdrop-filter: none;
+    border-radius: nds.radius(pill);
+    box-sizing: border-box;
+    height: nds.space(36);
+    padding: 0 calc(#{nds.space(16)} - #{nds.$stroke-hairline});
+  }
+
+  .usa-icon,
   .usa-icon svg {
-    height: 0.75rem;
-    width: 0.75rem;
+    flex: none;
+    height: nds.space(16);
+    width: nds.space(16);
   }
 
   &.badge--icon-only {
     box-sizing: border-box;
     height: nds.space(20);
-    padding: nds.space(4);
+    padding: 0;
     width: nds.space(20);
+  }
+
+  &.badge--md.badge--icon-only {
+    height: nds.space(36);
+    width: nds.space(36);
   }
 
   @each $name, $bg in $nds-badge-states {
@@ -112,7 +131,7 @@ $nds-badge-states: (
 
   &.badge--tertiary {
     background: transparent;
-    border-color: nds.alpha(nds.$black, 10%);
+    border-color: nds.$border-tertiary;
     color: nds.$black;
 
     &.badge--dark {

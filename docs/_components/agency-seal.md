@@ -10,11 +10,12 @@ lead: >
 Apply `.agency-seal` to a wrapper around an `.agency-seal__image`, or directly
 to an `<img>`. The seal crops the image to a circle and scales it to cover the
 circle. The default size is 48px, which is the size used in consent and agency
-rows.
+rows. The examples use the U.S. General Services Administration seal as sample
+artwork; the component does not supply a default agency image.
 
 {% capture example %}
 <span class="agency-seal agency-seal--bordered">
-  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-dark.svg" alt="Sample Agency">
+  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 </span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -29,7 +30,7 @@ Use `.agency-seal--24` in the header, next to the Login.gov logo.
 
 {% capture example %}
 <span class="agency-seal agency-seal--24" style="--nds-agency-seal-bg: #151038">
-  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-light.svg" alt="Sample Agency">
+  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 </span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -40,7 +41,7 @@ Use `.agency-seal--48` (or no size modifier) in consent and agency rows.
 
 {% capture example %}
 <span class="agency-seal agency-seal--48" style="--nds-agency-seal-bg: #151038">
-  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-light.svg" alt="Sample Agency">
+  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 </span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -53,7 +54,7 @@ created".
 
 {% capture example %}
 <span class="agency-seal agency-seal--100" style="--nds-agency-seal-bg: #151038">
-  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-light.svg" alt="Sample Agency">
+  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 </span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -64,7 +65,7 @@ Use `.agency-seal--180` in the dashboard welcome modal collage.
 
 {% capture example %}
 <span class="agency-seal agency-seal--180 agency-seal--bordered">
-  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-dark.svg" alt="Sample Agency">
+  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 </span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -79,10 +80,10 @@ against a white page.
 
 {% capture example %}
 <span class="agency-seal agency-seal--100" style="--nds-agency-seal-bg: #151038">
-  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-light.svg" alt="Sample Agency">
+  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 </span>
 <span class="agency-seal agency-seal--100 agency-seal--bordered margin-top-2">
-  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-dark.svg" alt="Sample Agency">
+  <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 </span>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -92,7 +93,7 @@ against a white page.
 When there is no need for a wrapper, apply the classes directly to the `<img>`.
 
 {% capture example %}
-<img class="agency-seal agency-seal--48 agency-seal--bordered" src="{{ site.baseurl }}/img/sample-agency-seal-dark.svg" alt="Sample Agency">
+<img class="agency-seal agency-seal--48 agency-seal--bordered" src="{{ site.baseurl }}/img/sample-agency-seal.webp" alt="U.S. General Services Administration">
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 

@@ -10,17 +10,28 @@
 // error text.
 
 @use 'tokens/nds' as nds;
+@use '../../icon-assets' as icon;
 
-$nds-input-border-width: 1px;
+$nds-input-border-width: nds.$stroke-hairline;
 $nds-input-height: nds.space(56);
-$nds-input-pad-x: 15px;
+$nds-input-pad-x: nds.$field-padding-inline;
 
-// Focus ring for inputs: a 1px box-shadow ring in the border color. Paired with
-// the 1px border it reads as a 2px ring without shifting layout.
+// Pair the hairline border with an inset stroke for Figma's 2px inside edge.
 @mixin nds-input-focus-ring($color: nds.$base-darkest) {
   border-color: $color;
-  box-shadow: 0 0 0 $nds-input-border-width $color;
+  box-shadow: inset 0 0 0 $nds-input-border-width $color;
   outline: 0;
+
+  @media (forced-colors: active) {
+    &:is(:focus-visible, .usa-focus) {
+      outline: nds.$stroke-control solid Highlight;
+      outline-offset: nds.$stroke-control;
+    }
+  }
+}
+
+:where(input, textarea) {
+  caret-color: nds.$black;
 }
 
 // Control surface.
@@ -34,10 +45,10 @@ $nds-input-pad-x: 15px;
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   height: $nds-input-height;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   max-width: none;
   padding: 0 $nds-input-pad-x;
   transition:
@@ -46,22 +57,31 @@ $nds-input-pad-x: 15px;
   width: 100%;
 
   &::placeholder {
-    color: nds.alpha(nds.$text-primary, 65%);
+    color: nds.$text-secondary;
     opacity: 1;
   }
 
   // Hover (only when not focused/disabled/readonly). `:hover` un-wrapped so it
   // carries real (0,2,0) specificity.
-  &:hover:not(:focus, :focus-visible, :disabled, [readonly], [aria-disabled='true']) {
+  &:is(:hover, .usa-input--hover):not(
+      :focus,
+      :focus-visible,
+      .usa-focus,
+      :disabled,
+      [readonly],
+      [aria-disabled='true'],
+      [aria-invalid='true'],
+      .usa-input--error,
+      .usa-textarea--error,
+      .usa-select--error
+    ) {
     border-color: nds.$base-darkest;
   }
 
   // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
   // stock USWDS focus rule and zero the USWDS outline.
-  &:is(.usa-input, .usa-textarea, .usa-select):is(:focus, :focus-visible) {
+  &:is(.usa-input, .usa-textarea, .usa-select):is(:focus, :focus-visible, .usa-focus) {
     @include nds-input-focus-ring();
-
-    outline: 0;
   }
 
   // Disabled / readonly — un-wrapped so `:disabled`/`[aria-disabled]` reach
@@ -80,6 +100,7 @@ $nds-input-pad-x: 15px;
 
 // textarea is multi-line: let it grow instead of a fixed control height.
 .usa-textarea {
+  border-bottom-right-radius: nds.radius(2);
   height: auto;
   min-height: $nds-input-height;
   padding: nds.space(8) $nds-input-pad-x;
@@ -88,7 +109,7 @@ $nds-input-pad-x: 15px;
 // Select chevron.
 .usa-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 12.2322L4.70711 6.93934L3.29289 8.35355L10 15.0607L16.7071 8.35355L15.2929 6.93934L10 12.2322Z' fill='%23000c1f' fill-opacity='0.65'/%3E%3C/svg%3E");
+  background-image: icon.$chevron-muted;
   background-position: right #{$nds-input-pad-x} center;
   background-repeat: no-repeat;
   background-size: nds.space(20);
@@ -108,8 +129,6 @@ $nds-input-pad-x: 15px;
   // (0,1,0) + `:focus` (0,1,0) = (0,3,0).
   &:is(.usa-input, .usa-textarea, .usa-select, [aria-invalid='true']):is(:focus, :focus-visible) {
     @include nds-input-focus-ring(nds.$secondary);
-
-    outline: 0;
   }
 }
 
@@ -118,21 +137,34 @@ $nds-input-pad-x: 15px;
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0 0 nds.space(8);
 }
 
 // Hint.
 .usa-hint {
-  color: nds.alpha(nds.$text-primary, 65%);
+  color: nds.$text-secondary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: nds.space(8) 0 0;
+}
+
+// Keep a label and its immediately following hint together in block or flex layouts.
+.usa-label:has(+ .usa-hint) {
+  margin-block-end: 0;
+}
+
+.usa-label + .usa-hint {
+  margin-block-start: 0;
+}
+
+.usa-hint + .usa-input {
+  margin-block-start: nds.space(12);
 }
 
 // Error message (Body/M emphasis, red, with a leading 20px status icon).
@@ -142,10 +174,10 @@ $nds-input-pad-x: 15px;
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$text-weight-body-m-emphasis;
   gap: nds.space(8);
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   max-width: nds.$form-width;
   padding: nds.space(8) 0 0;
   text-wrap: pretty;

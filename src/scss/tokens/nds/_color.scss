@@ -74,6 +74,31 @@ $disabled-dark: alpha($black, 45%);
 $disabled: alpha($black, 25%);
 $disabled-light: alpha($black, 5%);
 
+// Semantic colors, aligned with the Figma "Semantic" styles
+// (text/*, background/*, border/*).
 $text-primary: $black;
+$text-secondary: alpha($black, 65%);
+$text-tertiary: alpha($black, 45%);
+$text-link: $primary;
+$text-destructive: #d80007;
+$text-disabled: $disabled;
+$text-disabled-invert: alpha($white, 65%);
+
 $background-primary: $white;
-$border-tertiary: $base;
+$background-secondary: $base-lighter;
+$background-tertiary: $base-lightest;
+$background-overlay: $base-lighter;
+$checkbox-hover-surface: alpha($primary-darker, 5%);
+$background-primary-invert: $black;
+$background-secondary-invert: alpha($white, 10%);
+$background-tertiary-invert: alpha($white, 5%);
+
+$border-primary: $base-darkest;
+$border-secondary: $base-light;
+$border-tertiary: $base-lighter;
+$border-quaternary: $base-lightest;
+$border-primary-invert: alpha($white, 65%);
+$border-secondary-invert: alpha($white, 10%);
+$border-tertiary-invert: alpha($white, 5%);
+
+$card-disabled-border: alpha($black, 10%);

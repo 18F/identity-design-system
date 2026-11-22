@@ -11,7 +11,7 @@
 @use 'tokens/nds' as nds;
 @use 'service-list' as service;
 
-$dashboard-home-breakpoint-m: 768px;
+$dashboard-home-breakpoint-m: nds.$breakpoint-medium;
 
 .dashboard-home {
   @include nds.stack(
@@ -30,7 +30,7 @@ $dashboard-home-breakpoint-m: 768px;
 .dashboard-home__greeting {
   color: nds.$black;
   font-size: nds.$text-heading-l;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading;
   line-height: 1.1;
   margin: 0;
@@ -94,7 +94,7 @@ $dashboard-home-breakpoint-m: 768px;
 }
 
 .discovery__empty {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;

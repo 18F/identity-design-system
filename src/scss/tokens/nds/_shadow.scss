@@ -1,7 +1,11 @@
 @use 'color' as *;
+@use 'surface' as *;
 
-$shadow-compact: 0 10px 20px alpha($black, 8%);
+$shadow-compact: 0 4px 24px alpha(#010e24, 16%);
 $shadow-large: 0 10px 40px alpha(#010e24, 8%);
+$shadow-elevated-surface:
+  0 0 $stroke-hairline 0 $border-tertiary,
+  $shadow-large;
 $shadow-focus:
   0 0 0 2px $white,
-  0 0 0 4px $black;
+  0 0 0 4px $base;

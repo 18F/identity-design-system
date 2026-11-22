@@ -1,0 +1,126 @@
+<div class="consent">
+  <div class="consent__header">
+    <h2 class="consent__heading">Connect to America.gov</h2>
+    <p class="consent__description">America.gov only uses agency services you approve and doesn't store your personal information. Your selection lasts one year and can be changed anytime in your Login.gov account.</p>
+  </div>
+  <div class="consent__selections">
+    <ul class="consent__services usa-list--unstyled">
+      <li>
+        <details class="consent-service"{% if include.expanded %} open{% endif %}>
+          <summary class="consent-service__summary">
+            <img class="agency-seal" src="{{ site.baseurl }}/img/agency-seals/dos.webp" width="48" height="48" alt="">
+            <span class="consent-service__content">
+              <span class="consent-service__title">Department of State</span>
+              <span class="consent-service__description">Apply for your passport</span>
+            </span>
+            <svg class="usa-icon consent-service__chevron" aria-hidden="true" focusable="false" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-down"></use></svg>
+          </summary>
+          <div class="consent-service__details">
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">About</h3>
+              <p class="consent-service__text">Use Travel.State.Gov to apply for, renew, or track a U.S. passport online.</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">What America.gov can do for you</h3>
+              <p class="consent-service__text">Apply, renew and monitor your passport application. See your uploaded documents (but not change them).</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">Information shared with America.gov</h3>
+              <p class="consent-service__text">Full name, date of birth, Social Security number, mailing address.</p>
+            </div>
+            <a class="usa-link consent-service__link" href="https://travel.state.gov/content/travel/en/passports.html">Learn more<span class="usa-sr-only"> about Department of State</span></a>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details class="consent-service"{% if include.expanded %} open{% endif %}>
+          <summary class="consent-service__summary">
+            <img class="agency-seal" src="{{ site.baseurl }}/img/agency-seals/medicare.webp" width="48" height="48" alt="">
+            <span class="consent-service__content">
+              <span class="consent-service__title">Medicare</span>
+              <span class="consent-service__description">Find and enroll in Medicare plans</span>
+            </span>
+            <svg class="usa-icon consent-service__chevron" aria-hidden="true" focusable="false" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-down"></use></svg>
+          </summary>
+          <div class="consent-service__details">
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">About</h3>
+              <p class="consent-service__text">The official U.S. government website for managing federal health insurance.</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">What America.gov can do for you</h3>
+              <p class="consent-service__text">View your current benefits and help you compare other qualifying Medicare plans.</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">Information shared with America.gov</h3>
+              <p class="consent-service__text">Full name, date of birth, Social Security number, mailing address.</p>
+            </div>
+            <a class="usa-link consent-service__link" href="https://www.medicare.gov/plan-compare/">Learn more<span class="usa-sr-only"> about Medicare</span></a>
+            <button type="button" class="usa-button usa-button--secondary usa-button--full-width">Remove<span class="usa-sr-only"> Medicare</span></button>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details class="consent-service">
+          <summary class="consent-service__summary">
+            <img class="agency-seal" src="{{ site.baseurl }}/img/agency-seals/sba.webp" width="48" height="48" alt="">
+            <span class="consent-service__content">
+              <span class="consent-service__title">Small Business Administration</span>
+              <span class="consent-service__description">Apply for small business grants</span>
+            </span>
+            <svg class="usa-icon consent-service__chevron" aria-hidden="true" focusable="false" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-down"></use></svg>
+          </summary>
+          <div class="consent-service__details">
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">About</h3>
+              <p class="consent-service__text">Use Small Business Administration services online.</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">What America.gov can do for you</h3>
+              <p class="consent-service__text">See and update your applications on your behalf.</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">Information shared with America.gov</h3>
+              <p class="consent-service__text">Full name, date of birth, Social Security number, mailing address.</p>
+            </div>
+            <a class="usa-link consent-service__link" href="https://www.sba.gov/funding-programs/grants">Learn more<span class="usa-sr-only"> about Small Business Administration</span></a>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details class="consent-service">
+          <summary class="consent-service__summary">
+            <img class="agency-seal" src="{{ site.baseurl }}/img/agency-seals/ssa.webp" width="48" height="48" alt="">
+            <span class="consent-service__content">
+              <span class="consent-service__title">Social Security Administration</span>
+              <span class="consent-service__description">Make changes to assistance programs</span>
+            </span>
+            <svg class="usa-icon consent-service__chevron" aria-hidden="true" focusable="false" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-down"></use></svg>
+          </summary>
+          <div class="consent-service__details">
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">About</h3>
+              <p class="consent-service__text">Use Social Security Administration services online.</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">What America.gov can do for you</h3>
+              <p class="consent-service__text">See and update your applications on your behalf.</p>
+            </div>
+            <div class="consent-service__section">
+              <h3 class="consent-service__label">Information shared with America.gov</h3>
+              <p class="consent-service__text">Full name, date of birth, Social Security number, mailing address.</p>
+            </div>
+            <a class="usa-link consent-service__link" href="https://www.ssa.gov/manage-benefits">Learn more<span class="usa-sr-only"> about Social Security Administration</span></a>
+          </div>
+        </details>
+      </li>
+      <li class="consent__add">
+        <button type="button" class="usa-button usa-button--tertiary">Add more services</button>
+      </li>
+    </ul>
+  </div>
+  <div class="consent__actions">
+    <button type="submit" class="usa-button usa-button--lg usa-button--full-width">Allow</button>
+    <button type="button" class="usa-button usa-button--tertiary usa-button--lg usa-button--full-width">Cancel and return to America.gov</button>
+  </div>
+</div>

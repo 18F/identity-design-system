@@ -2,6 +2,7 @@ $tr-duration-md: 150ms;
 $tr-duration-lg: 300ms;
 
 $tr-easing-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+$tr-easing-out: ease-out;
 
 $transition:
   background-color $tr-duration-md $tr-easing-cubic,

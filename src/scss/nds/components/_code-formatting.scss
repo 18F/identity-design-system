@@ -1,0 +1,48 @@
+@use 'tokens/nds' as nds;
+
+@font-face {
+  font-display: swap;
+  font-family: CommitMono;
+  font-style: normal;
+  font-weight: 400 700;
+  src: url('../../fonts/commit-mono/CommitMono.woff2') format('woff2');
+}
+
+// Style existing Rouge/Pygments blocks without affecting inline code.
+pre.highlight {
+  background: nds.$base-lightest;
+  border: nds.$stroke-hairline solid nds.$base-lightest;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  color: nds.$black;
+  font-family: nds.$font-family-mono;
+  font-size: nds.$text-body-m;
+  font-weight: 400;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: 1.5;
+  margin: 0;
+  overflow-x: auto;
+  padding-block: calc(#{nds.space(24)} - #{nds.$stroke-hairline});
+  padding-inline: nds.space(24);
+
+  code {
+    color: inherit;
+    font: inherit;
+  }
+
+  .nt,
+  .na {
+    font-weight: 700;
+  }
+
+  .nt,
+  .na,
+  .mi,
+  .mf {
+    color: nds.$primary-dark;
+  }
+
+  .s2 {
+    color: nds.$error-dark;
+  }
+}

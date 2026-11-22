@@ -4,11 +4,11 @@
 
 @use 'tokens/nds' as nds;
 
-$auth-methods-breakpoint-m: 768px;
+$auth-methods-breakpoint-m: nds.$breakpoint-medium;
 
 .auth-methods {
   @include nds.stack(
-    $gap: nds.space(64),
+    $gap: nds.space(56),
     $margin: 0 auto,
     $max-width: nds.$dashboard-width,
     $reset-flow: true,
@@ -21,42 +21,59 @@ $auth-methods-breakpoint-m: 768px;
 }
 
 .auth-methods__section {
-  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+  @include nds.stack($gap: nds.space(32), $reset-flow: true, $width: 100%);
+  // The section tracks the full panel width, including its padding.
+  container: auth-methods-section / inline-size;
 }
 
 .auth-methods__heading {
   color: nds.$black;
   font-size: nds.$text-heading-section;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading-section;
-  line-height: 1.2;
+  line-height: nds.$text-line-height-heading-section;
   margin: 0;
   overflow-wrap: anywhere;
   padding-inline: nds.space(24);
 }
 
 .auth-methods__panel {
-  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+  @include nds.stack($gap: 0, $reset-flow: true, $width: 100%);
   align-items: flex-start;
   background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 10%);
+  box-shadow: inset 0 0 0 nds.$stroke-hairline nds.$border-tertiary;
   border-radius: nds.radius(24);
   box-sizing: border-box;
-  padding: nds.space(24);
+  padding-inline: nds.space(24);
+
+  @media (forced-colors: active) {
+    outline: nds.$stroke-hairline solid CanvasText;
+    outline-offset: -(nds.$stroke-hairline);
+  }
 }
 
 .auth-methods__rows {
   @include nds.stack($gap: 0, $reset-flow: true, $width: 100%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.auth-methods__rows > * + * {
-  border-top: 1px solid nds.alpha(nds.$black, 10%);
-  margin-top: nds.space(12);
-  padding-top: nds.space(12);
+.auth-methods__rows > .auth-methods__row {
+  padding-block: nds.space(20);
+
+  + .auth-methods__row {
+    border-top: nds.$stroke-hairline solid nds.$border-tertiary;
+  }
+}
+
+.auth-methods__footer {
+  padding-bottom: nds.space(24);
+  width: 100%;
 }
 
 .auth-methods__rule {
-  border-top: 1px solid nds.alpha(nds.$black, 10%);
+  border-top: nds.$stroke-hairline solid nds.$border-tertiary;
   width: 100%;
 }
 
@@ -70,12 +87,12 @@ $auth-methods-breakpoint-m: 768px;
 }
 
 .auth-methods__row-text {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   flex: 1 1 auto;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
   min-width: 0;
   overflow-wrap: anywhere;
@@ -90,6 +107,14 @@ $auth-methods-breakpoint-m: 768px;
   justify-content: flex-end;
 }
 
+@container auth-methods-section (width < #{nds.$auth-methods-inline-min-width}) {
+  .auth-methods__row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: nds.space(12);
+  }
+}
+
 @media (width < #{$auth-methods-breakpoint-m}) {
   .auth-methods {
     gap: nds.space(48);
@@ -100,16 +125,14 @@ $auth-methods-breakpoint-m: 768px;
   }
 
   .auth-methods__panel {
-    padding: nds.space(20);
+    padding-inline: nds.space(20);
   }
 
   .auth-methods__row {
-    align-items: flex-start;
-    flex-direction: column;
     gap: nds.space(12);
   }
 
-  .auth-methods__row-actions {
-    justify-content: flex-start;
+  .auth-methods__footer .usa-button {
+    width: 100%;
   }
 }

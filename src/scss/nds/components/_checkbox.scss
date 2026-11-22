@@ -12,73 +12,73 @@
 // are intentionally not wrapped in `:where()`, which would zero their
 // specificity and lose to USWDS.
 //
-// GLYPH: the blue box is applied here; the white checkmark glyph is left as
-// USWDS's own, which reads correctly on the blue fill.
+// GLYPH: use the library's checkmark and minus on the selected surface.
 
 @use 'tokens/nds' as nds;
+@use '../icon-assets' as icon;
 
 // Glyphs are inlined as data URIs so the component is self-contained:
 // consumers (e.g. idp) need no companion image files at a path relative to
 // the compiled CSS.
-$nds-checkbox-glyph-check: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23fff'%20d='M14.4%204.32%2013.28%203.2l-6.96%207.36-3.6-3.36L1.6%208.32l4.8%204.48z'/%3E%3C/svg%3E");
-$nds-checkbox-glyph-indeterminate: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='16'%20height='16'%20fill='none'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='%23fff'%20d='M1.6%207.2h12.8v1.6H1.6z'/%3E%3C/svg%3E");
+$nds-checkbox-glyph-check: icon.$check-white;
+$nds-checkbox-glyph-indeterminate: icon.$minus-white;
 
 $nds-checkbox-size: nds.space(20);
-$nds-checkbox-border-width: 1px;
+$nds-checkbox-border-width: nds.$stroke-control;
 
-// Label — Inter semibold, ink color, gap reserved for the box.
+// Label — Inter medium, ink color, gap reserved for the box.
 .usa-checkbox__label {
   color: nds.$black;
   cursor: pointer;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   padding-left: calc(#{nds.space(12)} + #{$nds-checkbox-size});
 
   &::before {
-    background-color: nds.$white;
+    background-color: transparent;
+    border: $nds-checkbox-border-width solid nds.$border-primary;
     border-radius: nds.radius(8);
-    box-shadow: 0 0 0 $nds-checkbox-border-width nds.$base-darkest;
+    box-shadow: none;
     box-sizing: border-box;
     height: $nds-checkbox-size;
     // Override USWDS's computed vertical-centering margin (sized for its own
     // box size) so the 20px box aligns to the label text.
-    margin-top: 2px;
+    margin-top: nds.space(2);
     transition: nds.$transition;
     width: $nds-checkbox-size;
   }
 }
 
 // Regular-weight label for long-form checkbox copy (e.g. a consent paragraph)
-// where the semibold label weight reads as too heavy.
+// where the medium label weight reads as too heavy.
 .usa-checkbox__label--regular {
-  font-weight: 400;
+  font-weight: nds.$font-regular;
 }
 
-// Bordered variant: the box is inset from the tile edge (left: nds.space(16))
-// and the label reserves horizontal space for it via padding-left. Widen that
-// reservation so the box clears the label text with the same gap as the
-// default checkbox.
-.usa-checkbox__input--bordered + .usa-checkbox__label {
-  padding-left: calc(#{nds.space(16)} + #{nds.space(12)} + #{$nds-checkbox-size});
-}
-
-// Hover (not disabled): blue tint fill + blue-500 border.
-.usa-checkbox__input:not(:disabled, [aria-disabled='true']) + .usa-checkbox__label:hover::before {
-  background-color: nds.alpha(nds.$primary-darker, 5%);
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$primary;
+// Only the unchecked control changes on hover, not its surrounding row.
+.usa-checkbox__input:not(
+    :checked,
+    :indeterminate,
+    [data-indeterminate],
+    :disabled,
+    [aria-disabled='true']
+  )
+  + .usa-checkbox__label:is(:hover, .usa-checkbox__label--hover)::before {
+  border-color: nds.$primary;
 }
 
 // Checked: solid blue-500 fill with the 16px white check glyph centered in the
 // 20px box (USWDS's own glyph is an 8px mark, too small for this box).
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
+  border: 0;
   background-color: nds.$primary;
   background-image: $nds-checkbox-glyph-check;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 16px 16px;
+  background-size: nds.space(16);
   box-shadow: none;
 }
 
@@ -87,20 +87,12 @@ $nds-checkbox-border-width: 1px;
 // midnight fill; restyle to match the checked treatment. Handle both the native
 // pseudo and the `[data-indeterminate]` attribute variant USWDS supports.
 .usa-checkbox__input:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label::before {
+  border: 0;
   background-color: nds.$primary;
   background-image: $nds-checkbox-glyph-indeterminate;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 16px 16px;
-  box-shadow: none;
-}
-
-// Checked/indeterminate hover stays solid (don't revert to the hover tint).
-.usa-checkbox__input:checked:not(:disabled, [aria-disabled='true'])
-  + .usa-checkbox__label:hover::before,
-.usa-checkbox__input:is(:indeterminate, [data-indeterminate]):not(:disabled, [aria-disabled='true'])
-  + .usa-checkbox__label:hover::before {
-  background-color: nds.$primary;
+  background-size: nds.space(16);
   box-shadow: none;
 }
 
@@ -108,79 +100,105 @@ $nds-checkbox-border-width: 1px;
 // `:focus` (mouse too); the design shows the ring on keyboard focus only.
 // Clear USWDS's outline on `:focus`, then draw the ring on
 // `:focus-visible`/`.usa-focus` (both later at matching (0,3,1)).
-.usa-checkbox__input:focus + .usa-checkbox__label::before {
+.usa-checkbox__input[type='checkbox']:focus + .usa-checkbox__label::before {
   outline: 0;
 }
 
-.usa-checkbox__input:is(:focus-visible, .usa-focus) + .usa-checkbox__label::before {
-  @include nds.focus-ring();
+.usa-checkbox__input[type='checkbox']:is(:focus-visible, .usa-focus)
+  + .usa-checkbox__label::before {
+  @include nds.transparent-focus-ring();
 }
 
-// Error: red border, no fill.
-.usa-checkbox__input:is(.usa-input--error, [aria-invalid='true']) + .usa-checkbox__label::before {
+.usa-checkbox__input:not(
+    :checked,
+    :indeterminate,
+    [data-indeterminate],
+    .usa-checkbox__input--switch
+  ):is(:focus-visible, .usa-focus)
+  + .usa-checkbox__label::before {
   background-color: nds.$white;
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.$secondary;
+  border-color: nds.$black;
+}
+
+// The error edge is independent of the selection fill and the focus ring.
+.usa-checkbox__input:not(.usa-checkbox__input--switch, :disabled, [aria-disabled='true']):is(
+    .usa-input--error,
+    [aria-invalid='true']
+  )
+  + .usa-checkbox__label::before {
+  border: $nds-checkbox-border-width solid nds.$secondary;
 }
 
 // Disabled: muted fill + text.
 .usa-checkbox__input:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label {
-  color: nds.alpha(nds.$black, 25%);
+  color: nds.$text-secondary;
   cursor: not-allowed;
 
   &::before {
-    background-color: nds.alpha(nds.$black, 5%);
-    box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
+    background-color: transparent;
+    border-color: nds.$disabled;
+    box-shadow: none;
   }
 }
 
 // Disabled + checked: muted fill, keep the enlarged glyph.
-.usa-checkbox__input:is(:disabled, [aria-disabled='true']):checked + .usa-checkbox__label::before {
-  background-color: nds.alpha(nds.$black, 25%);
-  background-image: $nds-checkbox-glyph-check;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 16px 16px;
-  box-shadow: 0 0 0 $nds-checkbox-border-width nds.alpha(nds.$black, 45%);
+.usa-checkbox__input:is(:disabled, [aria-disabled='true']):is(
+    :checked,
+    :indeterminate,
+    [data-indeterminate]
+  )
+  + .usa-checkbox__label::before {
+  background-color: nds.$disabled;
+  background-size: nds.space(16);
+  box-shadow: none;
 }
 
-// Forced-colors safety: the blue fill overrides USWDS's system-color checked
-// background; restore a system color so the checked state stays visible in
-// Windows High Contrast.
-@media (forced-colors: active) {
-  .usa-checkbox__input:checked + .usa-checkbox__label::before,
-  .usa-checkbox__input:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label::before {
-    background-color: SelectedItem;
-  }
+.usa-checkbox__input:where(:not(.usa-checkbox__input--switch)):is(
+    :disabled,
+    [aria-disabled='true']
+  ):checked
+  + .usa-checkbox__label::before {
+  background-image: $nds-checkbox-glyph-check;
+}
+
+.usa-checkbox__input:where(:not(.usa-checkbox__input--switch)):is(
+    :disabled,
+    [aria-disabled='true']
+  ):is(:indeterminate, [data-indeterminate])
+  + .usa-checkbox__label::before {
+  background-image: $nds-checkbox-glyph-indeterminate;
 }
 
 // --- Selection variants -----------------------------------------------------
 //
 // USWDS ships tile/bordered variants with a light-blue selected background
-// (`$theme-input-tile/bordered-background-color-selected`). The design uses a
-// neutral midnight tint so the selected card reads as "chosen" without adding
-// a second accent color next to the blue-500 control.
+// (`$theme-input-tile/bordered-background-color-selected`). In NDS selection
+// is indicated by the control; the row keeps the same neutral perimeter.
 
 .usa-checkbox__input--tile:checked + .usa-checkbox__label,
 .usa-checkbox__input--tile:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label,
 .usa-checkbox__input--bordered:checked + .usa-checkbox__label,
 .usa-checkbox__input--bordered:is(:indeterminate, [data-indeterminate]) + .usa-checkbox__label {
-  background-color: nds.alpha(nds.$black, 5%);
-  border-color: nds.$black;
+  background-color: transparent;
+  border-color: nds.$border-tertiary;
 }
 
 // Bordered + checked + disabled: keep USWDS's transparent fill but use the
 // muted midnight border so it lines up with the disabled control color.
-.usa-checkbox__input--bordered:checked:is(:disabled, [aria-disabled='true'])
+:is(.usa-checkbox__input--bordered, .usa-checkbox__input--tile):is(:checked, :indeterminate):is(
+    :disabled,
+    [aria-disabled='true']
+  )
   + .usa-checkbox__label {
-  border-color: nds.alpha(nds.$black, 25%);
+  background-color: transparent;
+  border-color: nds.$border-tertiary;
 }
 
 // --- Switch variant ---------------------------------------------------------
 //
 // `.usa-checkbox__input--switch` renders the control as a pill track with a
-// sliding thumb instead of the check box. Pair with `role="switch"` and
-// `aria-checked` on the input for the correct semantics; the label still
-// supplies the accessible name.
+// sliding thumb instead of the check box. Use role="switch" on the native
+// checkbox; its checked property supplies the accessible on/off state.
 //
 // Track sits on `::before` (USWDS positions it absolutely, `left: 0`, inside
 // the `position: relative` label); the thumb sits on `::after`. The check
@@ -193,15 +211,21 @@ $nds-switch-thumb: nds.space(16);
 $nds-switch-inset: nds.space(4);
 
 .usa-checkbox__input--switch + .usa-checkbox__label {
-  padding-left: calc(#{nds.space(12)} + #{$nds-switch-width});
+  display: block;
+  margin: 0;
+  padding: nds.space(24);
+  padding-left: calc(#{nds.space(24)} + #{nds.space(12)} + #{$nds-switch-width});
 
   &::before {
     background-color: nds.$base-light;
+    border: 0;
     background-image: none;
     border-radius: nds.radius(pill);
     box-shadow: none;
     height: $nds-switch-height;
+    left: nds.space(24);
     margin-top: 0;
+    top: nds.space(24);
     width: $nds-switch-width;
   }
 
@@ -210,9 +234,9 @@ $nds-switch-inset: nds.space(4);
     border-radius: nds.radius(pill);
     content: '';
     height: $nds-switch-thumb;
-    left: $nds-switch-inset;
+    left: nds.space(24) + $nds-switch-inset;
     position: absolute;
-    top: calc(#{$nds-switch-height} / 2);
+    top: calc(#{nds.space(24)} + #{$nds-switch-height} / 2);
     transform: translateY(-50%);
     transition: nds.$transition;
     width: $nds-switch-thumb;
@@ -229,26 +253,13 @@ $nds-switch-inset: nds.space(4);
 
   &::after {
     background-color: nds.$white;
-    left: calc(#{$nds-switch-width} - #{$nds-switch-thumb} - #{$nds-switch-inset});
+    left: nds.space(24) + $nds-switch-width - $nds-switch-thumb - $nds-switch-inset;
   }
-}
-
-// Hover (not disabled) keeps the track colors solid — no box tint.
-.usa-checkbox__input--switch:not(:disabled, [aria-disabled='true'])
-  + .usa-checkbox__label:hover::before {
-  background-color: nds.$base-light;
-  box-shadow: none;
-}
-
-.usa-checkbox__input--switch:checked:not(:disabled, [aria-disabled='true'])
-  + .usa-checkbox__label:hover::before {
-  background-color: nds.$primary;
-  box-shadow: none;
 }
 
 // Focus ring on the track (keyboard only), reusing the shared ring geometry.
 .usa-checkbox__input--switch:is(:focus-visible, .usa-focus) + .usa-checkbox__label::before {
-  @include nds.focus-ring();
+  @include nds.transparent-focus-ring();
 }
 
 // Disabled: muted track, keep the thumb readable.
@@ -257,14 +268,97 @@ $nds-switch-inset: nds.space(4);
   box-shadow: none;
 }
 
-.usa-checkbox__input--switch:checked:is(:disabled, [aria-disabled='true'])
-  + .usa-checkbox__label::before {
-  background-color: nds.$disabled;
+.usa-checkbox__input--switch:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label::after {
+  background-color: nds.alpha(nds.$white, 45%);
+  box-shadow: inset 0 0 0 nds.$stroke-hairline nds.$border-secondary-invert;
 }
 
-// Forced-colors: keep the ON track visible with a system color.
+// Figma keeps the on track blue and mutes the thumb instead.
+.usa-checkbox__input--switch:checked:is(:disabled, [aria-disabled='true'])
+  + .usa-checkbox__label::before {
+  background-color: nds.$primary;
+  background-image: none;
+}
+
+// Keep the sliding thumb distinguishable when authored fills are suppressed.
 @media (forced-colors: active) {
-  .usa-checkbox__input--switch:checked + .usa-checkbox__label::before {
-    background-color: SelectedItem;
+  .usa-checkbox__input--switch + .usa-checkbox__label {
+    &::before,
+    &::after {
+      box-sizing: border-box;
+      border: nds.$stroke-hairline solid ButtonText;
+    }
+
+    &::after {
+      forced-color-adjust: none;
+      background: ButtonText;
+    }
+  }
+
+  .usa-checkbox__input--switch:is(:disabled, [aria-disabled='true']) + .usa-checkbox__label {
+    &::before,
+    &::after {
+      border-color: GrayText;
+    }
+    &::after {
+      background: GrayText;
+    }
+  }
+}
+
+.usa-checkbox__input:not(.usa-checkbox__input--switch) + .usa-checkbox__label {
+  --checkbox-inset: #{nds.space(24)};
+  box-sizing: border-box;
+  display: block;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-regular;
+  margin: 0;
+  max-width: none;
+  padding: var(--checkbox-inset);
+  padding-left: calc(var(--checkbox-inset) + #{$nds-checkbox-size} + #{nds.space(12)});
+
+  &:has(.usa-checkbox__label-description):not(.usa-checkbox__label--regular) {
+    font-weight: nds.$font-medium;
+  }
+
+  &::before {
+    left: var(--checkbox-inset);
+    top: var(--checkbox-inset);
+  }
+}
+
+.usa-checkbox__input:is(.usa-checkbox__input--tile, .usa-checkbox__input--bordered)
+  + .usa-checkbox__label {
+  --checkbox-inset: #{nds.space(24) - nds.$stroke-hairline};
+  background-color: transparent;
+  border: nds.$stroke-hairline solid nds.$border-tertiary;
+  border-radius: nds.radius(24);
+}
+
+.usa-checkbox__label .usa-checkbox__label-description {
+  color: nds.$text-secondary;
+  display: block;
+  font: inherit;
+  font-weight: nds.$font-regular;
+  margin-top: nds.space(4);
+}
+
+.usa-checkbox__input--tile + .usa-checkbox__label--illustrated:has(.usa-checkbox__image) {
+  display: flex;
+  gap: nds.space(12);
+
+  .usa-checkbox__image {
+    flex: 0 0 nds.space(24);
+    margin: 0;
+    padding: 0;
+    width: nds.space(24);
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .usa-checkbox__label--text {
+    padding: 0;
   }
 }

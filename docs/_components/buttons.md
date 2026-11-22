@@ -259,6 +259,24 @@ The `usa-button--big` modifier is equivalent to `usa-button--lg`.
   <button class="usa-button usa-button--lg" disabled>Disabled</button>
 </div>
 
+## Buttons with icons
+
+### Icon placement
+
+<div>
+  <button type="button" class="usa-button usa-button--secondary">
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/chevron-down.svg" alt="">
+    <span>Options</span>
+  </button>
+  <button type="button" class="usa-button usa-button--secondary">
+    <span>Options</span>
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/chevron-down.svg" alt="">
+  </button>
+  <button type="button" class="usa-button usa-button--secondary usa-button--icon-only" aria-label="Show options">
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/chevron-down.svg" alt="">
+  </button>
+</div>
+
 ## Button widths
 
 ### Flexible width

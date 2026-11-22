@@ -31,7 +31,7 @@
 // Hairline edge for seals on a white or light fill, so the circle reads
 // against a white page.
 .agency-seal--bordered {
-  border: 1px solid nds.$base-lightest;
+  border: nds.$stroke-hairline solid nds.$base-lightest;
 }
 
 .agency-seal--24 {

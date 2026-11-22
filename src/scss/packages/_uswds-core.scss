@@ -190,6 +190,7 @@
 );
 
 @use 'uswds-core/index' as *;
+$identity-hero-image: '#{$theme-image-path}/hero.png' !default;
 
 $theme-input-tile-background-color-selected: 'primary-lightest';
 $theme-input-tile-border-color: 'primary-light';

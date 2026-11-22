@@ -9,6 +9,8 @@ $font-family:
   arial,
   sans-serif;
 
+$font-family-mono: 'CommitMono', ui-monospace, 'SF Mono', menlo, consolas, monospace;
+
 $text-heading-xl: 72px;
 $text-heading-xl-mobile: 44px;
 $text-heading-l: 48px;
@@ -29,8 +31,19 @@ $text-label-m-mobile: 16px;
 $text-label-s: 12px;
 $text-label-s-mobile: 12px;
 
+$font-regular: 400;
+// NDS uses Medium for emphasis, including when older Figma frames show 600.
+$font-medium: 500;
 $font-semibold: 600;
+$text-weight-body-m-emphasis: $font-medium;
+$text-weight-label-m-emphasis: $font-medium;
+$text-letter-spacing-heading-xl: -0.04em;
 $text-letter-spacing-heading: -0.03em;
 $text-letter-spacing-heading-section: -0.02em;
 $text-letter-spacing-label: -0.01em;
+$text-letter-spacing-label-s: 0.01em;
 $text-line-height-none: 1;
+$text-line-height-body: 1.5;
+$text-line-height-heading-m: 1.1;
+$text-line-height-heading-l: 1.05;
+$text-line-height-heading-section: 1.2;

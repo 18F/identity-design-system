@@ -1,0 +1,37 @@
+<div class="consent-stage">
+  <div class="consent consent--single">
+    <header class="consent__header">
+      <h2 class="consent__heading">Connect to America.gov</h2>
+      <p class="consent__description">America.gov only uses agency services you approve and doesn't store your personal information. Your selection lasts one year and can be changed anytime in your Login.gov account.</p>
+    </header>
+    <details class="card consent-service"{% if include.expanded %} open{% endif %}>
+      <summary class="consent-service__summary">
+        <img class="agency-seal" src="{{ site.baseurl }}/img/agency-seals/dos.webp" width="48" height="48" alt="">
+        <span class="consent-service__content">
+          <span class="consent-service__title">Department of State</span>
+          <span class="consent-service__description">Applying for your passport</span>
+        </span>
+        <svg class="usa-icon consent-service__chevron" aria-hidden="true" focusable="false"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-down"></use></svg>
+      </summary>
+      <div class="consent-service__details">
+        <div class="consent-service__section">
+          <h3 class="consent-service__label">About</h3>
+          <p class="consent-service__text">Use Travel.State.Gov to apply for, renew, or track a U.S. passport online.</p>
+        </div>
+        <div class="consent-service__section">
+          <h3 class="consent-service__label">What America.gov can do for you</h3>
+          <p class="consent-service__text">Apply for, renew, and track your passport. View your uploaded documents, but not change them.</p>
+        </div>
+        <div class="consent-service__section">
+          <h3 class="consent-service__label">Information MyTravelGov shares with America.gov</h3>
+          <p class="consent-service__text">Full name, date of birth, Social Security number, and mailing address.</p>
+        </div>
+        <a class="usa-link consent-service__link" href="https://travel.state.gov/content/travel/en/passports.html">Learn more at state.gov</a>
+      </div>
+    </details>
+    <div class="consent__actions">
+      <button type="button" class="usa-button usa-button--lg usa-button--full-width">Allow</button>
+      <button type="button" class="usa-button usa-button--tertiary usa-button--lg usa-button--full-width">Cancel and return to America.gov</button>
+    </div>
+  </div>
+</div>

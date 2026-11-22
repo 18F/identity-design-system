@@ -1,0 +1,35 @@
+<div class="auth-entry__card">
+  <div class="auth">
+    {% if include.agency %}
+    <div class="stack stack--align-center stack--gap-8">
+      <span class="agency-seal agency-seal--100 agency-seal--bordered" aria-hidden="true">
+        {% if include.seal %}<img class="agency-seal__image" src="{{ site.baseurl }}/img/{{ include.seal }}" alt="">{% endif %}
+      </span>
+      <div class="copy copy--centered"><strong>{{ include.agency }}</strong></div>
+    </div>
+    {% endif %}
+    <div class="auth__intro">
+      <h1>{{ include.heading }}</h1>
+    </div>
+    <div class="form">
+      <div class="stack">
+        <div class="usa-form-group usa-input-group--floating">
+          <input class="usa-input" id="{{ include.id_prefix }}-email" type="email" autocomplete="username" placeholder=" " value="user@example.com">
+          <label class="usa-label" for="{{ include.id_prefix }}-email">Email</label>
+        </div>
+        <div class="usa-form-group usa-input-group--floating">
+          <input class="usa-input" id="{{ include.id_prefix }}-password" type="password" autocomplete="current-password" placeholder=" " value="example-password-only">
+          <label class="usa-label" for="{{ include.id_prefix }}-password">Password</label>
+        </div>
+        <button type="button" class="link">Forgot password?</button>
+      </div>
+      <div class="actions">
+        <button type="button" class="usa-button usa-button--lg">Continue</button>
+        <button type="button" class="usa-button usa-button--secondary usa-button--lg">Create an account</button>
+      </div>
+    </div>
+    <p class="copy copy--muted copy--centered">This site is protected by reCAPTCHA.</p>
+    <hr class="divider">
+    <button type="button" class="usa-button usa-button--tertiary usa-button--lg">Sign in with government employee ID</button>
+  </div>
+</div>

@@ -11,15 +11,16 @@
 // Loaded after `@forward 'uswds'` (see nds/styles.scss).
 
 @use 'tokens/nds' as nds;
+@use '../icon-assets' as icon;
 
 // Status icons are inlined as data-URI masks so the component is fully
 // self-contained: consumers (e.g. idp) need no companion image files on a
 // path relative to the compiled CSS. The glyph is painted via `mask` +
 // `background-color`, so the fill baked into the SVG is irrelevant.
-$alert-icon-info: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M13.2%2018h-2.4v-7.2h2.4zm.24-10.56c0%20.795-.36%201.44-1.44%201.44s-1.44-.645-1.44-1.44S10.92%206%2012%206s1.44.645%201.44%201.44'/%3E%3Cpath%20fill='%23000c1f'%20fill-rule='evenodd'%20d='M12%201.2C6%201.2%201.2%206%201.2%2012S6%2022.8%2012%2022.8%2022.8%2018%2022.8%2012%2018%201.2%2012%201.2m0%202.4c4.68%200%208.4%203.72%208.4%208.4s-3.72%208.4-8.4%208.4-8.4-3.72-8.4-8.4S7.32%203.6%2012%203.6'%20clip-rule='evenodd'/%3E%3C/svg%3E");
-$alert-icon-warning: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M11.994%204.8c.228%200%20.792.06%201.128.624l7.104%2012.012c.288.492.132.924%200%201.128a1.27%201.27%200%200%201-1.14.636H4.89a1.27%201.27%200%200%201-1.14-.636%201.11%201.11%200%200%201%200-1.128l7.116-12.012c.336-.564.9-.624%201.128-.624m0-2.4c-1.236%200-2.484.6-3.192%201.8L1.698%2016.212c-1.416%202.4.36%205.388%203.192%205.388h14.22c2.832%200%204.608-3%203.192-5.388L15.186%204.2c-.708-1.2-1.956-1.8-3.192-1.8m1.2%205.4-.024%206h-2.364l-.012-6zm-1.2%2010.2c-1.092%200-1.5-.672-1.5-1.5s.408-1.5%201.5-1.5%201.5.672%201.5%201.5-.408%201.5-1.5%201.5'/%3E%3C/svg%3E");
-$alert-icon-success: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M12%201.2C6.036%201.2%201.2%206.036%201.2%2012S6.036%2022.8%2012%2022.8%2022.8%2017.964%2022.8%2012%2017.964%201.2%2012%201.2m0%2019.2c-4.632%200-8.4-3.768-8.4-8.4S7.368%203.6%2012%203.6s8.4%203.768%208.4%208.4-3.768%208.4-8.4%208.4'/%3E%3Cpath%20fill='%23000c1f'%20d='m15.744%207.8-4.992%205.04-2.496-2.52L6.6%2012l4.152%204.2L17.4%209.48z'/%3E%3C/svg%3E");
-$alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20fill='none'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23000c1f'%20d='M10.8%206h2.4v7.2h-2.4zm-.24%2010.56c0-.795.36-1.44%201.44-1.44s1.44.645%201.44%201.44c0%20.796-.36%201.44-1.44%201.44s-1.44-.645-1.44-1.44'/%3E%3Cpath%20fill='%23000c1f'%20fill-rule='evenodd'%20d='M12%2022.8c6%200%2010.8-4.8%2010.8-10.8S18%201.2%2012%201.2%201.2%206%201.2%2012%206%2022.8%2012%2022.8m0-2.4c-4.68%200-8.4-3.72-8.4-8.4S7.32%203.6%2012%203.6s8.4%203.72%208.4%208.4-3.72%208.4-8.4%208.4'%20clip-rule='evenodd'/%3E%3C/svg%3E");
+$alert-icon-info: icon.$info;
+$alert-icon-warning: icon.$warning;
+$alert-icon-success: icon.$check-circle;
+$alert-icon-error: icon.$error;
 
 // The card is a vertical stack: status icon, then the heading/body content
 // column, then an optional footer (callout or action). `--nds-alert-bg` is the
@@ -32,7 +33,7 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
   background: var(--nds-alert-bg);
   border: 0;
   border-radius: nds.radius(24);
-  box-shadow: inset 0 0 0 1px #{nds.$base-lightest};
+  box-shadow: inset 0 0 0 nds.$stroke-hairline nds.$border-quaternary;
   box-sizing: border-box;
   color: nds.$text-primary;
   display: flex;
@@ -75,13 +76,13 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
   .usa-alert__body::before {
     background-color: nds.$text-primary;
     background-image: none;
-    background-size: 1.5rem 1.5rem;
+    content: '';
     display: block;
-    height: 1.5rem;
+    height: nds.space(24);
     margin: 0 0 nds.space(12);
-    mask: #{$alert-icon-info} no-repeat center / 1.5rem 1.5rem;
+    mask: #{$alert-icon-info} no-repeat center / contain;
     position: static;
-    width: 1.5rem;
+    width: nds.space(24);
   }
 
   .usa-alert__heading,
@@ -89,19 +90,19 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
     font-family: nds.$font-family;
     font-size: nds.$text-body-m;
     letter-spacing: nds.$text-letter-spacing-label;
-    line-height: 1.5;
+    line-height: nds.$text-line-height-body;
     margin: 0;
     text-wrap: pretty;
   }
 
   .usa-alert__heading {
     color: nds.$text-primary;
-    font-weight: nds.$font-semibold;
+    font-weight: nds.$text-weight-body-m-emphasis;
   }
 
   .usa-alert__text {
-    color: nds.alpha(nds.$text-primary, 65%);
-    font-weight: 400;
+    color: nds.$text-primary;
+    font-weight: nds.$font-regular;
 
     > * {
       margin: 0;
@@ -171,12 +172,20 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
   }
 }
 
-// --slim → tighter vertical padding; keep the flat card look.
-.usa-alert--slim {
-  padding-block: nds.space(12);
+// Keep wrapped copy in the text column. Iconless alerts need no extra track.
+.usa-alert--slim:not(.usa-alert--no-icon) .usa-alert__body {
+  column-gap: nds.space(12);
+  display: grid;
+  grid-template-columns: nds.space(24) minmax(0, 1fr);
 
-  .usa-alert__body {
-    padding: 0;
+  &::before {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  > * {
+    grid-column: 2;
   }
 }
 
@@ -204,7 +213,7 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
 .usa-alert__divider {
   background: nds.$base-lighter;
   border: 0;
-  height: 1px;
+  height: nds.$stroke-hairline;
   margin: 0;
   width: 100%;
 }
@@ -214,44 +223,11 @@ $alert-icon-error: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/200
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$text-weight-body-m-emphasis;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
   text-wrap: pretty;
-}
-
-// Frosted pill action — base-lightest surface with a backdrop blur, Label/M
-// Emphasis text in primary ink.
-.usa-alert .usa-alert__action {
-  align-items: center;
-  backdrop-filter: blur(25px);
-  background: nds.$base-lightest;
-  border: 0;
-  border-radius: nds.radius(pill);
-  color: nds.$text-primary;
-  display: inline-flex;
-  flex: none;
-  font-family: nds.$font-family;
-  font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
-  gap: nds.space(4);
-  height: nds.space(36);
-  justify-content: center;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: nds.$text-line-height-none;
-  min-height: nds.space(36);
-  padding-block: 0;
-  padding-inline: nds.space(12);
-  text-align: center;
-  white-space: nowrap;
-
-  &:is(:link, :visited),
-  &:hover,
-  &:active,
-  &:focus-visible {
-    color: nds.$text-primary;
-  }
 }
 
 // Dismiss/close control. Positioned top-right; reserves inline-end padding on

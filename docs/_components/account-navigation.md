@@ -18,18 +18,18 @@ it is open.
 
 {% capture example %}
 <header class="account-header">
-  <a href="#" class="account-header__logo-link" aria-label="Login.gov home">
+  <button type="button" class="usa-button usa-button--unstyled account-header__logo-link" aria-label="Login.gov home">
     <img class="account-header__logo" src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="Login.gov">
-  </a>
+  </button>
   <div class="account-header__actions">
     <details class="account-header__menu">
       <summary class="account-header__menu-button">
         <span class="account-header__menu-email">user@example.gov</span>
-        <svg class="usa-icon account-header__menu-chevron" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#expand_more"></use></svg>
+        <svg class="usa-icon account-header__menu-chevron" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-down"></use></svg>
       </summary>
       <div class="account-mobile-menu__panel">
-        <form class="account-mobile-menu__logout-form" action="#" method="post">
-          <button type="submit" class="account-nav__link account-mobile-menu__logout-button">Sign out</button>
+        <form class="account-mobile-menu__logout-form" method="post">
+          <button type="button" class="account-nav__link account-mobile-menu__logout-button">Sign out</button>
         </form>
       </div>
     </details>
@@ -41,27 +41,34 @@ it is open.
 ## Side navigation
 
 `.account-nav` lists the account sections. Mark the active section with
-`.account-nav__link--current`.
+`aria-current="page"` and `.account-nav__link--current`. Use the outline icon
+as the image source and its filled library counterpart for `--account-nav-current-icon`.
 
 {% capture example %}
 <nav class="account-nav" aria-label="Account">
   <ul class="account-nav__list">
     <li class="account-nav__item">
-      <a href="#" class="account-nav__link account-nav__link--current" aria-current="page">
-        <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#home"></use></svg>
-        Your account
+      <a href="{{ site.baseurl }}/dashboard-home/" class="account-nav__link">
+        <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/house.svg" style="--account-nav-current-icon: url('{{ site.baseurl }}/assets/img/nds-icons/library/house-filled.svg')" alt="">
+        Home
       </a>
     </li>
     <li class="account-nav__item">
-      <a href="#" class="account-nav__link">
-        <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#security"></use></svg>
-        Your authentication methods
+      <a href="{{ site.baseurl }}/account/" class="account-nav__link account-nav__link--current" aria-current="page">
+        <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/profile-circle.svg" style="--account-nav-current-icon: url('{{ site.baseurl }}/assets/img/nds-icons/library/profile-circle-filled.svg')" alt="">
+        Account
       </a>
     </li>
     <li class="account-nav__item">
-      <a href="#" class="account-nav__link">
-        <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#account_circle"></use></svg>
-        Connected accounts
+      <a href="{{ site.baseurl }}/authentication-methods/" class="account-nav__link">
+        <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/lock.svg" style="--account-nav-current-icon: url('{{ site.baseurl }}/assets/img/nds-icons/library/lock-filled.svg')" alt="">
+        Security
+      </a>
+    </li>
+    <li class="account-nav__item">
+      <a href="{{ site.baseurl }}/history/" class="account-nav__link">
+        <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/clock.svg" style="--account-nav-current-icon: url('{{ site.baseurl }}/assets/img/nds-icons/library/clock-filled.svg')" alt="">
+        History
       </a>
     </li>
   </ul>

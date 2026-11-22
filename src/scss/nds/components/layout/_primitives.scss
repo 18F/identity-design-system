@@ -83,9 +83,9 @@
   color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-m;
-  font-weight: nds.$font-semibold;
-  letter-spacing: -0.0675rem;
-  line-height: 1.1;
+  font-weight: nds.$font-medium;
+  letter-spacing: nds.$text-letter-spacing-heading;
+  line-height: nds.$text-line-height-heading-m;
   margin: 0;
   max-width: 100%;
   min-width: 0;
@@ -206,7 +206,7 @@
 }
 
 .copy--muted {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
 }
 
 .heading-s,
@@ -214,14 +214,14 @@
   color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading-section;
   line-height: 1.2;
   margin: 0;
   text-align: left;
 }
 
-// Body/M Emphasis — the emphasized body text style (16px semibold, body
+// Body/M Emphasis — the emphasized body text style (16px medium, body
 // line-height and tracking). Distinct from `.heading-s`/`.card__title`, which
 // are heading tokens with tighter tracking and line-height. Used for inline
 // emphasis such as numbered step headings inside a card.
@@ -229,9 +229,9 @@
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$text-weight-body-m-emphasis;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
 }
 
 .copy.copy--centered h2 {
@@ -257,19 +257,19 @@
 }
 
 .copy--muted a {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
 
   &:is(:link, :visited),
   &:hover,
   &:active,
   &:focus-visible {
-    color: nds.alpha(nds.$black, 65%);
+    color: nds.$text-secondary;
   }
 }
 
 // Horizontal rule.
 .divider {
-  background: nds.alpha(nds.$black, 10%);
+  background: var(--rule-color, #{nds.$base-lighter});
   border: 0;
   height: 1px;
   margin: 0;
@@ -279,23 +279,38 @@
 // Labelled "or" separator.
 .separator {
   align-items: center;
-  color: nds.alpha(nds.$black, 60%);
+  color: nds.$text-tertiary;
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: 400;
-  gap: nds.space(12);
+  gap: nds.space(8);
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-none;
   text-align: center;
   width: 100%;
 
   &::before,
   &::after {
-    background: nds.alpha(nds.$black, 10%);
+    background: var(--rule-color, #{nds.$base-lighter});
     content: '';
     flex: 1 1 0;
     height: 1px;
     min-width: nds.space(24);
+  }
+}
+
+// Reuse the existing USWDS base-color utilities, not NDS-only variant names.
+@each $shade, $line, $label in (base-darkest, nds.$border-primary, nds.$text-primary),
+  (base-light, nds.$border-secondary, nds.$text-secondary),
+  (base-lightest, nds.$border-quaternary, nds.$text-disabled)
+{
+  .divider.bg-#{$shade} {
+    background-color: $line;
+  }
+
+  .separator.text-#{$shade} {
+    --rule-color: #{$line};
+    color: $label;
   }
 }

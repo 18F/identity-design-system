@@ -14,9 +14,9 @@
 
 @use 'tokens/nds' as nds;
 
-$nds-enhanced-border-width: 1px;
+$nds-enhanced-border-width: nds.$stroke-hairline;
 $nds-enhanced-height: nds.space(56);
-$nds-enhanced-pad-x: 15px;
+$nds-enhanced-pad-x: nds.$field-padding-inline;
 $nds-enhanced-toggle-size: nds.space(20);
 
 @mixin nds-enhanced-focus-ring($color: nds.$base-darkest) {
@@ -63,7 +63,7 @@ $nds-enhanced-toggle-size: nds.space(20);
   width: 100%;
 
   &::placeholder {
-    color: nds.alpha(nds.$text-primary, 65%);
+    color: nds.$text-secondary;
     opacity: 1;
   }
 
@@ -105,7 +105,7 @@ $nds-enhanced-toggle-size: nds.space(20);
   display: block;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin: 0 0 nds.space(8);
@@ -134,7 +134,7 @@ $nds-enhanced-toggle-size: nds.space(20);
 }
 
 .usa-input__floating-label {
-  color: nds.alpha(nds.$text-primary, 65%);
+  color: nds.$text-secondary;
   font-size: nds.$text-body-m;
   font-weight: 400;
   inset-inline-start: calc(#{$nds-enhanced-pad-x} + 1px);
@@ -155,7 +155,7 @@ $nds-enhanced-toggle-size: nds.space(20);
 .usa-input__control--floating:not(:placeholder-shown) ~ .usa-input__floating-label,
 .usa-input__control--floating:-webkit-autofill ~ .usa-input__floating-label {
   font-size: nds.$text-label-s;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   top: nds.space(10);
   transform: none;
 }
@@ -169,7 +169,7 @@ $nds-enhanced-toggle-size: nds.space(20);
   align-items: center;
   background: transparent;
   border: 0;
-  color: nds.alpha(nds.$text-primary, 65%);
+  color: nds.$text-secondary;
   cursor: pointer;
   display: flex;
   height: $nds-enhanced-toggle-size;
@@ -200,7 +200,7 @@ $nds-enhanced-toggle-size: nds.space(20);
   display: none;
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   gap: nds.space(4);
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;

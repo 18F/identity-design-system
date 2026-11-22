@@ -90,6 +90,7 @@ build-images:
 	mkdir -p $(OUTPUT_DIR)/assets/img
 	cp -r node_modules/@uswds/uswds/dist/img $(OUTPUT_DIR)/assets
 	cp -r src/img $(OUTPUT_DIR)/assets
+	node scripts/build-nds-icons.mjs "$(OUTPUT_DIR)/assets/img/nds-icons"
 
 create-snapshots:
 	node scripts/snapshot.js

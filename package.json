@@ -49,6 +49,7 @@
     "build:pkg": "run-p build:pkg:*",
     "lint:js": "eslint src/js test --ext .js,.ts",
     "lint:css": "stylelint src/scss",
+    "lint:icons": "node scripts/build-nds-icons.mjs --check-sass",
     "watch:docs:css": "run-p \"build:css:legacy -- --watch\" \"build:css:nds -- --watch\"",
     "watch:docs:js": "npm run build:docs:js -- --watch",
     "watch:docs": "run-p watch:docs:*",

@@ -7,183 +7,65 @@ lead: Checkboxes allow users to select one or more options from a list.
 
 ## Default
 
+Compare each state with and without supporting text. Focus and hover samples show their treatment without requiring interaction.
+
 {% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-legend">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="dee5" class="usa-checkbox__input" type="checkbox" name="dee5">
-      <label for="dee5" class="usa-checkbox__label">Option - Unchecked</label>
-    </li>
-    <li>
-      <input id="nhjq" class="usa-checkbox__input usa-focus" type="checkbox" name="nhjq">
-      <label for="nhjq" class="usa-checkbox__label">Option - Unchecked Focus</label>
-    </li>
-    <li>
-      <input id="b711" class="usa-checkbox__input" type="checkbox" name="b711" checked>
-      <label for="b711" class="usa-checkbox__label">Option - Checked</label>
-    </li>
-    <li>
-      <input id="ojqb" class="usa-checkbox__input usa-focus" type="checkbox" name="ojqb" checked>
-      <label for="ojqb" class="usa-checkbox__label">Option - Checked Focus</label>
-    </li>
-    <li>
-      <input id="badc" class="usa-checkbox__input" type="checkbox" name="badc" disabled>
-      <label for="badc" class="usa-checkbox__label">Option - Disabled</label>
-    </li>
-    <li>
-      <input id="adcb" class="usa-checkbox__input" type="checkbox" name="adcb" disabled checked>
-      <label for="adcb" class="usa-checkbox__label">Option - Disabled and Checked</label>
-    </li>
-  </ul>
-</fieldset>
+{% include helpers/checkbox-states.html variant="default" %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ## Bordered
 
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="d30c" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="d30c">
-      <label for="d30c" class="usa-checkbox__label">Option - Unchecked</label>
-    </li>
-    <li>
-      <input id="lipc" class="usa-checkbox__input usa-checkbox__input--bordered usa-focus" type="checkbox" name="lipc">
-      <label for="lipc" class="usa-checkbox__label">Option - Unchecked Focus</label>
-    </li>
-    <li>
-      <input id="a123" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="a123" checked>
-      <label for="a123" class="usa-checkbox__label">Option - Checked</label>
-    </li>
-    <li>
-      <input id="xqgt" class="usa-checkbox__input usa-checkbox__input--bordered usa-focus" type="checkbox" name="xqgt" checked>
-      <label for="xqgt" class="usa-checkbox__label">Option - Checked Focus</label>
-    </li>
-    <li>
-      <input id="c6b3" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="c6b3" disabled>
-      <label for="c6b3" class="usa-checkbox__label">Option - Disabled</label>
-    </li>
-    <li>
-      <input id="6b3c" class="usa-checkbox__input usa-checkbox__input--bordered" type="checkbox" name="6b3c" disabled checked>
-      <label for="6b3c" class="usa-checkbox__label">Option - Disabled and Checked</label>
-    </li>
-  </ul>
-</fieldset>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-
-## Indeterminate
-
-Use the `data-indeterminate` attribute (or set `element.indeterminate = true` in
-JavaScript) to render a tri-state checkbox — for example, a "select all" that
-reflects a partial selection below it.
+A label-only row with a subtle perimeter. Selecting it changes the control, not the row surface.
 
 {% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-legend">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="ind-1" class="usa-checkbox__input" type="checkbox" name="ind-1" data-indeterminate>
-      <label for="ind-1" class="usa-checkbox__label">Select all</label>
-    </li>
-    <li>
-      <input id="ind-2" class="usa-checkbox__input usa-focus" type="checkbox" name="ind-2" data-indeterminate>
-      <label for="ind-2" class="usa-checkbox__label">Indeterminate - Focus</label>
-    </li>
-    <li>
-      <input id="ind-3" class="usa-checkbox__input" type="checkbox" name="ind-3" data-indeterminate disabled>
-      <label for="ind-3" class="usa-checkbox__label">Indeterminate - Disabled</label>
-    </li>
-  </ul>
-</fieldset>
+{% include helpers/checkbox-states.html variant="bordered" %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ## Tile
 
+The bordered row with supporting text. The illustration example uses the same control and text hierarchy.
+
 {% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="c288" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="c288">
-      <label for="c288" class="usa-checkbox__label">Option - Unchecked<span class="usa-checkbox__label-description">Support text</span></label>
-    </li>
-    <li>
-      <input id="hx88" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="hx88">
-        <label for="hx88" class="usa-checkbox__label usa-checkbox__label--illustrated">
-        <div class="usa-checkbox__image">
-          <img alt="" src="{{ site.baseurl }}/img/fingerprint-icon.svg">
-        </div>
-        <div class="usa-checkbox__label--text">
-          Option - Illustration
-          <span class="usa-checkbox__label-description">Support text</span>
-        </div>
-      </label>
-    </li>
-    <li>
-      <input id="u22j" class="usa-checkbox__input usa-checkbox__input--tile usa-focus" type="checkbox" name="u22j">
-      <label for="u22j" class="usa-checkbox__label">Option - Unchecked Focus<span class="usa-checkbox__label-description">Support text</span></label>
-    </li>
-    <li>
-      <input id="e484" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="e484" checked>
-      <label for="e484" class="usa-checkbox__label">Option - Checked<span class="usa-checkbox__label-description">Support text</span></label>
-    </li>
-    <li>
-      <input id="afeg" class="usa-checkbox__input usa-checkbox__input--tile usa-focus" type="checkbox" name="afeg" checked>
-      <label for="afeg" class="usa-checkbox__label">Option - Checked Focus<span class="usa-checkbox__label-description">Support text</span></label>
-    </li>
-    <li>
-      <input id="ea84" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="ea84" disabled>
-      <label for="ea84" class="usa-checkbox__label">Option - Disabled<span class="usa-checkbox__label-description">Support text</span></label>
-    </li>
-    <li>
-      <input id="a84e" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" name="a84e" disabled checked>
-      <label for="a84e" class="usa-checkbox__label">Option - Disabled and Checked<span class="usa-checkbox__label-description">Support text</span></label>
-    </li>
-  </ul>
-</fieldset>
+{% include helpers/checkbox-states.html variant="tile" %}
+<small>Illustrated tile</small>
+<input id="checkbox-illustrated" class="usa-checkbox__input usa-checkbox__input--tile" type="checkbox" aria-labelledby="illustrated-title" aria-describedby="illustrated-description">
+<label for="checkbox-illustrated" class="usa-checkbox__label usa-checkbox__label--illustrated">
+  <span class="usa-checkbox__image"><img alt="" src="{{ site.baseurl }}/assets/img/nds-icons/library/fingerprint.svg"></span>
+  <span class="usa-checkbox__label--text"><span id="illustrated-title">Face or touch unlock</span><span id="illustrated-description" class="usa-checkbox__label-description">Sign in on a supported device.</span></span>
+</label>
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+
+## Indeterminate
+
+Use a mixed state for a partial selection. The component initializes `data-indeterminate` as the native checkbox property; activating it returns to a normal checked or unchecked state.
+
+{% capture example %}
+{% include helpers/checkbox-states.html variant="mixed" %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ## Switch
 
-Add `usa-checkbox__input--switch` to render the control as a toggle. Set
-`role="switch"` and keep `aria-checked` in sync so assistive technology
-announces the on/off state; the label supplies the accessible name.
+Use a native checkbox with `role="switch"` for an on/off setting. Its checked property supplies the accessible state.
+The disabled On switch keeps its blue track and mutes the thumb. Both disabled
+states retain their thumb position; the label stays clickable only when enabled.
 
 {% capture example %}
+{% assign states = 'Off,On,Disabled on,Disabled off,Off hover,On hover,Off focus,On focus' | split: ',' %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="sw01" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="false" name="sw01">
-      <label for="sw01" class="usa-checkbox__label">Option - Off</label>
-    </li>
-    <li>
-      <input id="sw02" class="usa-checkbox__input usa-checkbox__input--switch usa-focus" type="checkbox" role="switch" aria-checked="false" name="sw02">
-      <label for="sw02" class="usa-checkbox__label">Option - Off Focus</label>
-    </li>
-    <li>
-      <input id="sw03" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="true" name="sw03" checked>
-      <label for="sw03" class="usa-checkbox__label">Option - On</label>
-    </li>
-    <li>
-      <input id="sw04" class="usa-checkbox__input usa-checkbox__input--switch usa-focus" type="checkbox" role="switch" aria-checked="true" name="sw04" checked>
-      <label for="sw04" class="usa-checkbox__label">Option - On Focus</label>
-    </li>
-    <li>
-      <input id="sw05" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="false" name="sw05" disabled>
-      <label for="sw05" class="usa-checkbox__label">Option - Disabled</label>
-    </li>
-    <li>
-      <input id="sw06" class="usa-checkbox__input usa-checkbox__input--switch" type="checkbox" role="switch" aria-checked="true" name="sw06" disabled checked>
-      <label for="sw06" class="usa-checkbox__label">Option - Disabled and On</label>
-    </li>
-  </ul>
+  <legend class="usa-sr-only">Switch states</legend>
+  {% for state in states %}
+  {% assign key = state | downcase %}
+  {% assign id = key | slugify | prepend: 'checkbox-switch-' %}
+  <div class="margin-bottom-2">
+    <small>{{ state }}</small>
+    <input id="{{ id }}" type="checkbox" role="switch" class="usa-checkbox__input usa-checkbox__input--switch{% if key contains 'focus' %} usa-focus{% endif %}"{% if key contains 'on' %} checked{% endif %}{% if key contains 'disabled' %} disabled{% endif %}>
+    <label for="{{ id }}" class="usa-checkbox__label{% if key contains 'hover' %} usa-checkbox__label--hover{% endif %}">Email notifications</label>
+  </div>
+  {% endfor %}
 </fieldset>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

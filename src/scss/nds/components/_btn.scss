@@ -34,9 +34,11 @@
 
 // Size helper: sets height and inline padding.
 @mixin nds-button-size($height, $pad-x) {
+  --nds-button-height: #{$height};
+  --nds-button-padding: #{$pad-x};
   height: $height;
   min-height: $height;
-  padding-inline: $pad-x;
+  padding-inline: calc(var(--nds-button-padding) - var(--nds-button-stroke, 0px));
 }
 
 // Emit disabled declarations for the base disabled selector and every
@@ -60,7 +62,7 @@
   // (`[aria-disabled="true"]` stays tabbable). Re-assert after the disabled
   // block so the ring's box-shadow wins over the disabled `box-shadow: none`.
   &:is(:disabled, [aria-disabled='true'], .usa-button--disabled):is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
+    @include nds.transparent-focus-ring();
   }
 }
 
@@ -69,17 +71,17 @@
 .usa-button {
   align-items: center;
   appearance: none;
-  background: nds.$primary-darker;
+  background: nds.$base;
   border: 0;
   border-radius: nds.radius(pill);
-  box-shadow: nds.$shadow-compact;
+  box-shadow: nds.$shadow-large;
   box-sizing: border-box;
-  color: nds.$primary-lightest;
+  color: nds.$white;
   cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$text-weight-label-m-emphasis;
   gap: nds.space(4);
   justify-content: center;
   letter-spacing: nds.$text-letter-spacing-label;
@@ -92,30 +94,21 @@
 
   @include nds-button-size(nds.space(44), nds.space(20));
 
-  // Primary at the large size gets the larger resting shadow. Declared before
-  // :hover so hover can drop back to the compact shadow.
-  &.usa-button--lg,
-  &.usa-button--big {
-    box-shadow: nds.$shadow-large;
-  }
-
   &:is(:link, :visited) {
-    color: nds.$primary-lightest;
+    color: nds.$white;
   }
 
   &:hover,
   &.usa-button--hover {
-    background: nds.$primary-darker;
-    box-shadow: nds.$shadow-compact;
-    color: nds.$primary-lightest;
+    background: nds.$base-dark;
+    color: nds.$white;
     text-decoration: none;
   }
 
   &:active,
   &.usa-button--active {
-    background: nds.$primary-darker;
-    box-shadow: none;
-    color: nds.$primary-lightest;
+    background: nds.$base-darker;
+    color: nds.$white;
   }
 
   &:focus {
@@ -123,15 +116,14 @@
   }
 
   &:is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
-    background: nds.$primary-darker;
-    color: nds.$primary-lightest;
+    background: nds.$base;
+    color: nds.$white;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$primary-lightest, 85%);
+    background: nds.$disabled-light;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
     cursor: not-allowed;
   }
 }
@@ -139,7 +131,9 @@
 // ----------------------------------------
 // Sizes
 // ----------------------------------------
-.usa-button--sm {
+.usa-button--sm,
+// Existing alert markup predates the explicit button modifiers.
+:where(.usa-alert) .usa-alert__action {
   @include nds-button-size(nds.space(36), nds.space(12));
 }
 
@@ -156,53 +150,46 @@
 // Variants
 // ----------------------------------------
 
-// --danger → destructive (red-600).
+// --danger → destructive (error red).
 .usa-button--danger {
   background: nds.$secondary;
-  box-shadow: nds.$shadow-compact;
-  color: nds.$primary-lightest;
-
-  &.usa-button--lg,
-  &.usa-button--big {
-    box-shadow: nds.$shadow-large;
-  }
+  box-shadow: nds.$shadow-large;
+  color: nds.$white;
 
   &:is(:link, :visited) {
-    color: nds.$primary-lightest;
+    color: nds.$white;
   }
 
   &:hover,
   &.usa-button--hover {
-    background: nds.alpha(nds.$secondary, 85%);
-    box-shadow: nds.$shadow-compact;
-    color: nds.$primary-lightest;
+    background: nds.$secondary-dark;
+    color: nds.$white;
     text-decoration: none;
   }
 
   &:active,
   &.usa-button--active {
-    background: nds.$secondary;
-    box-shadow: none;
-    color: nds.$primary-lightest;
+    background: nds.$secondary-darkest;
+    color: nds.$white;
   }
 
   &:is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
     background: nds.$secondary;
-    color: nds.$primary-lightest;
+    color: nds.$white;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$primary-lightest, 85%);
+    background: nds.$disabled-light;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
   }
 }
 
-// --secondary → translucent frosted fill, ink text.
-.usa-button--secondary {
-  backdrop-filter: blur(25px);
-  background: nds.alpha(nds.$black, 5%);
+// --secondary → frosted base tint with a 50px backdrop blur, ink text.
+.usa-button--secondary,
+:where(.usa-alert) .usa-alert__action {
+  backdrop-filter: blur(nds.$blur-glass);
+  background: nds.$base-lightest;
   box-shadow: none;
   color: nds.$black;
 
@@ -211,30 +198,25 @@
   }
 
   &:hover,
-  &.usa-button--hover {
-    background: nds.alpha(nds.$primary-lightest, 85%);
+  &:active,
+  &.usa-button--hover,
+  &.usa-button--active {
+    background: nds.$base-lighter;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 65%);
+    color: nds.$black;
     text-decoration: none;
   }
 
-  &:active,
-  &.usa-button--active {
-    background: nds.alpha(nds.$black, 5%);
-    box-shadow: none;
-    color: nds.$black;
-  }
-
   &:is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
-    background: nds.alpha(nds.$black, 5%);
+    backdrop-filter: none;
+    background: nds.$base-lightest;
     color: nds.$black;
   }
 
   @include nds-button-disabled() {
-    background: nds.alpha(nds.$black, 5%);
+    background: nds.$disabled-light;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
   }
 }
 
@@ -267,8 +249,7 @@
   }
 
   &:is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
-    background: nds.$base-lightest;
+    background: nds.$background-primary;
     color: nds.$primary;
   }
 
@@ -279,8 +260,8 @@
   }
 }
 
-// --quaternary → borderless text button, subtle wash on hover.
-.usa-button--quaternary {
+// Shared appearance; consumers retain their own layout and semantics.
+@mixin ghost-surface {
   background: transparent;
   box-shadow: none;
   color: nds.$black;
@@ -300,7 +281,6 @@
   }
 
   &:is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
     background: nds.alpha(nds.$black, 5%);
     color: nds.$black;
   }
@@ -312,47 +292,18 @@
   }
 }
 
-// --ghost → frosted transparent, heavier wash on hover than quaternary.
+// Ghost is an alias for quaternary; keep both public modifiers.
+.usa-button--quaternary,
 .usa-button--ghost {
-  backdrop-filter: blur(25px);
-  background: transparent;
-  box-shadow: none;
-  color: nds.$black;
-
-  &:is(:link, :visited) {
-    color: nds.$black;
-  }
-
-  &:hover,
-  &:active,
-  &.usa-button--hover,
-  &.usa-button--active {
-    background: nds.alpha(nds.$black, 12%);
-    box-shadow: none;
-    color: nds.$black;
-    text-decoration: none;
-  }
-
-  &:is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
-    background: nds.alpha(nds.$black, 8%);
-    color: nds.$black;
-  }
-
-  @include nds-button-disabled() {
-    background: transparent;
-    box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
-  }
+  @include ghost-surface();
 }
 
-// --outline → bordered, transparent fill, ink text. USWDS ships an
-// `.usa-button--outline` (1px inset box-shadow border); without an override the
-// base primary fill wins the cascade and the outline collapses into a solid
-// button. Give it the same bordered treatment as `--tertiary`.
+// --outline → white fill with a 1px base@50% border, ink text.
 .usa-button--outline {
-  background: transparent;
-  border: 1px solid nds.alpha(nds.$black, 45%);
+  --nds-button-stroke: #{nds.$stroke-hairline};
+  --nds-outline-ink: #{nds.$text-primary};
+  background: nds.$white;
+  border: nds.$stroke-hairline solid nds.$border-secondary;
   box-shadow: none;
   color: nds.$black;
 
@@ -361,33 +312,40 @@
   }
 
   &:hover,
-  &:active,
-  &.usa-button--hover,
-  &.usa-button--active {
-    background: transparent;
-    border-color: nds.alpha(nds.$black, 85%);
+  &.usa-button--hover {
+    background: nds.$base-lightest;
+    // USWDS removes the bottom border on hover; restore all four edges.
+    border: nds.$stroke-hairline solid nds.$border-secondary;
     box-shadow: none;
     color: nds.$black;
-    outline: 1.5px solid nds.alpha(nds.$black, 85%);
-    outline-offset: -1.5px;
     text-decoration: none;
   }
 
+  &:active,
+  &.usa-button--active {
+    background: nds.$base-lightest;
+    border-color: nds.$border-primary;
+    box-shadow: none;
+    color: nds.$black;
+  }
+
   &:is(:focus-visible, .usa-focus) {
-    @include nds.focus-ring();
-    border-color: nds.alpha(nds.$black, 85%);
+    background: nds.$white;
+    border-color: nds.$border-secondary;
     color: nds.$black;
   }
 
   @include nds-button-disabled() {
-    background: transparent;
-    border-color: nds.alpha(nds.$black, 25%);
+    --nds-outline-ink: #{nds.$text-disabled};
+    background: nds.$white;
+    border-color: nds.$border-tertiary;
     box-shadow: none;
-    color: nds.alpha(nds.$black, 25%);
+    color: nds.$disabled;
   }
 
   // Danger outline → error ink and border.
   &.usa-button--danger {
+    --nds-outline-ink: #{nds.$error-dark};
     border-color: nds.alpha(nds.$error, 60%);
     color: nds.$error-dark;
 
@@ -395,29 +353,49 @@
       color: nds.$error-dark;
     }
 
-    &:hover,
-    &:active,
-    &.usa-button--hover,
-    &.usa-button--active {
-      background: transparent;
-      border-color: nds.$error;
+    &.usa-button:not(:disabled, [aria-disabled='true'], .usa-button--disabled) {
+      color: var(--nds-outline-ink);
+    }
+
+    // Let the border alone paint the stroke; legacy adds a darker inset on hover.
+    &:not(:disabled, [aria-disabled='true'], .usa-button--disabled, :focus-visible, .usa-focus) {
+      &,
+      &:is(:hover, :active, .usa-button--hover, .usa-button--active) {
+        box-shadow: none;
+      }
+    }
+
+    &:is(:hover, .usa-button--hover) {
+      border-color: nds.alpha(nds.$error, 60%);
+    }
+
+    &.usa-button:not(:disabled, [aria-disabled='true'], .usa-button--disabled):is(
+        :active,
+        .usa-button--active
+      ) {
+      background: nds.$error-lighter;
+      border-color: nds.alpha(nds.$error, 60%);
       color: nds.$error-dark;
-      outline: 1.5px solid nds.$error;
-      outline-offset: -1.5px;
     }
 
     &:is(:focus-visible, .usa-focus) {
-      @include nds.focus-ring();
       border-color: nds.$error;
       color: nds.$error-dark;
     }
 
     @include nds-button-disabled() {
+      --nds-outline-ink: #{nds.$text-disabled};
       background: transparent;
       border-color: nds.alpha(nds.$black, 25%);
       color: nds.alpha(nds.$black, 25%);
     }
   }
+}
+
+// Legacy form link colors otherwise outrank the variant, including on revisit.
+.usa-form a.usa-button.usa-button--outline,
+.usa-form a.usa-button.usa-button--outline:visited {
+  color: var(--nds-outline-ink);
 }
 
 // Flat variants never take the primary/danger large-size resting shadow.
@@ -440,7 +418,7 @@
 // ----------------------------------------
 // Layout modifiers
 // ----------------------------------------
-.usa-button--wide,
+// --wide retains the USWDS responsive minimum; only --full-width stretches.
 .usa-button--full-width {
   display: flex;
   width: 100%;
@@ -454,6 +432,112 @@
 .usa-button--icon-only {
   aspect-ratio: 1;
   padding-inline: 0;
+  width: var(--nds-button-height);
+}
+
+.usa-button > .usa-icon {
+  flex: none;
+  height: nds.space(20);
+  width: nds.space(20);
+}
+
+// A wrapped label identifies the icon edge without new modifier classes.
+.usa-button:not(.usa-button--icon-only) {
+  --nds-button-icon-inset: #{nds.space(12)};
+
+  &.usa-button--sm {
+    --nds-button-icon-inset: #{nds.space(8)};
+  }
+  &:is(.usa-button--lg, .usa-button--big) {
+    --nds-button-icon-inset: #{nds.space(16)};
+  }
+
+  &:has(> .usa-icon:first-child:not(:last-child)) {
+    padding-inline-start: calc(var(--nds-button-icon-inset) - var(--nds-button-stroke, 0px));
+  }
+
+  &:has(> .usa-icon:last-child:not(:first-child)) {
+    padding-inline-end: calc(var(--nds-button-icon-inset) - var(--nds-button-stroke, 0px));
+  }
+}
+
+.usa-button--icon-only:where(
+    :not(
+      .usa-button--secondary,
+      .usa-button--tertiary,
+      .usa-button--outline,
+      .usa-button--danger,
+      .usa-button--ghost,
+      .usa-button--quaternary
+    )
+  ):is(:active, .usa-button--active):not(
+    :disabled,
+    [aria-disabled='true'],
+    .usa-button--disabled,
+    :focus-visible,
+    .usa-focus
+  ) {
+  background: nds.$base;
+  box-shadow: none;
+}
+
+// Override USWDS button:not([disabled]):focus, including anchor buttons.
+.usa-button:not(:disabled):focus {
+  outline: 0;
+}
+
+.usa-button:not(:disabled):is(:focus-visible, .usa-focus),
+// Legacy danger-outline uses a more specific inset shadow for big/hover/active.
+.usa-button.usa-button--danger.usa-button--outline:not(:disabled):is(:focus-visible, .usa-focus) {
+  @include nds.transparent-focus-ring();
+  // Don't interpolate the ring from the resting elevation as focus moves.
+  transition-property: background-color, border-color, color;
+}
+
+// Legacy inline action: keep button semantics without the primary pill surface.
+.usa-button.usa-button--unstyled {
+  border-radius: nds.radius(2);
+  display: inline;
+  font-weight: nds.$text-weight-label-m-emphasis;
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding: 0;
+  width: auto;
+
+  &,
+  &:is(
+    :link,
+    :visited,
+    :hover,
+    :active,
+    :focus,
+    .usa-focus,
+    .usa-button--hover,
+    .usa-button--active
+  ) {
+    background: transparent;
+    border: 0;
+    color: nds.$text-link;
+    text-decoration: underline;
+  }
+
+  &:not(:focus-visible, .usa-focus) {
+    box-shadow: none;
+  }
+  &:is(:hover, .usa-button--hover) {
+    color: nds.$primary-dark;
+  }
+  &:is(:active, .usa-button--active) {
+    color: nds.$primary-darker;
+  }
+
+  @include nds-button-disabled() {
+    background: transparent;
+    box-shadow: none;
+    color: nds.$text-disabled;
+    text-decoration: underline;
+  }
 }
 
 // Action containers stretch their buttons full-width.

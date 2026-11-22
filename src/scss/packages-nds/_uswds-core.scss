@@ -23,25 +23,24 @@
   $theme-color-base-darker: map.get(legacy.$site-palette, 'site-darker-grey') !default,
   $theme-color-base-darkest: map.get(legacy.$site-palette, 'site-darkest-grey') !default,
   $theme-color-base-ink: nds-color.$black !default,
-  // Primary colors — NDS blue scale. Lightest/lighter/light shades the NDS
-  // palette does not define are kept on the legacy palette for now.
-  $theme-color-primary-lightest: map.get(legacy.$site-palette, 'site-lightest-blue') !default,
-  $theme-color-primary-lighter: map.get(legacy.$site-palette, 'site-lighter-blue') !default,
-  $theme-color-primary-light: map.get(legacy.$site-palette, 'site-light-blue') !default,
-  $theme-color-primary: nds-color.$primary-darker !default,
-  $theme-color-primary-vivid: nds-color.$primary-dark !default,
-  $theme-color-primary-dark: nds-color.$primary-darker !default,
-  $theme-color-primary-darker: nds-color.$base !default,
-  $theme-color-primary-darkest: nds-color.$base !default,
+  // Legacy primary roles resolve to the corresponding NDS blue shades.
+  $theme-color-primary-lightest: nds-color.$primary-lightest !default,
+  $theme-color-primary-lighter: nds-color.$primary-lighter !default,
+  $theme-color-primary-light: nds-color.$primary-light !default,
+  $theme-color-primary: nds-color.$primary !default,
+  $theme-color-primary-vivid: nds-color.$primary !default,
+  $theme-color-primary-dark: nds-color.$primary-dark !default,
+  $theme-color-primary-darker: nds-color.$primary-darker !default,
+  $theme-color-primary-darkest: nds-color.$primary-darkest !default,
   // Secondary colors
-  $theme-color-secondary-lightest: map.get(legacy.$site-palette, 'site-lightest-red') !default,
-  $theme-color-secondary-lighter: map.get(legacy.$site-palette, 'site-lighter-red') !default,
-  $theme-color-secondary-light: map.get(legacy.$site-palette, 'site-light-red') !default,
-  $theme-color-secondary: map.get(legacy.$site-palette, 'site-red') !default,
+  $theme-color-secondary-lightest: nds-color.$secondary-lightest !default,
+  $theme-color-secondary-lighter: nds-color.$secondary-lighter !default,
+  $theme-color-secondary-light: nds-color.$secondary-light !default,
+  $theme-color-secondary: nds-color.$secondary !default,
   $theme-color-secondary-vivid: false !default,
-  $theme-color-secondary-dark: map.get(legacy.$site-palette, 'site-dark-red') !default,
-  $theme-color-secondary-darker: map.get(legacy.$site-palette, 'site-darker-red') !default,
-  $theme-color-secondary-darkest: map.get(legacy.$site-palette, 'site-darkest-red') !default,
+  $theme-color-secondary-dark: nds-color.$secondary-dark !default,
+  $theme-color-secondary-darker: nds-color.$secondary-darker !default,
+  $theme-color-secondary-darkest: nds-color.$secondary-darkest !default,
   // Accent cool colors
   $theme-color-accent-cool-family: 'teal' !default,
   $theme-color-accent-cool-lightest: map.get(legacy.$site-palette, 'site-lightest-teal') !default,
@@ -53,32 +52,32 @@
   $theme-color-accent-cool-darkest: map.get(legacy.$site-palette, 'site-darkest-teal') !default,
   // Error colors
   $theme-color-error-family: 'red' !default,
-  $theme-color-error-lighter: map.get(legacy.$site-palette, 'site-lightest-red') !default,
-  $theme-color-error-light: map.get(legacy.$site-palette, 'site-lighter-red') !default,
-  $theme-color-error: map.get(legacy.$site-palette, 'site-red') !default,
-  $theme-color-error-dark: map.get(legacy.$site-palette, 'site-darker-red') !default,
-  $theme-color-error-darker: map.get(legacy.$site-palette, 'site-darkest-red') !default,
+  $theme-color-error-lighter: nds-color.$error-lighter !default,
+  $theme-color-error-light: nds-color.$error-light !default,
+  $theme-color-error: nds-color.$error !default,
+  $theme-color-error-dark: nds-color.$error-dark !default,
+  $theme-color-error-darker: nds-color.$error-darker !default,
   // Warning colors
   $theme-color-warning-family: 'yellow' !default,
-  $theme-color-warning-lighter: map.get(legacy.$site-palette, 'site-lightest-yellow') !default,
-  $theme-color-warning-light: map.get(legacy.$site-palette, 'site-lighter-yellow') !default,
-  $theme-color-warning: map.get(legacy.$site-palette, 'site-yellow') !default,
-  $theme-color-warning-dark: map.get(legacy.$site-palette, 'site-darker-yellow') !default,
-  $theme-color-warning-darker: map.get(legacy.$site-palette, 'site-darkest-yellow') !default,
+  $theme-color-warning-lighter: nds-color.$warning-lighter !default,
+  $theme-color-warning-light: nds-color.$warning-light !default,
+  $theme-color-warning: nds-color.$warning !default,
+  $theme-color-warning-dark: nds-color.$warning-dark !default,
+  $theme-color-warning-darker: nds-color.$warning-darker !default,
   // Success colors
   $theme-color-success-family: 'green' !default,
-  $theme-color-success-lighter: map.get(legacy.$site-palette, 'site-lightest-green') !default,
-  $theme-color-success-light: map.get(legacy.$site-palette, 'site-lighter-green') !default,
-  $theme-color-success: map.get(legacy.$site-palette, 'site-green') !default,
-  $theme-color-success-dark: map.get(legacy.$site-palette, 'site-darker-green') !default,
-  $theme-color-success-darker: map.get(legacy.$site-palette, 'site-darkest-green') !default,
+  $theme-color-success-lighter: nds-color.$success-lighter !default,
+  $theme-color-success-light: nds-color.$success-light !default,
+  $theme-color-success: nds-color.$success !default,
+  $theme-color-success-dark: nds-color.$success-dark !default,
+  $theme-color-success-darker: nds-color.$success-darker !default,
   // Info colors
   $theme-color-info-family: 'teal' !default,
-  $theme-color-info-lighter: map.get(legacy.$site-palette, 'site-lightest-teal') !default,
-  $theme-color-info-light: map.get(legacy.$site-palette, 'site-lighter-teal') !default,
-  $theme-color-info: map.get(legacy.$site-palette, 'site-teal') !default,
-  $theme-color-info-dark: map.get(legacy.$site-palette, 'site-darker-teal') !default,
-  $theme-color-info-darker: map.get(legacy.$site-palette, 'site-darkest-teal') !default,
+  $theme-color-info-lighter: nds-color.$info-lighter !default,
+  $theme-color-info-light: nds-color.$info-light !default,
+  $theme-color-info: nds-color.$info !default,
+  $theme-color-info-dark: nds-color.$info-dark !default,
+  $theme-color-info-darker: nds-color.$primary-darker !default,
   // Disabled colors
   $theme-color-disabled-lighter: map.get(legacy.$site-palette, 'site-lighter-grey') !default,
   $theme-color-disabled-light: map.get(legacy.$site-palette, 'site-light-grey') !default,
@@ -152,7 +151,8 @@
   $theme-font-path: if(variable-exists(font-path), $font-path, '../../fonts') !default,
   // Image path. The NDS bundle compiles one directory deeper than the default
   // bundle, so relative asset URLs need an extra level to resolve.
-  $theme-image-path: '../../img' !default,
+  $theme-image-path: '../../img/nds-icons/compat' !default,
+  $theme-hero-image: '../../img/hero.jpg' !default,
   //  Font role
   $theme-font-role-heading: 'sans' !default,
   $theme-font-role-alt: 'sans' !default,
@@ -223,6 +223,7 @@
 );
 
 @use 'uswds-core/index' as *;
+$identity-hero-image: $theme-hero-image !default;
 
 $theme-input-tile-background-color-selected: 'primary-lightest';
 $theme-input-tile-border-color: 'primary-light';

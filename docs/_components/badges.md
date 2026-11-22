@@ -1,37 +1,23 @@
 ---
 title: Badges
 lead: >
-  Badges are used to encourage user behavior throughout the site.
+  Badges identify or emphasize an item without implying a status.
 ---
 
-Badges can help signal to the user that they had completed a workflow desired by Login.gov. Primarily, these are used on our user account page to encourage more secure practices.
+Use Primary for the most prominent label, Secondary for a quieter label, or
+Tertiary for an outline. Badges are informational, not buttons.
+For conditions such as success or warning, use [Status badges]({{ site.baseurl }}/status-badge/).
 
-Badges are comprised with a div using the `lg-verification-badge` class and a small SVG image alongside a `span` of text.
-
-## An unphishable badge example
-
-The unphishable badge is used to indicate that an account is only using security keys as its MFA method.
+## Comparison
 
 {% capture example %}
-<div class="lg-verification-badge">
-  <svg class="usa-icon text-success" aria-hidden="true" focusable="false" role="img">
-    <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#lock"></use>
-  </svg>
-  Unphishable
-</div>
+{% include helpers/badge-comparison.html levels="primary,secondary,tertiary" %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## A verified account badge example
-
-A verfied account badge is used to indicate that an account has completed the identity verification process.
+## Dark surface
 
 {% capture example %}
-<div class="lg-verification-badge">
-  <svg class="usa-icon text-success" aria-hidden="true" focusable="false" role="img">
-    <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
-  </svg>
-  Verified Account
-</div>
+{% include helpers/badge-comparison.html levels="primary,secondary,tertiary" dark=true %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

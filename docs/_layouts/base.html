@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
-    <link id="site-stylesheet" rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    {% assign component_slug = page.url | remove: 'index.html' | remove: '/' %}
+    {% assign nds_default = false %}
+    {% if site.data.nds_components contains component_slug %}{% assign nds_default = true %}{% endif %}
+    <link id="site-stylesheet" rel="stylesheet" href="{{ site.baseurl }}/assets/css/{% if nds_default %}nds/{% endif %}styles.css">
     <script>
-      // Swap to the alternate stylesheet bucket before render when requested.
-      if (new URLSearchParams(location.search).get('ui_test_bucket') === 'nds') {
-        document.getElementById('site-stylesheet').href = '{{ site.baseurl }}/assets/css/nds/styles.css';
+      // Only migrated pages default to NDS. Either bucket can be reviewed explicitly.
+      var bucket = new URLSearchParams(location.search).get('ui_test_bucket');
+      if (bucket === 'legacy' || bucket === 'nds') {
+        document.getElementById('site-stylesheet').href =
+          '{{ site.baseurl }}/assets/css/' + (bucket === 'nds' ? 'nds/' : '') + 'styles.css';
       }
     </script>
     <script src="{{ site.baseurl }}/assets/js/init.js"></script>
@@ -16,6 +21,18 @@
   <body>
     {{ content }}
     <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+    {% if nds_default %}
+    <script>
+      // Keep link semantics in the sample markup, but stay in the live example.
+      function preventExampleNavigation(event) {
+        if (event.target instanceof Element && event.target.closest('[data-live-example] a[href]')) {
+          event.preventDefault();
+        }
+      }
+      document.addEventListener('click', preventExampleNavigation);
+      document.addEventListener('auxclick', preventExampleNavigation);
+    </script>
+    {% endif %}
     <script>
       // Keep the active stylesheet bucket when navigating within the docs site.
       (function () {

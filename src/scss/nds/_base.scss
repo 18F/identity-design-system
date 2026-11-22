@@ -55,6 +55,12 @@ body {
   padding: 0;
 }
 
+:root {
+  text-underline-offset: nds.$stroke-hairline;
+  // Improve line breaks without changing whether an element is allowed to wrap.
+  text-wrap-style: pretty;
+}
+
 h1,
 h2,
 h3,

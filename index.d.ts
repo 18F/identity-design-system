@@ -7,5 +7,11 @@ export interface NDSBehavior {
 }
 
 export const inputOtp: NDSBehavior;
+export const animatedMedia: NDSBehavior;
+export const officialBanner: NDSBehavior;
+export const nativeModal: NDSBehavior;
 export const inputSsn: NDSBehavior;
 export const phoneInput: NDSBehavior;
+export const clipboardButton: NDSBehavior;
+export const connectedServices: NDSBehavior;
+export const totpSetup: NDSBehavior;

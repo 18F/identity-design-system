@@ -1,0 +1,25 @@
+{% assign states = 'Unchecked,Unchecked focus,Checked,Checked focus,Disabled,Disabled checked,Hovered' | split: ',' %}
+{% if include.variant == 'mixed' %}{% assign states = 'Mixed,Mixed focus,Disabled mixed' | split: ',' %}{% endif %}
+{% assign forms = 'Label only' | split: ',' %}
+{% if include.variant == 'default' %}{% assign forms = 'Label only,With description' | split: ',' %}{% endif %}
+{% if include.variant == 'tile' %}{% assign forms = 'With description' | split: ',' %}{% endif %}
+<fieldset class="usa-fieldset">
+  <legend class="usa-sr-only">{{ include.variant | capitalize }} states</legend>
+  {% for state in states %}
+  <div class="margin-bottom-2">
+    <small>{{ state }}</small>
+    <div class="grid-row grid-gap-2">
+      {% for form in forms %}
+      {% capture id %}checkbox-{{ include.variant }}-{{ state | slugify }}-{{ forloop.index }}{% endcapture %}
+      <div class="grid-col-12{% if forms.size > 1 %} tablet:grid-col-6{% endif %}">
+        <input id="{{ id }}" class="usa-checkbox__input{% if include.variant == 'bordered' or include.variant == 'tile' or include.variant == 'switch' %} usa-checkbox__input--{{ include.variant }}{% endif %}{% if state contains 'focus' %} usa-focus{% endif %}" type="checkbox"{% if state == 'Checked' or state == 'Checked focus' or state == 'Disabled checked' %} checked{% endif %}{% if state contains 'Disabled' %} disabled{% endif %}{% if include.variant == 'mixed' %} data-indeterminate{% endif %}{% if include.variant == 'switch' %} role="switch"{% endif %}{% if form == 'With description' %} aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-description"{% endif %}>
+        <label for="{{ id }}" class="usa-checkbox__label{% if state == 'Hovered' %} usa-checkbox__label--hover{% endif %}">
+          <span id="{{ id }}-title">{% if include.variant == 'mixed' %}Select all updates{% elsif include.variant == 'switch' %}Email notifications{% else %}Account updates{% endif %}</span>
+          {% if form == 'With description' %}<span id="{{ id }}-description" class="usa-checkbox__label-description">Get updates about your account.</span>{% endif %}
+        </label>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</fieldset>

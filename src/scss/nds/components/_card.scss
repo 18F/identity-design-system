@@ -7,12 +7,14 @@
 @use 'tokens/nds' as nds;
 
 // The card box — the link/button/div itself.
+.lg-card,
 .card {
   background: nds.$white;
-  border: 1px solid nds.$base-lighter;
+  border: nds.$stroke-hairline solid nds.$base-lighter;
   border-radius: nds.radius(24);
   box-sizing: border-box;
   color: nds.$black;
+  box-shadow: none;
   display: block;
   font-family: nds.$font-family;
   max-width: 100%;
@@ -22,19 +24,18 @@
   width: 100%;
 }
 
-// Status label pill — sits inline at the top-left of the card, above the
-// copy, matching the "with badge" layout.
+// Compatibility for existing consumers. New cards compose the shared Badge.
 .card__badge {
   align-self: flex-start;
   background: nds.$primary;
-  border: 1px solid nds.$base-lightest;
+  border: nds.$stroke-hairline solid nds.$base-lightest;
   border-radius: nds.radius(8);
   color: nds.$white;
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
-  font-weight: nds.$font-semibold;
-  line-height: 1;
+  font-weight: nds.$font-medium;
+  line-height: nds.$text-line-height-none;
   margin-bottom: nds.space(16);
   padding: nds.space(4) nds.space(8);
   width: fit-content;
@@ -79,22 +80,19 @@
 
 // MFA card.
 .card--mfa {
-  border-color: nds.$base-lighter;
+  border-color: nds.$border-secondary;
   color: nds.$black;
   padding-inline-end: nds.space(16);
 
-  .card__inner {
-    align-items: flex-start;
-    gap: nds.space(12);
-  }
-
-  .card__body {
+  .card__stack {
     gap: nds.space(16);
   }
 
   .card__row > .usa-icon {
     color: nds.$black;
     flex: 0 0 auto;
+    height: nds.space(24);
+    width: nds.space(24);
   }
 
   .card__title {
@@ -102,22 +100,26 @@
   }
 
   .card__description {
-    color: nds.alpha(nds.$black, 65%);
+    color: nds.$text-secondary;
   }
 
   .card__trailing {
     align-self: center;
-    color: nds.alpha(nds.$black, 65%);
-  }
-
-  &.card--interactive:hover {
-    border-color: nds.$base;
+    color: nds.$text-secondary;
   }
 }
 
 // Density / elevation / alignment modifiers (on the root box).
 .card--compact {
-  padding: nds.space(20) nds.space(24);
+  padding: nds.space(16);
+}
+
+.card--with-badge > .card__body {
+  gap: nds.space(16);
+}
+
+.card__body > .badge {
+  align-self: flex-start;
 }
 
 // Bleed the card outward by its own padding so its content aligns to the
@@ -131,11 +133,20 @@
 }
 
 .card--spacious {
-  padding: nds.space(32);
+  padding: nds.space(40);
+}
+
+@mixin card-elevation {
+  box-shadow: nds.$shadow-elevated-surface;
+
+  @media (forced-colors: active) {
+    outline: nds.$stroke-hairline solid CanvasText;
+  }
 }
 
 .card--elevated {
-  box-shadow: nds.$shadow-large;
+  @include card-elevation();
+  border: 0;
 }
 
 .card--centered {
@@ -150,8 +161,10 @@
 // Interactive card: the box IS the link/button.
 .card--interactive {
   appearance: none;
+  border-color: nds.$border-secondary;
   cursor: pointer;
   margin: 0;
+  padding-inline-end: nds.space(16);
   text-decoration: none;
   transition: nds.$transition;
 
@@ -165,8 +178,14 @@
     text-decoration: none;
   }
 
+  // Keep the border's space while the elevated shadow draws the hovered edge.
+  &:where(a[href]:not([aria-disabled='true'], :focus-visible)):hover {
+    @include card-elevation();
+    border-color: transparent;
+  }
+
   &:active {
-    background: nds.alpha(nds.$black, 5%);
+    background: nds.$disabled-light;
   }
 
   &:focus {
@@ -174,12 +193,12 @@
   }
 
   &:focus-visible {
-    @include nds.focus-ring();
+    @include nds.transparent-focus-ring();
   }
 
   &:is(:disabled, [aria-disabled='true']) {
-    background: nds.alpha(nds.$primary-lightest, 85%);
-    border-color: nds.alpha(nds.$black, 10%);
+    background: nds.$disabled-light;
+    border-color: nds.$card-disabled-border;
     color: nds.$black;
     cursor: not-allowed;
 
@@ -215,18 +234,27 @@
 
 .card__trailing {
   align-items: center;
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   display: inline-flex;
   flex-shrink: 0;
   justify-content: center;
+
+  > .usa-icon {
+    height: nds.space(16);
+    width: nds.space(16);
+  }
 }
 
 .card__stack {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: nds.space(2);
   min-width: 0;
   width: 100%;
+}
+
+.card--compact .card__stack {
+  gap: 0;
 }
 
 .card__row {
@@ -253,7 +281,7 @@
   justify-items: start;
   width: 100%;
 
-  @media (width >= 768px) {
+  @media (width >= #{nds.$breakpoint-medium}) {
     grid-template-columns: repeat(2, max-content);
   }
 }
@@ -278,7 +306,7 @@
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
   overflow-wrap: anywhere;
 }
@@ -286,16 +314,23 @@
 .card__title {
   color: nds.$black;
   font-size: nds.$text-heading-s;
-  font-weight: nds.$font-semibold;
-  letter-spacing: nds.$text-letter-spacing-heading;
-  line-height: 1.2;
+  font-weight: nds.$font-medium;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: nds.$text-line-height-heading-section;
+}
+
+:is(.card--compact, .card--interactive, .card--mfa) .card__title {
+  font-size: nds.$text-body-m;
+  font-weight: nds.$text-weight-body-m-emphasis;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-body;
 }
 
 .card__description,
 .card__label,
 .card__meta {
-  color: nds.alpha(nds.$black, 65%);
-  font-weight: 400;
+  color: nds.$text-secondary;
+  font-weight: nds.$font-regular;
 }
 
 .card__description .link {
@@ -311,13 +346,13 @@
 
 .card__value {
   color: nds.$black;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
 }
 
 .card__divider {
   background: nds.$base-lighter;
   border: 0;
-  height: 1px;
+  height: nds.$stroke-hairline;
   margin: 0;
   width: 100%;
 }
