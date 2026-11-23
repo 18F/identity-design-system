@@ -2,5 +2,6 @@
   "accordions", "account", "account-navigation", "agency-seal", "alerts",
   "animated-media", "auth-entry", "totp-setup", "authentication-methods", "badges",
   "banner", "button-groups", "buttons", "cards", "checkbox", "checkbox-flat",
-  "clipboard-button", "code-formatting", "connected-services", "consent"
+  "clipboard-button", "code-formatting", "connected-services", "consent", "dashboard-home",
+  "date-fields"
 ]

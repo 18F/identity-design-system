@@ -149,11 +149,13 @@ $dashboard-home-breakpoint-m: nds.$breakpoint-medium;
   width: nds.space(20);
 }
 
-// Authorized: the switch label only holds visually hidden text, so give it
-// the track's height to keep the track centered in the row.
-.discovery-service--authorized .usa-checkbox__label {
-  margin: 0;
-  min-height: nds.space(24);
+// The standalone row switch has no visible label line to align its track to.
+.discovery-service--authorized .usa-checkbox__input--switch + .usa-checkbox__label {
+  &::before,
+  &::after {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 @media (width < #{$dashboard-home-breakpoint-m}) {

@@ -1,0 +1,20 @@
+- heading: Your connected services
+  description: These agencies and services use your Login.gov account to log you in.
+  panels:
+    - - [USA.gov, usa-gov]
+    - - [Social Security Administration, ssa]
+      - [MyTravelGov, dos]
+      - [CBP Trusted Traveler Programs, dohs]
+      - [USAJOBS, usajobs]
+- heading: More ways to use your account
+  description: Your information isn't shared with an agency until you log in and agree to share it.
+  panels:
+    - - [Railroad Retirement Board, rrb, "Manage your retirement, unemployment, and benefits.", "https://www.rrb.gov/"]
+      - [Medicare.gov, medicare, "View your Medicare coverage, claims, and plan options.", "https://www.medicare.gov/"]
+      - [VA.gov and My HealtheVet, va, "Manage your benefits, prescriptions, claims, and more.", "https://www.va.gov/"]
+      - [Department of Labor, dol, Verify your identity for unemployment insurance claims., "https://www.dol.gov/"]
+      - [OPM Retirement Services, opm, Manage your federal retirement annuity and information., "https://www.opm.gov/retirement-center/"]
+      - [SAM.gov, sam, Register your business to bid on federal contracts., "https://sam.gov/"]
+      - [Small Business Administration, sba, Apply for small business loans and disaster assistance., "https://www.sba.gov/"]
+      - [USDA Farmers.gov, usda, Apply for loans and manage conservation programs., "https://www.farmers.gov/"]
+      - [DEA Diversion Control, dea, Manage registration to prescribe controlled substances., "https://www.deadiversion.usdoj.gov/"]

@@ -8,8 +8,25 @@
 @use 'tokens/nds' as nds;
 
 .date-fields {
+  container: date-fields / inline-size;
   display: grid;
   gap: nds.space(12);
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
+
+  .usa-label {
+    padding-inline-start: nds.$field-padding-inline + nds.$stroke-hairline;
+  }
+}
+
+@container date-fields (max-width: 22rem) {
+  $input-padding: nds.space(8);
+
+  .date-fields .usa-label {
+    padding-inline-start: $input-padding + nds.$stroke-hairline;
+  }
+
+  .date-fields .usa-input {
+    padding-inline: $input-padding;
+  }
 }
