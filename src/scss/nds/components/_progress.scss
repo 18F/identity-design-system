@@ -8,9 +8,7 @@
 // Loaded after `@forward 'uswds'`.
 
 @use 'tokens/nds' as nds;
-
-// Match the layout breakpoint: @media (width < 768px)
-$nds-progress-breakpoint-m: 768px;
+@use '../../progress-layout';
 
 // In-progress ring stroke (design: 2px track and arc on a 20px ring).
 $nds-progress-ring-stroke: 2px;
@@ -36,37 +34,8 @@ $nds-progress-ring-stroke: 2px;
   box-sizing: border-box;
   max-width: 100%;
   min-width: 0;
-  overflow: auto visible;
-  overscroll-behavior-x: contain;
   padding-block: nds.space(8);
-  scroll-padding-inline: nds.space(16);
-  scrollbar-width: none;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    @include nds.focus-ring();
-  }
-}
-
-.progress__stepper {
-  align-items: center;
-  display: flex;
-  flex-wrap: nowrap;
-  gap: nds.space(24);
-  justify-content: center;
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  width: max-content;
 }
 
 .progress__stepper > li {
@@ -87,15 +56,15 @@ $nds-progress-ring-stroke: 2px;
 .progress__step-surface {
   align-items: center;
   background: transparent;
-  border: 1px solid transparent;
+  border: nds.$stroke-hairline solid transparent;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-variant-numeric: tabular-nums;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$text-weight-label-m-emphasis;
   gap: nds.space(8);
   height: var(--nds-progress-pill-height);
   justify-content: center;
@@ -111,8 +80,9 @@ $nds-progress-ring-stroke: 2px;
 }
 
 .progress__step[aria-current='step'] .progress__step-surface {
-  background: nds.alpha(nds.$primary-darker, 5%);
+  background: nds.$base-lightest;
   color: nds.$black;
+  padding-inline-start: nds.space(16);
 }
 
 // In-progress ring: a 2px track with a filled arc, drawn with a conic
@@ -131,9 +101,33 @@ $nds-progress-ring-stroke: 2px;
   width: nds.space(20);
 }
 
+// Keep the CSS ring as a fallback for existing markup without the SVG.
+.progress__step[aria-current='step'] .progress__step-surface:has(> .progress__ring)::before {
+  content: none;
+}
+
+.progress__step-surface > .progress__ring {
+  display: block;
+  fill: none;
+  flex: none;
+  height: nds.space(20);
+  stroke: nds.$base-lighter;
+  stroke-width: 10;
+  width: nds.space(20);
+}
+
+.progress__ring-fill {
+  --progress-arc-opacity: clamp(0%, calc(var(--nds-progress-ring-value, 50%) * 1000), 100%);
+
+  opacity: var(--progress-arc-opacity);
+  stroke: nds.$black;
+  stroke-dasharray: var(--nds-progress-ring-value, 50%) 100;
+  stroke-linecap: round;
+}
+
 .progress__step[data-complete='true'] .progress__step-surface {
   background: transparent;
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   min-width: 0;
   padding: nds.space(8) nds.space(20) nds.space(8) nds.space(12);
 }
@@ -150,7 +144,7 @@ $nds-progress-ring-stroke: 2px;
   background: nds.$success-dark;
   border-radius: nds.radius(pill);
   box-sizing: border-box;
-  color: nds.$primary-lightest;
+  color: nds.$white;
   display: inline-flex;
   height: nds.space(20);
   justify-content: center;
@@ -165,7 +159,7 @@ $nds-progress-ring-stroke: 2px;
 
 .progress__step-counter {
   align-items: center;
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   display: inline-flex;
   flex: 0 0 auto;
   font-family: nds.$font-family;
@@ -176,30 +170,19 @@ $nds-progress-ring-stroke: 2px;
   line-height: nds.$text-line-height-none;
 }
 
-@media (width < #{$nds-progress-breakpoint-m}) {
-  .progress__scroll {
-    --nds-progress-scroll-fade-size: #{nds.space(40) + nds.space(4)};
-
-    mask-image: linear-gradient(
-      90deg,
-      transparent,
-      nds.$black var(--nds-progress-scroll-fade-size),
-      nds.$black calc(100% - var(--nds-progress-scroll-fade-size)),
-      transparent
-    );
-    padding-block: nds.space(4);
-    scroll-snap-type: x mandatory;
+@media (forced-colors: active) {
+  .progress__step[aria-current='step'] .progress__step-surface::before {
+    background: conic-gradient(CanvasText var(--nds-progress-ring-value, 50%), GrayText 0);
+    forced-color-adjust: none;
   }
 
-  // CSS-only end slack so first/last pills can sit near center (no JS insets).
-  .progress__stepper {
-    justify-content: flex-start;
-    padding-inline: calc(50% - #{nds.space(48)});
+  .progress__step-surface > .progress__ring {
+    forced-color-adjust: none;
+    stroke: GrayText;
   }
 
-  .progress__step {
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
+  .progress__ring-fill {
+    stroke: CanvasText;
   }
 }
 

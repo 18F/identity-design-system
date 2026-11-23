@@ -20,8 +20,10 @@ import nativeModal from './native-modal.js';
 import ndsFileInput from './nds-file-input.js';
 import navigation from '@uswds/uswds/js/usa-header';
 import officialBanner from './official-banner.js';
+import pageFooter from './page-footer.js';
 import password from '@uswds/uswds/js/_usa-password';
 import phoneInput from './phone-input.js';
+import progress from './progress.js';
 import range from '@uswds/uswds/js/usa-range';
 import search from '@uswds/uswds/js/usa-search';
 import { withSelectOnly } from './select-only.js';
@@ -57,8 +59,10 @@ export {
   ndsFileInput,
   navigation,
   officialBanner,
+  pageFooter,
   password,
   phoneInput,
+  progress,
   range,
   search,
   skipnav,

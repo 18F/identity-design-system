@@ -1,0 +1,249 @@
+@use 'tokens/nds' as nds;
+
+// Opt in explicitly: existing USWDS headers and the documentation site keep their layout.
+.nds-site-header {
+  background: nds.$background-primary;
+  border-bottom: nds.$stroke-hairline solid nds.$border-tertiary;
+  font-family: nds.$font-family;
+  text-align: start;
+
+  .usa-navbar,
+  .nds-site-header__menu-bar {
+    align-items: center;
+    border: 0;
+    display: grid;
+    gap: nds.space(8);
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    height: auto;
+    justify-content: space-between;
+    margin: 0;
+    min-height: nds.space(72);
+    overflow: visible;
+    padding-inline: nds.space(12);
+  }
+
+  .usa-logo {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .usa-logo img {
+    height: nds.space(24);
+    max-width: 100%;
+    object-fit: contain;
+    width: auto;
+  }
+  .usa-navbar > .usa-button {
+    margin: 0;
+    width: var(--nds-button-height);
+  }
+  .nds-site-header__desktop-search {
+    display: none;
+  }
+  // Cross-fading the inverted Primary and Secondary colors loses text contrast.
+  .nds-site-header__sign-in {
+    transition: none;
+  }
+  .nds-site-header__mobile-search {
+    display: inline-flex;
+  }
+  .usa-nav__close {
+    align-self: flex-end;
+    margin: 0 0 nds.space(8);
+  }
+  .usa-nav__close .usa-icon {
+    height: nds.space(20);
+    width: nds.space(20);
+  }
+  .nds-site-header__links,
+  .nds-site-header__actions {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: nds.space(8);
+  }
+  .nds-site-header__links {
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nds-site-header__actions {
+    margin-block-start: nds.space(8);
+  }
+  .usa-nav .usa-button {
+    flex: none;
+    margin: 0;
+    width: auto;
+  }
+  .usa-nav .usa-button--icon-only {
+    width: var(--nds-button-height);
+  }
+  .nds-site-header__language {
+    position: relative;
+
+    select {
+      appearance: none;
+      field-sizing: content;
+      padding-inline-end: nds.space(40);
+      text-align: start;
+    }
+
+    &::after {
+      background: currentColor;
+      content: '';
+      height: nds.space(20);
+      inset-inline-end: nds.space(12);
+      mask: url('../../img/nds-icons/library/chevron-down.svg') center / contain no-repeat;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: nds.space(20);
+    }
+  }
+  @media (forced-colors: active) {
+    .nds-site-header__language::after {
+      background: ButtonText;
+      forced-color-adjust: none;
+    }
+    .usa-button > img.usa-icon {
+      forced-color-adjust: none;
+      background: white;
+      border-radius: 50%;
+    }
+  }
+
+  // USWDS switches its navigation behavior at the desktop breakpoint.
+  @media (width < 64em) {
+    border-bottom: 0;
+
+    .usa-navbar,
+    .nds-site-header__menu-bar {
+      border-bottom: nds.$stroke-hairline solid nds.$border-tertiary;
+      min-height: calc(#{nds.space(72)} + #{nds.$stroke-hairline});
+    }
+    .usa-nav.is-visible {
+      animation: none;
+      background: nds.$background-primary;
+      inset: 0;
+      padding: 0;
+      width: 100%;
+    }
+    .nds-site-header__menu-bar {
+      flex: none;
+    }
+    .nds-site-header__menu-brand {
+      display: contents;
+    }
+    .usa-nav__close {
+      align-self: center;
+      background: nds.$background-tertiary;
+    }
+    .nds-site-header__links {
+      align-items: stretch;
+      flex: 1 0 auto;
+      flex-wrap: nowrap;
+      gap: nds.space(16);
+      padding: nds.space(32) nds.space(24) 0;
+    }
+    .usa-nav .nds-site-header__links a {
+      background: none;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      color: nds.$text-primary;
+      font-size: nds.$text-heading-m-mobile;
+      font-weight: nds.$font-medium;
+      height: auto;
+      letter-spacing: nds.$text-letter-spacing-heading;
+      line-height: nds.$text-line-height-heading-m;
+      min-height: nds.space(44);
+      padding: 0;
+      text-decoration: none;
+      transition: none;
+
+      &:is(:hover, :focus-visible) {
+        text-decoration: underline;
+        text-underline-offset: nds.space(4);
+      }
+      &:focus-visible {
+        outline: nds.$stroke-control solid currentColor;
+        outline-offset: nds.space(2);
+      }
+    }
+    .nds-site-header__language {
+      margin-block-start: auto;
+      padding-top: nds.space(16);
+
+      select.usa-button {
+        background: nds.$background-tertiary;
+        height: nds.space(56);
+        padding-inline: 0 nds.space(24);
+        text-align: center;
+        width: 100%;
+      }
+      &::after {
+        inset-inline-end: calc(50% - #{nds.space(44)});
+        top: calc(50% + #{nds.space(8)});
+      }
+    }
+    .nds-site-header__actions {
+      margin-top: nds.space(12);
+      padding: 0 nds.space(24) nds.space(24);
+    }
+    .nds-site-header__actions .nds-site-header__sign-in {
+      width: 100%;
+    }
+  }
+
+  @media (width >= 64em) {
+    align-items: center;
+    display: flex;
+    gap: nds.space(24);
+    justify-content: flex-start;
+    min-height: nds.space(84);
+    padding-inline: nds.$grid-margin-desktop;
+
+    // The upstream float clearfix would otherwise become a third flex item.
+    &::after {
+      content: none;
+    }
+    .usa-navbar {
+      display: flex;
+      min-height: 0;
+      padding: 0;
+    }
+    .usa-nav {
+      align-items: center;
+      border: 0;
+      display: flex;
+      flex: 1;
+      gap: nds.space(8);
+      float: none;
+      padding: 0;
+      width: auto;
+    }
+    .usa-menu-btn,
+    .nds-site-header__menu-bar,
+    .nds-site-header__mobile-search,
+    .usa-nav__close {
+      display: none;
+    }
+    .nds-site-header__desktop-search {
+      display: inline-flex;
+    }
+    .nds-site-header__links {
+      align-items: center;
+      flex-direction: row;
+    }
+    .nds-site-header__actions {
+      flex-wrap: nowrap;
+      margin-block-start: 0;
+      margin-inline-start: auto;
+    }
+  }
+}

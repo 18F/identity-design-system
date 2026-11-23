@@ -9,6 +9,8 @@ export interface NDSBehavior {
 export const inputOtp: NDSBehavior;
 export const animatedMedia: NDSBehavior;
 export const officialBanner: NDSBehavior;
+export const pageFooter: NDSBehavior;
+export const progress: NDSBehavior;
 export const nativeModal: NDSBehavior;
 export const ndsFileInput: NDSBehavior;
 export const inputSsn: NDSBehavior;

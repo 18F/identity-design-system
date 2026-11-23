@@ -30,35 +30,19 @@ Modifiers on `.auth-page` adjust alignment, density, surface, and content width:
 - **Content width** — `.auth-page--width-wide` and `.auth-page--width-form`
   set the maximum width of the main content column.
 
-{% capture example %}
-<a class="skip-link" href="#page-shell-main">Skip to main content</a>
-<div class="auth-page">
-  <header class="auth-page__top-chrome">
-    <div class="auth-page__logo-banner">
-      <a class="auth-page__logo-banner-link" href="#" aria-label="Login.gov home">
-        <img class="auth-page__logo-banner-image" src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="Login.gov">
-      </a>
-    </div>
-  </header>
-  <main class="auth-page__main" id="page-shell-main">
-    <div class="card">
-      <div class="card__body">
-        <p class="card__title">Sign in</p>
-        <form class="card-form">
-          <label for="page-shell-email" class="usa-label">Email address</label>
-          <input id="page-shell-email" type="email" autocomplete="username" class="usa-input">
-          <label for="page-shell-password" class="usa-label">Password</label>
-          <input id="page-shell-password" type="password" autocomplete="current-password" class="usa-input">
-          <div class="margin-top-4">
-            <button type="submit" class="usa-button">Sign in</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </main>
+<div class="margin-y-3">
+<iframe id="page-shell-preview" class="width-full border-0" src="{{ site.baseurl }}/embeds/page-shell/" title="Sign-in page shell example" height="560"></iframe>
 </div>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+<script>
+  if (new URLSearchParams(location.search).get('ui_test_bucket') === 'legacy') {
+    document.getElementById('page-shell-preview').src += '?ui_test_bucket=legacy';
+  }
+</script>
+
+{% capture example %}{% include helpers/page-shell-example.html %}{% endcapture %}
+```html
+{{ example | replace: site.baseurl, '' | strip }}
+```
 
 ## Agency co-branding
 
@@ -86,7 +70,7 @@ set `min-height: auto` on the shell; real pages leave it out.
       </a>
       <span class="auth-page__logo-banner-agency">
         <span class="agency-seal agency-seal--24" style="--nds-agency-seal-bg: #151038">
-          <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-light.svg" alt="Sample Agency">
+          <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" width="24" height="24" alt="U.S. General Services Administration">
         </span>
       </span>
     </div>
@@ -98,8 +82,9 @@ set `min-height: auto` on the shell; real pages leave it out.
 ### With progress
 
 The agency group composes with the top chrome progress slot. On desktop the
-logo and seal stay at the start and the stepper is centered in the viewport. On
-small screens the stepper stacks below the logo and seal.
+logo and seal stay at the start and the stepper is centered in the viewport
+while both fit. On mobile, or whenever a centered stepper would crowd the
+branding, the header switches to two rows with progress below the centered logo and seal.
 
 {% capture example %}
 <div class="auth-page" style="min-height: auto">
@@ -110,7 +95,7 @@ small screens the stepper stacks below the logo and seal.
       </a>
       <span class="auth-page__logo-banner-agency">
         <span class="agency-seal agency-seal--24" style="--nds-agency-seal-bg: #151038">
-          <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal-light.svg" alt="Sample Agency">
+          <img class="agency-seal__image" src="{{ site.baseurl }}/img/sample-agency-seal.webp" width="24" height="24" alt="U.S. General Services Administration">
         </span>
       </span>
     </div>
@@ -122,9 +107,9 @@ small screens the stepper stacks below the logo and seal.
               <div class="progress__step" data-complete="true">
                 <span class="progress__step-surface">
                   <span class="progress__step-check usa-icon">
-                    <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check"></use></svg>
+                    <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use></svg>
                   </span>
-                  Account
+                  Account<span class="usa-sr-only">, completed</span>
                 </span>
               </div>
             </li>
@@ -132,15 +117,16 @@ small screens the stepper stacks below the logo and seal.
               <div class="progress__step" data-complete="true">
                 <span class="progress__step-surface">
                   <span class="progress__step-check usa-icon">
-                    <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check"></use></svg>
+                    <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use></svg>
                   </span>
-                  Security
+                  Security<span class="usa-sr-only">, completed</span>
                 </span>
               </div>
             </li>
             <li>
               <div class="progress__step" aria-current="step">
                 <span class="progress__step-surface">
+                  {% include helpers/progress-ring.html %}
                   <span class="progress__step-counter">3</span>
                   Verification
                 </span>

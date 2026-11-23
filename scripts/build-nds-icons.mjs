@@ -108,6 +108,14 @@ if (output === '--check-sass') {
       }
       if (!/\.(md|html|scss)$/.test(path) || entry.name === '_icon-assets.scss') continue;
       const text = await readFile(path, 'utf8');
+      // This meter has a track and a variable-length stroke, not a catalog pictogram.
+      if (path === 'docs/_includes/helpers/progress-ring.html') {
+        const circle = '<circle cx="50" cy="50" r="45"></circle>';
+        const fill = '<circle class="progress__ring-fill" cx="50" cy="50" r="45" pathLength="100" transform="rotate(-90 50 50)"></circle>';
+        const gauge = `<svg class="progress__ring display-none" viewBox="0 0 100 100" aria-hidden="true" focusable="false"> ${circle} ${fill} </svg>`;
+        if (text.trim().replace(/\s+/g, ' ') === gauge) continue;
+        throw new Error(`Expected only the two-circle progress gauge: ${path}`);
+      }
       if (
         (migrated.has(path) || path.startsWith('docs/_includes/helpers/')) &&
         /(?:\/(?:material-icons|usa-icons(?:-bg)?)\/|\/sprite\.svg|data:image\/svg|<svg\b[^>]*>\s*<(?:path|g|circle)\b)/i.test(

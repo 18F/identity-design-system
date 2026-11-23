@@ -1,0 +1,84 @@
+<div class="usa-overlay"></div>
+{% capture header_brand %}
+  <div class="usa-logo">
+    <a class="account-header__logo-link" href="#">
+      <img class="usa-logo__img" src="{{ site.baseurl }}/assets/img/login-gov-logo.svg" alt="Login.gov home" width="179" height="24">
+    </a>
+  </div>
+  <a class="nds-site-header__mobile-search display-none usa-button usa-button--ghost usa-button--md usa-button--icon-only" href="#" aria-label="Search">
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/search.svg" alt="">
+  </a>
+{% endcapture %}
+<header class="usa-header usa-header--extended nds-site-header">
+  <div class="usa-navbar">
+    <button class="usa-menu-btn usa-button usa-button--ghost usa-button--md usa-button--icon-only" type="button" aria-label="Menu" aria-controls="site-header-navigation" aria-expanded="false">
+      <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/menu.svg" width="20" height="20" alt="">
+    </button>
+    {{ header_brand }}
+  </div>
+  <nav id="site-header-navigation" class="usa-nav" aria-label="Primary">
+    <div class="nds-site-header__menu-bar">
+      <button type="button" class="usa-nav__close usa-button usa-button--secondary usa-button--md usa-button--icon-only" aria-label="Close menu" aria-controls="site-header-navigation" aria-expanded="false">
+        <svg class="usa-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#close"></use></svg>
+      </button>
+      <div class="nds-site-header__menu-brand display-none">{{ header_brand }}</div>
+    </div>
+    <ul class="nds-site-header__links">
+      {% assign destinations = "How it works,Partners,Help" | split: "," %}
+      {% for destination in destinations %}
+      <li>
+        <a class="usa-button usa-button--ghost usa-button--md" href="#">{{ destination }}</a>
+      </li>
+      {% endfor %}
+      <li class="nds-site-header__language">
+        <label class="usa-sr-only" for="site-header-language">Language</label>
+        <select id="site-header-language" class="usa-button usa-button--ghost usa-button--md">
+          <option value="en" lang="en" selected>English</option>
+          <option value="es" lang="es">Español</option>
+          <option value="fr" lang="fr">Français</option>
+        </select>
+      </li>
+    </ul>
+    <div class="nds-site-header__actions">
+      <a class="nds-site-header__desktop-search usa-button usa-button--secondary usa-button--md usa-button--icon-only" href="#" aria-label="Search">
+        <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/search.svg" alt="">
+      </a>
+      <a class="nds-site-header__sign-in usa-button usa-button--lg" href="#">Sign in</a>
+    </div>
+  </nav>
+</header>
+{% unless include.markup_only %}
+<script>
+  (() => {
+    const header = document.currentScript.previousElementSibling;
+    const signIn = header.querySelector('.nds-site-header__sign-in');
+    const desktop = window.matchMedia('(min-width: 64em)');
+    // Keep a single tab stop while using the actual system button variants.
+    const syncSignIn = () => {
+      signIn.classList.toggle('usa-button--secondary', desktop.matches);
+      signIn.classList.toggle('usa-button--md', desktop.matches);
+      signIn.classList.toggle('usa-button--lg', !desktop.matches);
+    };
+    desktop.addEventListener('change', syncSignIn);
+    syncSignIn();
+    const nav = header.querySelector('.usa-nav');
+    const controls = header.querySelectorAll('button[aria-controls="site-header-navigation"]');
+    // USWDS owns the drawer, including Escape, overlay clicks, and breakpoint changes.
+    const syncExpanded = () => {
+      const expanded = String(nav.classList.contains('is-visible'));
+      controls.forEach(control => control.setAttribute('aria-expanded', expanded));
+    };
+    new MutationObserver(syncExpanded).observe(nav, { attributes: true, attributeFilter: ['class'] });
+    syncExpanded();
+
+    const language = header.querySelector('select');
+    let pointerSelection = false;
+    language.addEventListener('pointerdown', () => { pointerSelection = true; });
+    language.addEventListener('keydown', () => { pointerSelection = false; });
+    language.addEventListener('blur', () => { pointerSelection = false; });
+    language.addEventListener('change', () => {
+      if (pointerSelection) language.blur();
+    });
+  })();
+</script>
+{% endunless %}

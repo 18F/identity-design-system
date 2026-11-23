@@ -6,7 +6,7 @@
     <title>{{ page.title }}</title>
     {% assign component_slug = page.url | remove: 'index.html' | remove: '/' %}
     {% assign nds_default = false %}
-    {% if site.data.nds_components contains component_slug %}{% assign nds_default = true %}{% endif %}
+    {% if site.data.nds_components contains component_slug or component_slug == 'embedsheadermobile' or component_slug == 'embedspage-shell' %}{% assign nds_default = true %}{% endif %}
     <link id="site-stylesheet" rel="stylesheet" href="{{ site.baseurl }}/assets/css/{% if nds_default %}nds/{% endif %}styles.css">
     <script>
       // Only migrated pages default to NDS. Either bucket can be reviewed explicitly.
@@ -21,6 +21,7 @@
   <body>
     {{ content }}
     <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+    <script src="{{ site.baseurl }}/component-preview.js" defer></script>
     {% if nds_default %}
     <script>
       // Keep link semantics in the sample markup, but stay in the live example.

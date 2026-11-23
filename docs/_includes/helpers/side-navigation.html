@@ -1,0 +1,29 @@
+<nav class="nds-side-nav tablet:grid-col-4" aria-label="Account sections: {{ include.variant }}">
+  <ul class="usa-sidenav">
+    <li class="usa-sidenav__item">
+      <a href="#">Overview</a>
+    </li>
+    <li class="usa-sidenav__item">
+      <a href="#"{% if include.levels == 1 %} class="usa-current" aria-current="page"{% endif %}>Account</a>
+      {% if include.levels >= 2 %}
+      <ul class="usa-sidenav__sublist">
+        <li class="usa-sidenav__item">
+          <a href="#"{% if include.levels == 2 %} class="usa-current" aria-current="page"{% endif %}>Security</a>
+          {% if include.levels == 3 %}
+          <ul class="usa-sidenav__sublist">
+            <li class="usa-sidenav__item">
+              <a href="#" class="usa-current" aria-current="page">Authenticator app</a>
+            </li>
+            <li class="usa-sidenav__item"><a href="#">Personal key</a></li>
+          </ul>
+          {% endif %}
+        </li>
+        <li class="usa-sidenav__item"><a href="#">Account history</a></li>
+      </ul>
+      {% endif %}
+    </li>
+    <li class="usa-sidenav__item">
+      <a href="#">Connected services</a>
+    </li>
+  </ul>
+</nav>

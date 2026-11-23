@@ -8,104 +8,32 @@ lead: >
 
 ## Default
 
-{% capture example %}
-<div class="usa-overlay"></div>
-<header class="usa-header usa-header--extended">
-  <div class="usa-navbar">
-    <div class="usa-logo">
-      <a href="{{ site.baseurl }}/">
-        <img
-          src="{{ site.baseurl }}/assets/img/login-gov-logo.svg"
-          class="usa-logo__img"
-          alt="Login.gov Homepage"
-          width="179"
-          height="24"
-        />
-      </a>
-    </div>
+How it works, Partners, Help, and the language selector sit beside the wordmark as Medium Ghost buttons. English is selected by default. Choosing another language updates the selection without translating this component preview. Search and Sign in use Medium Secondary buttons at the opposite edge on desktop.
 
-    <button class="usa-menu-btn">Menu</button>
-  </div>
-
-  <nav class="usa-nav" aria-label="Primary links">
-    <div class="usa-nav__inner">
-      <button class="usa-nav__close" aria-label="Close">
-        <svg class="usa-icon usa-icon--size-3" aria-hidden="true" role="img">
-          <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use>
-        </svg>
-      </button>
-      <ul class="usa-nav__primary usa-accordion">
-        <li class="usa-nav__primary-item">
-          <a class="usa-nav__link" href="{{ site.baseurl }}">
-            Navigation Link
-          </a>
-        </li>
-        <li class="usa-nav__primary-item">
-          <a class="usa-nav__link usa-current" href="{{ site.baseurl }}">
-            Current Navigation Link
-          </a>
-        </li>
-        <li class="usa-nav__primary-item">
-          <button
-            type="button"
-            class="usa-accordion__button usa-nav__link"
-            aria-expanded="false"
-            aria-controls="nav-section"
-          >
-            <span>Section</span>
-          </button>
-          <ul id="nav-section" class="usa-nav__submenu">
-            <li class="usa-nav__submenu-item">
-              <a href="{{ site.baseurl }}">
-                <span>Navigation Link</span>
-              </a>
-            </li>
-            <li class="usa-nav__submenu-item">
-              <a href="{{ site.baseurl }}">
-                <span>Navigation Link</span>
-              </a>
-            </li>
-            <li class="usa-nav__submenu-item">
-              <a href="{{ site.baseurl }}">
-                <span>Navigation Link</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="usa-nav__primary-item">
-          <button
-            type="button"
-            class="usa-accordion__button usa-nav__link usa-current"
-            aria-expanded="false"
-            aria-controls="current-nav-section"
-          >
-            <span>Current Section</span>
-          </button>
-          <ul id="current-nav-section" class="usa-nav__submenu">
-            <li class="usa-nav__submenu-item">
-              <a href="{{ site.baseurl }}">
-                <span>Navigation Link</span>
-              </a>
-            </li>
-            <li class="usa-nav__submenu-item">
-              <a href="{{ site.baseurl }}">
-                <span>Navigation Link</span>
-              </a>
-            </li>
-            <li class="usa-nav__submenu-item">
-              <a href="{{ site.baseurl }}">
-                <span>Navigation Link</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+<div><div class="margin-y-3">
+<iframe class="width-full border-0" src="{{ site.baseurl }}/embeds/header/mobile/" title="Responsive primary header" height="320"></iframe>
+</div></div>
 
 ## Mobile
 
-{% include helpers/mobile-embed.html embed="header/mobile" %}
+In NDS, the 24px-high wordmark is centered between the Menu and Search Ghost icon buttons. The open menu uses Heading/M text links for How it works, Partners, and Help. As the viewport grows taller, the extra space goes above the language selector. Sign in stays 24px from the bottom, with 12px between the two controls.
+
+<div><div class="margin-y-3">
+<iframe class="width-full maxw-mobile-lg border-0" src="{{ site.baseurl }}/embeds/header/mobile/" title="Mobile primary header" style="height: 80dvh"></iframe>
+</div></div>
+
+<script>
+  // Each preview owns its navigation focus trap; keep its theme in sync with the docs.
+  if (new URLSearchParams(location.search).get('ui_test_bucket') === 'legacy') {
+    document.querySelectorAll('iframe[src*="/embeds/header/mobile/"]').forEach(frame => {
+      frame.src += '?ui_test_bucket=legacy';
+    });
+  }
+</script>
+
+## Markup
+
+{% capture example %}{% include helpers/site-header.html markup_only=true %}{% endcapture %}
+```html
+{{ example | replace: site.baseurl, '' | strip }}
+```

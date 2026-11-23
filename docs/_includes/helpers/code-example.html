@@ -1,5 +1,7 @@
 <div>
-  <div class='margin-y-3' data-live-example>
+  {% assign shell_pages = 'side-navigation,page-footer,page-shell' | split: ',' %}
+  {% assign example_slug = page.url | remove: 'index.html' | remove: '/' %}
+  <div class='margin-y-3' {% if shell_pages contains example_slug %}data-component-preview{% else %}data-live-example{% endif %}>
     {{ include.code }}
   </div>
 </div>

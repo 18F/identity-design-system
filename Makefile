@@ -80,6 +80,7 @@ build-sass-packages-nds:
 	cp -r src/scss/tokens packages-nds/tokens
 	rm -rf packages-nds/nds
 	cp -r src/scss/nds packages-nds/nds
+	cp src/scss/_progress-layout.scss packages-nds/
 
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts

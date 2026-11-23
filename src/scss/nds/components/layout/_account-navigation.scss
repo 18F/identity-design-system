@@ -33,6 +33,11 @@ $account-nav-width: 252px;
 
   &:focus-visible {
     @include nds.focus-ring();
+
+    @media (forced-colors: active) {
+      outline: nds.$stroke-control solid Highlight;
+      outline-offset: nds.space(2);
+    }
   }
 }
 
@@ -178,7 +183,7 @@ $account-nav-width: 252px;
   box-shadow: inset calc(-1 * #{nds.$stroke-hairline}) 0 nds.$border-tertiary;
 }
 
-.account-nav__link {
+@mixin nav-link-base() {
   align-items: center;
   appearance: none;
   background: none;
@@ -233,13 +238,17 @@ $account-nav-width: 252px;
   }
 }
 
+.account-nav__link {
+  @include nav-link-base();
+}
+
 .account-nav__link--current,
 .account-nav__link--current:is(:link, :visited) {
   background: nds.$base-lightest;
   color: nds.$black;
 }
 
-.account-nav .account-nav__link {
+@mixin nav-link-states() {
   @include button.ghost-surface();
 
   border-radius: nds.radius(pill);
@@ -261,6 +270,10 @@ $account-nav-width: 252px;
     @include nds.transparent-focus-ring();
     transition-property: background-color, border-color, color;
   }
+}
+
+.account-nav .account-nav__link {
+  @include nav-link-states();
 }
 
 .account-mobile-menu {

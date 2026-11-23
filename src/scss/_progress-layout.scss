@@ -1,0 +1,44 @@
+@use 'tokens/nds' as nds;
+
+// A status list, not a scroll control. Without enhancement all labels remain visible.
+.progress {
+  min-width: 0;
+  user-select: none;
+}
+
+.progress__scroll {
+  overflow: clip;
+  width: 100%;
+}
+
+.progress .progress__stepper {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: nds.space(4) nds.space(12);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+@media (width < #{nds.$breakpoint-medium}) {
+  .progress__scroll[data-centered] {
+    mask-image: linear-gradient(
+      to right,
+      var(--progress-left, black),
+      black min(12%, #{nds.space(44)}),
+      black max(88%, calc(100% - #{nds.space(44)})),
+      var(--progress-right, black)
+    );
+
+    .progress__stepper {
+      flex-wrap: nowrap;
+      left: 50%;
+      position: relative;
+      transform: translateX(var(--progress-shift));
+      width: max-content;
+    }
+  }
+}

@@ -1,6 +1,12 @@
 @use 'uswds-core';
 @use 'tokens/nds' as nds;
 @forward 'uswds';
+@use 'progress-layout';
+
+.progress .progress__step[aria-current='step'] {
+  font-weight: nds.$font-medium;
+  text-decoration: underline;
+}
 
 // The legacy message already paints an icon in its reserved leading gutter.
 .usa-error-message > svg.usa-icon {

@@ -1,80 +1,27 @@
 ---
 title: Side navigation
 lead: >
-  Hierarchical, vertical navigation to place at the side of a page. This should correspond to other headers on the page.
+  Side navigation shows where the current page sits within a section and links to related pages.
 ---
 
 {% include helpers/base-component.html component="side-navigation" stylesheet="usa-sidenav" %}
+
+Keep the current branch visible. Mark only the link for the current page with `aria-current="page"`; the nested lists communicate its parent sections. Use the `nds-side-nav` wrapper to opt into the NDS rail.
+
 ## Single level
-{% capture example %}
-<nav aria-label="Secondary navigation" class="tablet:grid-col-4">
-  <ul class="usa-sidenav">
-    <li class="usa-sidenav__item">
-      <a href="" class="usa-current">Current page</a>
-    </li>
-    <li class="usa-sidenav__item">
-      <a href="">Parent link</a>
-    </li>
-    <li class="usa-sidenav__item">
-      <a href="">Parent link</a>
-    </li>
-  </ul>
-</nav>
-{% endcapture %}
+
+{% assign depth = 1 %}
+{% capture example %}{% include helpers/side-navigation.html levels=depth variant="Single level" %}{% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ## Two levels
 
-{% capture example %}
-<nav aria-label="Secondary navigation" class="tablet:grid-col-4">
-  <ul class="usa-sidenav">
-    <li class="usa-sidenav__item">
-      <a href="" class="usa-current">Current page</a>
-      <ul class="usa-sidenav__sublist">
-        <li class="usa-sidenav__item">
-          <a href="" class="usa-current">Child link</a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a href="">Child link</a>
-        </li>
-      </ul>
-    </li>
-    <li class="usa-sidenav__item">
-      <a href="">Parent link</a>
-    </li>
-  </ul>
-</nav>
-{% endcapture %}
+{% assign depth = 2 %}
+{% capture example %}{% include helpers/side-navigation.html levels=depth variant="Two levels" %}{% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ## Three levels
 
-{% capture example %}
-<nav aria-label="Secondary navigation" class="tablet:grid-col-4">
-  <ul class="usa-accordion usa-sidenav">
-    <li class="usa-sidenav__item">
-      <a href="" class="usa-current">Current page</a>
-      <ul class="usa-sidenav__sublist">
-        <li class="usa-sidenav__item">
-          <a href="">Child link</a>
-          <ul class="usa-sidenav__sublist">
-        <li class="usa-sidenav__item">
-          <a href="" class="usa-current">Grandchild link</a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a href="">Grandchild link</a>
-        </li>
-      </ul>
-        </li>
-        <li class="usa-sidenav__item">
-          <a href="">Child link</a>
-        </li>
-      </ul>
-    </li>
-    <li class="usa-sidenav__item">
-      <a href="">Parent link</a>
-    </li>
-  </ul>
-</nav>
-{% endcapture %}
+{% assign depth = 3 %}
+{% capture example %}{% include helpers/side-navigation.html levels=depth variant="Three levels" %}{% endcapture %}
 {% include helpers/code-example.html code=example %}

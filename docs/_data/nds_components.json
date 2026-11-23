@@ -5,5 +5,6 @@
   "clipboard-button", "code-formatting", "connected-services", "consent", "dashboard-home",
   "date-fields", "text-input", "floating-label-input", "fieldset", "memorable-date",
   "duplicate-profiles", "field-readout", "history",
-  "file-input", "select", "radio-buttons", "validation"
+  "file-input", "select", "radio-buttons", "validation",
+  "header", "side-navigation", "page-footer", "progress", "page-shell"
 ]

@@ -1,0 +1,51 @@
+@use 'tokens/nds' as nds;
+@use 'layout/account-navigation' as account;
+
+.nds-side-nav {
+  border-inline-end: nds.$stroke-hairline solid nds.$border-tertiary;
+  box-sizing: border-box;
+  max-width: account.$account-nav-width;
+  padding: nds.space(16);
+  text-align: start;
+  width: 100%;
+
+  .usa-sidenav,
+  .usa-sidenav__sublist {
+    border: 0;
+    display: grid;
+    gap: nds.space(8);
+    margin: 0;
+    padding: 0;
+  }
+
+  .usa-sidenav .usa-sidenav__item > .usa-sidenav__sublist {
+    border: 0;
+    margin-block-start: nds.space(8);
+    margin-inline-start: nds.space(16);
+  }
+
+  .usa-sidenav__item {
+    border: 0;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .usa-sidenav .usa-sidenav__item > a:not(.usa-button) {
+    @include account.nav-link-base();
+    @include account.nav-link-states();
+
+    &:not([aria-current='page']) {
+      color: nds.$text-secondary;
+    }
+
+    @media (forced-colors: active) {
+      &[aria-current='page'] {
+        text-decoration: underline;
+      }
+    }
+
+    &::after {
+      content: none;
+    }
+  }
+}
