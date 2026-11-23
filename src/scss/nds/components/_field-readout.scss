@@ -1,9 +1,5 @@
-// NDS field readout. A static, read-only presentation of a labeled value that
-// mirrors the *filled* state of the floating-label input (small label on top,
-// value below) WITHOUT being a form control — it emits plain text, so
-// assistive tech announces "label, value" rather than an editable field.
-// Supports an optional trailing action (e.g. a copy button) rendered inside
-// the box on the trailing edge.
+// New labeled readouts use the shared readonly Text input. Keep the original
+// static selectors for existing consumers and the compact inline variant.
 //
 // Loaded after `@forward 'uswds'`. Pure component CSS.
 //
@@ -17,9 +13,9 @@
 
 @use 'tokens/nds' as nds;
 
-$field-readout-border-width: 1px;
+$field-readout-border-width: nds.$stroke-hairline;
 $field-readout-min-height: nds.space(56);
-$field-readout-pad-x: 15px;
+$field-readout-pad-x: nds.$field-padding-inline;
 
 .field-readout {
   align-items: center;
@@ -47,7 +43,7 @@ $field-readout-pad-x: 15px;
   color: nds.alpha(nds.$text-primary, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.2;
 }
@@ -96,11 +92,12 @@ $field-readout-pad-x: 15px;
 //     <span class="field-readout__value">EFGHI</span>
 //   </span>
 .field-readout--inline {
+  border-color: nds.$border-tertiary;
   border-radius: nds.radius(8);
   display: inline-flex;
   gap: 0;
   min-height: 0;
-  padding: 0 nds.space(8);
+  padding: 0 nds.space(4);
   vertical-align: baseline;
   width: auto;
 

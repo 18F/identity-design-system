@@ -1,46 +1,39 @@
 ---
 title: Field readout
 lead: >
-  A field readout presents a labeled, read-only value that mirrors the filled
-  state of a floating-label input without being a form control. Use it to
-  display generated values (setup codes, keys) that users copy but never edit.
+  Use a read-only text input for generated values that users can select and
+  copy but never edit. Use the inline readout for a short value in a sentence.
 ---
 
 ## Field readout
 
-The readout emits plain text, not an `<input>`, so assistive technology
-announces the label and value instead of an editable field. Wrap the label and
-value in `.field-readout__body` and associate the value with its label via
-`aria-labelledby`.
+The first two examples use the [Text input]({{ site.baseurl }}/text-input/)
+component with native `readonly`, not `disabled`. The field stays focusable
+so users can select and copy its value.
 
+{% assign setup_code = 'ARUNJAYMZEMMHNXIFVSJCINMMLKFD' %}
 {% capture example %}
-<div class="field-readout">
-  <span class="field-readout__body">
-    <span class="field-readout__label" id="fr1-label">Setup code</span>
-    <span class="field-readout__value font-mono-sm" aria-labelledby="fr1-label">ARUNJAYMZEMMHNXIFVSJCINMMLKFD</span>
-  </span>
-</div>
+{% include helpers/text-input.html id="fr1" label="Setup code" attributes="readonly" value=setup_code %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
 ### With a copy action
 
-Render a `.field-readout__action` button after the body to place a bare icon
-action (such as copy) on the trailing edge. Pair it with
-[`lg-clipboard-button`]({{ site.baseurl }}/components/clipboard-button/) to copy
-the value.
+Use the input's trailing action for the [Clipboard button]({{ site.baseurl }}/clipboard-button/).
+After a successful copy, the icon briefly changes to a checkmark.
 
+{% capture copy_action %}
+<button type="button" class="usa-input__toggle" aria-label="Copy setup code" aria-controls="fr2">
+  <span class="clipboard-label" aria-hidden="true">
+    <span><svg class="usa-icon display-block" focusable="false" width="20" height="20"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#copy"></use></svg></span>
+    <span data-copy-confirmation hidden><svg class="usa-icon display-block" focusable="false" width="20" height="20"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use></svg></span>
+  </span>
+</button>
+{% endcapture %}
 {% capture example %}
-<lg-clipboard-button clipboard-text="ARUNJAYMZEMMHNXIFVSJCINMMLKFD" tooltip-text="Copied!">
-  <div class="field-readout">
-    <span class="field-readout__body">
-      <span class="field-readout__label" id="fr2-label">Setup code</span>
-      <span class="field-readout__value font-mono-sm" aria-labelledby="fr2-label">ARUNJAYMZEMMHNXIFVSJCINMMLKFD</span>
-    </span>
-    <button type="button" class="field-readout__action" aria-label="Copy">
-      <svg class="usa-icon" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z"/></svg>
-    </button>
-  </div>
+<lg-clipboard-button class="display-block" data-nds-copy clipboard-text="{{ setup_code }}">
+  {% include helpers/text-input.html id="fr2" label="Setup code" attributes="readonly" value=setup_code trailing_action=copy_action %}
+  <span role="status" data-copy-status></span>
 </lg-clipboard-button>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

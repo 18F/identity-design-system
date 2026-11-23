@@ -1,0 +1,12 @@
+<dialog id="{{ include.id }}" class="modal" aria-labelledby="{{ include.id }}-title" aria-describedby="{{ include.id }}-description" autofocus>
+  <div class="modal__body">
+    {% include helpers/modal-header.html id=include.id title="Log out of all devices?" %}
+    <div class="modal__content">
+      <p id="{{ include.id }}-description" class="modal__description">You'll be logged out on every device, including this one. You'll need to sign in again to use your account.</p>
+      <div class="modal__actions">
+        <button type="button" class="usa-button usa-button--danger usa-button--lg" data-close-modal>Log out of all devices</button>
+        <button type="button" class="usa-button usa-button--secondary usa-button--lg" data-close-modal>Cancel</button>
+      </div>
+    </div>
+  </div>
+</dialog>

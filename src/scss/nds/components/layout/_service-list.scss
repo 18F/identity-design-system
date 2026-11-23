@@ -11,23 +11,23 @@
 }
 
 @mixin section-heading {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading-section;
-  line-height: 1.2;
+  line-height: nds.$text-line-height-heading-section;
 }
 
 @mixin section-description {
   color: nds.$text-secondary;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
 }
 
 @mixin panel {
-  background: nds.$white;
-  border: nds.$stroke-hairline solid nds.alpha(nds.$black, 10%);
+  background: nds.$background-primary;
+  border: nds.$stroke-hairline solid nds.$border-tertiary;
   border-radius: nds.radius(24);
   box-sizing: border-box;
   padding: nds.space(24);
@@ -41,7 +41,7 @@
 }
 
 @mixin rows-divider {
-  border-top: nds.$stroke-hairline solid nds.alpha(nds.$black, 10%);
+  border-top: nds.$stroke-hairline solid nds.$border-tertiary;
   margin-top: nds.space(24);
   padding-top: nds.space(24);
 }
@@ -66,7 +66,7 @@
   height: nds.space(48);
   justify-content: center;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1;
+  line-height: nds.$text-line-height-none;
   width: nds.space(48);
 }
 
@@ -86,19 +86,19 @@
 @mixin text {
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
   overflow-wrap: anywhere;
 }
 
 @mixin title {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-weight: nds.$font-medium;
 }
 
 @mixin muted {
   color: nds.$text-secondary;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
 }
 
 @mixin actions {

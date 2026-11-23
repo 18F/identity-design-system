@@ -25,7 +25,7 @@
     <script>
       // Keep link semantics in the sample markup, but stay in the live example.
       function preventExampleNavigation(event) {
-        if (event.target instanceof Element && event.target.closest('[data-live-example] a[href]')) {
+        if (event.target instanceof Element && event.target.closest('[data-live-example] a[href]:not([data-example-navigate])')) {
           event.preventDefault();
         }
       }

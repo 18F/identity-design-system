@@ -2,16 +2,13 @@
 // `__accounts` / `__account` / `__account-divider` / `__details` / `__email` /
 // `__meta` / `__get-help` elements.
 //
-// A page layout for reviewing duplicate account profiles. A status icon sits
-// above the intro (rendered via the shared `nds-status-icon` component); a
-// `.process-list` explains the steps; the accounts live inside a single
-// elevated card, separated by internal dividers, with the "I don't recognize"
-// action in the card footer. Composes with the `.auth__actions` layout
-// primitive and the `.process-list` component.
+// The account comparison is read-only. The surrounding flow owns recovery
+// actions; its existing layout hooks remain available to consumers.
 //
 // Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
 
 @use 'tokens/nds' as nds;
+@use 'card';
 
 .duplicate-profiles {
   --nds-flow-align: stretch;
@@ -22,37 +19,37 @@
 }
 
 .duplicate-profiles__instructions {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
   text-align: center;
 }
 
 .duplicate-profiles__accounts {
-  @include nds.stack($gap: nds.space(24), $reset-flow: true, $width: 100%);
+  @include nds.stack($reset-flow: true, $width: 100%, $max-width: 27rem);
+  @include card.card-elevation();
 
-  background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 10%);
+  background: nds.$background-primary;
   border-radius: nds.radius(24);
-  box-shadow: nds.$shadow-large;
   box-sizing: border-box;
-  padding: nds.space(24);
   text-align: left;
 }
 
 .duplicate-profiles__account-divider {
-  background: nds.alpha(nds.$black, 10%);
   border: 0;
-  height: 1px;
+  border-block-start: nds.$stroke-hairline solid nds.$border-tertiary;
+  align-self: center;
   margin: 0;
-  width: 100%;
+  width: calc(100% - #{2 * nds.space(24)});
 }
 
 .duplicate-profiles__account {
   @include nds.stack($gap: nds.space(12), $reset-flow: true, $width: 100%);
+  box-sizing: border-box;
+  padding: nds.space(24);
 }
 
 .duplicate-profiles__account .badge {
@@ -64,24 +61,24 @@
 }
 
 .duplicate-profiles__email {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$text-weight-label-m-emphasis;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
   overflow-wrap: anywhere;
 }
 
 .duplicate-profiles__meta {
-  @include nds.stack($gap: nds.space(2), $reset-flow: true, $width: 100%);
+  @include nds.stack($reset-flow: true, $width: 100%);
 
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
 
   p {
     margin: 0;
@@ -90,4 +87,12 @@
 
 .duplicate-profiles__get-help {
   gap: nds.space(8);
+}
+
+.duplicate-profiles__footer {
+  padding: 0 nds.space(24) nds.space(24);
+
+  .usa-button {
+    width: 100%;
+  }
 }

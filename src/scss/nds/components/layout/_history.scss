@@ -12,7 +12,7 @@
 @use 'tokens/nds' as nds;
 @use 'service-list' as service;
 
-$history-breakpoint-m: 768px;
+$history-breakpoint-m: nds.$breakpoint-medium;
 
 .history {
   @include nds.stack(
@@ -23,7 +23,7 @@ $history-breakpoint-m: 768px;
     $width: 100%
   );
 
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   text-align: left;
 }
@@ -91,7 +91,7 @@ $history-breakpoint-m: 768px;
   position: relative;
 
   &::before {
-    border-top: 1px solid nds.alpha(nds.$black, 10%);
+    border-top: nds.$stroke-hairline solid nds.$border-tertiary;
     content: '';
     inset-block-start: 0;
     inset-inline: nds.space(24);
@@ -121,6 +121,11 @@ $history-breakpoint-m: 768px;
 
 .history-row__title {
   @include service.title();
+
+  .link:focus-visible {
+    @include nds.transparent-focus-ring();
+    border-radius: nds.radius(2);
+  }
 }
 
 .history-row__meta {
@@ -129,6 +134,13 @@ $history-breakpoint-m: 768px;
 
 .history-row__action-icon {
   display: none;
+}
+
+@media (width >= #{$history-breakpoint-m}) {
+  // The mobile chevron stays in the DOM; use text-button padding while it's hidden.
+  .history-row > .usa-button.history-row__action {
+    --nds-button-icon-inset: var(--nds-button-padding);
+  }
 }
 
 @media (width < #{$history-breakpoint-m}) {
@@ -155,30 +167,22 @@ $history-breakpoint-m: 768px;
   .history-row__action,
   .history-row__action:is(:link, :visited, :hover, :active) {
     background: transparent;
-    color: nds.alpha(nds.$black, 65%);
+    color: nds.$text-secondary;
     min-height: 0;
     padding: 0;
     position: static;
   }
 
+  .history-row > .usa-button.history-row__action {
+    --nds-button-icon-inset: 0px;
+    width: var(--nds-button-height);
+  }
+
+  // Stretch only the hit area. The shared focus ring stays on the chevron button.
   .history-row__action::after {
-    border-radius: inherit;
     content: '';
     inset: 0;
     position: absolute;
-  }
-
-  .history-row__action:focus-visible {
-    box-shadow: none;
-    outline: 0;
-  }
-
-  .history-row__action:focus-visible::after {
-    @include nds.focus-ring();
-  }
-
-  .history-row:has(.history-row__action:hover) {
-    background: nds.alpha(nds.$black, 5%);
   }
 
   .history-row__action-label {
