@@ -1,0 +1,32 @@
+@use 'tokens/nds' as nds;
+
+$action-gap: nds.space(4);
+$chevron-width: nds.space(44);
+
+.usa-combo-box[data-select-only] button.usa-combo-box__toggle-list {
+  inset-inline-end: $action-gap;
+  width: $chevron-width;
+}
+
+// Position the compact action without overriding its button variant.
+.usa-combo-box[data-select-only] .usa-combo-box__clear-input.usa-button {
+  background-image: none;
+  bottom: auto;
+  display: none;
+  height: nds.space(36);
+  inset-inline-end: $chevron-width + 2 * $action-gap;
+  margin: 0;
+  mask: none;
+  opacity: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+}
+
+.usa-combo-box--pristine[data-select-only] .usa-combo-box__clear-input.usa-button:not([hidden]) {
+  display: inline-flex;
+}
+
+.usa-combo-box--pristine[data-select-only] > .usa-combo-box__input {
+  padding-inline-end: calc(#{nds.space(80) + $action-gap} + 6ch);
+}

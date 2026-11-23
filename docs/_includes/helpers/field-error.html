@@ -1,0 +1,6 @@
+<div id="{{ include.id | escape }}"{% if include.hidden %} hidden{% endif %}>
+  <div class="usa-error-message">
+    <svg class="usa-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#error"></use></svg>
+    {{ include.message | escape }}
+  </div>
+</div>

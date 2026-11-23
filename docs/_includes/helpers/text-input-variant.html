@@ -7,8 +7,7 @@
 {% if include.state == 'Disabled' %}{% assign disabled = true %}{% endif %}
 {% include helpers/text-input.html id=field_id label=label modifier=modifier value=value icon=include.icon attributes=attributes disabled=disabled %}
 {% if include.state == 'Error' %}
-<div id="{{ field_id }}-error" class="usa-error-message">
-  <svg class="usa-icon" aria-hidden="true"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#error"></use></svg>
-  {% if include.icon %}Enter a password.{% else %}Enter a first name.{% endif %}
-</div>
+{% assign error_id = field_id | append: '-error' %}
+{% capture message %}{% if include.icon %}Enter a password.{% else %}Enter a first name.{% endif %}{% endcapture %}
+{% include helpers/field-error.html id=error_id message=message %}
 {% endif %}

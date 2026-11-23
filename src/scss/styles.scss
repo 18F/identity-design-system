@@ -1,2 +1,46 @@
 @use 'uswds-core';
+@use 'tokens/nds' as nds;
 @forward 'uswds';
+
+// The legacy message already paints an icon in its reserved leading gutter.
+.usa-error-message > svg.usa-icon {
+  display: none;
+}
+
+// Legacy reserves extra right padding for an X icon; Remove is a text button.
+[data-select-only] .usa-combo-box__clear-input.usa-button--sm {
+  padding-inline: nds.space(12);
+}
+
+// High Contrast drops the legacy radio's inset shadow. Paint the dot separately
+// from the outer stroke so checked state remains visible without focus.
+@media (forced-colors: active) {
+  .usa-radio__input[type='radio'] + .usa-radio__label::before {
+    background: Canvas;
+    border: nds.$stroke-hairline solid CanvasText;
+    box-shadow: none;
+    box-sizing: border-box;
+    forced-color-adjust: none;
+    padding: nds.space(2);
+  }
+
+  .usa-radio__input[type='radio']:checked + .usa-radio__label::before {
+    background: CanvasText content-box;
+  }
+
+  .usa-radio__input[type='radio']:is(:disabled, [aria-disabled='true'])
+    + .usa-radio__label::before {
+    border-color: GrayText;
+    box-shadow: none;
+  }
+
+  .usa-radio__input[type='radio']:checked:is(:disabled, [aria-disabled='true'])
+    + .usa-radio__label::before {
+    background: GrayText content-box;
+  }
+
+  .usa-radio__input[type='radio']:is(:focus-visible, .usa-focus) + .usa-radio__label::before {
+    outline: nds.$stroke-control solid Highlight;
+    outline-offset: nds.$stroke-control;
+  }
+}

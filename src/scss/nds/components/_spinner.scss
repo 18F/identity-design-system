@@ -7,19 +7,19 @@
 // in body text and white inside a primary button. Purely decorative; the
 // accessible name or status text comes from the markup (see docs).
 //
-// The glyph matches the one `_file-input.scss` inlines for its uploading
-// state; each component keeps its own copy, as elsewhere in the NDS layer.
+// File input uses the same glyph and motion for its uploading state.
 
 @use 'tokens/nds' as nds;
+@use '../icon-assets' as icon;
 
 // Figma `loader radial` (8 spokes on a 20px grid), inlined as a data URI so
 // the component is self-contained. As a mask, only its shape counts.
-$nds-spinner-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M11 15H9V19H11V15Z' fill='%23000c1f'/%3E%3Cpath d='M11 1H9V5H11V1Z' fill='%23000c1f'/%3E%3Cpath d='M5.75 12.83L2.92 15.66L4.33 17.07L7.16 14.24L5.75 12.83Z' fill='%23000c1f'/%3E%3Cpath d='M15.65 2.93L12.82 5.76L14.23 7.17L17.06 4.34L15.65 2.93Z' fill='%23000c1f'/%3E%3Cpath d='M5 9H1V11H5V9Z' fill='%23000c1f'/%3E%3Cpath d='M19 9H15V11H19V9Z' fill='%23000c1f'/%3E%3Cpath d='M4.34 2.93L2.93 4.34L5.76 7.17L7.17 5.76L4.34 2.93Z' fill='%23000c1f'/%3E%3Cpath d='M14.24 12.83L12.83 14.24L15.66 17.07L17.08 15.66L14.25 12.83H14.24Z' fill='%23000c1f'/%3E%3C/svg%3E");
+$nds-spinner-glyph: icon.$loader-radial;
 $nds-spinner-size: nds.space(20);
 
 // One full turn per second, linear. The motion tokens only cover short UI
 // transitions (150ms / 300ms, cubic easing), so there is no token for a
-// continuous rotation; this value matches the file-input uploading spinner.
+// continuous rotation.
 $nds-spinner-duration: 1s;
 $nds-spinner-animation: nds-spinner-rotate $nds-spinner-duration linear infinite;
 
@@ -29,33 +29,26 @@ $nds-spinner-animation: nds-spinner-rotate $nds-spinner-duration linear infinite
   }
 }
 
-.nds-spinner {
+@mixin spinner-glyph {
   animation: $nds-spinner-animation;
   background-color: currentColor;
-  display: inline-block;
   flex: none;
   height: $nds-spinner-size;
   mask-image: $nds-spinner-glyph;
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: contain;
-  vertical-align: middle;
   width: $nds-spinner-size;
-}
-
-// Reduced motion: show the glyph static. The status text still announces the
-// loading state.
-@media (prefers-reduced-motion: reduce) {
-  .nds-spinner {
+  @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
-}
-
-// Forced colors would replace the `currentColor` fill with the system
-// background and hide the masked glyph. Opt this element out so the fill keeps
-// the inherited (already forced) text color, e.g. ButtonText inside a button.
-@media (forced-colors: active) {
-  .nds-spinner {
+  @media (forced-colors: active) {
     forced-color-adjust: none;
   }
+}
+
+.nds-spinner {
+  @include spinner-glyph();
+  display: inline-block;
+  vertical-align: middle;
 }

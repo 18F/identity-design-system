@@ -10,70 +10,78 @@
 // cannot be styled). Loaded AFTER `@forward 'uswds'` (see nds/styles.scss).
 
 @use 'tokens/nds' as nds;
+@use '../../icon-assets' as icon;
+@use 'base';
 
-$nds-combo-border-width: 1px;
-$nds-combo-height: nds.space(56);
-$nds-combo-pad-x: 15px;
+$nds-combo-border-width: base.$nds-input-border-width;
+$nds-combo-height: base.$nds-input-height;
+$nds-combo-pad-x: base.$nds-input-pad-x;
 
 .usa-combo-box {
   max-width: none;
 }
 
-// Control surface — mirror the `.usa-select` treatment.
+// The shared input surface owns focus, hover, disabled and typography.
 .usa-combo-box__input {
+  padding-inline-end: nds.space(44);
+}
+
+// Selection stays enabled; readonly only prevents editing the displayed label.
+[data-select-only] > .usa-combo-box__input[readonly]:not(:disabled, [aria-disabled='true']) {
   background-color: nds.$background-primary;
-  border: $nds-combo-border-width solid nds.$base-light;
-  border-radius: nds.radius(16);
-  box-sizing: border-box;
-  color: nds.$text-primary;
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
-  font-weight: 400;
-  height: $nds-combo-height;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  padding: 0 nds.space(44) 0 $nds-combo-pad-x;
-  transition:
-    border-color nds.$tr-duration-md nds.$tr-easing-cubic,
-    box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
+  caret-color: transparent;
+  cursor: pointer;
 
-  &::placeholder {
-    color: nds.alpha(nds.$text-primary, 65%);
-    opacity: 1;
-  }
-
-  &:hover:not(:focus, :focus-visible, :disabled, [aria-disabled='true']) {
+  &:hover:not(:focus) {
     border-color: nds.$base-darkest;
   }
 
-  // Open/focused: 2px ink border (matches the active state in the design).
-  &:is(:focus, :focus-visible) {
-    border-color: nds.$base-darkest;
-    box-shadow: 0 0 0 $nds-combo-border-width nds.$base-darkest;
-    outline: 0;
-  }
-
-  &:is(:disabled, [aria-disabled='true']) {
-    background-color: nds.$disabled-light;
-    -webkit-text-fill-color: nds.$text-primary;
-    color: nds.$text-primary;
-    cursor: not-allowed;
-    opacity: 1;
+  // Keyboard navigation puts DOM focus on the option, not the field.
+  &[aria-expanded='true'] {
+    @include base.nds-input-focus-ring();
+    @media (forced-colors: active) {
+      outline: nds.$stroke-control solid Highlight;
+      outline-offset: nds.$stroke-control;
+    }
   }
 }
 
-// Toggle chevron — the 20px chevron at 65% ink, no separator.
-.usa-combo-box__toggle-list {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 12.2322L4.70711 6.93934L3.29289 8.35355L10 15.0607L16.7071 8.35355L15.2929 6.93934L10 12.2322Z' fill='%23000c1f' fill-opacity='0.65'/%3E%3C/svg%3E");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: nds.space(20);
+// USWDS writes a nonbreaking space into each button. Center only the glyph.
+.usa-combo-box
+  button:is(.usa-combo-box__toggle-list, .usa-combo-box__clear-input):where(:not(.usa-button)) {
+  font-size: 0;
+  mask: none;
   opacity: 1;
-  right: nds.space(12);
+
+  &::before {
+    background: currentColor;
+    content: '';
+    height: nds.space(20);
+    mask: icon.$chevron-down center / contain no-repeat;
+    width: nds.space(20);
+
+    @media (forced-colors: active) {
+      background: ButtonText;
+      forced-color-adjust: none;
+    }
+  }
 }
 
-.usa-combo-box__clear-input {
-  right: nds.space(44);
+.usa-combo-box.usa-combo-box--pristine button.usa-combo-box__clear-input:where(:not(.usa-button)) {
+  inset-inline-end: nds.space(4) + nds.space(44);
+
+  &::before {
+    mask-image: icon.$close;
+  }
+}
+
+.usa-combo-box:not(.usa-combo-box--pristine) button.usa-combo-box__clear-input,
+.usa-combo-box button.usa-combo-box__clear-input[hidden] {
+  display: none;
+}
+
+.usa-combo-box--pristine .usa-combo-box__input {
+  padding-inline-end: nds.space(4) + 2 * nds.space(44);
 }
 
 .usa-combo-box__input-button-separator {
@@ -120,6 +128,16 @@ $nds-combo-pad-x: 15px;
   background-color: nds.$base-lighter;
   border-color: transparent;
   color: nds.$text-primary;
+}
+
+// A background wash alone cannot identify the active keyboard option.
+.usa-combo-box__list-option:focus-visible {
+  outline: nds.$stroke-control solid nds.$border-primary;
+  outline-offset: -#{nds.$stroke-control};
+
+  @media (forced-colors: active) {
+    outline-color: Highlight;
+  }
 }
 
 .usa-combo-box__list-option--no-results {

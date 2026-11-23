@@ -1,197 +1,40 @@
 ---
 title: Validation
-lead: Stating validation requirements up front, with live feedback, means users won’t be left guessing.
+lead: Use validation to tell people what needs attention, how to fix it, and whether they can continue.
 ---
 
-{% include helpers/base-component.html component="validation" %}
+## Try the form
 
-## Form validation errors
-
-{% capture example %}
-<span class="usa-error-message" role="alert">
-  Error message text
-</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-
-{% capture example %}
-<span class="usa-success-message" role="alert">
-  Success message text
-</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-
-{% capture example %}
-<label for="e9a4" class="usa-label">Text input validation example</label>
-<input id="e9a4" type="text" class="usa-input usa-input--error">
-<span class="usa-error-message" role="alert">Error message text</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-
-### Examples of form validation error for other input types
-
-Follow the same pattern of applying `.usa-input--error` to the effected input and append the error message in the appropriate span.
-
-<div class="usa-accordion usa-accordion--bordered">
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-textarea">
-      Textarea (multiline) input
-    </button>
-  </h3>
-  <div id="errored-textarea" class="usa-accordion__content">
-{% capture example %}
-<label for="a37c" class="usa-label">Textarea (multiline) input</label>
-<textarea id="a37c" type="text" class="usa-textarea usa-input--error"></textarea>
-<span class="usa-error-message" role="alert">Error message text</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+<div><div class="margin-y-3">
+<form class="usa-form width-full text-left" style="max-width: 27rem" data-validation-example>
+  <p class="margin-y-0">Choose Continue with both fields empty. Then fix one field at a time and try again. Nothing is sent or saved.</p>
+  <div class="margin-top-4">
+    {% include helpers/text-input.html id="validation-first-name" label="First name (required)" attributes='name="first-name" autocomplete="given-name" required' %}
+    {% include helpers/field-error.html id="validation-name-error" message="Enter your first name." hidden=true %}
   </div>
-
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-dates">
-      Dates
-    </button>
-  </h3>
-  <div id="errored-dates" class="usa-accordion__content">
-{% capture example %}
-
-<fieldset class="usa-fieldset">
-  <legend class="usa-label">Date of Birth</legend>
-  <span class="usa-hint" id="f9e5">Example: January 19 2000</span>
-  <div class="usa-memorable-date">
-    <div class="usa-form-group usa-form-group--month usa-form-group--select">
-      <label class="usa-label" for="e30e">Month</label>
-      <select
-        class="usa-select"
-        id="e30e"
-        aria-describedby="f9e5"
-      >
-        <option value>- Select -</option>
-        <option value="1">01 - January</option>
-        <option value="2">02 - February</option>
-        <option value="3">03 - March</option>
-        <option value="4">04 - April</option>
-        <option value="5">05 - May</option>
-        <option value="6">06 - June</option>
-        <option value="7">07 - July</option>
-        <option value="8">08 - August</option>
-        <option value="9">09 - September</option>
-        <option value="10">10 - October</option>
-        <option value="11">11 - November</option>
-        <option value="12">12 - December</option>
-      </select>
-    </div>
-    <div class="usa-form-group usa-form-group--day">
-      <label class="usa-label" for="b857">Day</label>
-      <input
-        class="usa-input"
-        aria-describedby="f9e5"
-        id="b857"
-        maxlength="2"
-        pattern="[0-9]*"
-        inputmode="numeric"
-        value=""
-      />
-    </div>
-    <div class="usa-form-group usa-form-group--year">
-      <label class="usa-label" for="a5dc">Year</label>
-      <input
-        class="usa-input"
-        aria-describedby="f9e5"
-        id="a5dc"
-        minlength="4"
-        maxlength="4"
-        pattern="[0-9]*"
-        inputmode="numeric"
-        value=""
-      />
+  <div class="margin-top-4">
+    {% include helpers/radio-group.html variant="flat" name="contact" choices="Email,Phone" values="email,phone" required=true %}
+    {% include helpers/field-error.html id="validation-contact-error" message="Choose a contact method." hidden=true %}
+  </div>
+  <div role="status">
+    <div class="margin-top-4" data-completion hidden>
+      <div class="usa-alert usa-alert--success usa-alert--slim">
+        <div class="usa-alert__body"><p class="usa-alert__text">Both fields are complete. Nothing was submitted.</p></div>
+      </div>
     </div>
   </div>
-</fieldset>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+  <div class="margin-top-4">
+    <button type="submit" class="usa-button usa-button--big width-full" style="margin-top: 0" disabled>Continue</button>
   </div>
+</form>
+<script src="{{ site.baseurl }}/validation-example.js" defer></script>
+</div></div>
 
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-dropdowns">
-      Dropdowns
-    </button>
-  </h3>
-  <div id="errored-dropdowns" class="usa-accordion__content">
-{% capture example %}
-<label for="d8e1" class="usa-label">Dropdown label</label>
-<select id="d8e1" class="usa-select usa-input--error">
-  <option value>- Select -</option>
-  <option value="value1">Option A</option>
-  <option value="value2">Option B</option>
-  <option value="value3">Option C</option>
-</select>
-<span class="usa-error-message" role="alert">Error message text</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-  </div>
-</div>
+## What to review
 
-#### Radio buttons and checkboxes
+- **Before Continue:** Show which fields are required, without showing errors before someone tries to continue.
+- **After Continue:** Show a specific message next to each invalid field and focus the first one. Keep anything the person already entered.
+- **While correcting:** Clear only the error that was fixed. Don't move focus or declare success on each keystroke.
+- **On completion:** Confirm success only after the form passes.
 
-For radio buttons and checkboxes, simply add an error message directly after the input list. Do not apply `.usa-input--error` to the effected inputs.
-
-<div class="usa-accordion usa-accordion--bordered">
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-radio-small">
-      Radio buttons
-    </button>
-  </h3>
-  <div id="errored-radio-small" class="usa-accordion__content">
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-legend">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="f5c3" class="usa-radio__input" type="radio" name="c8ff">
-      <label for="f5c3" class="usa-radio__label">Option 1</label>
-    </li>
-    <li>
-      <input id="b6bf" class="usa-radio__input" type="radio" name="c8ff" checked>
-      <label for="b6bf" class="usa-radio__label">Option 2</label>
-    </li>
-    <li>
-      <input id="bdfd" class="usa-radio__input" type="radio" name="c8ff" disabled>
-      <label for="bdfd" class="usa-radio__label">Option 3</label>
-    </li>
-  </ul>
-</fieldset>
-<span class="usa-error-message" role="alert">Error message text</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-  </div>
-
-  <h3 class="usa-accordion__heading">
-    <button class="usa-accordion__button" aria-controls="errored-checkbox-small">
-      Checkboxes
-    </button>
-  </h3>
-  <div id="errored-checkbox-small" class="usa-accordion__content">
-{% capture example %}
-<fieldset class="usa-fieldset">
-  <legend class="usa-legend">Group label</legend>
-  <ul class="usa-input-list">
-    <li>
-      <input id="f5c1" class="usa-checkbox__input" type="checkbox" name="b851">
-      <label for="f5c1" class="usa-checkbox__label">Option 1</label>
-    </li>
-    <li>
-      <input id="d21f" class="usa-checkbox__input" type="checkbox" name="b851" checked>
-      <label for="d21f" class="usa-checkbox__label">Option 2</label>
-    </li>
-    <li>
-      <input id="c30e" class="usa-checkbox__input" type="checkbox" name="b851" disabled>
-      <label for="c30e" class="usa-checkbox__label">Option 3</label>
-    </li>
-  </ul>
-</fieldset>
-<span class="usa-error-message" role="alert">Error message text</span>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
-  </div>
-</div>
+For the appearance of individual controls, see [Text input]({{ site.baseurl }}/text-input/), [Select]({{ site.baseurl }}/select/), [Date fields]({{ site.baseurl }}/date-fields/), [Radio buttons]({{ site.baseurl }}/radio-buttons/), and [Checkbox]({{ site.baseurl }}/checkbox/). This example demonstrates client-side feedback; applications must also validate submitted data on the server.

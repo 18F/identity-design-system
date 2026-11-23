@@ -65,7 +65,9 @@ $nds-enhanced-toggle-size: nds.space(20);
   display: block;
 }
 
-.usa-input__toggle {
+.usa-input__toggle,
+.usa-combo-box
+  button:is(.usa-combo-box__toggle-list, .usa-combo-box__clear-input):where(:not(.usa-button)) {
   align-items: center;
   background: transparent;
   border: 0;

@@ -37,6 +37,7 @@ $nds-input-pad-x: nds.$field-padding-inline;
 // Control surface.
 .usa-input,
 .usa-input__control,
+.usa-combo-box__input,
 .usa-textarea,
 .usa-select {
   background-color: nds.$background-primary;
@@ -81,7 +82,7 @@ $nds-input-pad-x: nds.$field-padding-inline;
 
   // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
   // stock USWDS focus rule and zero the USWDS outline.
-  &:is(.usa-input, .usa-input__control, .usa-textarea, .usa-select):is(
+  &:is(.usa-input, .usa-input__control, .usa-combo-box__input, .usa-textarea, .usa-select):is(
       :focus,
       :focus-visible,
       .usa-focus

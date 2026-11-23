@@ -52,6 +52,8 @@ if (output === '--sass' || output === '--check-sass') {
       'external-link',
       'not-visible-hide',
       'visible-show',
+      'chevron-down',
+      'close',
       'checkmark',
     ].map((key) => [key, key]),
   ];

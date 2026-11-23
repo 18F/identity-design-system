@@ -9,37 +9,65 @@
 // data-URI backgrounds so they render without extra sprite/asset lookups.
 
 @use 'tokens/nds' as nds;
+@use '../icon-assets' as icon;
+@use 'spinner';
 
-$nds-file-border-width: 1px;
-$nds-file-border-width-focus: 2px;
+$nds-file-border-width: nds.$stroke-hairline;
+$nds-file-border-width-focus: nds.$stroke-control;
 $nds-file-icon-size: nds.space(20);
 $nds-file-icon-gap: nds.space(16);
 
-$nds-file-icon-upload: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M3 19H17V17H3V19Z' fill='%23000c1f'/%3E%3Cpath d='M9 4.83V15H11V4.83L15.59 9.41L17 8L10 1L3 8L4.41 9.41L9 4.83Z' fill='%23000c1f'/%3E%3C/svg%3E");
-$nds-file-icon-error: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M8.99992 15.0001H10.9999V9.00014H8.99992V15.0001Z' fill='%23ad142b'/%3E%3Cpath d='M8.80001 6.1999C8.80001 6.86264 9.10002 7.3999 10 7.3999C10.9 7.3999 11.2 6.86264 11.2 6.1999C11.2 5.53716 10.9 4.9999 10 4.9999C9.10002 4.9999 8.80001 5.53716 8.80001 6.1999Z' fill='%23ad142b'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 1.00006C15 1.00006 19 5.00006 19 10.0001C19 15.0001 15 19.0001 10 19.0001C5 19.0001 1 15.0001 1 10.0001C1 5.00006 5 1.00006 10 1.00006ZM10 3.00006C6.1 3.00006 3 6.10006 3 10.0001C3 13.9001 6.1 17.0001 10 17.0001C13.9 17.0001 17 13.9001 17 10.0001C17 6.10006 13.9 3.00006 10 3.00006Z' fill='%23ad142b'/%3E%3C/svg%3E");
-$nds-file-icon-document: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M16.94 6.82C16.94 6.29 16.73 5.79 16.35 5.42L13.52 2.59C13.46 2.53 13.4 2.49 13.34 2.44C12.99 2.16 12.56 2 12.11 2H4.94C3.87 2 3 2.92 3 4.06V15.95C3 17.09 3.87 18.01 4.94 18.01H15.07C16.14 18.01 17.01 17.09 17.01 15.95L16.95 6.83L16.94 6.82ZM14.99 16H5.01C5.01 16 5.01 15.97 5.01 15.94V4.06C5.01 4.06 5.01 4.02 5.01 4H10.94V8H14.95L15 15.94C15 15.94 15 15.98 15 16H14.99Z' fill='%23000c1f'/%3E%3C/svg%3E");
-$nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M11 15H9V19H11V15Z' fill='%23000c1f'/%3E%3Cpath d='M11 1H9V5H11V1Z' fill='%23000c1f'/%3E%3Cpath d='M5.75 12.83L2.92 15.66L4.33 17.07L7.16 14.24L5.75 12.83Z' fill='%23000c1f'/%3E%3Cpath d='M15.65 2.93L12.82 5.76L14.23 7.17L17.06 4.34L15.65 2.93Z' fill='%23000c1f'/%3E%3Cpath d='M5 9H1V11H5V9Z' fill='%23000c1f'/%3E%3Cpath d='M19 9H15V11H19V9Z' fill='%23000c1f'/%3E%3Cpath d='M4.34 2.93L2.93 4.34L5.76 7.17L7.17 5.76L4.34 2.93Z' fill='%23000c1f'/%3E%3Cpath d='M14.24 12.83L12.83 14.24L15.66 17.07L17.08 15.66L14.25 12.83H14.24Z' fill='%23000c1f'/%3E%3C/svg%3E");
+$nds-file-icon-upload: icon.$arrow-up-from-line;
+$nds-file-icon-error: icon.$error-dark;
+$nds-file-icon-document: icon.$document;
+$nds-file-icon-loader: spinner.$nds-spinner-glyph;
+
+@function file-dash-mask($stroke) {
+  $half: $stroke * 0.5;
+  $radius: nds.radius(16) - $half;
+  @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='#{$half}' y='#{$half}' rx='#{$radius}' style='width:calc(100%25 - #{$stroke});height:calc(100%25 - #{$stroke})' fill='none' stroke='black' stroke-width='#{$stroke}' stroke-dasharray='4 4' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+// Use the catalog shape with semantic ink, including in forced colors.
+@mixin file-glyph($glyph, $ink: inherit) {
+  background-color: currentColor;
+  color: $ink;
+  content: '';
+  height: $nds-file-icon-size;
+  mask: $glyph center / contain no-repeat;
+  width: $nds-file-icon-size;
+
+  @media (forced-colors: active) {
+    color: CanvasText;
+    forced-color-adjust: none;
+  }
+}
 
 .usa-file-input {
   display: block;
-  max-width: 27rem;
+  max-width: nds.$floating-input-max-width;
   width: 100%;
 }
 
-// Drop target: white card, dashed hairline border, 16px radius, generous
-// padding, centered.
+[data-nds-file-input] [data-file-result] {
+  display: contents;
+}
+
+// Count the border inside the 40px content inset in every state.
 .usa-file-input__target {
+  --nds-file-stroke: #{$nds-file-border-width};
+  --nds-file-dashes: #{file-dash-mask($nds-file-border-width)};
   align-items: center;
-  background-color: nds.$white;
-  border: $nds-file-border-width dashed nds.$base-light;
+  background-color: nds.$background-primary;
+  border: var(--nds-file-stroke) dashed nds.$border-secondary;
   border-radius: nds.radius(16);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 8.75rem;
+  min-height: nds.$file-input-min-height;
   overflow: hidden;
-  padding: nds.space(16) nds.space(24);
+  padding: calc(#{nds.space(40)} - var(--nds-file-stroke));
   position: relative;
   text-align: center;
   transition:
@@ -47,19 +75,21 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
     border-color nds.$tr-duration-md nds.$tr-easing-cubic;
   width: 100%;
 
-  &:hover {
-    background-color: nds.$base-lightest;
-    border-color: nds.$base-darkest;
+  &:hover,
+  &.has-invalid-file {
+    background-color: nds.$background-primary;
+    border-color: nds.$border-secondary;
   }
 
   // Selected file (JS-enhanced): solid border, white surface, and the injected
   // heading + preview reshaped into a single Figma row (glyph + filename left,
   // Change file right).
   &:has(.usa-file-input__preview-heading) {
+    --nds-file-stroke: #{nds.$stroke-hairline};
     align-items: center;
-    background-color: nds.$white;
+    background-color: nds.$background-primary;
     border-style: solid;
-    border-color: nds.$base-lighter;
+    border-color: nds.$border-tertiary;
     display: flex;
     flex-flow: row wrap;
     gap: nds.space(16);
@@ -69,36 +99,60 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 }
 
 // Drag state gets the tinted surface and the darkest border.
-.usa-file-input--drag .usa-file-input__target {
-  background-color: nds.$base-lightest;
-  border-color: nds.$base-darkest;
+.usa-file-input__target.usa-file-input--drag:not(.has-invalid-file, :has(:disabled)) {
+  background-color: nds.$background-tertiary;
+  border-color: nds.$border-primary;
+}
+
+// CSS dashed borders have square ends. Mask a token-colored stroke with a
+// responsive SVG path; keep the native border as the high-contrast fallback.
+@media (forced-colors: none) {
+  .usa-file-input__target:not(.usa-file-input--disabled *, :has(.usa-file-input__preview-heading)) {
+    border-style: none;
+    padding: nds.space(40);
+
+    &::after {
+      background-color: nds.$border-secondary;
+      content: '';
+      inset: 0;
+      mask: var(--nds-file-dashes) center / 100% 100% no-repeat;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    &.usa-file-input--drag:not(.has-invalid-file)::after {
+      background-color: nds.$border-primary;
+    }
+  }
 }
 
 // Instructions / choose link. Upload arrow centered above a single line of
 // text ("Drag files here or choose from folder").
-.usa-file-input__instructions {
-  color: nds.alpha(nds.$black, 65%);
-  display: block;
+.usa-file-input__instructions,
+.usa-file-input__loading-message,
+.usa-file-input__accepted-files-message,
+.usa-file-input__preview,
+.usa-file-input__preview-heading {
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
+}
+
+.usa-file-input__instructions {
+  color: nds.$text-secondary;
+  display: block;
+  padding: 0;
   pointer-events: none;
   position: relative;
   text-align: center;
   z-index: 3;
 
   &::before {
-    background-image: $nds-file-icon-upload;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: $nds-file-icon-size;
-    content: '';
+    @include file-glyph($nds-file-icon-upload, nds.$text-primary);
     display: block;
-    height: $nds-file-icon-size;
     margin: 0 auto $nds-file-icon-gap;
-    width: $nds-file-icon-size;
   }
 
   // The JS hides the null-state instructions once a file is selected; honor it
@@ -109,49 +163,42 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 }
 
 .usa-file-input__choose {
-  color: nds.alpha(nds.$black, 65%);
-  font-weight: 400;
+  color: nds.$text-secondary;
+  font-weight: nds.$font-regular;
   text-decoration: underline;
-  text-underline-offset: 0.1em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .usa-file-input__instructions::before {
+    transition: transform nds.$tr-duration-md nds.$tr-easing-cubic;
+  }
+
+  .usa-file-input__target:is(:hover, .usa-file-input--drag):not(
+      :has(:disabled, [aria-disabled='true'])
+    )
+    .usa-file-input__instructions::before {
+    transform: translateY(-#{nds.space(4)});
+  }
 }
 
 // Uploading state: radial spinner centered above the "Uploading" label, on the
 // default dashed surface. Matches Figma node 4001:10781.
-@keyframes nds-file-input-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .usa-file-input__loading-message {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   display: block;
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
-  font-weight: 400;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
   pointer-events: none;
   position: relative;
   text-align: center;
   z-index: 3;
 
   &::before {
-    animation: nds-file-input-spin 1s linear infinite;
-    background-image: $nds-file-icon-loader;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: $nds-file-icon-size;
+    @include spinner.spinner-glyph();
+    color: nds.$text-primary;
     content: '';
     display: block;
-    height: $nds-file-icon-size;
     margin: 0 auto $nds-file-icon-gap;
-    width: $nds-file-icon-size;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    &::before {
-      animation: none;
+    @media (forced-colors: active) {
+      color: CanvasText;
     }
   }
 }
@@ -163,24 +210,14 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   color: nds.$error-dark;
   display: flex;
   flex-direction: column;
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
-  font-weight: nds.$font-semibold;
   gap: $nds-file-icon-gap;
-  line-height: 1.5;
   margin: 0;
   pointer-events: none;
   position: relative;
   z-index: 3;
 
   &::before {
-    background-image: $nds-file-icon-error;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: $nds-file-icon-size;
-    content: '';
-    height: $nds-file-icon-size;
-    width: $nds-file-icon-size;
+    @include file-glyph($nds-file-icon-error);
   }
 }
 
@@ -191,7 +228,7 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   display: none;
 }
 
-// Error frame matches the default surface in Figma: the grey dashed hairline
+// Error frame matches the default surface: the grey dashed
 // border stays, and only the glyph + message are red. Neutralize the legacy
 // form-group error chrome (red left bar, padding shift, negative margin) and
 // the red target border for file-input error groups.
@@ -201,12 +238,16 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   padding-left: 0;
 
   .usa-file-input__target {
-    border-color: nds.$base-light;
-    border-width: $nds-file-border-width;
+    border-color: nds.$border-secondary;
+    border-width: var(--nds-file-stroke);
   }
 }
 
-// The decorative box overlay (drawn above the target, below the real input).
+// The target owns the surface. USWDS also paints this overlay on drag and focus.
+.usa-file-input .usa-file-input__box {
+  background: transparent;
+}
+
 .usa-file-input__box {
   border-radius: inherit;
   inset: 0;
@@ -235,7 +276,7 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 
 // Focus ring is drawn on the target since the overlay itself is transparent.
 .usa-file-input__target:has(.usa-file-input__input:not([disabled]):focus-visible) {
-  outline: $nds-file-border-width-focus solid nds.$black;
+  outline: $nds-file-border-width-focus solid nds.$text-primary;
   outline-offset: -#{$nds-file-border-width-focus};
 }
 
@@ -250,12 +291,9 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 .usa-file-input__preview-heading {
   align-items: center;
   background: transparent;
-  color: nds.$black;
+  color: nds.$text-primary;
   display: flex;
-  font-family: nds.$font-family;
   font-size: 0;
-  font-weight: 400;
-  line-height: 1.5;
   margin: 0;
   order: 2;
   padding: 0;
@@ -266,9 +304,6 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   .usa-file-input__choose {
     color: nds.$text-primary;
     font-size: nds.$text-body-m;
-    font-weight: 400;
-    text-decoration: underline;
-    text-underline-offset: 0.1em;
   }
 }
 
@@ -278,12 +313,9 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 .usa-file-input__preview {
   align-items: center;
   background: transparent;
-  color: nds.$black;
+  color: nds.$text-primary;
   display: flex;
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
   gap: nds.space(8);
-  line-height: 1.5;
   margin: 0;
   order: 1;
   overflow-wrap: anywhere;
@@ -294,14 +326,8 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
   z-index: 3;
 
   &::before {
-    background-image: $nds-file-icon-document;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: $nds-file-icon-size;
-    content: '';
+    @include file-glyph($nds-file-icon-document);
     flex: none;
-    height: $nds-file-icon-size;
-    width: $nds-file-icon-size;
   }
 
   &:last-child {
@@ -317,25 +343,25 @@ $nds-file-icon-loader: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 .usa-file-input--disabled {
   .usa-file-input__instructions,
   .usa-file-input__choose {
-    color: nds.$disabled;
-  }
-
-  .usa-file-input__box {
-    background-color: nds.$base-lightest;
+    color: nds.$text-disabled;
   }
 
   .usa-file-input__instructions::before {
-    opacity: 0.25;
+    color: nds.$text-disabled;
+    @media (forced-colors: active) {
+      color: GrayText;
+    }
   }
 
   .usa-file-input__target {
-    background-color: nds.$base-lightest;
+    --nds-file-stroke: #{nds.$stroke-hairline};
+    background-color: nds.$background-tertiary;
     border-style: solid;
-    border-color: nds.$base-lighter;
+    border-color: nds.$border-tertiary;
 
     &:hover {
-      background-color: nds.$base-lightest;
-      border-color: nds.$base-lighter;
+      background-color: nds.$background-tertiary;
+      border-color: nds.$border-tertiary;
     }
   }
 }

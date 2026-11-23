@@ -1,0 +1,18 @@
+{% assign choices = include.choices | default: 'Email,Text message,Phone call,Do not contact me' | split: ',' %}
+{% assign values = include.values | default: 'email,text,phone,none' | split: ',' %}
+{% assign default_name = include.variant | prepend: 'contact-' %}
+{% assign group_name = include.name | default: default_name %}
+{% assign descriptions = 'Receive an email.,Receive a text message.,Receive a phone call.,Skip contact notifications.' | split: ',' %}
+<fieldset class="usa-fieldset usa-radio-group{% if include.variant == 'default' %} usa-radio-group--plain{% endif %}">
+  <legend class="usa-legend usa-legend--label">How should we contact you?{% if include.required %} (required){% endif %}</legend>
+  <div class="{% if include.variant == 'flat' %}radio-group{% else %}usa-input-list{% endif %}">
+    {% for choice in choices %}
+    {% assign index = forloop.index0 %}
+    {% capture id %}{{ group_name }}-{{ values[index] }}{% endcapture %}
+    <div{% if include.variant == 'flat' %} class="radio"{% endif %}>
+      <input id="{{ id }}" type="radio" name="{{ group_name }}" value="{{ values[index] }}" class="{% if include.variant == 'flat' %}radio__input{% else %}usa-radio__input{% if include.variant == 'bordered' or include.variant == 'tile' %} usa-radio__input--{{ include.variant }}{% endif %}{% endif %}"{% if include.required %} required{% endif %}{% if forloop.first and include.choices == nil %} checked{% endif %}{% if forloop.last and include.choices == nil and include.variant != 'flat' %} disabled{% endif %}{% if include.variant == 'tile' %} aria-labelledby="{{ id }}-label" aria-describedby="{{ id }}-description"{% endif %}>
+      <label for="{{ id }}" class="{% if include.variant == 'flat' %}radio__label{% else %}usa-radio__label{% endif %}">{% if include.variant == 'tile' %}<span><span id="{{ id }}-label">{{ choice }}</span><span id="{{ id }}-description" class="usa-radio__label-description">{{ descriptions[index] }}</span></span>{% else %}{{ choice }}{% endif %}</label>
+    </div>
+    {% endfor %}
+  </div>
+</fieldset>

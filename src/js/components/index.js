@@ -17,18 +17,22 @@ import inputSsn from './input-ssn.js';
 import languageSelector from '@uswds/uswds/js/usa-language-selector';
 import modal from '@uswds/uswds/js/usa-modal';
 import nativeModal from './native-modal.js';
+import ndsFileInput from './nds-file-input.js';
 import navigation from '@uswds/uswds/js/usa-header';
 import officialBanner from './official-banner.js';
 import password from '@uswds/uswds/js/_usa-password';
 import phoneInput from './phone-input.js';
 import range from '@uswds/uswds/js/usa-range';
 import search from '@uswds/uswds/js/usa-search';
+import { withSelectOnly } from './select-only.js';
 import skipnav from '@uswds/uswds/js/usa-skipnav';
 import timePicker from '@uswds/uswds/js/usa-time-picker';
 import table from '@uswds/uswds/js/usa-table';
 import tooltip from '@uswds/uswds/js/usa-tooltip';
 import totpSetup from './totp-setup.js';
 import validator from '@uswds/uswds/js/usa-validation';
+
+const selectionBehavior = withSelectOnly(comboBox);
 
 export {
   accordion,
@@ -37,7 +41,7 @@ export {
   button,
   characterCount,
   clipboardButton,
-  comboBox,
+  selectionBehavior as comboBox,
   connectedServices,
   datePicker,
   dateRangePicker,
@@ -50,6 +54,7 @@ export {
   languageSelector,
   modal,
   nativeModal,
+  ndsFileInput,
   navigation,
   officialBanner,
   password,

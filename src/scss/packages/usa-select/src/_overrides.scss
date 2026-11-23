@@ -1,4 +1,5 @@
 @use 'uswds-core' as *;
+@use 'select-only';
 
 .usa-select {
   @include u-border-color('primary-light');

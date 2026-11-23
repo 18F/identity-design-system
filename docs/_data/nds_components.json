@@ -4,5 +4,6 @@
   "banner", "button-groups", "buttons", "cards", "checkbox", "checkbox-flat",
   "clipboard-button", "code-formatting", "connected-services", "consent", "dashboard-home",
   "date-fields", "text-input", "floating-label-input", "fieldset", "memorable-date",
-  "duplicate-profiles", "field-readout", "history"
+  "duplicate-profiles", "field-readout", "history",
+  "file-input", "select", "radio-buttons", "validation"
 ]

@@ -1,0 +1,92 @@
+@use 'tokens/nds' as nds;
+
+$size: nds.space(20);
+
+// Both radio markups share a first-line rail and native input states.
+@mixin option($input, $label) {
+  #{$input}[type='radio'] + #{$label} {
+    --radio-ink: #{nds.$border-primary};
+    --radio-dot: transparent;
+    align-items: flex-start;
+    box-sizing: border-box;
+    color: nds.$text-primary;
+    cursor: pointer;
+    display: flex;
+    font-family: nds.$font-family;
+    font-size: nds.$text-body-m;
+    font-weight: nds.$font-regular;
+    gap: nds.space(12);
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: nds.$text-line-height-body;
+    margin: 0;
+    overflow-wrap: anywhere;
+    padding: nds.space(24);
+    text-align: start;
+
+    &::before {
+      // Clip the fill to a rounded content box so the browser antialiases the dot.
+      background: var(--radio-dot) content-box;
+      border: nds.$stroke-control solid var(--radio-ink);
+      border-radius: nds.radius(pill);
+      box-shadow: none;
+      box-sizing: border-box;
+      content: '';
+      display: block;
+      flex: 0 0 $size;
+      height: $size;
+      margin: nds.space(2) 0 0;
+      outline: 0;
+      padding: nds.space(2);
+      position: static;
+      width: $size;
+    }
+  }
+
+  #{$input}:not(:disabled, [aria-disabled='true']) + #{$label}:is(:hover, .usa-radio__label--hover),
+  #{$input}:checked + #{$label} {
+    --radio-ink: #{nds.$text-link};
+  }
+
+  #{$input}:checked + #{$label} {
+    --radio-dot: var(--radio-ink);
+  }
+
+  #{$input}[type='radio']:is(:disabled, [aria-disabled='true']) + #{$label} {
+    --radio-ink: #{nds.$text-disabled};
+    color: nds.$text-secondary;
+    cursor: not-allowed;
+
+    &::before {
+      box-shadow: none;
+    }
+  }
+
+  // USWDS also outlines a checked radio on pointer focus.
+  #{$input}[type='radio']:focus:not(:focus-visible, .usa-focus) + #{$label}::before {
+    outline: none;
+  }
+
+  #{$input}[type='radio']:is(:focus-visible, .usa-focus) + #{$label}::before {
+    @include nds.focus-ring();
+    outline: 0;
+  }
+
+  @media (forced-colors: active) {
+    #{$input}[type='radio'] + #{$label}::before {
+      --radio-ink: CanvasText;
+      forced-color-adjust: none;
+    }
+    #{$input}[type='radio']:checked + #{$label}::before {
+      --radio-ink: Highlight;
+      --radio-dot: var(--radio-ink);
+    }
+    #{$input}[type='radio']:is(:disabled, [aria-disabled='true']) + #{$label}::before {
+      --radio-ink: GrayText;
+    }
+    #{$input}[type='radio']:is(:focus-visible, .usa-focus) + #{$label}::before {
+      box-shadow: none;
+      outline: nds.$stroke-control solid Highlight;
+      outline-offset: nds.$stroke-control;
+    }
+  }
+}

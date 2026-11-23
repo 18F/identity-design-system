@@ -1,10 +1,12 @@
 @use 'uswds-core' as *;
+@use 'tokens/nds' as nds;
 
 .usa-error-message {
   @include u-padding-y(0.5);
   position: relative;
   display: block;
   font-weight: font-weight('bold');
+  line-height: nds.$text-line-height-body;
   padding-left: units(3);
   color: color('error');
 

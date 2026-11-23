@@ -30,7 +30,9 @@
   padding-inline-end: nds.space(44);
 }
 
-:is(.usa-input-group--floating, .usa-input__shell) > button.usa-input__toggle {
+:is(.usa-input-group--floating, .usa-input__shell) > button.usa-input__toggle,
+.usa-combo-box
+  button:is(.usa-combo-box__toggle-list, .usa-combo-box__clear-input):where(:not(.usa-button)) {
   border-radius: nds.radius(pill);
   height: nds.space(44);
   inset-inline-end: nds.space(4);
@@ -42,7 +44,6 @@
     width: nds.space(20);
   }
 
-  // Keep the toggle's text as its accessible name and non-NDS fallback.
   &.usa-show-password {
     font-size: 0;
   }
@@ -92,7 +93,7 @@
 }
 
 // Reserve vertical room so the floated label clears the value.
-.usa-input-group--floating :is(.usa-input, .usa-search__input),
+.usa-input-group--floating :is(.usa-input, .usa-search__input, .usa-combo-box__input),
 .usa-input__control--floating {
   // The label sits inside the control, so no external label gap is needed.
   margin-block-start: 0;
@@ -127,7 +128,8 @@
 }
 
 // Floated state: focused, filled, or autofilled.
-.usa-input-group--floating:has(.usa-combo-box__input:is(:focus, :not(:placeholder-shown)))
+.usa-input-group--floating:has(.usa-combo-box__input:not(:placeholder-shown)) > .usa-label,
+.usa-input-group--floating:has(.usa-combo-box:not([data-select-only]) > .usa-combo-box__input:focus)
   > .usa-label,
 .usa-input-group--floating .usa-search__input:is(:focus, :not(:placeholder-shown)) + .usa-label,
 .usa-input-group--floating .usa-input:is(:focus, .usa-focus) + .usa-label,
@@ -147,9 +149,11 @@
   > .usa-label {
     z-index: 1;
   }
-  .usa-combo-box__input {
-    padding-block: nds.space(24) nds.space(8);
-  }
+}
+
+// Opening an empty Select is not text entry. Move the label only for a value.
+.usa-input-group--floating:has(> [data-select-only]) > .usa-label {
+  transition: none;
 }
 
 .usa-input-group--floating:has(.usa-combo-box:not(:has(.usa-combo-box__input))) > .usa-label {

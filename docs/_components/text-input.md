@@ -52,6 +52,9 @@ When enforcing a specific text input pattern, provide a hint in the form of an e
 
 ## Text input states
 
+The Error examples show the field's appearance and how its message is linked.
+To try submitting and correcting errors across fields, use the [Validation form]({{ site.baseurl }}/validation/).
+
 Hover and focus specimens show their styling without needing a pointer or
 moving keyboard focus. In the icon examples, activate the eye button to show
 or hide the password. Read-only fields remain focusable so their value can be

@@ -1,0 +1,20 @@
+<div class="usa-form-group">
+  <div class="usa-file-input" data-enhanced="true" data-nds-file-input>
+    <div class="usa-sr-only" role="status" id="{{ include.id }}-status">{% if include.state == 'error' %}This file type is not accepted{% elsif include.state == 'selected' %}Example file: file.pdf{% else %}No file selected.{% endif %}</div>
+    <div class="usa-file-input__target{% if include.state == 'error' %} has-invalid-file{% elsif include.state == 'hovered' %} usa-file-input--drag{% endif %}">
+      <div class="usa-file-input__instructions" aria-hidden="true"{% if include.state == 'error' or include.state == 'selected' %} hidden{% endif %}>
+        Drag files here or <span class="usa-file-input__choose">choose from folder</span>
+      </div>
+      <div data-file-result>
+        {% if include.state == 'error' %}
+        <div class="usa-file-input__accepted-files-message">This file type is not accepted</div>
+        {% elsif include.state == 'selected' %}
+        <div class="usa-file-input__preview-heading">Selected file <span class="usa-file-input__choose">Change file</span></div>
+        <div class="usa-file-input__preview">file.pdf</div>
+        {% endif %}
+      </div>
+      <div class="usa-file-input__box"></div>
+      <input id="{{ include.id }}" class="usa-file-input__input" type="file" name="files" accept=".pdf" multiple data-errormessage="This file type is not accepted" data-choose-label="Choose from folder" aria-describedby="{{ include.id }}-status" aria-label="{% if include.state == 'selected' %}Change file{% else %}Choose from folder{% endif %}"{% if include.state == 'error' %} aria-invalid="true"{% endif %}>
+    </div>
+  </div>
+</div>
