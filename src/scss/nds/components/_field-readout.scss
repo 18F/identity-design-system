@@ -43,7 +43,7 @@ $field-readout-pad-x: nds.$field-padding-inline;
   color: nds.alpha(nds.$text-primary, 65%);
   font-family: nds.$font-family;
   font-size: nds.$text-label-s;
-  font-weight: nds.$font-medium;
+  font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.2;
 }
