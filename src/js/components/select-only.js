@@ -9,11 +9,16 @@ function configure(group, comboBox) {
   if (!(group instanceof HTMLElement) || cleanups.has(group)) return;
   const select = group.querySelector('select');
   if (!select) return;
-  const initialValue = select.value;
+  const initialIndex = select.selectedIndex;
   const enhanced = group.dataset.enhanced;
   comboBox.enhanceComboBox(group);
   const { inputEl: input, clearInputBtnEl: clear, listEl, statusEl } = comboBox.getComboBoxContext(group);
-  if (!enhanced && !group.dataset.defaultValue) select.value = initialValue;
+  if (!enhanced) {
+    const preferred = group.dataset.defaultValue && Array.from(select.options).find(option =>
+      option.value === group.dataset.defaultValue && !option.matches(':disabled'));
+    select.selectedIndex = preferred ? preferred.index : initialIndex;
+  }
+  group.dataset.disableFiltering = 'true';
   // USWDS moves these attributes to its editable input. A readonly input
   // cannot validate, and only the native select is submitted.
   if (input.required) {
@@ -50,29 +55,37 @@ function configure(group, comboBox) {
   const options = { signal: controller.signal };
   // USWDS rebuilds its popup from every option, including disabled optgroups.
   // Keep only choices the native field can actually submit.
-  const available = () => new Set(Array.from(select.options)
-    .filter(option => !option.matches(':disabled')).map(option => option.value));
+  // Unfiltered USWDS rows follow the order of nonempty native options. Bind
+  // once per generated row, before pruning: values and labels need not be unique.
+  /** @type {WeakMap<Element, HTMLOptionElement>} */
+  const sources = new WeakMap();
   const prune = () => {
     if (listEl.hidden) return;
-    const values = available();
     const rows = Array.from(listEl.querySelectorAll('li[data-value]'));
-    const enabled = rows.filter(row => values.has(row.getAttribute('data-value') || ''));
-    if (enabled.length === rows.length && rows.length) return;
+    const native = Array.from(select.options).filter(option => option.value);
+    rows.forEach((row, index) => {
+      if (!sources.has(row) && native[index]) sources.set(row, native[index]);
+    });
+    const enabled = rows.filter(row => {
+      const source = sources.get(row);
+      return source && select.contains(source) && !source.matches(':disabled');
+    });
+    const selected = enabled.find(row => sources.get(row)?.selected);
+    const focused = enabled.find(row => row === document.activeElement) || selected || enabled[0];
     const lostFocus = rows.some(row => row === document.activeElement && !enabled.includes(row));
     for (const row of rows) if (!enabled.includes(row)) row.remove();
     enabled.forEach((row, index) => {
       row.setAttribute('aria-posinset', String(index + 1));
       row.setAttribute('aria-setsize', String(enabled.length));
     });
-    if (!enabled.some(row => row.getAttribute('tabindex') === '0')) {
-      const first = enabled[0];
-      if (first) {
-        first.setAttribute('tabindex', '0');
-        first.classList.add('usa-combo-box__list-option--focused');
-      }
-      input.setAttribute('aria-activedescendant', first?.id || '');
-      if (lostFocus) (first instanceof HTMLElement ? first : input).focus();
-    }
+    enabled.forEach(row => {
+      row.setAttribute('aria-selected', String(row === selected));
+      row.classList.toggle('usa-combo-box__list-option--selected', row === selected);
+      row.setAttribute('tabindex', row === focused ? '0' : '-1');
+      row.classList.toggle('usa-combo-box__list-option--focused', row === focused);
+    });
+    input.setAttribute('aria-activedescendant', focused?.id || '');
+    if (lostFocus) (focused instanceof HTMLElement ? focused : input).focus();
     statusEl.textContent = enabled.length ? `${enabled.length} available.` : 'No available options.';
     if (!enabled.length) {
       const empty = listEl.querySelector('li') || document.createElement('li');
@@ -95,14 +108,29 @@ function configure(group, comboBox) {
   // Guard same-turn activation, before the mutation observer can run.
   const guard = (/** @type {Event} */ event) => {
     const row = event.target instanceof Element && event.target.closest('li[data-value]');
-    if (!row || available().has(row.getAttribute('data-value') || '')) return;
+    if (!row) return;
+    if (!sources.has(row)) prune();
+    const source = sources.get(row);
+    const canSelect = source && select.contains(source) && !source.matches(':disabled');
+    if (canSelect && event instanceof KeyboardEvent && !['Enter', ' '].includes(event.key)) return;
     event.preventDefault();
     event.stopPropagation();
-    prune();
+    if (canSelect) {
+      source.selected = true;
+      sync();
+      select.dispatchEvent(new CustomEvent('change', { bubbles: true, detail: { value: source.value } }));
+      input.dispatchEvent(new CustomEvent('change', { bubbles: true, detail: { value: input.value } }));
+    } else prune();
     input.focus();
   };
   listEl.addEventListener('click', guard, options);
   listEl.addEventListener('keydown', guard, options);
+  // The upstream editable field resolves draft text by value on blur/Escape.
+  // A readonly field has no draft; that reconciliation can replace its label
+  // with the first same-valued option's label.
+  input.addEventListener('change', () => {
+    input.value = select.value ? select.selectedOptions[0].text : '';
+  }, options);
   select.addEventListener('invalid', event => {
     event.preventDefault();
     if (!error.isConnected) {
@@ -142,8 +170,9 @@ export function withSelectOnly(comboBox) {
   function open(event) {
     const input = event.target;
     if (!(input instanceof HTMLInputElement) || !input.matches(`${selector} > .usa-combo-box__input`)) return;
-    if (![' ', 'Enter'].includes(event.key) || input.disabled || input.getAttribute('aria-disabled') === 'true') return;
+    if (![' ', 'Enter', 'ArrowDown'].includes(event.key) || input.disabled || input.getAttribute('aria-disabled') === 'true') return;
     event.preventDefault();
+    event.stopPropagation();
     comboBox.displayList(input);
     refreshOptions.get(input)?.();
     const { listEl } = comboBox.getComboBoxContext(input);
@@ -155,12 +184,12 @@ export function withSelectOnly(comboBox) {
   function on(root = document.body) {
     groups(root).forEach(group => configure(group, comboBox));
     comboBox.on(root);
-    root.addEventListener('keydown', open);
+    root.addEventListener('keydown', open, true);
   }
   /** @param {HTMLElement} root */
   function off(root = document.body) {
     groups(root).forEach(group => cleanups.get(group)?.());
-    root.removeEventListener('keydown', open);
+    root.removeEventListener('keydown', open, true);
     comboBox.off(root);
   }
   return {
