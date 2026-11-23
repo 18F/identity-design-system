@@ -1,7 +1,7 @@
 // NDS fieldset overlay — `.usa-fieldset`, `.usa-legend--label`.
 //
 // Restyles the USWDS fieldset BEM rather than shipping a separate flat
-// primitive. `.usa-legend` defaults to the uppercase micro-legend; the
+// primitive. `.usa-legend` defaults to a Heading/XS; the
 // `.usa-legend--label` variant renders a bold, sentence-case legend styled like
 // a form label, for grouped controls that read better with a plain heading. The
 // `.usa-hint` treatment (see components/input/_base.scss) covers group hint text.
@@ -16,14 +16,32 @@
   min-inline-size: 0;
 }
 
-// Label legend: a bold, sentence-case legend styled like a form label. Overrides
-// the uppercase micro-legend treatment (text-transform, border, sizing).
+// Fieldset spacing must not change standalone form groups on other pages.
+.usa-fieldset > .usa-form-group {
+  margin-top: nds.space(12);
+}
+
+.usa-legend {
+  border-bottom: 0;
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-heading-s;
+  font-weight: nds.$font-medium;
+  letter-spacing: nds.$text-letter-spacing-heading-section;
+  line-height: nds.$text-line-height-heading-section;
+  max-width: nds.$floating-input-max-width;
+  padding: 0;
+  padding-inline-start: nds.$field-padding-inline + nds.$stroke-hairline;
+  text-transform: none;
+}
+
+// The label variant is a plain form label, without a divider.
 .usa-legend--label {
   border-bottom: 0;
   color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1.5;
   margin: 0 0 nds.space(8);

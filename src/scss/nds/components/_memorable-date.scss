@@ -1,0 +1,32 @@
+@use 'tokens/nds' as nds;
+
+.usa-memorable-date {
+  container: memorable-date / inline-size;
+  gap: nds.space(12);
+
+  > .usa-form-group {
+    margin-block-start: 0;
+    margin-inline-end: 0;
+  }
+
+  .usa-label {
+    padding-inline-start: nds.$field-padding-inline + nds.$stroke-hairline;
+  }
+
+  .usa-form-group--day input,
+  .usa-form-group--year input {
+    width: 6rem;
+  }
+
+  .usa-form-group--month select {
+    max-width: 100%;
+  }
+}
+
+// Below the combined control widths and gaps, keep Day and Year together.
+@container memorable-date (width < calc(27rem + #{2 * nds.space(12)})) {
+  .usa-memorable-date > .usa-form-group--month.usa-form-group--select {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}

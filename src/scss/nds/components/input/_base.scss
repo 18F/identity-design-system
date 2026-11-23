@@ -36,6 +36,7 @@ $nds-input-pad-x: nds.$field-padding-inline;
 
 // Control surface.
 .usa-input,
+.usa-input__control,
 .usa-textarea,
 .usa-select {
   background-color: nds.$background-primary;
@@ -80,13 +81,17 @@ $nds-input-pad-x: nds.$field-padding-inline;
 
   // Focus ring. Repeat the class via `:is()` to reach (0,3,1) so it beats the
   // stock USWDS focus rule and zero the USWDS outline.
-  &:is(.usa-input, .usa-textarea, .usa-select):is(:focus, :focus-visible, .usa-focus) {
+  &:is(.usa-input, .usa-input__control, .usa-textarea, .usa-select):is(
+      :focus,
+      :focus-visible,
+      .usa-focus
+    ) {
     @include nds-input-focus-ring();
   }
 
-  // Disabled / readonly — un-wrapped so `:disabled`/`[aria-disabled]` reach
-  // (0,2,0) and beat the stock `.usa-input:disabled` (0,2,0) by source order.
-  &:is([readonly], :disabled, [aria-disabled='true']) {
+  // Match USWDS's disabled hover specificity so the resting fill stays put.
+  &:is([readonly], :disabled, [aria-disabled='true']),
+  &:is(:disabled, [aria-disabled='true']):hover {
     background-color: nds.$disabled-light;
   }
 
@@ -121,6 +126,7 @@ $nds-input-pad-x: nds.$field-padding-inline;
 .usa-textarea--error,
 .usa-select--error,
 .usa-input[aria-invalid='true'],
+.usa-input__control[aria-invalid='true'],
 .usa-textarea[aria-invalid='true'],
 .usa-select[aria-invalid='true'] {
   border-color: nds.$secondary;
@@ -133,7 +139,8 @@ $nds-input-pad-x: nds.$field-padding-inline;
 }
 
 // Label.
-.usa-label {
+.usa-label,
+.usa-input__label--visible {
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
@@ -168,7 +175,8 @@ $nds-input-pad-x: nds.$field-padding-inline;
 }
 
 // Error message (Body/M emphasis, red, with a leading 20px status icon).
-.usa-error-message {
+.usa-error-message,
+.usa-input__error {
   align-items: flex-start;
   color: nds.$secondary;
   display: flex;

@@ -3,5 +3,5 @@
   "animated-media", "auth-entry", "totp-setup", "authentication-methods", "badges",
   "banner", "button-groups", "buttons", "cards", "checkbox", "checkbox-flat",
   "clipboard-button", "code-formatting", "connected-services", "consent", "dashboard-home",
-  "date-fields"
+  "date-fields", "text-input", "floating-label-input", "fieldset", "memorable-date"
 ]

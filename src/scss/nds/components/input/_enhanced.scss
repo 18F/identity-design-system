@@ -13,16 +13,16 @@
 // Loaded after `@forward 'uswds'`.
 
 @use 'tokens/nds' as nds;
+@use 'base';
 
-$nds-enhanced-border-width: nds.$stroke-hairline;
-$nds-enhanced-height: nds.space(56);
-$nds-enhanced-pad-x: nds.$field-padding-inline;
+// Preserve the previously forwarded names for downstream Sass consumers.
+$nds-enhanced-border-width: base.$nds-input-border-width;
+$nds-enhanced-height: base.$nds-input-height;
+$nds-enhanced-pad-x: base.$nds-input-pad-x;
 $nds-enhanced-toggle-size: nds.space(20);
 
 @mixin nds-enhanced-focus-ring($color: nds.$base-darkest) {
-  border-color: $color;
-  box-shadow: 0 0 0 $nds-enhanced-border-width $color;
-  outline: 0;
+  @include base.nds-input-focus-ring($color);
 }
 
 // Wrapper: strip the base control surface so only the inner control is a box.
@@ -42,73 +42,9 @@ $nds-enhanced-toggle-size: nds.space(20);
   }
 }
 
-// Control surface (mirrors `.usa-input` in `_base.scss`).
-.usa-input__control {
-  background-color: nds.$background-primary;
-  border: $nds-enhanced-border-width solid nds.$base-light;
-  border-radius: nds.radius(16);
-  box-sizing: border-box;
-  color: nds.$text-primary;
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
-  font-weight: 400;
-  height: $nds-enhanced-height;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  max-width: none;
-  padding: 0 $nds-enhanced-pad-x;
-  transition:
-    border-color nds.$tr-duration-md nds.$tr-easing-cubic,
-    box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
-  width: 100%;
-
-  &::placeholder {
-    color: nds.$text-secondary;
-    opacity: 1;
-  }
-
-  &:hover:not(:focus, :focus-visible, :disabled, [readonly], [aria-disabled='true']) {
-    border-color: nds.$base-darkest;
-  }
-
-  &:is(:focus, :focus-visible) {
-    @include nds-enhanced-focus-ring();
-  }
-
-  &[aria-invalid='true'] {
-    border-color: nds.$secondary;
-
-    &:is(:focus, :focus-visible) {
-      @include nds-enhanced-focus-ring(nds.$secondary);
-    }
-  }
-
-  &:is([readonly], :disabled, [aria-disabled='true']) {
-    background-color: nds.$disabled-light;
-  }
-
-  &:is(:disabled, [aria-disabled='true']) {
-    color: nds.$text-primary;
-    cursor: not-allowed;
-    opacity: 1;
-  }
-}
-
 // Shell positions the floating label and password toggle over the control.
 .usa-input__shell {
   position: relative;
-}
-
-// Visible label (non-floating): a normal label above the control.
-.usa-input__label--visible {
-  color: nds.$text-primary;
-  display: block;
-  font-family: nds.$font-family;
-  font-size: nds.$text-label-m;
-  font-weight: nds.$font-medium;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  margin: 0 0 nds.space(8);
 }
 
 // Floating variant: the accessible label is visually hidden and the aria-hidden
@@ -125,44 +61,8 @@ $nds-enhanced-toggle-size: nds.space(20);
   width: 1px;
 }
 
-.usa-input__control--floating {
-  padding-block: nds.space(24) nds.space(8);
-
-  &::placeholder {
-    color: transparent;
-  }
-}
-
-.usa-input__floating-label {
-  color: nds.$text-secondary;
-  font-size: nds.$text-body-m;
-  font-weight: 400;
-  inset-inline-start: calc(#{$nds-enhanced-pad-x} + 1px);
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  margin: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition:
-    font-size nds.$tr-duration-md nds.$tr-easing-cubic,
-    top nds.$tr-duration-md nds.$tr-easing-cubic,
-    transform nds.$tr-duration-md nds.$tr-easing-cubic;
-}
-
-.usa-input__control--floating:focus ~ .usa-input__floating-label,
-.usa-input__control--floating:not(:placeholder-shown) ~ .usa-input__floating-label,
-.usa-input__control--floating:-webkit-autofill ~ .usa-input__floating-label {
-  font-size: nds.$text-label-s;
-  font-weight: nds.$font-medium;
-  top: nds.space(10);
-  transform: none;
-}
-
-// Password reveal toggle, centered at the trailing edge of the control.
-.usa-input__control--password {
-  padding-inline-end: nds.space(44);
+.usa-input__label--visible {
+  display: block;
 }
 
 .usa-input__toggle {
@@ -172,17 +72,20 @@ $nds-enhanced-toggle-size: nds.space(20);
   color: nds.$text-secondary;
   cursor: pointer;
   display: flex;
-  height: $nds-enhanced-toggle-size;
-  inset-inline-end: $nds-enhanced-pad-x;
   justify-content: center;
   padding: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: $nds-enhanced-toggle-size;
 
-  &:hover {
+  &:hover:not(:disabled) {
     color: nds.$text-primary;
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    color: nds.$text-disabled;
+    cursor: not-allowed;
   }
 
   // `.usa-icon` carries USWDS `display: inline-block`, which beats the bare
@@ -195,17 +98,7 @@ $nds-enhanced-toggle-size: nds.space(20);
 
 // Error message: hidden until the enhancer adds `--visible`.
 .usa-input__error {
-  align-items: center;
-  color: nds.$secondary;
   display: none;
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-s;
-  font-weight: nds.$font-medium;
-  gap: nds.space(4);
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  padding: nds.space(8) 0 0;
-  text-wrap: pretty;
 
   &--visible {
     display: flex;

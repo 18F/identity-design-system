@@ -5,17 +5,20 @@ lead: A select for month followed by two text fields is the easiest way for user
 
 {% include helpers/base-component.html component="memorable-date" %}
 
+The form supplies the date question and any hint. If collecting a date of birth,
+use the `bday-month`, `bday-day`, and `bday-year` autocomplete tokens. Associate
+any group hint with the fieldset using `aria-describedby`.
+
 {% capture example %}
 <fieldset class="usa-fieldset">
-  <legend class="usa-label">Date of Birth</legend>
-  <span class="usa-hint" id="d7d4">Example: January 19 2000</span>
+  <legend class="usa-sr-only">Date</legend>
   <div class="usa-memorable-date">
     <div class="usa-form-group usa-form-group--month usa-form-group--select">
       <label class="usa-label" for="f5bf">Month</label>
       <select
         class="usa-select"
         id="f5bf"
-        aria-describedby="d7d4"
+        name="month"
       >
         <option value>- Select -</option>
         <option value="1">01 - January</option>
@@ -36,7 +39,8 @@ lead: A select for month followed by two text fields is the easiest way for user
       <label class="usa-label" for="b0fe">Day</label>
       <input
         class="usa-input"
-        aria-describedby="d7d4"
+        name="day"
+        placeholder="DD"
         id="b0fe"
         maxlength="2"
         pattern="[0-9]*"
@@ -48,7 +52,8 @@ lead: A select for month followed by two text fields is the easiest way for user
       <label class="usa-label" for="dc41">Year</label>
       <input
         class="usa-input"
-        aria-describedby="d7d4"
+        name="year"
+        placeholder="YYYY"
         id="dc41"
         minlength="4"
         maxlength="4"

@@ -12,50 +12,6 @@
   max-width: nds.$floating-input-max-width;
   position: relative;
 
-  &:has(> .usa-icon, > .usa-input__toggle) > .usa-input {
-    padding-inline-end: nds.space(44);
-  }
-
-  > button.usa-input__toggle {
-    border-radius: nds.radius(pill);
-    height: nds.space(44);
-    inset-inline-end: nds.space(4);
-    margin: 0;
-    width: nds.space(44);
-
-    > .usa-icon {
-      height: nds.space(20);
-      width: nds.space(20);
-    }
-
-    &.usa-show-password::before {
-      background: currentColor;
-      content: '';
-      height: nds.space(20);
-      mask: icon.$not-visible-hide no-repeat center / contain;
-      width: nds.space(20);
-    }
-
-    &[aria-pressed='false']::before {
-      mask-image: icon.$visible-show;
-    }
-
-    &:focus {
-      box-shadow: none;
-      outline: 0;
-    }
-
-    // Inset the visual ring without shrinking the 44px hit target.
-    &:focus-visible::after {
-      @include nds.transparent-focus-ring();
-      border-radius: inherit;
-      content: '';
-      inset: nds.space(8);
-      pointer-events: none;
-      position: absolute;
-    }
-  }
-
   > .usa-icon {
     color: nds.$text-secondary;
     height: nds.space(20);
@@ -66,52 +22,125 @@
     transform: translateY(-50%);
     width: nds.space(20);
   }
+}
 
-  // Reserve vertical room so the floated label clears the value.
-  :is(.usa-input, .usa-search__input) {
-    // The label sits inside the control, so no external label gap is needed.
-    margin-block-start: 0;
-    line-height: nds.$text-line-height-none;
-    padding-block: nds.space(24) nds.space(12);
+.usa-input-group--floating:has(> .usa-icon, > .usa-input__toggle) > .usa-input,
+.usa-input__shell:has(> .usa-input__toggle) > .usa-input__control,
+.usa-input__control--password {
+  padding-inline-end: nds.space(44);
+}
+
+:is(.usa-input-group--floating, .usa-input__shell) > button.usa-input__toggle {
+  border-radius: nds.radius(pill);
+  height: nds.space(44);
+  inset-inline-end: nds.space(4);
+  margin: 0;
+  width: nds.space(44);
+
+  > .usa-icon {
+    height: nds.space(20);
+    width: nds.space(20);
   }
 
-  // The label plays the placeholder role, so hide the real placeholder.
-  .usa-input::placeholder {
-    color: transparent;
+  // Keep the toggle's text as its accessible name and non-NDS fallback.
+  &.usa-show-password {
+    font-size: 0;
   }
 
-  // Resting state: label centered inside the control, reading as placeholder.
-  .usa-label {
-    color: nds.$text-secondary;
-    font-size: nds.$text-body-m;
-    font-weight: nds.$font-regular;
-    inset-inline-start: nds.space(16);
-    letter-spacing: nds.$text-letter-spacing-label;
-    line-height: nds.$text-line-height-none;
-    margin: 0;
+  &.usa-show-password::before {
+    background: currentColor;
+    content: '';
+    height: nds.space(20);
+    mask: icon.$not-visible-hide no-repeat center / contain;
+    width: nds.space(20);
+  }
+
+  &.usa-show-password[aria-pressed='false']::before {
+    mask-image: icon.$visible-show;
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: 0;
+  }
+
+  // Inset the visual ring without shrinking the 44px hit target.
+  &:focus-visible::after {
+    @include nds.transparent-focus-ring();
+    border-radius: inherit;
+    content: '';
+    inset: nds.space(8);
     pointer-events: none;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition:
-      font-size nds.$tr-duration-md nds.$tr-easing-cubic,
-      top nds.$tr-duration-md nds.$tr-easing-cubic,
-      transform nds.$tr-duration-md nds.$tr-easing-cubic;
   }
 
-  // Floated state: focused, filled, or autofilled.
-  &:has(.usa-combo-box__input:is(:focus, :not(:placeholder-shown))) > .usa-label,
-  .usa-search__input:is(:focus, :not(:placeholder-shown)) + .usa-label,
-  .usa-input:is(:focus, .usa-focus) + .usa-label,
-  .usa-input:not(:placeholder-shown) + .usa-label,
-  .usa-input:-webkit-autofill + .usa-label {
-    font-size: nds.$text-label-s;
-    font-weight: nds.$font-medium;
-    letter-spacing: 0;
-    line-height: nds.$text-line-height-none;
-    top: nds.space(12);
-    transform: none;
+  @media (forced-colors: active) {
+    // Preserve the mask's ink, not the button's authored colors.
+    &.usa-show-password::before {
+      forced-color-adjust: none;
+      background-color: ButtonText;
+    }
+
+    &.usa-show-password:disabled::before {
+      background-color: GrayText;
+    }
+
+    &:focus-visible::after {
+      outline-color: Highlight;
+    }
   }
+}
+
+// Reserve vertical room so the floated label clears the value.
+.usa-input-group--floating :is(.usa-input, .usa-search__input),
+.usa-input__control--floating {
+  // The label sits inside the control, so no external label gap is needed.
+  margin-block-start: 0;
+  line-height: nds.$text-line-height-none;
+  padding-block: nds.space(24) nds.space(12);
+}
+
+// The label plays the placeholder role, so hide the real placeholder.
+.usa-input-group--floating .usa-input::placeholder,
+.usa-input__control--floating::placeholder {
+  color: transparent;
+}
+
+// Resting state: label centered inside the control, reading as placeholder.
+.usa-input-group--floating .usa-label,
+.usa-input__floating-label {
+  color: nds.$text-secondary;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-regular;
+  inset-inline-start: nds.space(16);
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-none;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition:
+    font-size nds.$tr-duration-md nds.$tr-easing-cubic,
+    top nds.$tr-duration-md nds.$tr-easing-cubic,
+    transform nds.$tr-duration-md nds.$tr-easing-cubic;
+}
+
+// Floated state: focused, filled, or autofilled.
+.usa-input-group--floating:has(.usa-combo-box__input:is(:focus, :not(:placeholder-shown)))
+  > .usa-label,
+.usa-input-group--floating .usa-search__input:is(:focus, :not(:placeholder-shown)) + .usa-label,
+.usa-input-group--floating .usa-input:is(:focus, .usa-focus) + .usa-label,
+.usa-input-group--floating .usa-input:not(:placeholder-shown) + .usa-label,
+.usa-input-group--floating .usa-input:-webkit-autofill + .usa-label,
+.usa-input__control--floating:is(:focus, .usa-focus, :not(:placeholder-shown), :-webkit-autofill)
+  ~ .usa-input__floating-label {
+  font-size: nds.$text-label-s;
+  font-weight: nds.$font-medium;
+  letter-spacing: 0;
+  line-height: nds.$text-line-height-none;
+  top: nds.space(12);
+  transform: none;
 }
 
 .usa-input-group--floating:has(.usa-combo-box__input) {

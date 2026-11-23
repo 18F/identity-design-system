@@ -10,16 +10,14 @@ lead: A text input allows users to enter any combination of letters, numbers, or
 ### Default
 
 {% capture example %}
-<label for="fd85" class="usa-label">Text input</label>
-<input id="fd85" type="text" class="usa-input">
+{% include helpers/text-input-variant.html state="Default" id="fd85" %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Big
+### Filled
 
 {% capture example %}
-<label for="tlkx" class="usa-label">Text input</label>
-<input id="tlkx" type="text" class="usa-input usa-input--big">
+{% include helpers/text-input-variant.html state="Filled" id="tlkx" %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
@@ -41,13 +39,41 @@ lead: A text input allows users to enter any combination of letters, numbers, or
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-## Format constraints
+## Input with format hint
 
 When enforcing a specific text input pattern, provide a hint in the form of an example.
 
 {% capture example %}
 <label for="kvgx" class="usa-label">Social Security number</label>
-<div id="kvgx-hint" class="usa-hint">Example: 000-123-4567</div>
-<input id="kvgx" type="text" class="usa-input" aria-describedby="kvgx-hint" pattern="^\d{3}-?\d{2}-?\d{4}$">
+<div id="kvgx-hint" class="usa-hint">Enter 9 digits, with or without dashes (for example, 123-45-6789).</div>
+<input id="kvgx" type="text" class="usa-input" aria-describedby="kvgx-hint" pattern="[0-9]{9}|[0-9]{3}-[0-9]{2}-[0-9]{4}">
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
+
+## Text input states
+
+Hover and focus specimens show their styling without needing a pointer or
+moving keyboard focus. In the icon examples, activate the eye button to show
+or hide the password. Read-only fields remain focusable so their value can be
+read or copied. Disabled fields and their password buttons are skipped by Tab.
+
+{% assign states = "Default,Hovered,Focused,Focused filled,Filled,Read only,Disabled,Error" | split: "," %}
+{% for icon in (0..1) %}
+{% for state in states %}
+{% if icon == 0 %}
+{% if state == "Default" or state == "Filled" %}{% continue %}{% endif %}
+{% endif %}
+
+### {{ state }}{% if icon == 1 %} with icon{% endif %}
+
+{% capture field_id %}text-input-{{ state | slugify }}-{{ icon }}{% endcapture %}
+{% capture example %}
+{% if icon == 1 %}
+{% include helpers/text-input-variant.html state=state id=field_id icon=true %}
+{% else %}
+{% include helpers/text-input-variant.html state=state id=field_id %}
+{% endif %}
+{% endcapture %}
+{% include helpers/code-example.html code=example %}
+{% endfor %}
+{% endfor %}

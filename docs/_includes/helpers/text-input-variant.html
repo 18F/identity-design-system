@@ -1,0 +1,14 @@
+{% assign field_id = include.id %}
+{% if include.icon %}{% assign label = 'Password' %}{% else %}{% assign label = 'First name' %}{% endif %}
+{% capture modifier %}{% if include.state == 'Hovered' %}usa-input--hover{% elsif include.state contains 'Focused' %}usa-focus{% endif %}{% endcapture %}
+{% capture value %}{% if include.state == 'Filled' or include.state == 'Focused filled' or include.state == 'Read only' %}{% if include.icon %}Example only{% else %}Alex{% endif %}{% endif %}{% endcapture %}
+{% capture attributes %}{% if include.icon %}autocomplete="off" {% endif %}{% if include.state == 'Read only' %}readonly{% elsif include.state == 'Error' %}aria-invalid="true" aria-describedby="{{ field_id }}-error"{% endif %}{% endcapture %}
+{% assign disabled = false %}
+{% if include.state == 'Disabled' %}{% assign disabled = true %}{% endif %}
+{% include helpers/text-input.html id=field_id label=label modifier=modifier value=value icon=include.icon attributes=attributes disabled=disabled %}
+{% if include.state == 'Error' %}
+<div id="{{ field_id }}-error" class="usa-error-message">
+  <svg class="usa-icon" aria-hidden="true"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#error"></use></svg>
+  {% if include.icon %}Enter a password.{% else %}Enter a first name.{% endif %}
+</div>
+{% endif %}

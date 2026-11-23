@@ -4,7 +4,7 @@
 // `.usa-input__control--ssn` field is display-only: it shows the number
 // grouped as 123-45-6789 with every digit but the most recently typed one
 // masked (•••-••-•••9), while the real digits live in the hidden
-// `[data-nds-ssn-value]` input that the form submits. A
+// `[data-nds-ssn-value]` input and are added to the form data on submission. A
 // `[data-nds-ssn-toggle]` button reveals/re-masks the full number. Without
 // JavaScript the visible field carries the name and submits plain text.
 // Exposes the `.on()` / `.off()` lifecycle used by the design-system consumer.
@@ -25,6 +25,13 @@ const SETTLE_DELAY_MS = 5000;
 
 /** @type {WeakMap<HTMLElement, ReturnType<typeof setTimeout>>} */
 const settleTimers = new WeakMap();
+/** @type {WeakMap<HTMLElement, number>} */
+const lastEdited = new WeakMap();
+/** @type {Map<HTMLElement, MutationObserver>} */
+const observers = new Map();
+/** @type {AbortController | undefined} */
+let formListeners;
+const handledFormEvents = new WeakSet();
 
 /**
  * Group as 123-45-6789. A dash is appended as soon as a group fills so the
@@ -52,37 +59,20 @@ function group(digits) {
  * @param {string} digits
  * @param {boolean} revealed
  * @param {boolean} settled
+ * @param {number} [index]
  * @returns {string}
  */
-function display(digits, revealed, settled) {
+function display(digits, revealed, settled, index = digits.length - 1) {
   if (revealed || !digits) return group(digits);
-  const masked = settled ? MASK.repeat(digits.length) : MASK.repeat(digits.length - 1) + digits.slice(-1);
+  const masked = Array.from(digits, (digit, i) => (!settled && i === index ? digit : MASK)).join(
+    '',
+  );
   return group(masked);
 }
 
-/**
- * Rebuild the stored digits from what the user typed: masked characters map
- * ordinally onto the previously stored digits, new digits are taken as-is,
- * everything else (dashes, stray characters) is dropped.
- *
- * @param {string} typed
- * @param {string} previous
- * @returns {string}
- */
-function reconcile(typed, previous) {
-  let previousIndex = 0;
-  let digits = '';
-  Array.from(typed).forEach((char) => {
-    if (char === MASK) {
-      if (previousIndex < previous.length) digits += previous[previousIndex];
-      previousIndex += 1;
-    } else if (/\d/.test(char)) {
-      digits += char;
-      // A revealed digit occupies the same slot as a stored one.
-      if (previousIndex < previous.length && previous[previousIndex] === char) previousIndex += 1;
-    }
-  });
-  return digits.slice(0, MAX_DIGITS);
+/** @param {string} text */
+function slots(text) {
+  return text.replace(/[^0-9•]/g, '').length;
 }
 
 /**
@@ -99,8 +89,9 @@ function parts(container) {
 
 /**
  * @param {HTMLElement} container
+ * @param {number} [digitCaret]
  */
-function render(container) {
+function render(container, digitCaret) {
   const found = parts(container);
   if (!found) return;
   const { control, value, toggle } = found;
@@ -109,12 +100,16 @@ function render(container) {
   const settled = container.hasAttribute(SETTLED);
 
   value.value = digits.length === MAX_DIGITS ? group(digits) : digits;
-  control.value = display(digits, revealed, settled);
-  const caret = control.value.length;
-  try {
-    control.setSelectionRange(caret, caret);
-  } catch {
-    // Selection APIs are unavailable for some input types; caret stays put.
+  const start = control.selectionStart;
+  const end = control.selectionEnd;
+  control.value = display(digits, revealed, settled, lastEdited.get(container));
+  if (start !== null && end !== null) {
+    if (digitCaret === undefined) {
+      control.setSelectionRange(start, end);
+    } else {
+      const offset = group(digits.slice(0, digitCaret)).length;
+      control.setSelectionRange(offset, offset);
+    }
   }
 
   if (digits.length > 0 && digits.length < MAX_DIGITS) {
@@ -146,17 +141,44 @@ function handleInput(event) {
   if (!container || !found) return;
 
   const previous = found.value.value.replace(/\D/g, '');
-  const typed = /** @type {HTMLInputElement} */ (control).value;
-  let digits = reconcile(typed, previous);
-  // Backspacing over a trailing group dash removes nothing digit-wise, so the
-  // dash would just be re-rendered; treat it as deleting the digit before it.
-  const shown = display(previous, container.hasAttribute(REVEALED), container.hasAttribute(SETTLED));
-  if (digits === previous && typed.length < shown.length) {
-    digits = previous.slice(0, -1);
+  const typed = found.control.value;
+  const caret = found.control.selectionStart ?? typed.length;
+  const shown = display(
+    previous,
+    container.hasAttribute(REVEALED),
+    container.hasAttribute(SETTLED),
+    lastEdited.get(container),
+  );
+  // Keep unchanged digits on both sides of the edit. Identical mask glyphs
+  // cannot identify which digit changed; the browser's caret separates the sides.
+  let right = 0;
+  while (
+    right < typed.length - caret &&
+    right < shown.length &&
+    typed[typed.length - 1 - right] === shown[shown.length - 1 - right]
+  )
+    right++;
+  let left = 0;
+  while (left < caret && left < shown.length - right && shown[left] === typed[left]) left++;
+  let from = slots(shown.slice(0, left));
+  let to = slots(shown.slice(0, shown.length - right));
+  if (
+    from === to &&
+    shown.slice(left, shown.length - right) === '-' &&
+    typed.length < shown.length
+  ) {
+    if (/** @type {InputEvent} */ (event).inputType === 'deleteContentForward') to++;
+    else from--;
   }
-  found.value.value = digits;
+  const inserted = typed
+    .slice(left, typed.length - right)
+    .replace(/\D/g, '')
+    .slice(0, MAX_DIGITS - previous.length + to - from);
+  found.value.value = previous.slice(0, from) + inserted + previous.slice(to);
+  const next = from + inserted.length;
+  lastEdited.set(container, inserted.length ? next - 1 : -1);
   container.removeAttribute(SETTLED);
-  render(container);
+  render(container, next);
   scheduleSettle(container);
 }
 
@@ -185,7 +207,7 @@ function handleClick(event) {
   const toggle = target && target.closest ? target.closest(TOGGLE) : null;
   if (!toggle) return;
   const container = /** @type {HTMLElement | null} */ (toggle.closest(SSN));
-  if (!container) return;
+  if (!container || parts(container)?.control.matches(':disabled')) return;
 
   if (container.hasAttribute(REVEALED)) {
     container.removeAttribute(REVEALED);
@@ -209,11 +231,43 @@ function containers(root) {
   );
 }
 
+/** @param {Event} event */
+function handleFormEvent(event) {
+  const form = event.target;
+  if (!(form instanceof HTMLFormElement) || handledFormEvents.has(event)) return;
+  handledFormEvents.add(event);
+  Array.from(form.elements).forEach((el) => {
+    if (!el.matches(CONTROL)) return;
+    const container = /** @type {HTMLElement | null} */ (el.closest(SSN));
+    if (!container || !observers.has(container)) return;
+    const found = parts(container);
+    if (!found) return;
+    if (event instanceof FormDataEvent) {
+      if (found.value.name && !el.matches(':disabled')) {
+        event.formData.append(found.value.name, found.value.value);
+      }
+    } else {
+      // The browser restores default values after an uncanceled reset event.
+      queueMicrotask(() => {
+        if (event.defaultPrevented || !observers.has(container)) return;
+        clearTimeout(settleTimers.get(container));
+        container.removeAttribute(REVEALED);
+        container.setAttribute(SETTLED, 'true');
+        render(container);
+      });
+    }
+  });
+}
+
 export default {
   /**
    * @param {ParentNode} [root]
    */
   on(root) {
+    formListeners ??= new AbortController();
+    const options = { signal: formListeners.signal };
+    document.addEventListener('formdata', handleFormEvent, options);
+    document.addEventListener('reset', handleFormEvent, options);
     document.addEventListener('input', handleInput, true);
     document.addEventListener('click', handleClick, true);
     containers(root).forEach((container) => {
@@ -225,14 +279,59 @@ export default {
         found.value.name = found.control.name;
         found.control.removeAttribute('name');
       }
-      if (!found.value.value && found.control.value) {
-        found.value.value = found.control.value.replace(/\D/g, '');
+      if (!container.hasAttribute(ENHANCED)) {
+        // Unlike type=hidden, a text input has separate live and reset values.
+        const current = found.value.value || found.control.value.replace(/\D/g, '');
+        const initial = (found.control.defaultValue || found.value.defaultValue).replace(/\D/g, '');
+        found.value.hidden = true;
+        found.value.type = 'text';
+        found.value.disabled = true;
+        found.value.defaultValue = initial.length === MAX_DIGITS ? group(initial) : initial;
+        found.value.value = current;
+        found.control.defaultValue = display(initial, false, true);
       }
+      found.control.form?.addEventListener('formdata', handleFormEvent, options);
+      found.control.form?.addEventListener('reset', handleFormEvent, options);
+      const syncDisabled = () => {
+        if (found.toggle) found.toggle.disabled = found.control.disabled;
+        if (found.control.disabled) {
+          container.removeAttribute(REVEALED);
+          container.setAttribute(SETTLED, 'true');
+          render(container);
+        }
+      };
+      observers.get(container)?.disconnect();
+      const observer = new MutationObserver(syncDisabled);
+      observer.observe(found.control, { attributes: true, attributeFilter: ['disabled'] });
+      observers.set(container, observer);
+      syncDisabled();
       container.setAttribute(ENHANCED, 'true');
       render(container);
     });
   },
   off() {
+    formListeners?.abort();
+    formListeners = undefined;
+    observers.forEach((observer, container) => {
+      observer.disconnect();
+      clearTimeout(settleTimers.get(container));
+      const found = parts(container);
+      if (!found) return;
+      // Return submission to the native control before removing our listeners.
+      found.control.defaultValue = found.value.defaultValue;
+      found.control.value = found.value.value;
+      if (found.value.name) found.control.name = found.value.name;
+      found.control.setCustomValidity('');
+      found.value.removeAttribute('name');
+      found.value.type = 'hidden';
+      found.value.value = '';
+      found.value.disabled = false;
+      container.removeAttribute(ENHANCED);
+      container.removeAttribute(REVEALED);
+      container.removeAttribute(SETTLED);
+      lastEdited.delete(container);
+    });
+    observers.clear();
     document.removeEventListener('input', handleInput, true);
     document.removeEventListener('click', handleClick, true);
   },
