@@ -39,6 +39,21 @@ import validator from '@uswds/uswds/js/usa-validation';
 
 const selectionBehavior = withSelectOnly(comboBox);
 const tooltipBehavior = withTooltipInteractions(tooltip);
+const passwordBehavior = {
+  ...password,
+  /** @param {HTMLElement | Document} [root] */
+  on(root = document.body) {
+    const element = root instanceof Document ? root.documentElement : root;
+    password.on(element);
+    element.setAttribute('data-password-toggle-ready', '');
+  },
+  /** @param {HTMLElement | Document} [root] */
+  off(root = document.body) {
+    const element = root instanceof Document ? root.documentElement : root;
+    element.removeAttribute('data-password-toggle-ready');
+    password.off(element);
+  },
+};
 
 export {
   accordion,
@@ -64,7 +79,7 @@ export {
   navigation,
   officialBanner,
   pageFooter,
-  password,
+  passwordBehavior as password,
   phoneInput,
   popoverMenu,
   progress,

@@ -1,6 +1,34 @@
 // Component examples demonstrate controls; their destinations belong to the host app.
 (() => {
   const scope = '[data-component-preview]';
+  for (const demo of document.querySelectorAll('[data-password-strength-demo]')) {
+    const input = demo.querySelector('input');
+    const meter = demo.querySelector('.password-strength');
+    const status = demo.querySelector('[role="status"]');
+    if (!input || !(meter instanceof HTMLElement) || !status) continue;
+    const update = () => {
+      const length = input.value.length;
+      const score = length >= 16 ? '3' : length >= 8 ? '2' : length ? '1' : '';
+      if (score === (meter.dataset.score || '')) return;
+      if (score) {
+        meter.dataset.score = score;
+        meter.dataset.open = 'true';
+        const level = ['error', 'warning', 'success'][Number(score) - 1];
+        status.textContent = `Password strength: ${meter.querySelector(`.badge--${level}`)?.textContent}.`;
+      } else {
+        delete meter.dataset.open;
+        delete meter.dataset.score;
+        status.textContent = '';
+      }
+    };
+    input.addEventListener('input', update);
+    document.addEventListener('reset', event => {
+      if (event.target === input.form) {
+        setTimeout(() => { if (!event.defaultPrevented) update(); }, 0);
+      }
+    }, true);
+    update();
+  }
   if (!document.querySelector(scope)) return;
   const placeholder = location.href.split('#')[0] + '#';
   for (const link of document.querySelectorAll(`${scope} a[href]`)) {

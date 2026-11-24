@@ -8,17 +8,17 @@
 // `placeholder=" "` so `:placeholder-shown` tracks emptiness):
 //
 //   <div class="usa-phone-input">
-//     <details class="usa-phone-input__country">
-//       <summary class="usa-phone-input__country-toggle">
+//     <details class="popover-menu-disclosure usa-phone-input__country">
+//       <summary class="usa-button usa-button--secondary usa-button--sm usa-phone-input__country-toggle">
 //         <span class="usa-phone-input__country-code">+1</span>
 //         <svg class="usa-icon usa-phone-input__country-chevron">…expand_more…</svg>
 //       </summary>
 //       <div class="popover-menu popover-menu--left usa-phone-input__country-list">
 //         <label class="popover-menu__item usa-phone-input__country-option">
-//           <input type="radio" class="usa-phone-input__country-radio usa-sr-only"
+//           <input type="radio" class="usa-phone-input__country-radio"
 //                  name="…[international_code]" value="US" checked>
-//           United States
-//           <span class="usa-phone-input__country-option-dial">+1</span>
+//           <span class="usa-phone-input__country-option-label">United States
+//             <span class="usa-phone-input__country-option-dial">(+1)</span></span>
 //         </label>
 //         …
 //       </div>
@@ -32,37 +32,63 @@
 // Loaded AFTER `@forward 'uswds'` (see nds/styles.scss).
 
 @use 'tokens/nds' as nds;
+@use '../../icon-assets' as icon;
+@use 'base' as field;
 
-$nds-phone-border-width: 1px;
-$nds-phone-height: nds.space(56);
+$nds-phone-border-width: field.$nds-input-border-width;
+$nds-phone-height: field.$nds-input-height;
+$nds-phone-radius: nds.radius(16);
+// Equal outer-edge insets keep the toggle's left corner centers aligned with the field's.
+$nds-phone-toggle-inset: ($nds-phone-height - nds.space(36)) * 0.5;
 
 // Pill container — the bordered control surface that wraps the whole group.
 .usa-phone-input {
   align-items: center;
   background-color: nds.$background-primary;
-  border: $nds-phone-border-width solid nds.$base-light;
-  border-radius: nds.radius(16);
+  border: $nds-phone-border-width solid nds.$border-secondary;
+  border-radius: $nds-phone-radius;
   box-sizing: border-box;
   display: flex;
   gap: nds.space(12);
   height: $nds-phone-height;
+  max-width: nds.$floating-input-max-width;
   overflow: clip;
-  padding: nds.space(12) nds.space(16) nds.space(12) 10px;
+  padding: 0 field.$nds-input-pad-x 0 ($nds-phone-toggle-inset - $nds-phone-border-width);
   transition:
     border-color nds.$tr-duration-md nds.$tr-easing-cubic,
     box-shadow nds.$tr-duration-md nds.$tr-easing-cubic;
   width: 100%;
 
   // Hover the whole pill (only when nothing inside is focused).
-  &:hover:not(:focus-within) {
-    border-color: nds.$base-darkest;
+  &:hover:not(
+      :focus-within,
+      :has(.usa-phone-input__input:is(:disabled, [readonly], [aria-invalid='true']))
+    ) {
+    border-color: nds.$border-primary;
   }
 
   // Focus ring on the pill when any child (input or country button) is focused,
-  // mirroring the `.usa-input` focus treatment: 1px border + 1px box-shadow.
+  // using the same inset stroke as `.usa-input`.
   &:focus-within {
-    border-color: nds.$base-darkest;
-    box-shadow: 0 0 0 $nds-phone-border-width nds.$base-darkest;
+    @include field.nds-input-focus-ring(nds.$border-primary);
+  }
+
+  &:has(.usa-phone-input__input:is(:disabled, [readonly])) {
+    background-color: nds.$disabled-light;
+  }
+
+  &:has(.usa-phone-input__input[aria-invalid='true']) {
+    border-color: nds.$error;
+
+    &:focus-within {
+      @include field.nds-input-focus-ring(nds.$error);
+    }
+  }
+
+  @media (forced-colors: active) {
+    &:focus-within:has(.usa-phone-input__input:focus-visible) {
+      outline: nds.$stroke-control solid Highlight;
+    }
   }
 }
 
@@ -81,28 +107,22 @@ $nds-phone-height: nds.space(56);
   position: relative;
 }
 
-// Trigger — the compact `+1 ⌄` button. `list-style: none` (+ the webkit
-// pseudo) removes the default disclosure triangle.
+.usa-phone-input__country-native {
+  max-width: 50%;
+}
+
+// The shared button owns appearance and states; use the chevron instead of the native marker.
 .usa-phone-input__country-toggle {
-  align-items: center;
-  backdrop-filter: blur(25px);
-  background-color: nds.$base-lightest;
-  border-radius: nds.radius(10);
-  color: nds.$black;
-  cursor: pointer;
-  display: inline-flex;
-  gap: nds.space(4);
-  height: nds.space(36);
+  border-radius: $nds-phone-radius - $nds-phone-toggle-inset;
   list-style: none;
-  padding: 0 nds.space(8) 0 nds.space(12);
-  white-space: nowrap;
 
   &::-webkit-details-marker {
     display: none;
   }
 
-  &:focus-visible {
-    @include nds.focus-ring();
+  // The opaque field already supplies the gap inside the shared offset outline.
+  &.usa-button:not(:disabled):is(:focus-visible, .usa-focus) {
+    box-shadow: none;
   }
 }
 
@@ -110,40 +130,41 @@ $nds-phone-height: nds.space(56);
   cursor: not-allowed;
 }
 
-.usa-phone-input__country-code {
-  font-family: nds.$font-family;
-  font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1;
-}
-
 // Chevron — 20px at 65% ink; flips when the disclosure is open.
 .usa-phone-input__country-chevron {
-  color: nds.alpha(nds.$text-primary, 65%);
+  color: nds.$text-secondary;
+  fill: currentColor;
   flex-shrink: 0;
   height: nds.space(20);
   transition: transform nds.$tr-duration-md nds.$tr-easing-cubic;
   width: nds.space(20);
 }
 
+.usa-phone-input__country-toggle[aria-disabled='true'] .usa-phone-input__country-chevron {
+  color: inherit;
+}
+
+.usa-phone-input:has(.usa-phone-input__input[readonly]:not(:disabled))
+  :is(.usa-phone-input__country-code, .usa-phone-input__country-chevron) {
+  color: nds.$text-secondary;
+}
+
 .usa-phone-input__country[open] .usa-phone-input__country-chevron {
   transform: rotate(180deg);
 }
 
-// Option list — reuses `.popover-menu`; constrain height so the full country
-// list scrolls inside the panel.
-.usa-phone-input__country-list {
-  left: 0;
-  max-height: 320px;
-  overflow-y: auto;
-  right: auto;
+.usa-phone-input__country-radio {
+  position: absolute;
+  clip-path: inset(50%);
+  width: nds.$stroke-hairline;
+  height: nds.$stroke-hairline;
+  overflow: hidden;
 }
 
 // Each option is a label wrapping a visually-hidden radio; the radio carries
 // the submitted value so the control works with JavaScript disabled. The row
 // reads "Name (+N)" left-aligned, with a checkmark on the selected option.
-.usa-phone-input__country-option {
+.popover-menu__item.usa-phone-input__country-option {
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -152,16 +173,36 @@ $nds-phone-height: nds.space(56);
   text-align: left;
 
   &:has(.usa-phone-input__country-radio:focus-visible) {
-    @include nds.focus-ring();
+    @include nds.transparent-focus-ring();
+  }
+
+  &:not(:has(.usa-phone-input__country-option-check))::after {
+    background: currentColor;
+    content: '';
+    flex: 0 0 nds.space(16);
+    height: nds.space(16);
+    mask: icon.$checkmark no-repeat center / contain;
+    visibility: hidden;
+  }
+
+  &:has(:checked)::after {
+    visibility: visible;
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+      forced-color-adjust: none;
+    }
   }
 }
 
 .usa-phone-input__country-option-label {
   flex: 1 1 auto;
+  min-width: 0;
 }
 
 .usa-phone-input__country-option-dial {
-  color: nds.alpha(nds.$text-primary, 65%);
+  color: nds.$text-secondary;
+  white-space: nowrap;
 }
 
 .usa-phone-input__country-option-check {
@@ -179,12 +220,12 @@ $nds-phone-height: nds.space(56);
 // Rule separating the pinned +1 countries from the alphabetical list.
 .usa-phone-input__country-rule {
   align-self: stretch;
-  background: nds.$base-light;
+  background: nds.$border-secondary;
   border: 0;
   flex: 0 0 auto;
-  height: 1px;
+  height: nds.$stroke-hairline;
   margin: nds.space(4) nds.space(12);
-  min-height: 1px;
+  min-height: nds.$stroke-hairline;
   width: auto;
 }
 
@@ -193,6 +234,8 @@ $nds-phone-height: nds.space(56);
   align-self: stretch;
   display: block;
   flex: 1 0 0;
+  // Align the label's positioning box with the outer edge, as in a standalone text input.
+  margin-block: -$nds-phone-border-width;
   min-width: 0;
   position: relative;
 }
@@ -205,17 +248,11 @@ $nds-phone-height: nds.space(56);
   color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   height: 100%;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  // Reserve room so the value sits below the floated label.
-  padding: nds.space(16) 0 0;
+  padding-inline: 0;
   width: 100%;
-
-  &:focus {
-    outline: 0;
-  }
 
   // The label plays the placeholder role, so hide the real placeholder.
   &::placeholder {
@@ -223,32 +260,13 @@ $nds-phone-height: nds.space(56);
   }
 }
 
-// Resting state: label vertically centered, reading as a placeholder.
-.usa-phone-input__label {
-  color: nds.alpha(nds.$text-primary, 65%);
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
-  font-weight: 400;
-  inset-inline-start: 0;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1;
-  margin: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition:
-    font-size nds.$tr-duration-md nds.$tr-easing-cubic,
-    top nds.$tr-duration-md nds.$tr-easing-cubic,
-    transform nds.$tr-duration-md nds.$tr-easing-cubic;
+// The wrapper supplies the focus indicator. Keep the native outline on standalone inputs.
+.usa-phone-input .usa-phone-input__input:focus {
+  outline: 0;
 }
 
-// Floated state: focused, filled, or autofilled — label shrinks to the top.
-.usa-phone-input__input:focus + .usa-phone-input__label,
-.usa-phone-input__input:not(:placeholder-shown) + .usa-phone-input__label,
-.usa-phone-input__input:-webkit-autofill + .usa-phone-input__label {
-  font-size: nds.$text-label-s;
-  font-weight: nds.$font-semibold;
-  top: 0;
-  transform: none;
+// The label starts after the country button; its vertical layout is shared with Text input.
+.usa-phone-input__label {
+  font-family: nds.$font-family;
+  inset-inline-start: 0;
 }

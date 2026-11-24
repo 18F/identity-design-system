@@ -1,0 +1,23 @@
+<div class="usa-phone-input">
+  <select class="usa-phone-input__country-native" name="{{ include.country }}" aria-label="Country calling code"{% if include.state == 'Disabled' %} disabled{% elsif include.state == 'Read only' %} inert{% endif %}>
+    {% for country in site.data.phone_country_examples %}<option value="{{ country.iso }}"{% if country.iso == 'US' %} selected{% endif %}>{{ country.name }} ({{ country.dial }})</option>{% endfor %}
+  </select>
+  <details hidden class="popover-menu-disclosure usa-phone-input__country">
+    <summary class="usa-button usa-button--secondary usa-button--sm usa-phone-input__country-toggle">
+      <span class="usa-sr-only">Country calling code:</span>
+      <span class="usa-phone-input__country-code">+1</span>
+      <svg class="usa-phone-input__country-chevron" width="20" height="20" aria-hidden="true"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-down"></use></svg>
+    </summary>
+    <div class="popover-menu popover-menu--left usa-phone-input__country-list">
+      {% include helpers/phone-country-options.html name=include.country %}
+    </div>
+  </details>
+  <span class="usa-phone-input__field">
+    <input id="{{ include.id }}" type="tel" name="{{ include.number }}" autocomplete="tel-national" class="usa-phone-input__input" placeholder=" "{% unless include.state == 'Default' %} value="(602) 901 - 9304"{% endunless %}{% if include.state == 'Read only' %} readonly aria-description="Country calling code: United States (+1)"{% elsif include.state == 'Disabled' %} disabled{% elsif include.state == 'Error' %} aria-invalid="true" aria-describedby="{{ include.id }}-error"{% endif %}>
+    <label for="{{ include.id }}" class="usa-phone-input__label">Phone number</label>
+  </span>
+</div>
+{% if include.state == 'Error' %}
+{% assign error_id = include.id | append: '-error' %}
+{% include helpers/field-error.html id=error_id message="Check the phone number and try again." %}
+{% endif %}

@@ -2,8 +2,49 @@
 @use 'tokens/nds' as nds;
 @forward 'uswds-base';
 @use 'progress-layout';
+@use 'masked-text-toggle';
+@use 'nds/components/password-strength';
 @use 'nds/components/modal-scroll';
 @use 'nds/components/media-placeholder';
+@use 'password-toggle-fallback';
+@use 'nds/icon-assets' as icon;
+
+[data-password-toggle-ready] .usa-input-group--floating > .usa-input__toggle.usa-show-password {
+  align-items: center;
+  display: inline-flex;
+  float: none;
+  justify-content: center;
+  min-height: nds.space(44);
+  min-width: nds.space(44);
+  color: inherit;
+
+  &::before {
+    background: currentColor;
+    content: '';
+    height: nds.space(20);
+    mask: icon.$not-visible-hide no-repeat center / contain;
+    width: nds.space(20);
+  }
+
+  &[aria-pressed='false']::before {
+    mask-image: icon.$visible-show;
+  }
+
+  @media (forced-colors: active) {
+    &::before {
+      background: ButtonText;
+      forced-color-adjust: none;
+    }
+  }
+}
+
+.password-strength-field {
+  max-width: uswds-core.units(uswds-core.$theme-input-max-width);
+}
+
+.input-otp__slots {
+  display: none;
+}
 
 // Keep the fallback notification's place in the document when it is dismissed.
 .toast[aria-hidden='true']:not([data-open='true']) {
@@ -72,6 +113,11 @@ dialog.modal:has(> .modal__body--media) {
     min-height: nds.space(24);
     padding-block: nds.space(4);
   }
+}
+
+.usa-phone-input__country-list {
+  max-height: min(20rem, 50vh);
+  overflow-y: auto;
 }
 
 .progress .progress__step[aria-current='step'] {

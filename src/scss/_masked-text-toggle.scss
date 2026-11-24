@@ -1,0 +1,78 @@
+@use 'tokens/nds' as nds;
+
+.masked-text.masked-text--toggleable {
+  align-items: center;
+  display: inline-flex;
+  gap: nds.space(4);
+  max-width: 100%;
+}
+
+.masked-text__value--wrappable {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.masked-text__value--numeric {
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+// Use identical digit advances in both states so the separators stay put.
+.masked-text__digit {
+  display: inline-block;
+  text-align: center;
+  width: 1ch;
+}
+
+.masked-text__concealed .masked-text__digit {
+  height: 1cap;
+  overflow: hidden;
+  position: relative;
+  vertical-align: baseline;
+  text-indent: 100%;
+
+  &::after {
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    content: '';
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.masked-text__concealed .usa-sr-only {
+  user-select: none;
+}
+
+.masked-text__revealed,
+.masked-text__icon.usa-icon,
+.masked-text:has(> .masked-text__toggle:checked) .masked-text__concealed {
+  display: none;
+}
+
+.masked-text:has(> .masked-text__toggle:checked) .masked-text__revealed {
+  display: inline;
+}
+
+.masked-text__toggle:not(:checked) + .masked-text__icon-toggle .masked-text__icon--masked,
+.masked-text__toggle:checked + .masked-text__icon-toggle .masked-text__icon--revealed {
+  display: inline-block;
+}
+
+.masked-text__icon-toggle {
+  align-items: center;
+  border-radius: nds.radius(pill);
+  display: inline-flex;
+  height: nds.space(24);
+  flex-shrink: 0;
+  justify-content: center;
+  width: nds.space(24);
+}
+
+.masked-text__toggle:focus-visible + .masked-text__icon-toggle {
+  @include nds.transparent-focus-ring();
+}

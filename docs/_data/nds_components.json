@@ -7,5 +7,6 @@
   "duplicate-profiles", "field-readout", "history",
   "file-input", "select", "radio-buttons", "validation",
   "header", "side-navigation", "page-footer", "progress", "page-shell",
-  "popover-menu", "modal", "tooltip", "toast"
+  "popover-menu", "modal", "tooltip", "toast",
+  "input-otp", "phone-input", "masked-text", "password-strength"
 ]

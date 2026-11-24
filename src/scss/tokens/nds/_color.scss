@@ -95,6 +95,7 @@ $background-tertiary-invert: alpha($white, 5%);
 
 $border-primary: $base-darkest;
 $border-secondary: $base-light;
+$input-focus-border: alpha($black, 85%);
 $border-tertiary: $base-lighter;
 $border-quaternary: $base-lightest;
 $border-primary-invert: alpha($white, 65%);

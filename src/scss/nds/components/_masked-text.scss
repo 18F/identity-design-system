@@ -9,19 +9,14 @@
 // Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
 
 @use 'tokens/nds' as nds;
+@use '../../masked-text-toggle';
 
 .masked-text {
   display: inline;
-}
-
-.masked-text--toggleable {
-  align-items: center;
-  display: inline-flex;
-  gap: nds.space(12);
-}
-
-.masked-text__value {
-  white-space: nowrap;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-regular;
+  line-height: nds.$text-line-height-body;
 }
 
 .masked-text__icon-toggle {
@@ -32,18 +27,4 @@
   flex-shrink: 0;
   justify-content: center;
   margin: 0;
-}
-
-.masked-text__icon.usa-icon {
-  display: none;
-}
-
-.masked-text__toggle:not(:checked) + .masked-text__icon-toggle .masked-text__icon--masked,
-.masked-text__toggle:checked + .masked-text__icon-toggle .masked-text__icon--revealed {
-  display: inline-block;
-}
-
-.masked-text__icon-toggle:focus-within {
-  @include nds.focus-ring();
-  border-radius: nds.radius(8);
 }

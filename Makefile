@@ -72,9 +72,10 @@ build-sass-packages-uswds:
 	cp -r src/scss/tokens packages-uswds/tokens
 	# Publish the same legacy entry and partials used by the prebuilt CSS.
 	cp src/scss/styles.scss packages-uswds/_uswds.scss
-	cp src/scss/_progress-layout.scss packages-uswds/
+	cp src/scss/_progress-layout.scss src/scss/_masked-text-toggle.scss src/scss/_password-strength-feedback.scss src/scss/_password-toggle-fallback.scss packages-uswds/
 	mkdir -p packages-uswds/nds/components
-	cp src/scss/nds/components/_modal-scroll.scss src/scss/nds/components/_media-placeholder.scss packages-uswds/nds/components/
+	cp src/scss/nds/_icon-assets.scss packages-uswds/nds/
+	cp src/scss/nds/components/_modal-scroll.scss src/scss/nds/components/_media-placeholder.scss src/scss/nds/components/_password-strength.scss packages-uswds/nds/components/
 
 build-sass-packages-nds:
 	mkdir -p packages-nds
@@ -85,7 +86,7 @@ build-sass-packages-nds:
 	cp -r src/scss/tokens packages-nds/tokens
 	rm -rf packages-nds/nds
 	cp -r src/scss/nds packages-nds/nds
-	cp src/scss/_progress-layout.scss packages-nds/
+	cp src/scss/_progress-layout.scss src/scss/_masked-text-toggle.scss src/scss/_password-strength-feedback.scss src/scss/_password-toggle-fallback.scss packages-nds/
 
 build-fonts:
 	mkdir -p $(OUTPUT_DIR)/assets/fonts

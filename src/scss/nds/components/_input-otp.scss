@@ -14,7 +14,7 @@ lg-nds-input-otp {
 }
 
 // Visually-hidden label.
-.input-otp__label {
+lg-nds-input-otp[data-enhanced='true'] .input-otp__label {
   border: 0;
   clip-path: inset(50%);
   height: 1px;
@@ -43,20 +43,20 @@ lg-nds-input-otp {
 
 .input-otp__slot {
   align-items: center;
-  background: nds.$white;
-  border: 1px solid nds.alpha(nds.$black, 45%);
+  background: nds.$background-primary;
+  border: nds.$stroke-hairline solid nds.$border-secondary;
   border-radius: nds.radius(16);
   box-sizing: border-box;
-  color: nds.$black;
+  color: nds.$text-primary;
   display: inline-flex;
   flex: 1 1 0;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   height: nds.space(80);
   justify-content: center;
   letter-spacing: nds.$text-letter-spacing-heading-section;
-  line-height: 1.2;
+  line-height: nds.$text-line-height-heading-section;
   min-width: 0;
   padding: nds.space(12) nds.space(16);
   position: relative;
@@ -67,7 +67,7 @@ lg-nds-input-otp {
 }
 
 .input-otp__separator {
-  background: nds.alpha(nds.$black, 45%);
+  background: nds.$border-secondary;
   border-radius: nds.radius(pill);
   display: inline-block;
   flex: 0 0 nds.space(12);
@@ -78,50 +78,55 @@ lg-nds-input-otp {
 .input-otp__separator--text {
   background: transparent;
   border-radius: 0;
-  color: nds.$black;
+  color: nds.$text-primary;
   flex: 0 0 auto;
   font-size: nds.$text-heading-section;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   height: auto;
   letter-spacing: nds.$text-letter-spacing-heading-section;
-  line-height: 1.2;
+  line-height: nds.$text-line-height-heading-section;
   width: auto;
 }
 
 .input-otp__slot--active {
-  border-color: nds.alpha(nds.$black, 85%);
-  box-shadow: 0 0 0 1px nds.alpha(nds.$black, 85%);
+  border-color: nds.$input-focus-border;
+  box-shadow: 0 0 0 nds.$stroke-hairline nds.$input-focus-border;
   outline: 0;
+
+  @media (forced-colors: active) {
+    outline: nds.$stroke-control solid Highlight;
+  }
 }
 
 .input-otp__slot--caret::after {
-  animation: input-otp-caret 1s step-end infinite;
-  background: nds.$black;
+  animation: input-otp-caret nds.$caret-blink-period step-end infinite;
+  background: nds.$text-primary;
   border-radius: nds.radius(pill);
   content: '';
   height: nds.space(24);
-  width: 1px;
+  width: nds.$stroke-hairline;
 }
 
 .input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot {
-  border-color: nds.$secondary;
+  border-color: nds.$error;
+  color: nds.$error;
 }
 
 .input-otp:has(.input-otp__input[aria-invalid='true']) .input-otp__slot--active {
-  box-shadow: 0 0 0 1px nds.$secondary;
+  box-shadow: 0 0 0 nds.$stroke-hairline nds.$error;
 }
 
 .input-otp:has(.input-otp__input:disabled) .input-otp__slot,
 .input-otp:has(.input-otp__input[readonly]) .input-otp__slot {
-  background: nds.alpha(nds.$black, 5%);
-  color: nds.alpha(nds.$black, 65%);
+  background: nds.$disabled-light;
+  color: nds.$text-secondary;
 }
 
 .input-otp__hint {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-s;
-  line-height: 1.35;
+  line-height: nds.$text-line-height-body;
   margin: nds.space(8) 0 0;
 }
 

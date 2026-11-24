@@ -1,0 +1,6 @@
+<input class="masked-text__toggle usa-sr-only" id="{{ include.id }}" type="checkbox" aria-controls="{{ include.controls }}">
+<label class="masked-text__icon-toggle" for="{{ include.id }}">
+  <span class="usa-sr-only">{{ include.label }}</span>
+  <svg class="usa-icon masked-text__icon masked-text__icon--masked" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#visible-show"></use></svg>
+  <svg class="usa-icon masked-text__icon masked-text__icon--revealed" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#not-visible-hide"></use></svg>
+</label>

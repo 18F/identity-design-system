@@ -6,77 +6,46 @@ lead: >
 ---
 
 The country selector is a `<details>` disclosure whose open panel is a styled
-`.popover-menu` of radio options — so the menu matches the design system in
-every browser (never the native `<select>` popup) and the field still submits
-with JavaScript disabled. The `phoneInput` behavior (`phoneInput.on()`)
-progressively enhances the control: choosing a country updates the `+N` dial
-code shown on the toggle and closes the disclosure. The number field uses the
+`.popover-menu` of radio options. Use `.popover-menu-disclosure` on the
+`<details>` so the shared popover behavior can shift or flip it at viewport edges.
+Style the native `<summary>` with the shared Secondary / Small button classes.
+Start with a named native country select and a hidden disclosure. The select
+owns the submitted country and remains visible without JavaScript. Give each
+radio group a unique name and an unowned `form` ID so it does not submit a
+second value. `phoneInput.on()` reveals the disclosure and mirrors its choice
+to the select. To set the country from application code, update the select's
+value and dispatch `change`; the trigger, checked option and formatter follow.
+In enhanced mode the country is included during `formdata` only if its telephone
+field is enabled. Read-only fields still submit both values.
+Arrow keys change country without closing; Enter, Space or a
+pointer choice closes it. Escape closes without undoing the selected radio.
+The number field uses the
 floating-label pattern:
 render the input BEFORE its `.usa-phone-input__label` (the label must be the
 input's next sibling) and give the input `placeholder=" "` so
 `:placeholder-shown` tracks emptiness.
 
-## Default
+With United States selected (`value="US"`), the national number groups as you
+type or paste: `6029019304` becomes `(602) 901 - 9304`. The telephone field
+submits its displayed value. Other countries use free-form telephone entry;
+formatting is not validation.
 
 The option list is supplied by the consuming app (login.gov renders it from its
 supported-country data), one `.usa-phone-input__country-option` per country.
 
+{% assign states = 'Default,Filled,Read only,Disabled,Error' | split: ',' %}
+{% for state in states %}
+## {{ state }}
+
+{% assign id = forloop.index | prepend: 'pi' %}
+{% assign number = 'phone-number' %}
+{% assign country = 'phone-country' %}
+{% unless forloop.first %}
+{% assign number = number | append: '-' | append: forloop.index %}
+{% assign country = country | append: '-' | append: forloop.index %}
+{% endunless %}
 {% capture example %}
-<div class="usa-phone-input">
-  <details class="usa-phone-input__country">
-    <summary class="usa-phone-input__country-toggle">
-      <span class="usa-phone-input__country-code">+1</span>
-      <svg class="usa-icon usa-phone-input__country-chevron" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#expand_more"></use></svg>
-    </summary>
-    <div class="popover-menu popover-menu--left usa-phone-input__country-list">
-      <label class="popover-menu__item usa-phone-input__country-option">
-        <input type="radio" class="usa-phone-input__country-radio usa-sr-only" name="phone-country" value="US" checked>
-        United States
-        <span class="usa-phone-input__country-option-dial">+1</span>
-      </label>
-      <label class="popover-menu__item usa-phone-input__country-option">
-        <input type="radio" class="usa-phone-input__country-radio usa-sr-only" name="phone-country" value="GB">
-        United Kingdom
-        <span class="usa-phone-input__country-option-dial">+44</span>
-      </label>
-      <label class="popover-menu__item usa-phone-input__country-option">
-        <input type="radio" class="usa-phone-input__country-radio usa-sr-only" name="phone-country" value="FR">
-        France
-        <span class="usa-phone-input__country-option-dial">+33</span>
-      </label>
-    </div>
-  </details>
-  <span class="usa-phone-input__field">
-    <input id="pi1" type="tel" class="usa-phone-input__input" placeholder=" ">
-    <label for="pi1" class="usa-phone-input__label">Phone number</label>
-  </span>
-</div>
+{% include helpers/phone-input.html id=id state=state number=number country=country %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-
-## Filled
-
-The label stays floated whenever the field holds a value.
-
-{% capture example %}
-<div class="usa-phone-input">
-  <details class="usa-phone-input__country">
-    <summary class="usa-phone-input__country-toggle">
-      <span class="usa-phone-input__country-code">+1</span>
-      <svg class="usa-icon usa-phone-input__country-chevron" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#expand_more"></use></svg>
-    </summary>
-    <div class="popover-menu popover-menu--left usa-phone-input__country-list">
-      <label class="popover-menu__item usa-phone-input__country-option">
-        <input type="radio" class="usa-phone-input__country-radio usa-sr-only" name="phone-country-2" value="US" checked>
-        United States
-        <span class="usa-phone-input__country-option-dial">+1</span>
-      </label>
-    </div>
-  </details>
-  <span class="usa-phone-input__field">
-    <input id="pi2" type="tel" class="usa-phone-input__input" placeholder=" " value="(602) 901 - 9304">
-    <label for="pi2" class="usa-phone-input__label">Phone number</label>
-  </span>
-</div>
-{% endcapture %}
-{% include helpers/code-example.html code=example %}
+{% endfor %}

@@ -1,0 +1,6 @@
+{% for country in site.data.phone_country_examples %}
+<label class="popover-menu__item usa-phone-input__country-option">
+  <input type="radio" class="usa-phone-input__country-radio" form="{{ include.name | escape }}-unowned" name="{{ include.name | escape }}-choices" value="{{ country.iso | escape }}"{% if country.iso == 'US' %} checked{% endif %}>
+  <span class="usa-phone-input__country-option-label">{{ country.name | escape }} <span class="usa-phone-input__country-option-dial">({{ country.dial | escape }})</span></span>
+</label>
+{% endfor %}

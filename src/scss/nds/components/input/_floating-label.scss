@@ -7,9 +7,14 @@
 
 @use 'tokens/nds' as nds;
 @use '../../icon-assets' as icon;
+@use '../../../password-toggle-fallback';
 
+.password-strength-field,
 .usa-input-group--floating {
   max-width: nds.$floating-input-max-width;
+}
+
+.usa-input-group--floating {
   position: relative;
 
   > .usa-icon {
@@ -42,10 +47,6 @@
   .usa-icon {
     height: nds.space(20);
     width: nds.space(20);
-  }
-
-  &.usa-show-password {
-    font-size: 0;
   }
 
   &.usa-show-password::before {
@@ -94,7 +95,8 @@
 
 // Reserve vertical room so the floated label clears the value.
 .usa-input-group--floating :is(.usa-input, .usa-search__input, .usa-combo-box__input),
-.usa-input__control--floating {
+.usa-input__control--floating,
+.usa-phone-input__input {
   // The label sits inside the control, so no external label gap is needed.
   margin-block-start: 0;
   line-height: nds.$text-line-height-none;
@@ -109,7 +111,8 @@
 
 // Resting state: label centered inside the control, reading as placeholder.
 .usa-input-group--floating .usa-label,
-.usa-input__floating-label {
+.usa-input__floating-label,
+.usa-phone-input__label {
   color: nds.$text-secondary;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-regular;
@@ -136,7 +139,9 @@
 .usa-input-group--floating .usa-input:not(:placeholder-shown) + .usa-label,
 .usa-input-group--floating .usa-input:-webkit-autofill + .usa-label,
 .usa-input__control--floating:is(:focus, .usa-focus, :not(:placeholder-shown), :-webkit-autofill)
-  ~ .usa-input__floating-label {
+  ~ .usa-input__floating-label,
+.usa-phone-input__input:is(:focus, :not(:placeholder-shown), :-webkit-autofill)
+  + .usa-phone-input__label {
   font-size: nds.$text-label-s;
   font-weight: nds.$font-medium;
   letter-spacing: 0;
