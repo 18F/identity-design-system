@@ -7,7 +7,7 @@ test('Search preserves host disabled state across edits, teardown and document i
   const { outputFiles } = await esbuild.build({
     entryPoints: ['src/js/components/index.js'], bundle: true, globalName: 'components', write: false,
   });
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   t.after(() => browser.close());
   const page = await browser.newPage();
   await page.setContent('<form class="nds-search"><input type="search"><button type="submit">Search</button></form>');

@@ -8,7 +8,7 @@ test('Personal key and Clipboard button copy their values and retain distinct co
   t.after(() => server.dispose());
   const { port } = await server.serve({ servedir: 'dist' });
   const origin = `http://localhost:${port}`;
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   t.after(() => browser.close());
   const page = await browser.newPage();
   const cdp = await page.createCDPSession();
