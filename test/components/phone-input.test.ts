@@ -8,7 +8,7 @@ test('US phone grouping preserves middle edits, native paste and country changes
   t.after(() => server.dispose());
   const { port } = await server.serve({ servedir: 'dist' });
   const origin = `http://localhost:${port}`;
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   t.after(() => browser.close());
   const session = await browser.target().createCDPSession();
   await session.send('Browser.grantPermissions', {

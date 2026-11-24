@@ -7,7 +7,7 @@ test('pressing an OTP slot sets the editing position before mouse release', asyn
   const server = await esbuild.context({});
   t.after(() => server.dispose());
   const { port } = await server.serve({ servedir: 'dist' });
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   t.after(() => browser.close());
   const page = await browser.newPage();
   await page.goto(`http://localhost:${port}/input-otp/?ui_test_bucket=nds`);
@@ -53,7 +53,7 @@ test('native paste and form reset keep the submitted code and slots in sync', as
   t.after(() => server.dispose());
   const { port } = await server.serve({ servedir: 'dist' });
   const origin = `http://localhost:${port}`;
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   t.after(() => browser.close());
   const session = await browser.target().createCDPSession();
   await session.send('Browser.grantPermissions', {

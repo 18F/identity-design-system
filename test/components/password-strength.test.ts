@@ -7,7 +7,7 @@ test('password meter describes score changes without repeating feedback for each
   const server = await esbuild.context({});
   t.after(() => server.dispose());
   const { port } = await server.serve({ servedir: 'dist' });
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   t.after(() => browser.close());
   for (const theme of ['legacy', 'nds']) {
     const page = await browser.newPage();
@@ -56,7 +56,7 @@ test('legacy Text input password eye receives pointer clicks inside the example'
   const server = await esbuild.context({});
   t.after(() => server.dispose());
   const { port } = await server.serve({ servedir: 'dist' });
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   t.after(() => browser.close());
   const page = await browser.newPage();
   await page.setViewport({ width: 390, height: 844 });
