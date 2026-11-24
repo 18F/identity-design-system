@@ -8,5 +8,6 @@
   "file-input", "select", "radio-buttons", "validation",
   "header", "side-navigation", "page-footer", "progress", "page-shell",
   "popover-menu", "modal", "tooltip", "toast",
-  "input-otp", "phone-input", "masked-text", "password-strength"
+  "input-otp", "phone-input", "masked-text", "password-strength",
+  "search", "location-collection", "personal-key", "status-page"
 ]

@@ -7,6 +7,11 @@ export interface NDSBehavior {
 }
 
 export const inputOtp: NDSBehavior;
+export const personalKey: NDSBehavior;
+export const search: Omit<typeof import('@uswds/uswds')['search'], 'on' | 'off'> & {
+  on(root?: HTMLElement | Document): void;
+  off(root?: HTMLElement | Document): void;
+};
 export const animatedMedia: NDSBehavior;
 export const officialBanner: NDSBehavior;
 export const pageFooter: NDSBehavior;

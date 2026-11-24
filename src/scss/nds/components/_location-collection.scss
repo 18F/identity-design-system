@@ -80,14 +80,22 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
   color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: 1;
   margin: 0;
   text-align: center;
 }
 
-.location-collection {
+// Let the results list scroll within the modal rather than sizing its form to all rows.
+.locations-modal > form:has(> .location-collection) {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.locations-modal .location-collection {
   // Independent scroll panel with a stable thin scrollbar.
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -95,17 +103,11 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
   scrollbar-gutter: stable;
   scrollbar-width: thin;
 
-  border: 1px solid nds.alpha(nds.$black, 10%);
-  border-radius: nds.radius(24);
-  box-sizing: border-box;
-  display: flex;
   flex: 1 1 auto;
-  flex-direction: column;
-  list-style: none;
   margin: 0 nds.space(24);
   max-height: none;
   min-height: 0;
-  padding: $nds-locations-fade-top nds.space(24) $nds-locations-fade;
+  padding: $nds-locations-fade-top 0 $nds-locations-fade;
   scroll-padding-block: $nds-locations-fade-top $nds-locations-fade;
   text-align: left;
   width: auto;
@@ -126,21 +128,38 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
   &::-webkit-scrollbar-thumb {
     background-clip: padding-box;
     background-color: nds.alpha(nds.$black, 16%);
-    border: 2px solid transparent;
+    border: nds.$stroke-control solid transparent;
     border-radius: nds.radius(pill);
+  }
+}
+
+.location-collection {
+  background-color: nds.$background-primary;
+  // Reserve the Figma stroke's space; the shared shadow stack paints the edge.
+  border: nds.$stroke-hairline solid transparent;
+  border-radius: nds.radius(24);
+  box-shadow: nds.$shadow-elevated-surface;
+  box-sizing: border-box;
+  container: location-results / inline-size;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
   }
 }
 
 .location-collection__item {
   display: flex;
   flex-direction: column;
-  gap: nds.space(16);
+  gap: nds.space(12);
+  margin-inline: nds.space(24);
+  padding-block: nds.space(24);
   text-align: left;
 
   & + & {
-    border-top: 1px solid nds.alpha(nds.$black, 10%);
-    margin-top: nds.space(24);
-    padding-top: nds.space(24);
+    border-top: nds.$stroke-hairline solid nds.$border-tertiary;
   }
 }
 
@@ -156,36 +175,72 @@ $nds-locations-fade-top: calc(#{$nds-locations-fade} * 2);
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 0;
+  gap: nds.space(2);
   min-width: 0;
   text-align: left;
 }
 
 .location-collection__distance {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   font-weight: nds.$font-semibold;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
 }
 
 .location-collection__address,
 .location-collection__hours {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
+  overflow-wrap: anywhere;
 
   strong {
-    color: nds.$black;
+    color: nds.$text-primary;
     font-weight: nds.$font-semibold;
   }
 }
 
-.location-collection__top .usa-button {
+.location-collection__hours > strong:first-child {
+  display: block;
+  margin-bottom: nds.space(2);
+}
+
+.location-collection__top .usa-button,
+.location-collection__item > .usa-button {
   flex-shrink: 0;
+  margin: 0;
+  min-width: nds.space(88);
+  width: auto;
+}
+
+.location-collection__item:has(> .usa-button) {
+  display: grid;
+  grid-template:
+    'details action' auto
+    'hours hours' auto / minmax(0, 1fr) auto;
+
+  > .location-collection__details {
+    grid-area: details;
+  }
+  > .location-collection__hours {
+    grid-area: hours;
+  }
+  > .usa-button {
+    align-self: start;
+    grid-area: action;
+  }
+}
+
+@container location-results (max-width: 24rem) {
+  .location-collection__item:has(> .usa-button) {
+    grid-template: 'details' auto 'hours' auto 'action' auto / minmax(0, 1fr);
+    margin-inline: nds.space(20);
+    padding-block: nds.space(20);
+  }
 }

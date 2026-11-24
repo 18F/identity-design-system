@@ -22,11 +22,13 @@ import navigation from '@uswds/uswds/js/usa-header';
 import officialBanner from './official-banner.js';
 import pageFooter from './page-footer.js';
 import password from '@uswds/uswds/js/_usa-password';
+import personalKey from './personal-key.js';
 import phoneInput from './phone-input.js';
 import popoverMenu from './popover-menu.js';
 import progress from './progress.js';
 import range from '@uswds/uswds/js/usa-range';
 import search from '@uswds/uswds/js/usa-search';
+import { withQueryState } from './search.js';
 import { withSelectOnly } from './select-only.js';
 import skipnav from '@uswds/uswds/js/usa-skipnav';
 import timePicker from '@uswds/uswds/js/usa-time-picker';
@@ -38,6 +40,7 @@ import totpSetup from './totp-setup.js';
 import validator from '@uswds/uswds/js/usa-validation';
 
 const selectionBehavior = withSelectOnly(comboBox);
+const searchBehavior = withQueryState(search);
 const tooltipBehavior = withTooltipInteractions(tooltip);
 const passwordBehavior = {
   ...password,
@@ -80,11 +83,12 @@ export {
   officialBanner,
   pageFooter,
   passwordBehavior as password,
+  personalKey,
   phoneInput,
   popoverMenu,
   progress,
   range,
-  search,
+  searchBehavior as search,
   skipnav,
   timePicker,
   table,

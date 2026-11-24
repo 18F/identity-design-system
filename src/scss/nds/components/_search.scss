@@ -11,16 +11,57 @@
 // accessible name.
 
 @use 'tokens/nds' as nds;
+@use '../icon-assets' as icon;
 
-$nds-search-border-width: 1px;
-$nds-search-border-width-focus: 2px;
+$nds-search-border-width: nds.$stroke-hairline;
+$nds-search-border-width-focus: nds.$stroke-control;
 $nds-search-height: nds.space(56);
 $nds-search-height-big: nds.space(64);
 $nds-search-submit-size: nds.space(36);
 $nds-search-submit-inset: nds.space(8);
 
+// Composed Search: the shared field and Primary icon button
+// own their appearance and states. Keep the older .usa-search markup below.
+.nds-search {
+  --nds-search-field-height: #{$nds-search-height};
+  max-width: nds.$floating-input-max-width;
+  position: relative;
+
+  > .usa-input {
+    float: none;
+    margin: 0;
+    padding-inline-end: nds.space(56);
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  > .usa-button {
+    // Read the shared Small/Medium button height to keep the corners concentric.
+    --nds-search-button-inset: calc(
+      (var(--nds-search-field-height) - var(--nds-button-height)) / 2
+    );
+    border-radius: calc(#{nds.radius(16)} - var(--nds-search-button-inset));
+    inset-block-start: 50%;
+    inset-inline-end: var(--nds-search-button-inset);
+    margin: 0;
+    position: absolute;
+    transform: translateY(-50%);
+  }
+
+  &--big {
+    --nds-search-field-height: #{$nds-search-height-big};
+
+    > .usa-input {
+      height: var(--nds-search-field-height);
+      padding-inline-end: nds.space(64);
+    }
+  }
+}
+
 // White search glyph for the submit button.
-$nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+$nds-search-icon: icon.$search-white;
 
 // Focus ring for the field: a box-shadow ring in the border color, matching the
 // NDS form-input overlay.
@@ -61,7 +102,7 @@ $nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     width: 100%;
 
     &::placeholder {
-      color: nds.alpha(nds.$black, 65%);
+      color: nds.$text-secondary;
       opacity: 1;
     }
 
@@ -139,4 +180,8 @@ $nds-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     font-size: nds.$text-body-m;
     height: $nds-search-height-big;
   }
+}
+
+.usa-search.usa-input-group--floating .usa-search__input {
+  padding-block: nds.space(24) nds.space(8);
 }

@@ -12,8 +12,6 @@
 
 @use 'tokens/nds' as nds;
 
-$nds-status-page-breakpoint-m: 768px;
-
 .status-page {
   @include nds.stack(
     $gap: nds.space(32),
@@ -40,19 +38,20 @@ $nds-status-page-breakpoint-m: 768px;
 }
 
 .status-page__heading {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-m;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading;
-  line-height: 1.1;
+  line-height: nds.$text-line-height-heading-m;
   overflow-wrap: anywhere;
   text-align: center;
   text-wrap: pretty;
 
-  @media (width < #{$nds-status-page-breakpoint-m}) {
+  @media (width < #{nds.$breakpoint-medium}) {
     font-size: nds.$text-heading-section;
     letter-spacing: nds.$text-letter-spacing-heading-section;
+    line-height: nds.$text-line-height-heading-section;
   }
 }
 
@@ -63,7 +62,14 @@ $nds-status-page-breakpoint-m: 768px;
 }
 
 .status-page__icon {
+  color: nds.$primary;
   display: block;
   height: nds.space(88);
   width: nds.space(88);
+}
+
+.status-page__actions .usa-button {
+  height: auto;
+  line-height: nds.$text-line-height-body;
+  padding-block: nds.space(8);
 }

@@ -5,7 +5,7 @@ const controls = new Set();
 const resets = new Map();
 
 /** @param {Element} control */
-function reset(control) {
+export function resetCopyFeedback(control) {
   window.clearTimeout(resets.get(control));
   resets.delete(control);
   control.removeAttribute('data-copied');
@@ -14,6 +14,23 @@ function reset(control) {
   confirmation?.previousElementSibling?.removeAttribute('hidden');
   const status = control.querySelector('[data-copy-status]');
   if (status) status.textContent = '';
+}
+
+/** @param {Element} control */
+export function showCopyFeedback(control) {
+  const confirmation = control.querySelector('[data-copy-confirmation]');
+  if (confirmation) {
+    resetCopyFeedback(control);
+    control.setAttribute('data-copied', '');
+    confirmation.removeAttribute('hidden');
+    confirmation.previousElementSibling?.setAttribute('hidden', '');
+    resets.set(control, window.setTimeout(() => resetCopyFeedback(control), 2000));
+  }
+  const status = control.querySelector('[data-copy-status]');
+  if (status) {
+    status.classList.toggle('usa-sr-only', Boolean(confirmation));
+    status.textContent = confirmation?.textContent || 'Copied.';
+  }
 }
 
 /** @param {Event} event */
@@ -30,7 +47,7 @@ async function copy(event) {
   } catch {
     if (!controls.has(control)) return;
     if (status) {
-      reset(control);
+      resetCopyFeedback(control);
       status.classList.remove('usa-sr-only');
       status.textContent = 'Copy unavailable. Try again.';
     }
@@ -38,18 +55,7 @@ async function copy(event) {
     return;
   }
   if (!controls.has(control)) return;
-  const confirmation = control.querySelector('[data-copy-confirmation]');
-  if (confirmation) {
-    reset(control);
-    control.setAttribute('data-copied', '');
-    confirmation.removeAttribute('hidden');
-    confirmation.previousElementSibling?.setAttribute('hidden', '');
-    resets.set(control, window.setTimeout(() => reset(control), 2000));
-  }
-  if (status) {
-    status.classList.toggle('usa-sr-only', Boolean(confirmation));
-    status.textContent = confirmation?.textContent || 'Copied.';
-  }
+  showCopyFeedback(control);
   control.dispatchEvent(new Event('nds:copied', { bubbles: true }));
 }
 
@@ -64,7 +70,7 @@ export default {
   off() {
     controls.forEach((control) => {
       control.removeEventListener('click', copy);
-      if (resets.has(control)) reset(control);
+      if (resets.has(control)) resetCopyFeedback(control);
     });
     controls.clear();
   },

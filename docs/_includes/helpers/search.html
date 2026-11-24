@@ -1,0 +1,7 @@
+<form class="nds-search{% if include.big %} nds-search--big{% endif %}" role="search" aria-label="{{ include.landmark }}">
+  <label class="usa-sr-only" for="{{ include.id }}">Search</label>
+  <input class="usa-input" type="search" id="{{ include.id }}" name="search" placeholder="Search" required pattern=".*\S.*">
+  <button class="usa-button usa-button--{% if include.big %}md{% else %}sm{% endif %} usa-button--icon-only" type="submit" aria-label="Search">
+    <svg class="usa-icon" aria-hidden="true" focusable="false"><use href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#search"></use></svg>
+  </button>
+</form>

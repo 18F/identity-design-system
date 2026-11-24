@@ -7,7 +7,7 @@
 
 .nds-status-icon {
   align-items: center;
-  border: 1px solid nds.$base-lightest;
+  border: nds.$stroke-hairline solid nds.$border-quaternary;
   border-radius: nds.radius(pill);
   display: inline-flex;
   flex-shrink: 0;

@@ -79,6 +79,7 @@ const symbols = [
   'check-circle',
   'close',
   'copy',
+  'download',
   'ellipse',
   'error',
   'error-16',
@@ -91,6 +92,8 @@ const symbols = [
   'play-icon',
   'play-icon-20',
   'plus-16',
+  'print',
+  'search',
   'warning',
   'visible-show',
 ];

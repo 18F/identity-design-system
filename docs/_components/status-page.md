@@ -30,7 +30,7 @@ Use this for blocking failures, such as a locked account or a failed check. Expl
 {% capture example %}
 <section class="status-page">
   <span class="status-page__media nds-status-icon nds-status-icon--error">
-    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/error.svg" alt="">
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/error.svg" alt="">
   </span>
   <h1 class="status-page__heading">We couldn’t verify your identity</h1>
   <hr class="status-page__rule divider">
@@ -57,7 +57,7 @@ Use this when the person can continue, but should review something first.
 {% capture example %}
 <section class="status-page">
   <span class="status-page__media nds-status-icon nds-status-icon--warning">
-    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/warning.svg" alt="">
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/warning.svg" alt="">
   </span>
   <h1 class="status-page__heading">Check your information</h1>
   <hr class="status-page__rule divider">
@@ -84,7 +84,7 @@ Use this to confirm that a task finished.
 {% capture example %}
 <section class="status-page">
   <span class="status-page__media nds-status-icon nds-status-icon--success">
-    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/check-circle.svg" alt="">
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/check-circle.svg" alt="">
   </span>
   <h1 class="status-page__heading">You’re all set</h1>
   <hr class="status-page__rule divider">
@@ -111,7 +111,7 @@ Use this for neutral, informational next steps.
 {% capture example %}
 <section class="status-page">
   <span class="status-page__media nds-status-icon nds-status-icon--info">
-    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/info.svg" alt="">
+    <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/info.svg" alt="">
   </span>
   <h1 class="status-page__heading">Call us to finish verifying</h1>
   <hr class="status-page__rule divider">
@@ -133,13 +133,22 @@ Use this for neutral, informational next steps.
 
 ## Status page icon
 
-Apply `.status-page__icon` to a large icon or illustration to give it a
-consistent size on status screens. It can stand in for the status icon well in
-`.status-page__media`.
+Use the same `.nds-status-icon` and status modifier as the corresponding page.
+Each label names the status, so the glyph has an empty `alt` to avoid repeating it.
 
 {% capture example %}
-<svg class="status-page__icon text-primary" role="img" aria-label="Success">
-  <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
-</svg>
+<ul class="grid-row usa-list--unstyled" role="list" aria-label="Status icons">
+  {% assign statuses = "error,warning,success,info" | split: "," %}
+  {% for status in statuses %}
+  {% assign glyph = status %}
+  {% if status == "success" %}{% assign glyph = "check-circle" %}{% endif %}
+  <li class="grid-col-6 tablet:grid-col-3 padding-y-1 text-center">
+    <span class="nds-status-icon nds-status-icon--{{ status }}">
+      <img class="usa-icon" src="{{ site.baseurl }}/assets/img/nds-icons/library/{{ glyph }}.svg" alt="">
+    </span>
+    <span class="display-block margin-top-1">{{ status | capitalize }}</span>
+  </li>
+  {% endfor %}
+</ul>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

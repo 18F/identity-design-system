@@ -15,7 +15,7 @@
   }
 }
 
-lg-clipboard-button[data-copied] .clipboard-label {
+[data-copied] .clipboard-label {
   > :first-child {
     visibility: hidden;
   }
@@ -25,7 +25,7 @@ lg-clipboard-button[data-copied] .clipboard-label {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  lg-clipboard-button[data-copied] .clipboard-label [data-copy-confirmation] {
+  [data-copied] .clipboard-label [data-copy-confirmation] {
     animation: nds-copy-label-in nds.$tr-duration-md nds.$tr-easing-cubic;
   }
 

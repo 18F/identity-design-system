@@ -22,11 +22,11 @@
 }
 
 .personal-key-display__meta {
-  color: nds.alpha(nds.$black, 65%);
+  color: nds.$text-secondary;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
 }
 
@@ -37,16 +37,100 @@
 }
 
 .personal-key-display__code code {
-  color: nds.$black;
+  color: nds.$text-primary;
   display: block;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading-section;
-  line-height: 1.2;
+  line-height: nds.$text-line-height-heading-section;
   overflow-wrap: anywhere;
 }
 
 .personal-key-display__word {
   font: inherit;
+}
+
+[data-personal-key] {
+  container: personal-key / inline-size;
+}
+
+[data-personal-key] .personal-key-display {
+  align-items: stretch;
+  container: key-content / inline-size;
+  background-color: nds.$background-primary;
+  border: nds.$stroke-hairline solid nds.$border-tertiary;
+  border-radius: nds.radius(24);
+  box-sizing: border-box;
+  // Figma measures the content inset from the outside edge of the stroke.
+  padding: nds.space(24) - nds.$stroke-hairline;
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+[data-personal-key] .personal-key-display__code code {
+  background-color: transparent;
+  font-weight: nds.$font-semibold;
+}
+
+.personal-key-display__actions:not([hidden]) {
+  border-top: nds.$stroke-hairline solid nds.$border-tertiary;
+  display: grid;
+  gap: nds.space(4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-top: nds.space(24);
+
+  .usa-button {
+    margin: 0;
+    white-space: nowrap;
+    width: 100%;
+  }
+}
+
+@container personal-key (max-width: 25rem) {
+  [data-personal-key] .personal-key-display {
+    gap: nds.space(16);
+    padding-inline: nds.space(12) - nds.$stroke-hairline;
+  }
+
+  .personal-key-display__actions:not([hidden]) {
+    border-top: 0;
+    grid-template-columns: repeat(3, minmax(max-content, 1fr));
+    padding-top: nds.space(16) + nds.$stroke-hairline;
+    position: relative;
+
+    &::before {
+      border-top: nds.$stroke-hairline solid nds.$border-tertiary;
+      content: '';
+      inset: 0 nds.space(8) auto;
+      position: absolute;
+    }
+
+    > .usa-button {
+      --nds-button-icon-inset: 0px;
+      padding-inline: 0;
+
+      > .usa-icon {
+        display: none;
+      }
+    }
+  }
+}
+
+// Measure the space inside the card in text units so resized labels get a full row.
+@container key-content (max-width: 12em) {
+  .personal-key-display__actions:not([hidden]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// Icon-and-label buttons need more room than the compact text-only row.
+@container personal-key (width > 25rem) {
+  @container key-content (max-width: 20em) {
+    .personal-key-display__actions:not([hidden]) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
 }

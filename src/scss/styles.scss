@@ -9,6 +9,107 @@
 @use 'password-toggle-fallback';
 @use 'nds/icon-assets' as icon;
 
+.status-page__heading {
+  overflow-wrap: anywhere;
+}
+
+[data-personal-key] {
+  container: personal-key / inline-size;
+}
+
+[data-personal-key] .personal-key-display {
+  container: key-content / inline-size;
+}
+
+[data-personal-key] .personal-key-display__code code {
+  background-color: transparent;
+}
+
+[data-personal-key] .personal-key-display__actions:not([hidden]) {
+  display: grid;
+  gap: nds.space(4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  .usa-button {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .usa-icon {
+    height: nds.space(20);
+    width: nds.space(20);
+  }
+}
+
+@container personal-key (max-width: 25rem) {
+  [data-personal-key] .personal-key-display__actions:not([hidden]) {
+    grid-template-columns: repeat(3, minmax(max-content, 1fr));
+
+    .usa-button {
+      padding-inline: 0;
+    }
+
+    .usa-icon {
+      display: none;
+    }
+  }
+}
+
+@container key-content (max-width: 12em) {
+  [data-personal-key] .personal-key-display__actions:not([hidden]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@container personal-key (width > 25rem) {
+  @container key-content (max-width: 20em) {
+    [data-personal-key] .personal-key-display__actions:not([hidden]) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+
+.nds-search {
+  display: grid;
+  gap: nds.space(4);
+  grid-template-columns: minmax(0, 1fr) auto;
+  max-width: uswds-core.units(uswds-core.$theme-input-max-width);
+
+  > .usa-input {
+    height: nds.space(44);
+    margin: 0;
+    min-width: 0;
+
+    &::placeholder {
+      color: nds.$text-secondary;
+      opacity: 1;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  > .usa-button {
+    height: nds.space(44);
+    margin: 0;
+    padding: 0;
+    width: nds.space(44);
+  }
+
+  .usa-icon {
+    height: nds.space(20);
+    width: nds.space(20);
+  }
+
+  &--big > :is(.usa-input, .usa-button) {
+    height: nds.space(56);
+  }
+
+  &--big > .usa-button {
+    width: nds.space(56);
+  }
+}
 [data-password-toggle-ready] .usa-input-group--floating > .usa-input__toggle.usa-show-password {
   align-items: center;
   display: inline-flex;

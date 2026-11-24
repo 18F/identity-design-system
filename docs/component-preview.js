@@ -1,6 +1,9 @@
 // Component examples demonstrate controls; their destinations belong to the host app.
 (() => {
   const scope = '[data-component-preview]';
+  for (const form of document.querySelectorAll('form[data-location-example]')) {
+    form.addEventListener('submit', event => event.preventDefault());
+  }
   for (const demo of document.querySelectorAll('[data-password-strength-demo]')) {
     const input = demo.querySelector('input');
     const meter = demo.querySelector('.password-strength');

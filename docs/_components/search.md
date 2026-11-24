@@ -16,13 +16,7 @@ lead: >
 Search should be easily found. For the default search version, consider displaying in the header and/or side navigation.
 
 {% capture example %}
-<form class="usa-search" role="search">
-  <label class="usa-sr-only" for="tkBH">Search</label>
-  <input class="usa-search__input" id="tkBH" type="search" name="search" placeholder="Search">
-  <button class="usa-search__submit" type="submit">
-    <span class="usa-search__submit-text">Search</span>
-  </button>
-</form>
+{% include helpers/search.html id="tkBH" landmark="Site" %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
@@ -31,12 +25,6 @@ Search should be easily found. For the default search version, consider displayi
 If searching is a primary action of the site, consider adding the big variant version to the primary hero section to reinforce that action.
 
 {% capture example %}
-<form class="usa-search usa-search--big" role="search">
-  <label class="usa-sr-only" for="V3Nn">Search</label>
-  <input class="usa-search__input" id="V3Nn" type="search" name="search" placeholder="Search">
-  <button class="usa-search__submit" type="submit">
-    <span class="usa-search__submit-text">Search</span>
-  </button>
-</form>
+{% include helpers/search.html id="V3Nn" landmark="Featured content" big=true %}
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
