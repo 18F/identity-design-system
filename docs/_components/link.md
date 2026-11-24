@@ -38,7 +38,7 @@ Use `.block-link` for a full-row link, typically in a list. Add
     <a class="block-link" href="#">
       Use a different phone number
       <svg class="block-link__icon usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#navigate_next"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-right"></use>
       </svg>
     </a>
   </li>
@@ -46,7 +46,7 @@ Use `.block-link` for a full-row link, typically in a list. Add
     <a class="block-link" href="#">
       Enter a backup code instead
       <svg class="block-link__icon usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#navigate_next"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-right"></use>
       </svg>
     </a>
   </li>
@@ -56,18 +56,17 @@ Use `.block-link` for a full-row link, typically in a list. Add
 
 ## Troubleshooting options
 
-Group related recovery links under a heading with `.troubleshooting-options`.
+Group related recovery links with `.troubleshooting-options`.
 The `--cards` modifier renders each option as a bordered card.
 
 {% capture example %}
 <div class="troubleshooting-options troubleshooting-options--cards">
-  <h2 class="troubleshooting-options__heading">Having trouble?</h2>
   <ul class="troubleshooting-options__options usa-list usa-list--unstyled">
     <li>
       <a class="block-link" href="#">
         Try another authentication method
         <svg class="block-link__icon usa-icon" aria-hidden="true" role="img">
-          <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#navigate_next"></use>
+          <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-right"></use>
         </svg>
       </a>
     </li>
@@ -75,7 +74,7 @@ The `--cards` modifier renders each option as a bordered card.
       <a class="block-link" href="#">
         Contact support
         <svg class="block-link__icon usa-icon" aria-hidden="true" role="img">
-          <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#navigate_next"></use>
+          <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#chevron-right"></use>
         </svg>
       </a>
     </li>

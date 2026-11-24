@@ -1,4 +1,4 @@
-// NDS badge — status pill, distinct from `.usa-tag`.
+// NDS badges and static text tags share a label surface and size scale.
 //
 // A `.badge` inline-flex pill with color levels (primary, secondary, success,
 // error, warning, info, tertiary), a `--dark` surface variant, and an
@@ -72,7 +72,13 @@ $nds-badge-states: (
   ),
 );
 
-.badge {
+@mixin badge-colors($pair) {
+  background: list.nth($pair, 1);
+  color: list.nth($pair, 2);
+}
+
+.badge,
+.usa-tag {
   align-items: center;
   backdrop-filter: blur(nds.$blur-glass);
   border: nds.$stroke-hairline solid nds.$base-lightest;
@@ -87,15 +93,35 @@ $nds-badge-states: (
   line-height: nds.$text-line-height-none;
   padding: calc(#{nds.space(4)} - #{nds.$stroke-hairline})
     calc(#{nds.space(8)} - #{nds.$stroke-hairline});
+}
 
-  // Medium badge — taller pill per the Figma spec; the frosted blur is a
-  // small-badge treatment only.
+.badge.badge--md,
+.usa-tag.usa-tag--big {
+  backdrop-filter: none;
+  box-sizing: border-box;
+  min-height: nds.space(36);
+  padding: 0 calc(#{nds.space(16)} - #{nds.$stroke-hairline});
+}
+
+.usa-tag {
+  @include badge-colors(map.get($nds-badge-states, secondary, light));
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+
+  &.usa-tag--big {
+    border-radius: nds.radius(12);
+  }
+
+  &.usa-tag--informative {
+    @include badge-colors(map.get($nds-badge-states, primary, light));
+  }
+}
+
+.badge {
   &.badge--md {
-    backdrop-filter: none;
     border-radius: nds.radius(pill);
-    box-sizing: border-box;
     height: nds.space(36);
-    padding: 0 calc(#{nds.space(16)} - #{nds.$stroke-hairline});
   }
 
   .usa-icon,
@@ -123,13 +149,11 @@ $nds-badge-states: (
 
   @each $name, $bg in $nds-badge-states {
     &.badge--#{$name} {
-      background: list.nth(map.get($bg, light), 1);
-      color: list.nth(map.get($bg, light), 2);
+      @include badge-colors(map.get($bg, light));
     }
 
     &.badge--#{$name}.badge--dark {
-      background: list.nth(map.get($bg, dark), 1);
-      color: list.nth(map.get($bg, dark), 2);
+      @include badge-colors(map.get($bg, dark));
     }
   }
 

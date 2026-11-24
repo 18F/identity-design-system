@@ -1,6 +1,6 @@
 ---
 title: Process list (flat)
-lead: A numbered step list with a connecting line between markers.
+lead: A numbered step list with optional large or connected markers.
 ---
 
 ## Flat process list
@@ -8,8 +8,8 @@ lead: A numbered step list with a connecting line between markers.
 The `.process-list` component displays sequential steps. Each
 `.process-list__item` pairs a numbered `.process-list__marker` with a
 `.process-list__body` that holds a `.process-list__heading` and its content. The
-step number is generated automatically. This is a flat alternative to the USWDS
-`.usa-process-list`, which remains available.
+step number is generated automatically. In NDS, the flat markup uses the same
+step layout as [Process List]({{ site.baseurl }}/process-list/).
 
 {% capture example %}
 <ol class="process-list">
@@ -37,3 +37,18 @@ step number is generated automatically. This is a flat alternative to the USWDS
 </ol>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
+
+## Connected
+
+{% assign connected = example | replace: 'class="process-list"', 'class="process-list usa-process-list--connected"' %}
+{% include helpers/code-example.html code=connected %}
+
+## Big
+
+{% assign big = example | replace: 'class="process-list"', 'class="process-list usa-process-list--big"' %}
+{% include helpers/code-example.html code=big %}
+
+## Big, Connected
+
+{% assign big_connected = example | replace: 'class="process-list"', 'class="process-list usa-process-list--big usa-process-list--connected"' %}
+{% include helpers/code-example.html code=big_connected %}

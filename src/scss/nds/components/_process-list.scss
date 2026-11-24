@@ -1,16 +1,15 @@
 // NDS process-list — `.process-list`, `.process-list__item`,
 // `.process-list__marker`, `.process-list__body`, `.process-list__heading`.
 //
-// A numbered step list with a connecting line between markers. The step number
-// is generated with a CSS counter. Distinct from the USWDS `.usa-process-list`,
-// which is unchanged.
+// Both markup forms use the same step layout. The flat list supplies a
+// decorative marker span; the USWDS form draws its counter on the item.
 //
 // Depends on NDS tokens only. Loaded after `@forward 'uswds'`.
 
 @use 'tokens/nds' as nds;
 
 .process-list {
-  @include nds.stack($gap: nds.space(32), $reset-flow: true, $width: 100%);
+  @include nds.stack($gap: 0, $reset-flow: true, $width: 100%);
 
   counter-reset: nds-process-list;
   list-style: none;
@@ -20,39 +19,15 @@
 }
 
 .process-list__item {
-  align-items: flex-start;
   counter-increment: nds-process-list;
-  display: grid;
-  gap: nds.space(12);
-  grid-template-columns: nds.space(44) minmax(0, 1fr);
-  min-width: 0;
-  position: relative;
-}
-
-.process-list__item:not(:last-child)::before {
-  background: nds.$base-lighter;
-  content: '';
-  inset: nds.space(44) auto calc(-1 * nds.space(32)) calc(nds.space(44) / 2 - 1px);
-  position: absolute;
-  width: 2px;
 }
 
 .process-list__marker {
   align-items: center;
-  background: nds.$base;
   border-radius: nds.radius(pill);
-  color: nds.$white;
   display: inline-flex;
-  font-family: nds.$font-family;
-  font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
-  height: nds.space(44);
   justify-content: center;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1;
-  position: relative;
-  width: nds.space(44);
-  z-index: 1;
+  position: absolute;
 
   &::before {
     content: counter(nds-process-list);
@@ -60,28 +35,118 @@
 }
 
 .process-list__body {
-  @include nds.stack($gap: nds.space(4), $reset-flow: true, $width: 100%);
+  > :first-child {
+    margin-block-start: 0;
+  }
 
-  color: nds.alpha(nds.$black, 65%);
-  font-family: nds.$font-family;
-  font-size: nds.$text-body-m;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  min-width: 0;
-  padding-top: nds.space(8);
-
-  > p {
-    margin: 0;
+  > :last-child {
+    margin-block-end: 0;
   }
 }
 
-.process-list__heading {
-  color: nds.$text-primary;
-  font-family: nds.$font-family;
-  font-size: nds.$text-label-m;
-  font-weight: nds.$font-semibold;
-  letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  margin: 0;
-  text-align: left;
+.usa-process-list--big {
+  --nds-process-marker-size: #{nds.space(44)};
+}
+
+// Existing Login.gov lists use a generated counter instead of a marker span.
+.usa-process-list,
+.usa-prose .usa-process-list,
+.usa-prose .usa-process-list.usa-process-list--big,
+.usa-process-list.usa-process-list--big {
+  padding: 0;
+}
+
+.process-list,
+.usa-process-list,
+.usa-process-list.usa-process-list--big {
+  > :is(.process-list__item, .usa-process-list__item) {
+    --marker: var(--nds-process-marker-size, #{nds.space(24) + nds.space(4)});
+    --gap: #{nds.space(12)};
+    --inset: #{nds.space(16)};
+
+    border: 0;
+    border-radius: nds.radius(16);
+    color: nds.$text-secondary;
+    font: nds.$font-regular #{nds.$text-body-m}/#{nds.$text-line-height-body} nds.$font-family;
+    letter-spacing: nds.$text-letter-spacing-label;
+    max-width: none;
+    min-height: calc(var(--marker) + 2 * var(--inset));
+    padding: var(--inset);
+    padding-inline-start: calc(var(--inset) + var(--marker) + var(--gap));
+    position: relative;
+    overflow-wrap: anywhere;
+
+    &:last-child {
+      padding-block-end: var(--inset);
+    }
+
+    &.usa-process-list__item::before,
+    > .process-list__marker {
+      background: nds.$base;
+      border: 0;
+      box-shadow: none;
+      color: nds.$white;
+      font: nds.$text-weight-label-m-emphasis #{nds.$text-label-m}/ 1 nds.$font-family;
+      height: var(--marker);
+      inset-inline-start: calc(var(--inset) + (var(--rail, var(--marker)) - var(--marker)) / 2);
+      margin: 0;
+      width: var(--marker);
+    }
+  }
+
+  :is(.process-list__heading, .usa-process-list__heading) {
+    color: nds.$text-primary;
+    font: nds.$text-weight-body-m-emphasis #{nds.$text-body-m}/#{nds.$text-line-height-body}
+      nds.$font-family;
+
+    & + * {
+      margin-top: nds.space(4);
+    }
+  }
+}
+
+.process-list.usa-process-list--big > .process-list__item,
+.usa-process-list.usa-process-list--big > .usa-process-list__item {
+  --gap: #{nds.space(16)};
+
+  :is(.process-list__heading, .usa-process-list__heading) {
+    padding-top: calc((var(--marker) - #{nds.space(24)}) / 2);
+
+    & + * {
+      margin-top: calc(#{nds.space(8)} - #{nds.space(2)});
+    }
+  }
+}
+
+.usa-process-list--connected:not(.usa-process-list--big)
+  > :is(.process-list__item, .usa-process-list__item) {
+  --rail: #{nds.space(24)};
+  padding-inline-start: calc(var(--inset) + var(--rail) + var(--gap));
+}
+
+.process-list.usa-process-list--connected > .process-list__item,
+.usa-process-list.usa-process-list--connected > .usa-process-list__item {
+  border-inline-start-width: 0;
+  padding-block: nds.space(4) nds.space(32);
+
+  &:last-child {
+    padding-block-end: nds.space(32);
+  }
+
+  &:not(:last-child)::after {
+    background: nds.$base-lighter;
+    content: '';
+    inset-block: calc(var(--marker) + #{nds.space(8)}) 0;
+    inset-inline-start: calc(
+      var(--inset) + (var(--rail, var(--marker)) - #{nds.$stroke-control}) / 2
+    );
+    position: absolute;
+    width: nds.$stroke-control;
+
+    @media (forced-colors: active) {
+      background: none;
+      border-inline-start: nds.$stroke-control solid CanvasText;
+      width: 0;
+    }
+  }
 }

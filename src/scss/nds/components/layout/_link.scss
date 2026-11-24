@@ -7,10 +7,12 @@
 // USWDS already, so only the `.sr-only` form is defined here.
 
 @use 'tokens/nds' as nds;
+@use '../../icon-assets' as icon;
+@use '../card';
 
 // Inline text link.
 .link {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: inherit;
   font-weight: inherit;
@@ -24,24 +26,31 @@
   &:hover,
   &:active,
   &:focus-visible {
-    color: nds.$black;
+    color: nds.$text-primary;
   }
 
   &:focus-visible {
     @include nds.focus-ring();
+
+    @media (forced-colors: active) {
+      outline: nds.$stroke-control solid Highlight;
+    }
   }
 }
 
 .link[target='_blank']::after {
   background-color: currentColor;
-  block-size: 0.75em;
+  block-size: 1em;
   content: '';
   display: inline-block;
-  inline-size: 0.75em;
+  inline-size: 1em;
   margin-inline-start: nds.space(4);
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'/%3E%3C/svg%3E")
-    no-repeat center / contain;
-  vertical-align: -0.075em;
+  mask: icon.$external-link no-repeat center / contain;
+  vertical-align: middle;
+
+  @media (forced-colors: active) {
+    forced-color-adjust: preserve-parent-color;
+  }
 }
 
 button.link {
@@ -59,22 +68,21 @@ button.link {
 
 // Full-row link with trailing chevron.
 .block-link {
-  border-block: 1px solid nds.alpha(nds.$black, 10%);
-  color: nds.$black;
+  border-block-end: nds.$stroke-hairline solid nds.$border-tertiary;
+  color: nds.$text-primary;
   display: block;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$text-weight-body-m-emphasis;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
-  padding-block: nds.space(16);
-  padding-inline-end: nds.space(32);
+  line-height: nds.$text-line-height-body;
+  padding: nds.space(24) nds.space(16);
+  padding-inline-end: calc(#{nds.space(16)} + #{nds.space(40)});
   position: relative;
   text-decoration: none;
 
-  // Stacked rows share a single divider via border-top removal on adjacent items.
-  li + li &:only-child {
-    border-top: 0;
+  &:hover {
+    color: nds.$text-link;
   }
 
   &:focus {
@@ -83,18 +91,24 @@ button.link {
 
   &:focus-visible {
     @include nds.focus-ring();
+    background-color: nds.$background-primary;
+    border-radius: nds.radius(16);
+
+    @media (forced-colors: active) {
+      outline: nds.$stroke-control solid Highlight;
+    }
   }
 }
 
 .block-link__icon {
-  color: nds.$black;
+  color: nds.$text-secondary;
   display: block;
-  height: nds.space(16);
+  height: nds.space(20);
   position: absolute;
-  right: nds.space(8);
+  inset-inline-end: nds.space(16);
   top: 50%;
   transform: translateY(-50%);
-  width: nds.space(16);
+  width: nds.space(20);
 }
 
 // Skip-to-content link.
@@ -142,7 +156,7 @@ button.link {
   color: nds.$black;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-s;
-  font-weight: nds.$font-semibold;
+  font-weight: nds.$font-medium;
   letter-spacing: -0.02rem;
   line-height: 1.2;
   margin: 0;
@@ -162,24 +176,9 @@ button.link {
   }
 
   .block-link {
-    background: nds.$white;
-    border: 1px solid nds.alpha(nds.$black, 10%);
+    background-color: nds.$background-primary;
+    border: nds.$stroke-hairline solid;
     border-radius: nds.radius(24);
-    padding-block: nds.space(20);
-    padding-inline: nds.space(24) nds.space(40);
-    transition: nds.$transition;
-
-    &:hover {
-      border-color: nds.$black;
-    }
-  }
-
-  li + li .block-link:only-child {
-    border-top: 1px solid nds.alpha(nds.$black, 10%);
-
-    // Keep the top border in sync with the other edges on hover.
-    &:hover {
-      border-top-color: nds.$black;
-    }
+    @include card.interactive-card-surface();
   }
 }

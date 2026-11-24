@@ -1,0 +1,128 @@
+@use 'tokens/nds' as nds;
+@use '../icon-assets' as icon;
+
+// Opt in on the text container, not the docs shell that also hosts components.
+.usa-prose.nds-prose {
+  color: nds.$text-primary;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-m;
+  font-weight: nds.$font-regular;
+  letter-spacing: nds.$text-letter-spacing-label;
+  line-height: nds.$text-line-height-body;
+  overflow-wrap: anywhere;
+
+  > :is(p, ol, ul),
+  > :is(ol, ul) > li {
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  > * {
+    margin-block: 0;
+  }
+
+  > * + * {
+    margin-block-start: nds.space(16);
+  }
+
+  > :is(ol, ul) {
+    padding-inline-start: nds.space(24);
+
+    > li + li {
+      margin-block-start: nds.space(8);
+    }
+  }
+
+  > :is(h1, h2, h3, h4, h5, h6) {
+    color: nds.$text-primary;
+    font-family: nds.$font-family;
+    font-weight: nds.$font-medium;
+    letter-spacing: nds.$text-letter-spacing-heading;
+    text-transform: none;
+
+    &:not(:first-child) {
+      margin-block-start: nds.space(32);
+    }
+  }
+
+  > h1 {
+    font-size: nds.$text-heading-xl-mobile;
+    letter-spacing: nds.$text-letter-spacing-heading-xl;
+    line-height: nds.$text-line-height-heading-l;
+  }
+
+  > h2 {
+    font-size: nds.$text-heading-l-mobile;
+    line-height: nds.$text-line-height-heading-l;
+  }
+
+  > h3 {
+    font-size: nds.$text-heading-m-mobile;
+    line-height: nds.$text-line-height-heading-m;
+  }
+
+  > :is(h4, h5) {
+    letter-spacing: nds.$text-letter-spacing-heading-section;
+    line-height: nds.$text-line-height-heading-section;
+  }
+
+  > h4 {
+    font-size: nds.$text-heading-section;
+  }
+
+  > h5 {
+    font-size: nds.$text-heading-s;
+  }
+
+  > h6 {
+    font-size: nds.$text-body-m;
+    font-weight: nds.$text-weight-body-m-emphasis;
+    letter-spacing: nds.$text-letter-spacing-label;
+    line-height: nds.$text-line-height-body;
+  }
+
+  @media (min-width: nds.$breakpoint-medium) {
+    > h1 {
+      font-size: nds.$text-heading-xl;
+    }
+    > h2 {
+      font-size: nds.$text-heading-l;
+    }
+    > h3 {
+      font-size: nds.$text-heading-m;
+    }
+  }
+
+  a {
+    color: var(--nds-prose-link, #{nds.$text-link});
+    text-decoration: underline;
+
+    &:focus-visible {
+      outline: nds.$stroke-control solid currentColor;
+      outline-offset: nds.$stroke-control;
+    }
+  }
+
+  .usa-link--external::after {
+    background: currentColor;
+    display: inline-block;
+    height: 1em;
+    margin: 0;
+    margin-inline-start: nds.space(4);
+    mask: icon.$external-link center / contain no-repeat;
+    padding: 0;
+    vertical-align: middle;
+    width: 1em;
+
+    @media (forced-colors: active) {
+      forced-color-adjust: preserve-parent-color;
+    }
+  }
+
+  .nds-prose__inverse {
+    --nds-prose-link: #{nds.$primary-light};
+    background: nds.$background-primary-invert;
+    color: nds.$white;
+    padding: nds.space(8);
+  }
+}

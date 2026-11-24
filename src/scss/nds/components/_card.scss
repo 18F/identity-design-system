@@ -158,13 +158,10 @@
   }
 }
 
-// Interactive card: the box IS the link/button.
-.card--interactive {
-  appearance: none;
+// Shared surface states for controls whose whole card is interactive.
+@mixin interactive-card-surface {
   border-color: nds.$border-secondary;
   cursor: pointer;
-  margin: 0;
-  padding-inline-end: nds.space(16);
   text-decoration: none;
   transition: nds.$transition;
 
@@ -208,6 +205,13 @@
       color: inherit;
     }
   }
+}
+
+.card--interactive {
+  @include interactive-card-surface();
+  appearance: none;
+  margin: 0;
+  padding-inline-end: nds.space(16);
 }
 
 // Card-embedded form.

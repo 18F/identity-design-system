@@ -2,6 +2,8 @@
 
 .usa-tag {
   display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   font-size: units(2);
   text-transform: none;
   line-height: 1.5;

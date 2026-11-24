@@ -5,6 +5,11 @@ lead: Format a block of running text.
 
 {% include helpers/base-component.html component="prose" %}
 
+Use `class="usa-prose nds-prose"` on the container for running text. The NDS
+theme applies its type scale; the legacy theme keeps its existing prose styles.
+
+<div class="usa-prose nds-prose" markdown="1">
+
 # H1
 
 A body paragraph: Login.gov encrypts the personal information of each user separately, using a unique value generated from each user’s password. Our encryption method works like a safe deposit box in a bank vault. Only the user has the key. Only the user can open the box to reveal the contents. Only the user knows the password, and only the user can decrypt their information
@@ -43,10 +48,12 @@ This is an unordered list
 - This is the first item in an unordered list
 - This is the second item in an unordered list
 
-This is a [text link](?{{ site.time | date: "%s%N" }}) on a light background, using the LDGS primary-blue color
+This is a [text link](?{{ site.time | date: "%s%N" }}) on a light background.
 
 This is a link that goes to an <a href="?{{ site.time | date: '%s%N' }}" class="usa-link usa-link--external">external website</a>.
 
-<div class="usa-section--dark padding-1">
+<div class="usa-section--dark padding-1 nds-prose__inverse">
   This is a <a href="?{{ site.time | date: '%s%N' }}" class="usa-link">text link</a> on a dark background
+</div>
+
 </div>

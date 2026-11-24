@@ -10,6 +10,46 @@
 @use 'password-toggle-fallback';
 @use 'nds/icon-assets' as icon;
 
+@media (forced-colors: active) {
+  .nds-prose .usa-link--external::after {
+    background-color: currentColor;
+    forced-color-adjust: preserve-parent-color;
+  }
+}
+
+a:is(.link, .block-link):active {
+  color: uswds-core.color('red-70');
+}
+
+.block-link {
+  align-items: center;
+  border-block-end: 1px solid uswds-core.color('base-lighter');
+  display: flex;
+  gap: uswds-core.units(2);
+  justify-content: space-between;
+  padding: uswds-core.units(2);
+}
+
+.block-link__icon {
+  flex: none;
+}
+
+.troubleshooting-options--cards {
+  .troubleshooting-options__options {
+    display: grid;
+    gap: nds.space(12);
+
+    > li {
+      margin-block: 0;
+    }
+  }
+
+  .block-link {
+    border: 1px solid uswds-core.color('base-light');
+    border-radius: uswds-core.units(0.5);
+  }
+}
+
 .status-page__heading {
   overflow-wrap: anywhere;
 }
