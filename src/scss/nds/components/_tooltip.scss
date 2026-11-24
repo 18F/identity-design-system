@@ -7,10 +7,6 @@
 
 $nds-tooltip-gap: nds.space(8);
 
-// Pointer triangle: 12px base x 8px height, matching the bubble surface.
-$nds-tooltip-arrow-base: 6px;
-$nds-tooltip-arrow-height: 8px;
-
 .usa-tooltip {
   display: inline-block;
   position: relative;
@@ -25,29 +21,34 @@ $nds-tooltip-arrow-height: 8px;
   }
 }
 
-// Tooltip bubble: dark frosted ink surface, white text, 12px radius,
-// compact shadow, inheriting the body font.
 .usa-tooltip__body,
 .usa-tooltip__body--top {
-  backdrop-filter: blur(25px);
-  background-color: nds.$base-darker;
+  background-color: nds.$background-primary;
+  border: nds.$stroke-hairline solid nds.$border-tertiary;
   border-radius: nds.radius(12);
-  box-shadow: nds.$shadow-compact;
-  color: nds.$white;
+  box-shadow: nds.$shadow-large;
+  color: nds.$text-primary;
   display: none;
-  font-family: inherit;
-  font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-family: nds.$font-family;
+  font-size: nds.$text-body-s;
+  font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   max-width: 16rem;
   opacity: 0;
-  padding: nds.space(4) nds.space(8);
+  padding: nds.space(8) nds.space(12);
   position: absolute;
   transition: opacity 0.08s ease-in-out;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: start;
   width: max-content;
-  z-index: 100000;
+  z-index: nds.$layer-tooltip;
+}
+
+// Let the USWDS placement fallback measure a narrower, wrapping bubble.
+.usa-tooltip__body--wrap {
+  width: 100%;
 }
 
 .usa-tooltip__body.is-set {
@@ -102,62 +103,7 @@ $nds-tooltip-arrow-height: 8px;
   width: $nds-tooltip-gap;
 }
 
-// Pointer triangle per placement, colored to match the bubble surface and
-// nudged flush against the trigger-facing edge.
-.usa-tooltip__body::after,
-.usa-tooltip__body--top::after {
-  border-left: $nds-tooltip-arrow-base solid transparent;
-  border-right: $nds-tooltip-arrow-base solid transparent;
-  border-top: $nds-tooltip-arrow-height solid nds.$base-darker;
-  inset: calc(100% - 1px) auto auto 50%;
-  content: '';
-  display: block;
-  height: 0;
-  margin: 0;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 0;
-}
-
-.usa-tooltip__body--bottom::after {
-  border-bottom: $nds-tooltip-arrow-height solid nds.$base-darker;
-  border-left: $nds-tooltip-arrow-base solid transparent;
-  border-right: $nds-tooltip-arrow-base solid transparent;
-  border-top: 0;
-  inset: auto auto calc(100% - 1px) 50%;
-  content: '';
-  display: block;
-  height: 0;
-  margin: 0;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 0;
-}
-
-.usa-tooltip__body--right::after {
-  border-bottom: $nds-tooltip-arrow-base solid transparent;
-  border-right: $nds-tooltip-arrow-height solid nds.$base-darker;
-  border-top: $nds-tooltip-arrow-base solid transparent;
-  inset: 50% calc(100% - 1px) auto auto;
-  content: '';
-  display: block;
-  height: 0;
-  margin: 0;
-  position: absolute;
-  transform: translateY(-50%);
-  width: 0;
-}
-
-.usa-tooltip__body--left::after {
-  border-bottom: $nds-tooltip-arrow-base solid transparent;
-  border-left: $nds-tooltip-arrow-height solid nds.$base-darker;
-  border-top: $nds-tooltip-arrow-base solid transparent;
-  inset: 50% auto auto calc(100% - 1px);
-  content: '';
-  display: block;
-  height: 0;
-  margin: 0;
-  position: absolute;
-  transform: translateY(-50%);
-  width: 0;
+// Suppress the USWDS arrow without removing the invisible hover bridge.
+.usa-tooltip__body::after {
+  content: none;
 }

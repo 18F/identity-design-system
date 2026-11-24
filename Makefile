@@ -70,6 +70,11 @@ build-sass-packages-uswds:
 	cp -r node_modules/@uswds/uswds/packages/* packages-uswds
 	cp -r src/scss/packages/* packages-uswds
 	cp -r src/scss/tokens packages-uswds/tokens
+	# Publish the same legacy entry and partials used by the prebuilt CSS.
+	cp src/scss/styles.scss packages-uswds/_uswds.scss
+	cp src/scss/_progress-layout.scss packages-uswds/
+	mkdir -p packages-uswds/nds/components
+	cp src/scss/nds/components/_modal-scroll.scss src/scss/nds/components/_media-placeholder.scss packages-uswds/nds/components/
 
 build-sass-packages-nds:
 	mkdir -p packages-nds

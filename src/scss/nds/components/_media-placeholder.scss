@@ -1,0 +1,9 @@
+@use 'tokens/nds' as nds;
+
+.media-placeholder {
+  background-color: nds.$background-tertiary;
+}
+
+.modal__media.media-placeholder {
+  height: 2 * nds.space(120);
+}

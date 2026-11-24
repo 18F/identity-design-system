@@ -7,6 +7,7 @@
 // adds `.modal--active` to the body to lock scrolling while a modal is open.
 
 @use 'tokens/nds' as nds;
+@use 'modal-scroll';
 
 // Body scroll-lock while a modal is active.
 .modal--active,
@@ -17,6 +18,7 @@ body:has(dialog.modal:modal) {
 }
 
 .modal {
+  --modal-content-inset: #{nds.space(24)};
   background: transparent;
   border: 0;
   box-sizing: border-box;
@@ -66,6 +68,7 @@ body:has(dialog.modal:modal) {
 
 .modal--large,
 .modal--wide {
+  --modal-content-inset: #{nds.space(48)};
   max-width: nds.$modal-large-width;
 }
 
@@ -92,25 +95,6 @@ body:has(dialog.modal:modal) {
 
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-color: nds.alpha(nds.$black, 16%) transparent;
-  scrollbar-gutter: stable;
-  scrollbar-width: thin;
-
-  &::-webkit-scrollbar {
-    width: nds.space(8);
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-    margin-block: nds.space(24);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-clip: padding-box;
-    background-color: nds.alpha(nds.$black, 16%);
-    border: nds.$stroke-control solid transparent;
-    border-radius: nds.radius(pill);
-  }
 }
 
 // Media modal variant.
@@ -141,35 +125,37 @@ body:has(dialog.modal:modal) {
   }
 }
 
+.modal__media:empty + .modal__body-inner {
+  padding-block-start: nds.space(20);
+}
+
 .modal__body-inner {
   align-items: center;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: nds.space(20);
-  padding: nds.space(40);
+  gap: nds.space(24);
+  padding: nds.space(40) var(--modal-content-inset) var(--modal-content-inset);
   text-align: center;
   width: 100%;
+
+  p {
+    align-self: flex-start;
+    letter-spacing: nds.$text-letter-spacing-label;
+    text-align: start;
+  }
 }
 
 .modal__body--media .modal__heading {
-  align-items: center;
+  align-items: flex-start;
   padding-inline-end: 0;
+  text-align: start;
 }
 
 .modal__body--media .modal__title {
   font-size: nds.$text-heading-m;
   letter-spacing: nds.$text-letter-spacing-heading;
   line-height: 1.1;
-}
-
-.modal__body--media .modal__description {
-  max-width: 432px;
-}
-
-.modal__body--media .modal__actions {
-  align-items: center;
-  width: auto;
 }
 
 // Bottom-sheet on mobile.
@@ -204,6 +190,14 @@ body:has(dialog.modal:modal) {
     max-height: var(--modal-max-height);
     padding-bottom: calc(#{nds.space(32)} + env(safe-area-inset-bottom));
   }
+
+  .modal__body--media {
+    padding-bottom: 0;
+  }
+
+  .modal__body-inner {
+    padding-bottom: calc(var(--modal-content-inset) + env(safe-area-inset-bottom));
+  }
 }
 
 // Heading, title, description, content, and actions.
@@ -227,6 +221,7 @@ body:has(dialog.modal:modal) {
   text-wrap: pretty;
 }
 
+.modal__body-inner > p,
 .modal__description,
 .modal__content {
   color: nds.$text-secondary;
@@ -275,6 +270,7 @@ body:has(dialog.modal:modal) {
     flex: none;
     grid-template-columns: nds.space(44) minmax(0, 1fr) nds.space(44);
     padding: nds.space(16);
+    padding-block: calc(#{nds.space(16)} + (#{nds.space(44)} - 1em) / 2) nds.space(8);
   }
 
   .modal__title {
@@ -287,7 +283,10 @@ body:has(dialog.modal:modal) {
 
   .modal__close {
     grid-column: 3;
-    position: static;
+    // Keep the full hit target without making its height set the scroll boundary.
+    margin-block: calc((1em - #{nds.space(44)}) / 2);
+    position: relative;
+    inset: auto;
   }
 
   > .modal__content {
@@ -296,50 +295,24 @@ body:has(dialog.modal:modal) {
     letter-spacing: nds.$text-letter-spacing-label;
     overflow: var(--modal-content-overflow, auto);
     overscroll-behavior: contain;
-    padding: var(--modal-content-padding, #{nds.space(24)});
+    padding: var(
+      --modal-content-padding,
+      #{nds.space(24)} var(--modal-content-inset) var(--modal-content-inset)
+    );
 
     > * {
       flex: none;
     }
 
     @media (width <= #{nds.$breakpoint-small}) {
-      padding-inline: nds.space(24);
-      padding-bottom: calc(#{nds.space(32)} + env(safe-area-inset-bottom));
+      padding-bottom: calc(var(--modal-content-inset) + env(safe-area-inset-bottom));
     }
   }
 }
 
 .official-banner-modal {
   @media (width > #{nds.$breakpoint-small}) {
-    --modal-content-padding: #{nds.space(24)} #{nds.space(48)} #{nds.space(48)};
-  }
-}
-
-// A scroll cue at each edge, only when content is hidden beyond that edge.
-.modal :is([data-scroll-above], [data-scroll-below]) {
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black var(--modal-fade-top, 0),
-    black calc(100% - var(--modal-fade-bottom, 0px)),
-    transparent
-  );
-}
-.modal [data-scroll-above] {
-  --modal-fade-top: #{nds.space(24)};
-}
-.modal [data-scroll-below] {
-  --modal-fade-bottom: #{nds.space(24)};
-}
-
-.modal :is([data-scroll-above], [data-scroll-below]):focus-visible {
-  // Keep the focus indicator inside the clipped surface, clear of the edge fades.
-  mask-image: none;
-  outline: nds.$stroke-control solid nds.$base;
-  outline-offset: -(nds.space(4));
-
-  @media (forced-colors: active) {
-    outline-color: Highlight;
+    --modal-content-padding: #{nds.space(24)} #{nds.space(24)} #{nds.space(48)};
   }
 }
 

@@ -44,7 +44,7 @@
     "build:docs:js": "npm run build:js --",
     "build:docs": "run-p build:docs:*",
     "build:pkg:css": "npm run build:css",
-    "build:pkg:cjs": "esbuild `find src/js -type f` --outdir=build/cjs --format=cjs --target=`./scripts/esbuild-targets.mjs`",
+    "build:pkg:cjs": "node scripts/build-cjs.mjs `./scripts/esbuild-targets.mjs`",
     "postbuild:pkg:cjs": "echo '{\"type\":\"commonjs\"}' > build/cjs/package.json",
     "build:pkg:esm": "esbuild `find src/js -type f` --outdir=build/esm --format=esm --target=`./scripts/esbuild-targets.mjs`",
     "build:pkg": "run-p build:pkg:*",

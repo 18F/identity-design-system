@@ -6,5 +6,6 @@
   "date-fields", "text-input", "floating-label-input", "fieldset", "memorable-date",
   "duplicate-profiles", "field-readout", "history",
   "file-input", "select", "radio-buttons", "validation",
-  "header", "side-navigation", "page-footer", "progress", "page-shell"
+  "header", "side-navigation", "page-footer", "progress", "page-shell",
+  "popover-menu", "modal", "tooltip", "toast"
 ]

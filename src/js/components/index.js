@@ -23,6 +23,7 @@ import officialBanner from './official-banner.js';
 import pageFooter from './page-footer.js';
 import password from '@uswds/uswds/js/_usa-password';
 import phoneInput from './phone-input.js';
+import popoverMenu from './popover-menu.js';
 import progress from './progress.js';
 import range from '@uswds/uswds/js/usa-range';
 import search from '@uswds/uswds/js/usa-search';
@@ -31,10 +32,13 @@ import skipnav from '@uswds/uswds/js/usa-skipnav';
 import timePicker from '@uswds/uswds/js/usa-time-picker';
 import table from '@uswds/uswds/js/usa-table';
 import tooltip from '@uswds/uswds/js/usa-tooltip';
+import toast from './toast.js';
+import { withTooltipInteractions } from './tooltip.js';
 import totpSetup from './totp-setup.js';
 import validator from '@uswds/uswds/js/usa-validation';
 
 const selectionBehavior = withSelectOnly(comboBox);
+const tooltipBehavior = withTooltipInteractions(tooltip);
 
 export {
   accordion,
@@ -62,13 +66,15 @@ export {
   pageFooter,
   password,
   phoneInput,
+  popoverMenu,
   progress,
   range,
   search,
   skipnav,
   timePicker,
   table,
-  tooltip,
+  toast,
+  tooltipBehavior as tooltip,
   totpSetup,
   validator,
 };

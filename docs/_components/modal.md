@@ -7,54 +7,46 @@ lead: >
 
 ## Modal
 
-A modal is a native `<dialog>` with the `modal` class. Open it by calling the
-dialog's `showModal()` method and adding the `is-open` class for the enter
-transition; the buttons below do this. Associate the dialog with its title
-using `aria-labelledby`.
+A modal is a native `<dialog>` with the `modal` class. Set `data-open-modal`
+on the opener to the dialog's ID, and `data-close-modal` on its dismissal
+buttons. Associate the dialog with its title using `aria-labelledby`. Put
+`autofocus` on the dialog itself so opening it does not select a button.
 
-### Default
+Small and Large fit their content up to the viewport limit. Both become a full-width
+bottom sheet on mobile. The centered title and Close button stay visible while the
+content scrolls. Scrollbars are hidden. A fade appears only at an edge with
+more content to scroll to; when everything fits, neither edge fades.
+The actions below are examples; they do not change an account.
+
+For a Small modal in context, see the government website explainer in the
+[Banner component]({{ site.baseurl }}/banner/).
+
+### Small
 
 {% capture example %}
 <button type="button" class="usa-button" data-open-modal="modal-default">Open modal</button>
-<dialog id="modal-default" class="modal" aria-labelledby="modal-default-title">
+<dialog id="modal-default" class="modal" aria-labelledby="modal-default-title" autofocus>
   <div class="modal__body">
-    <button type="button" class="modal__close" data-close-modal aria-label="Close">
-      <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use></svg>
-    </button>
-    <div class="modal__heading">
-      <h2 id="modal-default-title" class="modal__title">Sign out of all devices?</h2>
-      <p class="modal__description">You will need to sign in again on each device.</p>
-    </div>
-    <div class="modal__actions">
-      <button type="button" class="usa-button" data-close-modal>Sign out</button>
-      <button type="button" class="usa-button usa-button--tertiary" data-close-modal>Cancel</button>
+    {% include helpers/modal-header.html id="modal-default" title="The neighborhood map" %}
+    <div class="modal__content">
+      {% include helpers/modal-sample-content.html %}
     </div>
   </div>
 </dialog>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
-### Wide
+### Large
 
-Add `modal--wide` to give the dialog a wider maximum width.
+Use `modal--large` for a wider content area. `modal--wide` remains an alias.
 
 {% capture example %}
-<button type="button" class="usa-button" data-open-modal="modal-wide">Open wide modal</button>
-<dialog id="modal-wide" class="modal modal--wide" aria-labelledby="modal-wide-title">
+<button type="button" class="usa-button" data-open-modal="modal-wide">Open large modal</button>
+<dialog id="modal-wide" class="modal modal--large" aria-labelledby="modal-wide-title" autofocus>
   <div class="modal__body">
-    <button type="button" class="modal__close" data-close-modal aria-label="Close">
-      <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use></svg>
-    </button>
-    <div class="modal__heading">
-      <h2 id="modal-wide-title" class="modal__title">Review your information</h2>
-      <p class="modal__description">Confirm the details below before continuing.</p>
-    </div>
+    {% include helpers/modal-header.html id="modal-wide" title="The neighborhood map" %}
     <div class="modal__content">
-      <p>Everything you enter is encrypted and stored securely.</p>
-    </div>
-    <div class="modal__actions">
-      <button type="button" class="usa-button" data-close-modal>Continue</button>
-      <button type="button" class="usa-button usa-button--tertiary" data-close-modal>Go back</button>
+      {% include helpers/modal-sample-content.html %}
     </div>
   </div>
 </dialog>
@@ -63,53 +55,24 @@ Add `modal--wide` to give the dialog a wider maximum width.
 
 ### Media
 
-Use `modal__body--media` with a `modal__media` image and a `modal__body-inner`
-wrapper for the content.
+The 240px-high placeholder shows where media can go. It spans the dialog;
+the content below keeps its own padding.
 
 {% capture example %}
 <button type="button" class="usa-button" data-open-modal="modal-media">Open media modal</button>
-<dialog id="modal-media" class="modal" aria-labelledby="modal-media-title">
+<dialog id="modal-media" class="modal" aria-labelledby="modal-media-title" autofocus>
   <div class="modal__body modal__body--media">
-    <button type="button" class="modal__close" data-close-modal aria-label="Close">
-      <svg class="usa-icon" aria-hidden="true" role="img"><use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#close"></use></svg>
-    </button>
-    <div class="modal__media">
-      <img src="{{ site.baseurl }}/img/fingerprint-icon.svg" alt="">
-    </div>
+    {% include helpers/modal-close.html %}
+    <div class="modal__media-scroll" data-modal-scroll>
+    <div class="modal__media media-placeholder" aria-hidden="true"></div>
     <div class="modal__body-inner">
       <div class="modal__heading">
-        <h2 id="modal-media-title" class="modal__title">Face or touch unlock</h2>
-        <p class="modal__description">Sign in faster on supported devices.</p>
+        <h2 id="modal-media-title" class="modal__title">The neighborhood map</h2>
       </div>
-      <div class="modal__actions">
-        <button type="button" class="usa-button" data-close-modal>Set up</button>
-        <button type="button" class="usa-button usa-button--tertiary" data-close-modal>Not now</button>
-      </div>
+      {% include helpers/modal-sample-content.html %}
+    </div>
     </div>
   </div>
 </dialog>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
-
-<script>
-  (function () {
-    document.querySelectorAll('[data-open-modal]').forEach(function (trigger) {
-      var dialog = document.getElementById(trigger.getAttribute('data-open-modal'));
-      if (!dialog) return;
-      function close() {
-        dialog.classList.remove('is-open');
-        dialog.close();
-      }
-      trigger.addEventListener('click', function () {
-        dialog.showModal();
-        dialog.classList.add('is-open');
-      });
-      dialog.querySelectorAll('[data-close-modal]').forEach(function (control) {
-        control.addEventListener('click', close);
-      });
-      dialog.addEventListener('cancel', function () {
-        dialog.classList.remove('is-open');
-      });
-    });
-  })();
-</script>

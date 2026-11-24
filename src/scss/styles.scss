@@ -1,7 +1,78 @@
 @use 'uswds-core';
 @use 'tokens/nds' as nds;
-@forward 'uswds';
+@forward 'uswds-base';
 @use 'progress-layout';
+@use 'nds/components/modal-scroll';
+@use 'nds/components/media-placeholder';
+
+// Keep the fallback notification's place in the document when it is dismissed.
+.toast[aria-hidden='true']:not([data-open='true']) {
+  visibility: hidden;
+}
+
+html:has(dialog.modal:modal),
+body:has(dialog.modal:modal) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+@media (width < 30em) {
+  .modal__content .modal__actions > .usa-button {
+    margin-inline-end: 0;
+  }
+}
+
+// Scroll the region that owns the edge fades, not the outer legacy dialog.
+dialog.modal[open]:has(> .modal__body > :is(.modal__content, [data-modal-scroll])) {
+  display: flex;
+  flex-direction: column;
+
+  > .modal__body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+
+    > .modal__heading {
+      flex: none;
+    }
+
+    > .modal__content,
+    > [data-modal-scroll] {
+      overflow: auto;
+    }
+  }
+}
+
+dialog.modal:has(> .modal__body--media) {
+  padding: 0;
+
+  .modal__close {
+    position: absolute;
+    inset: nds.space(16) nds.space(16) auto auto;
+    width: auto;
+    z-index: 1;
+  }
+
+  .modal__body-inner {
+    padding: nds.space(16);
+  }
+}
+
+.popover-menu-disclosure {
+  max-width: 100%;
+
+  > summary.usa-button {
+    box-sizing: border-box;
+    margin-inline: 0;
+    width: auto;
+  }
+
+  .popover-menu__item {
+    display: block;
+    min-height: nds.space(24);
+    padding-block: nds.space(4);
+  }
+}
 
 .progress .progress__step[aria-current='step'] {
   font-weight: nds.$font-medium;

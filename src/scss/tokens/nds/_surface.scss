@@ -8,7 +8,8 @@ $blur-chrome: 25px;
 // Display sizes of the enrollment artwork, not dimensions of the QR modules.
 $setup-qr-size: 220px;
 $setup-qr-size-compact: 180px;
-$layer-toast: 400;
+$layer-tooltip: 100000;
+$layer-toast: $layer-tooltip + 1;
 
 // Measure the 16px text inset from the outside edge of the field.
 $field-padding-inline: space(16) - $stroke-hairline;

@@ -1,0 +1,39 @@
+@use 'tokens/nds' as nds;
+
+$modal-fade-depth: nds.space(24);
+
+dialog.modal,
+.modal :is(.modal__body, .modal__content, [data-modal-scroll]) {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.modal :is([data-scroll-above], [data-scroll-below]) {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--modal-fade-top, 0),
+    black calc(100% - var(--modal-fade-bottom, 0px)),
+    transparent
+  );
+
+  &:focus-visible {
+    outline: nds.$stroke-control solid nds.$base;
+    outline-offset: -(nds.space(4));
+
+    @media (forced-colors: active) {
+      outline-color: Highlight;
+    }
+  }
+}
+
+.modal [data-scroll-above] {
+  --modal-fade-top: #{$modal-fade-depth};
+}
+
+.modal [data-scroll-below] {
+  --modal-fade-bottom: #{$modal-fade-depth};
+}

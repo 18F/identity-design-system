@@ -9,66 +9,52 @@
 $nds-toast-duration: nds.$tr-duration-lg;
 $nds-toast-easing: nds.$tr-easing-cubic;
 $nds-toast-enter-offset: nds.space(32);
-$nds-toast-viewport-inset: nds.space(16);
+$nds-toast-viewport-inset: nds.space(40);
 $nds-toast-z-index: nds.$layer-toast;
 $nds-toast-mobile-breakpoint: nds.$breakpoint-small;
 
 .toast {
   align-items: center;
-  background: nds.$black;
+  background: nds.$background-primary-invert;
   border: 0;
   border-radius: nds.radius(pill);
-  box-shadow: nds.$shadow-large;
+  box-shadow:
+    inset 0 0 0 nds.$stroke-hairline nds.$border-secondary-invert,
+    nds.$shadow-large;
   box-sizing: border-box;
   color: nds.$white;
-  cursor: pointer;
   display: inline-flex;
   font-family: nds.$font-family;
   font-size: nds.$text-label-m;
   font-weight: nds.$text-weight-label-m-emphasis;
-  gap: nds.space(12);
+  gap: nds.space(8);
   left: 50%;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: nds.$text-line-height-none;
   margin: 0;
   max-width: calc(100vw - #{nds.space(32)});
   opacity: 0;
-  padding: nds.space(16) nds.space(20) nds.space(16) nds.space(16);
+  padding: nds.space(12) nds.space(16) nds.space(12) nds.space(12);
   pointer-events: none;
   position: fixed;
-  // Positioned below the official banner and sticky nav via :root chrome vars.
-  top: calc(
-    var(--nds-official-banner-height, #{nds.space(40)}) + var(--nds-nav-height, #{nds.space(84)}) +
-      #{$nds-toast-viewport-inset}
-  );
+  top: $nds-toast-viewport-inset;
   transform: translate(-50%, calc(-1 * #{$nds-toast-enter-offset}));
-  transition:
-    opacity $nds-toast-duration $nds-toast-easing,
-    transform $nds-toast-duration $nds-toast-easing;
   width: max-content;
   z-index: $nds-toast-z-index;
 
+  &[popover] {
+    inset-inline-end: auto;
+    bottom: auto;
+    overflow: visible;
+  }
+
+  @media (forced-colors: active) {
+    outline: nds.$stroke-hairline solid CanvasText;
+  }
+
   &[data-open='true'] {
     opacity: 1;
-    pointer-events: auto;
     transform: translate(-50%, 0);
-  }
-}
-
-// Account shell header is not sticky, so pin the toast tighter beneath it.
-@media (width >= #{$nds-toast-mobile-breakpoint}) {
-  body:has(.account-shell) .toast {
-    top: calc(
-      var(--nds-official-banner-height, #{nds.space(40)}) + var(--nds-nav-height) + #{nds.space(8)}
-    );
-  }
-}
-
-@media (width >= #{$nds-toast-mobile-breakpoint}) and (width < #{nds.$breakpoint-medium}) {
-  body:has(.account-shell) .toast {
-    top: calc(
-      var(--nds-official-banner-height, #{nds.space(40)}) + #{nds.space(72)} + #{nds.space(8)}
-    );
   }
 }
 
@@ -83,9 +69,9 @@ $nds-toast-mobile-breakpoint: nds.$breakpoint-small;
   justify-content: center;
   width: nds.space(20);
 
-  .usa-icon {
-    color: inherit;
+  > svg {
     display: block;
+    fill: currentColor;
     height: nds.space(16);
     width: nds.space(16);
   }
@@ -94,18 +80,20 @@ $nds-toast-mobile-breakpoint: nds.$breakpoint-small;
 .toast__announcement {
   align-items: center;
   display: inline-flex;
-  gap: nds.space(12);
+  gap: nds.space(8);
+  min-width: 0;
 }
 
 .toast__text {
   color: inherit;
   margin: 0;
   min-width: 0;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 @media (width < #{$nds-toast-mobile-breakpoint}) {
-  .toast {
+  .toast,
+  .toast[popover] {
     bottom: $nds-toast-viewport-inset;
     top: auto;
     transform: translate(-50%, $nds-toast-enter-offset);
@@ -114,19 +102,24 @@ $nds-toast-mobile-breakpoint: nds.$breakpoint-small;
       transform: translate(-50%, 0);
     }
   }
-
-  .toast__text {
-    white-space: normal;
-  }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: no-preference) {
   .toast {
-    transition: none;
+    // Reset the entry offset only after the closed toast is fully transparent.
+    transition:
+      opacity $nds-toast-duration $nds-toast-easing,
+      transform 0s $nds-toast-duration;
+
+    &[data-open='true'] {
+      transition:
+        opacity $nds-toast-duration $nds-toast-easing,
+        transform $nds-toast-duration $nds-toast-easing;
+    }
   }
 }
 
 .toast:not(:has(.toast__icon)) {
-  min-height: nds.space(52);
-  padding-inline: nds.space(20);
+  min-height: nds.space(44);
+  padding-inline: nds.space(16);
 }

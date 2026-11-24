@@ -13,10 +13,12 @@ A tooltip pairs a trigger with a short message. Add the `usa-tooltip` class and
 a `title` to the trigger; the message appears when the trigger is hovered or
 focused. Use `data-position` to choose which side the message appears on.
 
+{% assign tooltip_copy = "Additional context appears here." %}
+
 ### Top
 
 {% capture example %}
-<button type="button" class="usa-button usa-tooltip" data-position="top" title="Additional context appears here.">
+<button type="button" class="usa-button usa-tooltip" data-position="top" title="{{ tooltip_copy }}">
   Hover for details
 </button>
 {% endcapture %}
@@ -25,7 +27,7 @@ focused. Use `data-position` to choose which side the message appears on.
 ### Bottom
 
 {% capture example %}
-<button type="button" class="usa-button usa-tooltip" data-position="bottom" title="Additional context appears here.">
+<button type="button" class="usa-button usa-tooltip" data-position="bottom" title="{{ tooltip_copy }}">
   Hover for details
 </button>
 {% endcapture %}
@@ -34,7 +36,7 @@ focused. Use `data-position` to choose which side the message appears on.
 ### Left
 
 {% capture example %}
-<button type="button" class="usa-button usa-tooltip" data-position="left" title="Additional context appears here.">
+<button type="button" class="usa-button usa-tooltip" data-position="left" title="{{ tooltip_copy }}">
   Hover for details
 </button>
 {% endcapture %}
@@ -43,7 +45,7 @@ focused. Use `data-position` to choose which side the message appears on.
 ### Right
 
 {% capture example %}
-<button type="button" class="usa-button usa-tooltip" data-position="right" title="Additional context appears here.">
+<button type="button" class="usa-button usa-tooltip" data-position="right" title="{{ tooltip_copy }}">
   Hover for details
 </button>
 {% endcapture %}
