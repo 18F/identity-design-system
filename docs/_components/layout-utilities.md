@@ -29,6 +29,7 @@ is the spacing token.
 <div class="stack stack--gap-24">
   <div class="card"><div class="card__body"><p class="card__title">First</p></div></div>
   <div class="card"><div class="card__body"><p class="card__title">Second</p></div></div>
+  <div class="card"><div class="card__body"><p class="card__title">Third</p></div></div>
 </div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
@@ -48,8 +49,12 @@ Add a `--align-*` modifier to control cross-axis alignment: `--align-center`,
 
 ## Page transition
 
-Setting the `data-nds-page-transition` attribute on a page shell opts it into an
-animated transition between navigations: the main region eases out and the next
-one eases in, while the top chrome and footer stay in place. It has no visible
-resting state, and it respects `prefers-reduced-motion`. This behavior applies
-across full page navigations, so it is not shown as a static example here.
+In browsers that support same-origin cross-document view transitions, the NDS
+stylesheet enables a brief root transition between pages even without a shell
+attribute. Legacy pages navigate normally without this effect.
+
+Add `data-nds-page-transition` to the page shell to animate its direct
+`.auth-page__main` and `.auth-page__footer-wrapper` children separately. The
+main content exits and enters with a small vertical movement; the footer
+crossfades. With Reduce Motion enabled, these animations do not play.
+The effect occurs during navigation, so there is no static example here.

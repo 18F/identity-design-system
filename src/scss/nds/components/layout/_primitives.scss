@@ -163,15 +163,16 @@
 }
 
 .list {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: 1.5;
+  line-height: nds.$text-line-height-body;
   margin: 0;
-  padding-left: nds.space(24);
-  text-align: left;
+  padding-inline-start: nds.space(24);
+  text-align: start;
+  overflow-wrap: anywhere;
 }
 
 .list > li + li {
@@ -188,12 +189,13 @@
   font-weight: nds.$font-regular;
   letter-spacing: nds.$text-letter-spacing-label;
   line-height: nds.$text-line-height-body;
-  text-align: left;
+  text-align: start;
   text-wrap: pretty;
+  overflow-wrap: anywhere;
 
   strong,
   b {
-    font-weight: inherit;
+    font-weight: nds.$text-weight-body-m-emphasis;
   }
 }
 
@@ -211,14 +213,15 @@
 
 .heading-s,
 .copy h2 {
-  color: nds.$black;
+  color: nds.$text-primary;
   font-family: nds.$font-family;
   font-size: nds.$text-heading-section;
   font-weight: nds.$font-medium;
   letter-spacing: nds.$text-letter-spacing-heading-section;
-  line-height: 1.2;
+  line-height: nds.$text-line-height-heading-section;
   margin: 0;
-  text-align: left;
+  text-align: start;
+  overflow-wrap: anywhere;
 }
 
 // Body/M Emphasis — the emphasized body text style (16px medium, body
@@ -234,12 +237,12 @@
   line-height: nds.$text-line-height-body;
 }
 
-.copy.copy--centered h2 {
+.copy.copy--centered :is(h2, .heading-s) {
   text-align: center;
 }
 
 .copy a {
-  color: nds.$black;
+  color: nds.$text-primary;
   text-decoration-line: underline;
   text-decoration-thickness: from-font;
   overflow-wrap: break-word;
@@ -248,7 +251,7 @@
   &:hover,
   &:active,
   &:focus-visible {
-    color: nds.$black;
+    color: nds.$text-primary;
   }
 
   &:focus-visible {
@@ -278,36 +281,46 @@
   height: nds.$stroke-hairline;
   margin: 0;
   width: 100%;
+
+  @media (forced-colors: active) {
+    border-block-start: nds.$stroke-hairline solid CanvasText;
+    height: 0;
+  }
 }
 
 // Labelled "or" separator.
 .separator {
   align-items: center;
-  color: nds.$text-tertiary;
+  color: nds.$text-secondary;
   display: flex;
   font-family: nds.$font-family;
   font-size: nds.$text-body-m;
-  font-weight: 400;
+  font-weight: nds.$font-regular;
   gap: nds.space(8);
   letter-spacing: nds.$text-letter-spacing-label;
-  line-height: nds.$text-line-height-none;
+  line-height: nds.$text-line-height-body;
   text-align: center;
   width: 100%;
 
   &::before,
   &::after {
-    background: var(--rule-color, #{nds.$base-lighter});
+    background: var(--rule-color, #{nds.$border-tertiary});
     content: '';
     flex: 1 1 0;
-    height: 1px;
+    height: nds.$stroke-hairline;
     min-width: nds.space(24);
+
+    @media (forced-colors: active) {
+      border-block-start: nds.$stroke-hairline solid CanvasText;
+      height: 0;
+    }
   }
 }
 
 // Reuse the existing USWDS base-color utilities, not NDS-only variant names.
 @each $shade, $line, $label in (base-darkest, nds.$border-primary, nds.$text-primary),
   (base-light, nds.$border-secondary, nds.$text-secondary),
-  (base-lightest, nds.$border-quaternary, nds.$text-disabled)
+  (base-lightest, nds.$border-quaternary, nds.$text-secondary)
 {
   .divider.bg-#{$shade} {
     background-color: $line;

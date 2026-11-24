@@ -7,8 +7,14 @@
 @use 'nds/components/spinner';
 @use 'nds/components/modal-scroll';
 @use 'nds/components/media-placeholder';
+@use 'nds/components/layout/stack';
 @use 'password-toggle-fallback';
 @use 'nds/icon-assets' as icon;
+
+// Legacy buttons reserve space for inline siblings; the stack supplies its own gap.
+:is(.stack, .form, .actions, .links) > .usa-button {
+  margin-inline: 0;
+}
 
 @media (forced-colors: active) {
   .nds-prose .usa-link--external::after {
@@ -17,8 +23,34 @@
   }
 }
 
-a:is(.link, .block-link):active {
+a:is(.link, .block-link):active,
+.copy a:active {
   color: uswds-core.color('red-70');
+}
+
+.copy--centered {
+  text-align: center;
+}
+
+.copy--muted {
+  color: uswds-core.color('base-dark');
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.separator {
+  align-items: center;
+  display: flex;
+  gap: uswds-core.units(1);
+
+  &::before,
+  &::after {
+    border-block-start: 1px solid uswds-core.color('base-light');
+    content: '';
+    flex: 1;
+  }
 }
 
 .block-link {

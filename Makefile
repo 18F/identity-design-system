@@ -73,7 +73,8 @@ build-sass-packages-uswds:
 	# Publish the same legacy entry and partials used by the prebuilt CSS.
 	cp src/scss/styles.scss packages-uswds/_uswds.scss
 	cp src/scss/_progress-layout.scss src/scss/_masked-text-toggle.scss src/scss/_password-strength-feedback.scss src/scss/_password-toggle-fallback.scss packages-uswds/
-	mkdir -p packages-uswds/nds/components
+	mkdir -p packages-uswds/nds/components/layout
+	cp src/scss/nds/components/layout/_stack.scss packages-uswds/nds/components/layout/
 	cp src/scss/nds/_icon-assets.scss packages-uswds/nds/
 	cp src/scss/nds/components/_spinner.scss packages-uswds/nds/components/
 	cp src/scss/nds/components/_modal-scroll.scss src/scss/nds/components/_media-placeholder.scss src/scss/nds/components/_password-strength.scss packages-uswds/nds/components/

@@ -12,7 +12,7 @@ or `copy--muted` to soften the color.
 
 {% capture example %}
 <div class="copy">
-  <h2>Before you continue</h2>
+  <h3 class="heading-s">Before you continue</h3>
   <p>Review the details below. You can change this later in your account settings.</p>
   <p>Need help? <a href="#">Contact support</a>.</p>
 </div>
@@ -23,7 +23,7 @@ or `copy--muted` to soften the color.
 
 {% capture example %}
 <div class="copy copy--centered">
-  <h2>All set</h2>
+  <h4 class="heading-s">All set</h4>
   <p>Your changes have been saved.</p>
 </div>
 {% endcapture %}
@@ -40,10 +40,10 @@ or `copy--muted` to soften the color.
 
 ## Section heading
 
-Use `heading-s` for a standalone section heading.
+Use `heading-s` on the appropriate heading level for the surrounding content.
 
 {% capture example %}
-<p class="heading-s">Account details</p>
+<h3 class="heading-s">Account details</h3>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}
 
@@ -81,6 +81,6 @@ A labelled separator, typically used between alternative actions.
 Apply `nowrap` to keep text on a single line.
 
 {% capture example %}
-<p>Call <span class="nowrap">1-844-555-0100</span> for help.</p>
+<div class="copy"><p>Call <span class="nowrap">1-844-555-0100</span> for help.</p></div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

@@ -6,6 +6,7 @@
 //
 // Loaded after `@forward 'uswds'` (see nds/styles.scss).
 
+@use 'sass:math';
 @use 'tokens/nds' as nds;
 
 $nds-stack-gaps: 4, 8, 12, 16, 20, 24, 32, 40, 48;
@@ -72,13 +73,16 @@ $nds-stack-gaps: 4, 8, 12, 16, 20, 24, 32, 40, 48;
 }
 
 .action-row {
-  @media (width < 48rem) {
+  // Keep the medium breakpoint relative to the user's default font size.
+  $breakpoint: math.div(nds.$breakpoint-medium, 16px) * 1rem;
+
+  @media (width < $breakpoint) {
     .usa-tooltip {
       display: block;
     }
   }
 
-  @media (width >= 48rem) {
+  @media (width >= $breakpoint) {
     flex-direction: row;
 
     > * {

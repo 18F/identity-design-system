@@ -1,0 +1,42 @@
+@use 'tokens/nds' as nds;
+
+.usa-image-example--correct {
+  --nds-image-example-accent: #{nds.$success-dark};
+}
+
+.usa-image-example--incorrect {
+  --nds-image-example-accent: #{nds.$error-dark};
+}
+
+.usa-image-example {
+  .usa-image-example__image {
+    display: block;
+    box-shadow: 0 nds.space(8) 0 0 var(--nds-image-example-accent);
+  }
+
+  .usa-image-example__image--bordered {
+    border-color: nds.$border-tertiary;
+  }
+
+  .usa-image-example__figcaption {
+    margin-block-start: nds.space(20);
+  }
+
+  .usa-icon-list .usa-icon-list__item {
+    padding: 0;
+  }
+
+  // Legacy uses the same caption markup with a leading status icon.
+  .usa-icon-list__icon {
+    display: none;
+  }
+
+  .usa-icon-list__content {
+    overflow-wrap: anywhere;
+
+    .image-example__do-dont {
+      color: var(--nds-image-example-accent);
+      font-weight: nds.$text-weight-body-m-emphasis;
+    }
+  }
+}

@@ -11,5 +11,6 @@
   "input-otp", "phone-input", "masked-text", "password-strength",
   "search", "location-collection", "personal-key", "status-page",
   "icon", "icon-list", "status-badge", "nist-badge", "spinner",
-  "link", "prose", "process-list", "process-list-flat", "tags"
+  "link", "prose", "process-list", "process-list-flat", "tags",
+  "layout-primitives", "layout-utilities", "image-example"
 ]

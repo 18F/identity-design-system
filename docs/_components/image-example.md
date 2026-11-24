@@ -1,27 +1,27 @@
 ---
 title: Image Example
-lead: An image example displays an image with a do/don't header to help users upload  images correctly.
+lead: Image examples pair photos with Do and Don't captions to explain how to take an acceptable photo.
 ---
 
-This is not a component in the USWDS design system.
+NDS uses text labels without icons. The legacy theme also shows a check or error
+icon beside the label.
 
 ## Image Example Do
-
 
 {% capture example %}
 <div class="usa-image-example usa-image-example--correct">
   <figure class="usa-image-example__figure">
-    <img class="usa-image-example__image" alt="correct example, use dark background" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
+    <img class="usa-image-example__image" alt="ID card on a solid dark background" src="{{ site.baseurl }}/img/ID-dos-donts_ID_do-02.png" />
     <figcaption class="usa-image-example__figcaption">
       <ul class="usa-icon-list usa-icon-list--size-md">
         <li class="usa-icon-list__item">
           <div class="usa-icon-list__icon">
             <svg class="usa-icon" aria-hidden="true" role="img">
-              <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+              <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#check-circle"></use>
             </svg>
           </div>
           <div class="usa-icon-list__content">
-            <span class="image-example__do-dont">DO: </span>Use a solid, dark background, but make the text longer for testing the way the word wrap behaves.
+            <span class="image-example__do-dont">DO: </span>Use a solid, dark background.
           </div>
         </li>
       </ul>
@@ -36,17 +36,17 @@ This is not a component in the USWDS design system.
 {% capture example %}
 <div class="usa-image-example usa-image-example--incorrect">
   <figure class="usa-image-example__figure">
-    <img alt="incorrect example, dont use light colored background" class="usa-image-example__image usa-image-example__image--bordered" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
+    <img alt="ID card on a white background" class="usa-image-example__image usa-image-example__image--bordered" src="{{ site.baseurl }}/img/ID-dos-donts_ID_dont-02.png" />
     <figcaption class="usa-image-example__figcaption">
       <ul class="usa-icon-list usa-icon-list--size-md">
         <li class="usa-icon-list__item">
           <div class="usa-icon-list__icon">
             <svg class="usa-icon" aria-hidden="true" role="img">
-              <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#cancel"></use>
+              <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#error"></use>
             </svg>
           </div>
           <div class="usa-icon-list__content">
-            <span class="image-example__do-dont">DON'T: </span>Use a white background, but make the text longer for testing the way the word wrap behaves.
+            <span class="image-example__do-dont">DON'T: </span>Use a white background.
           </div>
         </li>
       </ul>
