@@ -1,6 +1,26 @@
 // Component examples demonstrate controls; their destinations belong to the host app.
 (() => {
   const scope = '[data-component-preview]';
+  for (const demo of document.querySelectorAll('[data-spinner-demo]')) {
+    const button = demo.querySelector('button');
+    const glyph = demo.querySelector('.nds-spinner');
+    const label = demo.querySelector('[data-spinner-label]');
+    const status = demo.querySelector('[role="status"]');
+    if (!button || !(glyph instanceof HTMLElement) || !label || !status) continue;
+    button.disabled = false;
+    button.addEventListener('click', () => {
+      if (!glyph.hidden) return;
+      glyph.hidden = false;
+      label.classList.add('usa-sr-only');
+      status.textContent = 'Searching for Post Offices';
+      // Only the preview simulates latency; applications use request completion.
+      window.setTimeout(() => {
+        glyph.hidden = true;
+        label.classList.remove('usa-sr-only');
+        status.textContent = 'Search complete.';
+      }, 2000);
+    });
+  }
   for (const form of document.querySelectorAll('form[data-location-example]')) {
     form.addEventListener('submit', event => event.preventDefault());
   }

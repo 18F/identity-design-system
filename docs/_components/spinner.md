@@ -47,13 +47,16 @@ A button in its loading state can replace its label with the spinner. Keep the
 label as visually hidden text so the button keeps an accessible name, and
 announce progress in a separate `role="status"` element. The button keeps its
 primary style (as in the Figma Post Office search); ignore repeat clicks in
-script rather than disabling it.
+script rather than disabling it while loading. Activate Search below to simulate
+a request; the example restores the label when the simulation finishes.
 
 {% capture example %}
-<button type="button" class="usa-button usa-button--big usa-button--full-width">
-  <span class="nds-spinner" aria-hidden="true"></span>
-  <span class="usa-sr-only">Search</span>
-</button>
-<div class="usa-sr-only" role="status">Searching for Post Offices</div>
+<div data-spinner-demo>
+  <button type="button" class="usa-button usa-button--big usa-button--full-width" disabled>
+    <span class="nds-spinner" aria-hidden="true" hidden></span>
+    <span data-spinner-label>Search</span>
+  </button>
+  <div class="usa-sr-only" role="status"></div>
+</div>
 {% endcapture %}
 {% include helpers/code-example.html code=example %}

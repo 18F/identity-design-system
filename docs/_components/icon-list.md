@@ -10,9 +10,9 @@ lead: An icon list reinforces the meaning and visibility of individual list item
 {% capture example %}
 <ul class="usa-icon-list usa-icon-list--size-md">
   <li class="usa-icon-list__item">
-    <div class="usa-icon-list__icon text-success">
+    <div class="usa-icon-list__icon">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -27,9 +27,9 @@ lead: An icon list reinforces the meaning and visibility of individual list item
     </div>
   </li>
   <li class="usa-icon-list__item">
-    <div class="usa-icon-list__icon text-success">
+    <div class="usa-icon-list__icon">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -42,9 +42,9 @@ lead: An icon list reinforces the meaning and visibility of individual list item
     </div>
   </li>
   <li class="usa-icon-list__item">
-    <div class="usa-icon-list__icon text-success">
+    <div class="usa-icon-list__icon">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -71,7 +71,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-success">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">
@@ -81,7 +81,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-success">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#check_circle"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#checkmark"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">Stay six feet away from others</div>
@@ -89,7 +89,7 @@ lead: An icon list reinforces the meaning and visibility of individual list item
   <li class="usa-icon-list__item">
     <div class="usa-icon-list__icon text-error">
       <svg class="usa-icon" aria-hidden="true" role="img">
-        <use xlink:href="{{ site.baseurl }}/assets/img/sprite.svg#cancel"></use>
+        <use xlink:href="{{ site.baseurl }}/assets/img/nds-icons/symbols.svg#close"></use>
       </svg>
     </div>
     <div class="usa-icon-list__content">Avoid large gatherings</div>

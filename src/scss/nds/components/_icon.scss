@@ -9,3 +9,15 @@
   overflow: visible;
   vertical-align: middle;
 }
+
+// Opt in with --nds-icon-source; native SVGs and the legacy sprite are unchanged.
+.usa-icon[data-nds-icon] {
+  background-color: currentColor;
+  display: inline-block;
+  mask: var(--nds-icon-source) center / contain no-repeat;
+
+  @media (forced-colors: active) {
+    // Preserve the mask paint using the parent's system-adjusted text color.
+    forced-color-adjust: preserve-parent-color;
+  }
+}

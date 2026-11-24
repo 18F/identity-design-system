@@ -37,7 +37,7 @@ $nds-badge-states: (
     ),
     dark: (
       nds.alpha(nds.$success-light, 20%),
-      nds.$success,
+      nds.$success-light,
     ),
   ),
   error: (
@@ -47,7 +47,7 @@ $nds-badge-states: (
     ),
     dark: (
       nds.alpha(nds.$secondary-lighter, 20%),
-      nds.$secondary-light,
+      nds.$error-light,
     ),
   ),
   warning: (
@@ -67,7 +67,7 @@ $nds-badge-states: (
     ),
     dark: (
       nds.alpha(nds.$primary-lightest, 5%),
-      nds.$primary,
+      nds.$primary-light,
     ),
   ),
 );
@@ -115,6 +115,10 @@ $nds-badge-states: (
   &.badge--md.badge--icon-only {
     height: nds.space(36);
     width: nds.space(36);
+  }
+
+  &.badge--dark:is(.badge--info, .badge--success, .badge--warning, .badge--error) {
+    border-color: nds.$border-secondary-invert;
   }
 
   @each $name, $bg in $nds-badge-states {
